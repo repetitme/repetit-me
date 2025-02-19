@@ -1,0 +1,30 @@
+{
+  "include": ["src"],
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist",
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo", // Здесь будет информация о сборке.
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler", // Способ разрешения модулей для сборщика.
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force", // TypeScript рассматривает все файлы как модули.
+    "noEmit": true, // Компилятор не должен генерировать выходные файлы. Полезно, если TypeScript спользуется только для проверки типов.
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true, // Включает все строгие проверки типов.
+    "noUnusedLocals": true, // Предупреждает о неиспользуемых локальных переменных.
+    "noUnusedParameters": true, // Предупреждает о неиспользуемых параметрах функций.
+    "noFallthroughCasesInSwitch": true, // Предотвращает падение между случаями в операторе switch.
+    "noUncheckedSideEffectImports": true, // Предупреждает о не проверенных импортируемых модулях, которые могут иметь побочные эффекты.
+
+    "composite": true // Позволяет использовать инкрементальную компиляцию.
+  }
+}
