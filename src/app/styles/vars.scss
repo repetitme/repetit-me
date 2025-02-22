@@ -1,0 +1,55 @@
+:root {
+    /* base */
+    //uncategorized
+    --clr-black: #172936;
+    --clr-purple-bg: #DBC4F7;
+    --clr-blue-bg: #A2BCEA;
+    --clr-tertiary: #D4D07B;
+    --clr-yellow: #FBED2D;
+    --clr-blue: #3D7FF1;    
+     //white
+    --clr-main:#FFFFFF;
+    --clr-transparent30: #FFFFFF4d;     
+     //grey
+    --clr-1: #F5F5F7;
+    --clr-2: #EEEEEE;
+    --clr-3: #D1D4DB;
+    --clr-4: #858585;
+     //type
+    --clr-primary-default:#6757F1;
+    --clr-primary-pressed:#2E276C;
+    --clr-primary-hover:#5246C1;
+    --clr-primary-disabled:#EEEEEE;
+    --clr-secondary-default:#F04040;
+    --clr-secondary-pressed:#904040;
+    --clr-secondary-hover:#B04040;
+    --clr-secondary-disabled:#BE9999;
+
+    /* text */
+    --fsz-10: 10px;
+    --fsz-12: 12px;
+    --fsz-14: 14px;
+    --fsz-15: 15px;
+    --fsz-16: 16px;
+    --fsz-18: 18px;
+    --fsz-20: 20px;
+    --fsz-22: 22px;
+    --fsz-24: 24px;
+    --fsz-32: 32px;
+    --fwt-400: 400;
+    --fwt-500: 500;
+    --fwt-600: 600;
+    --fwt-700: 700;
+    --tdn: underline solid;
+
+    /* misc */
+    --delay-dekstop: 300ms;
+    --delay-phone: 400ms;
+    --duration: 400ms;
+    --timing: ease-in;
+
+    /* fonts */    
+    --ffm-default: 'Montserrat', Courier, monospace;
+    --ffm-tag: 'Open-Sans', Courier, monospace;
+    --ffm-title: 'Druk Text Wide Cyr', Courier, monospace;
+}
