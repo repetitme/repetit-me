@@ -1,12 +1,7 @@
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-
 :root {
+  --padding-inline: 120px;
+  --padding-blocks: 32px;
   --margin-blocks: 140px;
-  --padding-blocks: 32px 32px;
   --gap-blocks: 20px;
   --border-radius-btn-social: 12px;
   --border-radius-btn: 16px;
