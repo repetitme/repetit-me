@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 
-import Accordion from '../Accordion/Accordion';
+import Accordion from '../Accordeon/Accordeon';
 import useClickOutside from '../../shared/hooks/useClickOutside';
 import { questions } from './questionsData';
 
