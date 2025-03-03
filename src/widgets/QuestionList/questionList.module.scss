@@ -1,0 +1,33 @@
+@use '../../assets/styles/mixins/gradient.scss' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  margin-block-end: var(--margin-blocks, 140px);
+  padding-inline: var(--padding-inline, 120px);
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    gap: var(--gap-blocks, 20px);
+  }
+
+  &__title {
+    max-width: 550px;
+    text-align: center;
+    padding-block: 10px var(--padding-blocks, 32px);
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 52.8px;
+
+    &--accent {
+      @include text-gradient(#3dc5ff, #4558ff, #865bff, #ff71f9, #ffaa47);
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__title {
+    text-align: start;
+    font-size: 20px;
+    font-weight: 500;
+    flex-grow: 1;
+  }
+
+  &__collapse {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-25px);
+    transition:
+      max-height 0.3s ease,
+      transform 0.3s ease,
+      opacity 0.5s ease;
+  }
+
+  &__content {
+    width: 100%;
+    padding-inline: var(--padding-blocks, 32px);
+    padding-block-start: var(--gap-blocks, 20px);
+  }
+}
+
+.open {
+  opacity: 1;
+  max-height: 500px;
+  transform: translateY(0);
+}
