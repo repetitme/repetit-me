@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 
 import Accordion from '../Accordion/Accordion';
 import useClickOutside from '../../shared/hooks/useClickOutside';
-import { questions } from '../../assets/data/questionsData';
+import { questions } from './questionsData';
 
 import styles from './questionList.module.scss';
 import classNames from 'classnames';
