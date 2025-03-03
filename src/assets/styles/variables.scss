@@ -1,25 +1,28 @@
 :root {
     /* base */
-    //uncategorized
+    // uncategorized
     --clr-black: #172936;
     --clr-purple-bg: #DBC4F7;
     --clr-blue-bg: #A2BCEA;
     --clr-tertiary: #D4D07B;
     --clr-yellow: #FBED2D;
     --clr-blue: #3D7FF1;    
-     //white
-    --clr-main:#FFFFFF;
+
+     // white
+    --clr-main:#FFF;
     --clr-transparent30: #FFFFFF4d;     
-     //grey
+
+     // grey
     --clr-1: #F5F5F7;
-    --clr-2: #EEEEEE;
+    --clr-2: #EEE;
     --clr-3: #D1D4DB;
     --clr-4: #858585;
-     //type
+
+     // type
     --clr-primary-default:#6757F1;
     --clr-primary-pressed:#2E276C;
     --clr-primary-hover:#5246C1;
-    --clr-primary-disabled:#EEEEEE;
+    --clr-primary-disabled:#EEE;
     --clr-secondary-default:#F04040;
     --clr-secondary-pressed:#904040;
     --clr-secondary-hover:#B04040;
@@ -35,9 +38,9 @@
     --timing: ease-in;
 
     /* fonts */    
-    --ffm-default: 'Montserrat', Courier, monospace;
-    --ffm-tag: 'Open-Sans', Courier, monospace;
-    --ffm-title: 'Druk Text Wide Cyr', Courier, monospace;
+    --ffm-default: 'Montserrat', courier, monospace;
+    --ffm-tag: 'Open-Sans', courier, monospace;
+    --ffm-title: 'Druk Text Wide Cyr', courier, monospace;
     
     /* indentation */
     --padding-inline: 120px;

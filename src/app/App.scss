@@ -1,0 +1,21 @@
+// @include font-face '../assets/fonts/fonts.scss';
+@use "/src/assets/fonts/fonts.scss" as stylesheet;
+
+.test {
+  content: 'test';
+}
+
+.montserrat {
+  font-family: Montserrat, courier, monospace;
+}
+
+.open-sans {
+  font-family: Open-Sans, courier, monospace;
+}
+
+.druktextwidecur {
+  font-family: DrukTextWideCur, courier, monospace;
+}
+
+
+

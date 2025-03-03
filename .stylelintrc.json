@@ -1,0 +1,32 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-prettier",
+    "stylelint-scss",
+    "stylelint-order"
+  ],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["include", "mixin", "use"]
+      }
+    ],
+    "block-no-empty": true,
+    "color-no-invalid-hex": true,
+    "no-duplicate-selectors": true,
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": ["composes"]
+      }
+    ],
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": ["v-deep"]
+      }
+    ]
+  }
+}
