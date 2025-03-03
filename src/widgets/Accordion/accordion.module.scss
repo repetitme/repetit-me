@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: 24px;
 
   &__header {
     display: flex;
@@ -19,6 +20,15 @@
     flex-grow: 1;
   }
 
+  &__icon {
+    transform: rotate(0deg);
+    transition: transform var(--delay-dekstop, 0.3s) var(--timing, ease-in);
+  }
+
+  &__icon--open {
+    transform: rotate(45deg);
+  }
+
   &__collapse {
     overflow: hidden;
     max-height: 0;
@@ -32,7 +42,8 @@
 
   &__content {
     width: 100%;
-    padding-inline: var(--padding-blocks, 32px);
+    font-family: var(--ffm-default, 'Montserrat', courier, monospace);
+    font-weight: 500;
     padding-block-start: var(--gap-blocks, 20px);
   }
 }

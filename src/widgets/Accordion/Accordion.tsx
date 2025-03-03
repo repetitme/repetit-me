@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import classNames from 'classnames';
 
-import PlusIconSwitcher from '../../shared/components/PlusIconSwitcher';
+import cross from '../../assets/images/added_cross.svg';
 import { AccordionProps } from './types';
 import styles from './accordion.module.scss';
 
@@ -17,7 +17,13 @@ const Accordion: FC<AccordionProps> = ({
     <div className={classNames(styles.accordion, className)}>
       <button className={styles.accordion__header} onClick={onToggle}>
         <div className={styles.accordion__title}>{title}</div>
-        <PlusIconSwitcher isOpen={isOpen} />
+        <img
+          src={cross}
+          alt="Крестик аккордеона"
+          className={classNames(styles.accordion__icon, {
+            [styles['accordion__icon--open']]: isOpen
+          })}
+        />
       </button>
       <div
         className={classNames({
