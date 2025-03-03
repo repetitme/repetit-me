@@ -5,6 +5,6 @@
 @use './globals.scss' as *;
 
 body {
-  font-family: var(--ffm-default, 'Montserrat', Courier, monospace);
+  font-family: var(--ffm-default, 'DrukTextWideCur', courier, monospace);
   color: var(--clr-black, #172936);
 }
