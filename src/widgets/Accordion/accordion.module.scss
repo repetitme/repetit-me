@@ -25,9 +25,9 @@
     opacity: 0;
     transform: translateY(-25px);
     transition:
-      max-height 0.3s ease,
-      transform 0.3s ease,
-      opacity 0.5s ease;
+      max-height var(--delay-dekstop, 0.3s) var(--timing, ease-in),
+      transform var(--delay-dekstop, 0.3s) var(--timing, ease-in),
+      opacity var(--duration, 0.4s) var(--timing, ease-in);
   }
 
   &__content {
