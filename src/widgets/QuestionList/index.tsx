@@ -1,10 +1,10 @@
 import { FC, useState } from 'react';
 
-import Accordion from '../Accordeon/Accordeon';
+import Accordion from '../Accordeon';
 import useClickOutside from '../../shared/hooks/useClickOutside';
-import { questions } from './questionsData';
+import { questions } from './data';
 
-import styles from './questionList.module.scss';
+import styles from './styles.module.scss';
 import classNames from 'classnames';
 
 const QuestionList: FC = () => {

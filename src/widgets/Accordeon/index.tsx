@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import cross from '../../assets/images/added_cross.svg';
 import { AccordionProps } from './types';
-import styles from './accordeon.module.scss';
+import styles from './styles.module.scss';
 
 const Accordion: FC<AccordionProps> = ({
   title,

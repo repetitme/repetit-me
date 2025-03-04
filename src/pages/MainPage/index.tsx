@@ -1,4 +1,4 @@
-import QuestionList from '../../widgets/QuestionList/QuestionList';
+import QuestionList from '../../widgets/QuestionList';
 
 const MainPage = () => {
   return <QuestionList />;
