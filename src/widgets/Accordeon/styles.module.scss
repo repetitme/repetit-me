@@ -11,6 +11,10 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+
+    &:focus-visible {
+      outline: none;
+    }
   }
 
   &__title {
