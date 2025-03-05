@@ -1,0 +1,45 @@
+*,
+p,
+h2 {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  column-gap: var(--gap-blocks);
+
+  &--reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-blocks);
+  max-inline-size: 692px;
+}
+
+.emoji {
+  position: relative;
+  border-radius: var(--border-radius-blocks);
+  background: linear-gradient(180deg, #a2bcea 0%, #dbc4f7 100%);
+  min-inline-size: 488px;
+  min-block-size: 466px;
+
+  &__student {
+    position: absolute;
+    bottom: 0;
+
+    &--boy {
+      inset-inline-start: 15px;
+    }
+
+    &--girl {
+      inset-inline-end: 15px;
+    }
+  }
+}
