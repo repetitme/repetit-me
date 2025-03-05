@@ -8,7 +8,7 @@ type TInfoBlock = {
 export const InfoBlock: React.FC<TInfoBlock> = ({ title, children }) => {
   return (
     <div className={styles.block}>
-      <h2 className={styles.block__title}>{title}</h2>
+      <h3 className={styles.block__title}>{title}</h3>
       <p className={styles.block__txt}>{children}</p>
     </div>
   );

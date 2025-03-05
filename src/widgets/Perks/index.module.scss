@@ -10,6 +10,8 @@ h2 {
   display: flex;
   align-items: flex-start;
   column-gap: var(--gap-blocks);
+  inline-size: 100%;
+  margin-block-end: 130px;
 
   &--reverse {
     flex-direction: row-reverse;
