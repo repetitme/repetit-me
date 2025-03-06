@@ -1,5 +1,7 @@
 import MainPage from '../pages/MainPage';
 
+import '../assets/index.scss';
+
 function App() {
   return (
     <>
