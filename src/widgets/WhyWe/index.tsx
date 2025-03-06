@@ -5,7 +5,7 @@ export const WhyWe: React.FC = () => {
     <div className={styles.container}>
       <h2 className={styles.title}>
         Почему <span className={styles.accent}>мы</span>?
-      </h2>
+      </h2>      
       <ul className={styles.list}>
         <li className={styles.list__item}>
           <div className={styles.circle__container}>

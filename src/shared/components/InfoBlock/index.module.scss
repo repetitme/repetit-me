@@ -2,15 +2,17 @@
   flex: 1 1 336px;
   border-radius: var(--border-radius-btn);
   padding: var(--padding-blocks);
+  min-block-size: 227px;
 
   &__title {
     margin-block-end: 16px;
+    font-family: var(--ffm-title);
     font-size: 32px;
     line-height: 1.27;
   }
 
   &__txt {
-    color: #858585;
+    color: var(--clr-4);
     font-size: 20px;
     line-height: 1.32;
   }
