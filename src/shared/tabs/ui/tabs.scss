@@ -1,0 +1,14 @@
+// Заглушка
+.tab {
+  cursor: pointer;
+  text-align: center;
+  box-sizing: border-box;
+  background-color: transparent;
+  width: 100%;
+  border: none;
+}
+
+.current {
+  border-bottom: 2px solid black;
+  pointer-events: none;
+}

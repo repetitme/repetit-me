@@ -1,7 +1,11 @@
 import '../assets/global.scss';
-
+import { AuthForm } from '../features/auth/form/ui';
 function App() {
-  return <h1>Привет, мир!</h1>;
+  return (
+    <div className="App">
+      <AuthForm />
+    </div>
+  );
 }
 
 export default App;

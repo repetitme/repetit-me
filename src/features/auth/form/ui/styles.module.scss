@@ -1,0 +1,15 @@
+.auth {
+  max-width: 680px;
+  
+  &__tabs {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
