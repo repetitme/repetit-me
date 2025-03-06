@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 
 interface ButtonProps {
   text: string;
-  variant: 'white' | 'purple' | 'red' | 'transparent';
+  variant: 'white' | 'purple' | 'red';
   // size: по дефолту размер текста 16px, при large - 20px. Возможно, добавятся еще размеры (есть в макете):
   size?: 'large';
   Icon?: React.ReactNode;
