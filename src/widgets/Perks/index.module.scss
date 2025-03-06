@@ -4,6 +4,7 @@
   column-gap: var(--gap-blocks);
   inline-size: 100%;
   margin-block-end: 130px;
+  justify-content: space-between;
 
   &--reverse {
     flex-direction: row-reverse;
