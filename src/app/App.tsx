@@ -1,3 +1,4 @@
+import './App.scss'
 import '../assets/global.scss';
 
 function App() {
