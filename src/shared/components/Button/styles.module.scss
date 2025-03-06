@@ -1,0 +1,19 @@
+@use '../../../assets//styles/mixins/buttonStyle.scss' as *;
+
+.button {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+
+  @include button-styles(
+    var(--clr-blue),
+    var(--clr-main),
+    var(--border-radius-btn-social),
+    (12px 20px),
+    16.5px
+  );
+
+  &__icon {
+    margin-right: 8px;
+  }
+}

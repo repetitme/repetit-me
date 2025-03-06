@@ -1,7 +1,11 @@
+import Footer from '../../widgets/Footer';
+
 const MainPage = () => {
   return (
     <>
-      <h1>Привет, мир!</h1>
+      <h1>Header</h1>
+      <h2>Section</h2>
+      <Footer />
     </>
   );
 };

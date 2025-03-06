@@ -1,0 +1,32 @@
+@mixin button-styles(
+  $bg-color: #3d7ff1,
+  $text-color: #fff,
+  $border-radius: 12px,
+  $padding-inline: 12px 20px,
+  $padding-block: 16.5px
+) {
+  background-color: $bg-color;
+  color: $text-color;
+  border-radius: $border-radius;
+  border: none;
+  padding-inline: $padding-inline;
+  padding-block: $padding-block;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  transition: background-color var(--delay-dekstop, 300ms)
+    var(--timing, ease-in);
+
+  &:hover {
+    background-color: var(--clr-primary-hover, #5246c1);
+  }
+
+  &:disabled {
+    background-color: var(--clr-primary-disabled, #eee);
+    cursor: default;
+  }
+
+  &:active {
+    background-color: var(--clr-primary-pressed, #2e276c);
+  }
+}
