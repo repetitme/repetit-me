@@ -1,0 +1,76 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-btn, 16px);
+  cursor: pointer;
+  padding: 1em;
+  font-size: 16px;
+  line-height: 1.22;
+
+  &.large {
+    font-size: 20px;
+  }
+
+  &.white {
+    background-color: white;
+    border: 1px solid rgba(103, 87, 241, 1);
+    color: rgba(103, 87, 241, 1);
+  }
+
+  &.white:hover {
+    border: 1px solid rgba(82, 70, 193, 1);
+    color: rgba(82, 70, 193, 1);
+  }
+
+  &.white:active {
+    border: 1px solid rgba(46, 39, 108, 1);
+    color: rgba(46, 39, 108, 1);
+  }
+
+  &.white:disabled {
+    border: 1px solid rgba(238, 238, 238, 1);
+    color: rgba(209, 213, 219, 1);
+    cursor: not-allowed;
+  }
+
+  &.purple {
+    background-color: rgba(103, 87, 241, 1);
+    color: white;
+    border: none;
+  }
+
+  &.purple:hover {
+    background-color: rgba(82, 70, 193, 1);
+  }
+
+  &.purple:active {
+    background-color: rgba(46, 39, 108, 1);
+  }
+
+  &.purple:disabled {
+    background-color: rgba(238, 238, 238, 1);
+    color: rgba(133, 133, 133, 1);
+    cursor: not-allowed;
+  }
+
+  &.red {
+    background-color: rgba(240, 64, 64, 1);
+    color: white;
+    border: none;
+  }
+
+  &.red:hover {
+    background-color: rgba(176, 64, 64, 1);
+  }
+
+  &.red:active {
+    background-color: rgba(144, 64, 64, 1);
+  }
+
+  &.purple:disabled {
+    background-color: rgba(190, 153, 153, 1);
+    color: rgba(194, 199, 219, 1);
+    cursor: not-allowed;
+  }
+}
