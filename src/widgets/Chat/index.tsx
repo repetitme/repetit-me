@@ -1,6 +1,6 @@
 import styles from './index.module.scss';
 
-export const Chat = () => {
+export const Chat : React.FC = () => {
   return (
     <div className={styles.chat}>
       <h2 className={styles.chat__title}>
