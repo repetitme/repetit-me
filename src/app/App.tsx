@@ -1,5 +1,7 @@
-import '../assets/styles/index.scss';
-import { Modal } from '../widgets/ui/AuthModal/index';
+import './App.scss';
+import '../assets/styles/globals.scss';
+import '../assets/styles/variables.scss';
+import { Modal } from '../widgets/ui/AuthModal';
 
 function App() {
   return (
