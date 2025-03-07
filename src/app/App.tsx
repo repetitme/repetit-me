@@ -1,8 +1,13 @@
-import '../assets/global.scss';
+import '../assets/styles/global.scss';
+import '../assets/styles/variables.scss';
+import Header from '../pages/MainPage';
 
 function App() {
-  return <h1>Привет, мир!</h1>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 }
 
 export default App;
-
