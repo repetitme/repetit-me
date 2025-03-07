@@ -1,8 +1,12 @@
-import '../assets/global.scss';
+import '../assets/styles/index.scss';
+import { Modal } from '../widgets/ui/AuthModal/index';
 
 function App() {
-  return <h1>Привет, мир!</h1>;
+  return (
+    <Modal title="Регистрация" onClose={() => console.log('fsdfd')}>
+      <p>sdasdasasds</p>
+    </Modal>
+  );
 }
 
 export default App;
-
