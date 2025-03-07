@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
     <div className={styles.footer}>
       <div className={styles.footerTop}>
         <p className={styles.telegramText}>
-          Переходите в{' '}
+          Переходите в&nbsp;
           <span className={styles.telegramTextGradient}>Telegram</span> — с ним
           еще удобнее
         </p>
