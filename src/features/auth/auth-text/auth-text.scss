@@ -1,0 +1,20 @@
+.auth__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-weight: 500;
+  line-height: 136%;
+  text-align: center;
+  margin-top: 16px;
+  color: #858585;
+
+  a {
+    text-decoration: underline;
+  }
+
+  p:nth-of-type(2) {
+    a {
+      color: blue;
+    }
+  }
+}

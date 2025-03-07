@@ -1,0 +1,23 @@
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-size: 16px;
+  }
+
+  input {
+    background-color: #F5F5F7;
+    block-size: 66px;
+    inline-size: 100%;
+    border: none;
+    border-bottom: 1px solid var(--text-primary-color);
+    border-radius: 16px;
+  
+    &::placeholder {
+      font-size: 20px;
+      line-height: 132%;
+    }
+  }
+}

@@ -1,5 +1,6 @@
-import { Input } from '../../../../shared/auth-inputs/ui';
-import { Tab } from '../../../../shared/tabs/ui';
+import Inputs from '../../auth-inputs/ui';
+import { AuthText } from '../../auth-text';
+import { Tab } from '../../tabs/ui';
 import { useState, useRef } from 'react';
 import { useForm } from '../../../../shared/hooks/useForm';
 import styles from './styles.module.scss';
@@ -36,7 +37,7 @@ export const AuthForm = () => {
   const handleSuccess = () => {
     // Тестовый вывод данных в консоль
     console.log(
-      `Имя: ${values.name}, ТГ: ${values.tg}, Ссылка: ${values.link}, Код: ${values.code}.`
+      `Имя: ${values.name}, Tg: ${values.tg}, Ссылка: ${values.link}, Код: ${values.code}.`
     );
     setIsValid(false);
   };
@@ -62,26 +63,9 @@ export const AuthForm = () => {
           onChange={handleValidity}
           onSubmit={handleSubmit}
         >
-          <Input
-            required
-            name="name"
-            placeholder="Введите имя"
-            value={values.value}
-            onChange={handleChange}
-          />
-          <Input
-            required
-            name="tg"
-            placeholder="@aleksandr"
-            value={values.value}
-            onChange={handleChange}
-          />
-          <Input
-            name="link"
-            placeholder="https://..."
-            value={values.value}
-            onChange={handleChange}
-          />
+          {Inputs.name(values.value, handleChange, 'Необязательно')}
+          {Inputs.tg(values.value, handleChange)}
+          {Inputs.link(values.value, handleChange)}
           {!code && (
             <button
               className={styles.auth__form__button}
@@ -93,13 +77,7 @@ export const AuthForm = () => {
           )}
           {code && (
             <>
-              <Input
-                required
-                name="code"
-                placeholder="Введите шестизначное число"
-                value={values.value}
-                onChange={handleChange}
-              />
+              {Inputs.code(values.value, handleChange)}
               <button
                 className={styles.auth__form__button}
                 type="submit"
@@ -110,6 +88,7 @@ export const AuthForm = () => {
               </button>
             </>
           )}
+          <AuthText />
         </form>
       )}
       {currentTab === 'Как репетитор' && (
@@ -119,19 +98,8 @@ export const AuthForm = () => {
           onChange={handleValidity}
           onSubmit={handleSubmit}
         >
-          <Input
-            name="name"
-            placeholder="Введите имя"
-            value={values.value}
-            onChange={handleChange}
-          />
-          <Input
-            required
-            name="tg"
-            placeholder="@aleksandr"
-            value={values.value}
-            onChange={handleChange}
-          />
+          {Inputs.name(values.value, handleChange, 'Необязательно')}
+          {Inputs.tg(values.value, handleChange)}
           {!code && (
             <button
               className={styles.auth__form__button}
@@ -143,13 +111,7 @@ export const AuthForm = () => {
           )}
           {code && (
             <>
-              <Input
-                required
-                name="code"
-                placeholder="Введите шестизначное число"
-                value={values.value}
-                onChange={handleChange}
-              />
+              {Inputs.code(values.value, handleChange)}
               <button
                 className={styles.auth__form__button}
                 type="submit"
@@ -160,6 +122,7 @@ export const AuthForm = () => {
               </button>
             </>
           )}
+          <AuthText login = {true}/>
         </form>
       )}
     </div>
