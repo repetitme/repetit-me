@@ -14,6 +14,9 @@
   cursor: pointer;
   font-size: 20px;
   font-weight: 700;
+  max-height: 64px;
+  white-space: nowrap;
+  font-family: var(--ffm-default, 'Montserrat', courier, monospace);
   transition: background-color var(--delay-dekstop, 300ms)
     var(--timing, ease-in);
 

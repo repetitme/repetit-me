@@ -3,7 +3,8 @@
 .button {
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  gap: 14px;
+  align-items: center;
 
   @include button-styles(
     var(--clr-blue),
@@ -14,6 +15,7 @@
   );
 
   &__icon {
-    margin-right: 8px;
+    max-width: 21px;
+    max-height: 18px;
   }
 }

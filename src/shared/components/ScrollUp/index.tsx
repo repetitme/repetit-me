@@ -1,7 +1,7 @@
 import React from 'react';
-import arrowUp from '../../../assets/images/arrow_up.svg';
+import arrow from '../../../assets/images/arrow_up.svg';
 
-import './styles.module.scss';
+import styles from './styles.module.scss';
 
 const ScrollUp: React.FC = () => {
   const handleScrollUp = () => {
@@ -9,8 +9,8 @@ const ScrollUp: React.FC = () => {
   };
 
   return (
-    <div className="scroll-up" onClick={handleScrollUp}>
-      {arrowUp}
+    <div className={styles.scrollUp} onClick={handleScrollUp}>
+      <img src={arrow} alt="Scroll up" />
     </div>
   );
 };
