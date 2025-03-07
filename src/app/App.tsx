@@ -1,3 +1,4 @@
+import './App.scss'
 import '../assets/global.scss';
 import { AuthForm } from '../features/auth/form/ui';
 function App() {
