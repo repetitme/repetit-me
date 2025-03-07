@@ -1,9 +1,14 @@
-import './App.scss'
-import '../assets/global.scss';
+import './App.scss';
+import '../assets/styles/globals.scss';
+import '../assets/styles/variables.scss';
+import MainPage from '../pages/MainPage';
 
 function App() {
-  return <h1>Привет, мир!</h1>;
+  return (
+    <>
+      <MainPage />
+    </>
+  );
 }
 
 export default App;
-
