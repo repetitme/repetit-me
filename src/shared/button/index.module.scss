@@ -17,23 +17,23 @@
 
   &.white {
     background-color: var(--clr-main, white);
-    border: 1px solid var(--clr-primary-default, rgba(103, 87, 241, 100%));
-    color: var(--clr-primary-default, rgba(103, 87, 241, 100%));
+    border: 1px solid var(--clr-primary-default, #6757F1);
+    color: var(--clr-primary-default, #6757F1);
   }
 
   &.white:hover {
-    border: 1px solid var(--clr-primary-hover, rgba(82, 70, 193, 100%));
-    color: var(--clr-primary-hover, rgba(82, 70, 193, 100%));
+    border: 1px solid var(--clr-primary-hover, #5246C1);
+    color: var(--clr-primary-hover, #5246C1);
   }
 
   &.white:active {
-    border: 1px solid var(--clr-primary-pressed, rgba(46, 39, 108, 100%));
-    color: var(--clr-primary-pressed, rgba(46, 39, 108, 100%));
+    border: 1px solid var(--clr-primary-pressed, #2E276C);
+    color: var(--clr-primary-pressed, #2E276C);
   }
 
   &.white:disabled {
-    border: 1px solid var(--clr-primary-disabled, rgba(238, 238, 238, 100%));
-    color: var(--clr-3, rgba(209, 213, 219, 100%));
+    border: 1px solid var(--clr-primary-disabled, #EEE);
+    color: var(--clr-3, #D1D4DB);
     cursor: not-allowed;
   }
 
