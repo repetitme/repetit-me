@@ -1,7 +1,7 @@
 // css-переменные проекта
-@use "./styles/variables" as *;
+@use './styles/variables' as *;
 
 // глобальные стили проекта
-@use "./styles/globals" as *;
+@use './styles/globals' as *;
 
 @use '/src/assets/fonts/fonts.scss' as *;
