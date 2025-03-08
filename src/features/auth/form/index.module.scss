@@ -1,6 +1,7 @@
 .auth {
   max-width: 680px;
   
+  // Test tubs
   &__tabs {
     display: flex;
     justify-content: center;
@@ -13,5 +14,10 @@
     flex-direction: column;
     width: 100%;
     margin: 40px 0;
+
+    button {
+      margin-top: 20px;
+    }
+  
   }
 }

@@ -14,24 +14,26 @@ export const AuthForm = ({login}:{login: boolean}) => {
     code: ''
   });
   const [isValid, setIsValid] = useState(false);
-  const [code, receiveCode] = useState(false);
+  const [code, setReceived] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Тестовый код
-    receiveCode(true);
+    // Код получен
+    setReceived(true);
     setIsValid(false);
   };
 
   const handleActiveTab = (value: string) => {
     setCurrentTab(value);
-    receiveCode(true);
+    setReceived(true);
   };
 
   const handleValidity = () => {
-    if (formRef) {
+    if (formRef.current?.checkValidity()) {
       setIsValid(true);
+    } else {
+      setIsValid(false);
     }
   };
 

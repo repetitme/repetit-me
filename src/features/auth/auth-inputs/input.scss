@@ -5,15 +5,14 @@
   gap: 8px;
 
   label {
-    font-size: 16px;
     line-height: 1.36;
   }
 
   input {
-    background-color: #F5F5F7;
+    background-color: var(--clr-1);
     border: none;
-    border-bottom: 1px solid var(--text-primary-color);
     border-radius: 16px;
+    font-family: inherit;
     block-size: 26px;
     padding: 20px 16px;
   

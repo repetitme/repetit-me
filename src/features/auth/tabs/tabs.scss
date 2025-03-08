@@ -1,11 +1,13 @@
 // Заглушка
 .tab {
   cursor: pointer;
+  font-family: var(--ffm-default);
   text-align: center;
   box-sizing: border-box;
   background-color: transparent;
   width: 100%;
   border: none;
+  block-size: 42px;
 }
 
 .current {
