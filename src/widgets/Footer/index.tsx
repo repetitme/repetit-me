@@ -9,22 +9,22 @@ import styles from './styles.module.scss';
 
 const Footer: React.FC = () => {
   return (
-    <div className={styles.footer}>
-      <div className={styles.footerTop}>
-        <p className={styles.telegramText}>
+    <footer className={styles.footer}>
+      <div className={styles.footer__top}>
+        <p className={styles.telegram__text}>
           Переходите в&nbsp;
-          <span className={styles.telegramTextGradient}>Telegram</span> — с ним
-          еще удобнее
+          <span className={styles['telegram__text--gradient']}>Telegram</span> —
+          с ним еще удобнее
         </p>
         <Button
-          className={styles.footerButton}
+          className={styles.footer__button}
           icon={<img src={telegram} alt="Telegram" />}
           text="Перейти в Telegram"
         />
-        <img src={phone} alt="Phone" className={styles.phoneImage} />
+        <img src={phone} alt="Phone" className={styles.phone__image} />
       </div>
-      <div className={styles.footerBottom}>
-        <img src={logo} alt="RepetitMe" className={styles.repetitmeLogo} />
+      <div className={styles.footer__bottom}>
+        <img src={logo} alt="RepetitMe" className={styles.repetitme__logo} />
         <div className={styles.info}>
           <div className={styles.links}>
             <a href="#student">Ученику</a>
@@ -35,13 +35,13 @@ const Footer: React.FC = () => {
             <a className={styles.underline}>Менеджер в Telegram</a>
           </div>
         </div>
-        <div className={styles.footerBottomLinks}>
+        <div className={styles['footer__bottom--links']}>
           <p>2023-2024© Все права защищены</p>
           <a href="/privacy-policy">Политика конфиденциальности</a>
           <ScrollUp />
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
