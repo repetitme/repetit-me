@@ -6,11 +6,11 @@
   position: relative;
 
   &__description {
-    padding: 64px 120px;
+    padding: 64px 112px;
     width: 1200px;
     height: 418px;
     display: flex;
-    gap: 32px;
+    gap: 20px;
 
     &--role::after {
       content: '';
@@ -19,7 +19,7 @@
       block-size: 189.4272px;
       inline-size: 189.4272px;
       position: absolute;
-      left: 70px;
+      left: 74px;
       bottom: 10px;
       z-index: 1;
     }
@@ -31,8 +31,8 @@
       block-size: 400px;
       inline-size: 400px;
       position: absolute;
-      right: 30px;
-      top: -165px;
+      right: -25px;
+      top: -145px;
       z-index: 1;
     }
 
@@ -52,7 +52,7 @@
         );
       background-origin: border-box;
       background-clip: content-box, border-box;
-      max-width: 556px;
+      min-width: 590px;
       border-radius: 20px;
       justify-content: space-between;
       box-sizing: border-box;
@@ -62,7 +62,7 @@
       color: var(--clr-black);
       font-family: var(--ffm-title);
       margin: 10px 38px;
-      width: 476px;
+      width: 514px;
       font-weight: 500;
       font-size: 20px;
       letter-spacing: 0;
@@ -71,14 +71,14 @@
 
     &--role-emoji {
       width: 254px;
-      padding-left: 260px;
+      padding-left: 294px;
     }
 
     &--telegram-info {
       color: var(--clr-black);
       font-family: var(--ffm-title);
       margin: 10px 38px;
-      width: 476px;
+      width: 510px;
       font-weight: 500;
       font-size: 20px;
       letter-spacing: 0;
@@ -87,7 +87,7 @@
 
     &--telegram-emoji {
       width: 254px;
-      padding-left: 260px;
+      padding-left: 294px;
     }
   }
 }
