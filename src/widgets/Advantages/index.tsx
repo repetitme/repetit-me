@@ -27,6 +27,7 @@ const Advantages: FC = () => {
           </div>
           <img
             src={emojiMen}
+            alt="Эмоджи"
             className={classNames(styles['container__description--role-emoji'])}
           />
         </div>
@@ -56,6 +57,7 @@ const Advantages: FC = () => {
           </div>
           <img
             src={emojiWomen}
+            alt="Эмоджи"
             className={classNames(
               styles['container__description--telegram-emoji']
             )}
