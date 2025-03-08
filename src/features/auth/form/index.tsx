@@ -1,5 +1,4 @@
 import Inputs from '../auth-inputs';
-import { AuthText } from '../auth-text';
 import { Tab } from '../tabs';
 import { useState, useRef } from 'react';
 import { useForm } from '../../../shared/hooks/useForm';
@@ -26,7 +25,7 @@ export const AuthForm = ({login}:{login: boolean}) => {
 
   const handleActiveTab = (value: string) => {
     setCurrentTab(value);
-    setReceived(true);
+    setReceived(false);
   };
 
   const handleValidity = () => {
@@ -89,7 +88,6 @@ export const AuthForm = ({login}:{login: boolean}) => {
               </button>
             </>
           )}
-          <AuthText />
         </form>
       </div>
     );
@@ -141,7 +139,6 @@ export const AuthForm = ({login}:{login: boolean}) => {
               </button>
             </>
           )}
-          <AuthText />
         </form>
       )}
       {currentTab === 'Как репетитор' && (
@@ -175,7 +172,6 @@ export const AuthForm = ({login}:{login: boolean}) => {
               </button>
             </>
           )}
-          <AuthText login={true} />
         </form>
       )}
     </div>
