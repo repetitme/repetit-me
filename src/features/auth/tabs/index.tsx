@@ -7,14 +7,13 @@ type tabProps = {
   onClick: (value: string) => void;
 };
 
-export const Tab: React.FC<tabProps> = ({
-  active,
-  value,
-  onClick
-}) => {
+export const Tab: React.FC<tabProps> = ({ active, value, onClick }) => {
   return (
-    <button className={`tab ${active ? 'current' : ''}`} onClick={() => onClick(value)}>
-        {value}
+    <button
+      className={`tab ${active ? 'current' : ''}`}
+      onClick={() => onClick(value)}
+    >
+      {value}
     </button>
   );
 };

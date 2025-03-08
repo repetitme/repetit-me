@@ -4,7 +4,7 @@ import { useState, useRef } from 'react';
 import { useForm } from '../../../shared/hooks/useForm';
 import styles from './index.module.scss';
 
-export const AuthForm = ({login}:{login: boolean}) => {
+export const AuthForm = ({ login }: { login: boolean }) => {
   const [currentTab, setCurrentTab] = useState('Как ученик');
   const { values, handleChange } = useForm({
     name: '',

@@ -17,13 +17,14 @@
     padding: 20px 16px;
     font-size: 20px;
     caret-color: var(--clr-primary-default);
-  
+
     &::placeholder {
       font-size: 20px;
       line-height: 1.32;
     }
 
-    &:focus, &:hover {
+    &:focus,
+    &:hover {
       outline: var(--clr-purple-active) solid 1px;
     }
   }
