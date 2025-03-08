@@ -17,15 +17,6 @@ const Input: React.FC<TInputInterface> = ({
   placeholder,
   onChange
 }) => {
-  const inputType = (name: string) => {
-    if (name === 'link') {
-      return 'url';
-    }
-    if (name === 'code') {
-      return 'number';
-    }
-    return 'text';
-  };
   return (
     <div className={'input-wrapper'}>
       <label>{label}</label>
@@ -33,7 +24,7 @@ const Input: React.FC<TInputInterface> = ({
         className={'input'}
         required={required}
         name={name}
-        type={inputType(name)}
+        type={name === 'link' ? 'url' : 'text'}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
@@ -67,7 +58,12 @@ const createInput =
 const Inputs = {
   name: createInput('name', true, 'Введите имя', 'Имя'),
   tg: createInput('tg', true, '@aleksandr', 'Никнейм в Telegram'),
-  link: createInput('link', false, 'https://...', 'Реферальная ссылка (при наличии)'),
+  link: createInput(
+    'link',
+    false,
+    'https://...',
+    'Реферальная ссылка (при наличии)'
+  ),
   code: createInput('code', true, 'Введите шестизначное число', 'Код')
 };
 

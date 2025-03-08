@@ -1,23 +1,25 @@
 .input-wrapper {
   display: flex;
   flex-direction: column;
+  font-family: var(--ffm-default);
   gap: 8px;
 
   label {
     font-size: 16px;
+    line-height: 1.36;
   }
 
   input {
     background-color: #F5F5F7;
-    block-size: 66px;
-    inline-size: 100%;
     border: none;
     border-bottom: 1px solid var(--text-primary-color);
     border-radius: 16px;
+    block-size: 26px;
+    padding: 20px 16px;
   
     &::placeholder {
       font-size: 20px;
-      line-height: 132%;
+      line-height: 1.32;
     }
   }
 }

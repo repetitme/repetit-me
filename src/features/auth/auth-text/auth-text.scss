@@ -3,10 +3,11 @@
   flex-direction: column;
   gap: 16px;
   font-weight: 500;
-  line-height: 136%;
+  line-height: 1.36;
   text-align: center;
   margin-top: 16px;
   color: #858585;
+  font-family: var(--ffm-default);
 
   a {
     text-decoration: underline;

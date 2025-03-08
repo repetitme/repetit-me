@@ -1,11 +1,11 @@
-import Inputs from '../../auth-inputs/ui';
-import { AuthText } from '../../auth-text';
-import { Tab } from '../../tabs/ui';
+import Inputs from '../auth-inputs';
+import { AuthText } from '../auth-text';
+import { Tab } from '../tabs';
 import { useState, useRef } from 'react';
-import { useForm } from '../../../../shared/hooks/useForm';
-import styles from './styles.module.scss';
+import { useForm } from '../../../shared/hooks/useForm';
+import styles from './index.module.scss';
 
-export const AuthForm = () => {
+export const AuthForm = ({login}:{login: boolean}) => {
   const [currentTab, setCurrentTab] = useState('Как ученик');
   const { values, handleChange } = useForm({
     name: '',
@@ -19,13 +19,14 @@ export const AuthForm = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // Тестовый код
     receiveCode(true);
     setIsValid(false);
   };
 
   const handleActiveTab = (value: string) => {
     setCurrentTab(value);
-    receiveCode(false);
+    receiveCode(true);
   };
 
   const handleValidity = () => {
@@ -37,10 +38,60 @@ export const AuthForm = () => {
   const handleSuccess = () => {
     // Тестовый вывод данных в консоль
     console.log(
-      `Имя: ${values.name}, Tg: ${values.tg}, Ссылка: ${values.link}, Код: ${values.code}.`
+      `Success! Имя: ${values.name}, Tg: ${values.tg}, Ссылка: ${values.link}, Код: ${values.code}.`
     );
     setIsValid(false);
   };
+
+  if (login) {
+    return (
+      <div className={styles.auth}>
+        <div className={styles.auth__tabs}>
+          <Tab
+            value="Как ученик"
+            active={currentTab === 'Как ученик'}
+            onClick={handleActiveTab}
+          />
+          <Tab
+            value="Как репетитор"
+            active={currentTab === 'Как репетитор'}
+            onClick={handleActiveTab}
+          />
+        </div>
+        <form
+          ref={formRef}
+          className={styles.auth__form}
+          onChange={handleValidity}
+          onSubmit={handleSubmit}
+        >
+          {Inputs.tg(values.value, handleChange)}
+          {!code && (
+            <button
+              className={styles.auth__form__button}
+              disabled={!isValid}
+              type="submit"
+            >
+              Получить код
+            </button>
+          )}
+          {code && (
+            <>
+              {Inputs.code(values.value, handleChange)}
+              <button
+                className={styles.auth__form__button}
+                type="submit"
+                onClick={handleSuccess}
+                disabled={!isValid}
+              >
+                Зарегистрироваться
+              </button>
+            </>
+          )}
+          <AuthText />
+        </form>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.auth}>
@@ -122,7 +173,7 @@ export const AuthForm = () => {
               </button>
             </>
           )}
-          <AuthText login = {true}/>
+          <AuthText login={true} />
         </form>
       )}
     </div>

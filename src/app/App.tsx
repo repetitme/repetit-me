@@ -1,10 +1,10 @@
-import './App.scss'
-import '../assets/global.scss';
-import { AuthForm } from '../features/auth/form/ui';
+import '../assets/index.scss';
+import { AuthForm } from '../features/auth/form';
 function App() {
+  // Test (true = login, false = register)
   return (
     <div className="App">
-      <AuthForm />
+      <AuthForm login={false}/>
     </div>
   );
 }
