@@ -4,7 +4,7 @@ function App() {
   // Test (true = login, false = register)
   return (
     <div className="App">
-      <AuthForm login={true}/>
+      <AuthForm login={false}/>
     </div>
   );
 }
