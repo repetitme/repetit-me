@@ -1,9 +1,13 @@
-import './App.scss'
+import './App.scss';
 import '../assets/global.scss';
+import Main from '../pages/Main';
 
 function App() {
-  return <h1>Привет, мир!</h1>;
+  return (
+    <>
+      <Main />
+    </>
+  );
 }
 
 export default App;
-
