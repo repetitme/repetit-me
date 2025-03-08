@@ -19,7 +19,7 @@ const Accordion: FC<AccordionProps> = ({
         <div className={styles.accordion__title}>{title}</div>
         <img
           src={cross}
-          alt="Крестик аккордеона"
+          alt="Закрывающая иконка аккордеона"
           className={classNames(styles.accordion__icon, {
             [styles['accordion__icon--open']]: isOpen
           })}
