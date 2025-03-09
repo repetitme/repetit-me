@@ -1,0 +1,35 @@
+@use '../../assets/styles/mixins/gradient.scss' as *;
+
+.container {
+  color: var(--clr-black);
+  inline-size: 100%;
+  margin-block-end: var(--margin-blocks);
+}
+
+.title {
+  margin-block-end: 43px;
+  font-family: var(--ffm-title);
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.32;
+  text-align: center;
+}
+
+.accent {
+  @include text-gradient();
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 145px;
+
+  a {
+    color: var(--clr-primary-default);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline; // Подчеркивание при наведении
+    }
+  }
+}
