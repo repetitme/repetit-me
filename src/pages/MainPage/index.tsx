@@ -1,11 +1,11 @@
-import AppHeader from '../../widgets/Header';
+import Header from '../../widgets/Header';
 
-const Header = () => {
+const MainPage = () => {
   return (
     <>
-      <AppHeader />
+      <Header />
     </>
   );
 };
 
-export default Header;
+export default MainPage;

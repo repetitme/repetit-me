@@ -2,7 +2,7 @@ import styles from './styles.module.css';
 import logo from '../../assets/images/logo.png';
 import telegramIcon from '../../assets/images/telegramIcon.png';
 
-const AppHeader = () => {
+const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -21,4 +21,4 @@ const AppHeader = () => {
     </header>
   );
 };
-export default AppHeader;
+export default Header;
