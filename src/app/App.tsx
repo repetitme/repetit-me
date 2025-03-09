@@ -1,6 +1,6 @@
 import MainPage from '../pages/MainPage';
 
-import '../assets/index.scss';
+import '../assets/styles/index.scss';
 
 function App() {
   return (

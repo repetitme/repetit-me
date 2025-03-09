@@ -8,6 +8,7 @@
   max-width: 100%;
   margin-block-end: var(--margin-blocks, 140px);
   padding-inline: var(--padding-inline, 120px);
+  font-family: var(--ffm-title, 'DrukTextWideCur', courier, monospace);
 
   &__list {
     display: flex;
