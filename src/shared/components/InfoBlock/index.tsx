@@ -7,7 +7,7 @@ export const InfoBlock: React.FC<TInfoBlock> = ({
   className
 }) => {
   return (
-    <div className={styles.block}>
+    <div className={`${styles.block} ${className || ''}`.trim()}>
       <h3 className={styles.block__title}>{title}</h3>
       <p className={styles.block__txt}>{children}</p>
     </div>

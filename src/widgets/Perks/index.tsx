@@ -31,7 +31,7 @@ export const Perks: React.FC<TPerksProps> = ({ variant = 'student' }) => {
         </InfoBlock>
         <InfoBlock title="Безопасный">
           Вам не нужно придумывать пароль, подтверждение аккаунта происходит
-          через код, который приходит вам на телефон
+          через код, который приходит вам на телефон 
         </InfoBlock>
       </div>
       <div className={styles.emoji}>
