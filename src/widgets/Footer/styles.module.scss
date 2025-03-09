@@ -5,7 +5,7 @@
     grid-column: 1/2;
     grid-row: 2/3;
     margin-block-end: 100px;
-    max-width: 286px;
+    max-inline-size: 286px;
   }
 }
 
@@ -47,7 +47,7 @@
   background: url('../../assets/images/bg_footer.svg') no-repeat center / cover;
 
   a {
-    max-width: fit-content;
+    max-inline-size: fit-content;
   }
 }
 
@@ -74,7 +74,7 @@
 }
 
 .contact {
-  max-width: 240px;
+  max-inline-size: 240px;
   display: flex;
   flex-direction: column;
   gap: 20px;

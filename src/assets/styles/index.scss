@@ -1,10 +1,6 @@
-// scss-переменные проекта
-@use './variables.scss' as *;
+// css-переменные проекта
+@use './variables' as *;
 
 // глобальные стили проекта
-@use './globals.scss' as *;
-
-body {
-  font-family: var(--ffm-default, 'DrukTextWideCur', courier, monospace);
-  color: var(--clr-black, #172936);
-}
+@use './globals' as *;
+@use '/src/assets/fonts/fonts.scss' as stylesheet;

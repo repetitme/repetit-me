@@ -10,7 +10,7 @@ const ScrollUp: React.FC = () => {
 
   return (
     <div className={styles.scrollUp} onClick={handleScrollUp}>
-      <img src={arrow} alt="Scroll up" />
+      <img src={arrow} alt="Стрелочка в вверх" />
     </div>
   );
 };

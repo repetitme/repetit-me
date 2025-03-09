@@ -18,13 +18,17 @@ const Footer: React.FC = () => {
         </p>
         <Button
           className={styles.footer__button}
-          icon={<img src={telegram} alt="Telegram" />}
+          icon={<img src={telegram} alt="Иконка Telegram" />}
           text="Перейти в Telegram"
         />
         <img src={phone} alt="Phone" className={styles.phone__image} />
       </div>
       <div className={styles.footer__bottom}>
-        <img src={logo} alt="RepetitMe" className={styles.repetitme__logo} />
+        <img
+          src={logo}
+          alt="Логотип repetitMe"
+          className={styles.repetitme__logo}
+        />
         <div className={styles.info}>
           <div className={styles.links}>
             <a href="#student">Ученику</a>

@@ -1,7 +1,7 @@
 .scrollUp {
   cursor: pointer;
-  max-width: 66px;
-  max-height: 66px;
+  max-inline-size: 66px;
+  max-block-size: 66px;
   border: 1px solid var(--clr-main, #fff);
   border-radius: var(--border-radius-btn-social, 12px);
   color: var(--clr-main, #fff);
