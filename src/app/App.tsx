@@ -1,13 +1,13 @@
 import './App.scss';
 import '../assets/styles/globals.scss';
 import '../assets/styles/variables.scss';
-import { Modal } from '../widgets/ui/AuthModal';
+import { AuthModal } from '../widgets/ui/AuthModal';
 
 function App() {
   return (
-    <Modal title="Регистрация" onClose={() => console.log('fsdfd')}>
-      <p>sdasdasasds</p>
-    </Modal>
+    <AuthModal title="Регистрация" onClose={() => console.log('fsdfd')}>
+      <p>Тут будет компонент формы</p>
+    </AuthModal>
   );
 }
 

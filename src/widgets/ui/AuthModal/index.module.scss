@@ -5,7 +5,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  box-sizing: border-box;
   padding: 60px 60px 80px;
   border: 1px solid transparent;
   background-clip: padding-box, border-box;
@@ -21,7 +20,7 @@
       #ffaa47 116.71%
     );
   border-radius: 40px;
-  width: 80%;
+  width: 100%;
   max-width: 800px;
   z-index: 3;
 
@@ -41,6 +40,9 @@
   }
 
   &__close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     border: none;
     outline: none;
@@ -50,15 +52,17 @@
   &__content {
     display: flex;
     flex-direction: column;
+    font-weight: 500;
+    line-height: 19.5px;
     align-items: center;
     width: 100%;
   }
 
   &__footer {
-    padding-block-start: 1em;
+    padding-block-start: 16px;
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 16px;
     color: var(--clr-4, #858585);
     font-weight: 500;
     font-family: var(--ffm-default, montserrat, courier, monospace);
