@@ -1,12 +1,13 @@
 @use '../../assets/styles/mixins/gradient.scss' as *;
 
 .container {
+  margin-block-end: var(--margin-blocks);
   color: var(--clr-black);
   inline-size: 100%;
-  margin-block-end: var(--margin-blocks);
 }
 
 .title {
+  margin-block-start: 11px;
   margin-block-end: 43px;
   font-family: var(--ffm-title);
   font-weight: 500;
@@ -20,16 +21,27 @@
 }
 
 .list {
+  position: absolute;
   display: flex;
   flex-direction: column;
   row-gap: 145px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border-radius: 40px;
+    background-color: #eeeeee;
+    inline-size: 82px;
+    block-size: 87%;
+  }
 
   a {
     color: var(--clr-primary-default);
     text-decoration: none;
 
     &:hover {
-      text-decoration: underline; // Подчеркивание при наведении
+      text-decoration: underline;
     }
   }
 }
