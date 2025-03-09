@@ -1,11 +1,8 @@
 import classNames from 'classnames';
 import styles from './index.module.scss';
+import { TChatBubbleProps } from './type';
 
-type TChatBubbleProps = {
-  position?: 'left' | 'right'; // позиция псевдоэлемента
-  children: React.ReactNode;
-  className?: string; // для кастомных стилей
-};
+
 
 export const ChatBubble: React.FC<TChatBubbleProps> = ({
   position = 'left',
