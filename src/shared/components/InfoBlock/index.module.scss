@@ -1,3 +1,5 @@
+@use '../../../assets/styles/mixins/gradient.scss' as *;
+
 .block {
   flex: 1 1 336px;
   border-radius: var(--border-radius-btn);
@@ -9,6 +11,11 @@
     font-family: var(--ffm-title);
     font-size: 32px;
     line-height: 1.27;
+
+    &:hover {
+      transition: color var(--delay-dekstop);
+      @include text-gradient();
+    }
   }
 
   &__txt {
