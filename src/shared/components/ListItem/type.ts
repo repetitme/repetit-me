@@ -4,4 +4,5 @@ export interface ListItemProps {
   text: React.ReactNode;
   image: string;
   alt: string;
+  className?: string;
 }
