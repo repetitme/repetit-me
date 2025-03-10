@@ -3,7 +3,7 @@ import '../assets/index.scss';
 
 
 
-import { AuthSelectRole } from '../widgets/authSelectRole';
+import { AuthSelectRole } from '../shared/authSelectRole';
 
 function App() {
 
