@@ -1,9 +1,9 @@
 import Inputs from '../auth-inputs';
-import { Tab } from '../tabs';
 import { useState, useRef } from 'react';
 import { useForm } from '../../../shared/hooks/useForm';
 import styles from './index.module.scss';
 import AuthButton from '../auth-button';
+import AuthSelectRole from '../authSelectRole';
 
 export const AuthForm = ({ login }: { login: boolean }) => {
   const [currentTab, setCurrentTab] = useState('Как ученик');
@@ -48,18 +48,7 @@ export const AuthForm = ({ login }: { login: boolean }) => {
   if (login) {
     return (
       <div className={styles.auth}>
-        <div className={styles.auth__tabs}>
-          <Tab
-            value="Как ученик"
-            active={currentTab === 'Как ученик'}
-            onClick={handleActiveTab}
-          />
-          <Tab
-            value="Как репетитор"
-            active={currentTab === 'Как репетитор'}
-            onClick={handleActiveTab}
-          />
-        </div>
+        <AuthSelectRole OnChangeSelect={handleActiveTab} />
         <form
           ref={formRef}
           className={styles.auth__form}
@@ -69,7 +58,7 @@ export const AuthForm = ({ login }: { login: boolean }) => {
           {Inputs.tg(values.value, handleChange)}
           {!code && (
             <AuthButton
-              type= 'A'
+              type="A"
               disabled={!isValid}
               onClick={() => handleSubmit}
             />
@@ -78,10 +67,10 @@ export const AuthForm = ({ login }: { login: boolean }) => {
             <>
               {Inputs.code(values.value, handleChange)}
               <AuthButton
-              type= 'B'
-              disabled={!isValid}
-              onClick={() => handleSuccess}
-            />
+                type="B"
+                disabled={!isValid}
+                onClick={() => handleSuccess}
+              />
             </>
           )}
         </form>
@@ -91,18 +80,7 @@ export const AuthForm = ({ login }: { login: boolean }) => {
 
   return (
     <div className={styles.auth}>
-      <div className={styles.auth__tabs}>
-        <Tab
-          value="Как ученик"
-          active={currentTab === 'Как ученик'}
-          onClick={handleActiveTab}
-        />
-        <Tab
-          value="Как репетитор"
-          active={currentTab === 'Как репетитор'}
-          onClick={handleActiveTab}
-        />
-      </div>
+      <AuthSelectRole OnChangeSelect={handleActiveTab} />
       {currentTab === 'Как ученик' && (
         <form
           ref={formRef}
@@ -115,19 +93,19 @@ export const AuthForm = ({ login }: { login: boolean }) => {
           {Inputs.link(values.value, handleChange)}
           {!code && (
             <AuthButton
-            type= 'A'
-            disabled={!isValid}
-            onClick={() => handleSubmit}
-          />
+              type="A"
+              disabled={!isValid}
+              onClick={() => handleSubmit}
+            />
           )}
           {code && (
             <>
               {Inputs.code(values.value, handleChange)}
               <AuthButton
-              type= 'B'
-              disabled={!isValid}
-              onClick={() => handleSuccess}
-            />
+                type="B"
+                disabled={!isValid}
+                onClick={() => handleSuccess}
+              />
             </>
           )}
         </form>
@@ -143,19 +121,19 @@ export const AuthForm = ({ login }: { login: boolean }) => {
           {Inputs.tg(values.value, handleChange)}
           {!code && (
             <AuthButton
-            type= 'A'
-            disabled={!isValid}
-            onClick={() => handleSubmit}
-          />
+              type="A"
+              disabled={!isValid}
+              onClick={() => handleSubmit}
+            />
           )}
           {code && (
             <>
               {Inputs.code(values.value, handleChange)}
               <AuthButton
-              type= 'B'
-              disabled={!isValid}
-              onClick={() => handleSuccess}
-            />
+                type="B"
+                disabled={!isValid}
+                onClick={() => handleSuccess}
+              />
             </>
           )}
         </form>
