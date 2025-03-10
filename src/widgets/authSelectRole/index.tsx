@@ -16,9 +16,9 @@ export const AuthSelectRole: FC<IAuthSelectRole> = ({ OnChangeSelect }) => {
     }, [getRoleSelected])
 
     return (
-        <div className={styles.containerSelectors}>
-            <div onClick={() => setRoleSelected('pupil')} className={getRoleSelected === 'pupil' ? `${styles.activeSelect}` : ''}><p>Как ученик</p></div>
-            <div onClick={() => setRoleSelected('teacher')} className={getRoleSelected === 'teacher' ? `${styles.activeSelect}` : ''}><p>Как репетитор</p></div>
+        <div className={`${styles['container-selectors']}`}>
+            <div onClick={() => setRoleSelected('pupil')} className={getRoleSelected === 'pupil' ? `${styles['active-select']}` : ''}><p>Как ученик</p></div>
+            <div onClick={() => setRoleSelected('teacher')} className={getRoleSelected === 'teacher' ? `${styles['active-select']}` : ''}><p>Как репетитор</p></div>
         </div>
     )
 }
