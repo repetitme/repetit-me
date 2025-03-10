@@ -1,5 +1,12 @@
 // css-переменные проекта
-@import "./styles/variables";
+@use './styles/variables.scss' as *;
 
 // глобальные стили проекта
-@import "./styles/globals";
+@use './styles/global.scss' as *;
+
+@use '/src/assets/fonts/fonts.scss' as stylesheet;
+
+body {
+  font-family: var(--ffm-title, 'DrukTextWideCur', courier, monospace);
+  color: var(--clr-black, #172936);
+}

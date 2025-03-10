@@ -1,0 +1,38 @@
+.switch_background {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
+  width: 265px;
+  height: 48px;
+
+  background: #ffffff4d;
+  border-radius: 100px;
+}
+
+.button {
+  font-family: var(--ffm-default);
+  font-weight: 700;
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 8px 15px;
+}
+
+.button_active {
+  font-family: var(--ffm-default);
+  font-weight: 700;
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 8px 15px;
+  color: black;
+  background: #fff;
+  border-radius: 45px;
+  margin-inline-end: 4px;
+}
+
+
+
