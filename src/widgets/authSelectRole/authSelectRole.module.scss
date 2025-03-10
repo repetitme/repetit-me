@@ -21,21 +21,10 @@
 .container-selectors div p{
     color: var(--clr-black);
     font-family: var(--ffm-default);
-    font-weight: 500;
-    font-size: 12px;
+    font-weight: 700;
+    font-size: 20px;
     line-height: 132%;
     letter-spacing: 0%;
     padding-block: 8px;
 }
 
-@media (min-width: 1024px) {
-    .container-selectors div p{
-        color: var(--clr-black);
-        font-family: var(--ffm-default);
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 132%;
-        letter-spacing: 0%;
-        padding-block: 8px;
-    }
-}
