@@ -1,0 +1,30 @@
+.active-select{
+    border-bottom: 2px solid var(--clr-primary-default) !important;
+}
+
+.active-select p{
+    color: var(--clr-primary-default) !important;
+}
+
+.container-selectors{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.container-selectors div{
+    border-bottom: 2px solid var(--clr-2);
+    padding-inline: 108px;
+    cursor: pointer;
+}
+
+.container-selectors div p{
+    color: var(--clr-black);
+    font-family: var(--ffm-default);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 132%;
+    letter-spacing: 0%;
+    padding-block: 8px;
+}
+
