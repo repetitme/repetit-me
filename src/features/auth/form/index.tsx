@@ -3,6 +3,7 @@ import { Tab } from '../tabs';
 import { useState, useRef } from 'react';
 import { useForm } from '../../../shared/hooks/useForm';
 import styles from './index.module.scss';
+import AuthButton from '../auth-button';
 
 export const AuthForm = ({ login }: { login: boolean }) => {
   const [currentTab, setCurrentTab] = useState('Как ученик');
@@ -67,25 +68,20 @@ export const AuthForm = ({ login }: { login: boolean }) => {
         >
           {Inputs.tg(values.value, handleChange)}
           {!code && (
-            <button
-              className={styles.auth__form__button}
+            <AuthButton
+              type= 'A'
               disabled={!isValid}
-              type="submit"
-            >
-              Получить код
-            </button>
+              onClick={() => handleSubmit}
+            />
           )}
           {code && (
             <>
               {Inputs.code(values.value, handleChange)}
-              <button
-                className={styles.auth__form__button}
-                type="submit"
-                onClick={handleSuccess}
-                disabled={!isValid}
-              >
-                Зарегистрироваться
-              </button>
+              <AuthButton
+              type= 'B'
+              disabled={!isValid}
+              onClick={() => handleSuccess}
+            />
             </>
           )}
         </form>
@@ -118,25 +114,20 @@ export const AuthForm = ({ login }: { login: boolean }) => {
           {Inputs.tg(values.value, handleChange)}
           {Inputs.link(values.value, handleChange)}
           {!code && (
-            <button
-              className={styles.auth__form__button}
-              disabled={!isValid}
-              type="submit"
-            >
-              Получить код
-            </button>
+            <AuthButton
+            type= 'A'
+            disabled={!isValid}
+            onClick={() => handleSubmit}
+          />
           )}
           {code && (
             <>
               {Inputs.code(values.value, handleChange)}
-              <button
-                className={styles.auth__form__button}
-                type="submit"
-                onClick={handleSuccess}
-                disabled={!isValid}
-              >
-                Зарегистрироваться
-              </button>
+              <AuthButton
+              type= 'B'
+              disabled={!isValid}
+              onClick={() => handleSuccess}
+            />
             </>
           )}
         </form>
@@ -151,25 +142,20 @@ export const AuthForm = ({ login }: { login: boolean }) => {
           {Inputs.name(values.value, handleChange, 'Необязательно')}
           {Inputs.tg(values.value, handleChange)}
           {!code && (
-            <button
-              className={styles.auth__form__button}
-              disabled={!isValid}
-              type="submit"
-            >
-              Получить код
-            </button>
+            <AuthButton
+            type= 'A'
+            disabled={!isValid}
+            onClick={() => handleSubmit}
+          />
           )}
           {code && (
             <>
               {Inputs.code(values.value, handleChange)}
-              <button
-                className={styles.auth__form__button}
-                type="submit"
-                onClick={handleSuccess}
-                disabled={!isValid}
-              >
-                Зарегистрироваться
-              </button>
+              <AuthButton
+              type= 'B'
+              disabled={!isValid}
+              onClick={() => handleSuccess}
+            />
             </>
           )}
         </form>
