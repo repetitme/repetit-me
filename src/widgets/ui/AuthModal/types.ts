@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 
 export type AuthModalProps = {
-  title: string;
-  onClose: () => void;
+  type: boolean;
   children: ReactNode;
+  toLogin: () => void;
+  onClose: () => void;
 };

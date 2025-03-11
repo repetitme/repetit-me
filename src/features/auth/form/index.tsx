@@ -1,11 +1,12 @@
 import Inputs from '../auth-inputs';
-import { useState, useRef } from 'react';
+import { AuthModal } from '../../../widgets/ui/AuthModal';
+import FC, { useState, useRef } from 'react';
 import { useForm } from '../../../shared/hooks/useForm';
 import styles from './index.module.scss';
 import AuthButton from '../auth-button';
 import AuthSelectRole from '../authSelectRole';
 
-export const AuthForm = ({ login }: { login: boolean }) => {
+const AuthForm = ({ login }: { login: boolean }) => {
   const [currentTab, setCurrentTab] = useState('Как ученик');
   const { values, handleChange } = useForm({
     name: '',
@@ -69,7 +70,7 @@ export const AuthForm = ({ login }: { login: boolean }) => {
               <AuthButton
                 type="B"
                 disabled={!isValid}
-                onClick={() => handleSuccess}
+                onClick={handleSuccess}
               />
             </>
           )}
@@ -104,7 +105,7 @@ export const AuthForm = ({ login }: { login: boolean }) => {
               <AuthButton
                 type="B"
                 disabled={!isValid}
-                onClick={() => handleSuccess}
+                onClick={handleSuccess}
               />
             </>
           )}
@@ -132,7 +133,7 @@ export const AuthForm = ({ login }: { login: boolean }) => {
               <AuthButton
                 type="B"
                 disabled={!isValid}
-                onClick={() => handleSuccess}
+                onClick={handleSuccess}
               />
             </>
           )}
@@ -141,3 +142,19 @@ export const AuthForm = ({ login }: { login: boolean }) => {
     </div>
   );
 };
+
+const AuthModalForm = ({ onClose }: { onClose: () => void }) => {
+  const [login, setLogin] = useState(false);
+
+  return (
+    <AuthModal
+      type={login}
+      toLogin={() => setLogin(true)}
+      onClose={onClose}
+    >
+      <AuthForm login={login} />
+    </AuthModal>
+  );
+};
+
+export default AuthModalForm;

@@ -34,7 +34,7 @@
   &.white:disabled {
     border: 1px solid var(--clr-primary-disabled, #EEE);
     color: var(--clr-3, #D1D4DB);
-    cursor: not-allowed;
+    cursor:default;
   }
 
   &.purple {
@@ -54,7 +54,7 @@
   &.purple:disabled {
     background-color: var(--clr-primary-disabled, #EEE);
     color: var(--clr-4, #858585);
-    cursor: not-allowed;
+    pointer-events: none;
   }
 
   &.red {

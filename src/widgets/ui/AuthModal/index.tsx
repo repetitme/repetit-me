@@ -4,13 +4,12 @@ import { AuthModalProps } from './types';
 import { ModalOverlay } from '../../../shared/components/Overlay';
 import iconClose from '../../../assets/icons/closeIcon.svg';
 
-export const AuthModal: FC<AuthModalProps> = ({ title, onClose, children }) => {
-  const isRegistration = title.toLowerCase().includes('регистрация');
+export const AuthModal: FC<AuthModalProps> = ({ type, children, toLogin, onClose }) => {
   return (
     <>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.modal__header}>
-          <h2 className={styles.modal__title}>{title}</h2>
+          <h2 className={styles.modal__title}>{type ? 'Вход' : 'Регистрация'}</h2>
           <button onClick={onClose} className={styles.modal__close}>
             <img
               src={iconClose}
@@ -26,10 +25,10 @@ export const AuthModal: FC<AuthModalProps> = ({ title, onClose, children }) => {
               политикой конфиденциальности и пользовательским соглашением
             </a>
           </p>
-          {isRegistration && (
+          {!type && (
             <p>
               Уже есть аккаунт?{' '}
-              <a href="#" className={styles.modal__enter}>
+              <a href="#" onClick={toLogin} className={styles.modal__enter}>
                 Войти
               </a>
             </p>

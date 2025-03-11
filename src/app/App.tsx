@@ -1,11 +1,21 @@
 import '../assets/index.scss';
-import { AuthForm } from '../features/auth/form';
+import { useState } from 'react';
+import AuthModalForm from '../features/auth/form';
+import Button from '../shared/button';
 function App() {
-  // Test (true = login, false = register)
+  const [isAuthFormOpen, setIsAuthFormOpen] = useState(false);
+  const switchModalState = () => {
+    isAuthFormOpen ? setIsAuthFormOpen(false) : setIsAuthFormOpen(true);
+  };
   return (
-    <div className="App">
-      <AuthForm login={false} />
-    </div>
+    <>
+      <Button
+        text="Открыть форму регистрации"
+        variant="purple"
+        onClick={switchModalState}
+      />
+      {isAuthFormOpen && <AuthModalForm onClose={switchModalState} />}
+    </>
   );
 }
 
