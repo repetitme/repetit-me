@@ -2,7 +2,7 @@ import React from 'react';
 import ScrollUp from '../../shared/components/ScrollUp';
 import Button from '../../shared/components/Button';
 
-import logo from '../../assets/images/repetit-me_logo.png';
+import logo from '../../assets/images/repetit-me_logo.svg';
 import telegram from '../../assets/images/telegram_icon.svg';
 import phone from '../../assets/images/phone_with_qr-code.svg';
 import styles from './styles.module.scss';
