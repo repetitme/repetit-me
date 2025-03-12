@@ -1,8 +1,5 @@
 import './App.scss';
 import '../assets/index.scss';
-
-
-
 import { AuthSelectRole } from '../shared/authSelectRole';
 
 function App() {

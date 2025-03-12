@@ -9,7 +9,6 @@
 .container-selectors{
     display: flex;
     justify-content: center;
-    width: 100%;
 }
 
 .container-selectors div{
@@ -24,7 +23,7 @@
     font-weight: 700;
     font-size: 20px;
     line-height: 132%;
-    letter-spacing: 0%;
     padding-block: 8px;
+    width: max-content;
 }
 
