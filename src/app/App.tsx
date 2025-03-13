@@ -5,7 +5,11 @@ import { AuthModal } from '../widgets/ui/AuthModal';
 
 function App() {
   return (
-    <AuthModal type={false} onClose={() => console.log('fsdfd')}>
+    <AuthModal
+      type={false}
+      onClose={() => console.log('fsdfd')}
+      onToggle={() => console.log('fdfsdhb')}
+    >
       <p>Тут будет компонент формы</p>
     </AuthModal>
   );
