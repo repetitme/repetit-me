@@ -26,7 +26,7 @@
 
   &__icon {
     transform: rotate(0deg);
-    transition: transform var(--delay-dekstop, 0.3s) var(--timing, ease-in);
+    transition: transform var(--delay-dekstop) var(--timing);
   }
 
   &__icon--open {
@@ -39,9 +39,9 @@
     opacity: 0;
     transform: translateY(-25px);
     transition:
-      max-height var(--delay-dekstop, 0.3s) var(--timing, ease-in),
-      transform var(--delay-dekstop, 0.3s) var(--timing, ease-in),
-      opacity var(--duration, 0.4s) var(--timing, ease-in);
+      max-height var(--delay-dekstop) var(--timing),
+      transform var(--delay-dekstop) var(--timing),
+      opacity var(--duration) var(--timing);
   }
 
   &__content {
@@ -54,6 +54,6 @@
 
 .open {
   opacity: 1;
-  max-height: 500px;
+  max-height: 150px;
   transform: translateY(0);
 }

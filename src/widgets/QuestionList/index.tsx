@@ -8,11 +8,11 @@ import styles from './styles.module.scss';
 import classNames from 'classnames';
 
 const QuestionList: FC = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const accordionRef = useClickOutside(() => setOpenIndex(null));
+  const [openId, setOpenId] = useState<string | null>(null);
+  const accordionRef = useClickOutside(() => setOpenId(null));
 
-  const handleToggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const handleToggle = (id: string) => {
+    setOpenId(openId === id ? null : id);
   };
 
   return (
@@ -24,12 +24,12 @@ const QuestionList: FC = () => {
         </span>
       </h2>
       <div className={styles.container__list} ref={accordionRef}>
-        {questions.map((question, index) => (
+        {questions.map((question) => (
           <Accordion
-            key={index}
+            key={question.id}
             title={question.title}
-            onToggle={() => handleToggle(index)}
-            isOpen={openIndex === index}
+            onToggle={() => handleToggle(question.id)}
+            isOpen={openId === question.id}
           >
             {question.content}
           </Accordion>
