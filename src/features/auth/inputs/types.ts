@@ -12,12 +12,15 @@ export type TInputFactory = (
   required: boolean,
   placeholder: string,
   label: string
-) => (props: {
-  values: { value: string };
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}, notRequired?: string) => React.ReactElement;
+) => (
+  props: {
+    values: { value: string };
+    handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  },
+  notRequired?: string
+) => React.ReactElement;
 
 export type TInputs = Record<
-TInputInterface['name'],
-ReturnType<TInputFactory>
+  TInputInterface['name'],
+  ReturnType<TInputFactory>
 >;

@@ -8,7 +8,7 @@ type tabProps = {
 
 export const Tab: React.FC<tabProps> = ({ current, onClick }) => {
   return (
-    <div className='tabs'>
+    <div className="tabs">
       <button
         className={`tab ${current === 'Как ученик' ? 'current' : ''}`}
         onClick={() => {

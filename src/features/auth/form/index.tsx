@@ -58,7 +58,8 @@ export const AuthForm = ({ login }: { login: boolean }) => {
   };
 
   const props = {
-    values, handleChange
+    values,
+    handleChange
   };
 
   return (
