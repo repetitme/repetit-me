@@ -4,15 +4,15 @@
   align-items: center;
   justify-content: space-between;
   max-inline-size: 1200px;
-  block-size: 96px;
-  margin: 40px auto;
+  padding-block: 23px;
+  margin: 42px auto;
   border-radius: var(--border-radius-blocks);
 }
 
 .menu {
   display: flex;
   gap: 35px;
-  block-size: 48px;
+  max-block-size: 48px;
   margin: auto 34px;
 }
 
@@ -49,4 +49,8 @@
 
 .logo {
   margin: 0 37px;
+}
+
+.avatar {
+  display: flex;
 }
