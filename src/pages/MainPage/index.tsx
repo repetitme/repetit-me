@@ -1,4 +1,3 @@
-
 import Main from '../../widgets/Main';
 
 const MainPage = () => {

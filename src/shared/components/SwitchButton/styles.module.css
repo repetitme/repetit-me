@@ -5,8 +5,7 @@
   cursor: pointer;
   width: 265px;
   height: 48px;
-
-  background: #ffffff4d;
+  background: var(--clr-transparent30);
   border-radius: 100px;
 }
 
@@ -16,23 +15,14 @@
   font-size: 20px;
   background: none;
   border: none;
-  color: #fff;
+  color: var(--clr-main);
   padding: 8px 15px;
+  
 }
 
 .button_active {
-  font-family: var(--ffm-default);
-  font-weight: 700;
-  font-size: 20px;
-  background: none;
-  border: none;
-  color: #fff;
-  padding: 8px 15px;
-  color: black;
-  background: #fff;
+  color: var(--clr-black);
+  background: var(--clr-main);
   border-radius: 45px;
   margin-inline-end: 4px;
 }
-
-
-

@@ -10,6 +10,12 @@ body {
   font-family: var(--ffm-default);
 }
 
+body {
+  font-family: var(--ffm-default, 'Montserrat', courier, monospace);
+  color: var(--clr-black, #172936);
+}
+
+
 h1,
 h2,
 h3,

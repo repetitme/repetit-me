@@ -1,26 +1,18 @@
-import { useState } from 'react';
 import styles from './styles.module.css';
+import { SwitchButtonProps } from './type';
 
-
-const SwitchButton = () => {
-  const [isActive, setIsActive] = useState(true);
-
-  const handleClick = () => {
-    setIsActive((current) => !current);
-  };
-
+const SwitchButton: React.FC<SwitchButtonProps> = ({ isActive, onSwitch }) => {
   return (
     <div className={styles.switch_background}>
       <button
-        className={isActive ? styles.button : styles.button_active}
-        onClick={handleClick}
+        className={`${styles.button} ${isActive ? '' : styles.button_active}`}
+        onClick={onSwitch}
       >
         Ученик
       </button>
       <button
-      
-        className={isActive ? styles.button_active : styles.button}
-        onClick={handleClick}
+        className={`${styles.button} ${isActive ? styles.button_active : ''}`}
+        onClick={onSwitch}
       >
         Репетитор
       </button>

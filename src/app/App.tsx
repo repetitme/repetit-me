@@ -1,5 +1,4 @@
-import '../assets/styles/variables.scss'
-import '../assets/styles/globals.scss';
+import '../assets/styles/index.scss';
 import MainPage from '../pages/MainPage';
 
 function App() {
@@ -11,4 +10,3 @@ function App() {
 }
 
 export default App;
-

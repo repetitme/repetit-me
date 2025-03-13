@@ -32,7 +32,6 @@
   font-size: 40px;
   line-height: 132%;
   font-family: var(--ffm-title);
-
   margin-block-start: 31px;
   padding: 0 104px;
 }
@@ -53,62 +52,8 @@
   color: var(--clr-black);
 }
 
-.icons {
-  position: relative;
-}
-
-.loupe {
-  position: absolute;
-  inset-inline-end: 902px;
-  inset-block-start: 8px;
-}
-
-.toggle {
-  position: absolute;
-  inset-inline-end: 1023px;
-  inset-block-start: 173px;
-}
-.cone {
-  position: absolute;
-  inset-inline-end: 843px;
-  inset-block-start: 391px;
-}
-.bubble {
-  position: absolute;
-  inset-inline-start: -175px;
-  inset-block-start: 42px;
-}
-.plus {
-  position: absolute;
-  inset-inline-end: -120px;
-  inset-block-start: 330px;
-}
-
-/*блок репетитора*/
-
-.background_teacher{
+.background_teacher {
   background-image: url(../../../assets/images/TeacherIcons/backgroundTeacher.png);
-  width: 1200px;
-  height: 628px;
-}
-
-.triangle {
-  position: absolute;
-  inset-inline-end: 900px;
-}
-
-.cube {
-  position: absolute;
-  inset-inline-end: 938px;
-  inset-block-start: 358px;
-}
-.ring {
-  position: absolute;
-  inset-inline-end: -11px;
-    inset-block-start: 1px;
-}
-.spiral {
-  position: absolute;
-  inset-inline-end: -116px;
-  inset-block-start: 299px;
+  inline-size: 1200px;
+  block-size: 628px;
 }

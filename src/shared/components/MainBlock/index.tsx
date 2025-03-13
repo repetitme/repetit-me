@@ -1,0 +1,45 @@
+import styles from './styles.module.css';
+import SwitchButton from '../SwitchButton';
+import { useState } from 'react';
+import IconList, { iconSources } from '../IconsList';
+
+const MainBlock = () => {
+  const [isActive, setIsActive] = useState(false);
+
+  const handleSwitch = () => {
+    setIsActive((prevState) => !prevState);
+  };
+
+  return (
+    <div className={styles.main_block}>
+      <div
+        className={
+          isActive ? styles.background_teacher : styles.background_student
+        }
+      >
+        <div className={styles.info}>
+          <div className={styles.switch}>
+            <SwitchButton isActive={isActive} onSwitch={handleSwitch} />
+          </div>
+          <h1 className={styles.title}>
+            RepetitMe — сервис подбора онлайн − репетиторов
+          </h1>
+          <p className={styles.text}>
+            Ученикам помогем найти преподавателя для онлайн-занятий, а
+            репетиторам увеличить свой поток клиентов на 30%
+          </p>
+          <button className={styles.button}>
+            {isActive ? 'Заполнить анкету' : 'Подобрать репетитора'}
+          </button>
+        </div>
+      </div>
+      {isActive ? (
+        <IconList icons={iconSources.teacher} />
+      ) : (
+        <IconList icons={iconSources.student} />
+      )}
+    </div>
+  );
+};
+
+export default MainBlock;

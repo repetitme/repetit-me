@@ -1,16 +1,11 @@
+import MainBlock from '../../shared/components/MainBlock';
 
-import Student from '../../shared/components/Student';
-import Teacher from '../../shared/components/Teacher';
 const Main = () => {
-  
-
   return (
     <div>
-      <Student />
+      <MainBlock />
     </div>
   );
 };
 
 export default Main;
-
-
