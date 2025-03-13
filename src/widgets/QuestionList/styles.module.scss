@@ -1,0 +1,32 @@
+@use '../../assets/styles/mixins/gradient.scss' as *;
+@use '../../assets/styles/mixins/flexCenter.scss' as *;
+
+.container {
+  @include flex-center;
+
+  max-width: 100%;
+  margin-block-end: var(--margin-blocks);
+  padding-inline: var(--padding-inline);
+  font-family: var(--ffm-title, 'DrukTextWideCur', courier, monospace);
+
+  &__list {
+    @include flexCenter;
+
+    align-items: start;
+    width: 100%;
+    gap: var(--gap-blocks);
+  }
+
+  &__title {
+    max-width: 550px;
+    text-align: center;
+    padding-block: 10px var(--padding-blocks);
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 52.8px;
+
+    &--accent {
+      @include text-gradient(#3dc5ff, #4558ff, #865bff, #ff71f9, #ffaa47);
+    }
+  }
+}

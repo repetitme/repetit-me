@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--ffm-default);
+  color: var(--clr-black);
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+a {
+  color: currentcolor;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
