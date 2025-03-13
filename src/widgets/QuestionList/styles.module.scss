@@ -2,7 +2,8 @@
 @use '../../assets/styles/mixins/flexCenter.scss' as *;
 
 .container {
-  @include flexCenter;
+  @include flex-center;
+
   max-width: 100%;
   margin-block-end: var(--margin-blocks);
   padding-inline: var(--padding-inline);
@@ -10,6 +11,7 @@
 
   &__list {
     @include flexCenter;
+
     align-items: start;
     width: 100%;
     gap: var(--gap-blocks);
