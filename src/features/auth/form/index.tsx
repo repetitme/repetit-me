@@ -1,7 +1,7 @@
-import Inputs from '../auth-inputs';
+import Inputs from '../inputs';
 import { Tab } from '../tabs';
 import { useState, useRef } from 'react';
-import { useForm } from '../../../shared/hooks/useForm';
+import useForm from '../../../shared/hooks/useForm';
 import styles from './index.module.scss';
 
 export const AuthForm = ({ login }: { login: boolean }) => {
@@ -44,136 +44,70 @@ export const AuthForm = ({ login }: { login: boolean }) => {
     setIsValid(false);
   };
 
-  if (login) {
+  // Temp button
+  const Button = (reg?: string) => {
     return (
-      <div className={styles.auth}>
-        <div className={styles.auth__tabs}>
-          <Tab
-            value="Как ученик"
-            active={currentTab === 'Как ученик'}
-            onClick={handleActiveTab}
-          />
-          <Tab
-            value="Как репетитор"
-            active={currentTab === 'Как репетитор'}
-            onClick={handleActiveTab}
-          />
-        </div>
-        <form
-          ref={formRef}
-          className={styles.auth__form}
-          onChange={handleValidity}
-          onSubmit={handleSubmit}
-        >
-          {Inputs.tg(values.value, handleChange)}
-          {!code && (
-            <button
-              className={styles.auth__form__button}
-              disabled={!isValid}
-              type="submit"
-            >
-              Получить код
-            </button>
-          )}
-          {code && (
-            <>
-              {Inputs.code(values.value, handleChange)}
-              <button
-                className={styles.auth__form__button}
-                type="submit"
-                onClick={handleSuccess}
-                disabled={!isValid}
-              >
-                Зарегистрироваться
-              </button>
-            </>
-          )}
-        </form>
-      </div>
+      <button
+        className={styles.auth__form__button}
+        onClick={reg ? handleSuccess : undefined}
+        disabled={!isValid}
+      >
+        {reg ? 'Зарегистрироваться' : 'Получить код'}
+      </button>
     );
-  }
+  };
+
+  const props = {
+    values, handleChange
+  };
 
   return (
     <div className={styles.auth}>
-      <div className={styles.auth__tabs}>
-        <Tab
-          value="Как ученик"
-          active={currentTab === 'Как ученик'}
-          onClick={handleActiveTab}
-        />
-        <Tab
-          value="Как репетитор"
-          active={currentTab === 'Как репетитор'}
-          onClick={handleActiveTab}
-        />
-      </div>
-      {currentTab === 'Как ученик' && (
-        <form
-          ref={formRef}
-          className={styles.auth__form}
-          onChange={handleValidity}
-          onSubmit={handleSubmit}
-        >
-          {Inputs.name(values.value, handleChange, 'Необязательно')}
-          {Inputs.tg(values.value, handleChange)}
-          {Inputs.link(values.value, handleChange)}
-          {!code && (
-            <button
-              className={styles.auth__form__button}
-              disabled={!isValid}
-              type="submit"
-            >
-              Получить код
-            </button>
-          )}
-          {code && (
-            <>
-              {Inputs.code(values.value, handleChange)}
-              <button
-                className={styles.auth__form__button}
-                type="submit"
-                onClick={handleSuccess}
-                disabled={!isValid}
-              >
-                Зарегистрироваться
-              </button>
-            </>
-          )}
-        </form>
-      )}
-      {currentTab === 'Как репетитор' && (
-        <form
-          ref={formRef}
-          className={styles.auth__form}
-          onChange={handleValidity}
-          onSubmit={handleSubmit}
-        >
-          {Inputs.name(values.value, handleChange, 'Необязательно')}
-          {Inputs.tg(values.value, handleChange)}
-          {!code && (
-            <button
-              className={styles.auth__form__button}
-              disabled={!isValid}
-              type="submit"
-            >
-              Получить код
-            </button>
-          )}
-          {code && (
-            <>
-              {Inputs.code(values.value, handleChange)}
-              <button
-                className={styles.auth__form__button}
-                type="submit"
-                onClick={handleSuccess}
-                disabled={!isValid}
-              >
-                Зарегистрироваться
-              </button>
-            </>
-          )}
-        </form>
-      )}
+      <Tab current={currentTab} onClick={handleActiveTab} />
+      <form
+        ref={formRef}
+        className={styles.auth__form}
+        onChange={handleValidity}
+        onSubmit={handleSubmit}
+      >
+        {login ? (
+          <>
+            {Inputs.tg(props)}
+            {!code && <>{Button()}</>}
+            {code && (
+              <>
+                {Inputs.code(props)}
+                {Button('reg')}
+              </>
+            )}
+          </>
+        ) : currentTab === 'Как ученик' ? (
+          <>
+            {Inputs.name(props)}
+            {Inputs.tg(props)}
+            {Inputs.link(props)}
+            {!code && <>{Button()}</>}
+            {code && (
+              <>
+                {Inputs.code(props)}
+                {Button('reg')}
+              </>
+            )}
+          </>
+        ) : (
+          <>
+            {Inputs.name(props, 'Необязательно')}
+            {Inputs.tg(props)}
+            {!code && <>{Button()}</>}
+            {code && (
+              <>
+                {Inputs.code(props)}
+                {Button('reg')}
+              </>
+            )}
+          </>
+        )}
+      </form>
     </div>
   );
 };

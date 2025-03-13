@@ -1,13 +1,6 @@
 import React from 'react';
-import './input.scss';
-interface TInputInterface extends React.HTMLProps<HTMLInputElement> {
-  label: string;
-  value: string;
-  name: 'name' | 'tg' | 'link' | 'code';
-  required?: boolean;
-  placeholder?: string;
-  onChange(e: React.ChangeEvent<HTMLInputElement>): void;
-}
+import './inputs.scss';
+import { TInputInterface, TInputFactory, TInputs } from './types';
 
 const Input: React.FC<TInputInterface> = ({
   label,
@@ -33,29 +26,20 @@ const Input: React.FC<TInputInterface> = ({
   );
 };
 
-const createInput =
-  (
-    name: TInputInterface['name'],
-    required: boolean,
-    placeholder: string,
-    label: string
-  ) =>
-  (
-    value: string,
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-    notRequired?: string
-  ) => (
+const createInput: TInputFactory =
+  (name, required, placeholder, label) =>
+  ({ values, handleChange }, notRequired) => (
     <Input
       required={notRequired ? false : required}
       name={name}
-      value={value}
-      onChange={onChange}
+      value={values.value}
+      onChange={handleChange}
       label={label}
       placeholder={placeholder}
     />
   );
 
-const Inputs = {
+const Inputs: TInputs = {
   name: createInput('name', true, 'Введите имя', 'Имя'),
   tg: createInput('tg', true, '@aleksandr', 'Никнейм в Telegram'),
   link: createInput(

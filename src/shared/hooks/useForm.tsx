@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export function useForm(inputValues: any) {
+export default function useForm(inputValues: any) {
   const [values, setValues] = useState(inputValues);
 
   const handleChange = (event: any) => {
