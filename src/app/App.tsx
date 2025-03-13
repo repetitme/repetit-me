@@ -5,7 +5,7 @@ import { AuthModal } from '../widgets/ui/AuthModal';
 
 function App() {
   return (
-    <AuthModal title="Регистрация" onClose={() => console.log('fsdfd')}>
+    <AuthModal type={false} onClose={() => console.log('fsdfd')}>
       <p>Тут будет компонент формы</p>
     </AuthModal>
   );
