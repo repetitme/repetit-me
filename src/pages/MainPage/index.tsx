@@ -6,6 +6,5 @@ const MainPage = () => {
       <Header />
     </>
   );
-};
 
 export default MainPage;
