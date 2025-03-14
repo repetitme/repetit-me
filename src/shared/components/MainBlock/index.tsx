@@ -11,7 +11,7 @@ const MainBlock = () => {
   };
 
   return (
-    <div className={styles.main_block}>
+    <section className={styles.main_block}>
       <div
         className={
           isActive ? styles.background_teacher : styles.background_student
@@ -38,7 +38,7 @@ const MainBlock = () => {
       ) : (
         <IconList icons={iconSources.student} />
       )}
-    </div>
+    </section>
   );
 };
 

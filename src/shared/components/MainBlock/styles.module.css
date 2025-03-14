@@ -44,7 +44,7 @@
 
 .button {
   margin-block-start: 44px;
-  padding: 16px 24px 16px 24px;
+  padding: 16px 24px;
   border-radius: var(--border-radius-btn-social);
   background-color: var(--clr-main);
   font-weight: 700;
