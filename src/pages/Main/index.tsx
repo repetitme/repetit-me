@@ -1,16 +1,11 @@
-import Advantages from '../../widgets/Advantages';
-import Recruiting from '../../widgets/Recruiting';
+import SignIn from '../../widgets/SignIn';
 
 const Main = () => {
   return (
     <>
-      <Advantages />
-      <Recruiting />    
+      <SignIn />
     </>
-
-
-
-  )
+  );
 };
 
 export default Main;
