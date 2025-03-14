@@ -2,8 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--border-radius-btn, 16px);
-  cursor: pointer;
+  border-radius: var(--border-radius-btn);
   padding: 1em;
   font-size: 16px;
   line-height: 1.22;
@@ -15,65 +14,66 @@
     font-size: 20px;
   }
 
+  &:disabled {
+    cursor: default;
+  }
+
   &.white {
-    background-color: var(--clr-main, white);
-    border: 1px solid var(--clr-primary-default, #6757F1);
-    color: var(--clr-primary-default, #6757F1);
-  }
+    background-color: var(--clr-main);
+    border: 1px solid var(--clr-primary-default);
+    color: var(--clr-primary-default);
 
-  &.white:hover {
-    border: 1px solid var(--clr-primary-hover, #5246C1);
-    color: var(--clr-primary-hover, #5246C1);
-  }
+    &:hover {
+      border: 1px solid var(--clr-primary-hover);
+      color: var(--clr-primary-hover);
+    }
 
-  &.white:active {
-    border: 1px solid var(--clr-primary-pressed, #2E276C);
-    color: var(--clr-primary-pressed, #2E276C);
-  }
+    &:active {
+      border: 1px solid var(--clr-primary-pressed);
+      color: var(--clr-primary-pressed);
+    }
 
-  &.white:disabled {
-    border: 1px solid var(--clr-primary-disabled, #EEE);
-    color: var(--clr-3, #D1D4DB);
-    cursor: not-allowed;
+    &:disabled {
+      border: 1px solid var(--clr-primary-disabled);
+      color: var(--clr-3);
+    }
   }
 
   &.purple {
-    background-color: var(--clr-primary-default, #6757F1);
-    color: var(--clr-main, white);
+    background-color: var(--clr-primary-default);
+    color: var(--clr-main);
     border: none;
-  }
 
-  &.purple:hover {
-    background-color: var(--clr-primary-hover, #5246C1);
-  }
+    &:hover {
+      background-color: var(--clr-primary-hover);
+    }
 
-  &.purple:active {
-    background-color: var(--clr-primary-pressed, #2E276C);
-  }
+    &:active {
+      background-color: var(--clr-primary-pressed);
+    }
 
-  &.purple:disabled {
-    background-color: var(--clr-primary-disabled, #EEE);
-    color: var(--clr-4, #858585);
-    cursor: not-allowed;
+    &:disabled {
+      background-color: var(--clr-primary-disabled);
+      color: var(--clr-4);
+    }
   }
 
   &.red {
-    background-color: var(--clr-secondary-default, #F04040);
-    color: var(--clr-main, white);
+    background-color: var(--clr-secondary-default);
+    color: var(--clr-main);
     border: none;
-  }
 
-  &.red:hover {
-    background-color: var(--clr-secondary-hover, #B04040);
-  }
+    &:hover {
+      background-color: var(--clr-secondary-hover);
+    }
 
-  &.red:active {
-    background-color: var(--clr-secondary-pressed, #904040);
-  }
+    &:active {
+      background-color: var(--clr-secondary-pressed);
+    }
 
-  &.red:disabled {
-    background-color: var(--clr-secondary-disabled, #BE9999);
-    color: #C2C7DB;
-    cursor: not-allowed;
+    &:disabled {
+      background-color: var(--clr-secondary-disabled);
+      color: #c2c7db;
+    }
   }
 }

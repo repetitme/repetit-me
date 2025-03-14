@@ -1,7 +1,7 @@
-import './App.scss';
 import '../../src/assets/styles/globals.scss';
 import '../../src/assets/styles/variables.scss';
 import Button from '../shared/button';
+import './App.scss';
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       <Button variant="red" text="Эта кнопка красная" />
       <Button variant="purple" text="Эта кнопка сиреневая" />
       <Button variant="white" text="Эта кнопка прозрачная" size="large" />
+
     </>
   );
 }
