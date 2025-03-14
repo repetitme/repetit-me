@@ -8,6 +8,5 @@ const MainPage = () => {
       <QuestionList />;
     </>
   );
-};
-
+}
 export default MainPage;
