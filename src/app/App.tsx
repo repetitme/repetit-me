@@ -1,7 +1,6 @@
-import './App.scss';
-import '../assets/styles/globals.scss';
-import '../assets/styles/variables.scss';
 import MainPage from '../pages/MainPage';
+
+import '../assets/styles/index.scss';
 
 function App() {
   return (
