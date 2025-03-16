@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
           <span className={styles['telegram__text--gradient']}>Telegram</span> —
           с ним еще удобнее
         </p>
-        <Button
+        <Button // Кнопку необходимо будет заменить на компонент кнопки из task#15, как он будет готов
           className={styles.footer__button}
           icon={<img src={telegram} alt="Иконка Telegram" />}
           text="Перейти в Telegram"

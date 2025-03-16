@@ -24,7 +24,7 @@
   margin-block-start: 100px;
 
   &--gradient {
-    @include text-gradient(#3dc5ff, #4558ff, #865bff, #ff71f9, #ffaa47);
+    @include text-gradient(#865bff, #ff71f9);
   }
 }
 
