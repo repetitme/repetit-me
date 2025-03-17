@@ -5,7 +5,7 @@ import Button from '../../shared/components/Button';
 import logo from '../../assets/images/repetit-me_logo.svg';
 import telegram from '../../assets/images/telegram_icon.svg';
 import phone from '../../assets/images/phone_with_qr-code.svg';
-import styles from './styles.module.scss';
+import styles from './index.module.scss';
 
 const Footer: React.FC = () => {
   return (
@@ -16,10 +16,12 @@ const Footer: React.FC = () => {
           <span className={styles['telegram__text--gradient']}>Telegram</span> —
           с ним еще удобнее
         </p>
-        <Button // Кнопку необходимо будет заменить на компонент кнопки из task#15, как он будет готов
-          className={styles.footer__button}
-          icon={<img src={telegram} alt="Иконка Telegram" />}
+        <Button
           text="Перейти в Telegram"
+          variant="social"
+          size="large"
+          className={styles.footer__button}
+          icon={telegram}
         />
         <img src={phone} alt="Phone" className={styles.phone__image} />
       </div>

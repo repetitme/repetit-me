@@ -1,7 +1,7 @@
 import React from 'react';
 import arrow from '../../../assets/images/arrow_up.svg';
 
-import styles from './styles.module.scss';
+import styles from './index.module.scss';
 
 const ScrollUp: React.FC = () => {
   const handleScrollUp = () => {

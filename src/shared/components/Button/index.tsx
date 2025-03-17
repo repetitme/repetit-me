@@ -1,13 +1,36 @@
-import React from 'react';
-import styles from './styles.module.scss';
-import { ButtonProps } from './type';
 import classNames from 'classnames';
+import styles from './index.module.scss';
+import { ButtonProps } from './type';
 
-const Button: React.FC<ButtonProps> = ({ icon, text, onClick, className }) => {
+const Button: React.FC<ButtonProps> = ({
+  text,
+  variant,
+  size,
+  icon,
+  disabled = false,
+  className,
+  onClick
+}) => {
+  const buttonClass = classNames(
+    styles.button,
+    styles[variant],
+    {
+      [styles.large]: size === 'large',
+      [styles.disabled]: disabled
+    },
+    className
+  );
   return (
-    <button className={classNames(styles.button, className)} onClick={onClick}>
-      {icon && <span className={styles.button__icon}>{icon}</span>}
-      <span className={styles.button__text}>{text}</span>
+    <button
+      className={buttonClass}
+      onClick={onClick}
+      disabled={disabled}
+      aria-disabled={disabled}
+    >
+      {icon && (
+        <img src={icon} alt="Иконка Telegram" className={styles.icon}></img>
+      )}
+      {text}
     </button>
   );
 };
