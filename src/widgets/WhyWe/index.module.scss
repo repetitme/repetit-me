@@ -4,7 +4,6 @@
   margin-block-end: var(--margin-blocks);
   color: var(--clr-black);
   inline-size: 100%;
-  
 }
 
 .title {
@@ -18,9 +17,9 @@
 }
 
 .accent {
+  background-position: 80% center;
+  background-size: 350% 100%;
   @include text-gradient();
-  background-size: 200% 100%;
-  background-position: 75% center;
 }
 
 .list {
