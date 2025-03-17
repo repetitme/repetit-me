@@ -1,53 +1,54 @@
 :root {
- 
-    --clr-black: #172936;
-    --clr-purple-bg: #DBC4F7;
-    --clr-blue-bg: #A2BCEA;
-    --clr-tertiary: #D4D07B;
-    --clr-yellow: #FBED2D;
-    --clr-blue: #3D7FF1;    
+  /* base */
+  // uncategorized
+  --clr-black: #172936;
+  --clr-purple-bg: #dbc4f7;
+  --clr-blue-bg: #a2bcea;
+  --clr-tertiary: #d4d07b;
+  --clr-yellow: #fbed2d;
+  --clr-blue: #3d7ff1;
 
+  // white
+  --clr-main: #fff;
+  --clr-transparent30: #ffffff4d;
 
-    --clr-main:#FFF;
-    --clr-transparent30: #FFFFFF4d;     
+  // grey
+  --clr-1: #f5f5f7;
+  --clr-2: #eee;
+  --clr-3: #d1d4db;
+  --clr-4: #858585;
 
-   
-    --clr-1: #F5F5F7;
-    --clr-2: #EEE;
-    --clr-3: #D1D4DB;
-    --clr-4: #858585;
+  // type
+  --clr-primary-default: #6757f1;
+  --clr-primary-pressed: #2e276c;
+  --clr-primary-hover: #5246c1;
+  --clr-primary-disabled: #eee;
+  --clr-secondary-default: #f04040;
+  --clr-secondary-pressed: #904040;
+  --clr-secondary-hover: #b04040;
+  --clr-secondary-disabled: #be9999;
 
-  
-    --clr-primary-default:#6757F1;
-    --clr-primary-pressed:#2E276C;
-    --clr-primary-hover:#5246C1;
-    --clr-primary-disabled:#EEE;
-    --clr-secondary-default:#F04040;
-    --clr-secondary-pressed:#904040;
-    --clr-secondary-hover:#B04040;
-    --clr-secondary-disabled:#BE9999;
+  /* text */
+  --tdn: underline solid;
 
-   
-    --tdn: underline solid;
+  /* misc */
+  --delay-dekstop: 300ms;
+  --delay-phone: 400ms;
+  --duration: 400ms;
+  --timing: ease-in;
 
-  
-    --delay-dekstop: 300ms;
-    --delay-phone: 400ms;
-    --duration: 400ms;
-    --timing: ease-in;
+  /* fonts */
+  --ffm-default: 'Montserrat', courier, monospace;
+  --ffm-tag: 'Open-Sans', courier, monospace;
+  --ffm-title: 'DrukTextWideCur', courier, monospace;
 
-    
-    --ffm-default: montserrat, courier, monospace;
-    --ffm-tag: open-sans, courier, monospace;
-    --ffm-title: druktextwidecur, courier, monospace;
-    
-  
-    --padding-inline: 120px;
-    --padding-blocks: 32px;
-    --margin-blocks: 140px;
-    --gap-blocks: 20px;
-    --border-radius-btn-social: 12px;
-    --border-radius-btn: 16px;
-    --border-radius-blocks: 20px;
-    --border-radius-chat: 24px;
+  /* indentation */
+  --padding-inline: 120px;
+  --padding-blocks: 32px;
+  --margin-blocks: 140px;
+  --gap-blocks: 20px;
+  --border-radius-btn-social: 12px;
+  --border-radius-btn: 16px;
+  --border-radius-blocks: 20px;
+  --border-radius-chat: 24px;
 }

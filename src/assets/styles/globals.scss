@@ -1,28 +1,15 @@
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-html,
 body {
-  margin: 0; 
   font-family: var(--ffm-default);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
+  color: var(--clr-black);
 }
 
 ul {
-  margin: 0;
-  padding: 0;
   list-style: none;
 }
 
