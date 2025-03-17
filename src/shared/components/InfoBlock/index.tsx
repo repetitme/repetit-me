@@ -1,15 +1,16 @@
+import classNames from 'classnames';
 import styles from './index.module.scss';
-import { TInfoBlock } from './type';
+import { TInfoBlockProps } from './type';
 
-export const InfoBlock: React.FC<TInfoBlock> = ({
+export const InfoBlock: React.FC<TInfoBlockProps> = ({
   title,
-  children,
+  text,
   className
 }) => {
   return (
-    <div className={`${styles.block} ${className || ''}`.trim()}>
+    <div className={classNames(styles.block, className)}>
       <h3 className={styles.block__title}>{title}</h3>
-      <p className={styles.block__txt}>{children}</p>
+      <p className={styles.block__txt}>{text}</p>
     </div>
   );
 };

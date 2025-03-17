@@ -5,6 +5,7 @@ import Boy from '../../assets/images/perksBoy.png';
 import Girl from '../../assets/images/perksGirl.png';
 import { InfoBlock } from '../../shared/components/InfoBlock';
 import { ChatBubble } from '../../shared/components/ChatBubble';
+import { perks } from './data';
 
 type TPerksProps = {
   variant?: 'student' | 'teacher'; // меняется раскладка и текст картинки
@@ -23,16 +24,9 @@ export const Perks: React.FC<TPerksProps> = ({ variant = 'student' }) => {
       })}
     >
       <div className={styles.info}>
-        <InfoBlock title="Быстрый">
-          От заявки до связи с репетитором меньше 5 минут
-        </InfoBlock>
-        <InfoBlock title="Удобный">
-          Подбор и связь с учеником происходит в одном месте
-        </InfoBlock>
-        <InfoBlock title="Безопасный">
-          Вам не нужно придумывать пароль, подтверждение аккаунта происходит
-          через код, который приходит вам на телефон 
-        </InfoBlock>
+        {perks.map((perk) => (
+          <InfoBlock key={perk.title} title={perk.title} text={perk.text} />
+        ))}
       </div>
       <div className={styles.emoji}>
         <img

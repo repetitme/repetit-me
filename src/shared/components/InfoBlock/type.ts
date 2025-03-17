@@ -1,5 +1,5 @@
-export type TInfoBlock = {
+export type TInfoBlockProps = {
   title: string;
-  children: string;
+  text: string;
   className?: string;
 };
