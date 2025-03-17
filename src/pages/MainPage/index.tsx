@@ -6,6 +6,5 @@ const MainPage = () => {
       <Footer />
     </>
   );
-};
 
 export default MainPage;
