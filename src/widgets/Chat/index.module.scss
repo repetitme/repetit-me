@@ -34,5 +34,7 @@
 }
 
 .accent {
+  background-position: 75% center;
+  background-size: 200% 100%;
   @include text-gradient();
 }
