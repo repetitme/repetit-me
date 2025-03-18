@@ -10,7 +10,7 @@
   font-family: var(--ffm-title, 'DrukTextWideCur', courier, monospace);
 
   &__list {
-    @include flexCenter;
+    @include flex-center;
 
     align-items: start;
     width: 100%;
