@@ -1,7 +1,13 @@
+import { Perks } from '../../widgets/Perks';
 import QuestionList from '../../widgets/QuestionList';
 
 const MainPage = () => {
-  return <QuestionList />;
+  return (
+    <>
+      <Perks />
+      <QuestionList />
+    </>
+  );
 };
 
 export default MainPage;
