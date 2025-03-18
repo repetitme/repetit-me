@@ -1,7 +1,9 @@
 import styles from './styles.module.css';
-import SwitchButton from '../SwitchButton';
+import SwitchButton from '../../shared/components/SwitchButton';
 import { useState } from 'react';
-import IconList, { iconSources } from '../IconsList';
+import IconList from '../../shared/components/IconsList';
+import { iconSources } from '../../shared/components/IconsList/data';
+
 
 const MainBlock = () => {
   const [isActive, setIsActive] = useState(false);

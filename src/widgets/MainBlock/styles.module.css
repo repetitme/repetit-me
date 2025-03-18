@@ -5,7 +5,7 @@
 }
 
 .background_student {
-  background-image: url(../../../assets/images/StudentIcons/backgroundStudent.png);
+  background-image: url(../../../src/assets/images/StudentIcons/backgroundStudent.png);
   inline-size: 1200px;
   block-size: 628px;
 }
@@ -53,7 +53,7 @@
 }
 
 .background_teacher {
-  background-image: url(../../../assets/images/TeacherIcons/backgroundTeacher.png);
+  background-image: url(../../../src/assets/images/TeacherIcons/backgroundTeacher.png);
   inline-size: 1200px;
   block-size: 628px;
 }

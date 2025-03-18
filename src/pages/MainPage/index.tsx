@@ -1,11 +1,12 @@
-import Main from '../../widgets/Main';
-import QuestionList from '../../widgets/QuestionList';
+import MainBlock from "../../widgets/MainBlock";
+
+
 
 const MainPage = () => {
   return (
     <>
-      <Main />
-      <QuestionList/>
+      <MainBlock />
+ 
     </>
   );
 };
