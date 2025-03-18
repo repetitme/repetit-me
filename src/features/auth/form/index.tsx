@@ -3,6 +3,7 @@ import { Tab } from '../tabs';
 import { useState, useRef } from 'react';
 import useForm from '../../../shared/hooks/useForm';
 import styles from './index.module.scss';
+import Button from '../../../shared/button';
 
 export const AuthForm = ({ login }: { login: boolean }) => {
   const [currentTab, setCurrentTab] = useState('Как ученик');
