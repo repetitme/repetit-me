@@ -1,0 +1,139 @@
+@use '../../assets/styles/variables.scss' as *;
+
+.carousel {
+  margin: 50px 0 0;
+
+  &__navigation {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+
+    &_button {
+      &_unlock {
+        opacity: 1;
+        background-color: transparent;
+        border: none;
+      }
+
+      &_lock {
+        opacity: 0.1;
+        background-color: transparent;
+        border: none;
+      }
+    }
+
+    &_cards {
+      display: flex;
+      gap: 20px;
+      padding: 0;
+
+      &_card {
+        position: relative;
+        height: 593px;
+        width: 387px;
+        border-radius: 12px;
+        background-color: rgb(255 255 255 / 100%);
+        list-style: none;
+
+        &_raiting {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          gap: 3px;
+          background-color: rgb(103 87 241 / 100%);
+          width: 62px;
+          height: 28px;
+          border-radius: 10px;
+          top: 16px;
+          right: 16px;
+
+          &_number {
+            font-family: var(--ffm-default);
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 24px;
+            color: rgb(255 255 255 / 100%);
+          }
+
+          &_star {
+            width: 16px;
+            height: 14px;
+          }
+        }
+
+        &_videobutton {
+          position: absolute;
+          top: 204px;
+          right: 15px;
+        }
+
+        &_info {
+          height: 293px;
+          padding: 0 20px;
+          margin: 23px 0 0;
+
+          &_skills {
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0 0;
+            gap: 12px;
+
+            &_category {
+              display: flex;
+              gap: 10px;
+            }
+
+            &_tag {
+              background-color: rgb(238 238 238 / 100%);
+              border-radius: 12px;
+              font-family: var(--ffm-tag);
+              padding: 5px 12px;
+              font-weight: 400;
+              font-size: 12px;
+              line-height: 18px;
+              letter-spacing: 0%;
+            }
+          }
+
+          &_name {
+            position: relative;
+            font-family: var(--ffm-default);
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 20px;
+            margin: 0;
+          }
+
+          &_type {
+            position: relative;
+            font-family: var(--ffm-default);
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 100%;
+            margin: 15px 0 0;
+          }
+
+          &_about {
+            position: relative;
+            font-family: var(--ffm-default);
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 19px;
+            margin: 17px 0 0;
+            width: 316px;
+            height: 61px;
+          }
+
+          &_price {
+            font-family: var(--ffm-default);
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 20px;
+            margin: 17px 0 0;
+          }
+        }
+      }
+    }
+  }
+}

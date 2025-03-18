@@ -1,9 +1,8 @@
-import SignIn from '../../widgets/SignIn';
-
+import QuickSelection from '../../widgets/QuickSelection';
 const Main = () => {
   return (
     <>
-      <SignIn />
+      <QuickSelection />
     </>
   );
 };
