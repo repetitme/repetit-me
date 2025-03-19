@@ -27,7 +27,9 @@ const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       aria-disabled={disabled}
     >
-      {icon && <img src={icon} className={styles.icon}></img>}
+      {icon && (
+        <img src={icon} alt="Иконка Telegram" className={styles.icon}></img>
+      )}
       {text}
     </button>
   );
