@@ -15,10 +15,7 @@ const MainBlock = () => {
   return (
     <section className={styles.main_block}>
       <div
-        className={
-          isActive ? styles.background_teacher : styles.background_student
-        }
-      >
+        className={`${styles.background} ${isActive ? styles.background_teacher : styles.background_student}`}>
         <div className={styles.info}>
           <div className={styles.switch}>
             <SwitchButton isActive={isActive} onSwitch={handleSwitch} />

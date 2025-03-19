@@ -4,10 +4,15 @@
   margin-block-start: 61px;
 }
 
+.background {
+  max-inline-size: 1200px;
+  min-block-size: 628px;
+  width: 100%;
+  border-radius: 28px;
+}
+
 .background_student {
   background-image: url(../../../src/assets/images/StudentIcons/backgroundStudent.png);
-  inline-size: 1200px;
-  block-size: 628px;
 }
 
 .info {
@@ -37,7 +42,7 @@
 }
 
 .text {
-  inline-size: 752px;
+  inline-size: 676px;
   block-size: 52px;
   margin-block-start: 23px;
 }
@@ -54,6 +59,4 @@
 
 .background_teacher {
   background-image: url(../../../src/assets/images/TeacherIcons/backgroundTeacher.png);
-  inline-size: 1200px;
-  block-size: 628px;
 }
