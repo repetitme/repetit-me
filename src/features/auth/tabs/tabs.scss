@@ -14,14 +14,14 @@
     width: 100%;
     border: none;
     block-size: 42px;
+    border-bottom: 2px solid black;
     font-weight: 500;
     font-size: 20px;
     line-height: 1.36;
-    color: var(--clr-black, #000)
+    color: var(--clr-black, #000);
   }
 
   .current {
-    border-bottom: 2px solid black;
     pointer-events: none;
     color: var(--clr-primary-default, #6757f1);
     border-bottom: var(--clr-primary-default, #6757f1) solid 2px;
