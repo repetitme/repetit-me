@@ -9,6 +9,7 @@ export default interface TInput {
   requiredError?: string;
   placeholder?: string;
   value: string;
+  style?: React.CSSProperties;
   extraClass?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

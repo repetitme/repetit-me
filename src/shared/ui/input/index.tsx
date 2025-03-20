@@ -14,6 +14,7 @@ const Input: React.FC<TInput> = ({
   placeholder,
   extraClass,
   requiredError,
+  style,
   onChange
 }) => {
   const [error, setError] = useState<string>('');
@@ -33,7 +34,7 @@ const Input: React.FC<TInput> = ({
 
   return (
     <div
-      className={`${'input-wrapper'} ${inputType !== 'Auth' ? 'primary' : ''} ${extraClass}`}
+      style = {style} className={`${'input-wrapper'} ${inputType !== 'Auth' ? 'primary' : ''} ${extraClass}`}
     >
       {label && <label htmlFor={name}>{label}</label>}
       <input
