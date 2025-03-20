@@ -1,26 +1,35 @@
-export interface TInputInterface extends React.HTMLProps<HTMLInputElement> {
+export interface TAuthInputInterface extends React.HTMLProps<HTMLInputElement> {
   label: string;
   value: string;
   name: 'name' | 'tg' | 'link' | 'code';
-  required?: boolean;
+  title?: string;
+  pattern?: string;
   placeholder?: string;
   onChange(e: React.ChangeEvent<HTMLInputElement>): void;
 }
 
+export type TInputData = Record<
+  string,
+  [
+    name: TAuthInputInterface['name'],
+    placeholder: string,
+    label: string,
+    title: string,
+    pattern: string
+  ]
+>;
+
 export type TInputFactory = (
-  name: TInputInterface['name'],
-  required: boolean,
-  placeholder: string,
-  label: string
+  ...args: TInputData[keyof TInputData]
 ) => (
   props: {
-    values: { value: string };
-    handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    values: Record<TAuthInputInterface['name'], string>;
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   },
   notRequired?: string
 ) => React.ReactElement;
 
 export type TInputs = Record<
-  TInputInterface['name'],
+  TAuthInputInterface['name'],
   ReturnType<TInputFactory>
 >;

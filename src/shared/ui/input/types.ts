@@ -6,6 +6,7 @@ export default interface TInput {
   pattern?: string;
   title?: string;
   required?: boolean;
+  requiredError?: string;
   placeholder?: string;
   value: string;
   extraClass?: string;

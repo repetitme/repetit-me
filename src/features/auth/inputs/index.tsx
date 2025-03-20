@@ -1,54 +1,66 @@
 import React from 'react';
-import './inputs.scss';
-import { TInputInterface, TInputFactory, TInputs } from './types';
+import { TAuthInputInterface, TInputFactory, TInputs } from './types';
+import Input from '../../../shared/ui/input';
+import inputData from './data';
 
-const Input: React.FC<TInputInterface> = ({
+const AuthInput: React.FC<TAuthInputInterface> = ({
   label,
   value,
   name,
   required,
+  title,
+  pattern,
   placeholder,
   onChange
 }) => {
   return (
-    <div className={'input-wrapper'}>
-      <label>{label}</label>
-      <input
-        className={'input'}
-        required={required}
-        name={name}
-        type={name === 'link' ? 'url' : 'text'}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-    </div>
+    <Input
+      inputType="Auth"
+      label={label}
+      value={value}
+      name={name}
+      required={required}
+      placeholder={placeholder}
+      requiredError={requiredErrorMessage(name)}
+      title={title}
+      pattern={pattern}
+      onChange={onChange}
+    />
   );
+};
+
+const requiredErrorMessage = (error: string) => {
+  switch (error) {
+    case 'name':
+      return 'Пожалуйста, укажите имя';
+    case 'tg':
+      return 'Пожалуйста, укажите никнейм';
+    case 'code':
+      return 'Пожалуйста, введите шестизначный код';
+  }
+  return '';
 };
 
 const createInput: TInputFactory =
-  (name, required, placeholder, label) =>
+  (name, placeholder, label, title, pattern) =>
   ({ values, handleChange }, notRequired) => (
-    <Input
-      required={notRequired ? false : required}
+    <AuthInput
+      required={notRequired || name === 'link' ? false : true}
       name={name}
-      value={values.value}
+      value={values[name]}
       onChange={handleChange}
       label={label}
       placeholder={placeholder}
+      title={title}
+      pattern={pattern}
     />
   );
 
-const Inputs: TInputs = {
-  name: createInput('name', true, 'Введите имя', 'Имя'),
-  tg: createInput('tg', true, '@aleksandr', 'Никнейм в Telegram'),
-  link: createInput(
-    'link',
-    false,
-    'https://...',
-    'Реферальная ссылка (при наличии)'
-  ),
-  code: createInput('code', true, 'Введите шестизначное число', 'Код')
+const AuthInputs: TInputs = {
+  name: createInput(...inputData.name),
+  tg: createInput(...inputData.tg),
+  link: createInput(...inputData.link),
+  code: createInput(...inputData.code)
 };
 
-export default Inputs;
+export default AuthInputs;
