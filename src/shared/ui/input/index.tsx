@@ -34,7 +34,8 @@ const Input: React.FC<TInput> = ({
 
   return (
     <div
-      style = {style} className={`${'input-wrapper'} ${inputType !== 'Auth' ? 'primary' : ''} ${extraClass}`}
+      style={style}
+      className={`${'input-wrapper'} ${inputType !== 'Auth' ? 'primary' : ''} ${extraClass}`}
     >
       {label && <label htmlFor={name}>{label}</label>}
       <input
