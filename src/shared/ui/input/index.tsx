@@ -23,8 +23,10 @@ const Input: React.FC<TInput> = ({
     let error = '';
     if (e.target.validity.valueMissing && required) {
       error = requiredError || 'Поле обязательно для заполнения';
-    } else if (e.target.validity.patternMismatch && title) {
-      error = title;
+    } else if (e.target.validity.typeMismatch) {
+      error = title || e.target.validationMessage;
+    } else if (e.target.validity.patternMismatch) {
+      error = title || e.target.validationMessage;
     }
     setError(error);
   };
@@ -40,7 +42,7 @@ const Input: React.FC<TInput> = ({
         required={required}
         autoComplete={name === 'code' ? 'off' : 'on'}
         name={name}
-        pattern={pattern}
+        pattern={type ? undefined : pattern}
         title={title}
         type={type}
         placeholder={placeholder}

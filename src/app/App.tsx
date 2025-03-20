@@ -18,7 +18,6 @@ function App() {
         }}
       >
         <Input
-          type="text"
           label="Тестовый общий input"
           name="test"
           pattern="^[A-Za-z]+$"
