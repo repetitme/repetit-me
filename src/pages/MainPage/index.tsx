@@ -8,8 +8,7 @@ const MainPage = () => {
     <>
       <Perks />
       <Chat />
-      <QuestionList />
-      <QuestionList />
+      <QuestionList />      
       <Footer />
     </>
   );
