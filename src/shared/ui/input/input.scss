@@ -15,10 +15,7 @@
     &__text {
       color: var(--clr-secondary-default, #fc4a4a);
       top: 100%;
-    }
-
-    &::placeholder {
-      color: var(--clr-secondary-default, #fc4a4a);
+      font-weight: 500;
     }
   }
 
