@@ -10,7 +10,7 @@ function App() {
   // return <h1>Привет, мир!</h1>;
   return (
     <>
-      <AuthSelectRole OnChangeSelect={selectedRole} />
+      <AuthSelectRole onChangeSelect={selectedRole} />
     </>
   )
 }
