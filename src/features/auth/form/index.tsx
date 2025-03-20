@@ -7,13 +7,12 @@ import Button from '../../../shared/button';
 
 const AuthForm = ({ login }: { login: boolean }) => {
   const [currentTab, setCurrentTab] = useState('Как ученик');
-  const defaultValues = {
+  const { values, handleChange } = useForm({
     name: '',
     tg: '',
     link: '',
     code: ''
-  };
-  const { values, handleChange, setValues } = useForm(defaultValues);
+  });
   const [isValid, setIsValid] = useState(false);
   const [code, setReceived] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -42,7 +41,7 @@ const AuthForm = ({ login }: { login: boolean }) => {
 
   const handleActiveTab = (value: string) => {
     setCurrentTab(value);
-    setValues(defaultValues);
+    setReceived(false);
   };
 
   const handleSuccess = () => {
