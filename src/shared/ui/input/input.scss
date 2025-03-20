@@ -3,7 +3,6 @@
   flex-direction: column;
   font-family: var(--ffm-default);
   gap: 8px;
-  position: relative;
 
   label {
     line-height: 1.36;
@@ -11,11 +10,11 @@
   }
 
   .error {
+    color: var(--clr-secondary-default, #fc4a4a);
+    
     &__text {
       color: var(--clr-secondary-default, #fc4a4a);
-      position: absolute;
       top: 100%;
-      margin-top: 2px;
     }
 
     &::placeholder {
