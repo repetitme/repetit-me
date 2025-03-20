@@ -31,6 +31,7 @@
     &::placeholder {
       font-size: 20px;
       line-height: 1.32;
+      color: var(--clr-4, #858585);
     }
   }
 
@@ -42,14 +43,17 @@
 
     input {
       background-color: var(--clr-main, #fff);
-      outline: 2px solid var(--clr-primary-input, #8b5cf6);
+      outline: 2px solid var(--clr-5, #CFDADC);
       font-size: 18px;
       block-size: 24px;
       caret-color: var(--clr-caret-green, #23540e);
 
-      &:focus,
+      &:focus {
+        outline: 2px solid var(--clr-primary-default, #6757f1);
+      }
+
       &:hover {
-        outline: 2px solid var(--clr-purple-active, #8b5cf6);
+        outline: 2px solid var(--clr-purple-active, #958bec);
       }
 
       &.error {
