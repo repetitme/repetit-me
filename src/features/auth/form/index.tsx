@@ -46,7 +46,9 @@ const AuthForm = ({ login }: { login: boolean }) => {
 
   const handleSuccess = () => {
     if (formRef.current?.checkValidity()) {
-      console.log(`Success! Имя: ${values.name}, Tg: ${values.tg}, Ссылка: ${values.link}, Код: ${values.code}.`);
+      console.log(
+        `Success! Имя: ${values.name}, Tg: ${values.tg}, Ссылка: ${values.link}, Код: ${values.code}.`
+      );
     }
     setIsValid(false);
   };
@@ -57,12 +59,11 @@ const AuthForm = ({ login }: { login: boolean }) => {
       <Button
         className={styles.auth__form__button}
         onClick={reg ? handleSuccess : undefined}
-        size='large'
-        variant='purple'
+        size="large"
+        variant="purple"
         disabled={!isValid}
         text={reg ? 'Зарегистрироваться' : 'Получить код'}
-      >
-      </Button>
+      ></Button>
     );
   };
 

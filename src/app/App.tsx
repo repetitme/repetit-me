@@ -14,15 +14,15 @@ function App() {
           gap: '50px',
           alignItems: 'center',
           justifyContent: 'center',
-          height: '100vh',
+          height: '100vh'
         }}
       >
         <Input
           type="text"
           label="Тестовый общий input"
           name="test"
-          pattern='^[A-Za-z]+$'
-          title='Только латинские буквы'
+          pattern="^[A-Za-z]+$"
+          title="Только латинские буквы"
           placeholder="Введите текст"
           value={text}
           onChange={(e) => setText(e.target.value)}
