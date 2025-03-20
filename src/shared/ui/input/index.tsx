@@ -47,7 +47,7 @@ const Input: React.FC<TInput> = ({
         pattern={type ? undefined : pattern}
         title={title}
         type={type}
-        placeholder={placeholder}
+        placeholder={error ? '' : placeholder}
         value={value}
         onChange={handleChange}
       />
