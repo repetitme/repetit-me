@@ -3,11 +3,8 @@
   flex-direction: column;
   font-family: var(--ffm-default);
   gap: 8px;
-
-  label {
-    line-height: 1.36;
-    font-weight: 500;
-  }
+  font-weight: 500;
+  line-height: 1.36;
 
   .error {
     color: var(--clr-secondary-default, #fc4a4a);
@@ -15,7 +12,6 @@
     &__text {
       color: var(--clr-secondary-default, #fc4a4a);
       top: 100%;
-      font-weight: 500;
     }
   }
 
@@ -23,21 +19,18 @@
     background-color: var(--clr-1, #fff);
     color: var(--crl-black, #000);
     border: none;
+    outline: none;
     border-radius: 12px;
     font-family: inherit;
+    font-weight: 500;
     block-size: 26px;
     padding: 20px 16px;
     font-size: 20px;
-    caret-color: var(--clr-caret-green, #8b5cf6);
+    caret-color: var(--clr-primary-default, #6757f1);
 
     &::placeholder {
       font-size: 20px;
       line-height: 1.32;
-    }
-
-    &:focus,
-    &:hover {
-      outline: 2px solid var(--clr-purple-active, #8b5cf6);
     }
   }
 
@@ -52,6 +45,7 @@
       outline: 2px solid var(--clr-primary-input, #8b5cf6);
       font-size: 18px;
       block-size: 24px;
+      caret-color: var(--clr-caret-green, #23540e);
 
       &:focus,
       &:hover {
