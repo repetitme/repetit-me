@@ -7,7 +7,7 @@
   inline-size: 100%;
 
   &__title {
-    margin: 0px auto 40px;
+    margin: 0 auto 40px;
     font-weight: 500;
     font-size: 40px;
     line-height: 1.32;
@@ -18,7 +18,7 @@
   &__viewport {
     display: flex;
     flex-direction: column;
-    row-gap: 16px;
+    gap: 16px;
     border-radius: var(--border-radius-chat);
     padding: 28px 40px;
     background: linear-gradient(
