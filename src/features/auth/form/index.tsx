@@ -53,7 +53,6 @@ const AuthForm = ({ login }: { login: boolean }) => {
     setIsValid(false);
   };
 
-  // Temp button
   const AuthButton = (reg?: string) => {
     return (
       <Button
