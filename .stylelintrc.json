@@ -27,6 +27,7 @@
       {
         "ignorePseudoElements": ["v-deep"]
       }
-    ]
+    ],
+    "selector-class-pattern": null
   }
 }
