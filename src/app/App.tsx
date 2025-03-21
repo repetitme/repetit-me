@@ -5,9 +5,8 @@ import { AuthSelectRole } from '../shared/authSelectRole';
 function App() {
 
   const selectedRole = (role: string) => {
-    console.log(role); // так получаем выбранное пользователем состояние
+    console.log(role);
   }
-  // return <h1>Привет, мир!</h1>;
   return (
     <>
       <AuthSelectRole onChangeSelect={selectedRole} />
