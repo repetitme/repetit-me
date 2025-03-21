@@ -1,3 +1,4 @@
+import { WhyWe } from '../../widgets/WhyWe';
 import { Chat } from '../../widgets/Chat';
 import Footer from '../../widgets/Footer';
 import { Perks } from '../../widgets/Perks';
@@ -7,8 +8,9 @@ const MainPage = () => {
   return (
     <>
       <Perks />
+      <WhyWe />
       <Chat />
-      <QuestionList />      
+      <QuestionList />
       <Footer />
     </>
   );
