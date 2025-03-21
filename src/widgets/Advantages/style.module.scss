@@ -12,7 +12,7 @@
     display: flex;
     gap: 20px;
 
-    &--role::after {
+    &_role::after {
       content: '';
       background-image: url('../../assets/Magnifer.png');
       background-repeat: no-repeat;
@@ -24,7 +24,7 @@
       z-index: 1;
     }
 
-    &--telegram::before {
+    &_telegram::before {
       content: '';
       background-image: url('../../assets/Spiral.png');
       background-size: cover;
@@ -43,12 +43,12 @@
       background-image:
         linear-gradient(white, white),
         linear-gradient(
-          315deg,
-          rgb(61 197 255 / 100%),
-          rgb(69 88 255 / 100%),
-          rgb(134 91 255 / 100%),
-          rgb(255 113 249 / 100%),
-          rgb(255 170 71 / 100%)
+          288.86deg,
+          #3dc5ff 5.24%,
+          #4558ff 29.77%,
+          #865bff 60.98%,
+          #ff71f9 89.96%,
+          #ffaa47 116.71%
         );
       background-origin: border-box;
       background-clip: content-box, border-box;
@@ -58,7 +58,7 @@
       box-sizing: border-box;
     }
 
-    &--role-info {
+    &_role_info {
       color: var(--clr-black);
       font-family: var(--ffm-title);
       margin: 10px 38px;
@@ -69,12 +69,12 @@
       line-height: 125%;
     }
 
-    &--role-emoji {
+    &_role_emoji {
       width: 254px;
       padding-left: 294px;
     }
 
-    &--telegram-info {
+    &_telegram_info {
       color: var(--clr-black);
       font-family: var(--ffm-title);
       margin: 10px 38px;
@@ -85,7 +85,7 @@
       line-height: 125%;
     }
 
-    &--telegram-emoji {
+    &_telegram_emoji {
       width: 254px;
       padding-left: 294px;
     }

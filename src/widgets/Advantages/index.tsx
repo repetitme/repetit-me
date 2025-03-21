@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import styles from './style.module.scss';
-import classNames from 'classnames';
+//import classNames from 'classnames';
 import emojiMen from '../../assets/emoji-men.png';
 import emojiWomen from '../../assets/emoji-women.png';
 
@@ -9,17 +9,16 @@ const Advantages: FC = () => {
     <div className={styles.container}>
       <div className={styles.container__description}>
         <div
-          className={classNames(
-            styles['container__description--role'],
-            styles['container__description_block']
-          )}
+          className={
+            styles.container__description_role +
+            ' ' +
+            styles.container__description_block
+          }
         >
-          <div
-            className={classNames(styles['container__description--role-info'])}
-          >
+          <div className={styles.container__description_role_info}>
             <p>
               Любой пользователь приложения может одновременно быть как{' '}
-              <a href="###" className={classNames(styles['link'])}>
+              <a href="###" className={styles.link}>
                 учеником
               </a>
               , так и преподавателем
@@ -28,28 +27,25 @@ const Advantages: FC = () => {
           <img
             src={emojiMen}
             alt="Эмоджи"
-            className={classNames(styles['container__description--role-emoji'])}
+            className={styles.container__description_role_emoji}
           />
         </div>
 
         <div
-          className={classNames(
-            styles['container__description--telegram'],
-            styles['container__description_block']
-          )}
+          className={
+            styles.container__description_telegram +
+            ' ' +
+            styles.container__description_block
+          }
         >
-          <div
-            className={classNames(
-              styles['container__description--telegram-info']
-            )}
-          >
+          <div className={styles.container__description_telegram_info}>
             <p>
-              <a href="###" className={classNames(styles['link'])}>
+              <a href="###" className={styles.link}>
                 Telegram
               </a>{' '}
               стал незаменимым <br />в нашей жизни, и поэтому наш сервис
               работает{' '}
-              <a href="###" className={classNames(styles['link'])}>
+              <a href="###" className={styles.link}>
                 внутри приложения
               </a>{' '}
               для вашего удобства
@@ -58,9 +54,7 @@ const Advantages: FC = () => {
           <img
             src={emojiWomen}
             alt="Эмоджи"
-            className={classNames(
-              styles['container__description--telegram-emoji']
-            )}
+            className={styles.container__description_telegram_emoji}
           />
         </div>
       </div>
