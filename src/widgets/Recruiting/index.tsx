@@ -1,120 +1,64 @@
 import { FC } from 'react';
 import styles from './style.module.scss';
-import classNames from 'classnames';
 
 const Recruiting: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.container__recruiting}>
-        <h1 className={classNames(styles['container__recruiting-title'])}>
-          Мы{' '}
-          <a href="###" className={classNames(styles['link'])}>
-            найдем
-          </a>
+        <h2 className={styles.container__recruiting_title}>
+          Мы найдем
           <br />
-          учеников{' '}
-          <a href="###" className={classNames(styles['link'])}>
-            за вас
-          </a>
-        </h1>
-        <p className={classNames(styles['container__recruiting-subtitle'])}>
-          И также дадим возможность найти&nbsp;
-          <br /> их самостоятельно
+          учеников за вас
+        </h2>
+        <p className={styles.container__recruiting_subtitle}>
+          И также дадим возможность найти их самостоятельно
         </p>
-        <div
-          className={classNames(styles['container__recruiting-disciplines'])}
-        >
-          <ul
-            className={classNames(
-              styles['container__recruiting-disciplines-width']
-            )}
-          >
-            <li
-              className={classNames(styles['container__recruiting-discipline'])}
-            >
+        <div className={styles.container__recruiting_disciplines}>
+          <ul className={styles.container__recruiting_disciplines_width}>
+            <li className={styles.container__recruiting_discipline}>
               Молодой преподаватель
             </li>
-            <li
-              className={classNames(styles['container__recruiting-discipline'])}
-            >
+            <li className={styles.container__recruiting_discipline}>
               Математика
             </li>
-            <li
-              className={classNames(styles['container__recruiting-discipline'])}
-            >
-              ОГЭ
-            </li>
-            <li
-              className={classNames(styles['container__recruiting-discipline'])}
-            >
+            <li className={styles.container__recruiting_discipline}>ОГЭ</li>
+            <li className={styles.container__recruiting_discipline}>
               Линейные уравнения
             </li>
-            <li
-              className={classNames(styles['container__recruiting-discipline'])}
-            >
+            <li className={styles.container__recruiting_discipline}>
               Нужна еще помощь с домашкой
             </li>
-            <li
-              className={classNames(styles['container__recruiting-discipline'])}
-            >
+            <li className={styles.container__recruiting_discipline}>
               Гибкий график
             </li>
-            <li
-              className={classNames(styles['container__recruiting-discipline'])}
-            >
+            <li className={styles.container__recruiting_discipline}>
               Готов много заниматься
             </li>
-            <li
-              className={classNames(styles['container__recruiting-discipline'])}
-            >
+            <li className={styles.container__recruiting_discipline}>
               Хромает геометрия
             </li>
-            <li
-              className={classNames(styles['container__recruiting-discipline'])}
-            >
+            <li className={styles.container__recruiting_discipline}>
               Люблю пошутить
             </li>
-            <li
-              className={classNames(styles['container__recruiting-discipline'])}
-            >
+            <li className={styles.container__recruiting_discipline}>
               Подготовка к экзамену
             </li>
-            <li
-              className={classNames(styles['container__recruiting-discipline'])}
-            >
+            <li className={styles.container__recruiting_discipline}>
               Цена не так важна
             </li>
-            <li
-              className={classNames(styles['container__recruiting-discipline'])}
-            >
-              Алгебра
-            </li>
+            <li className={styles.container__recruiting_discipline}>Алгебра</li>
           </ul>
-          <ul
-            className={classNames(
-              styles['container__recruiting-disciplines-center']
-            )}
-          >
-            <li
-              className={classNames(styles['container__recruiting-discipline'])}
-            >
+          <ul className={styles.container__recruiting_disciplines_center}>
+            <li className={styles.container__recruiting_discipline}>
               Геометрия
             </li>
-            <li
-              className={classNames(styles['container__recruiting-discipline'])}
-            >
+            <li className={styles.container__recruiting_discipline}>
               Еще нужна информатика
             </li>
-            <li
-              className={classNames(styles['container__recruiting-discipline'])}
-            >
+            <li className={styles.container__recruiting_discipline}>
               Python на начальном уровне
             </li>
-            <li
-              className={classNames(styles['container__recruiting-discipline'])}
-            >
-              ВПР
-            </li>
+            <li className={styles.container__recruiting_discipline}>ВПР</li>
           </ul>
         </div>
       </div>

@@ -1,11 +1,10 @@
-import './App.scss';
-import '../assets/global.scss';
-import Main from '../pages/Main';
+import '../assets/styles/index.scss';
+import MainPage from '../pages/MainPage';
 
 function App() {
   return (
     <>
-      <Main />
+      <MainPage />
     </>
   );
 }

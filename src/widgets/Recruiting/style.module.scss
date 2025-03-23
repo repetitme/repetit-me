@@ -1,21 +1,28 @@
 .container {
-  width: 1440px;
-  height: 604px;
   position: relative;
+  max-width: 1440px;
+  max-height: 604px;
 
   &__recruiting {
-    &-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &_title {
+      margin: 0 0 32px;
+      max-height: 106px;
+      letter-spacing: 0;
       text-align: center;
       font-family: var(--ffm-title);
       font-size: 40px;
       font-weight: 500;
       line-height: 135%;
-      height: 106px;
-      letter-spacing: 0;
-      margin: 0 0 32px;
     }
 
-    &-subtitle {
+    &_subtitle {
+      margin: 0 0 32px;
+      max-height: 50px;
+      max-width: 350px;
       display: flex;
       justify-content: center;
       font-size: 20px;
@@ -24,13 +31,11 @@
       font-family: var(--ffm-tag);
       line-height: 126%;
       letter-spacing: 0;
-      height: 50px;
-      margin: 0 0 32px;
     }
 
-    &-disciplines::before {
+    &_disciplines::before {
       content: '';
-      background-image: url('../../assets/women_and_computer.png');
+      background-image: url('../../assets//images/women_and_computer.svg');
       block-size: 324px;
       inline-size: 324px;
       position: absolute;
@@ -39,57 +44,40 @@
       z-index: 1;
     }
 
-    &-disciplines {
-      height: 160px;
+    &_disciplines {
+      max-height: 160px;
       flex-wrap: wrap;
       gap: 14px;
 
-      &-width {
+      &_width {
+        margin: 0;
+        padding: 0;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
-        padding: 0;
         gap: 13px;
-        margin: 0;
       }
 
-      &-center {
+      &_center {
+        margin: 15px -6px 0 0;
+        padding: 0;
         display: flex;
         justify-content: center;
-        padding: 0;
         gap: 13px;
-        margin: 15px -6px 0 0;
       }
     }
 
-    &-discipline {
+    &_discipline {
+      padding: 0 16px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
       background-color: rgb(212 208 251 / 100%);
       border-radius: 20px;
-      min-height: 44px;
       font-family: var(--ffm-default);
       font-size: 20px;
       font-weight: 500;
       line-height: 132%;
-      display: flex;
-      align-items: center;
-      padding: 0 16px;
     }
   }
-}
-
-.link {
-  color: var(--clr-primary-default);
-  text-decoration: none;
-}
-
-.link:active {
-  color: var(--clr-primary-pressed);
-}
-
-.link:hover {
-  color: var(--clr-primary-hover);
-}
-
-.link:disabled {
-  color: var(--clr-primary-disabled);
 }

@@ -1,6 +1,13 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
   margin: 0;
+  font-family: var(--ffm-default);
 }
 
 h1,
@@ -17,12 +24,25 @@ ul {
   margin: 0;
   padding: 0;
   list-style: none;
-}
 
-button,
-a {
-  color: currentcolor;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--ffm-default);
+    color: var(--clr-black);
+  }
+
+  button,
+  a {
+    color: currentcolor;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
