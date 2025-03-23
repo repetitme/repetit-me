@@ -1,0 +1,98 @@
+@use '../../assets/styles/mixins/gradient.scss' as *;
+
+.footer {
+  &__button {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    margin-block-end: 100px;
+    max-inline-size: 286px;
+  }
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  justify-content: space-between;
+  gap: 44px 240px;
+  padding-inline: var(--padding-inline, 120px);
+}
+
+.telegram__text {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  margin-block-start: 100px;
+  font-family: var(--ffm-title);
+  font-size: 20px;
+
+  &--gradient {
+    @include text-gradient(#865bff, #ff71f9);
+  }
+}
+
+.phone__image {
+  grid-column: 2/3;
+  grid-row: 1/3;
+  align-self: end;
+}
+
+.footer__bottom {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  padding-inline: 148px;
+  padding-block: 56px;
+  font-family: var(--ffm-default, 'Montserrat', courier, monospace);
+  font-weight: 500;
+  gap: 122px 228px;
+  color: var(--clr-main, #fff);
+  background: url('../../assets/images/bg_footer.svg') no-repeat center / cover;
+
+  a {
+    max-inline-size: fit-content;
+  }
+}
+
+.repetitme__logo {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+.info {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  display: flex;
+  flex-direction: row;
+  gap: 130px;
+  font-weight: 700;
+  font-size: 20px;
+  padding-block-start: var(--padding-blocks, 32px);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.contact {
+  max-inline-size: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer__bottom--links {
+  grid-column: 1/-1;
+  grid-row: 2/3;
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  gap: 96px;
+  font-size: 16px;
+}
+
+.underline {
+  text-decoration: underline;
+  font-weight: 500;
+}

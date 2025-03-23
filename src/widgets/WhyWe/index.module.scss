@@ -1,0 +1,49 @@
+@use '../../assets/styles/mixins/gradient.scss' as *;
+
+.container {
+  margin-block-end: var(--margin-blocks);
+  color: var(--clr-black);
+  inline-size: 100%;
+}
+
+.title {
+  margin-block-start: 11px;
+  margin-block-end: 43px;
+  font-family: var(--ffm-title);
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.32;
+  text-align: center;
+}
+
+.accent {
+  background-position: 80% center;
+  background-size: 350% 100%;
+  @include text-gradient();
+}
+
+.list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 145px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border-radius: 40px;
+    background-color: #eeeeee;
+    inline-size: 82px;
+    block-size: 87%;
+  }
+
+  a {
+    color: var(--clr-primary-default);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
