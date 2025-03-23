@@ -1,0 +1,40 @@
+@use '../../assets/styles/mixins/gradient.scss' as *;
+
+.chat {
+  margin-block-end: var(--margin-blocks);
+  color: var(--clr-black);
+  font-family: var(--ffm-title);
+  inline-size: 100%;
+
+  &__title {
+    margin: 0 auto 40px;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1.32;
+    text-align: center;
+    max-inline-size: 900px;
+  }
+
+  &__viewport {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-radius: var(--border-radius-chat);
+    padding: 28px 40px;
+    background: linear-gradient(
+      288.86deg,
+      rgba(61, 197, 255, 0.68) 5.24%,
+      rgba(69, 88, 255, 0.68) 29.77%,
+      rgba(134, 91, 255, 0.68) 60.98%,
+      rgba(255, 113, 249, 0.68) 89.96%,
+      rgba(255, 170, 71, 0.68) 116.71%
+    );
+    min-block-size: 336px;
+  }
+}
+
+.accent {
+  background-position: 75% center;
+  background-size: 200% 100%;
+  @include text-gradient();
+}
