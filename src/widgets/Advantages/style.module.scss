@@ -1,20 +1,22 @@
-@use '../../assets/styles/variables.scss' as *;
+.accent {
+  color: var(--clr-primary-default);
+}
 
 .container {
-  width: 1440px;
-  height: 546px;
   position: relative;
+  max-width: 1440px;
+  max-height: 546px;
 
   &__description {
     padding: 64px 112px;
-    width: 1200px;
-    height: 418px;
+    max-width: 1200px;
+    min-height: 418px;
     display: flex;
-    gap: 20px;
+    gap: 21px;
 
     &_role::after {
       content: '';
-      background-image: url('../../assets/Magnifer.png');
+      background-image: url('../../assets/images/magnifer.svg');
       background-repeat: no-repeat;
       block-size: 189.4272px;
       inline-size: 189.4272px;
@@ -26,20 +28,24 @@
 
     &_telegram::before {
       content: '';
-      background-image: url('../../assets/Spiral.png');
+      background-image: url('../../assets/images/spiral.svg');
       background-size: cover;
-      block-size: 400px;
-      inline-size: 400px;
+      block-size: 374px;
+      inline-size: 374px;
       position: absolute;
-      right: -25px;
-      top: -145px;
+      right: 6px;
+      top: -150px;
       z-index: 1;
     }
 
     &_block {
-      display: flex;
-      flex-direction: column;
+      min-width: 590px;
+      box-sizing: border-box;
       border: 2px solid transparent;
+      border-radius: 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
       background-image:
         linear-gradient(white, white),
         linear-gradient(
@@ -52,59 +58,42 @@
         );
       background-origin: border-box;
       background-clip: content-box, border-box;
-      min-width: 590px;
-      border-radius: 20px;
-      justify-content: space-between;
-      box-sizing: border-box;
     }
 
     &_role_info {
+      margin: 32px 38px 30px;
+      max-width: 514px;
       color: var(--clr-black);
       font-family: var(--ffm-title);
-      margin: 10px 38px;
-      width: 514px;
       font-weight: 500;
       font-size: 20px;
       letter-spacing: 0;
       line-height: 125%;
     }
 
-    &_role_emoji {
-      width: 254px;
-      padding-left: 294px;
+    &_role_img {
+      position: relative;
+      margin: 0 0 0 294px;
+      max-width: 253px;
+      max-height: 253px;
     }
 
     &_telegram_info {
+      margin: 32px 38px 30px;
+      max-width: 510px;
       color: var(--clr-black);
       font-family: var(--ffm-title);
-      margin: 10px 38px;
-      width: 510px;
       font-weight: 500;
       font-size: 20px;
       letter-spacing: 0;
       line-height: 125%;
     }
 
-    &_telegram_emoji {
-      width: 254px;
-      padding-left: 294px;
+    &_telegram_img {
+      margin: 0 0 0 294px;
+      position: relative;
+      max-width: 253px;
+      max-height: 253px;
     }
   }
-}
-
-.link {
-  color: var(--clr-primary-default);
-  text-decoration: none;
-}
-
-.link:active {
-  color: var(--clr-primary-pressed);
-}
-
-.link:hover {
-  color: var(--clr-primary-hover);
-}
-
-.link:disabled {
-  color: var(--clr-primary-disabled);
 }

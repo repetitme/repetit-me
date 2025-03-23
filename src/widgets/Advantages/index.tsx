@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import styles from './style.module.scss';
 //import classNames from 'classnames';
-import emojiMen from '../../assets/emoji-men.png';
-import emojiWomen from '../../assets/emoji-women.png';
+import emojiMen from '../../assets/images/emoji_men.svg';
+import emojiWomen from '../../assets/images/emoji_women.svg';
 
 const Advantages: FC = () => {
   return (
@@ -18,17 +18,17 @@ const Advantages: FC = () => {
           <div className={styles.container__description_role_info}>
             <p>
               Любой пользователь приложения может одновременно быть как{' '}
-              <a href="###" className={styles.link}>
-                учеником
-              </a>
-              , так и преподавателем
+              <span className={styles.accent}>учеником</span>, так и
+              преподавателем
             </p>
           </div>
-          <img
-            src={emojiMen}
-            alt="Эмоджи"
-            className={styles.container__description_role_emoji}
-          />
+          <div className={styles.container__description_role_img}>
+            <img
+              src={emojiMen}
+              alt="Эмоджи"
+              className={styles.container__description_role_img_emoji}
+            />
+          </div>
         </div>
 
         <div
@@ -40,22 +40,19 @@ const Advantages: FC = () => {
         >
           <div className={styles.container__description_telegram_info}>
             <p>
-              <a href="###" className={styles.link}>
-                Telegram
-              </a>{' '}
-              стал незаменимым <br />в нашей жизни, и поэтому наш сервис
-              работает{' '}
-              <a href="###" className={styles.link}>
-                внутри приложения
-              </a>{' '}
-              для вашего удобства
+              <span className={styles.accent}>Telegram</span> стал незаменимым
+              <br /> в нашей жизни, и поэтому наш сервис работает{' '}
+              <span className={styles.accent}>внутри приложения</span> для
+              вашего удобства
             </p>
           </div>
-          <img
-            src={emojiWomen}
-            alt="Эмоджи"
-            className={styles.container__description_telegram_emoji}
-          />
+          <div className={styles.container__description_telegram_img}>
+            <img
+              src={emojiWomen}
+              alt="Эмоджи"
+              className={styles.container__description_telegram_img_emoji}
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import Advantages from '../../widgets/Advantages';
 
-const Main = () => {
+const MainPage = () => {
   return <Advantages />;
 };
 
-export default Main;
+export default MainPage;
