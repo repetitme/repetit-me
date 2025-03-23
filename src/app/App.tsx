@@ -1,5 +1,4 @@
-import './App.scss';
-import '../assets/global.scss';
+import '../assets/styles/index.scss';
 import Main from '../pages/Main';
 
 function App() {

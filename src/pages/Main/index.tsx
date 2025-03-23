@@ -1,9 +1,9 @@
-import SignIn from '../../widgets/SignIn';
+import TutorFormBlock from '../../widgets/TutorFormBlock';
 
 const Main = () => {
   return (
     <>
-      <SignIn />
+      <TutorFormBlock />
     </>
   );
 };
