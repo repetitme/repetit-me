@@ -1,0 +1,5 @@
+@mixin text-gradient($color1: #865bff, $color2: #ff71f9) {
+  background: linear-gradient(0deg, $color1 55%, $color2 100%);
+  background-clip: text;
+  color: transparent;
+}
