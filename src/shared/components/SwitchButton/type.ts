@@ -1,4 +1,4 @@
 export interface SwitchButtonProps {
-  isActive: boolean; 
-  onSwitch: () => void; 
+  isActive: boolean;
+  onSwitch: () => void;
 }
