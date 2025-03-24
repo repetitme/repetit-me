@@ -1,11 +1,12 @@
 import styles from './index.module.scss';
 import logo from '../../assets/images/logo.svg';
-import telegramIcon from '../../assets/images/telegramIcon.svg';
 import { useEffect, useState } from 'react';
 import TeacherHeader from './TeacherHeader';
 import StudentHeader from './StudentHeader';
 import { THeaderProps } from './types';
-import classNames from 'classnames';
+import icon from '../../assets/Group.svg';
+import Button from '../../shared/button';
+
 
 const Header: React.FC<THeaderProps> = ({ auth }) => {
   const [authHeader, setAuthHeader] = useState<
@@ -35,14 +36,7 @@ const Header: React.FC<THeaderProps> = ({ auth }) => {
           <button className={styles.header__button} onClick={handleLogin}>
             Войти
           </button>
-          <button className={classNames(styles['header__telegram--button'])}>
-            <div className={styles.header__svg}>
-              <img src={telegramIcon} alt="Кнопка перехода в Telegram" />
-            </div>
-            <p className={classNames(styles['header__telegram--text'])}>
-              Перейти в Telegram
-            </p>
-          </button>
+          <Button variant="social" text="Перейти в Telegram" icon={icon} />
         </nav>
       )}
       {authHeader === 'student' && <StudentHeader onLogout={handleLogout} />}

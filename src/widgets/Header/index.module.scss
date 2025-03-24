@@ -9,15 +9,14 @@
   border-radius: var(--border-radius-blocks);
 
   &__logo {
-    margin: 0 32px;
+    margin: 0 37px;
   }
 
   &__menu {
     display: flex;
-    gap: 41px;
+    gap: 37px;
     max-block-size: 48px;
     margin: auto 34px;
-
     &--student {
       gap: 49px;
       margin-inline-end: 64px;
@@ -35,21 +34,6 @@
       color: var(--clr-primary-default);
       border-bottom: 2px solid var(--clr-primary-default, #6757f1);
     }
-  }
-
-  &__telegram--button {
-    display: flex;
-    padding: 16px 11px 12px 10px;
-    border-radius: var(--border-radius-btn-social);
-    background-color: var(--clr-blue);
-    border: none;
-  }
-
-  &__telegram--text {
-    font-weight: 700;
-    margin: 1px 7px;
-    line-height: 100%;
-    color: var(--clr-main);
   }
 
   &__svg {
