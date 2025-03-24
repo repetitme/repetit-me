@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import TeacherHeader from './TeacherHeader';
 import StudentHeader from './StudentHeader';
 import { THeaderProps } from './types';
-import icon from '../../assets/Group.svg';
-import Button from '../../shared/button';
+import icon from '../../assets/images/telegram_icon.svg';
+import Button from '../../shared/components/Button';
 
 
 const Header: React.FC<THeaderProps> = ({ auth }) => {
