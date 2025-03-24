@@ -12,6 +12,8 @@ const MainBlock = () => {
     setIsActive((prevState) => !prevState);
   };
 
+  const icons = isActive ? iconSources.teacher : iconSources.student
+
   return (
     <section className={styles.main__block}>
       <div
@@ -36,11 +38,7 @@ const MainBlock = () => {
           </button>
         </div>
       </div>
-      {isActive ? (
-        <IconList icons={iconSources.teacher} />
-      ) : (
-        <IconList icons={iconSources.student} />
-      )}
+      <IconList icons={icons} />
     </section>
   );
 };
