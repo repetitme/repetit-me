@@ -1,17 +1,22 @@
 import React from 'react';
-import styles from '../styles.module.css'
+import styles from '../styles.module.scss';
+import classNames from 'classnames';
 
 const StudentHeader: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
-    return (
-        <nav className={styles.menu}>
-            <button  className={styles.button}>Мои заявки</button>
-            <button className={styles.button}>Репетиторы</button>
-            <div className={styles.avatar} onClick={onLogout}>
-                <img src='src\assets\images\avatar.svg'/>
-                <img src='src\assets\images\arrow.svg'/>
-            </div>
-        </nav>
-    );
+  return (
+    <nav
+      className={classNames(
+        styles.header__menu,
+        styles['header__menu--student']
+      )}
+    >
+      <button className={styles.header__button}>Репетиторы</button>
+      <button className={styles.header__button}>Мои заявки</button>
+      <div className={styles.header__avatar} onClick={onLogout}>
+        <img src="src/assets/styles/avatar.png" alt="Аватар" />
+      </div>
+    </nav>
+  );
 };
 
 export default StudentHeader;

@@ -1,17 +1,17 @@
 import React from 'react';
+import styles from '../styles.module.scss';
 
 const TeacherHeader: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
-    return (
-        <nav>
-            <button>Анкета</button>
-            <button>Мои заявки</button>
-            <button>Личный кабинет</button>
-            <div  onClick={onLogout}>
-                <img src='src\assets\images\avatar.svg'/>
-                <img src='src\assets\images\arrow.svg'/>
-            </div>
-        </nav>
-    );
+  return (
+    <nav>
+      <button className={styles.header__button}>Анкета</button>
+      <button className={styles.header__button}>Мои заявки</button>
+      <button className={styles.header__button}>Личный кабинет</button>
+      <div className={styles.header__avatar} onClick={onLogout}>
+        <img src="src\assets\styles\avatar.png" alt="Аватар" />
+      </div>
+    </nav>
+  );
 };
 
 export default TeacherHeader;

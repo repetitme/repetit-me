@@ -1,12 +1,12 @@
+import { useState } from 'react';
 import Header from '../../widgets/Header';
-import QuestionList from '../../widgets/QuestionList';
 
 const MainPage = () => {
+  const [auth, setAuth] = useState<'unauth' | 'student' | 'teacher'>('unauth');
   return (
     <>
-      <Header />
-      <QuestionList />;
+      <Header auth={auth} />
     </>
   );
-}
+};
 export default MainPage;
