@@ -10,7 +10,7 @@ const MainPage = () => {
     <>
       <Perks />
       <WhyWe />
-      <TutorFormBlock />
+      <TutorFormBlock children={undefined} />
       <Chat />
       <QuestionList />
       <Footer />
