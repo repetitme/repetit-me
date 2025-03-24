@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles.module.scss';
+import styles from '../index.module.scss';
 
 const TeacherHeader: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
   return (

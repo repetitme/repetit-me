@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../styles.module.scss';
+import styles from '../index.module.scss';
 import classNames from 'classnames';
 
 const StudentHeader: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {

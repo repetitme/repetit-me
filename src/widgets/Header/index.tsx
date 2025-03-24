@@ -1,4 +1,4 @@
-import styles from './styles.module.scss';
+import styles from './index.module.scss';
 import logo from '../../assets/images/logo.svg';
 import telegramIcon from '../../assets/images/telegramIcon.svg';
 import { useEffect, useState } from 'react';
