@@ -8,7 +8,7 @@ const TeacherHeader: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
       <button className={styles.header__button}>Мои заявки</button>
       <button className={styles.header__button}>Личный кабинет</button>
       <div className={styles.header__avatar} onClick={onLogout}>
-        <img src="src\assets\styles\avatar.png" alt="Аватар" />
+        <img src="src\assets\images\avatar.svg" alt="Аватар" />
       </div>
     </nav>
   );

@@ -13,7 +13,7 @@ const StudentHeader: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
       <button className={styles.header__button}>Репетиторы</button>
       <button className={styles.header__button}>Мои заявки</button>
       <div className={styles.header__avatar} onClick={onLogout}>
-        <img src="src/assets/styles/avatar.png" alt="Аватар" />
+        <img src="src\assets\images\avatar.svg" alt="Аватар" />
       </div>
     </nav>
   );
