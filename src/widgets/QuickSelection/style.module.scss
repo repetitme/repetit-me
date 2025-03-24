@@ -1,5 +1,3 @@
-@use '../../assets/styles/variables.scss' as *;
-
 .container {
   width: 1440px;
   height: 1015px;
@@ -21,6 +19,7 @@
       font-family: var(--ffm-title);
       line-height: 132%;
       padding: 0;
+      margin: 25px 0 0 0;
 
       &_gradient {
         background: linear-gradient(315deg, #4558ff 10%, #865bff 90%);
@@ -66,7 +65,7 @@
   &__all {
     display: flex;
     justify-content: center;
-    margin: 25px 0 0;
+    margin: 40px 0 0;
 
     &_button {
       background-color: rgb(103 87 241 / 100%);

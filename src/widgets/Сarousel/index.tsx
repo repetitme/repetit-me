@@ -32,7 +32,7 @@ const Carousel: FC<CarouselProps> = ({ tutorsCard }) => {
       <li className={styles.carousel__navigation_cards_card}>
         <div className={styles.carousel__navigation_cards_card_raiting}>
           <p className={styles.carousel__navigation_cards_card_raiting_number}>
-            4.8
+            {tutorsCard[i].rating}
           </p>
           <img
             className={styles.carousel__navigation_cards_card_raiting_star}

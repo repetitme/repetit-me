@@ -1,5 +1,5 @@
 import QuickSelection from '../../widgets/QuickSelection';
-const Main = () => {
+const MainPage = () => {
   return (
     <>
       <QuickSelection />
@@ -7,4 +7,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default MainPage;
