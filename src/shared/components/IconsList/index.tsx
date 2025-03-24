@@ -1,18 +1,16 @@
-import styles from './styles.module.css';
-import { IconListProps } from './type';
+import styles from './index.module.scss';
+import { IconListProps, IconProps } from './type';
 
+const Icon: React.FC<IconProps> = ({ src, className, alt = 'icon' }) => (
+  <img src={src} className={className} alt={alt} />
+);
 
-  const IconList: React.FC<IconListProps> = ({ icons }) => (
-    <div className={styles.icons}>
-      {icons.map((icon, index) => (
-        <img
-          key={index}
-          src={icon.src}
-          className={icon.className}
-          alt="icon"
-        />
-      ))}
-    </div>
-  );
+const IconList: React.FC<IconListProps> = ({ icons }) => (
+  <div className={styles.icons}>
+    {icons.map((icon, index) => (
+      <Icon key={index} {...icon} />
+    ))}
+  </div>
+);
 
-  export default IconList;
+export default IconList;

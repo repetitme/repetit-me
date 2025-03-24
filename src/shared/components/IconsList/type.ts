@@ -1,8 +1,9 @@
-export interface Icon {
-    src: string;
-    className: string;
+export interface IconProps {
+  src: string;
+  className?: string;
+  alt?: string;
 }
 
 export interface IconListProps {
-    icons: Icon[];
+  icons: IconProps[];
 }

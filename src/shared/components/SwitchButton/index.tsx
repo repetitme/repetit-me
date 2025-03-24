@@ -1,17 +1,22 @@
-import styles from './styles.module.css';
+import classNames from 'classnames';
+import styles from './index.module.scss';
 import { SwitchButtonProps } from './type';
 
 const SwitchButton: React.FC<SwitchButtonProps> = ({ isActive, onSwitch }) => {
   return (
-    <div className={styles.switch_background}>
+    <div className={styles.switch__background}>
       <button
-        className={`${styles.button} ${isActive ? '' : styles.button_active}`}
+        className={classNames(styles.switch__button, {
+          [styles['switch__button--active']]: !isActive
+        })}
         onClick={onSwitch}
       >
         Ученик
       </button>
       <button
-        className={`${styles.button} ${isActive ? styles.button_active : ''}`}
+        className={classNames(styles.switch__button, {
+          [styles['switch__button--active']]: isActive
+        })}
         onClick={onSwitch}
       >
         Репетитор
@@ -19,4 +24,5 @@ const SwitchButton: React.FC<SwitchButtonProps> = ({ isActive, onSwitch }) => {
     </div>
   );
 };
+
 export default SwitchButton;

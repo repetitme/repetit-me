@@ -1,12 +1,9 @@
-import MainBlock from "../../widgets/MainBlock";
-
-
+import MainBlock from '../../widgets/MainBlock';
 
 const MainPage = () => {
   return (
     <>
       <MainBlock />
- 
     </>
   );
 };
