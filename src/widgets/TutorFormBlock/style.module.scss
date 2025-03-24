@@ -1,7 +1,8 @@
 .container {
+  margin: 0 0 167px;
   position: relative;
   max-width: 1440px;
-  max-height: 719px;
+  min-height: 719px;
   display: flex;
   flex-direction: column;
   align-items: center;

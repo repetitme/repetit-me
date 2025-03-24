@@ -23,11 +23,11 @@
     padding: 28px 40px;
     background: linear-gradient(
       288.86deg,
-      rgba(61, 197, 255, 0.68) 5.24%,
-      rgba(69, 88, 255, 0.68) 29.77%,
-      rgba(134, 91, 255, 0.68) 60.98%,
-      rgba(255, 113, 249, 0.68) 89.96%,
-      rgba(255, 170, 71, 0.68) 116.71%
+      rgb(61 197 255 / 68%) 5.24%,
+      rgb(69 88 255 / 68%) 29.77%,
+      rgb(134 91 255 / 68%) 60.98%,
+      rgb(255 113 249 / 68%) 89.96%,
+      rgb(255 170 71 / 68%) 116.71%
     );
     min-block-size: 336px;
   }
@@ -36,5 +36,6 @@
 .accent {
   background-position: 75% center;
   background-size: 200% 100%;
-  @include text-gradient();
+
+  @include text-gradient;
 }
