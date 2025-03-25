@@ -1,49 +1,43 @@
-import React from 'react';
-import { FC } from 'react';
-import styles from './style.module.scss';
-import { disciplines, tutorsCard } from './data';
+import React, { FC } from 'react';
+import classNames from 'classnames';
 import Carousel from '../Сarousel';
-import icon_arrowDown from '../../assets/img/icon-arrowdown.png';
+import styles from './index.module.scss';
+
+import { disciplines, tutorsCard } from './data';
+import icon_arrowDown from '../../assets/img/icon-arrowdown.svg';
 
 export const QuickSelection: FC = () => {
-  const listCount: number = 9;
-  const renderedItems: React.ReactElement[] = [];
-
-  for (let i = 0; i < listCount; i++) {
-    renderedItems.push(
-      <li className={styles.container__header_list_item}>
-        <span className={styles.container__header_list_item_text}>
-          {disciplines[i].discipline}
-        </span>
-      </li>
-    );
-  }
-
   return (
     <>
       <div className={styles.container}>
         <div className={styles.container__header}>
-          <h1 className={styles.container__header_title}>
-            Быстрый подбор
+          <h2 className={styles.container__header_title}>
+            Быстрый подбор{' '}
             <span className={styles.container__header_title_gradient}>
-              {' '}
               репетитора
             </span>
-          </h1>
+          </h2>
           <ul className={styles.container__header_list}>
             <li className={styles.container__header_list_item}>
               <span className={styles.container__header_list_item_text}>
                 Все
               </span>
             </li>
-            {renderedItems}
+            {disciplines
+              .map((discipline) => (
+                <li className={styles.container__header_list_item}>
+                  <span className={styles.container__header_list_item_text}>
+                    {discipline.discipline}
+                  </span>
+                </li>
+              ))
+              .slice(0, 9)}
 
             <li
-              className={
-                styles.container__header_list_more +
-                ' ' +
+              className={classNames(
+                styles.container__header_list_more,
                 styles.container__header_list_item
-              }
+              )}
             >
               <span className={styles.container__header_list_item_text}>
                 Ещё
@@ -51,6 +45,7 @@ export const QuickSelection: FC = () => {
               <img
                 className={styles.container__header_list_item_arrow}
                 src={icon_arrowDown}
+                alt="ещё"
               ></img>
             </li>
           </ul>

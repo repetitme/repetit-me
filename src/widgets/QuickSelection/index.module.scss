@@ -1,6 +1,5 @@
 .container {
   width: 1440px;
-  height: 1015px;
   display: flex;
   flex-direction: column;
   background-color: rgb(235 235 235);
@@ -18,11 +17,15 @@
       font-size: 40px;
       font-family: var(--ffm-title);
       line-height: 132%;
-      padding: 0;
-      margin: 25px 0 0 0;
+      margin: 25px 0 0;
 
       &_gradient {
-        background: linear-gradient(315deg, #4558ff 10%, #865bff 90%);
+        background: linear-gradient(
+          288.86deg,
+          #4558ff 29.77%,
+          #865bff 60.98%,
+          #ff71f9 109.96%
+        );
         background-clip: text;
         color: transparent;
       }
@@ -30,10 +33,9 @@
 
     &_list {
       display: flex;
-      gap: 12px 13px;
+      gap: 11px 13px;
       flex-wrap: wrap;
       width: 691px;
-      padding: 0;
       margin: 26px 0 0;
 
       &_more {
@@ -46,10 +48,10 @@
         align-items: center;
         list-style: none;
         height: 44px;
-        border-radius: 20px;
+        border-radius: var(--border-radius-blocks);
         padding: 0 15px;
-        border: 1px solid rgb(103 87 241 / 100%);
-        background-color: rgb(255 255 255 / 100%);
+        border: 1px solid var(--clr-primary-default);
+        background-color: var(--clr-main);
         box-sizing: border-box;
 
         &_text {
@@ -68,14 +70,14 @@
     margin: 40px 0 0;
 
     &_button {
-      background-color: rgb(103 87 241 / 100%);
-      border-radius: 16px;
+      background-color: var(--clr-primary-default);
+      border-radius: var(--border-radius-btn);
       border: none;
       width: 386px;
       height: 56px;
 
       &_text {
-        color: rgb(255 255 255 / 100%);
+        color: var(--clr-main);
         font-family: var(--ffm-default);
         font-weight: 700;
         font-size: 16px;
