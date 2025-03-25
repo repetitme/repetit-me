@@ -1,16 +1,17 @@
 import React from 'react';
-import './tabs.scss';
+import styles from './index.module.scss';
+import classNames from 'classnames';
 
-type tabProps = {
-  current: string;
+type TabProps = {
+  current: 'Как ученик' | 'Как репетитор';
   onClick: (value: string) => void;
 };
 
-export const Tab: React.FC<tabProps> = ({ current, onClick }) => {
+export const Tab: React.FC<TabProps> = ({ current, onClick }) => {
   return (
-    <div className="tabs">
+    <div className={styles.tabs}>
       <button
-        className={`tab ${current === 'Как ученик' ? 'current' : ''}`}
+        className={classNames(styles.tab, { [styles.current]: current === 'Как ученик' })}
         onClick={() => {
           onClick('Как ученик');
         }}
@@ -18,7 +19,7 @@ export const Tab: React.FC<tabProps> = ({ current, onClick }) => {
         {'Как ученик'}
       </button>
       <button
-        className={`tab ${current === 'Как репетитор' ? 'current' : ''}`}
+        className={classNames(styles.tab, { [styles.current]: current === 'Как репетитор' })}
         onClick={() => {
           onClick('Как репетитор');
         }}

@@ -1,6 +1,7 @@
-import './input.scss';
+import styles from './index.module.scss';
 import TInput from './types';
 import { useState } from 'react';
+import classNames from 'classnames';
 
 const Input: React.FC<TInput> = ({
   inputType,
@@ -34,13 +35,15 @@ const Input: React.FC<TInput> = ({
 
   return (
     <div
+      className={classNames(styles['input-wrapper'], extraClass, {
+        [styles.primary]: inputType !== 'Auth'
+      })}
       style={style}
-      className={`${'input-wrapper'} ${inputType !== 'Auth' ? 'primary' : ''} ${extraClass}`}
     >
       {label && <label htmlFor={name}>{label}</label>}
       <input
         id={name}
-        className={`${'input'} ${error ? 'error' : ''}`}
+        className={classNames(styles.input, { [styles.error]: error })}
         required={required}
         autoComplete={name === 'code' ? 'off' : 'on'}
         name={name}
@@ -51,7 +54,7 @@ const Input: React.FC<TInput> = ({
         value={value}
         onChange={handleChange}
       />
-      {error && <span className="error__text">{error}</span>}
+      {error && <span className={styles.error__text}>{error}</span>}
     </div>
   );
 };

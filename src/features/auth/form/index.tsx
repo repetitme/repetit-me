@@ -2,10 +2,11 @@ import AuthInputs from '../inputs';
 import { Tab } from '../tabs';
 import { useState, useRef, useEffect } from 'react';
 import useForm from '../../../shared/hooks/useForm';
-import styles from './form.module.scss';
+import styles from './index.module.scss';
 import Button from '../../../shared/button';
+import { TLogin, TFormTabs, TInputProps } from './types';
 
-const AuthForm = ({ login }: { login: boolean }) => {
+const AuthForm: React.FC<TLogin> = ({ login }) => {
   const [currentTab, setCurrentTab] = useState('Как ученик');
   const { values, handleChange } = useForm({
     name: '',
@@ -22,7 +23,7 @@ const AuthForm = ({ login }: { login: boolean }) => {
     if (code) {
       setReceived(false);
     }
-  }, [values['name'], values['tg'], values['link']]);
+  }, [values.name, values.tg, values.link]);
 
   const handleValidity = () => {
     if (formRef.current?.checkValidity()) {
@@ -39,7 +40,7 @@ const AuthForm = ({ login }: { login: boolean }) => {
     setIsValid(false);
   };
 
-  const handleActiveTab = (value: string) => {
+  const handleActiveTab = (value: TFormTabs) => {
     setCurrentTab(value);
     setReceived(false);
   };
@@ -56,20 +57,16 @@ const AuthForm = ({ login }: { login: boolean }) => {
   const AuthButton = (reg?: string) => {
     return (
       <Button
-        className={styles.auth__form__button}
         onClick={reg ? handleSuccess : undefined}
         size="large"
         variant="purple"
         disabled={!isValid}
         text={reg ? 'Зарегистрироваться' : 'Получить код'}
-      ></Button>
+      />
     );
   };
 
-  const props: {
-    values: Record<string, string>;
-    handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  } = {
+  const props: TInputProps = {
     values,
     handleChange
   };
