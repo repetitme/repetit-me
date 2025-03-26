@@ -7,7 +7,6 @@
 html,
 body {
   margin: 0;
-  font-family: var(--ffm-default, montserrat, courier, monospace);
 }
 
 h1,
@@ -32,4 +31,6 @@ a {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
