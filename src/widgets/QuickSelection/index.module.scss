@@ -17,7 +17,7 @@
       font-weight: 500;
       font-size: 40px;
       font-family: var(--ffm-title);
-      line-height: 132%;
+      line-height: 1.32;
       margin: 25px 0 0;
 
       &_gradient {
@@ -59,7 +59,7 @@
           font-family: var(--ffm-default);
           font-size: 20px;
           font-weight: 500;
-          line-height: 132%;
+          line-height: 1.32;
         }
       }
     }
@@ -77,14 +77,6 @@
       &_button {
         border: none;
         background-color: transparent;
-
-        &_unlock {
-          opacity: 1;
-        }
-
-        &_lock {
-          opacity: 0.1;
-        }
       }
 
       &_cards {
@@ -99,4 +91,12 @@
     max-width: 386px;
     margin: 40px 0 0;
   }
+}
+
+.container__carousel_navigation_button_lock {
+  visibility: hidden;
+}
+
+.container__carousel_navigation_button_unlock {
+  visibility: visible;
 }

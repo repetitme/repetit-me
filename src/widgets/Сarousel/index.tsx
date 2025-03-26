@@ -7,15 +7,28 @@ import iconClasses from '../../assets/img/icon-classes.svg';
 import iconTargets from '../../assets/img/icon-target.svg';
 
 import styles from './index.module.scss';
-import { CarouselProps } from './type';
+import { ITutorCard } from './type';
 
-const Carousel: FC<CarouselProps> = ({ tutor }) => {
+const Carousel: FC<ITutorCard> = ({
+  id,
+  rating,
+  avatar,
+  name,
+  surname,
+  type_tutor,
+  experience,
+  about,
+  price,
+  disciplines,
+  classes,
+  targets
+}) => {
   return (
     <>
-      <li className={styles.carousel__navigation_cards_card}>
+      <li className={styles.carousel__navigation_cards_card} key={id}>
         <div className={styles.carousel__navigation_cards_card_raiting}>
           <p className={styles.carousel__navigation_cards_card_raiting_number}>
-            {tutor.rating}
+            {rating}
           </p>
           <img
             className={styles.carousel__navigation_cards_card_raiting_star}
@@ -26,8 +39,8 @@ const Carousel: FC<CarouselProps> = ({ tutor }) => {
 
         <img
           className={styles.carousel__navigation_cards_card_image}
-          src={tutor.avatar}
-          alt={tutor.name + ' ' + tutor.surname}
+          src={avatar}
+          alt={name + ' ' + surname}
         ></img>
         <img
           className={styles.carousel__navigation_cards_card_videobutton}
@@ -38,17 +51,17 @@ const Carousel: FC<CarouselProps> = ({ tutor }) => {
         <div className={styles.carousel__navigation_cards_card_info}>
           <h1 className={styles.carousel__navigation_cards_card_info_name}>
             <b>
-              {tutor.name} {tutor.surname}
+              {name} {surname}
             </b>
           </h1>
           <p className={styles.carousel__navigation_cards_card_info_type}>
-            {tutor.type_tutor}&nbsp; <b> Стаж {tutor.experience} лет</b>
+            {type_tutor}&nbsp; <b> Стаж {experience} лет</b>
           </p>
           <p className={styles.carousel__navigation_cards_card_info_about}>
-            <b>О себе:</b> {tutor.about}
+            <b>О себе:</b> {about}
           </p>
           <p className={styles.carousel__navigation_cards_card_info_price}>
-            <b>от {tutor.price} руб. /час</b>
+            <b>от {price} руб. /час</b>
           </p>
 
           <div className={styles.carousel__navigation_cards_card_info_skills}>
@@ -64,11 +77,12 @@ const Carousel: FC<CarouselProps> = ({ tutor }) => {
                 src={iconDisciplines}
                 alt="Дисциплины"
               ></img>
-              {tutor.disciplines.map((discipline) => (
+              {disciplines.map((discipline) => (
                 <span
                   className={
                     styles.carousel__navigation_cards_card_info_skills_tag
                   }
+                  key={id}
                 >
                   {discipline}
                 </span>
@@ -87,7 +101,7 @@ const Carousel: FC<CarouselProps> = ({ tutor }) => {
                 src={iconClasses}
                 alt="Навыки"
               ></img>
-              {tutor.classes.map((classroom) => (
+              {classes.map((classroom) => (
                 <span
                   className={
                     styles.carousel__navigation_cards_card_info_skills_tag
@@ -110,7 +124,7 @@ const Carousel: FC<CarouselProps> = ({ tutor }) => {
                 src={iconTargets}
                 alt="Уровень подготовки"
               ></img>
-              {tutor.targets.map((target) => (
+              {targets.map((target) => (
                 <span
                   className={
                     styles.carousel__navigation_cards_card_info_skills_tag
