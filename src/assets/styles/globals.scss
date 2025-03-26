@@ -24,28 +24,28 @@ ul {
   margin: 0;
   padding: 0;
   list-style: none;
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-body {
-  font-family: var(--ffm-default);
-  color: var(--clr-black);
-}
+  body {
+    font-family: var(--ffm-default);
+    color: var(--clr-black);
+  }
 
-ul {
-  list-style: none;
-}
+  ul {
+    list-style: none;
+  }
 
-button,
-a {
-  color: currentcolor;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  text-decoration: none;
-  cursor: pointer;
-}
+  button,
+  a {
+    color: currentcolor;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
 }

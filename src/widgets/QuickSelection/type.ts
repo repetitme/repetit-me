@@ -1,5 +1,5 @@
 export interface ITutorCard {
-  id: number;
+  id: string;
   rating: number;
   avatar: string;
   name: string;
@@ -14,7 +14,7 @@ export interface ITutorCard {
 }
 
 export interface IDisciplines {
-  id: number;
+  id: string;
   discipline: string;
 }
 

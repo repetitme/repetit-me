@@ -1,6 +1,7 @@
 .container {
   width: 1440px;
   display: flex;
+  align-items: center;
   flex-direction: column;
   background-color: rgb(235 235 235);
 
@@ -64,26 +65,38 @@
     }
   }
 
-  &__all {
-    display: flex;
-    justify-content: center;
-    margin: 40px 0 0;
+  &__carousel {
+    margin: 50px 0 0;
 
-    &_button {
-      background-color: var(--clr-primary-default);
-      border-radius: var(--border-radius-btn);
-      border: none;
-      width: 386px;
-      height: 56px;
+    &_navigation {
+      display: flex;
+      justify-content: space-around;
+      gap: 40px;
+      margin: 16px 0 0;
 
-      &_text {
-        color: var(--clr-main);
-        font-family: var(--ffm-default);
-        font-weight: 700;
-        font-size: 16px;
-        line-height: 100%;
-        letter-spacing: 0%;
+      &_button {
+        border: none;
+        background-color: transparent;
+
+        &_unlock {
+          opacity: 1;
+        }
+
+        &_lock {
+          opacity: 0.1;
+        }
+      }
+
+      &_cards {
+        display: flex;
+        gap: 20px;
+        padding: 0;
       }
     }
+  }
+
+  &__button {
+    max-width: 386px;
+    margin: 40px 0 0;
   }
 }

@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 import { ITutorCard } from './type';
 import { IDisciplines } from './type';
 
@@ -7,7 +9,7 @@ import Ivanova from '../../assets/img/tutor-Ivanova.png';
 
 export const tutorsCard: ITutorCard[] = [
   {
-    id: 1,
+    id: uuidv4(),
     rating: 4.8,
     avatar: Glazkov,
     name: 'Даниил',
@@ -21,7 +23,7 @@ export const tutorsCard: ITutorCard[] = [
     targets: ['Повышение успеваемости']
   },
   {
-    id: 2,
+    id: uuidv4(),
     rating: 4.8,
     avatar: Ivanova,
     name: 'Елена',
@@ -36,7 +38,7 @@ export const tutorsCard: ITutorCard[] = [
     targets: ['Подготовка к ЕГЭ']
   },
   {
-    id: 3,
+    id: uuidv4(),
     rating: 4.8,
     avatar: Fedorova,
     name: 'Екатерина',
@@ -44,21 +46,21 @@ export const tutorsCard: ITutorCard[] = [
     type_tutor: 'Частный преподаватель',
     experience: 10,
     about:
-      ' Меня зовут Елена, с радостью помогу вам в изучении иностранных языков. 1',
+      ' Меня зовут Елена, с радостью помогу вам в изучении иностранных языков.',
     price: 1200,
     disciplines: ['Английский язык'],
     classes: ['5-8 класс', '9-11 класс'],
     targets: ['Повышение успеваемости']
   },
   {
-    id: 3,
+    id: uuidv4(),
     rating: 4.8,
     avatar: Fedorova,
-    name: 'Екатерина',
-    surname: 'Фёдорова',
+    name: 'Елена',
+    surname: 'Иванова',
     type_tutor: 'Частный преподаватель',
     experience: 10,
-    about: ' Меня зовут Елена, я ебланище. ',
+    about: ' Меня зовут Елена, я пример четвертой карточки. ',
     price: 1200,
     disciplines: ['Английский язык'],
     classes: ['5-8 класс', '9-11 класс'],
@@ -68,59 +70,59 @@ export const tutorsCard: ITutorCard[] = [
 
 export const disciplines: IDisciplines[] = [
   {
-    id: 1,
+    id: uuidv4(),
     discipline: 'Математика'
   },
   {
-    id: 2,
+    id: uuidv4(),
     discipline: 'Информатика'
   },
   {
-    id: 3,
+    id: uuidv4(),
     discipline: 'Русский язык'
   },
   {
-    id: 4,
+    id: uuidv4(),
     discipline: 'Литература'
   },
   {
-    id: 5,
+    id: uuidv4(),
     discipline: 'Биология'
   },
   {
-    id: 6,
+    id: uuidv4(),
     discipline: 'Физика'
   },
   {
-    id: 7,
+    id: uuidv4(),
     discipline: 'Химия'
   },
   {
-    id: 8,
+    id: uuidv4(),
     discipline: 'Английский язык'
   },
   {
-    id: 9,
+    id: uuidv4(),
     discipline: 'История'
   },
   {
-    id: 10,
+    id: uuidv4(),
     discipline: 'Обществознание'
   },
   {
-    id: 11,
+    id: uuidv4(),
     discipline: 'Алгебра'
   },
   {
-    id: 12,
+    id: uuidv4(),
     discipline: 'Геометрия'
   },
   {
-    id: 13,
+    id: uuidv4(),
     discipline: 'Немецкий язык'
   },
   {
-    id: 14,
+    id: uuidv4(),
     discipline: 'Экономика'
   }
 ];

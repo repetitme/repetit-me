@@ -1,12 +1,31 @@
-import React, { FC } from 'react';
+import { useState, useEffect, FC } from 'react';
 import classNames from 'classnames';
 import Carousel from '../Сarousel';
 import styles from './index.module.scss';
+import Button from '../../shared/components/Button';
 
 import { disciplines, tutorsCard } from './data';
 import icon_arrowDown from '../../assets/img/icon-arrowdown.svg';
+import arrow_left from '../../assets/img/arrow-left.svg';
+import arrow_right from '../../assets/img/arrow-right.svg';
 
 export const QuickSelection: FC = () => {
+  const cardCount: number = tutorsCard.length;
+  const [state, setState] = useState(
+    'styles.carousel__navigation_button_arrow_unlock'
+  );
+  console.log(state);
+  const cardRenderedCount: number = 3;
+
+
+  useEffect(() => {
+    if (cardCount >= cardRenderedCount) {
+      setState(styles.carousel__navigation_button_unlock);
+    } else {
+      setState(styles.carousel__navigation_button_lock);
+    }
+  }, []);
+
   return (
     <>
       <div className={styles.container}>
@@ -51,14 +70,45 @@ export const QuickSelection: FC = () => {
           </ul>
         </div>
 
-        <Carousel tutorsCard={tutorsCard} />
-        <div className={styles.container__all}>
-          <button className={styles.container__all_button}>
-            <span className={styles.container__all_button_text}>
-              Посмотреть всех
-            </span>
-          </button>
+        <div className={styles.container__carousel}>
+          <div className={styles.container__carousel_navigation}>
+            <button
+              className={classNames(
+                { state },
+                styles.container__carousel_navigation_button
+              )}
+            >
+              <img
+                src={arrow_left}
+                className={styles.container__carousel_navigation_button_arrow}
+                alt="Предыдущие анкеты"
+              ></img>
+            </button>
+            <ul className={styles.container__carousel_navigation_cards}>
+              {tutorsCard
+                .map((tutor) => <Carousel tutor={tutor} />)
+                .slice(0, 3)}
+            </ul>
+            <button
+              className={classNames(
+                { state },
+                styles.container__carousel_navigation_button
+              )}
+            >
+              <img
+                src={arrow_right}
+                className={styles.container__carousel_navigation_arrow}
+                alt="Следующие анкеты"
+              ></img>
+            </button>
+          </div>
         </div>
+
+        <Button
+          text={'Посмотреть всех'}
+          variant={'purple'}
+          className={styles.container__button}
+        ></Button>
       </div>
     </>
   );
