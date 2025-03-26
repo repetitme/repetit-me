@@ -1,6 +1,9 @@
 import React from 'react';
-import styles from './index.module.scss';
+
 import cn from 'classnames';
+
+import styles from './index.module.scss';
+
 import { TFormTabs } from '../form/types';
 
 // Временный компонент
@@ -36,3 +39,5 @@ export const Tab: React.FC<TabProps> = ({ isStudent, onClick }) => {
     </div>
   );
 };
+
+export default Tab;

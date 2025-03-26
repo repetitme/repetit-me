@@ -1,7 +1,10 @@
-import styles from './index.module.scss';
-import IInput from './types';
 import { useState } from 'react';
+
 import cn from 'classnames';
+
+import styles from './index.module.scss';
+
+import IInput from './types';
 
 const Input: React.FC<IInput> = ({
   variant = 'default',

@@ -1,11 +1,14 @@
-import { TAuthInputInterface, TInputFactory, TInputs } from './types';
 import Input from '../../../shared/ui/input';
 import inputData from './data';
 
-const requiredErrorMessage : Partial<Record<TAuthInputInterface['name'], string>> = {
-  name:'Пожалуйста, укажите имя',
-  tg:'Пожалуйста, укажите никнейм',
-  code:'Пожалуйста, введите шестизначный код'
+import { TAuthInputInterface, TInputFactory, TInputs } from './types';
+
+const requiredErrorMessage: Partial<
+  Record<TAuthInputInterface['name'], string>
+> = {
+  name: 'Пожалуйста, укажите имя',
+  tg: 'Пожалуйста, укажите никнейм',
+  code: 'Пожалуйста, введите шестизначный код'
 };
 
 const createInput: TInputFactory =

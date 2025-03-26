@@ -1,10 +1,13 @@
-import AuthInputs from '../inputs';
-import { Tab } from '../tabs';
-import { useState, useRef, useEffect } from 'react';
-import useForm from '../../../shared/hooks/useForm';
-import styles from './index.module.scss';
+import { useEffect, useRef, useState } from 'react';
+
 import Button from '../../../shared/button';
-import { TLogin, TFormTabs, TInputProps } from './types';
+import useForm from '../../../shared/hooks/useForm';
+import AuthInputs from '../inputs';
+import Tab from '../tabs';
+
+import styles from './index.module.scss';
+
+import { TFormTabs, TInputProps, TLogin } from './types';
 
 const AuthForm: React.FC<TLogin> = ({ login }) => {
   const defaultValues = { name: '', tg: '', link: '', code: '' };
@@ -37,14 +40,14 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
   };
 
   const handleActiveTab = () => {
-    setStudentTab(prev => !prev);
+    setStudentTab((prev) => !prev);
     setReceived(false);
   };
 
   const handleSuccess = () => {
-    // console.log(
-    //   `Success! Имя: ${values.name}, Tg: ${values.tg}, Ссылка: ${values.link}, Код: ${values.code}.`
-    // );
+    console.log(
+      `Success! Имя: ${values.name}, Tg: ${values.tg}, Ссылка: ${values.link}, Код: ${values.code}.`
+    );
     setIsValid(false);
     setValues(defaultValues);
     // Close modal

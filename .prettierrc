@@ -7,5 +7,16 @@
   "printWidth": 80,
   "tabWidth": 2,
   "arrowParens": "always",
-  "endOfLine": "auto"
+  "endOfLine": "auto",
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrder": [
+    "^react$",
+    "^[a-zA-Z]",
+    "^@(?!/)",
+    "^[./](?!.*\\.scss|.*types$)",
+    "^.+\\.scss$",
+    "^.*types$"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }
