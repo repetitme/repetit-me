@@ -1,6 +1,7 @@
 import { FC, ReactNode } from 'react';
 
-import styles from './style.module.scss';
+import styles from './index.module.scss';
+
 type TTutorFormBlock = { children: ReactNode };
 
 const TutorFormBlock: FC<TTutorFormBlock> = ({ children }) => {
@@ -14,7 +15,7 @@ const TutorFormBlock: FC<TTutorFormBlock> = ({ children }) => {
         Тогда заполняйте анкету и получайте заявки <br />
         на репетиторство прямо в Telegram
       </p>
-      <div className={styles.container__form}> {children} </div>
+      <div className={styles.container__form}>{children}</div>
     </div>
   );
 };
