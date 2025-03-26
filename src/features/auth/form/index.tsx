@@ -7,13 +7,9 @@ import Button from '../../../shared/button';
 import { TLogin, TFormTabs, TInputProps } from './types';
 
 const AuthForm: React.FC<TLogin> = ({ login }) => {
-  const [currentTab, setCurrentTab] = useState('Как ученик');
-  const { values, handleChange } = useForm({
-    name: '',
-    tg: '',
-    link: '',
-    code: ''
-  });
+  const defaultValues = { name: '', tg: '', link: '', code: '' };
+  const { values, handleChange, setValues } = useForm(defaultValues);
+  const [isStudentTab, setStudentTab] = useState<TFormTabs>(true);
   const [isValid, setIsValid] = useState(false);
   const [code, setReceived] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -40,40 +36,40 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
     setIsValid(false);
   };
 
-  const handleActiveTab = (value: TFormTabs) => {
-    setCurrentTab(value);
+  const handleActiveTab = () => {
+    setStudentTab(prev => !prev);
     setReceived(false);
   };
 
   const handleSuccess = () => {
-    if (formRef.current?.checkValidity()) {
-      console.log(
-        `Success! Имя: ${values.name}, Tg: ${values.tg}, Ссылка: ${values.link}, Код: ${values.code}.`
-      );
-    }
+    // console.log(
+    //   `Success! Имя: ${values.name}, Tg: ${values.tg}, Ссылка: ${values.link}, Код: ${values.code}.`
+    // );
     setIsValid(false);
+    setValues(defaultValues);
+    // Close modal
   };
 
-  const AuthButton = (reg?: string) => {
+  const AuthButton = (isRegistration?: boolean) => {
     return (
       <Button
-        onClick={reg ? handleSuccess : undefined}
+        onClick={isRegistration ? handleSuccess : undefined}
         size="large"
         variant="purple"
         disabled={!isValid}
-        text={reg ? 'Зарегистрироваться' : 'Получить код'}
+        text={isRegistration ? 'Зарегистрироваться' : 'Получить код'}
       />
     );
   };
 
-  const props: TInputProps = {
+  const inputProps: TInputProps = {
     values,
     handleChange
   };
 
   return (
     <div className={styles.auth}>
-      <Tab current={currentTab} onClick={handleActiveTab} />
+      <Tab isStudent={isStudentTab} onClick={handleActiveTab} />
       <form
         ref={formRef}
         className={styles.auth__form}
@@ -82,37 +78,37 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
       >
         {login ? (
           <>
-            {AuthInputs.tg(props)}
+            {AuthInputs.tg(inputProps)}
             {!code && <>{AuthButton()}</>}
             {code && (
               <>
-                {AuthInputs.code(props)}
-                {AuthButton('reg')}
+                {AuthInputs.code(inputProps)}
+                {AuthButton(true)}
               </>
             )}
           </>
-        ) : currentTab === 'Как ученик' ? (
+        ) : isStudentTab ? (
           <>
-            {AuthInputs.name(props)}
-            {AuthInputs.tg(props)}
-            {AuthInputs.link(props)}
+            {AuthInputs.name(inputProps)}
+            {AuthInputs.tg(inputProps)}
+            {AuthInputs.link(inputProps)}
             {!code && <>{AuthButton()}</>}
             {code && (
               <>
-                {AuthInputs.code(props)}
-                {AuthButton('reg')}
+                {AuthInputs.code(inputProps)}
+                {AuthButton(true)}
               </>
             )}
           </>
         ) : (
           <>
-            {AuthInputs.name(props, 'Необязательно')}
-            {AuthInputs.tg(props)}
+            {AuthInputs.name(inputProps, 'Необязательно')}
+            {AuthInputs.tg(inputProps)}
             {!code && <>{AuthButton()}</>}
             {code && (
               <>
-                {AuthInputs.code(props)}
-                {AuthButton('reg')}
+                {AuthInputs.code(inputProps)}
+                {AuthButton(true)}
               </>
             )}
           </>

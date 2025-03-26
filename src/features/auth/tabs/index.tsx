@@ -1,31 +1,38 @@
 import React from 'react';
 import styles from './index.module.scss';
-import classNames from 'classnames';
+import cn from 'classnames';
+import { TFormTabs } from '../form/types';
+
+// Временный компонент
 
 type TabProps = {
-  current: 'Как ученик' | 'Как репетитор';
-  onClick: (value: string) => void;
+  isStudent: TFormTabs;
+  onClick: (value: TFormTabs) => void;
 };
 
-export const Tab: React.FC<TabProps> = ({ current, onClick }) => {
+enum FormTabs {
+  STUDENT = 'Как ученик',
+  TEACHER = 'Как репетитор'
+}
+
+export const Tab: React.FC<TabProps> = ({ isStudent, onClick }) => {
   return (
     <div className={styles.tabs}>
-      <button
-        className={classNames(styles.tab, { [styles.current]: current === 'Как ученик' })}
-        onClick={() => {
-          onClick('Как ученик');
-        }}
-      >
-        {'Как ученик'}
-      </button>
-      <button
-        className={classNames(styles.tab, { [styles.current]: current === 'Как репетитор' })}
-        onClick={() => {
-          onClick('Как репетитор');
-        }}
-      >
-        {'Как репетитор'}
-      </button>
+      {Object.values(FormTabs).map((tab) => (
+        <button
+          key={tab}
+          className={cn(styles.tab, {
+            [styles.current]:
+              (isStudent && tab === FormTabs.STUDENT) ||
+              (!isStudent && tab === FormTabs.TEACHER)
+          })}
+          onClick={() => {
+            onClick(isStudent);
+          }}
+        >
+          {tab}
+        </button>
+      ))}
     </div>
   );
 };

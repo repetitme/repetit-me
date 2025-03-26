@@ -2,7 +2,7 @@ export type TLogin = {
   login: boolean;
 };
 
-export type TFormTabs = 'Как ученик' | 'Как репетитор';
+export type TFormTabs = boolean;
 
 export type TInputProps = {
   values: Record<string, string>;

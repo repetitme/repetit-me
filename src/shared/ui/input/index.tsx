@@ -1,10 +1,10 @@
 import styles from './index.module.scss';
-import TInput from './types';
+import IInput from './types';
 import { useState } from 'react';
-import classNames from 'classnames';
+import cn from 'classnames';
 
-const Input: React.FC<TInput> = ({
-  inputType,
+const Input: React.FC<IInput> = ({
+  variant = 'default',
   type,
   label,
   value,
@@ -12,42 +12,48 @@ const Input: React.FC<TInput> = ({
   required,
   pattern,
   title,
+  requiredError = 'Поле обязательно для заполнения',
   placeholder,
   extraClass,
-  requiredError,
   style,
   onChange
 }) => {
   const [error, setError] = useState<string>('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(e);
+  const validateInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     let error = '';
     if (e.target.validity.valueMissing && required) {
-      error = requiredError || 'Поле обязательно для заполнения';
-    } else if (e.target.validity.typeMismatch) {
+      error = requiredError;
+    }
+    if (e.target.validity.typeMismatch) {
       error = title || e.target.validationMessage;
-    } else if (e.target.validity.patternMismatch) {
+    }
+    if (e.target.validity.patternMismatch) {
       error = title || e.target.validationMessage;
     }
     setError(error);
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(e);
+    validateInput(e);
+  };
+
   return (
     <div
-      className={classNames(styles['input-wrapper'], extraClass, {
-        [styles.primary]: inputType !== 'Auth'
+      className={cn(styles['input-wrapper'], extraClass, {
+        [styles.primary]: variant !== 'auth'
       })}
       style={style}
     >
       {label && <label htmlFor={name}>{label}</label>}
       <input
         id={name}
-        className={classNames(styles.input, { [styles.error]: error })}
+        className={cn(styles.input, { [styles.error]: error })}
         required={required}
         autoComplete={name === 'code' ? 'off' : 'on'}
         name={name}
-        pattern={type ? undefined : pattern}
+        pattern={pattern}
         title={title}
         type={type}
         placeholder={error ? '' : placeholder}

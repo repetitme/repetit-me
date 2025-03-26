@@ -1,5 +1,5 @@
-export default interface TInput {
-  inputType?: 'Auth';
+export default interface IInput {
+  variant?: 'default' | 'auth';
   type?: 'text' | 'password' | 'email' | 'url' | 'number';
   label?: string;
   name: string;
