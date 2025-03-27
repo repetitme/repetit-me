@@ -4,8 +4,7 @@ import { AuthSelectRole } from '../shared/authSelectRole';
 
 function App() {
 
-  const selectedRole = (role: string) => {
-    console.log(role);
+  const selectedRole = (role: 'pupil' | 'teacher') => {
   }
   return (
     <>

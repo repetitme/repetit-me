@@ -1,28 +1,37 @@
-import { FC, useEffect, useState } from "react";
-import styles from './index.module.scss'
-
-
+import { FC, useState } from "react";
+import classNames from "classnames";
+import styles from './index.module.scss';
 
 interface IAuthSelectRole {
-    onChangeSelect: (role: string) => void;
+    onChangeSelect: (role: 'pupil' | 'teacher') => void;
 }
 
-export const AuthSelectRole: FC<IAuthSelectRole> = ({ onChangeSelect }) => {
+export const AuthSelectRole: FC<IAuthSelectRole> = () => {
+    const [selectedRole, setRoleSelected] = useState<'pupil' | 'teacher'>('pupil');
 
-    const [getRoleSelected, setRoleSelected] = useState<'pupil' | 'teacher'>('pupil');
+    const handleSelect = (role: 'pupil' | 'teacher') => () => setRoleSelected(role);
 
-    useEffect(() => {
-        onChangeSelect(getRoleSelected);
-    }, [getRoleSelected])
 
     return (
         <div className={styles['container-selectors']}>
-            <button onClick={() => setRoleSelected('pupil')} className={getRoleSelected === 'pupil' ? styles['active-select'] : ''}>
-                <p className={styles['button-text']}>Как ученик</p>
+            <button
+                onClick={handleSelect('pupil')}
+                className={classNames(
+                    styles['container-selectors__button'],
+                    { [styles['active-select']]: selectedRole === 'pupil' }
+                )}
+            >
+                <p className={styles['container-selectors__button--text']}>Как ученик</p>
             </button>
-            <button onClick={() => setRoleSelected('teacher')} className={getRoleSelected === 'teacher' ? styles['active-select'] : ''}>
-                <p className={styles['button-text']}>Как репетитор</p>
+            <button
+                onClick={handleSelect('teacher')}
+                className={classNames(
+                    styles['container-selectors__button'],
+                    { [styles['active-select']]: selectedRole === 'teacher' }
+                )}
+            >
+                <p className={styles['container-selectors__button--text']}>Как репетитор</p>
             </button>
         </div>
-    )
-}
+    );
+};
