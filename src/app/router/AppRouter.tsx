@@ -1,45 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
 import { useAuth } from '../../shared/hooks/useAuth';
-import NotFoundPage from '../../shared/NotFoundPage';
 import ProtectedRoute from '../../shared/ProtectedRoute/ProtectedRoute';
-
-interface IRoute {
-  path: string;
-  element: React.ReactNode;
-  auth?: boolean;
-}
-
-export const routes: IRoute[] = [
-  {
-    path: '/student-application',
-    element: <StudentApplication />,
-    auth: true
-  },
-  {
-    path: '/student-profile',
-    element: <StudentProfile />,
-    auth: true
-  },
-  {
-    path: '/teacher-application',
-    element: <TeacherApplication />,
-    auth: true
-  },
-  {
-    path: '/teacher-profile',
-    element: <TeacherProfile />,
-    auth: true
-  }
-];
+import { routesConfig } from './routesConfig';
 
 const AppRouter: React.FC = () => {
-  const { isAuthenticated } = useAuth();
+  const { isAuth } = useAuth();
 
   return (
     <Routes>
-      <Route path="/" element={<MainPage />} />
-
-      {routes.map((route) => {
+      {routesConfig.map((route) => {
         const { path, element, auth } = route;
         return (
           <Route
@@ -47,10 +16,7 @@ const AppRouter: React.FC = () => {
             path={path}
             element={
               auth ? (
-                <ProtectedRoute
-                  isAuthenticated={isAuthenticated}
-                  element={element}
-                />
+                <ProtectedRoute isAuth={isAuth} element={element} />
               ) : (
                 element
               )
@@ -58,7 +24,6 @@ const AppRouter: React.FC = () => {
           ></Route>
         );
       })}
-      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };

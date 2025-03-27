@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 
 type TUseAuthProps = {
-  isAuthenticated: boolean;
+  isAuth: boolean;
 };
 
 export const useAuth = (): TUseAuthProps => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [isAuth, setIsAuth] = useState<boolean>(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    setIsAuthenticated(!!token);
+    setIsAuth(!!token);
   }, []);
 
-  return { isAuthenticated };
+  return { isAuth };
 };
 
