@@ -3,16 +3,27 @@ import { useEffect, useRef, useState } from 'react';
 import Button from '../../../shared/button';
 import useForm from '../../../shared/hooks/useForm';
 import AuthInputs from '../inputs';
-import Tab from '../tabs';
+import { FormTabs, Tab } from '../tabs';
 
 import styles from './index.module.scss';
 
-import { TFormTabs, TInputProps, TLogin } from './types';
+import { TAuthData, TFormTabs, TInputProps, TLogin } from './types';
 
 const AuthForm: React.FC<TLogin> = ({ login }) => {
-  const defaultValues = { name: '', tg: '', link: '', code: '' };
+  enum AuthType {
+    LOGIN = 'login',
+    REGISTER = 'register'
+  }
+  const defaultValues: TAuthData = {
+    authType: AuthType.REGISTER,
+    role: FormTabs.STUDENT,
+    name: '',
+    tg: '',
+    link: '',
+    code: ''
+  };
   const { values, handleChange, setValues } = useForm(defaultValues);
-  const [isStudentTab, setStudentTab] = useState<TFormTabs>(true);
+  const [currentTab, setStudentTab] = useState<TFormTabs>(FormTabs.STUDENT);
   const [isValid, setIsValid] = useState(false);
   const [code, setReceived] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -39,28 +50,40 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
     setIsValid(false);
   };
 
-  const handleActiveTab = () => {
-    setStudentTab((prev) => !prev);
+  const handleActiveTab = (value: TFormTabs) => {
+    setStudentTab(value);
+    setValues({
+      ...values,
+      authType: login ? AuthType.LOGIN : AuthType.REGISTER,
+      role: value === FormTabs.STUDENT ? FormTabs.STUDENT : FormTabs.TUTOR
+    });
     setReceived(false);
   };
 
   const handleSuccess = () => {
     console.log(
-      `Success! Имя: ${values.name}, Tg: ${values.tg}, Ссылка: ${values.link}, Код: ${values.code}.`
+      `Success! Роль: ${values.role}, Имя: ${values.name}, Tg: ${values.tg}, Ссылка: ${values.link}, Код: ${values.code}.`
     );
     setIsValid(false);
     setValues(defaultValues);
     // Close modal
   };
 
-  const AuthButton = (isRegistration?: boolean) => {
+  const AuthButton = () => {
+    let text = '';
+    if (login && code) {
+      text = 'Войти';
+    } else {
+      text = code ? 'Зарегистрироваться' : 'Получить код';
+    }
+
     return (
       <Button
-        onClick={isRegistration ? handleSuccess : undefined}
+        onClick={code ? handleSuccess : undefined}
         size="large"
         variant="purple"
         disabled={!isValid}
-        text={isRegistration ? 'Зарегистрироваться' : 'Получить код'}
+        text={text}
       />
     );
   };
@@ -72,7 +95,7 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
 
   return (
     <div className={styles.auth}>
-      <Tab isStudent={isStudentTab} onClick={handleActiveTab} />
+      <Tab currentTab={currentTab} onClick={handleActiveTab} />
       <form
         ref={formRef}
         className={styles.auth__form}
@@ -82,24 +105,26 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
         {login ? (
           <>
             {AuthInputs.tg(inputProps)}
-            {!code && <>{AuthButton()}</>}
-            {code && (
+            {!code ? (
+              <AuthButton />
+            ) : (
               <>
                 {AuthInputs.code(inputProps)}
-                {AuthButton(true)}
+                <AuthButton />
               </>
             )}
           </>
-        ) : isStudentTab ? (
+        ) : currentTab === FormTabs.STUDENT ? (
           <>
             {AuthInputs.name(inputProps)}
             {AuthInputs.tg(inputProps)}
             {AuthInputs.link(inputProps)}
-            {!code && <>{AuthButton()}</>}
-            {code && (
+            {!code ? (
+              <AuthButton />
+            ) : (
               <>
                 {AuthInputs.code(inputProps)}
-                {AuthButton(true)}
+                <AuthButton />
               </>
             )}
           </>
@@ -107,11 +132,12 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
           <>
             {AuthInputs.name(inputProps, 'Необязательно')}
             {AuthInputs.tg(inputProps)}
-            {!code && <>{AuthButton()}</>}
-            {code && (
+            {!code ? (
+              <AuthButton />
+            ) : (
               <>
                 {AuthInputs.code(inputProps)}
-                {AuthButton(true)}
+                <AuthButton />
               </>
             )}
           </>

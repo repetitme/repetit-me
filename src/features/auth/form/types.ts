@@ -2,7 +2,18 @@ export type TLogin = {
   login: boolean;
 };
 
-export type TFormTabs = boolean;
+export type TFormTabs = 'Как ученик' | 'Как репетитор';
+
+export type TAuthType = 'login' | 'register';
+
+export type TAuthData = {
+  'authType': TAuthType;
+  'role': TFormTabs;
+  'name': string;
+  'tg': string;
+  'link': string;
+  'code': string;
+};
 
 export type TInputProps = {
   values: Record<string, string>;

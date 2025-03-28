@@ -6,6 +6,44 @@
   font-weight: 500;
   line-height: 1.36;
 
+  label {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.36;
+  }
+
+  input {
+    background-color: var(--clr-main, #fff);
+    color: var(--crl-black, #000);
+    border: none;
+    outline: 2px solid var(--clr-5, #cfdadc);
+    border-radius: 12px;
+    font-family: inherit;
+    font-weight: 500;
+    block-size: 24px;
+    padding: 20px 16px;
+    font-size: 18px;
+    caret-color: var(--clr-caret-green, #23540e);
+
+    &::placeholder {
+      font-size: 20px;
+      line-height: 1.32;
+      color: var(--clr-4, #858585);
+    }
+
+    &:focus {
+      outline: 2px solid var(--clr-primary-default, #6757f1);
+    }
+
+    &:hover {
+      outline: 2px solid var(--clr-purple-active, #958bec);
+    }
+
+    &.error {
+      outline: 2px solid var(--clr-secondary-default, #fc4a4a);
+    }
+  }
+
   .error {
     color: var(--clr-secondary-default, #fc4a4a);
 
@@ -15,49 +53,23 @@
     }
   }
 
-  input {
-    background-color: var(--clr-1, #fff);
-    color: var(--crl-black, #000);
-    border: none;
-    outline: none;
-    border-radius: 12px;
-    font-family: inherit;
-    font-weight: 500;
-    block-size: 26px;
-    padding: 20px 16px;
-    font-size: 18px;
-    caret-color: var(--clr-primary-default, #6757f1);
-
-    &::placeholder {
-      font-size: 20px;
-      line-height: 1.32;
-      color: var(--clr-4, #858585);
-    }
-  }
-
-  &.primary {
+  &.auth {
     label {
-      font-size: 20px;
-      font-weight: 700;
+      font-weight: 500;
+      font-size: 16px;
     }
 
     input {
-      background-color: var(--clr-main, #fff);
-      outline: 2px solid var(--clr-5, #cfdadc);
-      font-size: 18px;
-      block-size: 24px;
-      caret-color: var(--clr-caret-green, #23540e);
+      background-color: var(--clr-1, #f5f5f7);
+      outline: none;
+      font-size: 20px;
+      block-size: 26px;
+      caret-color: var(--clr-primary-default, #6757f1);
 
-      &:focus {
-        outline: 2px solid var(--clr-primary-default, #6757f1);
-      }
-
-      &:hover {
-        outline: 2px solid var(--clr-purple-active, #958bec);
-      }
-
+      &:focus,
+      &:hover,
       &.error {
-        outline: 2px solid var(--clr-secondary-default, #fc4a4a);
+        outline: none;
       }
     }
   }
