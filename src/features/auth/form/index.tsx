@@ -45,9 +45,6 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     if (code) {
-      console.log(
-        `Success! Тип: ${values.authType}, Роль: ${values.role}, Имя: ${values.name}, Tg: ${values.tg}, Ссылка: ${values.link}, Код: ${values.code}.`
-      );
       setIsValid(false);
       setValues(defaultValues);
       // Close modal
