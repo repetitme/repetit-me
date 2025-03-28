@@ -44,6 +44,14 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (code) {
+      console.log(
+        `Success! Тип: ${values.authType}, Роль: ${values.role}, Имя: ${values.name}, Tg: ${values.tg}, Ссылка: ${values.link}, Код: ${values.code}.`
+      );
+      setIsValid(false);
+      setValues(defaultValues);
+      // Close modal
+    }
     e.preventDefault();
     // Код получен
     setReceived(true);
@@ -60,15 +68,6 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
     setReceived(false);
   };
 
-  const handleSuccess = () => {
-    console.log(
-      `Success! Роль: ${values.role}, Имя: ${values.name}, Tg: ${values.tg}, Ссылка: ${values.link}, Код: ${values.code}.`
-    );
-    setIsValid(false);
-    setValues(defaultValues);
-    // Close modal
-  };
-
   const AuthButton = () => {
     let text = '';
     if (login && code) {
@@ -78,13 +77,7 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
     }
 
     return (
-      <Button
-        onClick={code ? handleSuccess : undefined}
-        size="large"
-        variant="purple"
-        disabled={!isValid}
-        text={text}
-      />
+      <Button size="large" variant="purple" disabled={!isValid} text={text} />
     );
   };
 
@@ -102,46 +95,24 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
         onChange={handleValidity}
         onSubmit={handleSubmit}
       >
-        {login ? (
-          <>
-            {AuthInputs.tg(inputProps)}
-            {!code ? (
-              <AuthButton />
-            ) : (
-              <>
-                {AuthInputs.code(inputProps)}
-                <AuthButton />
-              </>
-            )}
-          </>
-        ) : currentTab === FormTabs.STUDENT ? (
-          <>
-            {AuthInputs.name(inputProps)}
-            {AuthInputs.tg(inputProps)}
-            {AuthInputs.link(inputProps)}
-            {!code ? (
-              <AuthButton />
-            ) : (
-              <>
-                {AuthInputs.code(inputProps)}
-                <AuthButton />
-              </>
-            )}
-          </>
-        ) : (
-          <>
-            {AuthInputs.name(inputProps, 'Необязательно')}
-            {AuthInputs.tg(inputProps)}
-            {!code ? (
-              <AuthButton />
-            ) : (
-              <>
-                {AuthInputs.code(inputProps)}
-                <AuthButton />
-              </>
-            )}
-          </>
-        )}
+        <>
+          {/* Имя */}
+          {login
+            ? null
+            : AuthInputs.name(
+                inputProps,
+                currentTab === FormTabs.TUTOR ? 'notRequired' : ''
+              )}
+          {/* Telegram */}
+          {AuthInputs.tg(inputProps)}
+          {/* Ссылка */}
+          {currentTab === FormTabs.STUDENT &&
+            !login &&
+            AuthInputs.link(inputProps)}{' '}
+          {/* Код */}
+          {!code ? <AuthButton /> : AuthInputs.code(inputProps)}
+          {code && <AuthButton />}
+        </>
       </form>
     </div>
   );

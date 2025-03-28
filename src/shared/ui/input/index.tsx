@@ -14,6 +14,10 @@ const Input: React.FC<IInput> = ({
   value,
   type,
   required,
+  minLength,
+  maxLength,
+  autoComplete,
+  disable,
   style,
   extraClass,
   pattern,
@@ -22,8 +26,6 @@ const Input: React.FC<IInput> = ({
   onChange
 }) => {
   const [error, setError] = useState<string>('');
-
-  const maxLength = type === 'url' || name === 'link' ? 500 : 100;
 
   const validateInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     let error = '';
@@ -55,13 +57,14 @@ const Input: React.FC<IInput> = ({
         id={name}
         className={cn(styles.input, { [styles.error]: error })}
         required={required}
-        autoComplete={name === 'code' ? 'off' : 'on'}
+        autoComplete={autoComplete}
         name={name}
         pattern={pattern}
         title={title}
         type={type}
         placeholder={error ? '' : placeholder}
-        minLength={3}
+        disabled={disable}
+        minLength={minLength}
         maxLength={maxLength}
         value={value}
         onChange={handleChange}
