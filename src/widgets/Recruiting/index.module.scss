@@ -1,12 +1,13 @@
 .container {
   position: relative;
   max-width: 1440px;
-  max-height: 604px;
+  min-height: 604px;
 
   &__recruiting {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 
     &_title {
       margin: 0 0 32px;
@@ -16,7 +17,15 @@
       font-family: var(--ffm-title);
       font-size: 40px;
       font-weight: 500;
-      line-height: 135%;
+      line-height: 1.35;
+
+      &_purple {
+        color: #865bff;
+      }
+
+      &_blue { 
+        color: #4558ff;
+      }
     }
 
     &_subtitle {
@@ -29,22 +38,20 @@
       font-weight: 400;
       text-align: center;
       font-family: var(--ffm-tag);
-      line-height: 126%;
+      line-height: 1.26;
       letter-spacing: 0;
+      text-indent: -5px;
     }
 
-    &_disciplines::before {
-      content: '';
-      background-image: url('../../assets//images/women_and_computer.svg');
+    &_image {
+      position: absolute;
       block-size: 324px;
       inline-size: 324px;
-      position: absolute;
-      right: 558px;
       top: 280px;
       z-index: 1;
     }
 
-    &_disciplines {
+    &_features {
       max-height: 160px;
       flex-wrap: wrap;
       gap: 14px;
@@ -59,15 +66,15 @@
       }
 
       &_center {
-        margin: 15px -6px 0 0;
+        margin: 15px 0 0;
         padding: 0;
         display: flex;
         justify-content: center;
-        gap: 13px;
+        gap: 14px;
       }
     }
 
-    &_discipline {
+    &_feature {
       padding: 0 16px;
       min-height: 44px;
       display: flex;
@@ -77,7 +84,11 @@
       font-family: var(--ffm-default);
       font-size: 20px;
       font-weight: 500;
-      line-height: 132%;
+      line-height: 1.32;
+    }
+
+    .container__recruiting_features_center > &_feature:last-child {
+      padding: 0 12px;
     }
   }
 }

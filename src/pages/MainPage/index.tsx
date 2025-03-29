@@ -5,13 +5,12 @@ import Footer from '../../widgets/Footer';
 import { Perks } from '../../widgets/Perks';
 import QuestionList from '../../widgets/QuestionList';
 
-
 const MainPage = () => {
   return (
     <>
-      <Recruiting />
       <Perks />
       <WhyWe />
+      <Recruiting />
       <Chat />
       <QuestionList />
       <Footer />
