@@ -7,7 +7,6 @@ import { THeaderProps } from './types';
 import icon from '../../assets/images/telegram_icon.svg';
 import Button from '../../shared/components/Button';
 
-
 const Header: React.FC<THeaderProps> = ({ auth }) => {
   const [authHeader, setAuthHeader] = useState<
     'unauth' | 'student' | 'teacher'
