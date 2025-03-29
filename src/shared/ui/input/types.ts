@@ -1,5 +1,5 @@
 export default interface IInput {
-  variant?: 'default' | 'auth';
+  variant?: 'default' | 'auth' | 'price' | 'report';
   type?: 'text' | 'password' | 'email' | 'url' | 'number';
   label?: string;
   name?: string;
