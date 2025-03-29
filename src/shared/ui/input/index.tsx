@@ -87,7 +87,11 @@ const Input: React.FC<IInput> = ({
 
   return (
     <div className={wrapperClasses} style={style}>
-      {label && <label htmlFor={name}>{label}</label>}
+      {label && (
+        <label className={styles.label} htmlFor={name}>
+          {label}
+        </label>
+      )}
       <input
         id={name}
         className={cn(styles.input, { [styles.error]: error })}

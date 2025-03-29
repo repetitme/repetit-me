@@ -15,7 +15,7 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
     REGISTER = 'register'
   }
   const defaultValues: TAuthData = {
-    authType: AuthType.REGISTER,
+    authType: login ? AuthType.LOGIN : AuthType.REGISTER,
     role: FormTabs.STUDENT,
     name: '',
     tg: '',
@@ -59,7 +59,6 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
     setStudentTab(value);
     setValues({
       ...values,
-      authType: login ? AuthType.LOGIN : AuthType.REGISTER,
       role: value === FormTabs.STUDENT ? FormTabs.STUDENT : FormTabs.TUTOR
     });
     setReceived(false);
