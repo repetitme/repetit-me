@@ -11,7 +11,7 @@ const MainPage = () => {
       <Perks />
       <WhyWe />
       <Chat />
-      <TutorFormBlock children />
+      <TutorFormBlock />
       <QuestionList />
       <Footer />
     </>

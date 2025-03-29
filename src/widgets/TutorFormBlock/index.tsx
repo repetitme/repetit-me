@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react';
 
 import styles from './index.module.scss';
 
-type TTutorFormBlock = { children: ReactNode };
+type TTutorFormBlock = { children?: ReactNode };
 
 const TutorFormBlock: FC<TTutorFormBlock> = ({ children }) => {
   return (
