@@ -24,120 +24,120 @@ const Carousel: FC<ITutorCard> = ({
   targets
 }) => {
   return (
-    <>
-      <li className={styles.carousel__navigation_cards_card} key={id}>
-        <div className={styles.carousel__navigation_cards_card_raiting}>
-          <p className={styles.carousel__navigation_cards_card_raiting_number}>
-            {rating}
-          </p>
-          <img
-            className={styles.carousel__navigation_cards_card_raiting_star}
-            src={star}
-            alt="Рейтинг"
-          ></img>
-        </div>
-
+    <li className={styles.carousel__navigation_cards_card} key={id}>
+      <div className={styles.carousel__navigation_cards_card_raiting}>
+        <p className={styles.carousel__navigation_cards_card_raiting_number}>
+          {rating}
+        </p>
         <img
-          className={styles.carousel__navigation_cards_card_image}
-          src={avatar}
-          alt={name + ' ' + surname}
+          className={styles.carousel__navigation_cards_card_raiting_star}
+          src={star}
+          alt="Рейтинг"
         ></img>
-        <img
-          className={styles.carousel__navigation_cards_card_videobutton}
-          src={videobutton}
-          alt="Кнопка"
-        ></img>
+      </div>
 
-        <div className={styles.carousel__navigation_cards_card_info}>
-          <h1 className={styles.carousel__navigation_cards_card_info_name}>
-            <b>
-              {name} {surname}
-            </b>
-          </h1>
-          <p className={styles.carousel__navigation_cards_card_info_type}>
-            {type_tutor}&nbsp; <b> Стаж {experience} лет</b>
-          </p>
-          <p className={styles.carousel__navigation_cards_card_info_about}>
-            <b>О себе:</b> {about}
-          </p>
-          <p className={styles.carousel__navigation_cards_card_info_price}>
-            <b>от {price} руб. /час</b>
-          </p>
+      <img
+        className={styles.carousel__navigation_cards_card_image}
+        src={avatar}
+        alt={name + ' ' + surname}
+      ></img>
+      <img
+        className={styles.carousel__navigation_cards_card_videobutton}
+        src={videobutton}
+        alt="Кнопка"
+      ></img>
 
-          <div className={styles.carousel__navigation_cards_card_info_skills}>
-            <div
+      <div className={styles.carousel__navigation_cards_card_info}>
+        <h3 className={styles.carousel__navigation_cards_card_info_name}>
+          <b>
+            {name} {surname}
+          </b>
+        </h3>
+        <p className={styles.carousel__navigation_cards_card_info_type}>
+          {type_tutor}&nbsp; <b> Стаж {experience} лет</b>
+        </p>
+        <p className={styles.carousel__navigation_cards_card_info_about}>
+          <b>О себе:</b> {about}
+        </p>
+        <p className={styles.carousel__navigation_cards_card_info_price}>
+          <b>от {price} руб. /час</b>
+        </p>
+
+        <div className={styles.carousel__navigation_cards_card_info_skills}>
+          <div
+            className={
+              styles.carousel__navigation_cards_card_info_skills_category
+            }
+          >
+            <img
               className={
-                styles.carousel__navigation_cards_card_info_skills_category
+                styles.carousel__navigation_cards_card_info_skills_disciplines_icon
               }
-            >
-              <img
+              src={iconDisciplines}
+              alt="Дисциплины"
+            ></img>
+            {disciplines.map((discipline, index) => (
+              <span
                 className={
-                  styles.carousel__navigation_cards_card_info_skills_disciplines_icon
+                  styles.carousel__navigation_cards_card_info_skills_tag
                 }
-                src={iconDisciplines}
-                alt="Дисциплины"
-              ></img>
-              {disciplines.map((discipline) => (
-                <span
-                  className={
-                    styles.carousel__navigation_cards_card_info_skills_tag
-                  }
-                  key={id}
-                >
-                  {discipline}
-                </span>
-              ))}
-            </div>
+                key={index}
+              >
+                {discipline}
+              </span>
+            ))}
+          </div>
 
-            <div
+          <div
+            className={
+              styles.carousel__navigation_cards_card_info_skills_category
+            }
+          >
+            <img
               className={
-                styles.carousel__navigation_cards_card_info_skills_category
+                styles.carousel__navigation_cards_card_info_skills_classes_icon
               }
-            >
-              <img
+              src={iconClasses}
+              alt="Навыки"
+            ></img>
+            {classes.map((classroom, index) => (
+              <span
                 className={
-                  styles.carousel__navigation_cards_card_info_skills_classes_icon
+                  styles.carousel__navigation_cards_card_info_skills_tag
                 }
-                src={iconClasses}
-                alt="Навыки"
-              ></img>
-              {classes.map((classroom) => (
-                <span
-                  className={
-                    styles.carousel__navigation_cards_card_info_skills_tag
-                  }
-                >
-                  {classroom}
-                </span>
-              ))}
-            </div>
+                key={index}
+              >
+                {classroom}
+              </span>
+            ))}
+          </div>
 
-            <div
+          <div
+            className={
+              styles.carousel__navigation_cards_card_info_skills_category
+            }
+          >
+            <img
               className={
-                styles.carousel__navigation_cards_card_info_skills_category
+                styles.carousel__navigation_cards_card_info_skills_targets_icon
               }
-            >
-              <img
+              src={iconTargets}
+              alt="Уровень подготовки"
+            ></img>
+            {targets.map((target, index) => (
+              <span
                 className={
-                  styles.carousel__navigation_cards_card_info_skills_targets_icon
+                  styles.carousel__navigation_cards_card_info_skills_tag
                 }
-                src={iconTargets}
-                alt="Уровень подготовки"
-              ></img>
-              {targets.map((target) => (
-                <span
-                  className={
-                    styles.carousel__navigation_cards_card_info_skills_tag
-                  }
-                >
-                  {target}
-                </span>
-              ))}
-            </div>
+                key={index}
+              >
+                {target}
+              </span>
+            ))}
           </div>
         </div>
-      </li>
-    </>
+      </div>
+    </li>
   );
 };
 

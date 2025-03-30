@@ -17,6 +17,7 @@ export const QuickSelection: FC = () => {
   const [stateLeftArrow, setStateLeftArrow] = useState(
     styles.carousel__navigation_button_arrow_unlock
   );
+  const [stateOption, setStateOption] = useState('all');
 
   const [firstCard, setfirstCard] = useState(0);
 
@@ -63,29 +64,51 @@ export const QuickSelection: FC = () => {
             </span>
           </h2>
           <ul className={styles.container__header_list}>
-            <li className={styles.container__header_list_item}>
+            <li
+              className={classNames(
+                styles.container__header_list_item,
+                stateOption == 'all' ? styles.container__header_list_active : ''
+              )}
+              onClick={() => setStateOption('all')}
+            >
               <span className={styles.container__header_list_item_text}>
                 Все
               </span>
             </li>
             {disciplines
-              .map((discipline) => (
-                <li
-                  className={styles.container__header_list_item}
-                  key={discipline.id}
-                >
-                  <span className={styles.container__header_list_item_text}>
-                    {discipline.discipline}
-                  </span>
-                </li>
-              ))
+              .map((discipline) => {
+                const handleClick = () => {
+                  setStateOption(discipline.id);
+                };
+
+                return (
+                  <li
+                    className={classNames(
+                      styles.container__header_list_item,
+                      stateOption == discipline.id
+                        ? styles.container__header_list_active
+                        : ''
+                    )}
+                    key={discipline.id}
+                    onClick={handleClick}
+                  >
+                    <span className={styles.container__header_list_item_text}>
+                      {discipline.discipline}
+                    </span>
+                  </li>
+                );
+              })
               .slice(0, 9)}
 
             <li
               className={classNames(
                 styles.container__header_list_more,
-                styles.container__header_list_item
+                styles.container__header_list_item,
+                stateOption == 'more'
+                  ? styles.container__header_list_active
+                  : ''
               )}
+              onClick={() => setStateOption('more')}
             >
               <span className={styles.container__header_list_item_text}>
                 Ещё

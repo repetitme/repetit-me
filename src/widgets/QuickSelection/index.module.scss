@@ -54,6 +54,7 @@
         border: 1px solid var(--clr-primary-default);
         background-color: var(--clr-main);
         box-sizing: border-box;
+        cursor: pointer;
 
         &_text {
           font-family: var(--ffm-default);
@@ -61,6 +62,11 @@
           font-weight: 500;
           line-height: 1.32;
         }
+      }
+
+      &_active {
+        background-color: var(--clr-primary-default);
+        color: var(--clr-main);
       }
     }
   }
@@ -83,6 +89,7 @@
         display: flex;
         gap: 20px;
         padding: 0;
+        cursor: pointer;
       }
     }
   }
