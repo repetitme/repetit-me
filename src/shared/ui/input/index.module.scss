@@ -39,6 +39,16 @@
     &.error {
       outline: 2px solid var(--clr-secondary-default, #fc4a4a);
     }
+
+    &[type='number'] {
+      appearance: textfield;
+    }
+  
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+      margin: 0;
+    }
   }
 
   .error {
@@ -48,16 +58,6 @@
       color: var(--clr-secondary-default, #fc4a4a);
       top: 100%;
     }
-  }
-
-  &[type='number'] {
-    appearance: textfield;
-  }
-
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    appearance: none;
-    margin: 0;
   }
 
   &.price {
