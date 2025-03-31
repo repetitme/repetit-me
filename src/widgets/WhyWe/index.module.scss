@@ -7,8 +7,7 @@
 }
 
 .title {
-  margin-block-start: 11px;
-  margin-block-end: 43px;
+  margin-block: 11px 43px;
   font-family: var(--ffm-title);
   font-weight: 500;
   font-size: 40px;
@@ -19,7 +18,8 @@
 .accent {
   background-position: 80% center;
   background-size: 350% 100%;
-  @include text-gradient();
+
+  @include text-gradient;
 }
 
 .list {
@@ -33,7 +33,7 @@
     position: absolute;
     z-index: -1;
     border-radius: 40px;
-    background-color: #eeeeee;
+    background-color: #eee;
     inline-size: 82px;
     block-size: 87%;
   }

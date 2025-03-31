@@ -20,7 +20,7 @@
     content: '';
     position: absolute;
     z-index: -1;
-    background-image: url(../../../assets/images/chatArrow.svg);
+    background-image: url("../../../assets/images/chatArrow.svg");
     block-size: 40px;
     inline-size: 24px;
     inset-block-end: -14px;
@@ -29,7 +29,6 @@
 
   &.right::after {
     transform: scaleX(-1);
-    inset-inline-start: auto;
-    inset-inline-end: 0;
+    inset-inline: auto 0;
   }
 }
