@@ -1,29 +1,30 @@
+import NotFoundPage from '../../shared/NotFoundPage'
 import { IRoute } from './type';
 
 export const routesConfig: IRoute[] = [
   {
     path: '/',
-    element: <MainPage />,
+    element: <>MainPage</>,
     auth: false
   },
   {
     path: '/student-application',
-    element: <StudentApplication />,
+    element: <>StudentApplication</>,
     auth: true
   },
   {
     path: '/student-profile',
-    element: <StudentProfile />,
+    element: <>StudentProfile</>,
     auth: true
   },
   {
     path: '/teacher-application',
-    element: <TeacherApplication />,
+    element: <>TeacherApplication</>,
     auth: true
   },
   {
     path: '/teacher-profile',
-    element: <TeacherProfile />,
+    element: <>TeacherProfile</>,
     auth: true
   },
   {
