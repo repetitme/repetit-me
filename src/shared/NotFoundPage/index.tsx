@@ -25,7 +25,9 @@ const NotFoundPage: React.FC = () => {
       <Button
         text="Вернуться на главную страницу"
         variant="purple"
+        size="large"
         onClick={handleClick}
+        className={styles.button}
       ></Button>
     </div>
   );
