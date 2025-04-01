@@ -1,0 +1,24 @@
+.container {
+  border-radius: 12px;
+  padding: 24px;
+  background-color: var(--clr-main);
+  max-inline-size: 387px;
+  max-block-size: 398px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+}
+
+.accent {
+  background: linear-gradient(303deg, #445fff 0%, #7d5bff 100%);
+  background-clip: text;
+  color: transparent;
+}
+
+.image {
+  display: block;
+  margin: 0 auto;
+}
