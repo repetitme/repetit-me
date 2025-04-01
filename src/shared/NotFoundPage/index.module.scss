@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  block-size: 100vh;
+  background-color: var(--clr-main);
+  text-align: center;
+  font-family: var(--ffm-default);
+}
+
+.title {
+  color: var(--clr-black);
+  font-size: 40px;
+  margin-block-end: 20px;
+}
+
+.text {
+  color: var(--clr-primary-default);
+  font-size: 20px;
+  margin-block-end: 30px;
+}
+
+.image {
+  max-inline-size: 250px;
+  margin-block-end: 50px;
+}
+
+.button {
+  max-inline-size: 400px;
+}

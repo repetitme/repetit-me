@@ -9,7 +9,8 @@ const Button: React.FC<ButtonProps> = ({
   icon,
   disabled = false,
   className,
-  onClick
+  onClick,
+  href
 }) => {
   const buttonClass = classNames(
     styles.button,
@@ -20,7 +21,19 @@ const Button: React.FC<ButtonProps> = ({
     },
     className
   );
+
+  const ButtonElement = variant === 'social' ? 'a' : 'button';
+
+  const attributes = {
+    className: buttonClass,
+    onClick,
+    disabled,
+    'aria-disabled': disabled,
+    ...(variant === 'social' ? { href, target: '_blank', rel: 'noopener noreferrer' } : {})
+  };
+
   return (
+<<<<<<< HEAD:src/shared/components/Button/index.tsx
     <button
       className={buttonClass}
       onClick={onClick}
@@ -30,8 +43,12 @@ const Button: React.FC<ButtonProps> = ({
       {icon && (
         <img src={icon} alt="Иконка Telegram" className={styles.icon}></img>
       )}
+=======
+    <ButtonElement {...attributes}>
+      {icon && <img src={icon} className={styles.icon} alt="" />}
+>>>>>>> 64062a6c33ce47606520be396980936a449720a1:src/shared/button/index.tsx
       {text}
-    </button>
+    </ButtonElement>
   );
 };
 
