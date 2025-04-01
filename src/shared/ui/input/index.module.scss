@@ -16,7 +16,7 @@
     background-color: var(--clr-main, #fff);
     color: var(--crl-black, #000);
     border: none;
-    border-radius: 12px;
+    border-radius: 10px;
     font-family: inherit;
     font-weight: 500;
     font-size: 18px;
@@ -65,7 +65,7 @@
 
     .input {
       block-size: 23px;
-      padding: 9px;
+      padding: 20px 9px;
       outline: 2px solid var(--clr-5, #cfdadc);
       font-size: 18px;
       font-weight: 400;
@@ -74,30 +74,9 @@
     }
   }
 
-  &.default {
-    input {
-      padding: 11px 15px;
-      font-size: 16px;
-      inline-size: 330px;
-      border-radius: 12px;
-      border: 2px solid transparent;
-      background:
-        linear-gradient(white, white) padding-box,
-        linear-gradient(90deg, #9747ff, #6757f1) border-box;
-
-      &.error {
-        border: 2px solid var(--clr-secondary-default, #fc4a4a);
-      }
-
-      &:focus,
-      &:hover {
-        outline: none;
-      }
-    }
-  }
-
   &.report {
     font-family: var(--ffm-default);
+    inline-size: 464px;
 
     .label {
       font-size: 16px;
@@ -108,7 +87,26 @@
     .input {
       padding: 24px 16px;
       font-size: 20px;
-      inline-size: 432px;
+    }
+  }
+
+  &.default {
+    inline-size: 365px;
+
+    .input {
+      padding: 11px 15px;
+      font-size: 16px;
+      margin-block-start: 1px;
+      border-radius: 12px;
+      outline: none;
+      border: 2px solid transparent;
+      background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(90deg, #9747ff, #6757f1) border-box;
+
+      &.error {
+        border: 2px solid var(--clr-secondary-default, #fc4a4a);
+      }
     }
   }
 
@@ -122,14 +120,9 @@
       background-color: var(--clr-1, #f5f5f7);
       font-size: 20px;
       block-size: 26px;
+      outline: none;
       padding: 33px 16px;
       caret-color: var(--clr-primary-default, #6757f1);
-
-      &:focus,
-      &:hover,
-      &.error {
-        outline: none;
-      }
     }
   }
 }
