@@ -9,7 +9,8 @@ const Button: React.FC<ButtonProps> = ({
   icon,
   disabled = false,
   className,
-  onClick
+  onClick,
+  href
 }) => {
   const buttonClass = classNames(
     styles.button,
@@ -20,16 +21,22 @@ const Button: React.FC<ButtonProps> = ({
     },
     className
   );
+
+  const ButtonElement = variant === 'social' ? 'a' : 'button';
+
+  const attributes = {
+    className: buttonClass,
+    onClick,
+    disabled,
+    'aria-disabled': disabled,
+    ...(variant === 'social' ? { href, target: '_blank', rel: 'noopener noreferrer' } : {})
+  };
+
   return (
-    <button
-      className={buttonClass}
-      onClick={onClick}
-      disabled={disabled}
-      aria-disabled={disabled}
-    >
-      {icon && <img src={icon} className={styles.icon}></img>}
+    <ButtonElement {...attributes}>
+      {icon && <img src={icon} className={styles.icon} alt="" />}
       {text}
-    </button>
+    </ButtonElement>
   );
 };
 
