@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { useAuth } from '../../shared/hooks/useAuth';
-import ProtectedRoute from '../../shared/ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from '../../features/ProtectedRoute/ProtectedRoute';
 import { routesConfig } from './routesConfig';
 
 const AppRouter: React.FC = () => {
