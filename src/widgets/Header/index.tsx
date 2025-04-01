@@ -35,7 +35,7 @@ const Header: React.FC<THeaderProps> = ({ auth }) => {
           <button className={styles.header__button} onClick={handleLogin}>
             Войти
           </button>
-          <Button variant="social" text="Перейти в Telegram" icon={icon} />
+          <Button variant="social" text="Перейти в Telegram" icon={icon}/>
         </nav>
       )}
       {authHeader === 'student' && <StudentHeader onLogout={handleLogout} />}

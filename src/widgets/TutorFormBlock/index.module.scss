@@ -1,0 +1,63 @@
+.container {
+  margin: 0 0 167px;
+  position: relative;
+  max-width: 1440px;
+  min-height: 719px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    margin: 0 15px 0 0;
+    height: 39px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--ffm-title);
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 132%;
+    text-align: center;
+
+    &_gradient {
+      color: transparent;
+      background: linear-gradient(315deg, #4558ff 10%, #865bff 90%);
+      background-clip: text;
+    }
+  }
+
+  &__subtitle {
+    margin: 39px 16px 0 0;
+    font-family: var(--ffm-tag);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 123%;
+    text-align: center;
+  }
+
+  &__form {
+    position: relative;
+  }
+
+  &__form::after {
+    content: '';
+    background-image: url('../../assets/images/sahedron.png');
+    inline-size: 192px;
+    block-size: 192px;
+    position: absolute;
+    right: 460px;
+    top: -108px;
+    z-index: -1;
+  }
+
+  &__form::before {
+    content: '';
+    background-image: url('../../assets/images/Spiral_edition_2.png');
+    inline-size: 408px;
+    block-size: 348px;
+    position: absolute;
+    left: 266px;
+    top: 419px;
+    z-index: -1;
+  }
+}
