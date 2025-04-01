@@ -14,9 +14,9 @@
 
   &__menu {
     display: flex;
-    gap: 37px;
+    gap: 44px;
     max-block-size: 48px;
-    margin: auto 34px;
+    margin: auto 43px;
     &--student {
       gap: 49px;
       margin-inline-end: 64px;
@@ -26,7 +26,6 @@
   &__button {
     border: 2px solid transparent;
     background: none;
-    margin: 0 4px;
     transition: border-color 0.3s;
     cursor: pointer;
 
@@ -56,4 +55,3 @@
     }
   }
 }
-
