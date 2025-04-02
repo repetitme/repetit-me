@@ -45,21 +45,10 @@
     json5 "^2.2.3"
     semver "^6.3.1"
 
-"@babel/generator@^7.26.5", "@babel/generator@^7.27.0":
+"@babel/generator@^7.26.10", "@babel/generator@^7.26.5", "@babel/generator@^7.27.0":
   version "7.27.0"
   resolved "http://npm.prakticum-team.ru/@babel/generator/-/generator-7.27.0.tgz#764382b5392e5b9aff93cadb190d0745866cbc2c"
   integrity sha512-VybsKvpiN1gU1sdMZIp7FcqphVVKEwcuj02x73uvcHE0PTihx1nlBcowYWhDwjpoAXRv43+gDzyggGnn1XZhVw==
-  dependencies:
-    "@babel/parser" "^7.27.0"
-    "@babel/types" "^7.27.0"
-    "@jridgewell/gen-mapping" "^0.3.5"
-    "@jridgewell/trace-mapping" "^0.3.25"
-    jsesc "^3.0.2"
-
-"@babel/generator@^7.26.9":
-  version "7.26.9"
-  resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.26.9.tgz#75a9482ad3d0cc7188a537aa4910bc59db67cbca"
-  integrity sha512-kEWdzjOAUMW4hAyrzJ0ZaTOu9OmpyDIQicIh0zg0EEcEkYXZb2TjtBhnHi2ViX7PKwZqF4xwqfAm299/QMP3lg==
   dependencies:
     "@babel/parser" "^7.27.0"
     "@babel/types" "^7.27.0"
@@ -123,14 +112,7 @@
     "@babel/template" "^7.27.0"
     "@babel/types" "^7.27.0"
 
-"@babel/parser@^7.1.0", "@babel/parser@^7.20.7", "@babel/parser@^7.26.10", "@babel/parser@^7.27.0":
-  version "7.27.0"
-  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.27.0.tgz#3d7d6ee268e41d2600091cbd4e145ffee85a44ec"
-  integrity sha512-iaepho73/2Pz7w2eMS0Q5f83+0RKI7i4xmiYeBmDzfRVbQtTOG7Ts0S4HzJVsTMGI9keU8rNfuZr8DKfSt7Yyg==
-  dependencies:
-    "@babel/types" "^7.26.9"
-
-"@babel/parser@^7.26.7", "@babel/parser@^7.27.0":
+"@babel/parser@^7.1.0", "@babel/parser@^7.20.7", "@babel/parser@^7.26.10", "@babel/parser@^7.26.7", "@babel/parser@^7.27.0":
   version "7.27.0"
   resolved "http://npm.prakticum-team.ru/@babel/parser/-/parser-7.27.0.tgz#3d7d6ee268e41d2600091cbd4e145ffee85a44ec"
   integrity sha512-iaepho73/2Pz7w2eMS0Q5f83+0RKI7i4xmiYeBmDzfRVbQtTOG7Ts0S4HzJVsTMGI9keU8rNfuZr8DKfSt7Yyg==
@@ -153,15 +135,6 @@
 
 "@babel/template@^7.26.9", "@babel/template@^7.27.0":
   version "7.27.0"
-  resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.27.0.tgz#b253e5406cc1df1c57dcd18f11760c2dbf40c0b4"
-  integrity sha512-2ncevenBqXI6qRMukPlXwHKHchC7RyMuu4xv5JBXRfOGVcTy1mXCD12qrp7Jsoxll1EV3+9sE4GugBVRjT2jFA==
-  dependencies:
-    "@babel/code-frame" "^7.26.2"
-    "@babel/parser" "^7.27.0"
-    "@babel/types" "^7.27.0"
-
-"@babel/template@^7.27.0":
-  version "7.27.0"
   resolved "http://npm.prakticum-team.ru/@babel/template/-/template-7.27.0.tgz#b253e5406cc1df1c57dcd18f11760c2dbf40c0b4"
   integrity sha512-2ncevenBqXI6qRMukPlXwHKHchC7RyMuu4xv5JBXRfOGVcTy1mXCD12qrp7Jsoxll1EV3+9sE4GugBVRjT2jFA==
   dependencies:
@@ -169,20 +142,20 @@
     "@babel/parser" "^7.27.0"
     "@babel/types" "^7.27.0"
 
-"@babel/traverse@^7.25.9", "@babel/traverse@^7.26.9":
+"@babel/traverse@^7.25.9":
   version "7.26.9"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.26.9.tgz#4398f2394ba66d05d988b2ad13c219a2c857461a"
   integrity sha512-ZYW7L+pL8ahU5fXmNbPF+iZFHCv5scFak7MZ9bwaRPLUhHh7QQEMjZUg0HevihoqCM5iSYHN61EyCoZvqC+bxg==
   dependencies:
     "@babel/code-frame" "^7.26.2"
-    "@babel/generator" "^7.27.0"
-    "@babel/parser" "^7.27.0"
-    "@babel/template" "^7.27.0"
-    "@babel/types" "^7.27.0"
+    "@babel/generator" "^7.26.9"
+    "@babel/parser" "^7.26.9"
+    "@babel/template" "^7.26.9"
+    "@babel/types" "^7.26.9"
     debug "^4.3.1"
     globals "^11.1.0"
 
-"@babel/traverse@^7.26.7":
+"@babel/traverse@^7.26.10", "@babel/traverse@^7.26.7":
   version "7.27.0"
   resolved "http://npm.prakticum-team.ru/@babel/traverse/-/traverse-7.27.0.tgz#11d7e644779e166c0442f9a07274d02cd91d4a70"
   integrity sha512-19lYZFzYVQkkHkl4Cy4WrAVcqBkgvV2YM2TU3xG6DIwO7O3ecbDPfW3yM3bjAGcqcQHi+CCtjMR3dIEHxsd6bA==
@@ -195,7 +168,7 @@
     debug "^4.3.1"
     globals "^11.1.0"
 
-"@babel/types@^7.0.0", "@babel/types@^7.20.7", "@babel/types@^7.25.9", "@babel/types@^7.26.9":
+"@babel/types@^7.0.0", "@babel/types@^7.20.7", "@babel/types@^7.25.9":
   version "7.26.9"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.26.9.tgz#08b43dec79ee8e682c2ac631c010bdcac54a21ce"
   integrity sha512-Y3IR1cRnOxOCDvMmNiym7XpXQ93iGDDPHx+Zj+NM+rg0fBaShfQLkg+hKPaZCEvg5N/LeCo4+Rj/i3FuJsIQaw==
@@ -203,7 +176,7 @@
     "@babel/helper-string-parser" "^7.25.9"
     "@babel/helper-validator-identifier" "^7.25.9"
 
-"@babel/types@^7.26.7", "@babel/types@^7.27.0":
+"@babel/types@^7.26.10", "@babel/types@^7.26.7", "@babel/types@^7.27.0":
   version "7.27.0"
   resolved "http://npm.prakticum-team.ru/@babel/types/-/types-7.27.0.tgz#ef9acb6b06c3173f6632d993ecb6d4ae470b4559"
   integrity sha512-H45s8fVLYjbhFH62dIJ3WtmJ6RSPt/3DRO0ZcT2SUiYiQyz3BLVb9ADEnLl91m74aQPS3AzzeajZHYOalWe3bg==
@@ -704,10 +677,10 @@
   resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-ia32-msvc/-/rollup-win32-ia32-msvc-4.38.0.tgz#6c02847c60fcc7a6d74e00a60f350d079558d84d"
   integrity sha512-mqu4PzTrlpNHHbu5qleGvXJoGgHpChBlrBx/mEhTPpnAL1ZAYFlvHD7rLK839LLKQzqEQMFJfGrrOHItN4ZQqA==
 
-"@rollup/rollup-win32-x64-msvc@4.34.8":
-  version "4.34.8"
-  resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.34.8.tgz#4cdb2cfae69cdb7b1a3cc58778e820408075e928"
-  integrity sha512-U0FaE5O1BCpZSeE6gBl3c5ObhePQSfk9vDRToMmTkbhCOgW4jqvtS5LGyQ76L1fH8sM0keRp4uDTsbjiUyjk0g==
+"@rollup/rollup-win32-x64-msvc@4.38.0":
+  version "4.38.0"
+  resolved "http://npm.prakticum-team.ru/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.38.0.tgz#38197da22c1af7b6b5d1cc7541757379193b8e83"
+  integrity sha512-jjqy3uWlecfB98Psxb5cD6Fny9Fupv9LrDSPTQZUROqjvZmcCqNu4UMl7qqhlUUGpwiAkotj6GYu4SZdcr/nLw==
 
 "@trivago/prettier-plugin-sort-imports@^5.2.2":
   version "5.2.2"

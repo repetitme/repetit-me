@@ -7,7 +7,7 @@ import styles from './index.module.scss';
 import IInput from './types';
 
 const Input: React.FC<IInput> = ({
-  variant = 'default',
+  variant = 'form',
   name,
   label,
   placeholder,
