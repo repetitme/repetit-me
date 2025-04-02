@@ -62,7 +62,7 @@ const Input: React.FC<IInput> = ({
       target: { value: value }
     } as React.ChangeEvent<HTMLInputElement>);
   };
-  
+
   const handleBackspace = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     // Исправляет Backspace для поля с ценой
     if (e.key === 'Backspace' && isPrice) {
