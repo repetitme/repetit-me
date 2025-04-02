@@ -14,7 +14,8 @@
 
     &:hover {
       transition: color var(--delay-dekstop);
-      @include text-gradient();
+
+      @include text-gradient;
     }
   }
 
