@@ -13,9 +13,10 @@
     "^react$",
     "^[a-zA-Z]",
     "^@(?!/)",
-    "^[./](?!.*\\.scss|.*types$)",
+    "^[./](?!.*\\.scss|.*types$|.*type$)",
     "^.+\\.scss$",
-    "^.*types$"
+    "^.*types$",
+    "^.*type$"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true

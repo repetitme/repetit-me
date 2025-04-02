@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 
-import { ButtonProps } from './type';
-
 import styles from './index.module.scss';
+
+import { ButtonProps } from './type';
 
 const Button: React.FC<ButtonProps> = ({
   text,
