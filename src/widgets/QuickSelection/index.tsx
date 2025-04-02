@@ -1,57 +1,17 @@
-import { useState, useEffect, FC } from 'react';
+import { useState, FC } from 'react';
 import classNames from 'classnames';
+
 import Carousel from '../Сarousel';
-import styles from './index.module.scss';
 import Button from '../../shared/components/Button';
 
 import { disciplines, tutorsCard } from './data';
-import icon_arrowDown from '../../assets/img/icon-arrowdown.svg';
-import arrow_left from '../../assets/img/arrow-left.svg';
-import arrow_right from '../../assets/img/arrow-right.svg';
+import styles from './index.module.scss';
+import icon_arrowDown from '../../assets/images/icon-arrowdown.svg';
 
 export const QuickSelection: FC = () => {
-  const cardCount: number = tutorsCard.length;
-  const [stateRightArrow, setStateRightArrow] = useState(
-    styles.carousel__navigation_button_arrow_unlock
-  );
-  const [stateLeftArrow, setStateLeftArrow] = useState(
-    styles.carousel__navigation_button_arrow_unlock
-  );
   const [stateOption, setStateOption] = useState('all');
-
-  const [firstCard, setfirstCard] = useState(0);
-
-  const cardRenderedCount: number = 3;
-
-  function changeCardNext() {
-    if (firstCard + cardRenderedCount < cardCount) {
-      setStateLeftArrow(styles.container__carousel_navigation_button_unlock);
-      setfirstCard(firstCard + 1);
-    }
-    if (firstCard + cardRenderedCount + 1 == cardCount) {
-      setStateRightArrow(styles.container__carousel_navigation_button_lock);
-    }
-  }
-
-  function changeCardPrevious() {
-    if (firstCard > 0) {
-      setStateRightArrow(styles.container__carousel_navigation_button_unlock);
-      setfirstCard(firstCard - 1);
-    }
-    if (firstCard - 1 == 0) {
-      setStateLeftArrow(styles.container__carousel_navigation_button_lock);
-    }
-  }
-
-  useEffect(() => {
-    if (cardCount >= cardRenderedCount) {
-      setStateLeftArrow(styles.container__carousel_navigation_button_unlock);
-      setStateRightArrow(styles.container__carousel_navigation_button_unlock);
-    } else {
-      setStateLeftArrow(styles.container__carousel_navigation_button_lock);
-      setStateRightArrow(styles.container__carousel_navigation_button_lock);
-    }
-  }, []);
+  const [stateMore, setStateMore] = useState(false);
+  const [stateItemOther, setStateItemOther] = useState(false);
 
   return (
     <>
@@ -67,9 +27,13 @@ export const QuickSelection: FC = () => {
             <li
               className={classNames(
                 styles.container__header_list_item,
-                stateOption == 'all' ? styles.container__header_list_active : ''
+                stateOption == 'all' ? styles.container__header_item_active : ''
               )}
-              onClick={() => setStateOption('all')}
+              onClick={() => {
+                setStateOption('all');
+                setStateItemOther(false);
+                setStateMore(false);
+              }}
             >
               <span className={styles.container__header_list_item_text}>
                 Все
@@ -77,8 +41,10 @@ export const QuickSelection: FC = () => {
             </li>
             {disciplines
               .map((discipline) => {
-                const handleClick = () => {
+                const changeDiscipline = () => {
                   setStateOption(discipline.id);
+                  setStateItemOther(discipline.other);
+                  setStateMore(false);
                 };
 
                 return (
@@ -86,11 +52,11 @@ export const QuickSelection: FC = () => {
                     className={classNames(
                       styles.container__header_list_item,
                       stateOption == discipline.id
-                        ? styles.container__header_list_active
+                        ? styles.container__header_item_active
                         : ''
                     )}
                     key={discipline.id}
-                    onClick={handleClick}
+                    onClick={changeDiscipline}
                   >
                     <span className={styles.container__header_list_item_text}>
                       {discipline.discipline}
@@ -104,11 +70,15 @@ export const QuickSelection: FC = () => {
               className={classNames(
                 styles.container__header_list_more,
                 styles.container__header_list_item,
-                stateOption == 'more'
-                  ? styles.container__header_list_active
+                stateItemOther == true
+                  ? styles.container__header_item_active
                   : ''
               )}
-              onClick={() => setStateOption('more')}
+              onClick={() => {
+                setStateOption('more');
+                setStateItemOther(true);
+                setStateMore(!stateMore);
+              }}
             >
               <span className={styles.container__header_list_item_text}>
                 Ещё
@@ -117,53 +87,47 @@ export const QuickSelection: FC = () => {
                 className={styles.container__header_list_item_arrow}
                 src={icon_arrowDown}
                 alt="ещё"
-              ></img>
+              />
             </li>
+          </ul>
+          <ul
+            className={classNames(
+              stateMore == true
+                ? styles.container__header_more
+                : styles.container__header_more_disabled
+            )}
+          >
+            {disciplines
+              .map((discipline) => {
+                const handleClick = () => {
+                  setStateMore(false);
+                  setStateItemOther(discipline.other);
+                  setStateOption(discipline.id);
+                };
+
+                return (
+                  <li
+                    className={classNames(styles.container__header_more_item)}
+                    key={discipline.id}
+                    onClick={handleClick}
+                  >
+                    <span className={styles.container__header_more_item_text}>
+                      {discipline.discipline}
+                    </span>
+                  </li>
+                );
+              })
+              .slice(9, 14)}
           </ul>
         </div>
 
-        <div className={styles.container__carousel}>
-          <div className={styles.container__carousel_navigation}>
-            <button
-              className={classNames(
-                stateLeftArrow,
-                styles.container__carousel_navigation_button
-              )}
-              onClick={changeCardPrevious}
-            >
-              <img
-                src={arrow_left}
-                className={styles.container__carousel_navigation_button_arrow}
-                alt="Предыдущие анкеты"
-              ></img>
-            </button>
-            <ul className={styles.container__carousel_navigation_cards}>
-              {tutorsCard
-                .map((tutor) => <Carousel key={tutor.id} {...tutor} />)
-                .slice(firstCard, firstCard + 3)}
-            </ul>
-            <button
-              className={classNames(
-                stateRightArrow,
-                styles.container__carousel_navigation_button,
-                styles.container__carousel_navigation_button_next_button
-              )}
-              onClick={changeCardNext}
-            >
-              <img
-                src={arrow_right}
-                className={styles.container__carousel_navigation_arrow}
-                alt="Следующие анкеты"
-              ></img>
-            </button>
-          </div>
-        </div>
+        <Carousel tutorsCard={tutorsCard} />
 
         <Button
           text={'Посмотреть всех'}
           variant={'purple'}
           className={styles.container__button}
-        ></Button>
+        />
       </div>
     </>
   );

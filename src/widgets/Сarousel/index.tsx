@@ -1,143 +1,98 @@
-import { FC } from 'react';
+import { useState, useEffect, FC } from 'react';
+import classNames from 'classnames';
 
-import star from '../../assets/img/icon-star.svg';
-import videobutton from '../../assets/img/icon-video.svg';
-import iconDisciplines from '../../assets/img/icon-disciplines.svg';
-import iconClasses from '../../assets/img/icon-classes.svg';
-import iconTargets from '../../assets/img/icon-target.svg';
+import arrow_left from '../../assets/images/arrow-left.svg';
+import arrow_right from '../../assets/images/arrow-right.svg';
 
 import styles from './index.module.scss';
-import { ITutorCard } from './type';
+import { ITutorCardProps } from './type';
 
-const Carousel: FC<ITutorCard> = ({
-  id,
-  rating,
-  avatar,
-  name,
-  surname,
-  type_tutor,
-  experience,
-  about,
-  price,
-  disciplines,
-  classes,
-  targets
-}) => {
+const Carousel: FC<ITutorCardProps> = ({ tutorsCard }) => {
+  const [stateRightArrow, setStateRightArrow] = useState(
+    styles.container__navigation_button_unlock
+  );
+  const [stateLeftArrow, setStateLeftArrow] = useState(
+    styles.container__navigation_button_unlock
+  );
+  const cardCount: number = tutorsCard.length;
+
+  const [firstCard, setfirstCard] = useState(0);
+
+  const cardRenderedCount: number = 3;
+
+  function changeCardNext() {
+    if (firstCard + cardRenderedCount < cardCount) {
+      setStateLeftArrow(styles.container__navigation_button_unlock);
+      setfirstCard(firstCard + 1);
+    }
+    if (firstCard + cardRenderedCount + 1 == cardCount) {
+      setStateRightArrow(styles.container__navigation_button_lock);
+    }
+  }
+
+  function changeCardPrevious() {
+    if (firstCard > 0) {
+      setStateRightArrow(styles.container__navigation_button_unlock);
+      setfirstCard(firstCard - 1);
+    }
+    if (firstCard - 1 == 0) {
+      setStateLeftArrow(styles.container__navigation_button_lock);
+    }
+  }
+
+  useEffect(() => {
+    if (cardCount > cardRenderedCount) {
+      setStateLeftArrow(styles.container__navigation_button_unlock);
+      setStateRightArrow(styles.container__navigation_button_unlock);
+    } else {
+      setStateLeftArrow(styles.container__navigation_button_lock);
+      setStateRightArrow(styles.container__navigation_button_lock);
+    }
+    if (firstCard == 0) {
+      setStateLeftArrow(styles.container__navigation_button_lock);
+    }
+  }, []);
   return (
-    <li className={styles.carousel__navigation_cards_card} key={id}>
-      <div className={styles.carousel__navigation_cards_card_raiting}>
-        <p className={styles.carousel__navigation_cards_card_raiting_number}>
-          {rating}
-        </p>
-        <img
-          className={styles.carousel__navigation_cards_card_raiting_star}
-          src={star}
-          alt="Рейтинг"
-        ></img>
+    <div className={styles.container}>
+      <div className={styles.container__navigation}>
+        <button
+          className={classNames(
+            stateLeftArrow,
+            styles.container__navigation_button
+          )}
+          onClick={changeCardPrevious}
+        >
+          <img
+            src={arrow_left}
+            className={styles.container__navigation_button_arrow}
+            alt="Предыдущие анкеты"
+          />
+        </button>
+        <ul className={styles.container__navigation_cards}>
+          {tutorsCard
+            .map((tutor) => (
+              <img
+                className={styles.container__navigation_cards_card}
+                src={tutor}
+              />
+            ))
+            .slice(firstCard, firstCard + cardRenderedCount)}
+        </ul>
+        <button
+          className={classNames(
+            stateRightArrow,
+            styles.container__navigation_button
+          )}
+          onClick={changeCardNext}
+        >
+          <img
+            src={arrow_right}
+            className={styles.container__navigation_button_arrow}
+            alt="Следующие анкеты"
+          />
+        </button>
       </div>
-
-      <img
-        className={styles.carousel__navigation_cards_card_image}
-        src={avatar}
-        alt={name + ' ' + surname}
-      ></img>
-      <img
-        className={styles.carousel__navigation_cards_card_videobutton}
-        src={videobutton}
-        alt="Кнопка"
-      ></img>
-
-      <div className={styles.carousel__navigation_cards_card_info}>
-        <h3 className={styles.carousel__navigation_cards_card_info_name}>
-          <b>
-            {name} {surname}
-          </b>
-        </h3>
-        <p className={styles.carousel__navigation_cards_card_info_type}>
-          {type_tutor}&nbsp; <b> Стаж {experience} лет</b>
-        </p>
-        <p className={styles.carousel__navigation_cards_card_info_about}>
-          <b>О себе:</b> {about}
-        </p>
-        <p className={styles.carousel__navigation_cards_card_info_price}>
-          <b>от {price} руб. /час</b>
-        </p>
-
-        <div className={styles.carousel__navigation_cards_card_info_skills}>
-          <div
-            className={
-              styles.carousel__navigation_cards_card_info_skills_category
-            }
-          >
-            <img
-              className={
-                styles.carousel__navigation_cards_card_info_skills_disciplines_icon
-              }
-              src={iconDisciplines}
-              alt="Дисциплины"
-            ></img>
-            {disciplines.map((discipline, index) => (
-              <span
-                className={
-                  styles.carousel__navigation_cards_card_info_skills_tag
-                }
-                key={index}
-              >
-                {discipline}
-              </span>
-            ))}
-          </div>
-
-          <div
-            className={
-              styles.carousel__navigation_cards_card_info_skills_category
-            }
-          >
-            <img
-              className={
-                styles.carousel__navigation_cards_card_info_skills_classes_icon
-              }
-              src={iconClasses}
-              alt="Навыки"
-            ></img>
-            {classes.map((classroom, index) => (
-              <span
-                className={
-                  styles.carousel__navigation_cards_card_info_skills_tag
-                }
-                key={index}
-              >
-                {classroom}
-              </span>
-            ))}
-          </div>
-
-          <div
-            className={
-              styles.carousel__navigation_cards_card_info_skills_category
-            }
-          >
-            <img
-              className={
-                styles.carousel__navigation_cards_card_info_skills_targets_icon
-              }
-              src={iconTargets}
-              alt="Уровень подготовки"
-            ></img>
-            {targets.map((target, index) => (
-              <span
-                className={
-                  styles.carousel__navigation_cards_card_info_skills_tag
-                }
-                key={index}
-              >
-                {target}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-    </li>
+    </div>
   );
 };
 

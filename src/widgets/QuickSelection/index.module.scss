@@ -1,11 +1,12 @@
 .container {
-  width: 1440px;
+  min-width: 1440px;
   display: flex;
   align-items: center;
   flex-direction: column;
   background-color: rgb(235 235 235);
 
   &__header {
+    position: relative;
     width: 1200px;
     margin: 0 120px;
     height: 158px;
@@ -63,33 +64,39 @@
           line-height: 1.32;
         }
       }
-
-      &_active {
-        background-color: var(--clr-primary-default);
-        color: var(--clr-main);
-      }
     }
-  }
 
-  &__carousel {
-    margin: 50px 0 0;
+    &_more_disabled {
+      display: none;
+    }
 
-    &_navigation {
+    &_more {
       display: flex;
-      justify-content: space-around;
-      gap: 40px;
-      margin: 16px 0 0;
+      gap: 8px;
+      flex-direction: column;
+      justify-content: center;
+      position: absolute;
+      min-height: 248px;
+      min-width: 206px;
+      background-color: var(--clr-main);
+      border-radius: 8px;
+      z-index: 1;
+      right: 121px;
+      top: 180px;
 
-      &_button {
-        border: none;
-        background-color: transparent;
-      }
-
-      &_cards {
+      &_item {
+        padding: 0 0 0 17px;
         display: flex;
-        gap: 20px;
-        padding: 0;
+        align-items: center;
+        min-height: 40px;
         cursor: pointer;
+
+        &_text {
+          font-family: var(--ffm-default);
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 1.36;
+        }
       }
     }
   }
@@ -100,10 +107,7 @@
   }
 }
 
-.container__carousel_navigation_button_lock {
-  visibility: hidden;
-}
-
-.container__carousel_navigation_button_unlock {
-  visibility: visible;
+.container__header_item_active {
+  background-color: var(--clr-primary-default);
+  color: var(--clr-main);
 }

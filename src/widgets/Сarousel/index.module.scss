@@ -1,19 +1,27 @@
-.carousel {
+.container {
+  margin: 50px 0 0;
+
   &__navigation {
     display: flex;
     justify-content: space-around;
-    gap: 40px;
+    align-items: center;
+    gap: 32px;
     margin: 16px 0 0;
 
     &_button {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      height: 80px;
+
       &_unlock {
-        opacity: 1;
+        visibility: visible;
         background-color: transparent;
         border: none;
       }
 
       &_lock {
-        opacity: 0.1;
+        visibility: hidden;
         background-color: transparent;
         border: none;
       }
@@ -21,115 +29,11 @@
 
     &_cards {
       display: flex;
-      gap: 20px;
-      padding: 0;
+      gap: 12px;
+      padding: 0 0 0 8px;
 
       &_card {
-        position: relative;
-        height: 593px;
-        width: 387px;
-        border-radius: var(--border-radius-btn-social);
-        background-color: var(--clr-main);
-        list-style: none;
-
-        &_raiting {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: absolute;
-          gap: 3px;
-          background-color: var(--clr-primary-default);
-          width: 62px;
-          height: 28px;
-          border-radius: 10px;
-          top: 16px;
-          right: 16px;
-
-          &_number {
-            font-family: var(--ffm-default);
-            font-size: 14px;
-            font-weight: 600;
-            line-height: 24px;
-            color: var(--clr-main);
-          }
-
-          &_star {
-            width: 16px;
-            height: 14px;
-          }
-        }
-
-        &_videobutton {
-          position: absolute;
-          top: 204px;
-          right: 15px;
-        }
-
-        &_info {
-          height: 293px;
-          padding: 0 20px;
-          margin: 23px 0 0;
-
-          &_skills {
-            display: flex;
-            flex-direction: column;
-            margin: 20px 0 0;
-            gap: 12px;
-
-            &_category {
-              display: flex;
-              gap: 10px;
-            }
-
-            &_tag {
-              background-color: var(--clr-2);
-              border-radius: var(--border-radius-btn-social);
-              font-family: var(--ffm-tag);
-              padding: 5px 12px;
-              font-weight: 400;
-              font-size: 12px;
-              line-height: 18px;
-              letter-spacing: 0%;
-            }
-          }
-
-          &_name {
-            position: relative;
-            font-family: var(--ffm-default);
-            font-size: 20px;
-            font-weight: 700;
-            line-height: 20px;
-            margin: 0;
-          }
-
-          &_type {
-            position: relative;
-            font-family: var(--ffm-default);
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 1;
-            margin: 15px 0 0;
-          }
-
-          &_about {
-            position: relative;
-            font-family: var(--ffm-default);
-            font-size: 15px;
-            font-weight: 400;
-            line-height: 19px;
-            margin: 17px 0 0;
-            width: 316px;
-            height: 61px;
-          }
-
-          &_price {
-            font-family: var(--ffm-default);
-            font-size: 20px;
-            font-weight: 700;
-            line-height: 20px;
-            margin: 17px 0 0;
-          }
-        }
+        cursor: pointer;
       }
     }
   }

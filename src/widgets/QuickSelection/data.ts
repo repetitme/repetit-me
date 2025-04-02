@@ -1,128 +1,88 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { ITutorCard } from './type';
 import { IDisciplines } from './type';
 
-import Glazkov from '../../assets/img/tutor-Glazkov.png';
-import Fedorova from '../../assets/img/tutor-Fedorova.png';
-import Ivanova from '../../assets/img/tutor-Ivanova.png';
+import ivanova from '../../assets/images/tutor-ivanova.svg';
+import fedorova from '../../assets/images/tutor-fedorova.svg';
+import glazkov from '../../assets/images/tutor-glazkov.svg';
 
-export const tutorsCard: ITutorCard[] = [
-  {
-    id: uuidv4(),
-    rating: 4.8,
-    avatar: Glazkov,
-    name: 'Даниил',
-    surname: 'Глазков',
-    type_tutor: 'Частный преподаватель',
-    experience: 10,
-    about: 'Меня зовут Даниил, преподаю на протяжении 10 лет.',
-    price: 1200,
-    disciplines: ['Физика'],
-    classes: ['5-8 класс', '9-11 класс'],
-    targets: ['Повышение успеваемости']
-  },
-  {
-    id: uuidv4(),
-    rating: 4.8,
-    avatar: Ivanova,
-    name: 'Елена',
-    surname: 'Иванова',
-    type_tutor: 'Частный преподаватель',
-    experience: 10,
-    about:
-      'Меня зовут Елена, с радостью помогу вам в изучении иностранных языков.',
-    price: 1200,
-    disciplines: ['Английский язык'],
-    classes: ['5-8 класс', '9-11 класс'],
-    targets: ['Подготовка к ЕГЭ']
-  },
-  {
-    id: uuidv4(),
-    rating: 4.8,
-    avatar: Fedorova,
-    name: 'Екатерина',
-    surname: 'Фёдорова',
-    type_tutor: 'Частный преподаватель',
-    experience: 10,
-    about:
-      ' Меня зовут Елена, с радостью помогу вам в изучении иностранных языков.',
-    price: 1200,
-    disciplines: ['Английский язык'],
-    classes: ['5-8 класс', '9-11 класс'],
-    targets: ['Повышение успеваемости']
-  },
-  {
-    id: uuidv4(),
-    rating: 4.8,
-    avatar: Fedorova,
-    name: 'Елена',
-    surname: 'Иванова',
-    type_tutor: 'Частный преподаватель',
-    experience: 10,
-    about: ' Меня зовут Елена, я пример четвертой карточки. ',
-    price: 1200,
-    disciplines: ['Английский язык'],
-    classes: ['5-8 класс', '9-11 класс'],
-    targets: ['Повышение успеваемости']
-  }
+export const tutorsCard: string[] = [
+  glazkov,
+  ivanova,
+  fedorova,
+  glazkov,
+  fedorova
 ];
 
 export const disciplines: IDisciplines[] = [
   {
     id: uuidv4(),
+    other: false,
     discipline: 'Математика'
   },
   {
     id: uuidv4(),
+    other: false,
     discipline: 'Информатика'
   },
   {
     id: uuidv4(),
+    other: false,
     discipline: 'Русский язык'
   },
   {
     id: uuidv4(),
+    other: false,
     discipline: 'Литература'
   },
   {
     id: uuidv4(),
+    other: false,
     discipline: 'Биология'
   },
   {
     id: uuidv4(),
+    other: false,
     discipline: 'Физика'
   },
   {
     id: uuidv4(),
+    other: false,
     discipline: 'Химия'
   },
   {
     id: uuidv4(),
+    other: false,
     discipline: 'Английский язык'
   },
   {
     id: uuidv4(),
+    other: false,
     discipline: 'История'
   },
   {
     id: uuidv4(),
+    other: true,
     discipline: 'Обществознание'
   },
   {
     id: uuidv4(),
+    other: true,
     discipline: 'Алгебра'
   },
   {
     id: uuidv4(),
+    other: true,
     discipline: 'Геометрия'
   },
   {
     id: uuidv4(),
+    other: true,
     discipline: 'Немецкий язык'
   },
   {
     id: uuidv4(),
+    other: true,
     discipline: 'Экономика'
   }
 ];
