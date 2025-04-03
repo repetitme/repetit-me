@@ -5,6 +5,7 @@ export interface ButtonProps {
   size?: 'large';
   icon?: string;
   disabled?: boolean;
-  className?: string; // для добавления стилей при необходимости
+  className?: string;
+  href?: string;
   onClick?: () => void;
 }
