@@ -23,7 +23,7 @@
         color: #865bff;
       }
 
-      &_blue { 
+      &_blue {
         color: #4558ff;
       }
     }
@@ -53,42 +53,29 @@
 
     &_features {
       max-height: 160px;
+      margin: 0;
+      padding: 0;
+      display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 14px;
 
-      &_width {
-        margin: 0;
-        padding: 0;
+      &_feature {
+        padding: 0 16px;
+        min-height: 44px;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        gap: 13px;
+        align-items: center;
+        background-color: rgb(212 208 251 / 100%);
+        border-radius: 20px;
+        font-family: var(--ffm-default);
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 1.32;
       }
 
-      &_center {
-        margin: 15px 0 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        gap: 14px;
+      &_feature:last-child {
+        padding: 0 12px;
       }
-    }
-
-    &_feature {
-      padding: 0 16px;
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      background-color: rgb(212 208 251 / 100%);
-      border-radius: 20px;
-      font-family: var(--ffm-default);
-      font-size: 20px;
-      font-weight: 500;
-      line-height: 1.32;
-    }
-
-    .container__recruiting_features_center > &_feature:last-child {
-      padding: 0 12px;
     }
   }
 }

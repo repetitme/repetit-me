@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styles from './index.module.scss';
 import { features } from './data';
-import wonemAndCompucter from '../../assets/images/women_and_computer.svg';
+import womenAndComputer from '../../assets/images/women_and_computer.svg';
 
 const Recruiting: FC = () => {
   return (
@@ -21,35 +21,20 @@ const Recruiting: FC = () => {
         <p className={styles.container__recruiting_subtitle}>
           И также дадим возможность найти их самостоятельно
         </p>
-        <div className={styles.container__recruiting_features}>
-          <ul className={styles.container__recruiting_features_width}>
-            {features
-              .map((feature) => (
-                <li
-                  className={styles.container__recruiting_feature}
-                  key={feature.id}
-                >
-                  {feature.feature}
-                </li>
-              ))
-              .slice(0, 12)}
-          </ul>
-          <ul className={styles.container__recruiting_features_center}>
-            {features
-              .map((feature) => (
-                <li
-                  className={styles.container__recruiting_feature}
-                  key={feature.id}
-                >
-                  {feature.feature}
-                </li>
-              ))
-              .slice(12, 17)}
-          </ul>
-        </div>
+        <ul className={styles.container__recruiting_features}>
+          {features.map((feature) => (
+            <li
+              className={styles.container__recruiting_features_feature}
+              key={feature.id}
+            >
+              {feature.feature}
+            </li>
+          ))}
+        </ul>
+
         <img
           className={styles.container__recruiting_image}
-          src={wonemAndCompucter}
+          src={womenAndComputer}
         ></img>
       </div>
     </div>
