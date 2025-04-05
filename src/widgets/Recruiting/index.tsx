@@ -3,8 +3,7 @@ import styles from './index.module.scss';
 import { features } from './data';
 import womenAndComputer from '../../assets/images/women_and_computer.svg';
 
-const Recruiting: FC = () => {
-  return (
+const Recruiting: FC = () => (
     <div className={styles.container}>
       <div className={styles.container__recruiting}>
         <h2 className={styles.container__recruiting_title}>
@@ -39,6 +38,4 @@ const Recruiting: FC = () => {
       </div>
     </div>
   );
-};
-
 export default Recruiting;
