@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import styles from './style.module.scss';
-//import classNames from 'classnames';
+import styles from './index.module.scss';
+import classNames from 'classnames';
 import emojiMen from '../../assets/images/emoji_men.svg';
 import emojiWomen from '../../assets/images/emoji_women.svg';
 
@@ -9,11 +9,7 @@ const Advantages: FC = () => {
     <div className={styles.container}>
       <div className={styles.container__description}>
         <div
-          className={
-            styles.container__description_role +
-            ' ' +
-            styles.container__description_block
-          }
+          className={classNames(styles.container__description_role, styles.container__description_block)}
         >
           <div className={styles.container__description_role_info}>
             <p>
@@ -32,11 +28,7 @@ const Advantages: FC = () => {
         </div>
 
         <div
-          className={
-            styles.container__description_telegram +
-            ' ' +
-            styles.container__description_block
-          }
+          className={classNames(styles.container__description_telegram, styles.container__description_block)}
         >
           <div className={styles.container__description_telegram_info}>
             <p>
