@@ -1,0 +1,40 @@
+.container {
+    margin-top: 0.5px;
+    width: 62px;
+    height: 28px;
+    border-radius: 10px;
+
+&__content {
+    padding: 2px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+
+    &_rating {
+    color: var(--clr-1);
+    font-family: var(--ffm-default);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    }
+
+    &_star {
+    width: 18px;
+    height: 14px;
+    }
+}
+}
+
+.rating_blue {
+    background-color: rgba(103, 87, 241, 1);
+}
+
+.rating_purple {
+    background-color: rgba(171, 119, 250, 1);
+}
+
+.rating_red {
+    background-color: rgba(250, 119, 130, 1);
+}
