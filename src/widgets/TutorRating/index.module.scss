@@ -5,7 +5,7 @@
     border-radius: 10px;
 
 &__content {
-    padding: 2px 0 0 0;
+    padding: 2px 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,6 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 24px;
-    letter-spacing: 0px;
     }
 
     &_star {
@@ -28,13 +27,13 @@
 }
 
 .rating_blue {
-    background-color: rgba(103, 87, 241, 1);
+    background-color: #6757f1;
 }
 
 .rating_purple {
-    background-color: rgba(171, 119, 250, 1);
+    background-color: #ab77fa;
 }
 
 .rating_red {
-    background-color: rgba(250, 119, 130, 1);
+    background-color: #fa7782;
 }
