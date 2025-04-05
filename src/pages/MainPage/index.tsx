@@ -1,3 +1,4 @@
+import Recruiting from '../../widgets/Recruiting';
 import MainBlock from '../../widgets/MainBlock';
 import { WhyWe } from '../../widgets/WhyWe';
 import { Chat } from '../../widgets/Chat';
@@ -6,9 +7,6 @@ import { Perks } from '../../widgets/Perks';
 import QuestionList from '../../widgets/QuestionList';
 import TutorFormBlock from '../../widgets/TutorFormBlock';
 
-
-
-
 const MainPage = () => {
   return (
     <>
@@ -16,6 +14,7 @@ const MainPage = () => {
       <Perks />
       <WhyWe />
       <Chat />
+      <Recruiting />
       <TutorFormBlock />
       <QuestionList />
       <Footer />
