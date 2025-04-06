@@ -1,12 +1,10 @@
-
-
 import TG from '../../../assets/Group.svg';
 import phone from '../../../assets/images/QR+button.png';
 import Button from '../../button';
 
 import styles from './index.module.scss';
 
-export const TelegramBlock = () => {
+export const TelegramBlock = (className: string) => {
   return (
     <div className={styles.container}>
       <h4 className={styles.title}>
@@ -14,11 +12,18 @@ export const TelegramBlock = () => {
         удобнее
       </h4>
       <img
-        className={styles.image}
+        
         src={phone}
         alt="изображения телефона с QR кодом"
       />
-      <Button text="Перейти в Telegram" variant="social"href='#' icon={TG} size='large' />
+      <Button
+        text="Перейти в Telegram"
+        variant="social"
+        href="#"
+        icon={TG}
+        size="large"
+        className={styles.btn}
+      />
     </div>
   );
 };
