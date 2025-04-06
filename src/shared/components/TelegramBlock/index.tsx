@@ -6,7 +6,11 @@ import Button from '../../button';
 
 import styles from './index.module.scss';
 
-export const TelegramBlock = (className: string) => {
+interface ITelegramBlockProps {
+  className?: string; 
+}
+
+export const TelegramBlock: React.FC<ITelegramBlockProps> = ({className}) => {
   return (
     <div className={classNames(styles.container, className)}>
       <h4 className={styles.title}>
