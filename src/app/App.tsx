@@ -1,12 +1,10 @@
-import '../../src/assets/styles/globals.scss';
-import '../../src/assets/styles/variables.scss';
-import './App.scss';
-import AppRouter from './router/AppRouter';
+import '../assets/index.scss';
+import TutorFilters from '../widgets/ui/TutorFilters';
 
 function App() {
   return (
     <>
-      <AppRouter />
+      <TutorFilters />
     </>
   );
 }
