@@ -1,38 +1,130 @@
 .container {
-    width: 62px;
-    height: 28px;
-    border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-content: center;
 
-&__content {
-        padding: 2px 0 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 3px;
+  &__left {
+    box-sizing: content-box;
+    width: 144px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-right: 1px solid rgb(103 87 241 / 100%);
 
-        &_rating {
-        color: var(--clr-1);
-        font-family: var(--ffm-default);
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 24px;
-        }
-
-        &_star {
-        width: 18px;
-        height: 14px;
-        }
+    &_title {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 12px;
+      letter-spacing: 0;
+      margin-left: 16px;
     }
+
+    &_rating {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 24px;
+    }
+
+    &_star {
+      width: 15px;
+      height: 15px;
+      margin-right: 13px;
+    }
+  }
+
+  &__right {
+    box-sizing: content-box;
+    width: 104px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &_title {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 12px;
+      letter-spacing: 0;
+      margin-right: 7px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_rating {
+      color: var(--clr-1);
+      font-family: var(--ffm-default);
+    }
+
+    &_star {
+      position: relative;
+    }
+  }
+}
+
+.brief {
+  width: 62px;
+  height: 28px;
+  border-radius: 10px;
+
+  &_content {
+    gap: 3px;
+
+    &_rating {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 24px;
+    }
+
+    &_star {
+      width: 18px;
+      height: 15px;
+    }
+  }
+}
+
+.feedback {
+  width: 88px;
+  height: 46px;
+  border-radius: 8px;
+
+  &_content {
+    gap: 5px;
+    padding: 0 0 2px;
+
+    &_rating {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 28px;
+    }
+
+    &_star {
+      width: 18px;
+      height: 18px;
+      padding: 1px 2px 0 0;
+    }
+  }
+}
+
+.card {
+  width: 248px;
+  height: 32px;
+  border: 1px solid rgb(103 87 241 / 100%);
+  border-radius: 10px;
+  font-family: var(--ffm-default);
+  color: rgb(103 87 241 / 100%);
 }
 
 .rating_blue {
-    background-color: #6757f1;
+  background-color: #6757f1;
 }
 
 .rating_purple {
-    background-color: #ab77fa;
+  background-color: #ab77fa;
 }
 
 .rating_red {
-    background-color: #fa7782;
+  background-color: #fa7782;
 }
