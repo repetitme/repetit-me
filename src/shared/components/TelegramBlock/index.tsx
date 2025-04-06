@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import TG from '../../../assets/Group.svg';
 import phone from '../../../assets/images/QR+button.png';
 import Button from '../../button';
@@ -6,7 +8,7 @@ import styles from './index.module.scss';
 
 export const TelegramBlock = (className: string) => {
   return (
-    <div className={styles.container}>
+    <div className={classNames(styles.container, className)}>
       <h4 className={styles.title}>
         Переходите в <span className={styles.accent}>Телеграм</span> — с ним еще
         удобнее
