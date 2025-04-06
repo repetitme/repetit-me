@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styles from './index.module.scss';
 import { AuthModalProps } from './types';
-import { ModalOverlay } from '../../../shared/components/Overlay';
+import { ModalOverlay } from '../../shared/components/Overlay';
 import iconClose from '../../../assets/icons/closeIcon.svg';
 
 export const AuthModal: FC<AuthModalProps> = ({
