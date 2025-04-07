@@ -1,8 +1,8 @@
 import { ITutorData } from '../../../shared/types/userData';
 import raitingIcon from '../../../assets/images/UserCardIcons/star_raiting.svg';
+import UserInfo from '../../../shared/components/UserInfo';
 
 import styles from '../index.module.scss';
-import UserInfo from '../../../shared/components/UserInfo';
 
 const TutorProfile: React.FC<ITutorData> = ({
   name = '',
