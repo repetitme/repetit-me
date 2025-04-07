@@ -1,5 +1,6 @@
 export type TLogin = {
   login: boolean;
+  closeModal: () => void;
 };
 
 export type TFormTabs = 'Как ученик' | 'Как репетитор';

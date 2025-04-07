@@ -3,14 +3,13 @@ import { useEffect, useRef, useState } from 'react';
 import Button from '../../../shared/button';
 import useForm from '../../../shared/hooks/useForm';
 import AuthInputs from '../inputs';
-import { FormTabs } from '../../../shared/authSelectRole';
+import { FormTabs, AuthSelectRole } from '../../../shared/authSelectRole';
 
 import styles from './index.module.scss';
 
 import { TAuthData, TFormTabs, TInputProps, TLogin } from './types';
-import { AuthSelectRole } from '../../../shared/authSelectRole';
 
-const AuthForm: React.FC<TLogin> = ({ login }) => {
+const AuthForm: React.FC<TLogin> = ({ login, closeModal }) => {
   enum AuthType {
     LOGIN = 'login',
     REGISTER = 'register'
@@ -48,6 +47,7 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
     if (code) {
       setIsValid(false);
       setValues(defaultValues);
+      closeModal();
       // Close modal
     }
     e.preventDefault();
@@ -85,7 +85,7 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
 
   return (
     <div className={styles.auth}>
-      <AuthSelectRole onChangeSelect={handleActiveTab}></AuthSelectRole>
+      <AuthSelectRole onChangeSelect={handleActiveTab} />
       <form
         ref={formRef}
         className={styles.auth__form}

@@ -25,7 +25,7 @@ export const AuthModalWithForm: React.FC<AuthModalWithFormProps> = ({ closeModal
 
     return (
         <AuthModal type={ isLoginForm } onClose={closeModal} onToggle={toggleForm}>
-            <AuthForm login={ isLoginForm }></AuthForm>
+            <AuthForm login={ isLoginForm } closeModal={closeModal}></AuthForm>
         </AuthModal>
     )
 }
