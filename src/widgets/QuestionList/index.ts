@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 
 import Accordion from '../Accordeon';
-import useClickOutside from '../../shared/hooks/useClickOutside';
+import useClickOutside from '../../shared/hooks/useClickOutside'
 import { questions } from './data';
 
 import styles from './styles.module.scss';
