@@ -68,6 +68,10 @@
   }
 
   &__enter {
-    color: var(--clr-primary-default, #6757f1);
+    font-size: 20px;
+
+    a {
+      color: var(--clr-primary-default, #6757f1);
+    }
   }
 }

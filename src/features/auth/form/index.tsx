@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { AuthSelectRole, FormTabs } from '../../../shared/authSelectRole';
 import Button from '../../../shared/button';
 import useForm from '../../../shared/hooks/useForm';
 import AuthInputs from '../inputs';
-import { FormTabs, AuthSelectRole } from '../../../shared/authSelectRole';
 
 import styles from './index.module.scss';
 

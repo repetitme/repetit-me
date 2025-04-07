@@ -35,7 +35,11 @@
         background-color: var(--clr-primary-default);
     }
 
-    & .container-selectors__button--text {
-        color: var(--clr-primary-default);
+    & .container-selectors {
+      &__button {
+        &--text {
+          color: var(--clr-primary-default);
+        }
+      }
     }
 }

@@ -1,8 +1,11 @@
 import { FC } from 'react';
-import styles from './index.module.scss';
-import { AuthModalProps } from './types';
-import { ModalOverlay } from '../../shared/ui/Overlay';
+
 import iconClose from '../../assets/icons/closeIcon.svg';
+import { ModalOverlay } from '../../shared/ui/Overlay';
+
+import styles from './index.module.scss';
+
+import { AuthModalProps } from './types';
 
 export const AuthModal: FC<AuthModalProps> = ({
   type,
@@ -33,9 +36,9 @@ export const AuthModal: FC<AuthModalProps> = ({
             </a>
           </p>
           {!type && (
-            <p>
+            <p className={styles.modal__enter}>
               Уже есть аккаунт?{' '}
-              <a href="#" className={styles.modal__enter} onClick={(e) => onToggle(e)}>
+              <a href="#" onClick={(e) => onToggle(e)}>
                 Войти
               </a>
             </p>
