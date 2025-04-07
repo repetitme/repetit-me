@@ -21,8 +21,9 @@ export const TutorFilters = (): React.JSX.Element => {
     option: ''
   };
 
-  const { values, handleChange } = useForm(defaultState);
+  const { values, handleChange, setValues } = useForm(defaultState);
   const [price, setPrice] = useState<number | number[]>([1500, 2000]);
+  const resetIsActive = JSON.stringify(values) !== JSON.stringify(defaultState);
 
   const handleSliderChange = (value: number | number[]): void => {
     setPrice(value);
@@ -31,7 +32,11 @@ export const TutorFilters = (): React.JSX.Element => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Test
-    console.log(values);
+    console.log(resetIsActive);
+  };
+
+  const handleReset = (): void => {
+    setValues(defaultState);
   };
 
   const checkbox = (title: string, items: string[]): React.JSX.Element => {
@@ -116,6 +121,7 @@ export const TutorFilters = (): React.JSX.Element => {
         {checkbox(data.titles.goals, data.goals)}
         {radio(data.titles.ageBracket, data.ageBrackets)}
         <Slider
+          className={styles.slider}
           min={100}
           max={7000}
           step={100}
@@ -123,8 +129,30 @@ export const TutorFilters = (): React.JSX.Element => {
           value={price}
           onChange={handleSliderChange}
           defaultValue={[1500, 2500]}
-          trackStyle={[{ backgroundColor: '#A8A8A8' }]}
-          handleStyle={[{ backgroundColor: '#A8A8A8' }, { backgroundColor: '#A8A8A8' }]}
+          trackStyle={[{ backgroundColor: '#6757f1', height: '20px' }]}
+          handleStyle={[
+            {
+              background: '#eee',
+              border: 'none',
+              height: '20px',
+              width: '20px',
+              marginTop: '0',
+              opacity: '1'
+            },
+            {
+              backgroundColor: '#eee',
+              border: 'none',
+              height: '20px',
+              width: '20px',
+              marginTop: '0',
+              opacity: '1'
+            }
+          ]}
+          railStyle={{
+            backgroundColor: '#CFDADC',
+            height: '20px',
+            borderRadius: '10px'
+          }}
           // ariaValueTextFormatterForHandle={}
           pushable={true}
         />
@@ -132,12 +160,17 @@ export const TutorFilters = (): React.JSX.Element => {
         {radio(data.titles.gender, data.gender)}
         {checkbox(data.titles.rating, data.rating)}
         {checkbox(data.titles.option, data.option)}
+        <Button size="large" text="Применить" variant="purple" />
+      </form>
+      {resetIsActive && (
         <Button
           size="large"
-          text="Применить"
+          text="Сбросить"
           variant="purple"
+          onClick={handleReset}
+          className={styles.filters__reset}
         />
-      </form>
+      )}
     </section>
   );
 };

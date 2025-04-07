@@ -45,9 +45,11 @@
     fill: var(--clr-primary-default);
     transition: all var(--duration) var(--timing);
   }
+
   &__open {
     max-height: 1000px;
   }
+
   &__active {
     border: 1px solid var(--clr-primary-default);
   }
@@ -59,11 +61,13 @@
     font-weight: 600;
     font-size: inherit;
   }
+
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
   }
+
   &__checkbox {
     display: flex;
     gap: 5px;
@@ -71,12 +75,29 @@
   }
 
   & input {
+    position: relative;
     width: 20px;
     height: 20px;
+    border: 2px solid var(--clr-3);
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
     cursor: pointer;
+    appearance: none;
 
     &:checked {
-      background-color: var(--clr-main);
+      border: 2px solid var(--clr-primary-default);
+    }
+
+    &:checked::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M9 12L11 14L15 10' stroke='%236757F1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      transform: translate(-50%, -50%);
     }
   }
 }

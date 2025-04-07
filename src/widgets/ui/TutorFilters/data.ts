@@ -8,7 +8,7 @@ export const titles = {
   ageBracket: 'Возрастная категория',
   price: 'Цена',
   experience: 'Опыт',
-  gender: 'Пол',
+  gender: 'Пол репетитора',
   rating: 'Рейтинг',
   option: 'Другое'
 };
