@@ -1,4 +1,4 @@
-@use '../../../assets/styles/mixins/gradient.scss' as *;
+@use '../../assets/styles/mixins/gradient.scss' as *;
 
 .modal {
   position: fixed;
@@ -50,6 +50,7 @@
 
   &__content {
     width: 100%;
+    overflow: hidden;
   }
 
   &__footer {

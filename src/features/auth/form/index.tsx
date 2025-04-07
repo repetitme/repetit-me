@@ -3,11 +3,12 @@ import { useEffect, useRef, useState } from 'react';
 import Button from '../../../shared/button';
 import useForm from '../../../shared/hooks/useForm';
 import AuthInputs from '../inputs';
-import { FormTabs, Tab } from '../tabs';
+import { FormTabs } from '../../../shared/authSelectRole';
 
 import styles from './index.module.scss';
 
 import { TAuthData, TFormTabs, TInputProps, TLogin } from './types';
+import { AuthSelectRole } from '../../../shared/authSelectRole';
 
 const AuthForm: React.FC<TLogin> = ({ login }) => {
   enum AuthType {
@@ -84,7 +85,7 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
 
   return (
     <div className={styles.auth}>
-      <Tab currentTab={currentTab} onClick={handleActiveTab} />
+      <AuthSelectRole onChangeSelect={handleActiveTab}></AuthSelectRole>
       <form
         ref={formRef}
         className={styles.auth__form}

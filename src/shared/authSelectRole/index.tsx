@@ -3,31 +3,39 @@ import classNames from "classnames";
 import styles from './index.module.scss';
 
 interface IAuthSelectRole {
-    onChangeSelect: (role: 'pupil' | 'teacher') => void;
+    onChangeSelect: (value: 'Как ученик' | 'Как репетитор') => void;
 }
 
-export const AuthSelectRole: FC<IAuthSelectRole> = () => {
-    const [selectedRole, setRoleSelected] = useState<'pupil' | 'teacher'>('pupil');
+export enum FormTabs {
+    STUDENT = 'Как ученик',
+    TUTOR = 'Как репетитор'
+  }
 
-    const handleSelect = (role: 'pupil' | 'teacher') => () => setRoleSelected(role);
+export const AuthSelectRole: FC<IAuthSelectRole> = ({ onChangeSelect }) => {
+    const [selectedRole, setRoleSelected] = useState<'Как ученик' | 'Как репетитор'>('Как ученик');
+
+    const handleSelect = (role: 'Как ученик' | 'Как репетитор') => () => {
+        setRoleSelected(role);
+        onChangeSelect(role);
+    };
 
 
     return (
         <div className={styles['container-selectors']}>
             <button
-                onClick={handleSelect('pupil')}
+                onClick={handleSelect('Как ученик')}
                 className={classNames(
                     styles['container-selectors__button'],
-                    { [styles['active-select']]: selectedRole === 'pupil' }
+                    { [styles['active-select']]: selectedRole === 'Как ученик' }
                 )}
             >
                 <p className={styles['container-selectors__button--text']}>Как ученик</p>
             </button>
             <button
-                onClick={handleSelect('teacher')}
+                onClick={handleSelect('Как репетитор')}
                 className={classNames(
                     styles['container-selectors__button'],
-                    { [styles['active-select']]: selectedRole === 'teacher' }
+                    { [styles['active-select']]: selectedRole === 'Как репетитор' }
                 )}
             >
                 <p className={styles['container-selectors__button--text']}>Как репетитор</p>

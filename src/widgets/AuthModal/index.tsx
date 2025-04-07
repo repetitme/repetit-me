@@ -1,11 +1,8 @@
 import { FC } from 'react';
-
-import iconClose from '../../../assets/icons/closeIcon.svg';
-import { ModalOverlay } from '../../../shared/components/Overlay';
-
 import styles from './index.module.scss';
-
 import { AuthModalProps } from './types';
+import { ModalOverlay } from '../../shared/ui/Overlay';
+import iconClose from '../../assets/icons/closeIcon.svg';
 
 export const AuthModal: FC<AuthModalProps> = ({
   type,
@@ -38,8 +35,7 @@ export const AuthModal: FC<AuthModalProps> = ({
           {!type && (
             <p>
               Уже есть аккаунт?{' '}
-              {/*TODO: когда будет готов роутинг заменить на Link*/}
-              <a href="#" className={styles.modal__enter} onClick={onToggle}>
+              <a href="#" className={styles.modal__enter} onClick={(e) => onToggle(e)}>
                 Войти
               </a>
             </p>
