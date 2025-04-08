@@ -24,7 +24,7 @@ export const AuthModalWithForm: React.FC<AuthModalWithFormProps> = ({
   const toggleForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     {
-      /*TODO: заменить на перехрд между роутами, если нужно*/
+      /*TODO: заменить на перед между роутами, если нужно*/
     }
     setIsLoginForm(true);
   };

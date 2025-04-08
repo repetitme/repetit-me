@@ -63,8 +63,12 @@
     font-family: var(--ffm-default, montserrat, courier, monospace);
     line-height: 19.5px;
     text-align: center;
-    text-underline-offset: 2px;
-    text-decoration-skip-ink: none;
+    
+    a {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-skip-ink: none;
+    }
   }
 
   &__enter {
