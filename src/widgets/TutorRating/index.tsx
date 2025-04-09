@@ -22,7 +22,11 @@ useEffect(() => {
     }
 }, [rating]);
 
-if (variant == 'brief' || variant == 'feedback') {
+const isBrief = variant === 'brief';
+const isFeedback = variant === 'feedback';
+const isCard = variant === 'card';
+
+if (isBrief || isFeedback) {
     return (
         <div
         className={classNames(
@@ -61,7 +65,7 @@ if (variant == 'brief' || variant == 'feedback') {
         </div>
     );
 }
-if (variant == 'card') {
+if (isCard) {
     return (
     <div className={classNames(styles.container, styles.card)}>
         <div className={styles.container__left}>
@@ -71,9 +75,9 @@ if (variant == 'card') {
             </span>
             <img className={styles.container__left_star} src={star} />
         </div>
-        <div className={styles.container__right}>
+        <button className={styles.container__right}>
             <span className={styles.container__right_title}>Отзывы</span>
-        </div>
+        </button>
     </div>
     );
 }
