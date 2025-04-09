@@ -4,16 +4,16 @@
     max-width: 100%;
 
     &__button {
-        border-bottom: 2px solid var(--clr-2);
+        border: none;
+        border-bottom: 2px solid var(--grey-2, #EEE);
         padding-inline: 108px;
         cursor: pointer;
-        border: none;
         background-color: transparent;
 
         &--text {
             color: var(--clr-black);
             font-family: var(--ffm-default);
-            font-weight: 700;
+            font-weight: 500;
             font-size: 20px;
             line-height: 132%;
             padding-block: 8px;
@@ -38,6 +38,7 @@
     & .container-selectors {
       &__button {
         &--text {
+          font-weight: 700;
           color: var(--clr-primary-default);
         }
       }
