@@ -6,6 +6,7 @@ import ivanova from '../../assets/images/tutor-ivanova.svg';
 import fedorova from '../../assets/images/tutor-fedorova.svg';
 import glazkov from '../../assets/images/tutor-glazkov.svg';
 
+
 export const tutorsCard: string[] = [
   glazkov,
   ivanova,
@@ -60,6 +61,14 @@ export const disciplines: IDisciplines[] = [
     other: false,
     discipline: 'История'
   },
+  {
+    id: uuidv4(),
+    other: false,
+    discipline: 'Еще'
+  }
+];
+
+export const dropdown: IDisciplines[] = [
   {
     id: uuidv4(),
     other: true,

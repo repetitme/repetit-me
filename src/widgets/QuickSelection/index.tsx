@@ -1,12 +1,13 @@
 import { useState, FC } from 'react';
 import classNames from 'classnames';
 
-import Carousel from '../Сarousel';
+import Carousel from '../Carousel';
 import Button from '../../shared/components/Button';
+import Dropdown from '../Dropdown';
 
-import { disciplines, tutorsCard } from './data';
-import styles from './index.module.scss';
+import { disciplines, tutorsCard, dropdown } from './data';
 import icon_arrowDown from '../../assets/images/icon-arrowdown.svg';
+import styles from './index.module.scss';
 
 export const QuickSelection: FC = () => {
   const [stateOption, setStateOption] = useState('all');
@@ -14,7 +15,6 @@ export const QuickSelection: FC = () => {
   const [stateItemOther, setStateItemOther] = useState(false);
 
   return (
-    <>
       <div className={styles.container}>
         <div className={styles.container__header}>
           <h2 className={styles.container__header_title}>
@@ -64,7 +64,7 @@ export const QuickSelection: FC = () => {
                   </li>
                 );
               })
-              .slice(0, 9)}
+              .slice(0, disciplines.length-1)}
 
             <li
               className={classNames(
@@ -81,44 +81,22 @@ export const QuickSelection: FC = () => {
               }}
             >
               <span className={styles.container__header_list_item_text}>
-                Ещё
+                {disciplines[disciplines.length-1].discipline}
               </span>
               <img
                 className={styles.container__header_list_item_arrow}
                 src={icon_arrowDown}
-                alt="ещё"
+                alt="Ещё"
               />
+              <Dropdown
+            list={dropdown}
+            setStateMore={setStateMore}
+            setStateItemOther={setStateItemOther}
+            setStateOption={setStateOption}
+            stateMore={stateMore}
+          />
             </li>
-          </ul>
-          <ul
-            className={classNames(
-              stateMore == true
-                ? styles.container__header_more
-                : styles.container__header_more_disabled
-            )}
-          >
-            {disciplines
-              .map((discipline) => {
-                const handleClick = () => {
-                  setStateMore(false);
-                  setStateItemOther(discipline.other);
-                  setStateOption(discipline.id);
-                };
-
-                return (
-                  <li
-                    className={classNames(styles.container__header_more_item)}
-                    key={discipline.id}
-                    onClick={handleClick}
-                  >
-                    <span className={styles.container__header_more_item_text}>
-                      {discipline.discipline}
-                    </span>
-                  </li>
-                );
-              })
-              .slice(9, 14)}
-          </ul>
+          </ul>          
         </div>
 
         <Carousel tutorsCard={tutorsCard} />
@@ -129,7 +107,7 @@ export const QuickSelection: FC = () => {
           className={styles.container__button}
         />
       </div>
-    </>
+  
   );
 };
 
