@@ -12,7 +12,7 @@ const MainBlock = () => {
     setIsActive((prevState) => !prevState);
   };
 
-  const icons = isActive ? iconSources.teacher : iconSources.student
+  const icons = isActive ? iconSources.teacher : iconSources.student;
 
   return (
     <section className={styles.main__block}>

@@ -1,0 +1,99 @@
+.accent {
+  color: var(--clr-primary-default);
+}
+
+.container {
+  position: relative;
+  max-width: 1440px;
+  max-height: 546px;
+
+  &__description {
+    padding: 64px 112px;
+    max-width: 1200px;
+    min-height: 418px;
+    display: flex;
+    gap: 21px;
+
+    &_role::after {
+      content: '';
+      background-image: url('../../assets/images/magnifer.svg');
+      background-repeat: no-repeat;
+      block-size: 189.4272px;
+      inline-size: 189.4272px;
+      position: absolute;
+      left: 74px;
+      bottom: 10px;
+      z-index: 1;
+    }
+
+    &_telegram::before {
+      content: '';
+      background-image: url('../../assets/images/spiral.svg');
+      background-size: cover;
+      block-size: 374px;
+      inline-size: 374px;
+      position: absolute;
+      right: 6px;
+      top: -150px;
+      z-index: 1;
+    }
+
+    &_block {
+      min-width: 590px;
+      box-sizing: border-box;
+      border: 2px solid transparent;
+      border-radius: 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      background-image:
+        linear-gradient(white, white),
+        linear-gradient(
+          288.86deg,
+          #3dc5ff 5.24%,
+          #4558ff 29.77%,
+          #865bff 60.98%,
+          #ff71f9 89.96%,
+          #ffaa47 116.71%
+        );
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+    }
+
+    &_role_info {
+      margin: 32px 38px 30px;
+      max-width: 514px;
+      color: var(--clr-black);
+      font-family: var(--ffm-title);
+      font-weight: 500;
+      font-size: 20px;
+      letter-spacing: 0;
+      line-height: 125%;
+    }
+
+    &_role_img {
+      position: relative;
+      margin: 0 0 0 294px;
+      max-width: 253px;
+      max-height: 253px;
+    }
+
+    &_telegram_info {
+      margin: 32px 38px 30px;
+      max-width: 510px;
+      color: var(--clr-black);
+      font-family: var(--ffm-title);
+      font-weight: 500;
+      font-size: 20px;
+      letter-spacing: 0;
+      line-height: 125%;
+    }
+
+    &_telegram_img {
+      margin: 0 0 0 294px;
+      position: relative;
+      max-width: 253px;
+      max-height: 253px;
+    }
+  }
+}
