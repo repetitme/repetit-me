@@ -9,24 +9,28 @@ import styles from './index.module.scss';
 
 import { TAuthData, TFormTabs, TInputProps, TLogin } from './types';
 
+enum AuthType {
+  LOGIN = 'login',
+  REGISTER = 'register'
+}
+
+const defaultValues: TAuthData = {
+  authType: AuthType.REGISTER,
+  role: FormTabs.STUDENT,
+  name: '',
+  tg: '',
+  link: '',
+  code: ''
+};
+
 const AuthForm: React.FC<TLogin> = ({ login }) => {
-  enum AuthType {
-    LOGIN = 'login',
-    REGISTER = 'register'
-  }
-  const defaultValues: TAuthData = {
-    authType: login ? AuthType.LOGIN : AuthType.REGISTER,
-    role: FormTabs.STUDENT,
-    name: '',
-    tg: '',
-    link: '',
-    code: ''
-  };
   const { values, handleChange, setValues } = useForm(defaultValues);
   const [currentTab, setStudentTab] = useState<TFormTabs>(FormTabs.STUDENT);
   const [isValid, setIsValid] = useState(false);
   const [code, setReceived] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
+
+  defaultValues.authType = login ? AuthType.LOGIN : AuthType.REGISTER;
 
   // Сброс кода при изменении данных после его получения
   useEffect(() => {
@@ -44,15 +48,15 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsValid(false);
     if (code) {
-      setIsValid(false);
       setValues(defaultValues);
       // Close modal
+      return;
     }
-    e.preventDefault();
     // Код получен
     setReceived(true);
-    setIsValid(false);
   };
 
   const handleActiveTab = (value: TFormTabs) => {
@@ -93,9 +97,8 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
       >
         <>
           {/* Имя */}
-          {login
-            ? null
-            : AuthInputs.name(
+          {!login &&
+             AuthInputs.name(
                 inputProps,
                 currentTab === FormTabs.TUTOR ? 'notRequired' : ''
               )}
@@ -106,8 +109,10 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
             !login &&
             AuthInputs.link(inputProps)}{' '}
           {/* Код */}
-          {!code ? <AuthButton /> : AuthInputs.code(inputProps)}
-          {code && <AuthButton />}
+          <>
+            {code && AuthInputs.code(inputProps)}
+            <AuthButton />
+          </>
         </>
       </form>
     </div>
