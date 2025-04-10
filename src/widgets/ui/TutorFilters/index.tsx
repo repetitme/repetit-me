@@ -6,6 +6,7 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import useForm from './../../../shared/hooks/useForm';
 import cn from 'classnames';
+import Input from '../../../shared/ui/input';
 
 export const TutorFilters = (): React.JSX.Element => {
   const defaultState = {
@@ -23,6 +24,7 @@ export const TutorFilters = (): React.JSX.Element => {
 
   const { values, handleChange, setValues } = useForm(defaultState);
   const [price, setPrice] = useState<number | number[]>([1500, 2000]);
+  const [ priceValue, setPriceValue ] = useState<string>('');
   const resetIsActive = JSON.stringify(values) !== JSON.stringify(defaultState);
 
   const handleSliderChange = (value: number | number[]): void => {
@@ -31,8 +33,6 @@ export const TutorFilters = (): React.JSX.Element => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Test
-    console.log(resetIsActive);
   };
 
   const handleReset = (): void => {
@@ -42,7 +42,7 @@ export const TutorFilters = (): React.JSX.Element => {
   const checkbox = (title: string, items: string[]): React.JSX.Element => {
     return (
       <div className={styles.checkboxes}>
-        {title && <h3 className={styles.checkboxes__title}>{title}</h3>}
+        {title && <h4 className={styles.checkboxes__title}>{title}</h4>}
         <ul className={styles.checkboxes__list}>
           {items.map((item) => (
             <li key={item} className={styles.checkboxes__checkbox}>
@@ -70,9 +70,7 @@ export const TutorFilters = (): React.JSX.Element => {
         >
           <span className={styles.accordion__icon} />
           <h3
-            className={cn(styles.accordion__title, {
-              [styles.accordion__active]: isOpen
-            })}
+            className={styles.accordion__title}
           >
             {title}
           </h3>
@@ -109,6 +107,17 @@ export const TutorFilters = (): React.JSX.Element => {
     );
   };
 
+  const prices = () => {
+    return (
+      <>
+        <h2 className={styles.filters__title}>Цена за час</h2>
+        <div className={styles.prices}>
+          <Input value={priceValue} onChange={(e) => setPriceValue(e.target.value)} variant='price' />
+          <Input value={priceValue} onChange={(e) => setPriceValue(e.target.value)} variant='price' />
+        </div>
+      </>
+    )}
+
   return (
     <section className={styles.filters}>
       <h2 className={styles.filters__title}>Запросы на репетитора</h2>
@@ -120,6 +129,7 @@ export const TutorFilters = (): React.JSX.Element => {
         {accordion(data.titles.others, data.others)}
         {checkbox(data.titles.goals, data.goals)}
         {radio(data.titles.ageBracket, data.ageBrackets)}
+        {prices()}
         <Slider
           className={styles.slider}
           min={100}

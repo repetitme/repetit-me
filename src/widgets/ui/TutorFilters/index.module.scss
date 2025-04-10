@@ -49,10 +49,6 @@
   &__open {
     max-height: 1000px;
   }
-
-  &__active {
-    border: 1px solid var(--clr-primary-default);
-  }
 }
 
 .checkboxes {
@@ -116,13 +112,18 @@
     margin-left: 10px;
   }
 
+  &__checkbox:nth-child(n+3) {
+    font-family: var(--ffm-price);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
   &__checkbox {
     display: flex;
     gap: 12px;
-    font-family: inherit;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
+    font-weight: 500;
+    font-size: 15px;
     block-size: 24px;
 
     & input {
@@ -151,4 +152,9 @@
       }
     }
   }
+}
+
+.prices {
+  display: flex;
+  gap: 8px;
 }
