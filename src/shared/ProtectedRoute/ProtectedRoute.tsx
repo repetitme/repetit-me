@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Navigate } from 'react-router';
 
 interface ProtectedRouteProps {
