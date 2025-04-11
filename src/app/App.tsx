@@ -1,14 +1,15 @@
-import '../../src/assets/styles/globals.scss';
-import '../../src/assets/styles/variables.scss';
+import AuthForm from '../features/auth/form';
+
+import '../assets/index.scss';
 import ReviewList from '../shared/components/SortByDate';
-import './App.scss';
 
 function App() {
-  return (
-    <>
-      <ReviewList></ReviewList>
-    </>
-  );
+  return (<>
+    <ReviewList/>
+    <div className="App">
+      <AuthForm login={false} />
+    </div>
+ </> );
 }
 
 export default App;

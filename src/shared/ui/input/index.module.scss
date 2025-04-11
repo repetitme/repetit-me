@@ -1,0 +1,132 @@
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--ffm-default);
+  gap: 8px;
+  font-weight: 500;
+  line-height: 1.36;
+
+  .label {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.36;
+  }
+
+  .input {
+    background-color: var(--clr-main, #fff);
+    color: var(--crl-black, #000);
+    border: none;
+    border-radius: 10px;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 18px;
+    caret-color: var(--clr-caret-green, #23540e);
+
+    &::placeholder {
+      font-size: 20px;
+      line-height: 1.32;
+      color: var(--clr-4, #858585);
+    }
+
+    &:focus {
+      outline: 2px solid var(--clr-primary-default, #6757f1);
+    }
+
+    &:hover {
+      outline: 2px solid var(--clr-purple-active, #958bec);
+    }
+
+    &.error {
+      outline: 2px solid var(--clr-secondary-default, #fc4a4a);
+    }
+
+    &[type='number'] {
+      appearance: textfield;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+      margin: 0;
+    }
+  }
+
+  .error {
+    color: var(--clr-secondary-default, #fc4a4a);
+
+    &__text {
+      color: var(--clr-secondary-default, #fc4a4a);
+      top: 100%;
+    }
+  }
+
+  &.price {
+    inline-size: 147px;
+
+    .input {
+      block-size: 23px;
+      padding: 20px 9px;
+      outline: 2px solid var(--clr-5, #cfdadc);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 24px;
+      font-family: var(--ffm-price);
+    }
+  }
+
+  &.report {
+    font-family: var(--ffm-default);
+    inline-size: 464px;
+
+    .label {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 22px;
+    }
+
+    .input {
+      padding: 24px 16px;
+      font-size: 20px;
+    }
+  }
+
+  &.form {
+    inline-size: 365px;
+
+    .input {
+      padding: 11px 15px;
+      font-size: 16px;
+      margin-block-start: 1px;
+      border-radius: 12px;
+      outline: none;
+      border: 2px solid transparent;
+      background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(90deg, #9747ff, #6757f1) border-box;
+
+      &.error {
+        border: 2px solid var(--clr-secondary-default, #fc4a4a);
+      }
+
+      &::placeholder {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &.auth {
+    .label {
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    .input {
+      background-color: var(--clr-1, #f5f5f7);
+      font-size: 20px;
+      block-size: 26px;
+      outline: none;
+      padding: 33px 16px;
+      caret-color: var(--clr-primary-default, #6757f1);
+    }
+  }
+}
