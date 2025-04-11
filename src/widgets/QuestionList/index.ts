@@ -15,7 +15,7 @@ const QuestionList: FC = () => {
     setOpenId(openId === id ? null : id);
   };
 
-  return (
+  return ( 
     <div className={styles.container}>
       <h2 className={styles.container__title}>
         Часто задаваемые{' '}
