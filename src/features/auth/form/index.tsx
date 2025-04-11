@@ -93,23 +93,21 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
         onChange={handleValidity}
         onSubmit={handleSubmit}
       >
-        <>
-          {/* Имя */}
-          {!login &&
-            AuthInputs.name(
-              inputProps,
-              currentTab === FormTabs.TUTOR ? 'notRequired' : ''
-            )}
-          {/* Telegram */}
-          {AuthInputs.tg(inputProps)}
-          {/* Ссылка */}
-          {currentTab === FormTabs.STUDENT &&
-            !login &&
-            AuthInputs.link(inputProps)}{' '}
-          {/* Код */}
-          {code && AuthInputs.code(inputProps)}
-          <AuthButton />
-        </>
+        {/* Имя */}
+        {!login &&
+          AuthInputs.name(
+            inputProps,
+            currentTab === FormTabs.TUTOR ? 'notRequired' : ''
+          )}
+        {/* Telegram */}
+        {AuthInputs.tg(inputProps)}
+        {/* Ссылка */}
+        {currentTab === FormTabs.STUDENT &&
+          !login &&
+          AuthInputs.link(inputProps)}{' '}
+        {/* Код */}
+        {code && AuthInputs.code(inputProps)}
+        <AuthButton />
       </form>
     </div>
   );
