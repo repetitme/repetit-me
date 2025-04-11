@@ -1,4 +1,4 @@
-import { use, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import Button from '../../../shared/button';
 import useForm from '../../../shared/hooks/useForm';
@@ -100,10 +100,10 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
         <>
           {/* Имя */}
           {!login &&
-             AuthInputs.name(
-                inputProps,
-                currentTab === FormTabs.TUTOR ? 'notRequired' : ''
-              )}
+            AuthInputs.name(
+              inputProps,
+              currentTab === FormTabs.TUTOR ? 'notRequired' : ''
+            )}
           {/* Telegram */}
           {AuthInputs.tg(inputProps)}
           {/* Ссылка */}
