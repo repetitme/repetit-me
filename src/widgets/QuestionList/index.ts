@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 
 import Accordion from '../Accordeon';
-import useClickOutside from '../../shared/hooks/useClickOutside';
+import useClickOutside from '../../shared/hooks/useClickOutside'
 import { questions } from './data';
 
 import styles from './styles.module.scss';
@@ -15,7 +15,7 @@ const QuestionList: FC = () => {
     setOpenId(openId === id ? null : id);
   };
 
-  return (
+  return ( 
     <div className={styles.container}>
       <h2 className={styles.container__title}>
         Часто задаваемые{' '}
