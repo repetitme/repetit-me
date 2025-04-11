@@ -10,12 +10,15 @@ export const FeedbackItem: React.FC<TFeedbackProps> = ({
   date
 }) => {
   return (
-    <article className={styles.container}>
-      <div className={styles.info}>
+    <article className={styles.wrapper}>
+      <div className={styles.wrapper_info}>
         <img src={image} alt="фото студента" className={styles.image} />
+        <div className={styles.info}>
         <p className={styles.name}>{name}</p>
         <p className={styles.date}>{date.toLocaleDateString()}</p>
-        <StarRating color={'yellow'} rating={rating} />
+        </div>
+       
+        <StarRating rating={rating} />
         </div>
         <p className={styles.content}>{content}</p>
      

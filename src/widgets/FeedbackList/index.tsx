@@ -33,6 +33,7 @@ const FeedbackList: React.FC = () => {
           text="Написать отзыв"
           variant="white"
           icon={pencilIcon}
+          className={styles.feedback_button}
           // TODO: добавить onClick={onClick}
         />
       </div>
