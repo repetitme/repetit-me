@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from '../index.module.scss';
+import { CommonHeaderProps } from '../types';
 
-const TeacherHeader: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
+const TeacherHeader: React.FC<CommonHeaderProps> = ({ onLogout }) => {
   return (
     <nav>
       <button className={styles.header__button}>Анкета</button>

@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from '../index.module.scss';
 import classNames from 'classnames';
+import { CommonHeaderProps } from '../types';
 
-const StudentHeader: React.FC<{ onLogout: () => void }> = ({ onLogout }) => {
+const StudentHeader: React.FC<CommonHeaderProps> = ({ onLogout }) => {
   return (
     <nav
       className={classNames(

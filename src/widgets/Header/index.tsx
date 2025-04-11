@@ -3,14 +3,12 @@ import logo from '../../assets/images/logo.svg';
 import { useEffect, useState } from 'react';
 import TeacherHeader from './TeacherHeader';
 import StudentHeader from './StudentHeader';
-import { THeaderProps } from './types';
+import { HeaderProps, TAuth } from './types';
 import icon from '../../assets/images/telegram_icon.svg';
 import Button from '../../shared/components/Button';
 
-const Header: React.FC<THeaderProps> = ({ auth }) => {
-  const [authHeader, setAuthHeader] = useState<
-    'unauth' | 'student' | 'teacher'
-  >(auth ? auth : 'unauth');
+const Header: React.FC<HeaderProps> = ({ auth }) => {
+  const [authHeader, setAuthHeader] = useState<TAuth>(auth ? auth : 'unauth');
 
   useEffect(() => {
     setAuthHeader(auth);
