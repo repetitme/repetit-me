@@ -1,0 +1,36 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px 32px;
+  gap: 24px;
+  background-color: #F6F6F6;
+}
+
+.button_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sort_button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--border-radius-btn-social);
+  border: none;
+  padding: 8px 20px;
+  font-size: 18px;
+  font-family: var(--ffm-tag);
+  font-weight: 400;
+  inline-size: 256px;
+  block-size: 44px;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.feedback_list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
