@@ -51,7 +51,7 @@ const ReviewList: React.FC = () => {
 
   return (
     <div>
-      <button className={styles.sort_button} onClick={sortReviewsByDate}>
+      <button className={styles.sort} onClick={sortReviewsByDate}>
         {isAscending ? 'Сначала новые' : 'Сначала старые'}
         <img src={icon} />
       </button>

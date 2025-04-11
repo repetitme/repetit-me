@@ -1,15 +1,17 @@
-.sort-button {
+.sort {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  white-space: nowrap;
+  gap: 63px;
+  max-inline-size: 256px;
+  padding: 16px 20px;
   border-radius: var(--border-radius-btn-social);
   border: none;
-  padding: 8px 20px;
-  font-size: 18px;
-  font-family: var(--ffm-tag);
-  font-weight: 400;
-  inline-size: 256px;
-  block-size: 44px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.36;
+  font-family: var(--ffm-default);
   cursor: pointer;
-  margin: 20px;
+  background-color: var(--clr-main);
+  color: #292f3b;
 }
