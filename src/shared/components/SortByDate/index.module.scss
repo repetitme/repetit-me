@@ -3,7 +3,7 @@
   align-items: center;
   white-space: nowrap;
   gap: 63px;
-  max-inline-size: 256px;
+  inline-size: min-content;
   padding: 16px 20px;
   border-radius: var(--border-radius-btn-social);
   border: none;
