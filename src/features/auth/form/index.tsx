@@ -46,11 +46,7 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
   }, [login, currentTab]);
 
   const handleValidity = () => {
-    if (formRef.current?.checkValidity()) {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
-    }
+    setIsValid(!!formRef.current?.checkValidity());
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -111,10 +107,8 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
             !login &&
             AuthInputs.link(inputProps)}{' '}
           {/* Код */}
-          <>
-            {code && AuthInputs.code(inputProps)}
-            <AuthButton />
-          </>
+          {code && AuthInputs.code(inputProps)}
+          <AuthButton />
         </>
       </form>
     </div>
