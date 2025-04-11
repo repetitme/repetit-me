@@ -1,5 +1,7 @@
 import classNames from 'classnames';
+
 import styles from './index.module.scss';
+
 import { ButtonProps } from './type';
 
 const Button: React.FC<ButtonProps> = ({
@@ -29,7 +31,9 @@ const Button: React.FC<ButtonProps> = ({
     onClick,
     disabled,
     'aria-disabled': disabled,
-    ...(variant === 'social' ? { href, target: '_blank', rel: 'noopener noreferrer' } : {})
+    ...(variant === 'social'
+      ? { href, target: '_blank', rel: 'noopener noreferrer' }
+      : {})
   };
 
   return (

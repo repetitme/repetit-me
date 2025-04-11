@@ -1,13 +1,12 @@
-import '../../src/assets/styles/globals.scss';
-import '../../src/assets/styles/variables.scss';
-import './App.scss';
-import AppRouter from './router/AppRouter';
+import AuthForm from '../features/auth/form';
+
+import '../assets/index.scss';
 
 function App() {
   return (
-    <>
-      <AppRouter />
-    </>
+    <div className="App">
+      <AuthForm login={false} />
+    </div>
   );
 }
 
