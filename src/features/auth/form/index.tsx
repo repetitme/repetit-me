@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { use, useEffect, useRef, useState } from 'react';
 
 import Button from '../../../shared/button';
 import useForm from '../../../shared/hooks/useForm';
@@ -30,14 +30,20 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
   const [code, setReceived] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
 
-  defaultValues.authType = login ? AuthType.LOGIN : AuthType.REGISTER;
-
   // Сброс кода при изменении данных после его получения
   useEffect(() => {
     if (code) {
       setReceived(false);
     }
   }, [values.name, values.tg, values.link]);
+
+  useEffect(() => {
+    setValues((prev) => ({
+      ...prev,
+      authType: login ? AuthType.LOGIN : AuthType.REGISTER,
+      role: currentTab
+    }));
+  }, [login, currentTab]);
 
   const handleValidity = () => {
     if (formRef.current?.checkValidity()) {
@@ -61,10 +67,6 @@ const AuthForm: React.FC<TLogin> = ({ login }) => {
 
   const handleActiveTab = (value: TFormTabs) => {
     setStudentTab(value);
-    setValues({
-      ...values,
-      role: value === FormTabs.STUDENT ? FormTabs.STUDENT : FormTabs.TUTOR
-    });
     setReceived(false);
   };
 
