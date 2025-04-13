@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    width: 895px;
+    width: 100%;
     height: fit-content;
     padding: var(--padding-blocks);
     gap: 16px;
@@ -17,8 +17,9 @@
     }
     
     &__header {
-        line-height: 20px;
+        line-height: 1;
         width: max-content;
+        font-size: 20px;
     }
     
     &__content {
@@ -26,8 +27,7 @@
         
         &_text {
             font-weight: 500;
-            font-size: 20px;
-            line-height: 140%;
+            line-height: 1.38;
 
             &_hidden {
                 display: -webkit-box;
@@ -48,7 +48,7 @@
             &_item {
                 display: flex;
                 justify-content: space-between;
-                padding: 6px 0px;
+                padding: 5px 0px;
                 border-bottom: 1px solid var(--clr-3);
             }
 

@@ -1,3 +1,5 @@
+import { ServicesListItem } from "./type"
+
 export const textContent: string = 
 `
     Опытный репетитор, выпускник КубГУ. Индивидуальный подход: Каждый ученик уникален,
@@ -14,13 +16,21 @@ export const textContent: string =
      — это залог успеха.Подхожу к каждому ученику индивидуально и использую современные методики обучения.
 `
 
-type ServicesListItem = {
-    [key: string]: number
-}
-
-export const servicesList: ServicesListItem = {
-    "Школьники с 1 по 4 класс": 1200,
-    "Школьники с 5 по 8 класс": 1500,
-    "Подготовка к ОГЭ": 1700,
-    "Подготовка к ЕГЭ": 2000
-}
+export const servicesList: ServicesListItem[] = [
+    {
+        service: "Школьники с 1 по 4 класс",
+        price: 1200
+    },
+    {
+        service: "Школьники с 5 по 8 класс",
+        price: 1500
+    },
+    {
+        service: "Подготовка к ОГЭ",
+        price: 1700
+    },
+    {
+        service: "Подготовка к ЕГЭ",
+        price: 2000
+    }
+];
