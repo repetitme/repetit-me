@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
 import iconClose from '../../assets/icons/closeIcon.svg';
+import useClickOutside from '../../shared/hooks/useClickOutside';
 import { ModalOverlay } from '../../shared/ui/Overlay';
 
 import styles from './index.module.scss';
 
 import { AuthModalProps } from './types';
-import useClickOutside from '../../shared/hooks/useClickOutside'
 
 export const AuthModal: FC<AuthModalProps> = ({
   type,
@@ -14,12 +14,15 @@ export const AuthModal: FC<AuthModalProps> = ({
   onToggle,
   children
 }) => {
-
   const modalRef = useClickOutside(onClose);
 
   return (
     <>
-      <div className={styles.modal} ref={modalRef} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={styles.modal}
+        ref={modalRef}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className={styles.modal__header}>
           <h2 className={styles.modal__title}>
             {type ? 'Вход' : 'Регистрация'}
