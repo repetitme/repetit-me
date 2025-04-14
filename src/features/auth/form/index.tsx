@@ -9,19 +9,21 @@ import styles from './index.module.scss';
 
 import { TAuthData, TFormTabs, TInputProps, TLogin } from './types';
 
-const AuthForm: React.FC<TLogin> = ({ login, closeModal }) => {
-  enum AuthType {
-    LOGIN = 'login',
-    REGISTER = 'register'
-  }
-  const defaultValues: TAuthData = {
-    authType: login ? AuthType.LOGIN : AuthType.REGISTER,
-    role: FormTabs.STUDENT,
-    name: '',
-    tg: '',
-    link: '',
-    code: ''
-  };
+enum AuthType {
+  LOGIN = 'login',
+  REGISTER = 'register'
+}
+
+const defaultValues: TAuthData = {
+  authType: AuthType.REGISTER,
+  role: FormTabs.STUDENT,
+  name: '',
+  tg: '',
+  link: '',
+  code: ''
+};
+
+const AuthForm: React.FC<TLogin> = ({ login }) => {
   const { values, handleChange, setValues } = useForm(defaultValues);
   const [currentTab, setStudentTab] = useState<TFormTabs>(FormTabs.STUDENT);
   const [isValid, setIsValid] = useState(false);
@@ -35,33 +37,33 @@ const AuthForm: React.FC<TLogin> = ({ login, closeModal }) => {
     }
   }, [values.name, values.tg, values.link]);
 
+  useEffect(() => {
+    setValues((prev) => ({
+      ...prev,
+      authType: login ? AuthType.LOGIN : AuthType.REGISTER,
+      role: currentTab
+    }));
+  }, [login, currentTab]);
+
   const handleValidity = () => {
-    if (formRef.current?.checkValidity()) {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
-    }
+    setIsValid(!!formRef.current?.checkValidity());
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsValid(false);
     if (code) {
-      setIsValid(false);
       setValues(defaultValues);
       closeModal();
       // Close modal
+      return;
     }
-    e.preventDefault();
     // Код получен
     setReceived(true);
-    setIsValid(false);
   };
 
   const handleActiveTab = (value: TFormTabs) => {
     setStudentTab(value);
-    setValues({
-      ...values,
-      role: value === FormTabs.STUDENT ? FormTabs.STUDENT : FormTabs.TUTOR
-    });
     setReceived(false);
   };
 
@@ -92,24 +94,21 @@ const AuthForm: React.FC<TLogin> = ({ login, closeModal }) => {
         onChange={handleValidity}
         onSubmit={handleSubmit}
       >
-        <>
-          {/* Имя */}
-          {login
-            ? null
-            : AuthInputs.name(
-                inputProps,
-                currentTab === FormTabs.TUTOR ? 'notRequired' : ''
-              )}
-          {/* Telegram */}
-          {AuthInputs.tg(inputProps)}
-          {/* Ссылка */}
-          {currentTab === FormTabs.STUDENT &&
-            !login &&
-            AuthInputs.link(inputProps)}{' '}
-          {/* Код */}
-          {!code ? <AuthButton /> : AuthInputs.code(inputProps)}
-          {code && <AuthButton />}
-        </>
+        {/* Имя */}
+        {!login &&
+          AuthInputs.name(
+            inputProps,
+            currentTab === FormTabs.TUTOR ? 'notRequired' : ''
+          )}
+        {/* Telegram */}
+        {AuthInputs.tg(inputProps)}
+        {/* Ссылка */}
+        {currentTab === FormTabs.STUDENT &&
+          !login &&
+          AuthInputs.link(inputProps)}{' '}
+        {/* Код */}
+        {code && AuthInputs.code(inputProps)}
+        <AuthButton />
       </form>
     </div>
   );
