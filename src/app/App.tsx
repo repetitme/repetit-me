@@ -1,5 +1,6 @@
-import '../assets/index.scss';
 import TutorFilters from '../widgets/ui/TutorFilters';
+
+import '../assets/index.scss';
 
 function App() {
   return (

@@ -6,17 +6,47 @@
   &__form {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 32px;
   }
 
   &__title {
-    margin-block-end: 33px;
-    font-weight: 700;
-    font-size: 20px;
+    margin-block-end: 15px;
+    font-size: 16px;
+    font-weight: 600;
+
+    &__main {
+      display: flex;
+      justify-content: space-between;
+      font-size: 20px;
+      font-weight: 700;
+      margin-block-end: 30px;
+
+      h2 {
+        font-size: inherit;
+        font-weight: inherit;
+        background: var(--Gradient-main,);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      span {
+        font-size: 24px;
+        font-weight: inherit;
+        padding-bottom: 1px;
+        background: var(--Gradient-main,);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
   }
 }
 
 .accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
   &__title {
     font-weight: 500;
     font-size: 15px;
@@ -25,9 +55,8 @@
 
   &__button {
     display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-block-end: 8px;
+    align-items: start;
+    padding: 0;
     border: none;
     background-color: var(--clr-main);
     cursor: pointer;
@@ -112,7 +141,7 @@
     margin-left: 10px;
   }
 
-  &__checkbox:nth-child(n+3) {
+  &__checkbox:nth-child(n + 3) {
     font-family: var(--ffm-price);
     font-size: 18px;
     font-weight: 400;

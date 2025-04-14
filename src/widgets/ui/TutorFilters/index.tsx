@@ -1,30 +1,34 @@
 import { useState } from 'react';
-import * as data from './data';
-import Button from '../../../shared/button';
-import styles from './index.module.scss';
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
-import useForm from './../../../shared/hooks/useForm';
+
 import cn from 'classnames';
+
+import Button from '../../../shared/button';
 import Input from '../../../shared/ui/input';
+import useForm from './../../../shared/hooks/useForm';
+import * as data from './data';
+import priceSlider from './slider';
+
+import styles from './index.module.scss';
+
+import { TButton } from './types';
+
+const defaultState = {
+  subject: '',
+  foreignLanguage: '',
+  speechTherapy: '',
+  others: '',
+  goal: '',
+  ageBracket: data.ageBrackets[0],
+  experience: '',
+  gender: data.gender[0],
+  rating: '',
+  option: ''
+};
 
 export const TutorFilters = (): React.JSX.Element => {
-  const defaultState = {
-    subject: '',
-    foreignLanguage: '',
-    speechTherapy: '',
-    others: '',
-    goal: '',
-    ageBracket: data.ageBrackets[0],
-    experience: '',
-    gender: data.gender[0],
-    rating: '',
-    option: ''
-  };
-
   const { values, handleChange, setValues } = useForm(defaultState);
   const [price, setPrice] = useState<number | number[]>([1500, 2000]);
-  const [ priceValue, setPriceValue ] = useState<string>('');
+  const [priceValue, setPriceValue] = useState<string>('');
   const resetIsActive = JSON.stringify(values) !== JSON.stringify(defaultState);
 
   const handleSliderChange = (value: number | number[]): void => {
@@ -69,11 +73,7 @@ export const TutorFilters = (): React.JSX.Element => {
           onClick={() => setIsOpen(!isOpen)}
         >
           <span className={styles.accordion__icon} />
-          <h3
-            className={styles.accordion__title}
-          >
-            {title}
-          </h3>
+          <h3 className={styles.accordion__title}>{title}</h3>
         </button>
         <div
           className={cn(styles.accordion__content, {
@@ -107,80 +107,80 @@ export const TutorFilters = (): React.JSX.Element => {
     );
   };
 
-  const prices = () => {
+  const filterButton = ({
+    text,
+    className,
+    onClick
+  }: TButton): React.JSX.Element => {
+    return (
+      <Button
+        size="large"
+        variant="purple"
+        text={text}
+        className={className}
+        onClick={onClick}
+      />
+    );
+  };
+
+  const priceInput = () => {
     return (
       <>
         <h2 className={styles.filters__title}>Цена за час</h2>
         <div className={styles.prices}>
-          <Input value={priceValue} onChange={(e) => setPriceValue(e.target.value)} variant='price' />
-          <Input value={priceValue} onChange={(e) => setPriceValue(e.target.value)} variant='price' />
+          <Input
+            value={priceValue}
+            onChange={(e) => setPriceValue(e.target.value)}
+            variant="price"
+          />
+          <Input
+            value={priceValue}
+            onChange={(e) => setPriceValue(e.target.value)}
+            variant="price"
+          />
         </div>
       </>
-    )}
+    );
+  };
 
   return (
     <section className={styles.filters}>
-      <h2 className={styles.filters__title}>Запросы на репетитора</h2>
+      <div className={styles.filters__title__main}>
+        <h2>Запросы на репетитора</h2>
+        <span className={styles.filters__title__sub}>
+          {/* {percentage} */}
+          {`1%`}
+        </span>
+      </div>
       <form onSubmit={handleSubmit} className={styles.filters__form}>
-        <h3>{data.titles.subjects}</h3>
-        {accordion(data.titles.schoolSubjects, data.subjects)}
-        {accordion(data.titles.foreignLanguage, data.foreignLanguages)}
-        {accordion(data.titles.speechTherapy, data.speechTherapy)}
-        {accordion(data.titles.others, data.others)}
+        <div className={styles.accordion__wrapper}>
+          <h3 className={styles.filters__title}>{data.titles.subjects}</h3>
+          {accordion(data.titles.schoolSubjects, data.subjects)}
+          {accordion(data.titles.foreignLanguage, data.foreignLanguages)}
+          {accordion(data.titles.speechTherapy, data.speechTherapy)}
+          {accordion(data.titles.others, data.others)}
+        </div>
         {checkbox(data.titles.goals, data.goals)}
         {radio(data.titles.ageBracket, data.ageBrackets)}
-        {prices()}
-        <Slider
-          className={styles.slider}
-          min={100}
-          max={7000}
-          step={100}
-          range
-          value={price}
-          onChange={handleSliderChange}
-          defaultValue={[1500, 2500]}
-          trackStyle={[{ backgroundColor: '#6757f1', height: '20px' }]}
-          handleStyle={[
-            {
-              background: '#eee',
-              border: 'none',
-              height: '20px',
-              width: '20px',
-              marginTop: '0',
-              opacity: '1'
-            },
-            {
-              backgroundColor: '#eee',
-              border: 'none',
-              height: '20px',
-              width: '20px',
-              marginTop: '0',
-              opacity: '1'
-            }
-          ]}
-          railStyle={{
-            backgroundColor: '#CFDADC',
-            height: '20px',
-            borderRadius: '10px'
-          }}
-          // ariaValueTextFormatterForHandle={}
-          pushable={true}
-        />
+        {priceInput()}
+        {priceSlider({
+          value: Array.isArray(price) ? price : [price],
+          onChange: handleSliderChange
+        })}
         {checkbox(data.titles.experience, data.experience)}
         {radio(data.titles.gender, data.gender)}
         {checkbox(data.titles.rating, data.rating)}
         {checkbox(data.titles.option, data.option)}
-        <Button size="large" text="Применить" variant="purple" />
+        {filterButton({
+          text: 'Применить'
+        })}
       </form>
-      {resetIsActive && (
-        <Button
-          size="large"
-          text="Сбросить"
-          variant="purple"
-          onClick={handleReset}
-          className={styles.filters__reset}
-        />
-      )}
+      {resetIsActive &&
+        filterButton({
+          text: 'Сбросить',
+          className: styles.filters__reset,
+          onClick: handleReset
+        })}
     </section>
   );
 };
