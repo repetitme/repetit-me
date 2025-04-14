@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { AuthModal } from '../../../widgets/AuthModal';
 import AuthForm from '../form';
@@ -9,17 +9,6 @@ export const AuthModalWithForm: React.FC<AuthModalWithFormProps> = ({
   closeModal
 }) => {
   const [isLoginForm, setIsLoginForm] = useState<boolean>(false);
-
-  useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      e.key === 'Escape' && closeModal();
-    };
-
-    document.addEventListener('keydown', handleEsc);
-    return () => {
-      document.removeEventListener('keydown', handleEsc);
-    };
-  }, [closeModal]);
 
   const toggleForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();

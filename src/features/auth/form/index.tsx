@@ -23,7 +23,7 @@ const defaultValues: TAuthData = {
   code: ''
 };
 
-const AuthForm: React.FC<TLogin> = ({ login }) => {
+const AuthForm: React.FC<TLogin> = ({ login, closeModal }) => {
   const { values, handleChange, setValues } = useForm(defaultValues);
   const [currentTab, setStudentTab] = useState<TFormTabs>(FormTabs.STUDENT);
   const [isValid, setIsValid] = useState(false);
