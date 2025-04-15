@@ -1,10 +1,6 @@
-import { FC, useState } from "react";
+import { useState } from "react";
 import styles from './index.module.scss';
-
-interface ServicesListItem {
-  service: string;
-  price: number;
-}
+import { ServicesListItem } from "./type";
 
 // Общий компонент контейнера
 interface ICardContainer {
@@ -16,7 +12,7 @@ interface ICardContainer {
   buttonText: string;
 }
 
-const CardContainer: FC<ICardContainer> = ({ 
+const CardContainer: React.FC<ICardContainer> = ({ 
   title, 
   isHidden, 
   toggleVisibility, 
@@ -42,7 +38,7 @@ interface ITextContent {
   content: string;
 }
 
-const TextContent: FC<ITextContent> = ({ content }) => {
+const TextContent: React.FC<ITextContent> = ({ content }) => {
   return <p className={styles.container__content_text}>{content}</p>;
 };
 
@@ -51,7 +47,7 @@ interface IServicesList {
   services: ServicesListItem[];
 }
 
-const ServicesList: FC<IServicesList> = ({ services }) => {
+const ServicesList: React.FC<IServicesList> = ({ services }) => {
   return (
     <ul className={styles.container__content_list}>
       {services.map((item, index) => (
@@ -69,7 +65,7 @@ interface IAboutMe {
   servicesList: ServicesListItem[];
 }
 
-export const AboutMe: FC<IAboutMe> = ({ textContent, servicesList }) => {
+export const AboutMe: React.FC<IAboutMe> = ({ textContent, servicesList }) => {
   const [aboutMeHidden, setAboutMeHidden] = useState(true);
   const [listHidden, setListHidden] = useState(true);
 

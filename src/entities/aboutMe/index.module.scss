@@ -1,8 +1,8 @@
 .container {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: fit-content;
+    inline-size: 100%;
+    block-size: fit-content;
     padding: var(--padding-blocks);
     gap: 16px;
     border-radius: var(--border-radius-blocks);
@@ -18,12 +18,12 @@
     
     &__header {
         line-height: 1;
-        width: max-content;
+        inline-size: max-content;
         font-size: 20px;
     }
     
     &__content {
-        max-height: max-content;
+        max-block-size: max-content;
         
         &_text {
             font-weight: 500;
@@ -34,7 +34,7 @@
                 -webkit-line-clamp: 6;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
-                max-height: 8.5em;
+                max-block-size: 8.5em;
             }
         }
 
@@ -43,7 +43,7 @@
             flex-direction: column;
             gap: 16px;
             font-weight: 500;
-            line-height: 140%;
+            line-height: 1.7;
 
             &_item {
                 display: flex;
@@ -54,7 +54,7 @@
 
             &_hidden {
                 overflow: hidden;
-                max-height: 5em;
+                max-block-size: 5em;
             }
         }
     }

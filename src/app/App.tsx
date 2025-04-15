@@ -5,7 +5,7 @@ import './App.scss';
 // import { AboutMe } from '../shared/aboutMe';
 import { textContent, servicesList } from '../entities/aboutMe/data';
 
-import { AboutMe } from '../widgets/AboutMe';
+import { AboutMe } from '../entities/aboutMe';
 
 function App() {
   return (
