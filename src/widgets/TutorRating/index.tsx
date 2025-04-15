@@ -7,80 +7,83 @@ import styles from './index.module.scss';
 import { TutorRatingProps } from './type';
 
 const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
-const [ratingColorState, setRatingColorState] = useState(styles.rating_red);
-useEffect(() => {
+  const [ratingColorState, setRatingColorState] = useState(styles.rating_red);
+  useEffect(() => {
     if (rating <= 5) {
-        setRatingColorState(styles.rating_blue);
+      setRatingColorState(styles.rating_blue);
     }
 
     if (rating <= 3.9) {
-        setRatingColorState(styles.rating_purple);
+      setRatingColorState(styles.rating_purple);
     }
 
     if (rating <= 2.9) {
-        setRatingColorState(styles.rating_red);
+      setRatingColorState(styles.rating_red);
     }
-}, [rating]);
+  }, [rating]);
 
-const isBrief = variant === 'brief';
-const isFeedback = variant === 'feedback';
-const isCard = variant === 'card';
+  const isSmall = variant === 'small';
+  const isMedium = variant === 'medium';
+  const isLarge = variant === 'large';
 
-if (isBrief || isFeedback) {
+  if (isSmall || isMedium) {
     return (
-        <div
+      <div
         className={classNames(
-            styles.container,
-            ratingColorState,
-            variant == 'brief' ? styles.brief : styles.feedback
+          styles.container,
+          ratingColorState,
+          variant == 'small' ? styles.small : styles.medium
         )}
-        >
+      >
         <div
-            className={classNames(
+          className={classNames(
             styles.container__content,
-            variant == 'brief' ? styles.brief_content : styles.feedback_content
-            )}
+            variant == 'small' ? styles.small_content : styles.medium_content
+          )}
         >
-            <span
+          <span
             className={classNames(
-                styles.container__content_rating,
-                variant == 'brief'
-                ? styles.brief_content_rating
-                : styles.feedback_content_rating
+              styles.container__content_rating,
+              variant == 'small'
+                ? styles.small_content_rating
+                : styles.medium_content_rating
             )}
-            >
+          >
             {rating.toFixed(1)}
-            </span>
+          </span>
 
-            <img
+          <img
             className={classNames(
-                styles.container__content_star,
-                variant == 'brief'
-                ? styles.brief_content_star
-                : styles.feedback_content_star
+              styles.container__content_star,
+              variant == 'small'
+                ? styles.small_content_star
+                : styles.medium_content_star
             )}
             src={star}
-            />
+            alt="Rating star"
+          />
         </div>
-        </div>
+      </div>
     );
-}
-if (isCard) {
+  }
+  if (isLarge) {
     return (
-    <div className={classNames(styles.container, styles.card)}>
-        <div className={styles.container__left}>
-            <span className={styles.container__left_title}>Рейтинг: </span>
-            <span className={styles.container__left_rating}>
-                {rating.toFixed(1)}
-            </span>
-            <img className={styles.container__left_star} src={star} />
+      <div className={classNames(styles.container, styles.large)}>
+        <div className={styles.container__info}>
+          <span className={styles.container__info_title}>Рейтинг: </span>
+          <span className={styles.container__info_rating}>
+            {rating.toFixed(1)}
+          </span>
+          <img
+            className={styles.container__info_star}
+            src={star}
+            alt="Rating star"
+          />
         </div>
-        <button className={styles.container__right}>
-            <span className={styles.container__right_title}>Отзывы</span>
-        </button>
-    </div>
+        <button className={styles.container__button}>Отзывы</button>
+      </div>
     );
-}
+  }
 };
 
 export default TutorRating;

@@ -3,51 +3,43 @@
   display: flex;
   justify-content: center;
 
-  &__left {
-    box-sizing: content-box;
-    width: 144px;
+  &__info {
+    inline-size: 154px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-right: 1px solid rgb(103 87 241 / 100%);
+    border-right: 1px solid var(--clr-primary-default);
 
     &_title {
+      margin-left: 16px;
       font-weight: 600;
       font-size: 14px;
-      line-height: 12px;
       letter-spacing: 0;
-      margin-left: 16px;
     }
 
     &_rating {
       font-weight: 700;
       font-size: 14px;
-      line-height: 24px;
     }
 
     &_star {
-      width: 15px;
-      height: 15px;
       margin-right: 13px;
+      inline-size: 15px;
+      block-size: 15px;
     }
   }
 
-  &__right {
-    box-sizing: content-box;
-    width: 104px;
+  &__button {
+    margin-right: 7px;
+    inline-size: 104px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: transparent;
     border: none;
-
-    &_title {
-      font-weight: 600;
-      font-size: 14px;
-      line-height: 12px;
-      letter-spacing: 0;
-      margin-right: 7px;
-    }
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0;
   }
 
   &__content {
@@ -66,9 +58,9 @@
   }
 }
 
-.brief {
-  width: 62px;
-  height: 28px;
+.small {
+  inline-size: 62px;
+  block-size: 28px;
   border-radius: 10px;
 
   &_content {
@@ -77,19 +69,18 @@
     &_rating {
       font-weight: 600;
       font-size: 14px;
-      line-height: 24px;
     }
 
     &_star {
-      width: 18px;
-      height: 15px;
+      inline-size: 18px;
+      block-size: 15px;
     }
   }
 }
 
-.feedback {
-  width: 88px;
-  height: 46px;
+.medium {
+  inline-size: 88px;
+  block-size: 46px;
   border-radius: 8px;
 
   &_content {
@@ -99,20 +90,19 @@
     &_rating {
       font-weight: 700;
       font-size: 24px;
-      line-height: 28px;
     }
 
     &_star {
-      width: 18px;
-      height: 18px;
       padding: 1px 2px 0 0;
+      inline-size: 18px;
+      block-size: 18px;
     }
   }
 }
 
-.card {
-  width: 248px;
-  height: 32px;
+.large {
+  inline-size: 248px;
+  block-size: 32px;
   border: 1px solid rgb(103 87 241 / 100%);
   border-radius: 10px;
   font-family: var(--ffm-default);
