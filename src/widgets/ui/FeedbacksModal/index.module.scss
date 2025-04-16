@@ -1,15 +1,17 @@
 .modal {
-  position: fixed;
+  position: fixed; 
+  inset: 176px 0 auto auto;
+  z-index: 999;
   inline-size: 100%;
   max-block-size: 1000px;
-  max-inline-size: 1036px;
+  max-inline-size: 1036px; 
   
   &__header {
     display: flex;    
-    align-items: center;
-    gap: 100px;
+    align-items: center;    
     border-top-left-radius: 20px;
     padding: 32px;
+    background-color: white;
   }
 
   &__title {
@@ -23,6 +25,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    margin-inline-start: 100px;
   }
 
   &__ratingAverage {
