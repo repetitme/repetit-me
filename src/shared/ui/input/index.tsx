@@ -6,6 +6,13 @@ import styles from './index.module.scss';
 
 import IInput from './types';
 
+export const formatNumber = (value: string, isPrice: boolean): string => {
+  return (
+    value.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ' ') +
+    (isPrice ? ' ₽' : '')
+  );
+};
+
 const Input: React.FC<IInput> = ({
   variant = 'form',
   name,
@@ -41,13 +48,6 @@ const Input: React.FC<IInput> = ({
     return '';
   };
 
-  const formatNumber = (value: string): string => {
-    return (
-      value.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ' ') +
-      (isPrice ? ' ₽' : '')
-    );
-  };
-
   const formatInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     let value = e.target.value;
     // Запрещает вводить буквы в поле с ценой
@@ -56,7 +56,7 @@ const Input: React.FC<IInput> = ({
     }
     // Добавляет пробелы между тысячами, если строка из цифр
     if (/^[0-9\s₽]+$/.test(value) && type !== 'number') {
-      value = formatNumber(value);
+      value = formatNumber(value, isPrice);
     }
     onChange({
       target: { value: value }
@@ -68,7 +68,7 @@ const Input: React.FC<IInput> = ({
     if (e.key === 'Backspace' && isPrice) {
       onChange({
         target: {
-          value: formatNumber(value.replace(/\D/g, '').slice(0, -1))
+          value: formatNumber(value.replace(/\D/g, '').slice(0, -1), isPrice)
         }
       } as React.ChangeEvent<HTMLInputElement>);
     }

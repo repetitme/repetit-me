@@ -1,5 +1,9 @@
 export type TButton = {
-  text: string;
   className?: string;
+  reset?: boolean;
   onClick?: () => void;
+};
+
+export type TState = {
+  [key: string]: string[];
 };

@@ -3,44 +3,74 @@ import { useState } from 'react';
 import cn from 'classnames';
 
 import Button from '../../../shared/button';
-import Input from '../../../shared/ui/input';
-import useForm from './../../../shared/hooks/useForm';
+import Input, { formatNumber } from '../../../shared/ui/input';
 import * as data from './data';
 import priceSlider from './slider';
 
 import styles from './index.module.scss';
 
-import { TButton } from './types';
+import { TButton, TState } from './types';
 
-const defaultState = {
-  subject: '',
-  foreignLanguage: '',
-  speechTherapy: '',
-  others: '',
-  goal: '',
-  ageBracket: data.ageBrackets[0],
-  experience: '',
-  gender: data.gender[0],
-  rating: '',
-  option: ''
+const defaultState: TState = {
+  subject: [],
+  foreignLanguage: [],
+  speechTherapy: [],
+  others: [],
+  goal: [],
+  ageBracket: [data.ageBrackets[0]],
+  price: ['1 500 ₽', '2 000 ₽'],
+  experience: [],
+  gender: [data.gender[0]],
+  rating: [],
+  option: []
 };
 
-export const TutorFilters = (): React.JSX.Element => {
-  const { values, handleChange, setValues } = useForm(defaultState);
-  const [price, setPrice] = useState<number | number[]>([1500, 2000]);
-  const [priceValue, setPriceValue] = useState<string>('');
+export const TutorFilters = () => {
+  const [values, setState] = useState(defaultState);
   const resetIsActive = JSON.stringify(values) !== JSON.stringify(defaultState);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const { type, name, value, checked } = e.target;
+    if (type === 'radio') {
+      setState((prevState) => ({ ...prevState, [name]: [value] }));
+      return;
+    };
+    const newValue = checked
+      ? [...(values[name] || []), value]
+      : values[name].filter((item: string) => item !== value);
+    setState((prevState) => ({ ...prevState, [name]: newValue }));
+  };
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ): void => {
+    setState((prevState) => {
+      const newPrice = [...prevState.price];
+      newPrice[index] = e.target.value;
+      return { ...prevState, price: newPrice };
+    });
+  };
+
   const handleSliderChange = (value: number | number[]): void => {
-    setPrice(value);
+    if (Array.isArray(value)) {
+      setState((prevState) => ({
+        ...prevState,
+        price: [
+          formatNumber(value[0].toString(), true),
+          formatNumber(value[1].toString(), true)
+        ]
+      }));
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log(values);
   };
 
   const handleReset = (): void => {
-    setValues(defaultState);
+    setState(defaultState);
   };
 
   const checkbox = (title: string, items: string[]): React.JSX.Element => {
@@ -69,6 +99,7 @@ export const TutorFilters = (): React.JSX.Element => {
     return (
       <div className={styles.accordion}>
         <button
+          type="button"
           className={styles.accordion__button}
           onClick={() => setIsOpen(!isOpen)}
         >
@@ -95,9 +126,10 @@ export const TutorFilters = (): React.JSX.Element => {
             <li key={item} className={styles.radio__checkbox}>
               <input
                 type="radio"
-                name={title.toLowerCase()}
+                name={title}
                 value={item}
                 onChange={handleChange}
+                defaultChecked={item === items[0]}
               />
               {item}
             </li>
@@ -108,17 +140,18 @@ export const TutorFilters = (): React.JSX.Element => {
   };
 
   const filterButton = ({
-    text,
     className,
-    onClick
+    onClick,
+    reset
   }: TButton): React.JSX.Element => {
     return (
       <Button
         size="large"
-        variant="purple"
-        text={text}
+        variant={reset ? 'white' : "purple"}
+        text={reset ? 'Сбросить' : 'Применить'}
         className={className}
         onClick={onClick}
+        icon={reset ? '' : '../../../assets/icons/Icon_Edit.svg'}
       />
     );
   };
@@ -129,13 +162,17 @@ export const TutorFilters = (): React.JSX.Element => {
         <h2 className={styles.filters__title}>Цена за час</h2>
         <div className={styles.prices}>
           <Input
-            value={priceValue}
-            onChange={(e) => setPriceValue(e.target.value)}
+            value={
+              Array.isArray(values.price) ? values.price[0].toString() : ''
+            }
+            onChange={(e) => handleInputChange(e, 0)}
             variant="price"
           />
           <Input
-            value={priceValue}
-            onChange={(e) => setPriceValue(e.target.value)}
+            value={
+              Array.isArray(values.price) ? values.price[1].toString() : ''
+            }
+            onChange={(e) => handleInputChange(e, 1)}
             variant="price"
           />
         </div>
@@ -164,22 +201,20 @@ export const TutorFilters = (): React.JSX.Element => {
         {radio(data.titles.ageBracket, data.ageBrackets)}
         {priceInput()}
         {priceSlider({
-          value: Array.isArray(price) ? price : [price],
+          value: values.price.map((item) => Number(item.replace(/\D/g, ''))),
           onChange: handleSliderChange
         })}
         {checkbox(data.titles.experience, data.experience)}
         {radio(data.titles.gender, data.gender)}
         {checkbox(data.titles.rating, data.rating)}
         {checkbox(data.titles.option, data.option)}
-        {filterButton({
-          text: 'Применить'
-        })}
+        {filterButton({})}
       </form>
       {resetIsActive &&
         filterButton({
-          text: 'Сбросить',
           className: styles.filters__reset,
-          onClick: handleReset
+          onClick: handleReset,
+          reset: true
         })}
     </section>
   );

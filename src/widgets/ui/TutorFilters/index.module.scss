@@ -6,33 +6,37 @@
   &__form {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 28px;
+  }
+
+  &__reset {
+    border-color: red !important;
+    color: red !important;
   }
 
   &__title {
-    margin-block-end: 15px;
-    font-size: 16px;
     font-weight: 600;
+    font-size: 16px;
 
     &__main {
       display: flex;
       justify-content: space-between;
-      font-size: 20px;
-      font-weight: 700;
       margin-block-end: 30px;
+      font-weight: 700;
+      font-size: 20px;
 
       h2 {
-        font-size: inherit;
         font-weight: inherit;
+        font-size: inherit;
         background: var(--Gradient-main,);
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
       span {
-        font-size: 24px;
-        font-weight: inherit;
         padding-bottom: 1px;
+        font-weight: inherit;
+        font-size: 24px;
         background: var(--Gradient-main,);
         background-clip: text;
         -webkit-background-clip: text;
@@ -45,38 +49,43 @@
 .accordion {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-
+  
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
   &__title {
     font-weight: 500;
     font-size: 15px;
     line-height: 24px;
   }
-
+  
   &__button {
     display: flex;
+    block-size: 24px;
     align-items: start;
-    padding: 0;
     border: none;
+    padding: 0;
     background-color: var(--clr-main);
     cursor: pointer;
   }
-
+  
   &__content {
     max-height: 0;
     margin-left: 27px;
-    margin-block-end: 14px;
-    overflow: hidden;
     transition: all var(--duration) var(--timing);
+    overflow: hidden;
   }
-
+  
   &__icon {
     fill: var(--clr-primary-default);
     transition: all var(--duration) var(--timing);
   }
-
+  
   &__open {
-    max-height: 1000px;
+    max-block-size: fit-content;
   }
 }
 
@@ -143,8 +152,8 @@
 
   &__checkbox:nth-child(n + 3) {
     font-family: var(--ffm-price);
-    font-size: 18px;
     font-weight: 400;
+    font-size: 18px;
     line-height: 24px;
   }
 
