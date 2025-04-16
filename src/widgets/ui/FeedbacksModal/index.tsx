@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useEffect, useState } from 'react';
 
 import CloseIcon from '../../../assets/icons/closeIcon.svg'
 
@@ -7,6 +7,7 @@ import { IModalProps } from './type';
 import styles from './index.module.scss';
 
 import { ModalOverlay } from '../../../shared/components/Overlay';
+import useClickOutside from '../../../shared/hooks/useClickOutside';
 
 export type TFeedbackProps = {
   id?: number;
@@ -22,6 +23,8 @@ export type TFeedbackProps = {
 export const FeedbacksModal: FC<IModalProps> = ({ onClose, children }) => {
   const [feedbackCount, setFeedbackCount] = useState(15);
   const [averageRating, setAverageRating] = useState(0);
+
+  const modalRef = useClickOutside(onClose);
 
   const updateModalData = useCallback((feedbacks: TFeedbackProps[]) => {
     const count = feedbacks.length;
@@ -49,7 +52,7 @@ export const FeedbacksModal: FC<IModalProps> = ({ onClose, children }) => {
   return (
     <>
       <ModalOverlay onClose={onClose} />
-      <div className={styles.modal}>
+      <div className={styles.modal} ref={modalRef}>
         <div className={styles.modal__header}>
           <h2 className={styles.modal__title}>Отзывы</h2>
           <div className={styles.modal__rating}>
