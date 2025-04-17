@@ -1,5 +1,5 @@
-import styles from './index.module.scss';
-import { TStarRating } from './type';
+
+import { TStarRating } from './type.ts'
 
 const StarRating: React.FC<TStarRating> = ({ rating }) => {
   const stars = [...Array(5)].map((_, index) => {
@@ -18,7 +18,7 @@ const StarRating: React.FC<TStarRating> = ({ rating }) => {
     );
   });
 
-  return <div className={styles.stars}>{stars}</div>;
+  return <div>{stars}</div>;
 };
 
 export default StarRating;

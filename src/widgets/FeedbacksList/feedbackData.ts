@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
-import studentIcon from '../../assets/images/studentIcon.svg'
+import studentIcon from '../../assets/images/studentIcon.png'
 import { TFeedbackItemProps } from '../../shared/components/FeedbackItem/type'
 
 export const feedbackData: TFeedbackItemProps[] = [
