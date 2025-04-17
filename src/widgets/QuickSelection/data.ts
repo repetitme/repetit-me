@@ -6,7 +6,6 @@ import ivanova from '../../assets/images/tutor-ivanova.svg';
 import fedorova from '../../assets/images/tutor-fedorova.svg';
 import glazkov from '../../assets/images/tutor-glazkov.svg';
 
-
 export const tutorsCard: string[] = [
   glazkov,
   ivanova,

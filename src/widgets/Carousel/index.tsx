@@ -6,43 +6,35 @@ import arrow_right from '../../assets/images/arrow-right.svg';
 import styles from './index.module.scss';
 import { ITutorCardProps } from './type';
 
-
 const Carousel: FC<ITutorCardProps> = ({ tutorsCard }) => {
-
   const cardCount: number = tutorsCard.length;
-  const [firstCard, setfirstCard] = useState(0);
-  const cardRenderedCount: number = 3;
+  const [firstCard, setFirstCard] = useState(0);
+  const CARD_RENDERED_COUNT: number = 3;
 
-  function changeCardNext():boolean {
-    if (firstCard + cardRenderedCount < cardCount) {
-      setfirstCard(firstCard + 1);
-      return true;
+  const isLeftArrowDisabled = firstCard === 0;
+  const isRightArrowDisabled = firstCard + CARD_RENDERED_COUNT >= cardCount;
+
+  const changeCardNext = () => {
+    if (!isRightArrowDisabled) {
+      setFirstCard(firstCard + 1);
     }
-    return false
-  }
+  };
 
-  function changeCardPrevious():boolean {
-    if (firstCard > 0) {
-      setfirstCard(firstCard - 1);
-      return true
+  const changeCardPrevious = () => {
+    if (!isLeftArrowDisabled) {
+      setFirstCard(firstCard - 1);
     }
-    return false
-  }
-
-  const isLeftArrowDisabled = firstCard ===0;
-  const isRightArrowDisabled = firstCard + cardRenderedCount >= cardCount;
-
+  };
 
   return (
     <div className={styles.container}>
       <div className={styles.container__navigation}>
         <button
-          className={classNames(
-            isLeftArrowDisabled ? styles.container__navigation_button_lock : styles.container__navigation_button_unlock,
-            styles.container__navigation_button,
-
-          )}
-          onClick={()=> !isLeftArrowDisabled && changeCardPrevious()}
+          className={classNames(styles.container__navigation_button, {
+            [styles.container__navigation_button_lock]: isLeftArrowDisabled,
+            [styles.container__navigation_button_unlock]: !isLeftArrowDisabled
+          })}
+          onClick={() => !isLeftArrowDisabled && changeCardPrevious()}
         >
           <img
             src={arrow_left}
@@ -52,19 +44,21 @@ const Carousel: FC<ITutorCardProps> = ({ tutorsCard }) => {
         </button>
         <ul className={styles.container__navigation_cards}>
           {tutorsCard
-            .map((tutor) => (
+            .map((tutor, index) => (
               <img
                 className={styles.container__navigation_cards_card}
                 src={tutor}
+                key={`${tutor}-${index}`}
+                alt={tutor}
               />
             ))
-            .slice(firstCard, firstCard + cardRenderedCount)}
+            .slice(firstCard, firstCard + CARD_RENDERED_COUNT)}
         </ul>
         <button
-          className={classNames(
-            styles.container__navigation_button,
-            isRightArrowDisabled ? styles.container__navigation_button_lock : styles.container__navigation_button_unlock
-          )}
+          className={classNames(styles.container__navigation_button, {
+            [styles.container__navigation_button_lock]: isRightArrowDisabled,
+            [styles.container__navigation_button_unlock]: !isRightArrowDisabled
+          })}
           onClick={changeCardNext}
         >
           <img

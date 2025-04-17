@@ -11,25 +11,23 @@ export const Dropdown: FC<IDropdownProps> = ({
   setStateOption,
   setStateItemOther
 }) => {
+  const handleItemClick = (disciplineId: string) => {
+    setStateOption(disciplineId);
+    setStateItemOther(true);
+    setStateMore(false);
+  };
   return (
     <ul
-      className={classNames(
-        stateMore == true
-          ? styles.container
-          : styles.container__disabled
-      )}
+      className={classNames(styles.container, {
+        [styles.container__disabled]: !stateMore
+      })}
     >
       {list.map((discipline) => {
-        const handleClick = () => {
-          setStateMore(false);
-          setStateItemOther(discipline.other);
-          setStateOption(discipline.id);
-        };
         return (
           <li
             className={classNames(styles.container__item)}
             key={discipline.id}
-            onClick={handleClick}
+            onClick={() => handleItemClick(discipline.id)}
           >
             <span className={styles.container__item_text}>
               {discipline.discipline}
