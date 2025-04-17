@@ -29,7 +29,9 @@ const Button: React.FC<ButtonProps> = ({
     onClick,
     disabled,
     'aria-disabled': disabled,
-    ...(variant === 'social' ? { href, target: '_blank', rel: 'noopener noreferrer' } : {})
+    ...(variant === 'social'
+      ? { href, target: '_blank', rel: 'noopener noreferrer' }
+      : {})
   };
 
   return (

@@ -9,7 +9,10 @@ const Advantages: FC = () => {
     <div className={styles.container}>
       <div className={styles.container__description}>
         <div
-          className={classNames(styles.container__description_role, styles.container__description_block)}
+          className={classNames(
+            styles.container__description_role,
+            styles.container__description_block
+          )}
         >
           <div className={styles.container__description_role_info}>
             <p>
@@ -28,7 +31,10 @@ const Advantages: FC = () => {
         </div>
 
         <div
-          className={classNames(styles.container__description_telegram, styles.container__description_block)}
+          className={classNames(
+            styles.container__description_telegram,
+            styles.container__description_block
+          )}
         >
           <div className={styles.container__description_telegram_info}>
             <p>
