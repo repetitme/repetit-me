@@ -16,7 +16,6 @@ export const QuickSelection: FC = () => {
 
   const lastDiscipline = disciplines[disciplines.length - 1];
 
-  console.log(stateOption);
   const handleOptionChange = (
     itemOther: boolean,
     more: boolean,
