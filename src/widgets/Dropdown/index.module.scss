@@ -1,0 +1,32 @@
+.container {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 248px;
+  min-width: 206px;
+  background-color: var(--clr-main);
+  border-radius: 8px;
+  z-index: 1;
+
+  &__disabled {
+    display: none;
+  }
+
+  &__item {
+    padding: 0 0 0 17px;
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    color: var(--clr-black);
+    cursor: pointer;
+    
+    &_text {
+      font-family: var(--ffm-default);
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.36;
+    }
+  }
+}

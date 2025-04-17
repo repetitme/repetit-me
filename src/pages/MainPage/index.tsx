@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import QuickSelection from '../../widgets/QuickSelection';
 import MainBlock from '../../widgets/MainBlock';
 import { WhyWe } from '../../widgets/WhyWe';
 import { Chat } from '../../widgets/Chat';
@@ -20,6 +21,7 @@ const MainPage = () => {
       <Perks />
       <WhyWe />
       <Chat />
+      <QuickSelection />
       <Recruiting />
       <TutorFormBlock />
       <Advantages />

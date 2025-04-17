@@ -1,0 +1,40 @@
+.container {
+  margin: 50px 0 0;
+
+  &__navigation {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 32px;
+    margin: 16px 0 0;
+
+    &_button {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      height: 80px;
+
+      &_unlock {
+        visibility: visible;
+        background-color: transparent;
+        border: none;
+      }
+
+      &_lock {
+        visibility: hidden;
+        background-color: transparent;
+        border: none;
+      }
+    }
+
+    &_cards {
+      display: flex;
+      gap: 12px;
+      padding: 0 0 0 8px;
+
+      &_card {
+        cursor: pointer;
+      }
+    }
+  }
+}
