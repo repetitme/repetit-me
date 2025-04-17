@@ -6,7 +6,11 @@
   &__form {
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 16px;
+
+    > *:nth-child(n + 6) {
+      margin-top: 12px;
+    }
   }
 
   &__reset {
@@ -21,7 +25,8 @@
     &__main {
       display: flex;
       justify-content: space-between;
-      margin-block-end: 30px;
+      align-items: center;
+      margin-block-end: 33px;
       font-weight: 700;
       font-size: 20px;
 
@@ -49,12 +54,6 @@
 .accordion {
   display: flex;
   flex-direction: column;
-  
-  &__wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
   
   &__title {
     font-weight: 500;
@@ -91,7 +90,7 @@
 
 .checkboxes {
   &__title {
-    margin-block-end: 16px;
+    margin-block-end: 17px;
     font-weight: 600;
     font-size: inherit;
   }
@@ -99,13 +98,16 @@
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
   }
 
   &__checkbox {
     display: flex;
-    gap: 5px;
-    block-size: 24px;
+    align-items: center;
+    block-size: 20px;
+    font-weight: 500;
+    font-size: 15px;
+    font-style: normal;
   }
 
   & input {
@@ -117,6 +119,7 @@
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     appearance: none;
+    margin-right: 4px;
 
     &:checked {
       border: 2px solid var(--clr-primary-default);

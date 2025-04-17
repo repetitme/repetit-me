@@ -1,3 +1,8 @@
+export interface TutorFiltersProps {
+  onSubmit: (values: TState) => void;
+  percentage?: number;
+}
+
 export type TButton = {
   className?: string;
   reset?: boolean;
