@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import styles from './index.module.scss';
+
 import icon from '../../../assets/Icon_Sorting.svg';
+
+import styles from './index.module.scss';
 
 interface IReview {
   id: string;
   author: string;
   content: string;
-  date: Date; 
-  rating: number; 
+  date: Date;
+  rating: number;
 }
 
 const initialReviews: IReview[] = [
@@ -60,9 +62,7 @@ const ReviewList: React.FC = () => {
           <li key={review.id}>
             <h2>{review.author}</h2>
             <p>{review.content}</p>
-            <p>
-             {review.rating}
-            </p>
+            <p>{review.rating}</p>
             <p>{review.date.toLocaleDateString()}</p>
           </li>
         ))}

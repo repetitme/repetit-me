@@ -1,0 +1,45 @@
+.modal {
+  padding: 32px 32px 40px;
+  max-inline-size: 959px;
+  border-radius: 20px;
+  background-color: var(--clr-main, white);
+  overflow: visible;
+  position: relative;
+
+  &__wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+  }
+
+  &__accept {
+    padding: 44px 24px;
+  }
+
+  &__close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    inline-size: 24px;
+    block-size: 24px;
+    position: absolute;
+    top: -45px;
+    right: 0;
+    z-index: 1;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__buttons {
+    gap: 16px;
+  }
+}
