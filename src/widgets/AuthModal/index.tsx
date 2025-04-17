@@ -2,6 +2,7 @@ import { FC } from 'react';
 
 import iconClose from '../../../assets/icons/closeIcon.svg';
 import { ModalOverlay } from '../../shared/components/Overlay';
+import useClickOutside from '../../shared/hooks/useClickOutside';
 
 import styles from './index.module.scss';
 
@@ -13,9 +14,14 @@ export const AuthModal: FC<AuthModalProps> = ({
   onToggle,
   children
 }) => {
+  const modalRef = useClickOutside(onClose);
   return (
     <>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+      <div
+        ref={modalRef}
+        className={styles.modal}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className={styles.modal__header}>
           <h2 className={styles.modal__title}>
             {type ? 'Вход' : 'Регистрация'}
@@ -46,7 +52,7 @@ export const AuthModal: FC<AuthModalProps> = ({
           )}
         </div>
       </div>
-      <ModalOverlay onClose={onClose}></ModalOverlay>
+      <ModalOverlay />
     </>
   );
 };

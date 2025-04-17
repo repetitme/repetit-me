@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { ButtonProps } from '../Button/type';
+import { ButtonProps } from '../../button/type';
 
 export type ModalProps = {
   type: 'notification' | 'accept_without_text' | 'accept_with_text';
