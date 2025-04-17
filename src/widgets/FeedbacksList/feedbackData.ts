@@ -1,15 +1,12 @@
-import { TFeedbackProps } from '../../shared/FeedbackItem/type';
-import Evgeny from '../images/FeedbackStudentImg/Evgeny.png';
-import Pavel from '../images/FeedbackStudentImg/Pavel.png';
-import Sergey1 from '../images/FeedbackStudentImg/Sergey1.png';
-import Sergey2 from '../images/FeedbackStudentImg/Sergey2.png';
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
+import studentIcon from '../../assets/images/studentIcon.svg'
+import { TFeedbackItemProps } from '../../shared/components/FeedbackItem/type'
 
-export const feedbackData: TFeedbackProps[] = [
+export const feedbackData: TFeedbackItemProps[] = [
   {
     id: uuidv4(),
     name: 'Sergey',
-    image: Sergey1,
+    image: studentIcon,
     content:
       'Хороший репетитор, понятно объясняет, контролирует и организует самостоятельную работу ребёнка. Улучшилась успеваемость по математике в школе',
     rating: 4,
@@ -18,7 +15,7 @@ export const feedbackData: TFeedbackProps[] = [
   {
     id: uuidv4(),
     name: 'Evgeny',
-    image: Evgeny,
+    image: studentIcon,
     content:
       'Отличный репетитор! Помог понять сложные темы, всегда терпелив и объясняет доступно. Улучшились мои оценки! Спасибо!',
     rating: 5,
@@ -27,7 +24,7 @@ export const feedbackData: TFeedbackProps[] = [
   {
     id: uuidv4(),
     name: 'Pavel',
-    image: Pavel,
+    image: studentIcon,
     content:
       'Замечательный репетитор! Объясняет сложные темы просто и понятно. С его помощью математика стала интереснее! Советую всем.',
     rating: 3,
@@ -36,7 +33,7 @@ export const feedbackData: TFeedbackProps[] = [
   {
     id: uuidv4(),
     name: 'Sergey',
-    image: Sergey2,
+    image: studentIcon,
     content:
       'Хороший репетитор, понятно объясняет, контролирует и организует самостоятельную работу ребёнка. Улучшилась успеваемость по математике в школе',
     rating: 4,

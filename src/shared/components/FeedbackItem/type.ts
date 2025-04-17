@@ -1,4 +1,4 @@
-export type TFeedbackProps = {
+export type TFeedbackItemProps = {
   id?: string;
   name: string;
   image?: string;
@@ -7,4 +7,4 @@ export type TFeedbackProps = {
   date: Date;
 };
 
-export type TNewFeedback = Omit<TFeedbackProps, 'image'>
+export type TNewFeedback = Omit<TFeedbackItemProps, 'image'>

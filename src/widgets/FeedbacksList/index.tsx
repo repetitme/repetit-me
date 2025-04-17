@@ -1,15 +1,15 @@
 import { useMemo, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import sortIcon from '../../assets/icons/Icon_Sorting.svg'
+import sortIcon from '../../assets/icons/iconSorting.svg'
 import pencilIcon from '../../assets/icons/pencilIcon.svg'
-import { feedbackData } from '../../assets/mockdata/feedbackData'
-import Button from '../../shared/components/button'
-import FeedbackItem from '../../shared/FeedbackItem'
-import { TFeedbackProps, TNewFeedback } from '../../shared/FeedbackItem/type'
+import Button from '../../shared/button'
+import FeedbackItem from '../../shared/components/FeedbackItem'
+import { TFeedbackItemProps, TNewFeedback } from '../../shared/components/FeedbackItem/type'
+import { feedbackData } from './feedbackData'
 import styles from './index.module.scss'
 
 const FeedbackList: React.FC = () => {
-  const [feedbacks, setFeedbacks] = useState<TFeedbackProps[]>(feedbackData);
+  const [feedbacks, setFeedbacks] = useState<TFeedbackItemProps[]>(feedbackData);
   const [isAscending, setIsAscending] = useState<boolean>(true);
   const [isFormVisible, setIsVisible] = useState<boolean>(false)
 
@@ -25,7 +25,7 @@ const FeedbackList: React.FC = () => {
     const toggleFormVisible = () => setIsVisible(prev => !prev)
 
     const handleAddFeedback = (newFeedback: TNewFeedback) => {
-      const feedbackToAdd: TFeedbackProps = {
+      const feedbackToAdd: TFeedbackItemProps = {
         ...newFeedback,
         id: uuidv4(), 
         date: new Date(), 
