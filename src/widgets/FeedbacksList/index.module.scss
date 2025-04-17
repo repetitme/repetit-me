@@ -1,0 +1,44 @@
+.section {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px 32px;
+  gap: 24px;
+  background-color: #f6f6f6;
+}
+
+.button_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sort_button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 63px;
+  inline-size: min-content;
+  padding: 16px 20px;
+  border-radius: var(--border-radius-btn-social);
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.36;
+  font-family: var(--ffm-default);
+  cursor: pointer;
+  background-color: var(--clr-main);
+  color: #292f3b;
+  white-space: nowrap;
+}
+
+.feedback_button {
+  inline-size: min-content;
+  white-space: nowrap;
+  padding: 18px 24px;
+}
+
+.feedback_list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

@@ -1,0 +1,48 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 12px;
+  border-radius: 16px;
+  background-color: var(--clr-main);
+  font-family: var(--ffm-default);
+}
+
+.wrapper_info {
+  display: flex;
+}
+
+.image {
+  inline-size: 60px;
+  block-size: 60px;
+  border-radius: 6px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: -6px 63px 0 14px;
+}
+
+.name {
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--clr-black);
+}
+
+.date {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 0.62;
+  color: #a4a4aa;
+}
+
+.content {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.4;
+  color: #252525;
+  margin: 6px 0 10px;
+}

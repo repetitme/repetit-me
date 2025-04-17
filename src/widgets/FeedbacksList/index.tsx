@@ -1,0 +1,71 @@
+import { useMemo, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+import sortIcon from '../../assets/icons/Icon_Sorting.svg'
+import pencilIcon from '../../assets/icons/pencilIcon.svg'
+import { feedbackData } from '../../assets/mockdata/feedbackData'
+import Button from '../../shared/components/button'
+import FeedbackItem from '../../shared/FeedbackItem'
+import { TFeedbackProps, TNewFeedback } from '../../shared/FeedbackItem/type'
+import styles from './index.module.scss'
+
+const FeedbackList: React.FC = () => {
+  const [feedbacks, setFeedbacks] = useState<TFeedbackProps[]>(feedbackData);
+  const [isAscending, setIsAscending] = useState<boolean>(true);
+  const [isFormVisible, setIsVisible] = useState<boolean>(false)
+
+  const sortedFeedbacks = useMemo(() => {
+    return [...feedbacks].sort((a, b) => {
+    return isAscending
+    ? a.date.getTime() - b.date.getTime()
+    : b.date.getTime() - a.date.getTime();
+    });
+    }, [feedbacks, isAscending]);
+
+    const toggleSortFeedbacks = () => setIsAscending(prev => !prev);
+    const toggleFormVisible = () => setIsVisible(prev => !prev)
+
+    const handleAddFeedback = (newFeedback: TNewFeedback) => {
+      const feedbackToAdd: TFeedbackProps = {
+        ...newFeedback,
+        id: uuidv4(), 
+        date: new Date(), 
+      };
+      setFeedbacks(prev => [feedbackToAdd, ...prev])
+    }
+
+  return (
+    <section className={styles.section}>
+      <div className={styles.button_container}>
+        <button className={styles.sort_button} onClick={toggleSortFeedbacks}>
+          {isAscending ? 'Сначала новые' : 'Сначала старые'}
+          <img src={sortIcon} alt="Иконка сортировки" />
+        </button>
+        <Button
+          text="Написать отзыв"
+          variant="white"
+          icon={pencilIcon}
+          className={styles.feedback_button}
+          onClick={toggleFormVisible}
+        />
+      </div>
+
+      {/* {isFormVisible && <FeedbackForm onAddFeedback={handleAddFeedback} />} */}
+
+      <ul className={styles.feedback_list}>
+        {sortedFeedbacks.map((feedback) => (
+          <li key={feedback.id}>
+            <FeedbackItem
+              name={feedback.name}
+              image={feedback.image}
+              content={feedback.content}
+              rating={feedback.rating}
+              date={feedback.date}
+            />
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+};
+
+export default FeedbackList;
