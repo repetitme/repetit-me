@@ -6,16 +6,17 @@
   &__form {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 28px;
 
-    > *:nth-child(n + 6) {
-      margin-top: 12px;
+    >*:nth-child(4) {
+      margin-block-end: 7px;
     }
   }
 
   &__reset {
     border-color: red !important;
     color: red !important;
+    margin-block-start: 12px;
   }
 
   &__title {
@@ -26,7 +27,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-block-end: 33px;
+      margin-block-end: 32px;
       font-weight: 700;
       font-size: 20px;
 
@@ -51,9 +52,15 @@
   }
 }
 
-.accordion {
+.accordions {
   display: flex;
   flex-direction: column;
+  gap: 16px;
+
+  &__item {
+    display: flex;
+    flex-direction: column;   
+  }
   
   &__title {
     font-weight: 500;
@@ -90,7 +97,7 @@
 
 .checkboxes {
   &__title {
-    margin-block-end: 17px;
+    margin-block-end: 16px;
     font-weight: 600;
     font-size: inherit;
   }
@@ -98,20 +105,22 @@
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
   }
 
   &__checkbox {
     display: flex;
     align-items: center;
-    block-size: 20px;
+    block-size: 24px;
     font-weight: 500;
     font-size: 15px;
+    gap: 3px;
     font-style: normal;
   }
 
   & input {
     position: relative;
+    margin-inline-start: 1px;
     width: 20px;
     height: 20px;
     border: 2px solid var(--clr-3);
@@ -140,9 +149,13 @@
 }
 
 .radio {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
   &__title {
-    margin-block-end: 16px;
     font-weight: 600;
+    margin-block-start: 1px;
     font-size: inherit;
   }
 
@@ -150,7 +163,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    margin-left: 10px;
+    margin-left: 5px;
   }
 
   &__checkbox:nth-child(n + 3) {
@@ -162,7 +175,8 @@
 
   &__checkbox {
     display: flex;
-    gap: 12px;
+    align-items: center;
+    gap: 7px;
     font-weight: 500;
     font-size: 15px;
     block-size: 24px;
@@ -196,6 +210,16 @@
 }
 
 .prices {
+  margin-block-start: 3px;
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: 13px;
+  
+  &__inputs {
+    block-size: 44px;
+    margin-inline-start: 3px;
+    margin-block-start: 6px;
+    display: flex;
+    gap: 13px;  
+  }
 }

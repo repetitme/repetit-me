@@ -25,16 +25,6 @@ const defaultState: TState = {
   option: []
 };
 
-const accordionGroups = [
-  { title: data.titles.schoolSubjects, items: data.subjects },
-  {
-    title: data.titles.foreignLanguage,
-    items: data.foreignLanguages
-  },
-  { title: data.titles.speechTherapy, items: data.speechTherapy },
-  { title: data.titles.others, items: data.others }
-];
-
 export const TutorFilters = ({
   onSubmit,
   percentage = 1
@@ -77,16 +67,6 @@ export const TutorFilters = ({
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onSubmit(values);
-    console.log(values);
-  };
-
-  const handleReset = (): void => {
-    setState(defaultState);
-  };
-
   const checkbox = (
     title: string,
     items: string[],
@@ -94,7 +74,9 @@ export const TutorFilters = ({
   ): React.JSX.Element => {
     return (
       <div className={styles.checkboxes}>
-        {!Number.isFinite(index) && <h4 className={styles.checkboxes__title}>{title}</h4>}
+        {!Number.isFinite(index) && (
+          <h4 className={styles.checkboxes__title}>{title}</h4>
+        )}
         <ul className={styles.checkboxes__list}>
           {items.map((item) => (
             <li key={item} className={styles.checkboxes__checkbox}>
@@ -115,21 +97,21 @@ export const TutorFilters = ({
   const accordions = (): React.JSX.Element => {
     return (
       <>
-        {accordionGroups.map(({ title, items }, index) => {
+        {data.accordionGroups.map(({ title, items }, index) => {
           const [isOpen, setIsOpen] = useState(false);
           return (
-            <div key={index} className={styles.accordion}>
+            <div key={index} className={styles.accordions_item}>
               <button
                 type="button"
-                className={styles.accordion__button}
+                className={styles.accordions__button}
                 onClick={() => setIsOpen(!isOpen)}
               >
-                <span className={styles.accordion__icon} />
-                <h3 className={styles.accordion__title}>{title}</h3>
+                <span className={styles.accordions__icon} />
+                <h3 className={styles.accordions__title}>{title}</h3>
               </button>
               <div
-                className={cn(styles.accordion__content, {
-                  [styles.accordion__open]: isOpen
+                className={cn(styles.accordions__content, {
+                  [styles.accordions__open]: isOpen
                 })}
               >
                 {checkbox(title, items, index)}
@@ -163,28 +145,10 @@ export const TutorFilters = ({
     );
   };
 
-  const filterButton = ({
-    className,
-    onClick,
-    reset
-  }: TButton): React.JSX.Element => {
-    return (
-      <Button
-        size="large"
-        variant={reset ? 'white' : 'purple'}
-        text={reset ? 'Сбросить' : 'Применить'}
-        className={className}
-        onClick={onClick}
-        icon={reset ? '' : '../../../assets/icons/Icon_Edit.svg'}
-      />
-    );
-  };
-
   const priceInput = () => {
     return (
       <>
-        <h2 className={styles.filters__title}>Цена за час</h2>
-        <div className={styles.prices}>
+        <div className={styles.prices__inputs}>
           <Input
             value={
               Array.isArray(values.price) ? values.price[0].toString() : ''
@@ -204,6 +168,32 @@ export const TutorFilters = ({
     );
   };
 
+  const filterButton = ({
+    className,
+    onClick,
+    reset
+  }: TButton): React.JSX.Element => {
+    return (
+      <Button
+        size="large"
+        variant={reset ? 'white' : 'purple'}
+        text={reset ? 'Сбросить' : 'Применить'}
+        className={className}
+        onClick={onClick}
+        icon={reset ? '../../../assets/icons/Icon_Edit.svg' : ''}
+      />
+    );
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSubmit(values);
+  };
+
+  const handleReset = (): void => {
+    setState(defaultState);
+  };
+
   return (
     <section className={styles.filters}>
       <div className={styles.filters__title__main}>
@@ -211,15 +201,20 @@ export const TutorFilters = ({
         <span className={styles.filters__title__sub}>{`${percentage}%`}</span>
       </div>
       <form onSubmit={handleSubmit} className={styles.filters__form}>
-        <h3 className={styles.filters__title}>{data.titles.subjects}</h3>
-        {accordions()}
+        <div className={styles.accordions}>
+          <h3 className={styles.filters__title}>{data.titles.subjects}</h3>
+          {accordions()}
+        </div>
         {checkbox(data.titles.goals, data.goals)}
         {radio(data.titles.ageBracket, data.ageBrackets)}
-        {priceInput()}
-        {priceSlider({
-          value: values.price.map((item) => Number(item.replace(/\D/g, ''))),
-          onChange: handleSliderChange
-        })}
+        <div className={styles.prices}>
+          <h2 className={styles.filters__title}>Цена за час</h2>
+          {priceInput()}
+          {priceSlider({
+            value: values.price.map((item) => Number(item.replace(/\D/g, ''))),
+            onChange: handleSliderChange
+          })}
+        </div>
         {checkbox(data.titles.experience, data.experience)}
         {radio(data.titles.gender, data.gender)}
         {checkbox(data.titles.rating, data.rating)}

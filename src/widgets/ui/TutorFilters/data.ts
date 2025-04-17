@@ -54,6 +54,16 @@ export const others = [
   'Финансовая грамотность'
 ];
 
+export const accordionGroups = [
+  { title: titles.schoolSubjects, items: subjects },
+  {
+    title: titles.foreignLanguage,
+    items: foreignLanguages
+  },
+  { title: titles.speechTherapy, items: speechTherapy },
+  { title: titles.others, items: others }
+];
+
 export const goals = [
   'Подготовка к ВПР',
   'Подготовка к ОГЭ',
