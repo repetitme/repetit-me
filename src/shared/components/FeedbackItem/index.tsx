@@ -11,7 +11,7 @@ export const FeedbackItem: React.FC<TFeedbackItemProps> = ({
 }) => {
   return (
     <article className={styles.wrapper}>
-      <div className={styles.wrapper_info}>
+      <div className={styles.wrapperInfo}>
         <img src={image} alt="фото студента" className={styles.image} />
         <div className={styles.info}>
         <p className={styles.name}>{name}</p>

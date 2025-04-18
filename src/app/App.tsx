@@ -1,5 +1,5 @@
 import '../assets/index.scss'
-import FeedbackList from '../widgets/FeedbacksList'
+import FeedbackList from '../widgets/FeedbackList'
 import AppRouter from './router/AppRouter'
 
 function App() {

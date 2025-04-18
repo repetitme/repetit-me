@@ -7,12 +7,12 @@
   background-color: #f6f6f6;
 }
 
-.button_container {
+.buttonContainer {
   display: flex;
   justify-content: space-between;
 }
 
-.sort_button {
+.sortButton {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -31,13 +31,13 @@
   white-space: nowrap;
 }
 
-.feedback_button {
+.feedbackButton {
   inline-size: min-content;
   white-space: nowrap;
   padding: 18px 24px;
 }
 
-.feedback_list {
+.feedbackList {
   display: flex;
   flex-direction: column;
   gap: 16px;
