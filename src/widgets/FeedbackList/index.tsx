@@ -19,7 +19,7 @@ const FeedbackList: React.FC = () => {
   const [feedbacks, setFeedbacks] =
     useState<TFeedbackItemProps[]>(feedbackData);
   const [isAscending, setIsAscending] = useState<boolean>(true);
-  const [isFormVisible, setIsVisible] = useState<boolean>(false);
+  // const [isFormVisible, setIsVisible] = useState<boolean>(false);
 
   const sortedFeedbacks = useMemo(() => {
     return [...feedbacks].sort((a, b) => {
@@ -30,7 +30,7 @@ const FeedbackList: React.FC = () => {
   }, [feedbacks, isAscending]);
 
   const toggleSortFeedbacks = () => setIsAscending((prev) => !prev);
-  const toggleFormVisible = () => setIsVisible((prev) => !prev);
+  // const toggleFormVisible = () => setIsVisible((prev) => !prev);
 
   const handleAddFeedback = (newFeedback: TNewFeedback) => {
     const feedbackToAdd: TFeedbackItemProps = {
@@ -53,7 +53,7 @@ const FeedbackList: React.FC = () => {
           variant="white"
           icon={pencilIcon}
           className={styles.button}
-          onClick={toggleFormVisible}
+          // onClick={toggleFormVisible}
         />
       </div>
 
