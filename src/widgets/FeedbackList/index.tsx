@@ -43,8 +43,8 @@ const FeedbackList: React.FC = () => {
 
   return (
     <section className={styles.section}>
-      <div className={styles.buttonContainer}>
-        <button className={styles.sortButton} onClick={toggleSortFeedbacks}>
+      <div className={styles.container}>
+        <button className={styles.sort} onClick={toggleSortFeedbacks}>
           {isAscending ? 'Сначала новые' : 'Сначала старые'}
           <img src={sortIcon} alt="Иконка сортировки" />
         </button>
@@ -52,14 +52,14 @@ const FeedbackList: React.FC = () => {
           text="Написать отзыв"
           variant="white"
           icon={pencilIcon}
-          className={styles.feedbackButton}
+          className={styles.button}
           onClick={toggleFormVisible}
         />
       </div>
 
       {/* {isFormVisible && <FeedbackForm onAddFeedback={handleAddFeedback} />} */}
 
-      <ul className={styles.feedbackList}>
+      <ul className={styles.list}>
         {sortedFeedbacks.map((feedback) => (
           <li key={feedback.id}>
             <FeedbackItem
