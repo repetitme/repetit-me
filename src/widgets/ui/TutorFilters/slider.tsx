@@ -21,13 +21,12 @@ export default function priceSlider({
           }`}
       </style>
       <Slider
-        min={100}
+        min={300}
         max={7000}
-        step={100}
+        step={50}
         range
         value={value}
         onChange={onChange}
-        defaultValue={[1500, 2500]}
         style={{
           width: '312px'
         }}

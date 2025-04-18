@@ -6,7 +6,7 @@ function App() {
   const handleSubmit = (values: any) => console.log(values);
   return (
     <>
-      <TutorFilters onSubmit={handleSubmit} percentage={10} />
+      <TutorFilters onSubmit={handleSubmit} />
     </>
   );
 }

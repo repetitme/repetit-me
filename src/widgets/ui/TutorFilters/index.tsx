@@ -10,28 +10,15 @@ import priceSlider from './slider';
 
 import styles from './index.module.scss';
 
-import { TButton, TState, TutorFiltersProps } from './types';
-
-const defaultState: TState = {
-  [data.titles.subjects]: [],
-  [data.titles.foreignLanguage]: [],
-  [data.titles.speechTherapy]: [],
-  [data.titles.others]: [],
-  [data.titles.goals]: [],
-  [data.titles.ageBrackets]: [data.ageBrackets[0]],
-  [data.titles.price]: ['1 500 ₽', '2 000 ₽'],
-  [data.titles.experience]: [],
-  [data.titles.gender]: [data.gender[0]],
-  [data.titles.rating]: [],
-  [data.titles.option]: []
-};
+import { TButton, TCheckbox, TRadio, TutorFiltersProps } from './types';
 
 export const TutorFilters = ({
   onSubmit,
   percentage = 1
 }: TutorFiltersProps) => {
-  const [values, setState] = useState(defaultState);
-  const resetIsActive = JSON.stringify(values) !== JSON.stringify(defaultState);
+  const [values, setState] = useState(data.defaultState);
+  const resetIsActive =
+    JSON.stringify(values) !== JSON.stringify(data.defaultState);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { type, name, value, checked } = e.target;
@@ -68,11 +55,7 @@ export const TutorFilters = ({
     }
   };
 
-  const checkbox = (
-    title: string,
-    items: string[],
-    index?: number
-  ): React.JSX.Element => {
+  const checkbox = ({ title, items, index }: TCheckbox): React.JSX.Element => {
     return (
       <div className={styles.checkboxes}>
         {!Number.isFinite(index) && (
@@ -117,7 +100,7 @@ export const TutorFilters = ({
                 <span className={styles.accordions__chevron} />
               </button>
               <div className={styles.accordions__content}>
-                {checkbox(title, items, index)}
+                {checkbox({ title, items, index })}
               </div>
             </div>
           );
@@ -126,7 +109,7 @@ export const TutorFilters = ({
     );
   };
 
-  const radio = (title: string, items: string[]): React.JSX.Element => {
+  const radio = ({ title, items }: TRadio): React.JSX.Element => {
     return (
       <div className={styles.radio}>
         <h3 className={styles.radio__title}>{title}</h3>
@@ -175,10 +158,7 @@ export const TutorFilters = ({
     );
   };
 
-  const filterButton = ({
-    onClick,
-    reset
-  }: TButton): React.JSX.Element => {
+  const filterButton = ({ onClick, reset }: TButton): React.JSX.Element => {
     return (
       <Button
         variant={reset ? 'reset' : 'purple'}
@@ -195,7 +175,7 @@ export const TutorFilters = ({
   };
 
   const handleReset = (): void => {
-    setState({ ...defaultState });
+    setState({ ...data.defaultState });
   };
 
   return (
@@ -209,8 +189,8 @@ export const TutorFilters = ({
           <h3 className={styles.filters__title}>{data.titles.subjects}</h3>
           {accordions()}
         </div>
-        {checkbox(data.titles.goals, data.goals)}
-        {radio(data.titles.ageBrackets, data.ageBrackets)}
+        {checkbox({ title: data.titles.goals, items: data.goals })}
+        {radio({ title: data.titles.ageBrackets, items: data.ageBrackets })}
         <div className={styles.prices}>
           <h2 className={styles.filters__title}>Цена за час</h2>
           {priceInput()}
@@ -221,10 +201,10 @@ export const TutorFilters = ({
             onChange: handleSliderChange
           })}
         </div>
-        {checkbox(data.titles.experience, data.experience)}
-        {radio(data.titles.gender, data.gender)}
-        {checkbox(data.titles.rating, data.rating)}
-        {checkbox(data.titles.option, data.option)}
+        {checkbox({ title: data.titles.experience, items: data.experience })}
+        {radio({ title: data.titles.gender, items: data.gender })}
+        {checkbox({ title: data.titles.rating, items: data.rating })}
+        {checkbox({ title: data.titles.option, items: data.option })}
         {filterButton({})}
       </form>
       {resetIsActive &&

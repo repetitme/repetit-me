@@ -1,4 +1,6 @@
-export const titles = {
+import { TAccordionGroup, TData, TState, TTitles } from './types';
+
+export const titles: TTitles = {
   subjects: 'Предметы',
   schoolSubjects: 'Школьные предметы',
   foreignLanguage: 'Иностранные языки',
@@ -13,7 +15,7 @@ export const titles = {
   option: 'Другое'
 };
 
-export const subjects = [
+export const subjects: TData = [
   'Все',
   'Математика',
   'Русский язык',
@@ -27,7 +29,7 @@ export const subjects = [
   'История'
 ];
 
-export const foreignLanguages = [
+export const foreignLanguages: TData = [
   'Английский',
   'Немецкий',
   'Французский',
@@ -45,16 +47,16 @@ export const foreignLanguages = [
   'Арабский'
 ];
 
-export const speechTherapy = ['Детский логопед', 'Взрослый логопед'];
+export const speechTherapy: TData = ['Детский логопед', 'Взрослый логопед'];
 
-export const others = [
+export const others: TData = [
   'Подготовка к школе',
   'Начальная школа',
   'Компьютерная грамотность',
   'Финансовая грамотность'
 ];
 
-export const accordionGroups = [
+export const accordionGroups: TAccordionGroup = [
   { title: titles.schoolSubjects, items: subjects },
   {
     title: titles.foreignLanguage,
@@ -64,7 +66,7 @@ export const accordionGroups = [
   { title: titles.others, items: others }
 ];
 
-export const goals = [
+export const goals: TData = [
   'Подготовка к ВПР',
   'Подготовка к ОГЭ',
   'Подготовка к ЕГЭ',
@@ -73,7 +75,7 @@ export const goals = [
   'Подготовка к экзамену'
 ];
 
-export const ageBrackets = [
+export const ageBrackets: TData = [
   'Все',
   'Дошкольник',
   '1-4 класс',
@@ -83,10 +85,29 @@ export const ageBrackets = [
   'Взрослый'
 ];
 
-export const experience = ['до года', '1-5 лет', '5-10 лет', 'Более 10 лет'];
+export const experience: TData = [
+  'до года',
+  '1-5 лет',
+  '5-10 лет',
+  'Более 10 лет'
+];
 
-export const gender = ['Все', 'Мужчина', 'Женщина'];
+export const gender: TData = ['Все', 'Мужчина', 'Женщина'];
 
-export const rating = ['Все', 'Высокий', 'Средний', 'Низкий'];
+export const rating: TData = ['Все', 'Высокий', 'Средний', 'Низкий'];
 
-export const option = ['c видеопрезентацией'];
+export const option: TData = ['c видеопрезентацией'];
+
+export const defaultState: TState = {
+  [titles.subjects]: [],
+  [titles.foreignLanguage]: [],
+  [titles.speechTherapy]: [],
+  [titles.others]: [],
+  [titles.goals]: [],
+  [titles.ageBrackets]: [ageBrackets[0]],
+  [titles.price]: ['1 500 ₽', '2 000 ₽'],
+  [titles.experience]: [],
+  [titles.gender]: [gender[0]],
+  [titles.rating]: [],
+  [titles.option]: []
+};
