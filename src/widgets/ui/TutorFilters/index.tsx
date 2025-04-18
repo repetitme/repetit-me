@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import cn from 'classnames';
 
+import editIcon from '../../../assets/icons/editIcon.svg';
 import Button from '../../../shared/button';
 import Input, { formatNumber } from '../../../shared/ui/input';
 import * as data from './data';
@@ -12,17 +13,17 @@ import styles from './index.module.scss';
 import { TButton, TState, TutorFiltersProps } from './types';
 
 const defaultState: TState = {
-  subject: [],
-  foreignLanguage: [],
-  speechTherapy: [],
-  others: [],
-  goal: [],
-  ageBracket: [data.ageBrackets[0]],
-  price: ['1 500 ₽', '2 000 ₽'],
-  experience: [],
-  gender: [data.gender[0]],
-  rating: [],
-  option: []
+  [data.titles.subjects]: [],
+  [data.titles.foreignLanguage]: [],
+  [data.titles.speechTherapy]: [],
+  [data.titles.others]: [],
+  [data.titles.goals]: [],
+  [data.titles.ageBrackets]: [data.ageBrackets[0]],
+  [data.titles.price]: ['1 500 ₽', '2 000 ₽'],
+  [data.titles.experience]: [],
+  [data.titles.gender]: [data.gender[0]],
+  [data.titles.rating]: [],
+  [data.titles.option]: []
 };
 
 export const TutorFilters = ({
@@ -59,7 +60,7 @@ export const TutorFilters = ({
     if (Array.isArray(value)) {
       setState((prevState) => ({
         ...prevState,
-        price: [
+        [data.titles.price]: [
           formatNumber(value[0].toString(), true),
           formatNumber(value[1].toString(), true)
         ]
@@ -85,6 +86,7 @@ export const TutorFilters = ({
                 name={title}
                 value={item}
                 onChange={handleChange}
+                checked={!!values[title]?.includes(item)}
               />
               {item}
             </li>
@@ -100,20 +102,21 @@ export const TutorFilters = ({
         {data.accordionGroups.map(({ title, items }, index) => {
           const [isOpen, setIsOpen] = useState(false);
           return (
-            <div key={index} className={styles.accordions_item}>
+            <div
+              key={index}
+              className={cn(styles.accordions_item, {
+                [styles.accordions__open]: isOpen
+              })}
+            >
               <button
                 type="button"
                 className={styles.accordions__button}
                 onClick={() => setIsOpen(!isOpen)}
               >
-                <span className={styles.accordions__icon} />
                 <h3 className={styles.accordions__title}>{title}</h3>
+                <span className={styles.accordions__chevron} />
               </button>
-              <div
-                className={cn(styles.accordions__content, {
-                  [styles.accordions__open]: isOpen
-                })}
-              >
+              <div className={styles.accordions__content}>
                 {checkbox(title, items, index)}
               </div>
             </div>
@@ -135,7 +138,7 @@ export const TutorFilters = ({
                 name={title}
                 value={item}
                 onChange={handleChange}
-                defaultChecked={item === items[0]}
+                checked={values[title]?.[0] === item}
               />
               {item}
             </li>
@@ -151,14 +154,18 @@ export const TutorFilters = ({
         <div className={styles.prices__inputs}>
           <Input
             value={
-              Array.isArray(values.price) ? values.price[0].toString() : ''
+              Array.isArray(values[data.titles.price])
+                ? values[data.titles.price][0].toString()
+                : ''
             }
             onChange={(e) => handleInputChange(e, 0)}
             variant="price"
           />
           <Input
             value={
-              Array.isArray(values.price) ? values.price[1].toString() : ''
+              Array.isArray(values[data.titles.price])
+                ? values[data.titles.price][1].toString()
+                : ''
             }
             onChange={(e) => handleInputChange(e, 1)}
             variant="price"
@@ -175,12 +182,11 @@ export const TutorFilters = ({
   }: TButton): React.JSX.Element => {
     return (
       <Button
-        size="large"
-        variant={reset ? 'white' : 'purple'}
-        text={reset ? 'Сбросить' : 'Применить'}
+        variant={reset ? 'reset' : 'purple'}
+        text={reset ? 'Сбросить фильтр' : 'Применить'}
         className={className}
         onClick={onClick}
-        icon={reset ? '../../../assets/icons/Icon_Edit.svg' : ''}
+        icon={reset ? editIcon : ''}
       />
     );
   };
@@ -191,7 +197,7 @@ export const TutorFilters = ({
   };
 
   const handleReset = (): void => {
-    setState(defaultState);
+    setState({ ...defaultState });
   };
 
   return (
@@ -206,12 +212,14 @@ export const TutorFilters = ({
           {accordions()}
         </div>
         {checkbox(data.titles.goals, data.goals)}
-        {radio(data.titles.ageBracket, data.ageBrackets)}
+        {radio(data.titles.ageBrackets, data.ageBrackets)}
         <div className={styles.prices}>
           <h2 className={styles.filters__title}>Цена за час</h2>
           {priceInput()}
           {priceSlider({
-            value: values.price.map((item) => Number(item.replace(/\D/g, ''))),
+            value: values[data.titles.price].map((item) =>
+              Number(item.replace(/\D/g, ''))
+            ),
             onChange: handleSliderChange
           })}
         </div>
@@ -223,7 +231,7 @@ export const TutorFilters = ({
       </form>
       {resetIsActive &&
         filterButton({
-          className: styles.filters__reset,
+          className: 'reset',
           onClick: handleReset,
           reset: true
         })}

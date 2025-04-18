@@ -5,7 +5,7 @@ export const titles = {
   speechTherapy: 'Логопедия',
   others: 'Другие репетиторы',
   goals: 'Цели',
-  ageBracket: 'Возрастная категория',
+  ageBrackets: 'Возрастная категория',
   price: 'Цена',
   experience: 'Стаж преподавания',
   gender: 'Пол репетитора',

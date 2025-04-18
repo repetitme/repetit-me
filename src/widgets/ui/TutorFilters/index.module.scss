@@ -8,14 +8,16 @@
     flex-direction: column;
     gap: 28px;
 
-    >*:nth-child(4) {
+    > *:nth-child(4) {
       margin-block-end: 7px;
+    }
+
+    > :nth-child(9) {
+      margin-block-start: 16px;
     }
   }
 
   &__reset {
-    border-color: red !important;
-    color: red !important;
     margin-block-start: 12px;
   }
 
@@ -59,39 +61,69 @@
 
   &__item {
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
   }
-  
+
   &__title {
     font-weight: 500;
     font-size: 15px;
     line-height: 24px;
   }
-  
+
+  &__chevron {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-block-end: 5px;
+    border-right: 2px solid #555;
+    border-bottom: 2px solid #555;
+    transition: transform 0.3s ease;
+    transform: rotate(45deg);
+  }
+
   &__button {
     display: flex;
-    block-size: 24px;
-    align-items: start;
+    align-items: center;
+    gap: 9px;
     border: none;
     padding: 0;
     background-color: var(--clr-main);
     cursor: pointer;
+    block-size: 24px;
   }
-  
+
   &__content {
     max-height: 0;
-    margin-left: 27px;
-    transition: all var(--duration) var(--timing);
+    margin-left: 17px;
+    opacity: 0;
     overflow: hidden;
+    transition:
+      max-height 0.4s ease,
+      padding 0.3s ease;
+    transition:
+      max-height 0.4s ease,
+      opacity 0.3s ease;
+
+    .checkboxes__list {
+      gap: 16px;
+      margin-block-start: 7px;
+    }
   }
-  
+
   &__icon {
     fill: var(--clr-primary-default);
     transition: all var(--duration) var(--timing);
   }
-  
+
   &__open {
-    max-block-size: fit-content;
+    .accordions__content {
+      max-height: 1000px;
+      opacity: 1;
+    }
+
+    .accordions__chevron {
+      transform: rotate(-135deg);
+    }
   }
 }
 
@@ -111,24 +143,24 @@
   &__checkbox {
     display: flex;
     align-items: center;
-    block-size: 24px;
+    gap: 3px;
     font-weight: 500;
     font-size: 15px;
-    gap: 3px;
     font-style: normal;
+    block-size: 24px;
   }
 
   & input {
     position: relative;
-    margin-inline-start: 1px;
     width: 20px;
     height: 20px;
+    margin-right: 4px;
+    margin-inline-start: 1px;
     border: 2px solid var(--clr-3);
     border-radius: 4px;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
     appearance: none;
-    margin-right: 4px;
 
     &:checked {
       border: 2px solid var(--clr-primary-default);
@@ -154,8 +186,8 @@
   gap: 18px;
 
   &__title {
-    font-weight: 600;
     margin-block-start: 1px;
+    font-weight: 600;
     font-size: inherit;
   }
 
@@ -210,16 +242,16 @@
 }
 
 .prices {
-  margin-block-start: 3px;
   display: flex;
   flex-direction: column;
   gap: 13px;
-  
+  margin-block-start: 3px;
+
   &__inputs {
-    block-size: 44px;
+    display: flex;
+    gap: 13px;
     margin-inline-start: 3px;
     margin-block-start: 6px;
-    display: flex;
-    gap: 13px;  
+    block-size: 44px;
   }
 }
