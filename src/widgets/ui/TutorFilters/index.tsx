@@ -50,9 +50,9 @@ export const TutorFilters = ({
     index: number
   ): void => {
     setState((prevState) => {
-      const newPrice = [...prevState.price];
+      const newPrice = [...prevState[data.titles.price]];
       newPrice[index] = e.target.value;
-      return { ...prevState, price: newPrice };
+      return { ...prevState, [data.titles.price]: newPrice };
     });
   };
 
