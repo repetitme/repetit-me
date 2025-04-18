@@ -4,7 +4,6 @@ export interface TutorFiltersProps {
 }
 
 export type TButton = {
-  className?: string;
   reset?: boolean;
   onClick?: () => void;
 };

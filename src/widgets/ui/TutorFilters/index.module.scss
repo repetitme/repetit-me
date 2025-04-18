@@ -17,7 +17,7 @@
     }
   }
 
-  &__reset {
+  > :last-child {
     margin-block-start: 12px;
   }
 
@@ -121,8 +121,13 @@
       opacity: 1;
     }
 
+    .accordions__title {
+      color: var(--clr-primary-default);
+    }
+
     .accordions__chevron {
       transform: rotate(-135deg);
+      border-color: var(--clr-primary-default);
     }
   }
 }
@@ -150,6 +155,10 @@
     block-size: 24px;
   }
 
+  span {
+    transition: color 0.3s ease;
+  }
+
   & input {
     position: relative;
     width: 20px;
@@ -158,24 +167,35 @@
     margin-inline-start: 1px;
     border: 2px solid var(--clr-3);
     border-radius: 4px;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
     cursor: pointer;
     appearance: none;
 
     &:checked {
       border: 2px solid var(--clr-primary-default);
     }
+    
+    &:checked + span {
+      color: var(--clr-primary-default);
+    }
 
-    &:checked::after {
+    &::after {
       content: '';
       position: absolute;
+      transition: all 0.2s ease-in-out;
       top: 50%;
       left: 50%;
       display: inline-block;
       width: 24px;
       height: 24px;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M9 12L11 14L15 10' stroke='%236757F1' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+    }
+
+    &:checked::after {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
     }
   }
 }
@@ -214,19 +234,20 @@
     block-size: 24px;
 
     & input {
+      position: relative;
       width: 20px;
       height: 20px;
       border: 2px solid var(--clr-3);
       border-radius: 50%;
+      transition: all 0.5s ease-in-out;
       cursor: pointer;
       appearance: none;
 
       &:checked {
-        position: relative;
         border: 2px solid var(--clr-primary-default);
       }
 
-      &:checked::after {
+      &::after {
         content: '';
         position: absolute;
         top: 50%;
@@ -235,7 +256,12 @@
         height: 10px;
         border-radius: 50%;
         background-color: var(--clr-primary-default);
-        transform: translate(-50%, -50%);
+        transition: transform 0.2s ease-in-out;
+        transform: translate(-50%, -50%) scale(0);
+      }
+
+      &:checked:after {
+        transform: translate(-50%, -50%) scale(1);
       }
     }
   }

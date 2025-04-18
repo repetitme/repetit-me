@@ -88,7 +88,7 @@ export const TutorFilters = ({
                 onChange={handleChange}
                 checked={!!values[title]?.includes(item)}
               />
-              {item}
+              <span>{item}</span>
             </li>
           ))}
         </ul>
@@ -176,7 +176,6 @@ export const TutorFilters = ({
   };
 
   const filterButton = ({
-    className,
     onClick,
     reset
   }: TButton): React.JSX.Element => {
@@ -184,7 +183,6 @@ export const TutorFilters = ({
       <Button
         variant={reset ? 'reset' : 'purple'}
         text={reset ? 'Сбросить фильтр' : 'Применить'}
-        className={className}
         onClick={onClick}
         icon={reset ? editIcon : ''}
       />
@@ -231,7 +229,6 @@ export const TutorFilters = ({
       </form>
       {resetIsActive &&
         filterButton({
-          className: 'reset',
           onClick: handleReset,
           reset: true
         })}
