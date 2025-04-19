@@ -270,14 +270,36 @@
 .prices {
   display: flex;
   flex-direction: column;
-  gap: 13px;
   margin-block-start: 3px;
-
+  transition: all 0.5s ease;
+  
   &__inputs {
     display: flex;
     gap: 13px;
     margin-inline-start: 3px;
-    margin-block-start: 6px;
+    margin-block-start: 19px;
     block-size: 44px;
+  }
+  
+  > :last-child {
+    margin-block-start: 12px;
+  }
+
+  &__error {
+    text-align: center;
+    inline-size: 307px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--clr-secondary-default);
+    opacity: 0;
+    block-size: 0;
+    transform: translate(-20px);
+    transition: all 0.5s ease;
+
+    &--active {
+      block-size: 24px;
+      opacity: 1;
+      transform: translate(0);
+    }
   }
 }

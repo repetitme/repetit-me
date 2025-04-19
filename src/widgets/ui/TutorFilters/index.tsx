@@ -17,8 +17,13 @@ export const TutorFilters = ({
   percentage = 1
 }: TutorFiltersProps) => {
   const [values, setState] = useState(data.defaultState);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isOpen, setIsOpen] = useState<boolean[]>(data.accordionGroups.map(() => false));
   const resetIsActive =
     JSON.stringify(values) !== JSON.stringify(data.defaultState);
+  const toggleAccordion = (index: number): void => {
+    setIsOpen((prevState) => prevState.map((item, i) => (i === index ? !item : item)));
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { type, name, value, checked } = e.target;
@@ -32,18 +37,43 @@ export const TutorFilters = ({
     setState((prevState) => ({ ...prevState, [name]: newValue }));
   };
 
+  const applyPriceRule = (value: string, index: number): void => {
+    const toNumber = (string: string) => Number(string.replace(/\D/g, ''));
+    const min = values[data.titles.price][0];
+    const max = values[data.titles.price][1];
+    const price = toNumber(value);
+    let errorMessage = '';
+    if (index === 0 && price > toNumber(max)) {
+      errorMessage = data.errorMessages.min;
+    }
+    if (index === 1 && price < toNumber(min)) {
+      errorMessage = data.errorMessages.max;
+    }
+    if (min.length < 3 || max.length < 3) {
+      errorMessage = data.errorMessages.required;
+    }
+    setErrorMessage(errorMessage);
+  };
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     index: number
   ): void => {
+    let value = e.target.value;
+    applyPriceRule(e.target.value, index);
+    if (!value) {
+      value = '0 ₽';
+    }
+    value = value.replace(/^0(?=\d)/, '');
     setState((prevState) => {
       const newPrice = [...prevState[data.titles.price]];
-      newPrice[index] = e.target.value;
+      newPrice[index] = value;
       return { ...prevState, [data.titles.price]: newPrice };
     });
   };
 
   const handleSliderChange = (value: number | number[]): void => {
+    setErrorMessage('');
     if (Array.isArray(value)) {
       setState((prevState) => ({
         ...prevState,
@@ -83,18 +113,17 @@ export const TutorFilters = ({
     return (
       <>
         {data.accordionGroups.map(({ title, items }, index) => {
-          const [isOpen, setIsOpen] = useState(false);
           return (
             <div
               key={index}
               className={cn(styles.accordions_item, {
-                [styles.accordions__open]: isOpen
+                [styles.accordions__open]: isOpen[index]
               })}
             >
               <button
                 type="button"
                 className={styles.accordions__button}
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => toggleAccordion(index)}
               >
                 <h3 className={styles.accordions__title}>{title}</h3>
                 <span className={styles.accordions__chevron} />
@@ -132,28 +161,30 @@ export const TutorFilters = ({
   };
 
   const priceInput = () => {
+    const formatValue = (index: number) => values[data.titles.price][index];
     return (
       <>
         <div className={styles.prices__inputs}>
           <Input
-            value={
-              Array.isArray(values[data.titles.price])
-                ? values[data.titles.price][0].toString()
-                : ''
-            }
+            required
+            value={formatValue(0)}
             onChange={(e) => handleInputChange(e, 0)}
             variant="price"
           />
           <Input
-            value={
-              Array.isArray(values[data.titles.price])
-                ? values[data.titles.price][1].toString()
-                : ''
-            }
+            required
+            value={formatValue(1)}
             onChange={(e) => handleInputChange(e, 1)}
             variant="price"
           />
         </div>
+        <span
+          className={cn(styles.prices__error, {
+            [styles['prices__error--active']]: errorMessage
+          })}
+        >
+          {errorMessage}
+        </span>
       </>
     );
   };
@@ -171,7 +202,12 @@ export const TutorFilters = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(values);
+    errorMessage
+      ? onSubmit({
+          ...values,
+          [data.titles.price]: values[data.titles.price].reverse()
+        })
+      : onSubmit(values);
   };
 
   const handleReset = (): void => {

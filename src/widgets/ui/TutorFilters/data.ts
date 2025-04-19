@@ -111,3 +111,9 @@ export const defaultState: TState = {
   [titles.rating]: [],
   [titles.option]: []
 };
+
+export const errorMessages: Record<string, string> = {
+  min: 'Минимальная цена не может быть больше максимальной',
+  max: 'Максимальная цена не может быть меньше минимальной',
+  required: 'Поля обязательны для заполнения'
+};
