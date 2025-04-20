@@ -1,6 +1,6 @@
-import styles from '../index.module.scss';
+import styles from './index.module.scss';
 
-import { TRadio } from '../types';
+import { TRadio } from './types';
 
 const Radio = ({
   title,

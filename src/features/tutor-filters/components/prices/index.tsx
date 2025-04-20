@@ -2,11 +2,11 @@ import cn from 'classnames';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-import Input from '../../../shared/ui/input';
+import Input from '../../../../shared/ui/input';
 
-import styles from '../index.module.scss';
+import styles from './index.module.scss';
 
-import { TPrices } from '../types';
+import { TPrices } from './types';
 
 const Prices = ({
   title,
@@ -19,7 +19,7 @@ const Prices = ({
   const formatValue = (index: number) => values[title][index];
   return (
     <div className={styles.prices}>
-      <h2 className={styles.filters__title}>Цена за час</h2>
+      <h2 className={styles.title}>Цена за час</h2>
       <>
         <div className={styles.prices__inputs}>
           <Input
@@ -37,7 +37,7 @@ const Prices = ({
         </div>
         <span
           className={cn(styles.prices__error, {
-            [styles['prices__error--active']]: errorMessage
+            [styles.prices__error_active]: errorMessage
           })}
         >
           {errorMessage}

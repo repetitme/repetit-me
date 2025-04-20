@@ -1,43 +1,44 @@
 import cn from 'classnames';
 
-import styles from '../index.module.scss';
+import styles from './index.module.scss';
 
-import { TAccordions } from '../types';
+import { TAccordions } from './types';
 
 const Accordions = ({
   data,
   isOpen,
   titles,
-  toggleAccordion,
-  Checkbox,
   values,
+  Checkbox,
+  toggleAccordion,
   handleChange
 }: TAccordions): React.JSX.Element => {
   return (
     <div className={styles.accordions}>
-      <h3 className={styles.filters__title}>{titles.subjects}</h3>
+      <h3 className={styles['main-title']}>{titles.subjects}</h3>
       <>
         {data.map(({ title, items }, index) => {
           return (
             <div
               key={index}
-              className={cn(styles.accordions_item, {
-                [styles.accordions__open]: isOpen[index]
+              className={cn(styles.item, {
+                [styles.item_open]: isOpen[index]
               })}
             >
               <button
                 type="button"
-                className={styles.accordions__button}
+                className={styles.button}
                 onClick={() => toggleAccordion(index)}
               >
-                <h3 className={styles.accordions__title}>{title}</h3>
-                <span className={styles.accordions__chevron} />
+                <h3 className={styles.title}>{title}</h3>
+                <span className={styles.chevron} />
               </button>
-              <div className={styles.accordions__content}>
+              <div className={styles.content}>
                 {Checkbox({
                   title,
                   items,
                   index,
+                  isInAccordion: true,
                   values: values[title],
                   handleChange
                 })}

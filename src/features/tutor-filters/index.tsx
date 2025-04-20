@@ -3,10 +3,7 @@ import { useState } from 'react';
 import editIcon from '../../assets/icons/editIcon.svg';
 import Button from '../../shared/button';
 import { formatNumber } from '../../shared/ui/input';
-import Accordions from './components/Accordion';
-import Checkbox from './components/Checkbox';
-import Prices from './components/Prices';
-import Radio from './components/Radio';
+import { Accordions, Checkbox, Prices, Radio } from './components';
 import * as data from './data';
 
 import styles from './index.module.scss';
@@ -15,6 +12,7 @@ import { TButton, TutorFiltersProps } from './types';
 
 export const TutorFilters = ({
   onSubmit,
+  noResultsFound,
   percentage = 1
 }: TutorFiltersProps) => {
   const [values, setState] = useState(data.defaultState);
@@ -90,12 +88,12 @@ export const TutorFilters = ({
     }
   };
 
-  const filterButton = ({ onClick, reset }: TButton): React.JSX.Element => {
+  const filterButton = (reset?: TButton): React.JSX.Element => {
     return (
       <Button
         variant={reset ? 'reset' : 'purple'}
         text={reset ? 'Сбросить фильтр' : 'Применить'}
-        onClick={onClick}
+        onClick={reset ? handleReset : undefined}
         icon={reset ? editIcon : ''}
       />
     );
@@ -177,13 +175,9 @@ export const TutorFilters = ({
           values: values[data.titles.option],
           handleChange
         })}
-        {filterButton({})}
+        {filterButton(noResultsFound ? { reset: false } : undefined)}
       </form>
-      {resetIsActive &&
-        filterButton({
-          onClick: handleReset,
-          reset: true
-        })}
+      {resetIsActive && filterButton({ reset: true })}
     </section>
   );
 };

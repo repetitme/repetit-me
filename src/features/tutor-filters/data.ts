@@ -96,7 +96,7 @@ export const gender: TData = ['Все', 'Мужчина', 'Женщина'];
 
 export const rating: TData = ['Все', 'Высокий', 'Средний', 'Низкий'];
 
-export const option: TData = ['c видеопрезентацией'];
+export const option: TData = ['C видеопрезентацией'];
 
 export const defaultState: TState = {
   [titles.subjects]: [],

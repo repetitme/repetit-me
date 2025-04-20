@@ -6,7 +6,7 @@ function App() {
   const handleSubmit = (values: any) => console.log(values);
   return (
     <>
-      <TutorFilters onSubmit={handleSubmit} />
+      <TutorFilters onSubmit={handleSubmit} noResultsFound />
     </>
   );
 }
