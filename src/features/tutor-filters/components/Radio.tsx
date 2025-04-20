@@ -1,7 +1,13 @@
-import { TRadio } from "../types";
-import styles from "../index.module.scss";
+import styles from '../index.module.scss';
 
-const Radio = ({ title, items, values, handleChange }: TRadio): React.JSX.Element => {
+import { TRadio } from '../types';
+
+const Radio = ({
+  title,
+  items,
+  values,
+  handleChange
+}: TRadio): React.JSX.Element => {
   return (
     <div className={styles.radio}>
       <h3 className={styles.radio__title}>{title}</h3>

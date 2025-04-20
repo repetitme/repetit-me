@@ -67,5 +67,8 @@ export type TPrices = {
   handleSliderChange: (value: number | number[]) => void;
   errorMessage: string;
   values: TState;
-  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>, index: number) => void;
-}
+  handleInputChange: (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => void;
+};

@@ -38,16 +38,17 @@
         font-size: inherit;
         background: var(--Gradient-main,);
         background-clip: text;
-        -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
       }
+
       span {
         padding-bottom: 1px;
         font-weight: inherit;
         font-size: 24px;
         background: var(--Gradient-main,);
         background-clip: text;
-        -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
       }
     }
@@ -260,7 +261,7 @@
         transform: translate(-50%, -50%) scale(0);
       }
 
-      &:checked:after {
+      &:checked::after {
         transform: translate(-50%, -50%) scale(1);
       }
     }
@@ -272,7 +273,7 @@
   flex-direction: column;
   margin-block-start: 3px;
   transition: all 0.5s ease;
-  
+
   &__inputs {
     display: flex;
     gap: 13px;
@@ -280,7 +281,7 @@
     margin-block-start: 19px;
     block-size: 44px;
   }
-  
+
   > :last-child {
     margin-block-start: 12px;
   }

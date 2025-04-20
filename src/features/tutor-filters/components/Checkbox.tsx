@@ -1,7 +1,14 @@
 import styles from '../index.module.scss';
+
 import { TCheckbox } from '../types';
 
-const Checkbox = ({ title, items, index, values, handleChange }: TCheckbox): React.JSX.Element => {
+const Checkbox = ({
+  title,
+  items,
+  index,
+  values,
+  handleChange
+}: TCheckbox): React.JSX.Element => {
   return (
     <div className={styles.checkboxes}>
       {!Number.isFinite(index) && (
