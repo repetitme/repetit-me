@@ -4,6 +4,8 @@ export interface TutorFiltersProps {
   percentage?: number;
 }
 
+export type TUseTutorFilters = { onSubmit: (values: TState) => void };
+
 export type TButton = {
   reset?: boolean;
 };

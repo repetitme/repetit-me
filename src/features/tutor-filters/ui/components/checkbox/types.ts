@@ -1,4 +1,4 @@
-import { TData } from '../../types';
+import { TData } from '../../../types';
 
 export type TCheckbox = {
   title?: string;
