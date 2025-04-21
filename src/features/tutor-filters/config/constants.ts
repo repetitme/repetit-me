@@ -5,9 +5,9 @@ import {
   others,
   speechTherapy,
   subjects
-} from '../data';
+} from './data';
 
-import { TAccordionGroup, TState, TTitles } from '../types';
+import { TAccordionGroup, TState, TTitles } from '../types/types';
 
 export const titles: TTitles = {
   subjects: 'Школьные предметы',

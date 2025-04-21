@@ -1,4 +1,4 @@
-import { TData } from './types';
+import { TData } from '../types/types';
 
 export const subjects: TData = [
   'Все',

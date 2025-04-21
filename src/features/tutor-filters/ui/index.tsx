@@ -1,13 +1,13 @@
 import editIcon from '../../../assets/icons/editIcon.svg';
 import Button from '../../../shared/button';
-import * as data from '../data';
-import { accordionGroups, titles } from '../model/constants';
+import { accordionGroups, titles } from '../config/constants';
+import * as data from '../config/data';
 import useTutorFilters from '../model/useTutorFilters';
 import { Accordions, Checkbox, Prices, Radio } from './components';
 
 import styles from './index.module.scss';
 
-import { TButton, TutorFiltersProps } from '../types';
+import { TButton, TutorFiltersProps } from '../types/types';
 
 export const TutorFilters = ({
   onSubmit,

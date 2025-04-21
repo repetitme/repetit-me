@@ -1,15 +1,15 @@
 import { useState } from 'react';
 
 import { formatNumber } from '../../../shared/ui/input';
-import * as data from '../data';
 import {
   accordionGroups,
   defaultState,
   errorMessages,
   titles
-} from './constants';
+} from '../config/constants';
+import * as data from '../config/data';
 
-import { TUseTutorFilters } from '../types';
+import { TUseTutorFilters } from '../types/types';
 
 const useTutorFilters = ({ onSubmit }: TUseTutorFilters) => {
   const [values, setState] = useState(defaultState);
@@ -45,14 +45,16 @@ const useTutorFilters = ({ onSubmit }: TUseTutorFilters) => {
       newValue = newValue.filter((item: string) => item !== 'Все');
     }
     if (
-      titles.subjects === name && newValue.length ===
-      data.subjects.filter((item: string) => item !== 'Все').length
+      titles.subjects === name &&
+      newValue.length ===
+        data.subjects.filter((item: string) => item !== 'Все').length
     ) {
       newValue = data.subjects;
     }
     if (
-      titles.rating === name && newValue.length ===
-      data.rating.filter((item: string) => item !== 'Все').length
+      titles.rating === name &&
+      newValue.length ===
+        data.rating.filter((item: string) => item !== 'Все').length
     ) {
       newValue = data.rating;
     }

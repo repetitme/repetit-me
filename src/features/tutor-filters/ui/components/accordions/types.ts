@@ -1,4 +1,4 @@
-import { TAccordionGroup } from '../../../types';
+import { TAccordionGroup } from '../../../types/types';
 
 export type TCheckboxProps = {
   title: string;
