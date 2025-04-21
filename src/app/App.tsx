@@ -3,10 +3,9 @@ import TutorFilters from '../features/TutorFilters/ui';
 import '../assets/index.scss';
 
 function App() {
-  const handleSubmit = (values: any) => console.log(values);
   return (
     <>
-      <TutorFilters onSubmit={handleSubmit} />
+      <TutorFilters onSubmit={(values) => console.log(values)} percentage={10} />
     </>
   );
 }
