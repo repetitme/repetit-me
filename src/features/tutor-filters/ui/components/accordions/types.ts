@@ -13,7 +13,6 @@ export type TAccordions = {
   data: TAccordionGroup;
   isOpen: boolean[];
   toggleAccordion: (index: number) => void;
-  titles: TTitles;
   Checkbox: (props: TCheckboxProps) => React.JSX.Element;
   values: Record<string, string[]>;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

@@ -48,7 +48,6 @@ export const TutorFilters = ({
           data: accordionGroups,
           isOpen,
           toggleAccordion,
-          titles: titles,
           Checkbox,
           values,
           handleChange

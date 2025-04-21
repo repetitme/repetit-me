@@ -10,8 +10,7 @@ import {
 import { TAccordionGroup, TState, TTitles } from '../types';
 
 export const titles: TTitles = {
-  subjects: 'Предметы',
-  schoolSubjects: 'Школьные предметы',
+  subjects: 'Школьные предметы',
   foreignLanguage: 'Иностранные языки',
   speechTherapy: 'Логопедия',
   others: 'Другие репетиторы',
@@ -45,7 +44,7 @@ export const errorMessages: Record<string, string> = {
 };
 
 export const accordionGroups: TAccordionGroup = [
-  { title: titles.schoolSubjects, items: subjects },
+  { title: titles.subjects, items: subjects },
   {
     title: titles.foreignLanguage,
     items: foreignLanguages

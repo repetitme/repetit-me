@@ -43,17 +43,22 @@ const Prices = ({
       </span>
       <style>
         {`
-          .rc-slider-handle:focus,
+          .rc-slider-handle {
+            transition: transform 0.3s ease !important;
+          }
+          .rc-slider-handle:active,
           .rc-slider-handle:focus-visible {
             outline: none !important;
             box-shadow: none !important;
-          }`}
+            transform: scale(1.6) !important;
+        }`}
       </style>
       <Slider
         min={300}
         max={7000}
         step={50}
         range
+        className="slider"
         value={sliderValues}
         onChange={handleSliderChange}
         style={{
@@ -62,7 +67,7 @@ const Prices = ({
         trackStyle={[{ backgroundColor: '#6757f1', height: '12px' }]}
         handleStyle={[
           {
-            background: '#eee',
+            background: '#fff',
             border: 'none',
             height: '20px',
             width: '20px',
@@ -70,7 +75,7 @@ const Prices = ({
             opacity: '1'
           },
           {
-            backgroundColor: '#eee',
+            backgroundColor: '#fff',
             border: 'none',
             height: '20px',
             width: '20px',

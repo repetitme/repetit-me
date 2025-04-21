@@ -7,7 +7,6 @@ import { TAccordions } from './types';
 const Accordions = ({
   data,
   isOpen,
-  titles,
   values,
   Checkbox,
   toggleAccordion,
@@ -15,7 +14,7 @@ const Accordions = ({
 }: TAccordions): React.JSX.Element => {
   return (
     <div className={styles.accordions}>
-      <h3 className={styles['main-title']}>{titles.subjects}</h3>
+      <h3 className={styles['main-title']}>Предметы</h3>
       {data.map(({ title, items }, index) => {
         return (
           <div

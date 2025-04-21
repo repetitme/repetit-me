@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { formatNumber } from '../../../shared/ui/input';
+import * as data from '../data';
 import {
   accordionGroups,
   defaultState,
@@ -29,9 +30,32 @@ const useTutorFilters = ({ onSubmit }: TUseTutorFilters) => {
       setState((prevState) => ({ ...prevState, [name]: [value] }));
       return;
     }
-    const newValue = checked
+    let newValue = checked
       ? [...(values[name] || []), value]
       : values[name].filter((item: string) => item !== value);
+    if (value === 'Все') {
+      checked
+        ? (newValue = name === titles.subjects ? data.subjects : data.rating)
+        : (newValue = []);
+    }
+    if (
+      (value !== 'Все' && name === titles.rating) ||
+      (value !== 'Все' && name === titles.subjects)
+    ) {
+      newValue = newValue.filter((item: string) => item !== 'Все');
+    }
+    if (
+      titles.subjects === name && newValue.length ===
+      data.subjects.filter((item: string) => item !== 'Все').length
+    ) {
+      newValue = data.subjects;
+    }
+    if (
+      titles.rating === name && newValue.length ===
+      data.rating.filter((item: string) => item !== 'Все').length
+    ) {
+      newValue = data.rating;
+    }
     setState((prevState) => ({ ...prevState, [name]: newValue }));
   };
 
@@ -83,9 +107,12 @@ const useTutorFilters = ({ onSubmit }: TUseTutorFilters) => {
     }
   };
 
+  const scrollToTop = (): void =>
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollToTop();
     errorMessage
       ? onSubmit({
           ...values,
@@ -95,6 +122,7 @@ const useTutorFilters = ({ onSubmit }: TUseTutorFilters) => {
   };
 
   const handleReset = (): void => {
+    scrollToTop();
     setState({ ...defaultState });
   };
 
