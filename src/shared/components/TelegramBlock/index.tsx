@@ -7,21 +7,17 @@ import Button from '../../button';
 import styles from './index.module.scss';
 
 interface ITelegramBlockProps {
-  className?: string; 
+  className?: string;
 }
 
-export const TelegramBlock: React.FC<ITelegramBlockProps> = ({className}) => {
+export const TelegramBlock: React.FC<ITelegramBlockProps> = ({ className }) => {
   return (
     <div className={classNames(styles.container, className)}>
       <h4 className={styles.title}>
         Переходите в <span className={styles.accent}>Телеграм</span> — с ним еще
         удобнее
       </h4>
-      <img
-        
-        src={phone}
-        alt="изображения телефона с QR кодом"
-      />
+      <img src={phone} alt="изображения телефона с QR кодом" />
       <Button
         text="Перейти в Telegram"
         variant="social"
