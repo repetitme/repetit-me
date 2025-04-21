@@ -24,7 +24,7 @@ const Accordions = ({
               [styles.item_open_subjects]: isOpen[index] && index === 0,
               [styles.item_open_languages]: isOpen[index] && index === 1,
               [styles.item_open_speech]: isOpen[index] && index === 2,
-              [styles.item_open_other]: isOpen[index] && index === 3,
+              [styles.item_open_other]: isOpen[index] && index === 3
             })}
           >
             <button
