@@ -1,4 +1,4 @@
-import TutorFilters from '../features/tutor-filters/ui';
+import TutorFilters from '../features/TutorFilters/ui';
 
 import '../assets/index.scss';
 
