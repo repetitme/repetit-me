@@ -11,8 +11,9 @@ const Popup: React.FC<PopupProps> = ({
   confirmButtonText = 'Да',
   cancelButtonText = 'Нет',
   onConfirm,
+  variant = 'default',
   showCancelButton = true,
-  variant = 'default'
+  showCloseButton =true
 }) => {
   
   const handleEscape = useCallback((e: KeyboardEvent) => {
@@ -30,9 +31,9 @@ const Popup: React.FC<PopupProps> = ({
 
   return (
     <div className={styles.popup}>
-      <button className={styles.popup__close} onClick={onClose}>
+      {showCloseButton && (<button className={styles.popup__close} onClick={onClose}>
         <img src={closeIcon} alt="Закрыть" />
-      </button>
+      </button>)}
       <div className={styles.popup__overlay} onClick={onClose}></div>
       <div className={styles.popup__content}>
         {title && <h2 className={styles.popup__title}>{title}</h2>}

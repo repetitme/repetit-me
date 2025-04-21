@@ -4,8 +4,9 @@ export interface PopupProps {
   title?: string;
   content?: string;
   confirmButtonText?: string;
-  cancelButtonText?: string; // Текст кнопки отмены
-  onConfirm?: () => void; // Обработчик подтверждения
+  cancelButtonText?: string; 
+  onConfirm?: () => void; 
   variant?: 'default' | 'white' | 'purple';
   showCancelButton?: boolean;
+  showCloseButton?: boolean;
 }
