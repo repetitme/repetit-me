@@ -58,7 +58,6 @@
 
   &_open {
     .content {
-      max-height: 700px;
       opacity: 1;
     }
 
@@ -72,10 +71,27 @@
       transform: rotate(-135deg);
     }
 
-    &_short {
+    &_subjects {
       .content {
-        max-height: 170px;
-        opacity: 1;
+        max-height: 450px;
+      }
+    }
+
+    &_languages {
+      .content {
+        max-height: 599px;
+      }
+    }
+
+    &_speech {
+      .content {
+        max-height: 80px;
+      }
+    }
+
+    &_other {
+      .content {
+        max-height: 159px;
       }
     }
   }
