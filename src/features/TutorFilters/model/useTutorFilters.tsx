@@ -115,7 +115,7 @@ const useTutorFilters = ({ onSubmit }: TUseTutorFilters) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     scrollToTop();
-    errorMessage
+    errorMessage === errorMessages.min || errorMessage === errorMessages.max
       ? onSubmit({
           ...values,
           [titles.price]: values[titles.price].reverse()
