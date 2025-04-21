@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { v4 as uuidv4 } from 'uuid';
 
@@ -14,12 +14,17 @@ import {
   TFeedbackItemProps,
   TNewFeedback
 } from '../../shared/components/FeedbackItem/type';
+import { IFeedbackListProps } from './type';
 
-const FeedbackList: React.FC = () => {
+const FeedbackList: React.FC<IFeedbackListProps> = ({ updateModalData }) => {
   const [feedbacks, setFeedbacks] =
     useState<TFeedbackItemProps[]>(feedbackData);
   const [isAscending, setIsAscending] = useState<boolean>(true);
   // const [isFormVisible, setIsVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    updateModalData(feedbacks);
+  }, [feedbacks]);
 
   const sortedFeedbacks = useMemo(() => {
     return [...feedbacks].sort((a, b) => {
