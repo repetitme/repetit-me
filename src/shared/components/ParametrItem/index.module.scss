@@ -13,7 +13,8 @@
   &_list {
     display: flex;
     flex-direction: row;
-    column-gap: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
     justify-content: start;
     align-items: center;
   }
@@ -22,5 +23,9 @@
     padding: 5.5px 12px;
     background-color: var(--clr-2);
     border-radius: 12px;
+
+    @media screen and (max-width: 620px) {
+      font-size: 12px;
+    }
   }
 }

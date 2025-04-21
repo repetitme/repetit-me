@@ -24,7 +24,7 @@ const UserCard: React.FC<IUserData> = ({
           ))}
       </div>
     </div>
-  ) : (
+  ) : role === 'tutor' ? (
     // Карточка ученика
     <div className={styles.card}>
       {studentData ? (
@@ -42,6 +42,10 @@ const UserCard: React.FC<IUserData> = ({
           </>
         )}
       </div>
+    </div>
+  ) : (
+    <div className={styles.card}>
+      {tutorData ? <TutorProfile {...tutorData} /> : <p>Репетитор не найден</p>}
     </div>
   );
 };

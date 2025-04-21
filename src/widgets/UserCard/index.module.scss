@@ -6,6 +6,7 @@
   padding: 24px;
   gap: 24px 20px;
   max-inline-size: 793px;
+  inline-size: 100%;
 
   &__buttons {
     grid-column: 1/-1;
@@ -13,5 +14,22 @@
     display: flex;
     flex-direction: row;
     gap: 16px;
+
+    @media screen and (max-width: 410px) {
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .card {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 20px;
+    padding-inline: 16px;
+
+    &__buttons {
+      grid-row: 3/4;
+    }
   }
 }

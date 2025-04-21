@@ -99,3 +99,71 @@
     color: var(--clr-main);
   }
 }
+
+@media screen and (max-width: 620px) {
+  .profile {
+    &__avatar {
+      max-inline-size: 100%;
+      max-block-size: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+
+      &--link {
+        right: 13px;
+        bottom: 15px;
+      }
+    }
+
+    &__parameters {
+      gap: 16px;
+
+      &_description {
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      &_description--accent {
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      &_speciality {
+        gap: 8px;
+
+        &--status {
+          font-size: 14px;
+          font-weight: 400;
+        }
+
+        &--experience {
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+
+      &_working {
+        top: 35px;
+        right: 25px;
+      }
+
+      &_important {
+        font-size: 16px;
+      }
+    }
+
+    &__raiting {
+      right: 34px;
+      top: 36px;
+    }
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .profile {
+    &__parameters {
+      &_important {
+        font-size: 14px;
+      }
+    }
+  }
+}

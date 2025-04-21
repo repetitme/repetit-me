@@ -8,5 +8,22 @@
   &__name {
     font-size: 18px;
     font-weight: 700;
+
+    @media screen and (max-width: 750px) {
+    }
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .user {
+    grid-column: 1/-1;
+    grid-row: 2/3;
+    row-gap: 8px;
+    padding-inline: 20px;
+
+    &__name {
+      font-size: 20px;
+      max-inline-size: 100%;
+    }
   }
 }

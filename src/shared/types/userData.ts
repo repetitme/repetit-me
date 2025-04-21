@@ -24,7 +24,7 @@ export interface IStudentData extends IUserBaseData {
   workingStatus?: string; // Например, "занятия еще не начались"
 }
 
-type TUserRole = 'student' | 'tutor' | 'unAuthorized';
+type TUserRole = 'student' | 'tutor' | 'unAuthorized' | 'card';
 
 export interface IUserData {
   role: TUserRole;

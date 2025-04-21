@@ -24,11 +24,13 @@ const StudentProfile: React.FC<IStudentDataProps> = ({
 }) => {
   return (
     <>
-      <img
-        className={styles.profile__image}
-        src={image}
-        alt="Фотография ученика"
-      />
+      <div className={styles.profile__avatar}>
+        <img
+          className={styles['profile__avatar--image']}
+          src={image}
+          alt="Фотография ученика"
+        />
+      </div>
       <UserInfo data={{ name, subjects, studentAudience, purpose }}>
         <div className={styles.profile__parameters}>
           {lessonsCompleted ? (

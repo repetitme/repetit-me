@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import * as API from '../../features/API/userApi'; // Импортируйте ваш API
+import * as API from '../../features/API/userApi';
 import { ITutorData, IStudentData } from '../types/userData';
 
 const useUsersData = () => {

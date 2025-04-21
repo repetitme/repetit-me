@@ -50,6 +50,10 @@ function App() {
           />
         ))}
 
+        {userData.tutors.slice(3, 4).map((tutor) => (
+          <UserCard key={tutor.id} role="card" tutorData={tutor} />
+        ))}
+
         {userData.students.slice(0, 1).map((student) => (
           <UserCard key={student.id} role="tutor" studentData={student} />
         ))}
