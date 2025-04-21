@@ -20,7 +20,8 @@ const Accordions = ({
           <div
             key={index}
             className={cn(styles.item, {
-              [styles.item_open]: isOpen[index]
+              [styles.item_open]: isOpen[index],
+              [styles.item_open_short]: isOpen[index] && index > 1
             })}
           >
             <button

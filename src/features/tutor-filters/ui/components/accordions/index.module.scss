@@ -49,8 +49,7 @@
   overflow: hidden;
   transition:
     max-height 0.4s ease,
-    padding 0.3s ease,
-    opacity 0.3s ease;
+    opacity 0.4s ease;
 }
 
 .item {
@@ -59,7 +58,7 @@
 
   &_open {
     .content {
-      max-height: 1000px;
+      max-height: 700px;
       opacity: 1;
     }
 
@@ -71,6 +70,13 @@
       margin-block-start: 8px;
       border-color: var(--clr-primary-default);
       transform: rotate(-135deg);
+    }
+    
+    &_short {
+      .content {
+        max-height: 170px;
+        opacity: 1;
+      }
     }
   }
 }

@@ -38,7 +38,7 @@
     margin-inline-start: 1px;
     border: 2px solid var(--clr-3);
     border-radius: 4px;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease;
     cursor: pointer;
     appearance: none;
 
@@ -53,7 +53,7 @@
     &::after {
       content: '';
       position: absolute;
-      transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease;
       top: 50%;
       left: 50%;
       display: inline-block;
