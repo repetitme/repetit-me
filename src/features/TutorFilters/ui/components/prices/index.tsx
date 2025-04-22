@@ -55,7 +55,7 @@ const Prices = ({
       </style>
       <Slider
         min={300}
-        max={7000}
+        max={4000}
         step={50}
         range
         className="slider"
