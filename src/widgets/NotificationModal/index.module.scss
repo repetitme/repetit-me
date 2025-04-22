@@ -2,6 +2,7 @@
 
 .content {
   @include flex-center;
+
   gap: 16px;
   inline-size: 100%;
   max-inline-size: 536px;
