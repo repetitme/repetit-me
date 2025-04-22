@@ -5,12 +5,13 @@ import '../assets/index.scss';
 function App() {
   return (
     <NotificationModal
-      type="accept_with_text"
+      notification={true}
       onAccept={() => console.log(3)}
       onDecline={() => console.log(4)}
       onClose={() => console.log(2)}
-      title="По вашему запросу репетиторы не найдены"
-      text="Вы можете оставить заявку, и мы поищем репетитора под ваш запрос в нашей дополнительной базе. Отправить заявку?"
+      textButton="Мои репетиторы"
+      title="Вы приняли запрос!"
+      text="Мы свяжемся с преподавателем и обменяем Вас контактами в Telegram. Уведомление об этом будет отправлено автоматически через бота."
     />
   );
 }

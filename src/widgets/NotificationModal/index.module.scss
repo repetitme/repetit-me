@@ -1,8 +1,7 @@
+@use '../../assets/styles/mixins/flexCenter.scss' as *;
+
 .content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   gap: 16px;
   inline-size: 100%;
   max-inline-size: 536px;
