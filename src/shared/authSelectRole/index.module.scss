@@ -9,16 +9,14 @@
     padding-inline: 108px;
     cursor: pointer;
     background-color: transparent;
-
-    &--text {
-      color: var(--clr-black);
-      font-family: var(--ffm-default);
-      font-weight: 500;
-      font-size: 20px;
-      line-height: 132%;
-      padding-block: 8px;
-      width: max-content;
-    }
+    color: var(--clr-black);
+    font-family: var(--ffm-default);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 132%;
+    padding-block: 8px;
+    width: max-content;
+    white-space: nowrap;
   }
 }
 
@@ -30,6 +28,7 @@
     position: absolute;
     left: 0;
     right: 0;
+    bottom: 0;
     inline-size: 100%;
     block-size: 2px;
     background-color: var(--clr-primary-default);

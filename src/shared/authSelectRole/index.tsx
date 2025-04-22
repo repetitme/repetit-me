@@ -31,9 +31,7 @@ export const AuthSelectRole: FC<IAuthSelectRole> = ({ onChangeSelect }) => {
           [styles['active-select']]: selectedRole === 'Как ученик'
         })}
       >
-        <p className={styles['container-selectors__button--text']}>
-          Как ученик
-        </p>
+        Как ученик
       </button>
       <button
         onClick={handleSelect('Как репетитор')}
@@ -41,9 +39,7 @@ export const AuthSelectRole: FC<IAuthSelectRole> = ({ onChangeSelect }) => {
           [styles['active-select']]: selectedRole === 'Как репетитор'
         })}
       >
-        <p className={styles['container-selectors__button--text']}>
-          Как репетитор
-        </p>
+        Как репетитор
       </button>
     </div>
   );
