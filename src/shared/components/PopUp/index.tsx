@@ -1,6 +1,9 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
+
 import closeIcon from '../../../assets/icons/close.png';
+
 import styles from './index.module.scss';
+
 import { PopupProps } from './type';
 
 const Popup: React.FC<PopupProps> = ({
@@ -13,12 +16,14 @@ const Popup: React.FC<PopupProps> = ({
   onConfirm,
   variant = 'default',
   showCancelButton = true,
-  showCloseButton =true
+  showCloseButton = true
 }) => {
-  
-  const handleEscape = useCallback((e: KeyboardEvent) => {
-    if (e.key === 'Escape') onClose();
-  }, [onClose]);
+  const handleEscape = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    },
+    [onClose]
+  );
 
   useEffect(() => {
     if (isOpen) {
@@ -31,13 +36,19 @@ const Popup: React.FC<PopupProps> = ({
 
   return (
     <div className={styles.popup}>
-      {showCloseButton && (<button className={styles.popup__close} onClick={onClose}>
-        <img src={closeIcon} alt="Закрыть" />
-      </button>)}
       <div className={styles.popup__overlay} onClick={onClose}></div>
       <div className={styles.popup__content}>
+        {showCloseButton && (
+          <button className={styles.popup__close} onClick={onClose}>
+            <img src={closeIcon} alt="Закрыть" />
+          </button>
+        )}
         {title && <h2 className={styles.popup__title}>{title}</h2>}
-        {content && <div className={styles.popup__text}>{content}</div>}
+        {content && (
+          <div className={styles.popup__text}>
+            <p>{content}</p>
+          </div>
+        )}
         <div className={styles.popup__buttons}>
           {showCancelButton && (
             <button className={styles.popup__button} onClick={onClose}>
