@@ -12,8 +12,9 @@ export interface ITutorData extends IUserBaseData {
   status: 'Частный преподаватель' | string;
   experienceYears: number;
   description: string;
-  raiting: number; // Рейтинг
+  rating: number; // Рейтинг
   link?: string; // Ссылка на приветственное видео от репетитора, если оно у него есть
+  isCard?: boolean;
 }
 
 export interface IStudentData extends IUserBaseData {

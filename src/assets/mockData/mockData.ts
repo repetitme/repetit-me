@@ -25,7 +25,7 @@ export const mockTutors: ITutorData[] = [
     subjects: ['Математика', 'Физика'],
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
-    raiting: 5.0,
+    rating: 5.0,
     link: '#!'
   },
   {
@@ -41,7 +41,7 @@ export const mockTutors: ITutorData[] = [
     subjects: ['Русский язык'],
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
-    raiting: 3.9
+    rating: 3.9
   },
   {
     id: uuidv4(),
@@ -56,7 +56,7 @@ export const mockTutors: ITutorData[] = [
     subjects: ['Математика', 'Физика'],
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
-    raiting: 2.9,
+    rating: 2.9,
     link: '#!'
   },
   {
@@ -72,7 +72,7 @@ export const mockTutors: ITutorData[] = [
     subjects: ['Английский язык'],
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
-    raiting: 5.0,
+    rating: 5.0,
     link: '#!'
   }
 ];
@@ -83,7 +83,7 @@ export const mockStudents: IStudentData[] = [
     name: 'Виктор',
     image: Victor,
     importantInfo: 437,
-    additionalInfo: 'Могу заниматься только в ПН, СР с 18:00',
+    additionalInfo: 'Имеется возможность заниматься только в ПН, СР с 18:00 ',
     activityStatus: 0,
     lessonsCompleted: 2,
     price: '2000-2500 ₽/час',

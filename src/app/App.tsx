@@ -1,22 +1,34 @@
 import UserCard from '../widgets/UserCard';
-import useUsersData from '../shared/hooks/useUsersData';
+import useTutorsData from '../shared/hooks/useTutorsData';
 // import AppRouter from './router/AppRouter';
 
 import '../assets/index.scss';
+import useStudentsData from '../shared/hooks/useStudentsData';
 
 function App() {
   /* Для вызова компонента, необходимо вызвать хук для отображения 
   моковых данных через промисы апи. В дальнейшем, для работы с карточками, нужно вызвать 
   в компонентах, где нужны карточки пользователей, и передавать им через пропсы данные и 
   роль пользователя. Из app убрать текущий тестовый стенд */
-  const { userData, loading, error } = useUsersData();
+  const {
+    tutors,
+    loading: loadingTutors,
+    error: errorTutors
+  } = useTutorsData();
+  const {
+    students,
+    loading: loadingStudents,
+    error: errorStudents
+  } = useStudentsData();
 
-  if (loading) {
+  if (loadingTutors || loadingStudents) {
     return <div>Loading...</div>;
   }
 
-  if (error) {
-    return <div>{error}</div>;
+  if (errorTutors) {
+    return <div>{errorTutors}</div>;
+  } else if (errorStudents) {
+    return <div>{errorStudents}</div>;
   }
 
   return (
@@ -33,15 +45,15 @@ function App() {
           alignItems: 'center'
         }}
       >
-        {userData.tutors.slice(0, 1).map((tutor) => (
+        {tutors.tutors.slice(0, 1).map((tutor) => (
           <UserCard key={tutor.id} role="unAuthorized" tutorData={tutor} />
         ))}
 
-        {userData.tutors.slice(1, 2).map((tutor) => (
+        {tutors.tutors.slice(1, 2).map((tutor) => (
           <UserCard key={tutor.id} role="student" tutorData={tutor} />
         ))}
 
-        {userData.tutors.slice(2, 3).map((tutor) => (
+        {tutors.tutors.slice(2, 3).map((tutor) => (
           <UserCard
             key={tutor.id}
             role="student"
@@ -50,15 +62,15 @@ function App() {
           />
         ))}
 
-        {userData.tutors.slice(3, 4).map((tutor) => (
+        {tutors.tutors.slice(3, 4).map((tutor) => (
           <UserCard key={tutor.id} role="card" tutorData={tutor} />
         ))}
 
-        {userData.students.slice(0, 1).map((student) => (
+        {students.students.slice(0, 1).map((student) => (
           <UserCard key={student.id} role="tutor" studentData={student} />
         ))}
 
-        {userData.students.slice(1, 2).map((student) => (
+        {students.students.slice(1, 2).map((student) => (
           <UserCard
             key={student.id}
             role="tutor"

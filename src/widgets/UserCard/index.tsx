@@ -45,7 +45,11 @@ const UserCard: React.FC<IUserData> = ({
     </div>
   ) : (
     <div className={styles.card}>
-      {tutorData ? <TutorProfile {...tutorData} /> : <p>Репетитор не найден</p>}
+      {tutorData ? (
+        <TutorProfile {...tutorData} isCard={true} />
+      ) : (
+        <p>Репетитор не найден</p>
+      )}
     </div>
   );
 };

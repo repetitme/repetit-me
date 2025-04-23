@@ -10,6 +10,7 @@
     font-weight: 700;
 
     @media screen and (max-width: 750px) {
+      max-inline-size: 300px;
     }
   }
 }

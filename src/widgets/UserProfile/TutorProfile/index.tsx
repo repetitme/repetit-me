@@ -1,8 +1,10 @@
 import { ITutorData } from '../../../shared/types/userData';
-import raitingIcon from '../../../assets/images/UserCardIcons/star_raiting.svg';
+import ratingIcon from '../../../assets/images/UserCardIcons/star_rating.svg';
 import UserInfo from '../../../shared/components/UserInfo';
 
 import styles from '../index.module.scss';
+import useWindowSize from '../../../shared/hooks/useWindowSize';
+import classNames from 'classnames';
 
 const TutorProfile: React.FC<ITutorData> = ({
   name = '',
@@ -11,12 +13,16 @@ const TutorProfile: React.FC<ITutorData> = ({
   purpose = [],
   image,
   link = '',
-  raiting,
+  rating = 0,
   description,
   status,
   experienceYears,
-  price
+  price,
+  isCard
 }) => {
+  const { width } = useWindowSize();
+  const isTablet = width < 620 && width > 375 ? true : false;
+
   return (
     <>
       <div className={styles.profile__avatar}>
@@ -27,18 +33,21 @@ const TutorProfile: React.FC<ITutorData> = ({
         />
         {link && (
           <a
-            className={styles['profile__avatar--link']}
+            className={classNames(
+              !isCard && styles['profile__avatar--link'],
+              isCard && styles['profile__avatar--link_tablet']
+            )}
             href={link}
             target="_blank"
             rel="noopener noreferrer"
           />
         )}
       </div>
-      <div className={styles.profile__raiting}>
-        {raiting.toFixed(1)}
+      <div className={styles.profile__rating}>
+        {rating.toFixed(1)}
         <img // Компонент рейтинга оставлен как заглушка, потом заменить полноценным общим компонентом
-          className={styles['profile__raiting--image']}
-          src={raitingIcon}
+          className={styles['profile__rating--image']}
+          src={ratingIcon}
           alt="Звезда рейтинга"
         />
       </div>
