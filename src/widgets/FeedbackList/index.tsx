@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 
 import sortIcon from '../../assets/icons/iconSorting.svg';
 import pencilIcon from '../../assets/icons/pencilIcon.svg';
@@ -10,10 +10,7 @@ import { feedbackData } from './feedbackData';
 
 import styles from './index.module.scss';
 
-import {
-  TFeedbackItemProps,
-  TNewFeedback
-} from '../../shared/components/FeedbackItem/type';
+import { TFeedbackItemProps } from '../../shared/components/FeedbackItem/type';
 import { IFeedbackListProps } from './type';
 
 const FeedbackList: React.FC<IFeedbackListProps> = ({ updateModalData }) => {
@@ -37,21 +34,25 @@ const FeedbackList: React.FC<IFeedbackListProps> = ({ updateModalData }) => {
   const toggleSortFeedbacks = () => setIsAscending((prev) => !prev);
   // const toggleFormVisible = () => setIsVisible((prev) => !prev);
 
-  const handleAddFeedback = (newFeedback: TNewFeedback) => {
-    const feedbackToAdd: TFeedbackItemProps = {
-      ...newFeedback,
-      id: uuidv4(),
-      date: new Date()
-    };
-    setFeedbacks((prev) => [feedbackToAdd, ...prev]);
-  };
+  // const handleAddFeedback = (newFeedback: TNewFeedback) => {
+  //   const feedbackToAdd: TFeedbackItemProps = {
+  //     ...newFeedback,
+  //     id: uuidv4(),
+  //     date: new Date()
+  //   };
+  //   setFeedbacks((prev) => [feedbackToAdd, ...prev]);
+  // };
 
   return (
     <section className={styles.section}>
       <div className={styles.container}>
         <button className={styles.sort} onClick={toggleSortFeedbacks}>
           {isAscending ? 'Сначала новые' : 'Сначала старые'}
-          <img src={sortIcon} alt="Иконка сортировки" />
+          <img
+            src={sortIcon}
+            alt="Иконка сортировки"
+            className={styles.sort__arrows}
+          />
         </button>
         <Button
           text="Написать отзыв"
