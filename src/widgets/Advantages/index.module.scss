@@ -3,17 +3,16 @@
 }
 
 .container {
-  position: relative;
-  max-width: 1440px;
-  max-height: 546px;
-
+  
+  
   &__description {
-    padding: 64px 112px;
+    position: relative;
     max-width: 1200px;
     min-height: 418px;
     display: flex;
-    gap: 21px;
-
+    flex-wrap: wrap;
+    gap: 18px;
+    
     &_role::after {
       content: '';
       background-image: url('../../assets/images/magnifer.svg');
@@ -21,8 +20,8 @@
       block-size: 189.4272px;
       inline-size: 189.4272px;
       position: absolute;
-      left: 74px;
-      bottom: 10px;
+      left: -41px;
+      bottom: -53px;
       z-index: 1;
     }
 
@@ -33,8 +32,8 @@
       block-size: 374px;
       inline-size: 374px;
       position: absolute;
-      right: 6px;
-      top: -150px;
+      right: -122px;
+      top: -214px;
       z-index: 1;
     }
 
@@ -58,10 +57,12 @@
         );
       background-origin: border-box;
       background-clip: content-box, border-box;
+      flex-grow: 1;
+      align-items: center;
     }
 
     &_role_info {
-      margin: 32px 38px 30px;
+      margin: 32px 0 30px;
       max-width: 514px;
       color: var(--clr-black);
       font-family: var(--ffm-title);
@@ -73,13 +74,13 @@
 
     &_role_img {
       position: relative;
-      margin: 0 0 0 294px;
+      margin: 0 0 0 250px;
       max-width: 253px;
       max-height: 253px;
     }
 
     &_telegram_info {
-      margin: 32px 38px 30px;
+      margin: 32px 0 30px;
       max-width: 510px;
       color: var(--clr-black);
       font-family: var(--ffm-title);
@@ -90,7 +91,7 @@
     }
 
     &_telegram_img {
-      margin: 0 0 0 294px;
+      margin: 0 0 0 255px;
       position: relative;
       max-width: 253px;
       max-height: 253px;

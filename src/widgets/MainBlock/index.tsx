@@ -4,12 +4,13 @@ import { useState } from 'react';
 import IconList from '../../shared/components/IconsList';
 import { iconSources } from '../../shared/components/IconsList/data';
 import classNames from 'classnames';
+import { MainBlockProps } from './type';
 
-const MainBlock = () => {
-  const [isActive, setIsActive] = useState(false);
+
+const MainBlock:React.FC<MainBlockProps> = ({ isActive, setIsActive }) => {
 
   const handleSwitch = () => {
-    setIsActive((prevState) => !prevState);
+    setIsActive(!isActive);
   };
 
   const icons = isActive ? iconSources.teacher : iconSources.student;

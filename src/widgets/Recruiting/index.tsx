@@ -4,7 +4,6 @@ import { features } from './data';
 import womenAndComputer from '../../assets/images/women_and_computer.svg';
 
 const Recruiting: FC = () => (
-    <div className={styles.container}>
       <div className={styles.container__recruiting}>
         <h2 className={styles.container__recruiting_title}>
           Мы{' '}
@@ -36,6 +35,5 @@ const Recruiting: FC = () => (
           src={womenAndComputer}
         ></img>
       </div>
-    </div>
   );
 export default Recruiting;

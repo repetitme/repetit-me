@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-width: 1440px;
+    margin: 0 auto;
+    
+    &__perks {
+      padding: 0 121px;
+        margin: 141px 0 0 0;
+    }
+
+    &__chat {
+      margin: 141px 0 0 0;
+    padding: 0 121px;
+
+    }
+
+    &__advantages {
+      margin: 203px 0 0 0;
+    padding: 0 121px;
+
+    }
+
+    &__quickselection {
+      height: 1275px;
+    padding: 0 121px;
+
+    }
+
+    &__question {
+      padding: 0 121px;
+      
+      &-student {
+        margin: 12px 0 0 0;        
+      }
+
+      &-teacher {
+        margin: 3px 0 0 0;
+      }
+
+    }
+
+    &__whywe {
+      margin: 140px 0 0 0;
+    padding: 0 121px;
+
+    }
+
+    &__form {
+      margin:365px 0 0 0;
+    }
+}

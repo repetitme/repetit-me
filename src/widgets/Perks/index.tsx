@@ -11,7 +11,7 @@ type TPerksProps = {
   variant?: 'student' | 'teacher'; // меняется раскладка и текст картинки
 };
 
-export const Perks: React.FC<TPerksProps> = ({ variant = 'student' }) => {
+export const Perks: React.FC<TPerksProps> = ({ variant }) => {
   const chatBubbleText =
     variant === 'student'
       ? 'Я знаю где найти классного репетитора'

@@ -6,7 +6,6 @@ import emojiWomen from '../../assets/images/emoji_women.svg';
 
 const Advantages: FC = () => {
   return (
-    <div className={styles.container}>
       <div className={styles.container__description}>
         <div
           className={classNames(styles.container__description_role, styles.container__description_block)}
@@ -47,7 +46,6 @@ const Advantages: FC = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
