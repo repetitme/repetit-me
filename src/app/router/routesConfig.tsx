@@ -1,4 +1,4 @@
-import NotFoundPage from '../../shared/NotFoundPage'
+import NotFoundPage from '../../shared/NotFoundPage';
 import { IRoute } from './type';
 
 export const routesConfig: IRoute[] = [

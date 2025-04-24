@@ -1,6 +1,7 @@
 import classNames from 'classnames';
-import styles from './index.module.scss';
+
 import { ButtonProps } from './type';
+import styles from './index.module.scss';
 
 const Button: React.FC<ButtonProps> = ({
   text,
@@ -21,17 +22,16 @@ const Button: React.FC<ButtonProps> = ({
     },
     className
   );
-
   const ButtonElement = variant === 'social' ? 'a' : 'button';
-
   const attributes = {
     className: buttonClass,
     onClick,
     disabled,
     'aria-disabled': disabled,
-    ...(variant === 'social' ? { href, target: '_blank', rel: 'noopener noreferrer' } : {})
+    ...(variant === 'social'
+      ? { href, target: '_blank', rel: 'noopener noreferrer' }
+      : {})
   };
-
   return (
     <ButtonElement {...attributes}>
       {icon && <img src={icon} className={styles.icon} alt="" />}
@@ -39,5 +39,4 @@ const Button: React.FC<ButtonProps> = ({
     </ButtonElement>
   );
 };
-
 export default Button;

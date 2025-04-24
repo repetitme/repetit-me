@@ -1,6 +1,7 @@
-import styles from './index.module.scss';
 import classNames from 'classnames';
+
 import { ListItemProps } from './type';
+import styles from './index.module.scss';
 
 export const ListItem: React.FC<ListItemProps> = ({
   number,
@@ -21,3 +22,4 @@ export const ListItem: React.FC<ListItemProps> = ({
     </li>
   );
 };
+export default ListItem;

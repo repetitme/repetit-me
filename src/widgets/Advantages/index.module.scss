@@ -3,8 +3,6 @@
 }
 
 .container {
-  
-  
   &__description {
     position: relative;
     max-width: 1200px;
@@ -12,7 +10,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 18px;
-    
+
     &_role::after {
       content: '';
       background-image: url('../../assets/images/magnifer.svg');

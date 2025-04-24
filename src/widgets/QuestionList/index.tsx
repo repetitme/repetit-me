@@ -1,20 +1,18 @@
 import { FC, useState } from 'react';
+import classNames from 'classnames';
+import useClickOutside from '../../shared/hooks/useClickOutside';
 
 import Accordion from '../Accordeon';
-import useClickOutside from '../../shared/hooks/useClickOutside';
-import { questions } from './data';
 
-import styles from './styles.module.scss';
-import classNames from 'classnames';
+import { questions } from './data';
+import styles from './index.module.scss';
 
 const QuestionList: FC = () => {
   const [openId, setOpenId] = useState<string | null>(null);
   const accordionRef = useClickOutside(() => setOpenId(null));
-
   const handleToggle = (id: string) => {
     setOpenId(openId === id ? null : id);
   };
-
   return (
     <div className={styles.container}>
       <h2 className={styles.container__title}>
@@ -38,5 +36,4 @@ const QuestionList: FC = () => {
     </div>
   );
 };
-
 export default QuestionList;
