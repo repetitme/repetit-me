@@ -1,11 +1,13 @@
-import { useState, FC } from 'react';
+import { FC, useState } from 'react';
+
 import classNames from 'classnames';
 
 import arrow_left from '../../assets/images/arrow-left.svg';
 import arrow_right from '../../assets/images/arrow-right.svg';
 
-import { ITutorCardProps } from './type';
 import styles from './index.module.scss';
+
+import { ITutorCardProps } from './type';
 
 const Carousel: FC<ITutorCardProps> = ({ tutorsCard }) => {
   const cardCount: number = tutorsCard.length;

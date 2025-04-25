@@ -1,11 +1,14 @@
-import styles from './index.module.scss';
-import logo from '../../assets/images/logo.svg';
 import { useEffect, useState } from 'react';
-import TeacherHeader from './TeacherHeader';
-import StudentHeader from './StudentHeader';
-import { HeaderProps, TAuth } from './types';
+
+import logo from '../../assets/images/logo.svg';
 import icon from '../../assets/images/telegram_icon.svg';
-import Button from '../../shared/components/Button';
+import Button from '../../shared/Button';
+import StudentHeader from './StudentHeader';
+import TeacherHeader from './TeacherHeader';
+
+import styles from './index.module.scss';
+
+import { HeaderProps, TAuth } from './types';
 
 const Header: React.FC<HeaderProps> = ({ auth }) => {
   const [authHeader, setAuthHeader] = useState<TAuth>(auth ? auth : 'unauth');

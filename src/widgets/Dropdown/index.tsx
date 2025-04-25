@@ -1,8 +1,10 @@
 import { FC } from 'react';
+
 import classNames from 'classnames';
 
-import { IDropdownProps } from './type';
 import styles from './index.module.scss';
+
+import { IDropdownProps } from './type';
 
 export const Dropdown: FC<IDropdownProps> = ({
   list,

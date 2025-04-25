@@ -1,11 +1,12 @@
 import classNames from 'classnames';
 
-import SwitchButton from '../../shared/components/SwitchButton';
 import IconList from '../../shared/components/IconsList';
-
 import { iconSources } from '../../shared/components/IconsList/data';
-import { MainBlockProps } from './type';
+import SwitchButton from '../../shared/components/SwitchButton';
+
 import styles from './index.module.scss';
+
+import { MainBlockProps } from './type';
 
 const MainBlock: React.FC<MainBlockProps> = ({ isActive, setIsActive }) => {
   const handleSwitch = () => {

@@ -2,11 +2,10 @@ import classNames from 'classnames';
 
 import Boy from '../../assets/images/perksBoy.png';
 import Girl from '../../assets/images/perksGirl.png';
-
-import InfoBlock from '../../shared/components/InfoBlock';
 import ChatBubble from '../../shared/components/ChatBubble';
-
+import InfoBlock from '../../shared/components/InfoBlock';
 import { perks } from './data';
+
 import styles from './index.module.scss';
 
 type TPerksProps = {

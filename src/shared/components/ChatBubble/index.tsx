@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 
-import { TChatBubbleProps } from './type';
 import styles from './index.module.scss';
+
+import { TChatBubbleProps } from './type';
 
 export const ChatBubble: React.FC<TChatBubbleProps> = ({
   position = 'left',

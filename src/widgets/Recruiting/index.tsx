@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
 import womenAndComputer from '../../assets/images/women_and_computer.svg';
-
 import { features } from './data';
+
 import styles from './index.module.scss';
 
 const Recruiting: FC = () => (

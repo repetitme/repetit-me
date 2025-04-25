@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { IDisciplines } from './type';
-
-import ivanova from '../../assets/images/tutor-ivanova.svg';
 import fedorova from '../../assets/images/tutor-fedorova.svg';
 import glazkov from '../../assets/images/tutor-glazkov.svg';
+import ivanova from '../../assets/images/tutor-ivanova.svg';
+
+import { IDisciplines } from './type';
 
 export const tutorsCard: string[] = [
   glazkov,

@@ -1,15 +1,16 @@
 import { useState } from 'react';
+
 import classNames from 'classnames';
 
-import QuickSelection from '../../widgets/QuickSelection';
-import MainBlock from '../../widgets/MainBlock';
-import WhyWe from '../../widgets/WhyWe';
-import Chat from '../../widgets/Chat';
-import Perks from '../../widgets/Perks';
 import Advantages from '../../widgets/Advantages';
+import Chat from '../../widgets/Chat';
+import MainBlock from '../../widgets/MainBlock';
+import Perks from '../../widgets/Perks';
 import QuestionList from '../../widgets/QuestionList';
-import TutorFormBlock from '../../widgets/TutorFormBlock';
+import QuickSelection from '../../widgets/QuickSelection';
 import Recruiting from '../../widgets/Recruiting';
+import TutorFormBlock from '../../widgets/TutorFormBlock';
+import WhyWe from '../../widgets/WhyWe';
 
 import styles from './index.module.scss';
 

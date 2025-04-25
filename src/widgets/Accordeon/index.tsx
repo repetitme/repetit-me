@@ -1,10 +1,12 @@
 import { FC } from 'react';
+
 import classNames from 'classnames';
 
 import cross from '../../assets/images/added_cross.svg';
 
-import { AccordionProps } from './type';
 import styles from './index.module.scss';
+
+import { AccordionProps } from './type';
 
 const Accordion: FC<AccordionProps> = ({
   title,

@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 import classNames from 'classnames';
 
 import emojiMen from '../../assets/images/emoji_men.svg';

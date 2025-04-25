@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 
 import styles from './index.module.scss';
+
 import { TInfoBlockProps } from './type';
 
 export const InfoBlock: React.FC<TInfoBlockProps> = ({

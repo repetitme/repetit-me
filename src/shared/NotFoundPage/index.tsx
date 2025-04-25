@@ -3,10 +3,9 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 
 import notFoundImage from '../../assets/Not-found.png';
-import Button from '../button';
+import Button from '../Button';
 
 import styles from './index.module.scss';
-
 
 const NotFoundPage: React.FC = () => {
   const navigate = useNavigate();

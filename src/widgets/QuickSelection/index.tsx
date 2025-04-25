@@ -1,13 +1,13 @@
-import { useState, FC } from 'react';
+import { FC, useState } from 'react';
+
 import classNames from 'classnames';
 
 import icon_arrowDown from '../../assets/images/icon-arrowdown.svg';
-
+import Button from '../../shared/Button';
 import Carousel from '../Carousel';
-import Button from '../../shared/components/Button';
 import Dropdown from '../Dropdown';
+import { disciplines, dropdown, tutorsCard } from './data';
 
-import { disciplines, tutorsCard, dropdown } from './data';
 import styles from './index.module.scss';
 
 export const QuickSelection: FC = () => {

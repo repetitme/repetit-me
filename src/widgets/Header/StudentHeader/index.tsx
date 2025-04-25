@@ -1,6 +1,9 @@
 import React from 'react';
-import styles from '../index.module.scss';
+
 import classNames from 'classnames';
+
+import styles from '../index.module.scss';
+
 import { CommonHeaderProps } from '../types';
 
 const StudentHeader: React.FC<CommonHeaderProps> = ({ onLogout }) => {

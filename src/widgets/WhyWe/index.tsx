@@ -1,5 +1,6 @@
 import ListItem from '../../shared/components/ListItem';
 import { listItems } from './data';
+
 import styles from './index.module.scss';
 
 export const WhyWe: React.FC = () => (

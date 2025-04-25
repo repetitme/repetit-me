@@ -1,7 +1,8 @@
 import classNames from 'classnames';
 
-import { ListItemProps } from './type';
 import styles from './index.module.scss';
+
+import { ListItemProps } from './type';
 
 export const ListItem: React.FC<ListItemProps> = ({
   number,
