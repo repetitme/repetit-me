@@ -1,0 +1,49 @@
+.title {
+  font-weight: 500;
+  font-size: 32px;
+  margin-block-end: 65px;
+  font-family: var(--ffm-title);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 352px 1fr;
+  gap: 28px;
+  max-inline-size: 793px;
+  inline-size: 100%;
+
+  button {
+    border: none;
+    background-color: transparent;
+    font-weight: inherit;
+  }
+}
+
+.tabs {
+  margin-inline-start: 18px;
+  margin-block-end: 61px;
+  &__list {
+    font-family: var(--ffm-default);
+    color: var(--clr-7);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    gap: 18px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  &__item_active {
+    color: var(--clr-primary-default);
+    font-weight: 700;
+  }
+}

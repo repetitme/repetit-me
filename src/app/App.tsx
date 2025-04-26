@@ -1,15 +1,9 @@
-import AuthForm from '../features/auth/form';
+import StudentRequests from '../pages/StudentRequests';
 
 import '../assets/index.scss';
-import ReviewList from '../shared/components/SortByDate';
 
 function App() {
-  return (<>
-    <ReviewList/>
-    <div className="App">
-      <AuthForm login={false} />
-    </div>
- </> );
+  return <StudentRequests />;
 }
 
 export default App;
