@@ -1,23 +1,21 @@
 import React, { useCallback, useEffect } from 'react';
-
 import closeIcon from '../../../assets/icons/close.png';
 import { ModalOverlay } from '../Overlay';
-
 import styles from './index.module.scss';
-
 import { PopupProps } from './type';
+
 
 const Popup: React.FC<PopupProps> = ({
   isOpen,
   onClose,
   title,
-  content,
+  text,
   confirmButtonText = 'Да',
   cancelButtonText = 'Нет',
   onConfirm,
   variant = 'default',
   showCancelButton = true,
-  showCloseButton = true
+  showCloseButton = true,
 }) => {
   const handleEscape = useCallback(
     (e: KeyboardEvent) => {
@@ -41,13 +39,13 @@ const Popup: React.FC<PopupProps> = ({
         <div className={styles.popup__content}>
           {showCloseButton && (
             <button className={styles.popup__close} onClick={onClose}>
-              <img src={closeIcon} alt="Закрыть" />
+              <img src={closeIcon} alt="иконка закрытия попапа" />
             </button>
           )}
           {title && <h2 className={styles.popup__title}>{title}</h2>}
-          {content && (
+          {text && (
             <div className={styles.popup__text}>
-              <p>{content}</p>
+              <p className={styles.popup__p}>{text}</p>
             </div>
           )}
           <div className={styles.popup__buttons}>

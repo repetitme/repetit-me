@@ -64,11 +64,11 @@
     color: var(--clr-black);
     margin-block-end: 3px;
 
-    p {
+    
+  }
+&__p {
       white-space: pre-line;
     }
-  }
-
   &__buttons {
     display: flex;
     justify-content: center;

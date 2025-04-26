@@ -2,7 +2,7 @@ export interface PopupProps {
   isOpen: boolean;
   onClose: () => void;
   title?: string;
-  content?: string;
+  text?: string;
   confirmButtonText?: string;
   cancelButtonText?: string; 
   onConfirm?: () => void; 
