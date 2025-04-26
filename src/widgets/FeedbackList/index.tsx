@@ -1,52 +1,26 @@
-import { useEffect, useMemo, useState } from 'react';
-
-// import { v4 as uuidv4 } from 'uuid';
 
 import sortIcon from '../../assets/icons/iconSorting.svg';
 import pencilIcon from '../../assets/icons/pencilIcon.svg';
 import Button from '../../shared/button';
 import FeedbackItem from '../../shared/components/FeedbackItem';
 import { feedbackData } from './feedbackData';
+import useFeedbackList from './useFeedbackList';
 
 import styles from './index.module.scss';
 
-import { TFeedbackItemProps } from '../../shared/components/FeedbackItem/type';
 import { IFeedbackListProps } from './type';
 
 const FeedbackList: React.FC<IFeedbackListProps> = ({ updateModalData }) => {
-  const [feedbacks, setFeedbacks] =
-    useState<TFeedbackItemProps[]>(feedbackData);
-  const [isAscending, setIsAscending] = useState<boolean>(true);
-  // const [isFormVisible, setIsVisible] = useState<boolean>(false);
-
-  useEffect(() => {
-    updateModalData(feedbacks);
-  }, [feedbacks]);
-
-  const sortedFeedbacks = useMemo(() => {
-    return [...feedbacks].sort((a, b) => {
-      return isAscending
-        ? a.date.getTime() - b.date.getTime()
-        : b.date.getTime() - a.date.getTime();
+  const { sortedFeedbacks, isAscending, toggleSort } =
+    useFeedbackList({
+      initialData: feedbackData,
+      onDataChange: updateModalData
     });
-  }, [feedbacks, isAscending]);
-
-  const toggleSortFeedbacks = () => setIsAscending((prev) => !prev);
-  // const toggleFormVisible = () => setIsVisible((prev) => !prev);
-
-  // const handleAddFeedback = (newFeedback: TNewFeedback) => {
-  //   const feedbackToAdd: TFeedbackItemProps = {
-  //     ...newFeedback,
-  //     id: uuidv4(),
-  //     date: new Date()
-  //   };
-  //   setFeedbacks((prev) => [feedbackToAdd, ...prev]);
-  // };
 
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <button className={styles.sort} onClick={toggleSortFeedbacks}>
+        <button className={styles.sort} onClick={toggleSort}>
           {isAscending ? 'Сначала новые' : 'Сначала старые'}
           <img
             src={sortIcon}
@@ -59,11 +33,8 @@ const FeedbackList: React.FC<IFeedbackListProps> = ({ updateModalData }) => {
           variant="white"
           icon={pencilIcon}
           className={styles.button}
-          // onClick={toggleFormVisible}
         />
       </div>
-
-      {/* {isFormVisible && <FeedbackForm onAddFeedback={handleAddFeedback} />} */}
 
       <ul className={styles.list}>
         {sortedFeedbacks.map((feedback) => (
