@@ -1,4 +1,4 @@
-export type TParametrItem = {
+export type TParameterItem = {
   src: string;
   items: string[];
 };

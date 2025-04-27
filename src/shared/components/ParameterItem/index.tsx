@@ -1,7 +1,7 @@
-import { TParametrItem } from './type';
+import { TParameterItem } from './type';
 import styles from './index.module.scss';
 
-const ParametrItem: React.FC<TParametrItem> = ({ src, items }) => {
+const ParameterItem: React.FC<TParameterItem> = ({ src, items }) => {
   return (
     <div className={styles.user__parameters}>
       <img
@@ -20,4 +20,4 @@ const ParametrItem: React.FC<TParametrItem> = ({ src, items }) => {
   );
 };
 
-export default ParametrItem;
+export default ParameterItem;

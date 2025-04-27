@@ -1,6 +1,6 @@
 import styles from './index.module.scss';
 import { IUserInfo } from './type';
-import ParametrItem from '../ParametrItem';
+import ParametrItem from '../ParameterItem';
 
 import disciplineIcon from '../../../assets/images/UserCardIcons/disciplines_icon.svg';
 import studentCategory from '../../../assets/images/UserCardIcons/student_category_icon.svg';
