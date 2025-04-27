@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useMemo } from 'react';
 
 import star from '../../../assets/icons/star.svg';
 
@@ -7,20 +7,37 @@ import styles from './index.module.scss';
 import { TutorRatingProps } from './type';
 
 const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
-  const [ratingColorState, setRatingColorState] = useState(styles.rating_red);
-  useEffect(() => {
-    if (rating <= 5) {
-      setRatingColorState(styles.rating_blue);
-    }
+  const variantClassMap = {
+    small: [
+      styles.small,
+      styles.small_content,
+      styles.small_content_rating,
+      styles.small_content_star
+    ],
+    medium: [
+      styles.medium,
+      styles.medium_content,
+      styles.medium_content_rating,
+      styles.medium_content_star
+    ],
+    large: [styles.large]
+  };
 
-    if (rating <= 3.9) {
-      setRatingColorState(styles.rating_purple);
-    }
-
+  const getRatingColor = (rating: number) => {
     if (rating <= 2.9) {
-      setRatingColorState(styles.rating_red);
+      return styles.rating_red;
     }
-  }, [rating]);
+    if (rating <= 3.9) {
+      return styles.rating_purple;
+    }
+    if (rating <= 5) {
+      return styles.rating_blue;
+    }
+  };
+
+  const ratingColor = useMemo(() => getRatingColor(rating), [rating]);
+
+  const sizeClass = variantClassMap[variant];
 
   const isSmall = variant === 'small';
   const isMedium = variant === 'medium';
@@ -28,37 +45,19 @@ const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
 
   if (isSmall || isMedium) {
     return (
-      <div
-        className={classNames(
-          styles.container,
-          ratingColorState,
-          variant == 'small' ? styles.small : styles.medium
-        )}
-      >
-        <div
-          className={classNames(
-            styles.container__content,
-            variant == 'small' ? styles.small_content : styles.medium_content
-          )}
-        >
+      <div className={classNames(styles.container, ratingColor, sizeClass[0])}>
+        <div className={classNames(styles.container__content, sizeClass[1])}>
           <span
             className={classNames(
               styles.container__content_rating,
-              variant == 'small'
-                ? styles.small_content_rating
-                : styles.medium_content_rating
+              sizeClass[2]
             )}
           >
             {rating.toFixed(1)}
           </span>
 
           <img
-            className={classNames(
-              styles.container__content_star,
-              variant == 'small'
-                ? styles.small_content_star
-                : styles.medium_content_star
-            )}
+            className={classNames(styles.container__content_star, sizeClass[3])}
             src={star}
             alt="Rating star"
           />
@@ -68,7 +67,7 @@ const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
   }
   if (isLarge) {
     return (
-      <div className={classNames(styles.container, styles.large)}>
+      <div className={classNames(styles.container, sizeClass[0])}>
         <div className={styles.container__info}>
           <span className={styles.container__info_title}>Рейтинг: </span>
           <span className={styles.container__info_rating}>
