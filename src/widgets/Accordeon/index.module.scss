@@ -28,7 +28,7 @@
 
   &__icon {
     transform: rotate(0deg);
-    transition: transform var(--delay-dekstop) var(--timing);
+    transition: transform var(--delay-desktop) var(--timing);
   }
 
   &__icon--open {
@@ -41,8 +41,8 @@
     opacity: 0;
     transform: translateY(-25px);
     transition:
-      max-height var(--delay-dekstop) var(--timing),
-      transform var(--delay-dekstop) var(--timing),
+      max-height var(--delay-desktop) var(--timing),
+      transform var(--delay-desktop) var(--timing),
       opacity var(--duration) var(--timing);
   }
 
