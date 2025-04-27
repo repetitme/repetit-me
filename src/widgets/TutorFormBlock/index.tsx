@@ -6,7 +6,7 @@ type TTutorFormBlock = { children?: ReactNode };
 
 const TutorFormBlock: FC<TTutorFormBlock> = ({ children }) => {
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <h2 className={styles.container__title}>
         Вы&nbsp;
         <span className={styles.container__title_gradient}>репетитор</span>?
@@ -16,7 +16,7 @@ const TutorFormBlock: FC<TTutorFormBlock> = ({ children }) => {
         на репетиторство прямо в Telegram
       </p>
       <div className={styles.container__form}>{children}</div>
-    </div>
+    </section>
   );
 };
 

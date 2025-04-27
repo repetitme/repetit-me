@@ -1,14 +1,12 @@
-import '../../src/assets/styles/globals.scss';
-import '../../src/assets/styles/variables.scss';
-import './App.scss';
 import AppRouter from './router/AppRouter';
 
+import '../assets/index.scss';
+
 function App() {
-  return (
-    <>
-      <AppRouter />
-    </>
-  );
+  return (<>
+
+    <AppRouter/>
+ </> );
 }
 
 export default App;

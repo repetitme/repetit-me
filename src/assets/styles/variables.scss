@@ -3,6 +3,7 @@
   // uncategorized
   --clr-black: #172936;
   --clr-purple-bg: #dbc4f7;
+  --clr-purple-active: #958bec;
   --clr-blue-bg: #a2bcea;
   --clr-tertiary: #d4d07b;
   --clr-yellow: #fbed2d;
@@ -17,11 +18,15 @@
   --clr-2: #eee;
   --clr-3: #d1d4db;
   --clr-4: #858585;
+  --clr-5: #cfdadc;
+  --clr-6: #85919d;
 
   // type
   --clr-primary-default: #6757f1;
   --clr-primary-pressed: #2e276c;
   --clr-primary-hover: #5246c1;
+  --clr-primary-input: #9747ff;
+  --clr-caret-green: #23540e;
   --clr-primary-disabled: #eee;
   --clr-secondary-default: #f04040;
   --clr-secondary-pressed: #904040;
@@ -32,15 +37,16 @@
   --tdn: underline solid;
 
   /* misc */
-  --delay-dekstop: 300ms;
+  --delay-desktop: 300ms;
   --delay-phone: 400ms;
   --duration: 400ms;
   --timing: ease-in;
 
   /* fonts */
-  --ffm-default: montserrat, courier, monospace;
-  --ffm-tag: open-sans, courier, monospace;
-  --ffm-title: druktextwidecur, courier, monospace;
+  --ffm-default: 'Montserrat', courier, monospace;
+  --ffm-tag: 'Open-Sans', courier, monospace;
+  --ffm-title: 'Druktextwidecur', courier, monospace;
+  --ffm-price: 'GolosText', courier, monospace;
 
   /* indentation */
   --padding-inline: 120px;

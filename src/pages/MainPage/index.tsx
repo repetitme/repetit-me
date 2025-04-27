@@ -18,7 +18,7 @@ const MainPage = () => {
       <Chat />
       <TutorFormBlock />
       <QuestionList />
-      <Footer />
+      <Footer role="teacher" />
     </>
   );
 };

@@ -6,8 +6,9 @@ import logo from '../../assets/images/repetit-me_logo.svg';
 import telegram from '../../assets/images/telegram_icon.svg';
 import phone from '../../assets/images/phone_with_qr-code.svg';
 import styles from './index.module.scss';
+import { TfakeUser } from './type';
 
-const Footer: React.FC = () => {
+const Footer: React.FC <TfakeUser> = ({role}) => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__top}>
@@ -31,15 +32,15 @@ const Footer: React.FC = () => {
           alt="Логотип repetitMe"
           className={styles.repetitme__logo}
         />
-        <div className={styles.info}>
-          <div className={styles.links}>
-            <a href="#student">Ученику</a>
-            <a href="#tutor">Репетитору</a>
-          </div>
+        <div className={styles['footer__bottom--content']}>
+        { role !== 'unauthorized' && <div className={styles.links}>
+            <a className={styles.links_item} href="#student">Ученику</a>
+            <a className={styles.links_item} href="#tutor">Репетитору</a>
+          </div>}
           <div className={styles.contact}>
             Связаться с нами: <br />
             <a className={styles.underline}>Менеджер в Telegram</a>
-          </div>
+        </div>
         </div>
         <div className={styles['footer__bottom--links']}>
           <p>2023-2024© Все права защищены</p>

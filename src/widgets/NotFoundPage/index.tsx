@@ -1,6 +1,9 @@
 import React from 'react';
+
 import { useNavigate } from 'react-router';
+
 import notFoundImage from '../../assets/Not-found.png';
+
 import styles from './index.module.scss';
 import Button from '../../shared/components/Button';
 

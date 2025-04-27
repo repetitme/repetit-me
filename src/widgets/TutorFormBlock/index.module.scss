@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 
   &__title {
     margin: 0 15px 0 0;
@@ -36,7 +37,7 @@
   }
 
   &__form {
-    position: relative;
+    
   }
 
   &__form::after {
@@ -56,7 +57,7 @@
     inline-size: 408px;
     block-size: 348px;
     position: absolute;
-    left: 266px;
+    right: 0;
     top: 419px;
     z-index: -1;
   }
