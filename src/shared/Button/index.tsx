@@ -23,9 +23,7 @@ const Button: React.FC<ButtonProps> = ({
     },
     className
   );
-
   const ButtonElement = variant === 'social' ? 'a' : 'button';
-
   const attributes = {
     className: buttonClass,
     onClick,
@@ -35,7 +33,6 @@ const Button: React.FC<ButtonProps> = ({
       ? { href, target: '_blank', rel: 'noopener noreferrer' }
       : {})
   };
-
   return (
     <ButtonElement {...attributes}>
       {icon && <img src={icon} className={styles.icon} alt="" />}
@@ -43,5 +40,4 @@ const Button: React.FC<ButtonProps> = ({
     </ButtonElement>
   );
 };
-
 export default Button;

@@ -1,5 +1,7 @@
 import classNames from 'classnames';
+
 import styles from './index.module.scss';
+
 import { SwitchButtonProps } from './type';
 
 const SwitchButton: React.FC<SwitchButtonProps> = ({ isActive, onSwitch }) => {

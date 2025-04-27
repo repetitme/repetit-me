@@ -19,5 +19,4 @@ const TutorFormBlock: FC<TTutorFormBlock> = ({ children }) => {
     </section>
   );
 };
-
 export default TutorFormBlock;

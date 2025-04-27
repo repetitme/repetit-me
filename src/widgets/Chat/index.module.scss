@@ -1,7 +1,6 @@
 @use '../../assets/styles/mixins/gradient.scss' as *;
 
 .chat {
-  margin-block-end: var(--margin-blocks);
   color: var(--clr-black);
   font-family: var(--ffm-title);
   inline-size: 100%;

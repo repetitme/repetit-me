@@ -1,4 +1,5 @@
 import styles from './index.module.scss';
+
 import { IconListProps, IconProps } from './type';
 
 const Icon: React.FC<IconProps> = ({ src, className, alt = 'icon' }) => (

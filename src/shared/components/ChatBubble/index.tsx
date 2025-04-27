@@ -1,5 +1,7 @@
 import classNames from 'classnames';
+
 import styles from './index.module.scss';
+
 import { TChatBubbleProps } from './type';
 
 export const ChatBubble: React.FC<TChatBubbleProps> = ({
@@ -19,3 +21,4 @@ export const ChatBubble: React.FC<TChatBubbleProps> = ({
     </div>
   );
 };
+export default ChatBubble;

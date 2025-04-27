@@ -9,7 +9,6 @@
   position: relative;
 
   &__title {
-    margin: 0 15px 0 0;
     height: 39px;
     display: flex;
     justify-content: center;
@@ -28,7 +27,7 @@
   }
 
   &__subtitle {
-    margin: 39px 16px 0 0;
+    margin: 39px 0 0;
     font-family: var(--ffm-tag);
     font-size: 20px;
     font-weight: 400;
@@ -46,9 +45,9 @@
     inline-size: 192px;
     block-size: 192px;
     position: absolute;
-    right: 460px;
+    right: 453px;
     top: -108px;
-    z-index: -1;
+    z-index: 1;
   }
 
   &__form::before {
@@ -57,7 +56,7 @@
     inline-size: 408px;
     block-size: 348px;
     position: absolute;
-    right: 0;
+    left: 266px;
     top: 419px;
     z-index: -1;
   }

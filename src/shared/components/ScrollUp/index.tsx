@@ -1,4 +1,5 @@
 import React from 'react';
+
 import arrow from '../../../assets/images/arrow_up.svg';
 
 import styles from './index.module.scss';

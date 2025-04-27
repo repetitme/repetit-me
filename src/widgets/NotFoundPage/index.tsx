@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 
 import notFoundImage from '../../assets/Not-found.png';
+import Button from '../Button';
 
 import styles from './index.module.scss';
 import Button from '../../shared/components/Button';

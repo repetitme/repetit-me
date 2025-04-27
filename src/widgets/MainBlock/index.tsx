@@ -1,19 +1,18 @@
-import styles from './index.module.scss';
-import SwitchButton from '../../shared/components/SwitchButton';
-import { useState } from 'react';
-import IconList from '../../shared/components/IconsList';
-import { iconSources } from '../../shared/components/IconsList/data';
 import classNames from 'classnames';
 
-const MainBlock = () => {
-  const [isActive, setIsActive] = useState(false);
+import IconList from '../../shared/components/IconsList';
+import { iconSources } from '../../shared/components/IconsList/data';
+import SwitchButton from '../../shared/components/SwitchButton';
 
+import styles from './index.module.scss';
+
+import { MainBlockProps } from './type';
+
+const MainBlock: React.FC<MainBlockProps> = ({ isActive, setIsActive }) => {
   const handleSwitch = () => {
-    setIsActive((prevState) => !prevState);
+    setIsActive(!isActive);
   };
-
-  const icons = isActive ? iconSources.teacher : iconSources.student
-
+  const icons = isActive ? iconSources.teacher : iconSources.student;
   return (
     <section className={styles.main__block}>
       <div
@@ -42,5 +41,4 @@ const MainBlock = () => {
     </section>
   );
 };
-
 export default MainBlock;

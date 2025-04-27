@@ -1,10 +1,11 @@
 import React from 'react';
-import ScrollUp from '../../shared/components/ScrollUp';
-import Button from '../../shared/components/Button';
 
+import phone from '../../assets/images/phone_with_qr-code.svg';
 import logo from '../../assets/images/repetit-me_logo.svg';
 import telegram from '../../assets/images/telegram_icon.svg';
-import phone from '../../assets/images/phone_with_qr-code.svg';
+import Button from '../../shared/Button';
+import ScrollUp from '../../shared/components/ScrollUp';
+
 import styles from './index.module.scss';
 import { TfakeUser } from './type';
 
