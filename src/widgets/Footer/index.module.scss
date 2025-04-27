@@ -27,8 +27,9 @@
     font-family: var(--ffm-default);
     font-weight: 500;
     color: var(--clr-main, #fff);
-    background: url('../../assets/images/bg_footer.svg') no-repeat center / cover;
-  
+    background: url('../../assets/images/bg_footer.svg') no-repeat center /
+      cover;
+
     &--links {
       grid-column: 1 / -1;
       display: flex;
@@ -68,7 +69,6 @@
 .repetitme__logo {
   grid-column: 1/2;
   grid-row: 1/2;
- 
 }
 
 .links {
@@ -93,10 +93,9 @@
   flex-direction: column;
   gap: 13px;
   font-weight: 700;
-  padding-inline-end:  53px;
+  padding-inline-end: 53px;
   font-size: 20px;
   padding-block-start: var(--padding-blocks);
-
 }
 
 .underline {
