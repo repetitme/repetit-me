@@ -1,15 +1,14 @@
-import AuthForm from '../features/auth/form';
-
-import '../assets/index.scss';
-import ReviewList from '../shared/components/SortByDate';
+import '../assets/index.scss'
+import FeedbackList from '../widgets/FeedbackList'
+import AppRouter from './router/AppRouter'
 
 function App() {
-  return (<>
-    <ReviewList/>
-    <div className="App">
-      <AuthForm login={false} />
-    </div>
- </> );
+  return ( <>
+    <AppRouter />
+    <FeedbackList updateModalData={() => {}} />
+  </>
+  
+  )
 }
 
-export default App;
+export default App
