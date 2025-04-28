@@ -1,9 +1,9 @@
 .section {
-  inline-size: 100%;
   display: flex;
   flex-direction: column;
   gap: 18px;
   background-color: #f6f6f6;
+  inline-size: 100%;
 }
 
 .container {
@@ -13,26 +13,25 @@
 
 .sort {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  inline-size: 256px;
-  padding: 16px 20px;
-  border-radius: var(--border-radius-btn-social);
+  align-items: center;
   border: none;
+  border-radius: var(--border-radius-btn-social);
+  padding: 16px 20px;
+  color: #292f3b;
+  font-family: var(--ffm-default);
   font-weight: 500;
   font-size: 16px;
   line-height: 1.36;
-  font-family: var(--ffm-default);
-  cursor: pointer;
   background-color: var(--clr-main);
-  color: #292f3b;
+  inline-size: 256px;
   white-space: nowrap;
 }
 
 .button {
+  padding: 18px 24px;
   inline-size: min-content;
   white-space: nowrap;
-  padding: 18px 24px;
 }
 
 .list {
