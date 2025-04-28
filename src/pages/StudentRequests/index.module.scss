@@ -1,15 +1,14 @@
 .title {
   font-weight: 500;
   font-size: 32px;
-  margin-block-end: 65px;
+  margin-block-end: 32px;
   font-family: var(--ffm-title);
 }
 
 .container {
   display: grid;
-  grid-template-columns: 352px 1fr;
+  grid-template-columns: 376px 1fr;
   gap: 28px;
-  max-inline-size: 793px;
   inline-size: 100%;
 
   button {
@@ -20,18 +19,19 @@
 }
 
 .tabs {
-  margin-inline-start: 18px;
-  margin-block-end: 61px;
+  margin-block-end: 27px;
+  background-color: var(--clr-main);
+  border-radius: 20px;
+  block-size: 193px;
+  padding: 24px;
+
   &__list {
     font-family: var(--ffm-default);
     color: var(--clr-7);
     font-size: 20px;
     font-weight: 400;
     line-height: 1.4;
-    display: flex;
-    flex-direction: column;
     border-radius: 20px;
-    gap: 18px;
   }
 
   &__item {
@@ -39,11 +39,26 @@
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+    block-size: 48px;
     cursor: pointer;
   }
 
   &__item_active {
     color: var(--clr-primary-default);
     font-weight: 700;
+  }
+}
+
+.content {
+  max-inline-size: 793px;
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  &__item {
+    background-color: var(--clr-main);
+    border-radius: 20px;
+
   }
 }

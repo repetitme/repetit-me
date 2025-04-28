@@ -3,7 +3,9 @@ import React from 'react';
 import cn from 'classnames';
 
 import TelegramBlock from '../../shared/components/TelegramBlock';
+import { ITutorData } from '../../shared/types/userData';
 import UserCard from '../../widgets/UserCard';
+import { mockTutors } from './mockData';
 
 import styles from './index.module.scss';
 
@@ -16,6 +18,10 @@ enum navOptions {
 const StudentRequests: React.FC = () => {
   const [active, setActive] = React.useState(navOptions.myTutors);
   const onClick = (value: navOptions) => () => setActive(value);
+  const [count, setCount] = React.useState(Object.values(navOptions).map(() => 0));
+  React.useEffect(() => {
+    setCount(Object.values(navOptions).map(() => 0));
+  }, []);
   return (
     <>
       <h2 className={styles.title}>Мои заявки</h2>
@@ -23,52 +29,29 @@ const StudentRequests: React.FC = () => {
         <aside className={styles.sidebar}>
           <nav className={styles.tabs}>
             <ul className={styles.tabs__list}>
-              <li
-                className={cn(styles.tabs__item, {
-                  [styles.tabs__item_active]: active === navOptions.myTutors
-                })}
-              >
-                <button
-                  className={styles.tabs__btn}
-                  onClick={onClick(navOptions.myTutors)}
+              {Object.values(navOptions).map((value) => (
+                <li
+                  key={value}
+                  className={cn(styles.tabs__item, {
+                    [styles.tabs__item_active]: active === value
+                  })}
                 >
-                  Мои репетиторы
-                </button>
-                <span className={styles.tabs__count}>3</span>
-              </li>
-              <li
-                className={cn(styles.tabs__item, {
-                  [styles.tabs__item_active]: active === navOptions.myRequests
-                })}
-              >
-                <button
-                  className={styles.tabs__btn}
-                  onClick={onClick(navOptions.myRequests)}
-                >
-                  Заявки
-                </button>
-                <span className={styles.tabs__count}>3</span>
-              </li>
-              <li
-                className={cn(styles.tabs__item, {
-                  [styles.tabs__item_active]:
-                    active === navOptions.tutorRequests
-                })}
-              >
-                <button
-                  className={styles.tabs__btn}
-                  onClick={onClick(navOptions.tutorRequests)}
-                >
-                  Запросы
-                </button>
-                <span className={styles.tabs__count}>3</span>
-              </li>
+                  <button className={styles.tabs__btn} onClick={onClick(value)}>
+                    {value}
+                  </button>
+                  <span className={styles.tabs__count}>3</span>
+                </li>
+              ))}
             </ul>
           </nav>
           <TelegramBlock />
         </aside>
         <section className={styles.content}>
-          <UserCard role="student" />
+          {mockTutors.map((tutor: ITutorData) => (
+            <article key={tutor.id} className={styles.content__item}>
+              <UserCard role="student" tutorData={tutor} handleSubmit={true} />
+            </article>
+          ))}
         </section>
       </section>
     </>
