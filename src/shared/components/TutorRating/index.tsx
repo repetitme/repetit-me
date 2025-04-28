@@ -1,9 +1,11 @@
 import { useMemo } from 'react';
 
+import classNames from 'classnames';
+
 import star from '../../../assets/icons/star.svg';
 
-import classNames from 'classnames';
 import styles from './index.module.scss';
+
 import { TutorRatingProps } from './type';
 
 const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
@@ -33,6 +35,9 @@ const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
     if (rating <= 5) {
       return styles.rating_blue;
     }
+    if (rating > 5) {
+      return styles.rating_red;
+    }
   };
 
   const ratingColor = useMemo(() => getRatingColor(rating), [rating]);
@@ -47,14 +52,14 @@ const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
     return (
       <div className={classNames(styles.container, ratingColor, sizeClass[0])}>
         <div className={classNames(styles.container__content, sizeClass[1])}>
-          <span
+          <p
             className={classNames(
               styles.container__content_rating,
               sizeClass[2]
             )}
           >
             {rating.toFixed(1)}
-          </span>
+          </p>
 
           <img
             className={classNames(styles.container__content_star, sizeClass[3])}
@@ -69,10 +74,8 @@ const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
     return (
       <div className={classNames(styles.container, sizeClass[0])}>
         <div className={styles.container__info}>
-          <span className={styles.container__info_title}>Рейтинг: </span>
-          <span className={styles.container__info_rating}>
-            {rating.toFixed(1)}
-          </span>
+          <p className={styles.container__info_title}>Рейтинг: </p>
+          <p className={styles.container__info_rating}>{rating.toFixed(1)}</p>
           <img
             className={styles.container__info_star}
             src={star}

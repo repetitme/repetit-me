@@ -1,5 +1,5 @@
 export interface TutorRatingProps {
   variant: 'small' | 'medium' | 'large';
-  //variant: brief - рейтинг на карточке с краткой информацией, feedback - рейтинг на модальном окне с отзывами, card - рейтинг на карточке с полной информацией
+  //variant: small - рейтинг на карточке с краткой информацией, medium - рейтинг на модальном окне с отзывами, large - рейтинг на карточке с полной информацией
   rating: number;
 }
