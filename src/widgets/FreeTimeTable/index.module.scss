@@ -2,7 +2,7 @@
   inline-size: 895px;
   border-radius: 20px;
   padding: 34px 31px 32px 32px;
-  background-color: #b6ffff;
+  background-color: var(--clr-main);
 
   &__title {
     font-family: var(--ffm-default);
