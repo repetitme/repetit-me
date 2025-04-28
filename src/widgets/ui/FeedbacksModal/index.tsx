@@ -11,7 +11,7 @@ import { TFeedbackItemProps } from '../../../shared/components/FeedbackItem/type
 import { IFeedbacksModalProps } from './type';
 
 export const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose }) => {
-  const [feedbackCount, setFeedbackCount] = useState(15);
+  const [feedbackCount, setFeedbackCount] = useState(4);
   const [averageRating, setAverageRating] = useState(0);
 
   const modalRef = useClickOutside(onClose);
@@ -64,7 +64,9 @@ export const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose }) => {
             />
           </button>
         </div>
-        <FeedbackList updateModalData={updateModalData} />
+        <div className={styles.modal__content}>
+          <FeedbackList updateModalData={updateModalData} />
+        </div>
       </div>
     </>
   );
