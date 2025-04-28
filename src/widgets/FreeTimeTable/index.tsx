@@ -11,7 +11,7 @@ const FreeTimeTable: FC = () => {
     <div className={styles.container}>
       <h2 className={styles.container__title}>Свободное время</h2>
       <div className={styles.container__local}>
-        <img className={styles.container__local_clock} src={clock} />
+        <img className={styles.container__local_clock} src={clock} alt="иконка часов" />
         <p className={styles.container__local_time}>
           <Time />
         </p>
@@ -19,9 +19,9 @@ const FreeTimeTable: FC = () => {
       <table className={styles.container__table}>
         <thead className={styles.container__table_head}>
           <tr className={styles.container__table_head_title}>
-            {freeTime.map((day) => {
+            {freeTime.map((day, index) => {
               return (
-                <td className={styles.container__table_head_title_text}>
+                <td className={styles.container__table_head_title_text} key={index}>
                   {day.day}
                 </td>
               );
@@ -29,12 +29,12 @@ const FreeTimeTable: FC = () => {
           </tr>
         </thead>
         <tbody className={styles.container__table_column}>
-          {freeTime.map((times) => {
+          {freeTime.map((times, index) => {
             return (
-              <tr className={styles.container__table_column_day}>
-                {times.time.map((time) => {
+              <tr className={styles.container__table_column_day} key={index}>
+                {times.time.map((time, index) => {
                   return (
-                    <td className={styles.container__table_column_day_time}>
+                    <td className={styles.container__table_column_day_time} key={index}>
                       {time}
                     </td>
                   );

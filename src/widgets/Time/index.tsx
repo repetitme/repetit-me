@@ -10,9 +10,9 @@ const Time: FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const hourse = timeState.getHours();
+  const hours = timeState.getHours();
   const minute = timeState.getMinutes();
-  const time = `Указано местное время ${hourse <= 9 ? '0' : ''}${hourse}:${minute <= 9 ? '0' : ''}${minute}`;
+  const time = `Указано местное время ${hours <= 9 ? '0' : ''}${hours}:${minute <= 9 ? '0' : ''}${minute}`;
   return time;
 };
 export default Time;

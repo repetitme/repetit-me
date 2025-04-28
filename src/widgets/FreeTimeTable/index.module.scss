@@ -1,8 +1,7 @@
 .container {
-  width: 895px;
-  height: 339px;
+  inline-size: 895px;
   border-radius: 20px;
-  padding: 34px 31px 0 32px;
+  padding: 34px 31px 32px 32px;
   background-color: #b6ffff;
 
   &__title {
@@ -62,8 +61,8 @@
         &_time {
           border-radius: 12px;
           background-color: rgb(230 227 255 / 100%);
-          width: 72px;
-          height: 43px;
+          inline-size: 72px;
+          block-size: 43px;
           padding: 9px 9px 9px 8px;
         }
       }
