@@ -7,23 +7,20 @@ import FeedbackList from '../../FeedbackList';
 
 import styles from './index.module.scss';
 
-import { TFeedbackItemProps } from '../../../shared/components/FeedbackItem/type';
 import { IFeedbacksModalProps } from './type';
 
 export const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose }) => {
-  const [feedbackCount, setFeedbackCount] = useState(4);
+  const [feedbackCount, setFeedbackCount] = useState(0);
   const [averageRating, setAverageRating] = useState(0);
 
   const modalRef = useClickOutside(onClose);
 
-  const updateModalData = useCallback((feedbacks: TFeedbackItemProps[]) => {
-    const count = feedbacks.length;
+  const updateModalData = useCallback((raitings: number[]) => {   
     const average =
-      count > 0
-        ? feedbacks.reduce((sum, feedback) => sum + feedback.rating, 0) / count
+    raitings.length > 0
+        ? raitings.reduce((sum, rating) => sum + rating, 0) / raitings.length
         : 0;
-
-    setFeedbackCount(count);
+    setFeedbackCount(raitings.length);
     setAverageRating(average);
   }, []);
 
