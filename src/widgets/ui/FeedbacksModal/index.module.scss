@@ -1,16 +1,18 @@
 .modal {
   position: fixed; 
   // inset: 176px 0 auto auto;
-  z-index: 999;
+  z-index: 999; 
+  overflow: scroll;
   inline-size: 100%;
-  max-block-size: 1000px;
-  max-inline-size: 1036px; 
+  max-block-size: 932px;
+  max-inline-size: 1036px;
+  border-bottom-left-radius: 20px;
   
   &__header {
     display: flex;    
     align-items: center;    
     border-top-left-radius: 20px;
-    padding: 34px 28px 24px 36px;
+    padding: 35px 28px 22px 36px;
     background-color: white;
   }
 
@@ -25,7 +27,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-inline-start: 113px;
+    margin-inline-start: 112px;
   }
 
   &__ratingAverage {
@@ -62,8 +64,9 @@
   }
 
   &__content {
-    border-bottom-left-radius: 20px;
+    
     padding: 12px 44px 16px 36px;
     background-color: #F6F6F6;
+    
   }
 }
