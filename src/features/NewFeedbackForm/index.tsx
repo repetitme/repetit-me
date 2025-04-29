@@ -8,21 +8,20 @@ import StarRating from '../../shared/components/StarRating';
 import { TNewFeedback } from './type';
 
 const NewFeedbackForm: React.FC<TNewFeedback> = ({ onSubmit }) => {
-  const [rating, setRating] = useState(0); // Состояние для хранения выбранного рейтинга
-  const [content, setContent] = useState(''); // Состояние для хранения текста отзыва
+  const [rating, setRating] = useState(0);
+  const [content, setContent] = useState('');
 
   const onRatingChange = (newRating: number) => {
     setRating(newRating);
   };
 
   const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setContent(e.target.value); // Обновляем текст отзыва
+    setContent(e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Здесь вы можете обработать отправку отзыва, например, отправить его на сервер
-    onSubmit ({ rating, content });
+    onSubmit({ rating, content });
   };
 
   return (
@@ -40,10 +39,10 @@ const NewFeedbackForm: React.FC<TNewFeedback> = ({ onSubmit }) => {
         </div>
 
         <label>
-        <h4>Ваш отзыв</h4>
+          <h4>Ваш отзыв</h4>
           <textarea
             value={content}
-            onChange={handleContentChange} 
+            onChange={handleContentChange}
             placeholder="Общее впечатление; что понравилось в уроках; какие результаты"
           />
         </label>

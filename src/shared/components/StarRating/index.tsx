@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-type TStarRatingProps = {
-  rating: number;
-  size: number; 
-  onRatingChange?: (rating: number) => void; 
-};
+import { TStarRatingProps } from './type';
 
-const StarRating: React.FC<TStarRatingProps> = ({ rating, size, onRatingChange }) => {
+const StarRating: React.FC<TStarRatingProps> = ({
+  rating,
+  size,
+  onRatingChange
+}) => {
   const [selectedRating, setSelectedRating] = useState(rating);
 
   const handleStarClick = (index: number) => {
@@ -24,7 +24,7 @@ const StarRating: React.FC<TStarRatingProps> = ({ rating, size, onRatingChange }
       <svg
         key={index}
         viewBox="0 0 16 15"
-        width={size} 
+        width={size}
         height={size}
         fill={isFilled ? '#F6DA43' : '#DDD'}
         onClick={() => handleStarClick(index)}
