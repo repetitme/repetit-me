@@ -7,4 +7,3 @@ export type TFeedbackItemProps = {
   date: Date;
 };
 
-export type TNewFeedback = Omit<TFeedbackItemProps, 'image'>

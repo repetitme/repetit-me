@@ -20,7 +20,7 @@ export const FeedbackItem: React.FC<TFeedbackItemProps> = ({
           <p className={styles.date}>{date.toLocaleDateString()}</p>
         </div>
 
-        <StarRating rating={rating} />
+        <StarRating rating={rating} size={18}/>
       </div>
 
       <p className={styles.content}>{content}</p>
