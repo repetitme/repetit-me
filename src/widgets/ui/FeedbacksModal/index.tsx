@@ -10,7 +10,7 @@ import styles from './index.module.scss';
 
 import { IFeedbacksModalProps } from './type';
 
-export const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose }) => {
+const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose }) => {
   const [feedbackCount, setFeedbackCount] = useState(0);
   const [averageRating, setAverageRating] = useState(0);
 
@@ -69,3 +69,5 @@ export const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose }) => {
     </>
   );
 };
+
+export default FeedbacksModal;

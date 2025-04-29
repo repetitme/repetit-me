@@ -1,9 +1,8 @@
 .modal {
   position: fixed;
   inset: 176px 0 auto auto;
-  z-index: 999;   
+  z-index: 999;
   inline-size: 100%;
-  max-block-size: 932px;
   max-inline-size: 1036px;
 
   &__header {
@@ -56,8 +55,9 @@
 
   &__content {
     border-bottom-left-radius: 20px;
-    padding: 12px 44px 16px 36px;
+    padding: 12px 26px 16px 36px;
     overflow-y: scroll;
-    background-color: #f6f6f6; 
+    background-color: #f6f6f6;
+    max-block-size: 828px;
   }
 }

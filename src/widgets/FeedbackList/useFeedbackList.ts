@@ -15,7 +15,7 @@ const useFeedbackList = ({
   const [isAscending, setIsAscending] = useState<boolean>(true);
 
   useEffect(() => {
-    const raitings = feedbacks.map(item => item.rating)
+    const raitings = feedbacks.map((item) => item.rating);
     onDataChange(raitings);
   }, [feedbacks, onDataChange]);
 
