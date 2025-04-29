@@ -2,6 +2,7 @@ import { FC, useCallback, useState } from 'react';
 
 import CloseIcon from '../../../assets/icons/closeIcon.svg';
 import { ModalOverlay } from '../../../shared/components/Overlay';
+import TutorRating from '../../../shared/components/TutorRating';
 import useClickOutside from '../../../shared/hooks/useClickOutside';
 import FeedbackList from '../../FeedbackList';
 
@@ -48,7 +49,7 @@ export const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose }) => {
         <div className={styles.modal__header}>
           <h2 className={styles.modal__title}>Отзывы</h2>
           <div className={styles.modal__rating}>
-            <div className={styles.modal__ratingAverage}>{averageRating}</div>
+            <TutorRating rating={averageRating} variant="medium" />
             <p className={styles.modal__ratingQuantity}>
               {feedbackCount} {getReviewText(feedbackCount)}
             </p>
