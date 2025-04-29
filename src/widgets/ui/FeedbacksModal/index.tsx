@@ -15,9 +15,9 @@ export const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose }) => {
 
   const modalRef = useClickOutside(onClose);
 
-  const updateModalData = useCallback((raitings: number[]) => {   
+  const updateModalData = useCallback((raitings: number[]) => {
     const average =
-    raitings.length > 0
+      raitings.length > 0
         ? raitings.reduce((sum, rating) => sum + rating, 0) / raitings.length
         : 0;
     setFeedbackCount(raitings.length);
