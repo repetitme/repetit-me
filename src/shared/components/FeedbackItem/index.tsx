@@ -1,7 +1,7 @@
-import StarRating from '../StarRating'
-import { TFeedbackItemProps } from './type.ts'
+import StarRating from '../StarRating';
+import { TFeedbackItemProps } from './type.ts';
 
-import styles from './index.module.scss'
+import styles from './index.module.scss';
 
 export const FeedbackItem: React.FC<TFeedbackItemProps> = ({
   name,
@@ -25,7 +25,7 @@ export const FeedbackItem: React.FC<TFeedbackItemProps> = ({
 
       <p className={styles.content}>{content}</p>
     </article>
-  )
-}
+  );
+};
 
-export default FeedbackItem
+export default FeedbackItem;
