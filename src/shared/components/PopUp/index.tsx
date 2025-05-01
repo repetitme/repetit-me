@@ -1,21 +1,18 @@
 import React, { useCallback, useEffect } from 'react';
 import closeIcon from '../../../assets/icons/close.png';
 import { ModalOverlay } from '../Overlay';
-import styles from './index.module.scss';
-import { PopupProps } from './type';
 
+import styles from './index.module.scss';
+
+import { PopupProps } from './type';
 
 const Popup: React.FC<PopupProps> = ({
   isOpen,
   onClose,
-  title,
-  text,
-  confirmButtonText = 'Да',
-  cancelButtonText = 'Нет',
-  onConfirm,
-  variant = 'default',
+  variant,
   showCancelButton = true,
   showCloseButton = true,
+  onConfirm
 }) => {
   const handleEscape = useCallback(
     (e: KeyboardEvent) => {
@@ -33,6 +30,26 @@ const Popup: React.FC<PopupProps> = ({
 
   if (!isOpen) return null;
 
+  const popupContent = {
+    request: {
+      title: 'По вашему запросу репетиторы не найдены',
+      text: 'Вы можете оставить заявку, и мы поищем репетитора под ваш запрос в нашей дополнительной базе. Отправить заявку?',
+      confirmButtonText: 'Да',
+      cancelButtonText: 'Нет',
+      variant: 'white'
+    },
+    notFound: {
+      title: 'Вы откликнулись!',
+      text: 'Отклик отправлен успешно! Когда преподаватель примет заявку, мы обменяемся с Вами контактами в Telegram, уведомление придёт автоматически через бота. Отменить или посмотреть статус заявки можно в разделе «Мои заявки».',
+      confirmButtonText: 'Мои заявки',
+      cancelButtonText: null,
+      variant: 'purple'
+    }
+  };
+
+  const { title, text, confirmButtonText, cancelButtonText } =
+    popupContent[variant];
+
   return (
     <>
       <div className={styles.popup}>
@@ -49,14 +66,14 @@ const Popup: React.FC<PopupProps> = ({
             </div>
           )}
           <div className={styles.popup__buttons}>
-            {showCancelButton && (
+            {showCancelButton && cancelButtonText && (
               <button className={styles.popup__button} onClick={onClose}>
                 {cancelButtonText}
               </button>
             )}
-            {onConfirm && (
+            {confirmButtonText && (
               <button
-                className={`${styles.popup__button} ${styles[`popup_variant_${variant}`]}`}
+                className={`${styles.popup__button} ${styles[`popup_variant_${popupContent[variant].variant}`]}`}
                 onClick={onConfirm}
               >
                 {confirmButtonText}

@@ -1,12 +1,8 @@
 export interface PopupProps {
   isOpen: boolean;
   onClose: () => void;
-  title?: string;
-  text?: string;
-  confirmButtonText?: string;
-  cancelButtonText?: string; 
-  onConfirm?: () => void; 
-  variant?: 'default' | 'white' | 'purple';
+  variant: 'request' | 'notFound';
   showCancelButton?: boolean;
   showCloseButton?: boolean;
+  onConfirm?: () => void;
 }
