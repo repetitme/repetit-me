@@ -15,47 +15,27 @@
     &:first-of-type {
         margin-bottom: var(--gap-blocks);
     }
-    
+
     &__header {
         line-height: 1;
         inline-size: max-content;
-        font-size: 20px;
+        font-size: 20px; 
     }
-    
+
     &__content {
         max-block-size: max-content;
-        
-        &_text {
-            font-weight: 500;
-            line-height: 1.38;
 
-            &_hidden {
-                display: -webkit-box;
-                -webkit-line-clamp: 6;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-                max-block-size: 8.5em;
-            }
+        &_text_hidden {
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            max-block-size: 8.5em;
         }
 
-        &_list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            font-weight: 500;
-            line-height: 1.7;
-
-            &_item {
-                display: flex;
-                justify-content: space-between;
-                padding: 5px 0px;
-                border-bottom: 1px solid var(--clr-3);
-            }
-
-            &_hidden {
-                overflow: hidden;
-                max-block-size: 5em;
-            }
+        &_list_hidden {
+            overflow: hidden;
+            max-block-size: 5em;
         }
     }
 

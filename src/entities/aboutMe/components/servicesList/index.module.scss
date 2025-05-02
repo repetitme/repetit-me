@@ -1,0 +1,14 @@
+.container__content_list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-weight: 500;
+    line-height: 1.7;
+
+    &_item {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0px;
+        border-bottom: 1px solid var(--clr-3);
+    }
+}

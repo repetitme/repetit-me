@@ -1,69 +1,9 @@
 import { useState } from "react";
-import styles from './index.module.scss';
-import { ServicesListItem } from "./type";
+import { IAboutMe } from "./type";
 
-// Общий компонент контейнера
-interface ICardContainer {
-  title: string;
-  isHidden: boolean;
-  toggleVisibility: () => void;
-  children: React.ReactNode;
-  hiddenClassName: string;
-  buttonText: string;
-}
-
-const CardContainer: React.FC<ICardContainer> = ({ 
-  title, 
-  isHidden, 
-  toggleVisibility, 
-  children, 
-  hiddenClassName,
-  buttonText
-}) => {
-  return (
-    <div className={styles.container}>
-      <h3 className={styles.container__header}>{title}</h3>
-      <div className={`${styles.container__content} ${isHidden ? hiddenClassName : ''}`}>
-        {children}
-      </div>
-      <button className={styles.container__button} onClick={toggleVisibility}>
-        {isHidden ? `${buttonText}` : 'Скрыть'}
-      </button>
-    </div>
-  );
-};
-
-// Компонент для текстового контента
-interface ITextContent {
-  content: string;
-}
-
-const TextContent: React.FC<ITextContent> = ({ content }) => {
-  return <p className={styles.container__content_text}>{content}</p>;
-};
-
-// Компонент для списка услуг
-interface IServicesList {
-  services: ServicesListItem[];
-}
-
-const ServicesList: React.FC<IServicesList> = ({ services }) => {
-  return (
-    <ul className={styles.container__content_list}>
-      {services.map((item, index) => (
-        <li key={index} className={styles.container__content_list_item}>
-          <span>{item.service}</span> <span>{item.price} руб./час</span>
-        </li>
-      ))}
-    </ul>
-  );
-};
-
-// Основной компонент
-interface IAboutMe {
-  textContent: string;
-  servicesList: ServicesListItem[];
-}
+import { CardContainer } from "./components/cardContainer/index.tsx"
+import { TextContent } from "./components/textContent/index.tsx"
+import { ServicesList } from "./components/servicesList/index.tsx"
 
 export const AboutMe: React.FC<IAboutMe> = ({ textContent, servicesList }) => {
   const [aboutMeHidden, setAboutMeHidden] = useState(true);
@@ -78,7 +18,7 @@ export const AboutMe: React.FC<IAboutMe> = ({ textContent, servicesList }) => {
         title="Обо мне" 
         isHidden={aboutMeHidden} 
         toggleVisibility={toggleAboutMeVisibility}
-        hiddenClassName={styles.container__content_text_hidden}
+        hiddenClassName={'container__content_text_hidden'}
         buttonText="Читать дальше"
       >
         <TextContent content={textContent} />
@@ -88,7 +28,7 @@ export const AboutMe: React.FC<IAboutMe> = ({ textContent, servicesList }) => {
         title="Услуги и цены" 
         isHidden={listHidden} 
         toggleVisibility={toggleListVisibility}
-        hiddenClassName={styles.container__content_list_hidden}
+        hiddenClassName={'container__content_list_hidden'}
         buttonText="Развернуть"
       >
         <ServicesList services={servicesList} />
