@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 
-import IconList from '../../shared/components/IconsList';
-import { iconSources } from '../../shared/components/IconsList/data';
-import SwitchButton from '../../shared/components/SwitchButton';
+import IconList from '../../shared/ui/iconsList';
+import { iconSources } from '../../shared/ui/iconsList/data';
+import SwitchButton from '../../shared/ui/switchButton';
 
 import styles from './index.module.scss';
 

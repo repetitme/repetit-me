@@ -3,8 +3,8 @@ import React from 'react';
 import phone from '../../assets/images/phone_with_qr-code.svg';
 import logo from '../../assets/images/repetit-me_logo.svg';
 import telegram from '../../assets/images/telegram_icon.svg';
-import Button from '../../shared/Button';
-import ScrollUp from '../../shared/components/ScrollUp';
+import Button from '../../shared/ui/button';
+import ScrollUp from '../../shared/ui/scrollUp';
 
 import styles from './index.module.scss';
 

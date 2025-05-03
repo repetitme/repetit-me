@@ -1,4 +1,4 @@
-import ListItem from '../../shared/components/ListItem';
+import ListItem from '../../shared/ui/listItem';
 import { listItems } from './data';
 
 import styles from './index.module.scss';

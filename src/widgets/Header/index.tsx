@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import logo from '../../assets/images/logo.svg';
 import icon from '../../assets/images/telegram_icon.svg';
-import Button from '../../shared/Button';
+import Button from '../../shared/ui/button';
 import StudentHeader from './StudentHeader';
 import TeacherHeader from './TeacherHeader';
 
@@ -36,7 +36,13 @@ const Header: React.FC<HeaderProps> = ({ auth }) => {
           <button className={styles.header__button} onClick={handleLogin}>
             Войти
           </button>
-          <Button variant="social" text="Перейти в Telegram" icon={icon} />
+          <Button
+            variant="social"
+            size="large"
+            text="Перейти в Telegram"
+            icon={icon}
+            className={styles.telegram}
+          />
         </nav>
       )}
       {authHeader === 'student' && <StudentHeader onLogout={handleLogout} />}

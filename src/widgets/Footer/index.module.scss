@@ -103,7 +103,7 @@
   font-weight: 500;
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (width <= 1150px) {
   .footer {
     &__top {
       padding-inline: calc(var(--padding-inline) / 2);
@@ -115,10 +115,10 @@
   }
 
   .links {
-    padding-inline-start: 0px;
+    padding-inline-start: 0;
   }
 
   .contact {
-    padding-inline-end: 0px;
+    padding-inline-end: 0;
   }
 }

@@ -18,6 +18,13 @@
     color: var(--clr-main);
     padding: 8px 15px;
     cursor: pointer;
+    transition:
+      color 0.5s ease,
+      transform 0.5s ease;
+
+    &:active {
+      transform: scale(0.8);
+    }
 
     &--active {
       color: var(--clr-black);

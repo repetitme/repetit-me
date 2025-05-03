@@ -2,7 +2,7 @@ import classNames from 'classnames';
 
 import TG from '../../../assets/Group.svg';
 import phone from '../../../assets/images/QR+button.svg';
-import Button from '../../Button';
+import Button from '../button';
 
 import styles from './index.module.scss';
 

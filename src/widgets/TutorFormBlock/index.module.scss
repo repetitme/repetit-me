@@ -1,6 +1,5 @@
 .container {
   margin: 0 0 167px;
-  position: relative;
   max-width: 1440px;
   min-height: 719px;
   display: flex;
@@ -35,9 +34,6 @@
     text-align: center;
   }
 
-  &__form {
-  }
-
   &__form::after {
     content: '';
     background-image: url('../../assets/images/sahedron.png');
@@ -45,7 +41,7 @@
     block-size: 192px;
     position: absolute;
     left: 76px;
-    top: 27px;
+    top: 20px;
     z-index: 1;
   }
 
@@ -55,8 +51,8 @@
     inline-size: 408px;
     block-size: 348px;
     position: absolute;
-    right: 34px;
-    bottom: -180px;
-    z-index: -1;
+    right: 40px;
+    bottom: -152px;
+    z-index: 1;
   }
 }

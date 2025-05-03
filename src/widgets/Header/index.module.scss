@@ -4,19 +4,18 @@
   align-items: center;
   justify-content: space-between;
   max-inline-size: 1200px;
-  padding-block: 23px;
-  margin: 42px auto;
+  padding-block: 19px;
+  margin: 0 auto;
   border-radius: var(--border-radius-blocks);
 
   &__logo {
-    margin: 0 37px;
+    margin: 0 35px;
   }
 
   &__menu {
     display: flex;
-    gap: 44px;
-    max-block-size: 48px;
-    margin: auto 43px;
+    gap: 43px;
+    margin: auto 35px;
 
     &--student {
       gap: 49px;
@@ -55,4 +54,9 @@
       background-image: url('src/assets/images/arrow.svg');
     }
   }
+}
+
+.telegram {
+  padding-block: 19px;
+  padding-inline: 17px !important;
 }

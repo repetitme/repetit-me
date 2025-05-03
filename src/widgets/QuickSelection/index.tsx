@@ -3,7 +3,7 @@ import { FC, useState } from 'react';
 import classNames from 'classnames';
 
 import icon_arrowDown from '../../assets/images/icon-arrowdown.svg';
-import Button from '../../shared/Button';
+import Button from '../../shared/ui/button';
 import Carousel from '../Carousel';
 import Dropdown from '../Dropdown';
 import { disciplines, dropdown, tutorsCard } from './data';

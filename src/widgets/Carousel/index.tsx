@@ -43,7 +43,7 @@ const Carousel: FC<ITutorCardProps> = ({ tutorsCard }) => {
       <ul className={styles.container__cards}>
         {tutorsCard
           .map((tutor, index) => (
-            <li className={styles.container__cards_card}>
+            <li className={styles.container__cards_card} key={index}>
               <img
                 className={styles.container__cards_card_img}
                 src={tutor}
