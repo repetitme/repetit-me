@@ -1,4 +1,4 @@
-import StarRating from '../StarRating'
+import StarRating from '../starRating/index.tsx'
 import { TFeedbackItemProps } from './type.ts'
 
 import styles from './index.module.scss'

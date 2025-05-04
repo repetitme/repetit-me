@@ -2,7 +2,7 @@
 import sortIcon from '../../assets/icons/iconSorting.svg';
 import pencilIcon from '../../assets/icons/pencilIcon.svg';
 import Button from '../../shared/ui/button';
-import FeedbackItem from '../../shared/components/FeedbackItem';
+import FeedbackItem from '../../shared/ui/feedbackItem';
 import { feedbackData } from './feedbackData';
 import useFeedbackList from './useFeedbackList';
 

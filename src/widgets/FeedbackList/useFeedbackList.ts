@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import { TFeedbackItemProps } from '../../shared/components/FeedbackItem/type';
+import { TFeedbackItemProps } from '../../shared/ui/feedbackItem/type';
 
 interface UseFeedbackListProps {
   initialData: TFeedbackItemProps[];
