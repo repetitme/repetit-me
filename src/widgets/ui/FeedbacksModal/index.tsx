@@ -1,9 +1,9 @@
 import { FC, useCallback, useState } from 'react';
 
 import CloseIcon from '../../../assets/icons/closeIcon.svg';
-import { ModalOverlay } from '../../../shared/components/Overlay';
-import TutorRating from '../../../shared/components/TutorRating';
 import useClickOutside from '../../../shared/hooks/useClickOutside';
+import { ModalOverlay } from '../../../shared/ui/overlay';
+import TutorRating from '../../../shared/ui/tutorRating';
 import FeedbackList from '../../FeedbackList';
 
 import styles from './index.module.scss';
