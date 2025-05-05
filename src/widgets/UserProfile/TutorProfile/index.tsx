@@ -1,10 +1,10 @@
-import { ITutorData } from '../../../shared/types/userData';
-import ratingIcon from '../../../assets/images/UserCardIcons/star_rating.svg';
+import classNames from 'classnames';
+
 import UserInfo from '../../../shared/components/UserInfo';
+import { ITutorData } from '../../../shared/types/userData';
+import TutorRating from '../../../shared/ui/tutorRating';
 
 import styles from '../index.module.scss';
-import useWindowSize from '../../../shared/hooks/useWindowSize';
-import classNames from 'classnames';
 
 const TutorProfile: React.FC<ITutorData> = ({
   name = '',
@@ -20,9 +20,6 @@ const TutorProfile: React.FC<ITutorData> = ({
   price,
   isCard
 }) => {
-  const { width } = useWindowSize();
-  const isTablet = width < 620 && width > 375 ? true : false;
-
   return (
     <>
       <div className={styles.profile__avatar}>
@@ -44,12 +41,7 @@ const TutorProfile: React.FC<ITutorData> = ({
         )}
       </div>
       <div className={styles.profile__rating}>
-        {rating.toFixed(1)}
-        <img // Компонент рейтинга оставлен как заглушка, потом заменить полноценным общим компонентом
-          className={styles['profile__rating--image']}
-          src={ratingIcon}
-          alt="Звезда рейтинга"
-        />
+        <TutorRating variant="small" rating={rating} />
       </div>
       <UserInfo data={{ name, subjects, studentAudience, purpose }}>
         <div className={styles.profile__parameters}>

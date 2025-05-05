@@ -1,4 +1,4 @@
-import { TInfoBlockProps } from '../../shared/components/InfoBlock/type';
+import { TInfoBlockProps } from '../../shared/ui/infoBlock/type';
 
 export const perks: TInfoBlockProps[] = [
   {

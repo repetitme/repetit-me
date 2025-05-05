@@ -1,13 +1,16 @@
 import React from 'react';
-import ScrollUp from '../../shared/components/ScrollUp';
-import Button from '../../shared/components/Button';
 
+import phone from '../../assets/images/phone_with_qr-code.svg';
 import logo from '../../assets/images/repetit-me_logo.svg';
 import telegram from '../../assets/images/telegram_icon.svg';
-import phone from '../../assets/images/phone_with_qr-code.svg';
+import Button from '../../shared/ui/button';
+import ScrollUp from '../../shared/ui/scrollUp';
+
 import styles from './index.module.scss';
 
-const Footer: React.FC = () => {
+import { TfakeUser } from './type';
+
+const Footer: React.FC<TfakeUser> = ({ role }) => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__top}>
@@ -31,11 +34,17 @@ const Footer: React.FC = () => {
           alt="Логотип repetitMe"
           className={styles.repetitme__logo}
         />
-        <div className={styles.info}>
-          <div className={styles.links}>
-            <a href="#student">Ученику</a>
-            <a href="#tutor">Репетитору</a>
-          </div>
+        <div className={styles['footer__bottom--content']}>
+          {role !== 'unauthorized' && (
+            <div className={styles.links}>
+              <a className={styles.links_item} href="#student">
+                Ученику
+              </a>
+              <a className={styles.links_item} href="#tutor">
+                Репетитору
+              </a>
+            </div>
+          )}
           <div className={styles.contact}>
             Связаться с нами: <br />
             <a className={styles.underline}>Менеджер в Telegram</a>

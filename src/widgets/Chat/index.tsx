@@ -12,3 +12,5 @@ export const Chat: React.FC = () => {
     </section>
   );
 };
+
+export default Chat;

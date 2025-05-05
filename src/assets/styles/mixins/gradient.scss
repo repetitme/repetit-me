@@ -1,5 +1,5 @@
-@mixin text-gradient($color1: #865bff, $color2: #ff71f9) {
-  background: linear-gradient(0deg, $color1 55%, $color2 100%);
+@mixin text-gradient($color2: #4558ff, $color3: #865bff) {
+  background: linear-gradient(82deg, $color2 0.77%, $color3 126.98%);
   background-clip: text;
   color: transparent;
 }

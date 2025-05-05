@@ -1,9 +1,10 @@
-import UserCard from '../widgets/UserCard';
+import useStudentsData from '../shared/hooks/useStudentsData';
 import useTutorsData from '../shared/hooks/useTutorsData';
+import UserCard from '../widgets/UserCard';
+
 // import AppRouter from './router/AppRouter';
 
 import '../assets/index.scss';
-import useStudentsData from '../shared/hooks/useStudentsData';
 
 function App() {
   /* Для вызова компонента, необходимо вызвать хук для отображения 

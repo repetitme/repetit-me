@@ -3,6 +3,4 @@
 
 // глобальные стили проекта
 @use './styles/globals' as *;
-
-// шрифты
-@use '/src/assets/fonts/fonts.scss' as stylesheet;
+@use '/src/assets/fonts/fonts.scss' as *;

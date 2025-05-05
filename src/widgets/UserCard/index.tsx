@@ -1,5 +1,5 @@
 import { IUserData } from '../../shared/types/userData';
-import Button from '../../shared/components/Button';
+import Button from '../../shared/ui/button';
 import StudentProfile from '../UserProfile/StudentProfile';
 import TutorProfile from '../UserProfile/TutorProfile';
 
