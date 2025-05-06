@@ -1,5 +1,5 @@
-import { mockTutors, mockStudents } from '../../assets/mockData/mockData';
-import { IStudentData, ITutorData } from '../../shared/types/userData';
+import { IStudentData, ITutorData } from '../../../shared/types/userData';
+import { mockStudents, mockTutors } from './mockData';
 
 export const getTutors = (): Promise<ITutorData[]> => {
   return new Promise((resolve, reject) => {

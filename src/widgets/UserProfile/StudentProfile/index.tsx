@@ -1,6 +1,6 @@
-import TimeAgo from '../../../shared/components/TimeAgo';
 import UserInfo from '../../../shared/components/UserInfo';
 import { IStudentData } from '../../../shared/types/userData';
+import { getTimeAgoText } from '../../../shared/utils/TimeAgo';
 
 import styles from '../index.module.scss';
 
@@ -38,10 +38,9 @@ const StudentProfile: React.FC<IStudentDataProps> = ({
               {`Пройдено занятий: ${lessonsCompleted}`}
             </p>
           ) : (
-            <TimeAgo
-              hours={activityStatus}
-              className={styles.profile__parameters_activity}
-            />
+            <p className={styles.profile__parameters_activity}>
+              {getTimeAgoText(activityStatus)}
+            </p>
           )}
 
           {importantInfo && (

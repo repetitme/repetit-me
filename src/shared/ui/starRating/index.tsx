@@ -1,5 +1,4 @@
-
-import { TStarRating } from './type.ts'
+import { TStarRating } from './type.ts';
 
 const StarRating: React.FC<TStarRating> = ({ rating }) => {
   const stars = [...Array(5)].map((_, index) => {

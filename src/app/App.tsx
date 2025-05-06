@@ -1,6 +1,6 @@
-import useStudentsData from '../shared/hooks/useStudentsData';
-import useTutorsData from '../shared/hooks/useTutorsData';
+import { IStudentData, ITutorData } from '../shared/types/userData';
 import UserCard from '../widgets/UserCard';
+import useUsersData from '../widgets/UserCard/fakeApi/useUserData';
 
 // import AppRouter from './router/AppRouter';
 
@@ -11,16 +11,18 @@ function App() {
   моковых данных через промисы апи. В дальнейшем, для работы с карточками, нужно вызвать 
   в компонентах, где нужны карточки пользователей, и передавать им через пропсы данные и 
   роль пользователя. Из app убрать текущий тестовый стенд */
+
   const {
-    tutors,
+    data: tutors,
     loading: loadingTutors,
     error: errorTutors
-  } = useTutorsData();
+  } = useUsersData<ITutorData>('tutors');
+
   const {
-    students,
+    data: students,
     loading: loadingStudents,
     error: errorStudents
-  } = useStudentsData();
+  } = useUsersData<IStudentData>('students');
 
   if (loadingTutors || loadingStudents) {
     return <div>Loading...</div>;
@@ -46,15 +48,15 @@ function App() {
           alignItems: 'center'
         }}
       >
-        {tutors.tutors.slice(0, 1).map((tutor) => (
+        {tutors.slice(0, 1).map((tutor) => (
           <UserCard key={tutor.id} role="unAuthorized" tutorData={tutor} />
         ))}
 
-        {tutors.tutors.slice(1, 2).map((tutor) => (
+        {tutors.slice(1, 2).map((tutor) => (
           <UserCard key={tutor.id} role="student" tutorData={tutor} />
         ))}
 
-        {tutors.tutors.slice(2, 3).map((tutor) => (
+        {tutors.slice(2, 3).map((tutor) => (
           <UserCard
             key={tutor.id}
             role="student"
@@ -63,15 +65,15 @@ function App() {
           />
         ))}
 
-        {tutors.tutors.slice(3, 4).map((tutor) => (
+        {tutors.slice(3, 4).map((tutor) => (
           <UserCard key={tutor.id} role="card" tutorData={tutor} />
         ))}
 
-        {students.students.slice(0, 1).map((student) => (
+        {students.slice(0, 1).map((student) => (
           <UserCard key={student.id} role="tutor" studentData={student} />
         ))}
 
-        {students.students.slice(1, 2).map((student) => (
+        {students.slice(1, 2).map((student) => (
           <UserCard
             key={student.id}
             role="tutor"
