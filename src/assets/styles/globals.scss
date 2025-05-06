@@ -1,4 +1,6 @@
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -7,21 +9,16 @@
 html,
 body {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
+body {
+  font-family: var(--ffm-default);
+  color: var(--clr-black);
 }
 
 ul {
-  margin: 0;
-  padding: 0;
   list-style: none;
 }
 
@@ -31,6 +28,4 @@ a {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  text-decoration: none;
-  cursor: pointer;
 }
