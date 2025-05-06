@@ -1,6 +1,8 @@
+import { useState } from 'react';
 
 import sortIcon from '../../assets/icons/iconSorting.svg';
 import pencilIcon from '../../assets/icons/pencilIcon.svg';
+import NewFeedbackForm from '../../features/NewFeedbackForm';
 import Button from '../../shared/ui/button';
 import FeedbackItem from '../../shared/ui/feedbackItem';
 import { feedbackData } from './feedbackData';
@@ -8,14 +10,41 @@ import useFeedbackList from './useFeedbackList';
 
 import styles from './index.module.scss';
 
+import { TNewFeedback } from '../../features/NewFeedbackForm/type';
 import { IFeedbackListProps } from './type';
 
 const FeedbackList: React.FC<IFeedbackListProps> = ({ updateModalData }) => {
-  const { sortedFeedbacks, isAscending, toggleSort } =
-    useFeedbackList({
-      initialData: feedbackData,
-      onDataChange: updateModalData
-    });
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const { sortedFeedbacks, isAscending, toggleSort } = useFeedbackList({
+    initialData: feedbackData,
+    onDataChange: updateModalData
+  });
+
+  const handleOpenForm = () => {
+    setIsFormVisible(true);
+  };
+
+  const handleCloseForm = () => {
+    setIsFormVisible(false);
+  };
+
+  const handleSubmitFeedback = (newFeedback: TNewFeedback) => {
+    console.log('Форма отправлена:', newFeedback);
+  };
+
+  if (isFormVisible) {
+    return (
+      <section className={styles.section}>
+        <Button
+          text="Вернуться к отзывам"
+          variant="white"
+          onClick={handleCloseForm}
+          className={styles.backButton}
+        />
+        <NewFeedbackForm onSubmit={handleSubmitFeedback} />
+      </section>
+    );
+  }
 
   return (
     <section className={styles.section}>
@@ -33,6 +62,7 @@ const FeedbackList: React.FC<IFeedbackListProps> = ({ updateModalData }) => {
           variant="white"
           icon={pencilIcon}
           className={styles.button}
+          onClick={handleOpenForm}
         />
       </div>
 
