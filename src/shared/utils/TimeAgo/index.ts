@@ -1,4 +1,4 @@
-export const getTimeAgoText = (hours: number): string => {
+export function getTimeAgoText(hours: number): string {
   if (hours === 0) return 'Только что';
 
   const hourText =
@@ -11,4 +11,4 @@ export const getTimeAgoText = (hours: number): string => {
         : 'часов';
 
   return `${hours} ${hourText} назад`;
-};
+}
