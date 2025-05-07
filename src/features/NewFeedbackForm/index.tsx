@@ -17,28 +17,30 @@ const NewFeedbackForm: React.FC<NewFeedbackFormProps> = ({ toggleVisible }) => {
   };
 
   const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setContent(e.target.value);
-    setError('');
+    const newContent = e.target.value;
+    setContent(newContent);
+
+    if (newContent.trim().length < 5) {
+      setError(`Отзыв должен содержать минимум 5 символов.`);
+      return;
+    }
+
+    if (newContent.trim().length > 20) {
+      setError(`Отзыв не должен превышать 500 символов.`);
+      return;
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (content.trim().length < 5) {
-      setError(`Отзыв должен содержать минимум 5 символов.`);
-      return;
-    }
+    // TODO: добавить отправку отзыва на сервер
 
-    if (content.trim().length > 300) {
-      setError(`Отзыв не должен превышать 300 символов.`);
-      return;
-    }
-
-    // onSubmit({ rating, content });
     toggleVisible();
   };
 
-  const isButtonDisabled = rating === 0 || content.trim() === '';
+  const isButtonDisabled =
+    rating === 0 || content.trim().length < 5 || content.trim().length > 500;
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
@@ -51,14 +53,13 @@ const NewFeedbackForm: React.FC<NewFeedbackFormProps> = ({ toggleVisible }) => {
         <h4>Ваш отзыв</h4>
         <textarea
           value={content}
-          onChange={handleContentChange}
+          onInput={handleContentChange}
           placeholder="Общее впечатление; что понравилось в уроках; какие результаты"
-          minLength={5}
-          maxLength={300}
+          maxLength={20}
           required
         />
       </label>
-      {error && <p className={styles.error}>{error}</p>}
+      {error && <p className={styles.form__error}>{error}</p>}
 
       <Button
         text="Отправить отзыв"

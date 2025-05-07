@@ -13,4 +13,11 @@
     font-size: 24px;
     line-height: 1.33;
   }
+
+  &__error {
+    font-family: var(--ffm-title);
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.33;
+  }
 }
