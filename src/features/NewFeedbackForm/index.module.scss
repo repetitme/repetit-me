@@ -1,38 +1,6 @@
-.section {
-  inline-size: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 12px 36px;
-  gap: 18px;
-  background-color: #f6f6f6;
-}
-
-.link {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  text-decoration: none;
-  margin-bottom: 30px;
-
-  &__arrow {
-    margin-right: 4px;
-    width: 24px;
-    height: 24px;
-  }
-
-  &__content {
-    text-decoration: none;
-    font-size: 14px;
-    line-height: 1.36;
-    font-family: var(--ffm-default);
-    color: var(--clr-primary-default);
-  }
-}
-
 .form {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-start;
   gap: 24px;
 

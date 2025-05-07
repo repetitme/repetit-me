@@ -10,27 +10,17 @@ import useFeedbackList from './useFeedbackList';
 
 import styles from './index.module.scss';
 
-import { TNewFeedback } from '../../features/NewFeedbackForm/type';
 import { IFeedbackListProps } from './type';
 
 const FeedbackList: React.FC<IFeedbackListProps> = ({ updateModalData }) => {
   const [isFormVisible, setIsFormVisible] = useState(false);
+
   const { sortedFeedbacks, isAscending, toggleSort } = useFeedbackList({
     initialData: feedbackData,
     onDataChange: updateModalData
   });
 
-  const handleOpenForm = () => {
-    setIsFormVisible(true);
-  };
-
-  const handleCloseForm = () => {
-    setIsFormVisible(false);
-  };
-
-  const handleSubmitFeedback = (newFeedback: TNewFeedback) => {
-    console.log('Форма отправлена:', newFeedback);
-  };
+  const toggleVisible = () => setIsFormVisible((prev) => !prev);
 
   if (isFormVisible) {
     return (
@@ -38,10 +28,10 @@ const FeedbackList: React.FC<IFeedbackListProps> = ({ updateModalData }) => {
         <Button
           text="Вернуться к отзывам"
           variant="white"
-          onClick={handleCloseForm}
+          onClick={toggleVisible}
           className={styles.backButton}
         />
-        <NewFeedbackForm onSubmit={handleSubmitFeedback} />
+        <NewFeedbackForm toggleVisible={toggleVisible} />
       </section>
     );
   }
@@ -62,7 +52,7 @@ const FeedbackList: React.FC<IFeedbackListProps> = ({ updateModalData }) => {
           variant="white"
           icon={pencilIcon}
           className={styles.button}
-          onClick={handleOpenForm}
+          onClick={toggleVisible}
         />
       </div>
 

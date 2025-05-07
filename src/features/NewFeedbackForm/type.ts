@@ -3,7 +3,6 @@ export interface TNewFeedback {
   content: string;
 }
 
-// Пропсы компонента NewFeedbackForm
 export interface NewFeedbackFormProps {
-  onSubmit: (feedback: TNewFeedback) => void;
+  toggleVisible: () => void;
 }
