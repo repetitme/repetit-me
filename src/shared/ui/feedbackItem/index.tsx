@@ -1,10 +1,5 @@
-<<<<<<< HEAD:src/shared/components/FeedbackItem/index.tsx
-import StarRating from '../StarRating';
-import { TFeedbackItemProps } from './type.ts';
-=======
 import StarRating from '../starRating/index.tsx'
 import { TFeedbackItemProps } from './type.ts'
->>>>>>> 6438a5bc3ba43b63b31e8fe0aa47de540fbc5ca3:src/shared/ui/feedbackItem/index.tsx
 
 import styles from './index.module.scss';
 

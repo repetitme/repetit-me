@@ -11,18 +11,16 @@ import styles from './index.module.scss';
 import { IFeedbacksModalProps } from './type';
 
 const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose }) => {
-  const [feedbackCount, setFeedbackCount] = useState(0);
-  const [averageRating, setAverageRating] = useState(0);
+  const [feedbackData, setFeedbackData] = useState({ count: 0, rating: 0 });
 
   const modalRef = useClickOutside(onClose);
 
-  const updateModalData = useCallback((raitings: number[]) => {
+  const updateModalData = useCallback((ratings: number[]) => {
     const average =
-      raitings.length > 0
-        ? raitings.reduce((sum, rating) => sum + rating, 0) / raitings.length
+      ratings.length > 0
+        ? ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length
         : 0;
-    setFeedbackCount(raitings.length);
-    setAverageRating(average);
+    setFeedbackData({ count: ratings.length, rating: average });
   }, []);
 
   const getReviewText = (count: number) => {
@@ -49,9 +47,9 @@ const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose }) => {
         <div className={styles.modal__header}>
           <h2 className={styles.modal__title}>Отзывы</h2>
           <div className={styles.modal__rating}>
-            <TutorRating rating={averageRating} variant="medium" />
+            <TutorRating rating={feedbackData.rating} variant="medium" />
             <p className={styles.modal__ratingQuantity}>
-              {feedbackCount} {getReviewText(feedbackCount)}
+              {feedbackData.count} {getReviewText(feedbackData.count)}
             </p>
           </div>
           <button className={styles.modal__buttonClose} onClick={onClose}>
@@ -71,3 +69,4 @@ const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose }) => {
 };
 
 export default FeedbacksModal;
+

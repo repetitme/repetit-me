@@ -1,6 +1,7 @@
 .modal {
   position: fixed;
-  inset: 176px 0 auto auto;
+  inset: 50vh 0 auto auto;
+  transform: translate(0, -50%);
   z-index: 999;
   inline-size: 100%;
   max-inline-size: 1036px;
@@ -58,6 +59,6 @@
     padding: 12px 26px 16px 36px;
     overflow-y: scroll;
     background-color: #f6f6f6;
-    max-block-size: 828px;
+    max-block-size: 70vh;
   }
 }
