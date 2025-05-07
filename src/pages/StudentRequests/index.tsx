@@ -18,10 +18,15 @@ enum navOptions {
 const StudentRequests: React.FC = () => {
   const [active, setActive] = React.useState(navOptions.myTutors);
   const onClick = (value: navOptions) => () => setActive(value);
-  const [count, setCount] = React.useState(Object.values(navOptions).map(() => 0));
+  const [count, setCount] = React.useState(
+    Object.values(navOptions).map(() => 0)
+  );
   React.useEffect(() => {
     setCount(Object.values(navOptions).map(() => 0));
   }, []);
+
+  const filter = () => mockTutors.filter((item) => item.status === active);
+
   return (
     <>
       <h2 className={styles.title}>Мои заявки</h2>
@@ -39,7 +44,9 @@ const StudentRequests: React.FC = () => {
                   <button className={styles.tabs__btn} onClick={onClick(value)}>
                     {value}
                   </button>
-                  <span className={styles.tabs__count}>3</span>
+                  <span className={styles.tabs__count}>
+                    {count[Object.values(navOptions).indexOf(value)]}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -47,7 +54,7 @@ const StudentRequests: React.FC = () => {
           <TelegramBlock />
         </aside>
         <section className={styles.content}>
-          {mockTutors.map((tutor: ITutorData) => (
+          {filter().map((tutor: ITutorData) => (
             <article key={tutor.id} className={styles.content__item}>
               <UserCard role="student" tutorData={tutor} handleSubmit={true} />
             </article>
