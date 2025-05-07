@@ -69,4 +69,3 @@ const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose }) => {
 };
 
 export default FeedbacksModal;
-
