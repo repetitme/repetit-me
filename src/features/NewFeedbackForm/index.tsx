@@ -25,7 +25,7 @@ const NewFeedbackForm: React.FC<NewFeedbackFormProps> = ({ toggleVisible }) => {
 
     const trimmedLength = newContent.trim().length;
     
-    if (trimmedLength >= MAX_LENGTH) {
+    if (trimmedLength === MAX_LENGTH) {
       setError(`Отзыв не должен превышать ${MAX_LENGTH} символов.`);
     } else if (trimmedLength < MIN_LENGTH) {
       setError(`Отзыв должен содержать минимум ${MIN_LENGTH} символов.`);
@@ -55,6 +55,7 @@ const NewFeedbackForm: React.FC<NewFeedbackFormProps> = ({ toggleVisible }) => {
       <label>
         <h4>Ваш отзыв</h4>
         <textarea
+        className={styles.form__textarea}
           value={content}
           onChange={handleContentChange}
           placeholder="Общее впечатление; что понравилось в уроках; какие результаты"

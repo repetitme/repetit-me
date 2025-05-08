@@ -14,10 +14,31 @@
     line-height: 1.33;
   }
 
-  &__error {
-    font-family: var(--ffm-title);
-    font-weight: 500;
+  &__textarea {
+    display: flex;
+    align-items: flex-start;
+    padding: 12px 16px;
+    inline-size: 100%;
+    min-block-size: 164px;
+    font-family: var(--ffm-default);
     font-size: 15px;
-    line-height: 1.33;
+    line-height: 1.6;
+    background: var(--clr-main);
+    border-radius: 12px;
+    border: 2px solid transparent;
+    border-image-source: linear-gradient(180deg, #9747ff 0%, #6757f1 100%) 1;
+
+    &:focus {
+      border: 2px solid transparent;
+      outline: none;
+    }
+
+    &__error {
+      font-family: var(--ffm-default);
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 1.33;
+      color: var(--clr-secondary-default);
+    }
   }
 }
