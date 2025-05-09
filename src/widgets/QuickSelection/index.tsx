@@ -5,9 +5,10 @@ import { useNavigate } from 'react-router';
 
 import icon_arrowDown from '../../assets/images/icon-arrowdown.svg';
 import Button from '../../shared/ui/button';
+import { mockTutors } from '../../widgets/UserCard/fakeApi/mockData';
 import Carousel from '../Carousel';
 import Dropdown from '../Dropdown';
-import { disciplines, dropdown, tutorsCard } from './data';
+import { disciplines, dropdown } from './data';
 
 import styles from './index.module.scss';
 
@@ -99,7 +100,7 @@ export const QuickSelection: FC = () => {
           </div>
         </ul>
       </div>
-      <Carousel tutorsCard={tutorsCard} />
+      <Carousel tutorsCard={mockTutors} />
       <Button
         text={'Посмотреть всех'}
         variant={'purple'}

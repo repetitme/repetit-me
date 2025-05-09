@@ -6,7 +6,11 @@ import TutorRating from '../../../shared/ui/tutorRating';
 
 import styles from '../index.module.scss';
 
-const TutorProfile: React.FC<ITutorData> = ({
+interface ITutorPops extends ITutorData {
+  stylesValue?: string;
+}
+
+const TutorProfile: React.FC<ITutorPops> = ({
   name = '',
   subjects = [],
   studentAudience = [],
@@ -18,11 +22,12 @@ const TutorProfile: React.FC<ITutorData> = ({
   status,
   experienceYears,
   price,
-  isCard
+  isCard = false,
+  stylesValue
 }) => {
   return (
     <>
-      <div className={styles.profile__avatar}>
+      <div className={classNames(styles.profile__avatar, stylesValue)}>
         <img
           className={styles['profile__avatar--image']}
           src={image}
@@ -32,7 +37,8 @@ const TutorProfile: React.FC<ITutorData> = ({
           <a
             className={classNames(
               !isCard && styles['profile__avatar--link'],
-              isCard && styles['profile__avatar--link_tablet']
+              isCard && styles['profile__avatar--link_tablet'],
+              isCard && styles['card__small-avatar--link']
             )}
             href={link}
             target="_blank"
@@ -43,7 +49,10 @@ const TutorProfile: React.FC<ITutorData> = ({
       <div className={styles.profile__rating}>
         <TutorRating variant="small" rating={rating} />
       </div>
-      <UserInfo data={{ name, subjects, studentAudience, purpose }}>
+      <UserInfo
+        data={{ name, subjects, studentAudience, purpose }}
+        isCard={isCard}
+      >
         <div className={styles.profile__parameters}>
           <div className={styles.profile__parameters_speciality}>
             <p className={styles['profile__parameters_speciality--status']}>

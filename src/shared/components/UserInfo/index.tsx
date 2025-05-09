@@ -8,11 +8,12 @@ import styles from './index.module.scss';
 
 import { IUserInfo } from './type';
 
-const UserInfo: React.FC<IUserInfo> = ({ data, children }) => {
+const UserInfo: React.FC<IUserInfo> = ({ data, children, isCard }) => {
   const { width } = useWindowSize();
   const nameParts = data.name.split(' '); // Поменять расположение пременных в h3, в зависимости от формата получения ФИО пользователя
-  const lastName = width < 621 ? nameParts[nameParts.length - 1] : '';
-  const firstName = width < 621 ? nameParts.slice(0, -2).join(' ') : data.name;
+  const lastName = width < 621 || isCard ? nameParts[nameParts.length - 1] : '';
+  const firstName =
+    width < 621 || isCard ? nameParts.slice(0, -2).join(' ') : data.name;
 
   return (
     <div className={styles.user}>

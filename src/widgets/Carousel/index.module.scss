@@ -26,9 +26,9 @@
 
   &__cards {
     display: flex;
+    flex-direction: row;
     gap: 11px;
     padding: 0 0 0 8px;
-    flex-flow: row wrap;
 
     &_card {
       display: flex;

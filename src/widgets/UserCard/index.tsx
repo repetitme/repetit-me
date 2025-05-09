@@ -44,9 +44,13 @@ const UserCard: React.FC<IUserData> = ({
       </div>
     </div>
   ) : (
-    <div className={styles.card}>
+    <div className={styles.card__small}>
       {tutorData ? (
-        <TutorProfile {...tutorData} isCard={true} />
+        <TutorProfile
+          {...tutorData}
+          isCard={true}
+          stylesValue={styles['card__small-avatar']}
+        />
       ) : (
         <p>Репетитор не найден</p>
       )}

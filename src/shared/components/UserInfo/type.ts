@@ -6,4 +6,5 @@ export interface IUserInfo {
     purpose: string[];
   };
   children: React.ReactNode;
+  isCard: boolean;
 }

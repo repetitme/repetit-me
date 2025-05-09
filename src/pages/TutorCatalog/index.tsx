@@ -38,7 +38,7 @@ const TutorCatalog = () => {
 
   return (
     <>
-      <Header auth="unauth" />
+      {/* <Header auth="unauth" /> */}
       <main className={styles.container}>
         <div
           style={{
@@ -91,7 +91,7 @@ const TutorCatalog = () => {
         />
         <TelegramBlock />
       </main>
-      <Footer role="unauthorized" />
+      {/* <Footer role="unauthorized" /> */}
     </>
   );
 };
