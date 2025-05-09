@@ -96,4 +96,12 @@
       block-size: 18px;
     }
   }
+
+  &.reset {
+    color: var(--clr-secondary-default);
+    background-color: transparent;
+    display: flex;
+    column-gap: 8px;
+    border: 1px solid var(--clr-secondary-default);
+  }
 }

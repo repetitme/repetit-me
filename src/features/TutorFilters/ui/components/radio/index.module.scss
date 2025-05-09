@@ -1,0 +1,66 @@
+.radio {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  &__title {
+    margin-block-start: 1px;
+    font-weight: 600;
+    font-size: inherit;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-left: 5px;
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: 500;
+    font-size: 15px;
+    block-size: 24px;
+
+    & input {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--clr-3);
+      border-radius: 50%;
+      transition: all 0.5s ease-in-out;
+      cursor: pointer;
+      appearance: none;
+
+      &:checked {
+        border: 2px solid var(--clr-primary-default);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--clr-primary-default);
+        transition: transform 0.2s ease-in-out;
+        transform: translate(-50%, -50%) scale(0);
+      }
+
+      &:checked::after {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  }
+
+  &__checkbox:nth-child(n + 3) {
+    font-family: var(--ffm-price);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+  }
+}

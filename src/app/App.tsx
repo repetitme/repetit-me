@@ -1,8 +1,8 @@
+// import AppRouter from './router/AppRouter';
+import TutorFilters from '../features/TutorFilters/ui';
 import { IStudentData, ITutorData } from '../shared/types/userData';
 import UserCard from '../widgets/UserCard';
 import useUsersData from '../widgets/UserCard/fakeApi/useUserData';
-
-// import AppRouter from './router/AppRouter';
 
 import '../assets/index.scss';
 
@@ -82,6 +82,10 @@ function App() {
           />
         ))}
       </div>
+      <TutorFilters
+        onSubmit={(values) => console.log(values)}
+        percentage={10}
+      />
     </>
   );
 }
