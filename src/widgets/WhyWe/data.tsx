@@ -2,7 +2,7 @@ import boy1 from '../../assets/images/memoji=boy1.png';
 import boy2 from '../../assets/images/memoji=boy2.png';
 import girl1 from '../../assets/images/memoji=girl.png';
 
-import { ListItemProps } from '../../shared/components/ListItem/type';
+import { ListItemProps } from '../../shared/ui/listItem/type';
 
 export const listItems: ListItemProps[] = [
   {

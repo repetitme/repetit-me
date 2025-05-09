@@ -1,0 +1,18 @@
+.auth {
+  background-color: var(--clr-main);
+  padding: 69px 61px 0;
+  border-radius: 29px;
+  margin: 32px;
+
+  &__form {
+    display: flex;
+    gap: 26px;
+    flex-direction: column;
+    min-width: 711px;
+    min-height: 484px;
+
+    button {
+      margin-top: 6px;
+    }
+  }
+}

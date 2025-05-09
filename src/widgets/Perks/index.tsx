@@ -1,22 +1,22 @@
 import classNames from 'classnames';
-import styles from './index.module.scss';
 
 import Boy from '../../assets/images/perksBoy.png';
 import Girl from '../../assets/images/perksGirl.png';
-import { InfoBlock } from '../../shared/components/InfoBlock';
-import { ChatBubble } from '../../shared/components/ChatBubble';
+import ChatBubble from '../../shared/ui/chatBubble';
+import InfoBlock from '../../shared/ui/infoBlock';
 import { perks } from './data';
+
+import styles from './index.module.scss';
 
 type TPerksProps = {
   variant?: 'student' | 'teacher'; // меняется раскладка и текст картинки
 };
 
-export const Perks: React.FC<TPerksProps> = ({ variant = 'student' }) => {
+export const Perks: React.FC<TPerksProps> = ({ variant }) => {
   const chatBubbleText =
     variant === 'student'
       ? 'Я знаю где найти классного репетитора'
       : 'Я знаю где найти новых учеников';
-
   return (
     <div
       className={classNames(styles.container, {
@@ -50,3 +50,4 @@ export const Perks: React.FC<TPerksProps> = ({ variant = 'student' }) => {
     </div>
   );
 };
+export default Perks;

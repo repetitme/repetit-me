@@ -21,8 +21,10 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
+    "@types/uuid": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^8.24.1",
     "@typescript-eslint/parser": "^8.24.1",
     "@vitejs/plugin-react": "^4.3.4",
