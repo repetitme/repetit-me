@@ -1,4 +1,5 @@
 import MainPage from '../../pages/MainPage';
+import TutorCatalog from '../../pages/TutorCatalog';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
 import { IRoute } from './type';
@@ -7,6 +8,11 @@ export const routesConfig: IRoute[] = [
   {
     path: '/',
     element: <MainPage />,
+    auth: false
+  },
+  {
+    path: '/tutor-catalog',
+    element: <TutorCatalog />,
     auth: false
   },
   {

@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { useNavigate } from 'react-router';
 
 import IconList from '../../shared/ui/iconsList';
 import { iconSources } from '../../shared/ui/iconsList/data';
@@ -9,6 +10,7 @@ import styles from './index.module.scss';
 import { MainBlockProps } from './type';
 
 const MainBlock: React.FC<MainBlockProps> = ({ isActive, setIsActive }) => {
+  const navigate = useNavigate();
   const handleSwitch = () => {
     setIsActive(!isActive);
   };
@@ -32,7 +34,14 @@ const MainBlock: React.FC<MainBlockProps> = ({ isActive, setIsActive }) => {
             Ученикам помогем найти преподавателя для онлайн-занятий, а
             репетиторам увеличить свой поток клиентов на 30%
           </p>
-          <button className={styles.main__button}>
+          <button
+            className={styles.main__button}
+            onClick={() => {
+              if (!isActive) {
+                navigate('/tutor-catalog');
+              }
+            }}
+          >
             {isActive ? 'Заполнить анкету' : 'Подобрать репетитора'}
           </button>
         </div>

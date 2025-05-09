@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 
 import classNames from 'classnames';
+import { useNavigate } from 'react-router';
 
 import icon_arrowDown from '../../assets/images/icon-arrowdown.svg';
 import Button from '../../shared/ui/button';
@@ -11,6 +12,7 @@ import { disciplines, dropdown, tutorsCard } from './data';
 import styles from './index.module.scss';
 
 export const QuickSelection: FC = () => {
+  const navigate = useNavigate();
   const [stateOption, setStateOption] = useState<'all' | string>('all');
   const [stateMore, setStateMore] = useState(false);
   const [stateItemOther, setStateItemOther] = useState(false);
@@ -102,6 +104,9 @@ export const QuickSelection: FC = () => {
         text={'Посмотреть всех'}
         variant={'purple'}
         className={styles.container__button}
+        onClick={() => {
+          navigate('/tutor-catalog');
+        }}
       />
     </div>
   );

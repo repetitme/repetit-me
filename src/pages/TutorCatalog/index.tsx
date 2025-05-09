@@ -1,6 +1,8 @@
 import { TutorFilters } from '../../features/TutorFilters';
 import { IStudentData, ITutorData } from '../../shared/types/userData';
 import { TelegramBlock } from '../../shared/ui/telegramBlock';
+import Footer from '../../widgets/Footer';
+import Header from '../../widgets/Header';
 import UserCard from '../../widgets/UserCard';
 import useUsersData from '../../widgets/UserCard/fakeApi/useUserData';
 
@@ -35,58 +37,62 @@ const TutorCatalog = () => {
   }
 
   return (
-    <main className={styles.container}>
-      <div
-        style={{
-          marginInline: 'auto',
-          display: 'flex',
-          flexDirection: 'column',
-          flexWrap: 'wrap',
-          gap: '20px',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}
-      >
-        {tutors.slice(0, 1).map((tutor) => (
-          <UserCard key={tutor.id} role="unAuthorized" tutorData={tutor} />
-        ))}
+    <>
+      <Header auth="unauth" />
+      <main className={styles.container}>
+        <div
+          style={{
+            marginInline: 'auto',
+            display: 'flex',
+            flexDirection: 'column',
+            flexWrap: 'wrap',
+            gap: '20px',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          {tutors.slice(0, 1).map((tutor) => (
+            <UserCard key={tutor.id} role="unAuthorized" tutorData={tutor} />
+          ))}
 
-        {tutors.slice(1, 2).map((tutor) => (
-          <UserCard key={tutor.id} role="student" tutorData={tutor} />
-        ))}
+          {tutors.slice(1, 2).map((tutor) => (
+            <UserCard key={tutor.id} role="student" tutorData={tutor} />
+          ))}
 
-        {tutors.slice(2, 3).map((tutor) => (
-          <UserCard
-            key={tutor.id}
-            role="student"
-            tutorData={tutor}
-            handleSubmit={true}
-          />
-        ))}
+          {tutors.slice(2, 3).map((tutor) => (
+            <UserCard
+              key={tutor.id}
+              role="student"
+              tutorData={tutor}
+              handleSubmit={true}
+            />
+          ))}
 
-        {tutors.slice(3, 4).map((tutor) => (
-          <UserCard key={tutor.id} role="card" tutorData={tutor} />
-        ))}
+          {tutors.slice(3, 4).map((tutor) => (
+            <UserCard key={tutor.id} role="card" tutorData={tutor} />
+          ))}
 
-        {students.slice(0, 1).map((student) => (
-          <UserCard key={student.id} role="tutor" studentData={student} />
-        ))}
+          {students.slice(0, 1).map((student) => (
+            <UserCard key={student.id} role="tutor" studentData={student} />
+          ))}
 
-        {students.slice(1, 2).map((student) => (
-          <UserCard
-            key={student.id}
-            role="tutor"
-            studentData={student}
-            handleSubmit={true}
-          />
-        ))}
-      </div>
-      <TutorFilters
-        onSubmit={(values) => console.log(values)}
-        percentage={10}
-      />
-      <TelegramBlock />
-    </main>
+          {students.slice(1, 2).map((student) => (
+            <UserCard
+              key={student.id}
+              role="tutor"
+              studentData={student}
+              handleSubmit={true}
+            />
+          ))}
+        </div>
+        <TutorFilters
+          onSubmit={(values) => console.log(values)}
+          percentage={10}
+        />
+        <TelegramBlock />
+      </main>
+      <Footer role="unauthorized" />
+    </>
   );
 };
 
