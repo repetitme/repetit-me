@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import * as API from '../../features/API/userApi';
+import * as API from '../../api';
 import { IStudentData } from '../types/userData';
 
 const useStudentsData = () => {

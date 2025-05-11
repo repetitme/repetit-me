@@ -9,21 +9,13 @@
     font-size: 18px;
     font-weight: 700;
 
-<<<<<<< HEAD
-    @media screen and (width <= 750px) {
-=======
     @media screen and (max-width: 750px) {
->>>>>>> origin/feat/tutor_catalog_page
       max-inline-size: 300px;
     }
   }
 }
 
-<<<<<<< HEAD
-@media screen and (width <= 620px) {
-=======
 @media screen and (max-width: 620px) {
->>>>>>> origin/feat/tutor_catalog_page
   .user {
     grid-column: 1/-1;
     grid-row: 2/3;

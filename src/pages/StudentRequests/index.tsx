@@ -2,7 +2,7 @@ import React from 'react';
 
 import cn from 'classnames';
 
-import TelegramBlock from '../../shared/components/TelegramBlock';
+import TelegramBlock from '../../shared/ui/telegramBlock';
 import { ITutorData } from '../../shared/types/userData';
 import UserCard from '../../widgets/UserCard';
 import { mockTutors } from './mockData';
