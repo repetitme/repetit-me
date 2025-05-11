@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 
-import ProtectedRoute from '../../shared/ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from '../../features/ProtectedRoute/ProtectedRoute';
 import { useAuth } from '../../shared/hooks/useAuth';
 import { routesConfig } from './routesConfig';
 
