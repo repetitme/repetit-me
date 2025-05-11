@@ -1,0 +1,14 @@
+@use '/src/assets/fonts/fonts.scss' as stylesheet;
+
+.app {
+  background-color: rgb(245 245 247 / 100%);
+  padding-top: 42px;
+}
+
+.footer {
+  margin: 10px 0 0;
+}
+
+.test {
+  content: 'test';
+}
