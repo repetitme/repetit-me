@@ -5,7 +5,7 @@
   justify-content: space-between;
   flex-direction: row;
   gap: 20px;
-  background-color: rgb(245 245 247 / 100%);
+  background-color: var(--clr-1);
   max-inline-size: 1200px;
   margin: auto;
 
@@ -16,7 +16,7 @@
   }
 
   &__list {
-    background-color: rgb(255 255 255 / 100%);
+    background-color: var(--clr-main);
     border-radius: var(--border-radius-chat);
     padding: 24px;
     min-inline-size: 285px;
@@ -37,7 +37,7 @@
   &__value {
     font-family: var(--ffm-title, 'Druktextwidecur', courier, monospace);
 
-    @include text-gradient(#3dc5ff, #ff71f9);
+    @include text-gradient (#3dc5ff, #ff71f9);
 
     font-weight: 500;
     font-size: 20px;

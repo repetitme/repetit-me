@@ -1,10 +1,8 @@
 import classNames from 'classnames';
-
 import styles from './index.module.scss';
+import { cards } from './data'; 
 
-import { StatCardProps } from './type';
-
-const StatCards: React.FC<StatCardProps> = ({ cards }) => {
+const StatCards: React.FC = () => {
   return (
     <div className={styles.cards}>
       {cards.map((card, index) => (
