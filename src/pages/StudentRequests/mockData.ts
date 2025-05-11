@@ -1,15 +1,14 @@
 import { v4 as uuidv4 } from 'uuid';
-import { IStudentData, ITutorData } from '../../shared/types/userData';
 
-import Vyacheslav from '../../assets/images/UserCardIcons/TutorImg/tutor_vyacheslav-1.png';
-import Aleksandr1 from '../../assets/images/UserCardIcons/TutorImg/tutor_aleksandr-1.png';
-import Aleksandra1 from '../../assets/images/UserCardIcons/TutorImg/tutor_aleksandra-1.png';
-import Aleksandr2 from '../../assets/images/UserCardIcons/TutorImg/tutor_aleksandr-2.png';
-
-import Victor from '../../assets/images/UserCardIcons/StudentImg/student_victor-1.png';
-import Sergey1 from '../../assets/images/UserCardIcons/StudentImg/student_sergey-1.png';
 import Elizaveta from '../../assets/images/UserCardIcons/StudentImg/student_elizaveta-1.png';
+import Sergey1 from '../../assets/images/UserCardIcons/StudentImg/student_sergey-1.png';
 import Sergey2 from '../../assets/images/UserCardIcons/StudentImg/student_sergey-2.png';
+import Victor from '../../assets/images/UserCardIcons/StudentImg/student_victor-1.png';
+import Aleksandr1 from '../../assets/images/UserCardIcons/TutorImg/tutor_aleksandr-1.png';
+import Aleksandr2 from '../../assets/images/UserCardIcons/TutorImg/tutor_aleksandr-2.png';
+import Aleksandra1 from '../../assets/images/UserCardIcons/TutorImg/tutor_aleksandra-1.png';
+import Vyacheslav from '../../assets/images/UserCardIcons/TutorImg/tutor_vyacheslav-1.png';
+import { IStudentData, ITutorData } from '../../shared/types/userData';
 
 export const mockTutors: ITutorData[] = [
   {

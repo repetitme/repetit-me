@@ -1,5 +1,4 @@
 //import { useState } from 'react';
-
 import Footer from '../widgets/Footer';
 import Header from '../widgets/Header';
 import AppRouter from './router/AppRouter';

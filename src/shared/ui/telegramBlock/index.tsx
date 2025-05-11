@@ -9,12 +9,7 @@ import styles from './index.module.scss';
 interface ITelegramBlockProps {
   className?: string;
 }
-
-<<<<<<< HEAD:src/shared/components/TelegramBlock/index.tsx
 const TelegramBlock: React.FC<ITelegramBlockProps> = ({ className }) => {
-=======
-const TelegramBlock: React.FC<ITelegramBlockProps> = ({ className }) => {
->>>>>>> origin/develop:src/shared/ui/telegramBlock/index.tsx
   return (
     <div className={classNames(styles.container, className)}>
       <h4 className={styles.title}>

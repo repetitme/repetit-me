@@ -9,13 +9,13 @@
     font-size: 18px;
     font-weight: 700;
 
-    @media screen and (max-width: 750px) {
+    @media screen and (width <= 750px) {
       max-inline-size: 300px;
     }
   }
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (width <= 620px) {
   .user {
     grid-column: 1/-1;
     grid-row: 2/3;
