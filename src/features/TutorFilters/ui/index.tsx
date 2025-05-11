@@ -1,5 +1,5 @@
 import editIcon from '../../../assets/icons/editIcon.svg';
-import Button from '../../../shared/button';
+import Button from '../../../shared/ui/button';
 import { accordionGroups, titles } from '../config/constants';
 import * as data from '../config/data';
 import useTutorFilters from '../model/useTutorFilters';
@@ -9,7 +9,7 @@ import styles from './index.module.scss';
 
 import { TButton, TutorFiltersProps } from '../types/types';
 
-export const TutorFilters = ({
+const TutorFilters = ({
   onSubmit,
   noResultsFound,
   percentage = 1

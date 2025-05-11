@@ -1,3 +1,4 @@
+import TutorFilters from '../../features/TutorFilters';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
@@ -7,6 +8,11 @@ export const routesConfig: IRoute[] = [
   {
     path: '/',
     element: <MainPage />,
+    auth: false
+  },
+  {
+    path: '/tutor-catalog',
+    element: <TutorFilters onSubmit={() => {}} percentage={10}/>,
     auth: false
   },
   {
