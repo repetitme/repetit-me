@@ -31,7 +31,7 @@
         background: url('../../assets/images/UserCardIcons/tutor_video_icon.svg')
           no-repeat center / contain;
 
-        @media screen and (width >= 376px) and (width <= 620px) {
+        @media screen and (min-width: 376px) and (max-width: 620px) {
           right: 16px;
           bottom: -25px;
           inline-size: 62px;
@@ -106,21 +106,13 @@
   }
 
   &__rating {
-    // Удалить вместе с компонентов рейтинга
     position: absolute;
     right: 24px;
     top: 24px;
-    display: flex;
-    flex-direction: row;
-    gap: 3px;
-    background-color: var(--clr-primary-default);
-    padding: 5px 10px;
-    border-radius: 10px;
-    color: var(--clr-main);
   }
 }
 
-@media screen and (width <= 620px) {
+@media screen and (max-width: 620px) {
   .profile {
     &__avatar {
       max-inline-size: 100%;
@@ -177,7 +169,7 @@
   }
 }
 
-@media screen and (width <= 375px) {
+@media screen and (max-width: 375px) {
   .profile {
     &__parameters {
       &_important {
