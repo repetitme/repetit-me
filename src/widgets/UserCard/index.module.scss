@@ -15,7 +15,7 @@
     flex-direction: row;
     gap: 16px;
 
-    @media screen and (max-width: 410px) {
+    @media screen and (max-width = 410px) {
       flex-direction: column-reverse;
     }
   }
@@ -35,7 +35,7 @@
   }
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width = 620px) {
   .card {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, auto);

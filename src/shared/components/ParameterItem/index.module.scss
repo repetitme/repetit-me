@@ -12,8 +12,7 @@
 
   &_list {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: wrap;
     gap: 8px;
     justify-content: start;
     align-items: center;
@@ -24,7 +23,7 @@
     background-color: var(--clr-2);
     border-radius: 12px;
 
-    @media screen and (max-width: 620px) {
+    @media screen and (max-width = 620px) {
       font-size: 12px;
     }
   }

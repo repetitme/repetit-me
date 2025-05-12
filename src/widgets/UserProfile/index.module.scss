@@ -31,7 +31,7 @@
         background: url('../../assets/images/UserCardIcons/tutor_video_icon.svg')
           no-repeat center / contain;
 
-        @media screen and (min-width: 376px) and (max-width: 620px) {
+        @media screen and (min-width = 376px) and (max-width = 620px) {
           right: 16px;
           bottom: -25px;
           inline-size: 62px;
@@ -121,7 +121,7 @@
     no-repeat center / contain;
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width = 620px) {
   .profile {
     &__avatar {
       max-inline-size: 100%;
@@ -178,7 +178,7 @@
   }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width = 375px) {
   .profile {
     &__parameters {
       &_important {
