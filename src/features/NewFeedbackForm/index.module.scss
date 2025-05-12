@@ -9,9 +9,25 @@
 
   &__title {
     font-family: var(--ffm-title);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  &__title_textarea {
+    font-family: var(--ffm-default);
     font-weight: 700;
-    font-size: 24px;
-    line-height: 1.33;
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  &__error {
+    font-family: var(--ffm-default);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--clr-secondary-default);
   }
 
   &__textarea {
@@ -23,22 +39,30 @@
     font-family: var(--ffm-default);
     font-size: 15px;
     line-height: 1.6;
-    background: var(--clr-main);
-    border-radius: 12px;
     border: 2px solid transparent;
-    border-image-source: linear-gradient(180deg, #9747ff 0%, #6757f1 100%) 1;
+    border-radius: 12px;
+    background:
+      linear-gradient(var(--clr-main), var(--clr-main)) padding-box,
+      linear-gradient(
+          180deg,
+          var(--clr-primary-input) 0%,
+          var(--clr-primary-default) 100%
+        )
+        border-box;
 
     &:focus {
-      border: 2px solid transparent;
       outline: none;
     }
+  }
 
-    &__error {
-      font-family: var(--ffm-default);
-      font-weight: 500;
-      font-size: 15px;
-      line-height: 1.33;
-      color: var(--clr-secondary-default);
-    }
+  &__button {
+    align-self: flex-end;
+    max-inline-size: 365px;
+  }
+
+  &__textarea_wrapper {
+    display: flex;
+    flex-direction: column; 
+    gap: 2px; 
   }
 }

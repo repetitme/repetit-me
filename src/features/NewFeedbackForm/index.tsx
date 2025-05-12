@@ -24,11 +24,11 @@ const NewFeedbackForm: React.FC<NewFeedbackFormProps> = ({ toggleVisible }) => {
     setContent(newContent);
 
     const trimmedLength = newContent.trim().length;
-    
+
     if (trimmedLength === MAX_LENGTH) {
-      setError(`Отзыв не должен превышать ${MAX_LENGTH} символов.`);
+      setError(`Отзыв не должен превышать ${MAX_LENGTH} символов`);
     } else if (trimmedLength < MIN_LENGTH) {
-      setError(`Отзыв должен содержать минимум ${MIN_LENGTH} символов.`);
+      setError(`Отзыв должен содержать минимум ${MIN_LENGTH} символов`);
     } else {
       setError('');
     }
@@ -43,32 +43,35 @@ const NewFeedbackForm: React.FC<NewFeedbackFormProps> = ({ toggleVisible }) => {
   };
 
   const isButtonDisabled =
-  rating === 0 || content.trim().length < MIN_LENGTH || content.trim().length > MAX_LENGTH;
+    rating === 0 ||
+    content.trim().length < MIN_LENGTH ||
+    content.trim().length > MAX_LENGTH;
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <div>
-        <h3>Оцените преподавателя</h3>
-        <StarRating rating={rating} size={40} onRatingChange={onRatingChange} />
-      </div>
+      <h3 className={styles.form__title}>Оцените преподавателя</h3>
+      <StarRating rating={rating} size={40} onRatingChange={onRatingChange} />
 
       <label>
-        <h4>Ваш отзыв</h4>
-        <textarea
+    <h4 className={styles.form__title_textarea}>Ваш отзыв</h4>
+    <div className={styles.form__textarea_wrapper}>
+      <textarea
         className={styles.form__textarea}
-          value={content}
-          onChange={handleContentChange}
-          placeholder="Общее впечатление; что понравилось в уроках; какие результаты"
-          maxLength={MAX_LENGTH}
-          required
-        />
-      </label>
+        value={content}
+        onChange={handleContentChange}
+        placeholder="Общее впечатление; что понравилось в уроках; какие результаты"
+        maxLength={MAX_LENGTH}
+        required
+      />
       {error && <p className={styles.form__error}>{error}</p>}
+    </div>
+  </label>
 
       <Button
         text="Отправить отзыв"
         variant="purple"
         disabled={isButtonDisabled}
+        className={styles.form__button}
       />
     </form>
   );

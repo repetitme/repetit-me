@@ -4,6 +4,7 @@ import sortIcon from '../../assets/icons/iconSorting.svg';
 import pencilIcon from '../../assets/icons/pencilIcon.svg';
 import NewFeedbackForm from '../../features/NewFeedbackForm';
 import Button from '../../shared/ui/button';
+import ButtonBack from '../../shared/ui/buttonBack';
 import FeedbackItem from '../../shared/ui/feedbackItem';
 import { feedbackData } from './feedbackData';
 import useFeedbackList from './useFeedbackList';
@@ -25,12 +26,7 @@ const FeedbackList: React.FC<IFeedbackListProps> = ({ updateModalData }) => {
   if (isFormVisible) {
     return (
       <section className={styles.section}>
-        <Button
-          text="Вернуться к отзывам"
-          variant="white"
-          onClick={toggleVisible}
-          className={styles.backButton}
-        />
+        <ButtonBack text="Вернуться к отзывам" onClick={toggleVisible} />
         <NewFeedbackForm toggleVisible={toggleVisible} />
       </section>
     );
