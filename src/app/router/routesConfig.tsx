@@ -1,5 +1,6 @@
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
+import StudentRequests from '../../pages/StudentRequests';
 
 import { IRoute } from './type';
 
@@ -7,6 +8,11 @@ export const routesConfig: IRoute[] = [
   {
     path: '/',
     element: <MainPage />,
+    auth: false
+  },
+  {
+    path: '/student-requests',
+    element: <StudentRequests />,
     auth: false
   },
   {

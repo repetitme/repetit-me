@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 
-import TG from '../../../assets/Group.svg';
+import TG from '../../../assets/images/telegram_icon.svg';
 import phone from '../../../assets/images/QR+button.svg';
 import Button from '../button';
 
