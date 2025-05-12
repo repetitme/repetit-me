@@ -49,10 +49,6 @@
         border: 2px solid var(--clr-primary-default);
       }
 
-      &:hover {
-        border-color: var(--clr-purple-active);
-      }
-
       &:checked + span {
         color: var(--clr-primary-default);
       }
@@ -75,6 +71,10 @@
         transform: translate(-50%, -50%) scale(1);
         opacity: 1;
       }
+    }
+
+    &:hover input {
+      border-color: var(--clr-purple-active);
     }
   }
 }
