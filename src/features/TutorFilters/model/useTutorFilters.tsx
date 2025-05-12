@@ -109,8 +109,12 @@ const useTutorFilters = ({ onSubmit }: TUseTutorFilters) => {
     }
   };
 
-  const scrollToTop = (): void =>
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const scrollToTop = (): void => {
+    const el = document.getElementById('filters') as HTMLElement;
+    if (el) {
+      window.scrollTo({ top: el.offsetTop, behavior: 'smooth' });
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

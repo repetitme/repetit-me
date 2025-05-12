@@ -2,7 +2,7 @@ import styles from './index.module.scss';
 
 import { TRadio } from './types';
 
-const Radio = ({
+export const Radio = ({
   title,
   items,
   values,
@@ -28,5 +28,3 @@ const Radio = ({
     </div>
   );
 };
-
-export default Radio;

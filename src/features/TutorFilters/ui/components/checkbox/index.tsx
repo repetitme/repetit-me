@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 
 import { TCheckbox } from './types';
 
-const Checkbox = ({
+export const Checkbox = ({
   title,
   items,
   index,
@@ -38,5 +38,3 @@ const Checkbox = ({
     </div>
   );
 };
-
-export default Checkbox;

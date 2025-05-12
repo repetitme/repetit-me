@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 
 import { TAccordions } from './types';
 
-const Accordions = ({
+export const Accordions = ({
   data,
   isOpen,
   values,
@@ -51,5 +51,3 @@ const Accordions = ({
     </div>
   );
 };
-
-export default Accordions;

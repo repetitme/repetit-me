@@ -11,11 +11,6 @@ export const routesConfig: IRoute[] = [
     auth: false
   },
   {
-    path: '/tutor-catalog',
-    element: <TutorFilters onSubmit={() => {}} percentage={10}/>,
-    auth: false
-  },
-  {
     path: '/student-application',
     element: <>StudentApplication</>,
     auth: true
@@ -38,6 +33,11 @@ export const routesConfig: IRoute[] = [
   {
     path: '*',
     element: <NotFoundPage />,
+    auth: false
+  },
+  {
+    path: '/test',
+    element: <TutorFilters onSubmit={() => {}} percentage={10} />,
     auth: false
   }
 ];

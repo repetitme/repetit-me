@@ -1,2 +1,1 @@
-import TutorFilters from "./ui";
-export default TutorFilters;
+export { default } from './ui';
