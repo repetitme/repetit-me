@@ -6,7 +6,7 @@
 
 .icon {
   fill: var(--clr-primary-default);
-  transition: all var(--duration) var(--timing);
+  transition: all var(--slow-transition);
 }
 
 .main-title {
@@ -27,7 +27,7 @@
   margin-block-end: 5px;
   border-right: 2px solid #555;
   border-bottom: 2px solid #555;
-  transition: transform 0.3s ease;
+  transition: all var(--slow-transition);
   transform: rotate(45deg);
 }
 
@@ -40,6 +40,14 @@
   background: transparent;
   cursor: pointer;
   block-size: 24px;
+
+  &:hover h3 {
+    color: var(--clr-purple-active);
+  }
+
+  &:hover span {
+    border-color: var(--clr-purple-active);
+  }
 }
 
 .content {
@@ -48,8 +56,8 @@
   opacity: 0;
   overflow: hidden;
   transition:
-    max-height 0.4s ease,
-    opacity 0.4s ease;
+    max-height var(--slow-transition),
+    opacity var(--slow-transition);
 }
 
 .item {

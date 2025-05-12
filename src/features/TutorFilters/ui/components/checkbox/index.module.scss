@@ -24,10 +24,18 @@
     font-size: 15px;
     font-style: normal;
     block-size: 24px;
+
+    &:hover input {
+      border-color: var(--clr-purple-active);
+    }
+
+    &:hover span {
+      color: var(--clr-purple-active);
+    }
   }
 
   span {
-    transition: color 0.3s ease;
+    transition: color var(--fast-transition);
   }
 
   & input {
@@ -38,7 +46,7 @@
     margin-inline-start: 1px;
     border: 2px solid var(--clr-3);
     border-radius: 4px;
-    transition: all 0.3s ease;
+    transition: all var(--fast-transition);
     cursor: pointer;
     appearance: none;
 
@@ -53,7 +61,7 @@
     &::after {
       content: '';
       position: absolute;
-      transition: all 0.2s ease;
+      transition: all var(--fast-transition);
       top: 50%;
       left: 50%;
       display: inline-block;
