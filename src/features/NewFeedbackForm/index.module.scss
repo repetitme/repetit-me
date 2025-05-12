@@ -4,9 +4,6 @@
   justify-content: flex-start;
   gap: 24px;
 
-  &__rating {
-  }
-
   &__title {
     font-family: var(--ffm-title);
     font-weight: 500;
@@ -14,7 +11,16 @@
     line-height: 1;
   }
 
-  &__title_textarea {
+  &__button {
+    align-self: flex-end;
+    max-inline-size: 365px;
+  }
+}
+
+.textarea {
+  position: relative;
+
+  &__title {
     font-family: var(--ffm-default);
     font-weight: 700;
     font-size: 20px;
@@ -22,15 +28,26 @@
     margin-bottom: 16px;
   }
 
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+
   &__error {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
     font-family: var(--ffm-default);
     font-weight: 500;
     font-size: 12px;
     line-height: 1.5;
     color: var(--clr-secondary-default);
+    min-height: 18px;
+    margin: 0;
   }
 
-  &__textarea {
+  &__area {
     display: flex;
     align-items: flex-start;
     padding: 12px 16px;
@@ -40,6 +57,7 @@
     font-size: 15px;
     line-height: 1.6;
     border: 2px solid transparent;
+    resize: vertical;
     border-radius: 12px;
     background:
       linear-gradient(var(--clr-main), var(--clr-main)) padding-box,
@@ -53,16 +71,5 @@
     &:focus {
       outline: none;
     }
-  }
-
-  &__button {
-    align-self: flex-end;
-    max-inline-size: 365px;
-  }
-
-  &__textarea_wrapper {
-    display: flex;
-    flex-direction: column; 
-    gap: 2px; 
   }
 }

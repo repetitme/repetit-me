@@ -2,11 +2,7 @@ import buttonBack from '../../../assets/icons/buttonBack.svg';
 
 import styles from './index.module.scss';
 
-interface ButtonBackProps {
-  text: string;
-  className?: string;
-  onClick: () => void;
-}
+import { ButtonBackProps } from './type';
 
 const ButtonBack: React.FC<ButtonBackProps> = ({ text, onClick }) => {
   return (

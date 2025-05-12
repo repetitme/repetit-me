@@ -52,20 +52,20 @@ const NewFeedbackForm: React.FC<NewFeedbackFormProps> = ({ toggleVisible }) => {
       <h3 className={styles.form__title}>Оцените преподавателя</h3>
       <StarRating rating={rating} size={40} onRatingChange={onRatingChange} />
 
-      <label>
-    <h4 className={styles.form__title_textarea}>Ваш отзыв</h4>
-    <div className={styles.form__textarea_wrapper}>
-      <textarea
-        className={styles.form__textarea}
-        value={content}
-        onChange={handleContentChange}
-        placeholder="Общее впечатление; что понравилось в уроках; какие результаты"
-        maxLength={MAX_LENGTH}
-        required
-      />
-      {error && <p className={styles.form__error}>{error}</p>}
-    </div>
-  </label>
+      <label className={styles.textarea}>
+        <h4 className={styles.textarea__title}>Ваш отзыв</h4>
+        <div className={styles.textarea__wrapper}>
+          <textarea
+            className={styles.textarea__area}
+            value={content}
+            onChange={handleContentChange}
+            placeholder="Общее впечатление; что понравилось в уроках; какие результаты"
+            maxLength={MAX_LENGTH}
+            required
+          />
+          {error && <p className={styles.textarea__error}>{error}</p>}
+        </div>
+      </label>
 
       <Button
         text="Отправить отзыв"
