@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 
 import Button from '../../shared/ui/button';
 import StarRating from '../../shared/ui/starRating';
@@ -6,46 +6,25 @@ import StarRating from '../../shared/ui/starRating';
 import styles from '../NewFeedbackForm/index.module.scss';
 
 import { NewFeedbackFormProps } from './type';
+import { MAX_LENGTH, useFeedbackForm } from './useFeedbackForm'
 
-const MIN_LENGTH = 5;
-const MAX_LENGTH = 500;
 
 const NewFeedbackForm: React.FC<NewFeedbackFormProps> = ({ toggleVisible }) => {
-  const [rating, setRating] = useState(0);
-  const [content, setContent] = useState('');
-  const [error, setError] = useState('');
+  const {
+    rating,
+    content,
+    error,
+    onRatingChange,
+    handleContentChange,
+    isButtonDisabled,
+  } = useFeedbackForm();
 
-  const onRatingChange = (newRating: number) => {
-    setRating(newRating);
-  };
-
-  const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const newContent = e.target.value;
-    setContent(newContent);
-
-    const trimmedLength = newContent.trim().length;
-
-    if (trimmedLength === MAX_LENGTH) {
-      setError(`Отзыв не должен превышать ${MAX_LENGTH} символов`);
-    } else if (trimmedLength < MIN_LENGTH) {
-      setError(`Отзыв должен содержать минимум ${MIN_LENGTH} символов`);
-    } else {
-      setError('');
-    }
-  };
-
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // TODO: добавить отправку отзыва на сервер
-
+    // TODO: добавить отправку отзыва на сервер 
     toggleVisible();
   };
-
-  const isButtonDisabled =
-    rating === 0 ||
-    content.trim().length < MIN_LENGTH ||
-    content.trim().length > MAX_LENGTH;
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
