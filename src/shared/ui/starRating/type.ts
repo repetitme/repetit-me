@@ -1,6 +1,5 @@
 export type TStarRatingProps = {
   rating: number;
-  size: number; 
-  onRatingChange?: (rating: number) => void; 
+  size?: number;
+  onRatingChange?: (rating: number) => void;
 };
-

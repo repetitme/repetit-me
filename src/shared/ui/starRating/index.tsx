@@ -23,7 +23,7 @@ const StarRating: React.FC<TStarRatingProps> = ({
     return (
       <svg
         key={index}
-        viewBox="0 0 16 15"
+        viewBox="0 0 16 16"
         width={size}
         height={size}
         fill={isFilled ? '#F6DA43' : '#DDD'}
