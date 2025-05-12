@@ -1,5 +1,8 @@
+import { useState } from 'react';
+
 import { TutorFilters } from '../../features/TutorFilters';
-import { IStudentData, ITutorData } from '../../shared/types/userData';
+import { ITutorData } from '../../shared/types/userData';
+import Button from '../../shared/ui/button';
 import { TelegramBlock } from '../../shared/ui/telegramBlock';
 import Footer from '../../widgets/Footer';
 import Header from '../../widgets/Header';
@@ -20,78 +23,57 @@ const TutorCatalog = () => {
     error: errorTutors
   } = useUsersData<ITutorData>('tutors');
 
-  const {
-    data: students,
-    loading: loadingStudents,
-    error: errorStudents
-  } = useUsersData<IStudentData>('students');
+  const [visibleCount, setVisibleCount] = useState(5);
+  const percentageValue = 1;
 
-  if (loadingTutors || loadingStudents) {
+  if (loadingTutors) {
     return <div>Loading...</div>;
   }
 
   if (errorTutors) {
     return <div>{errorTutors}</div>;
-  } else if (errorStudents) {
-    return <div>{errorStudents}</div>;
   }
+
+  const handleShowMore = () => {
+    setVisibleCount((prevCount) => prevCount + 5); // Увеличиваем количество видимых репетиторов на 5
+  };
+
+  const displayedTutors = tutors.slice(0, visibleCount);
 
   return (
     <>
-      {/* <Header auth="unauth" /> */}
-      <main className={styles.container}>
-        <div
-          style={{
-            marginInline: 'auto',
-            display: 'flex',
-            flexDirection: 'column',
-            flexWrap: 'wrap',
-            gap: '20px',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-        >
-          {tutors.slice(0, 1).map((tutor) => (
+      <Header auth="unauth" />
+      <main className={styles.catalog}>
+        <div className={styles.catalog__cards}>
+          {percentageValue <= 1 && (
+            <h3 className={styles.catalog__search_hint}>
+              Чтобы найти специалиста, заполните детали заказа
+            </h3>
+          )}
+          {displayedTutors.map((tutor) => (
             <UserCard key={tutor.id} role="unAuthorized" tutorData={tutor} />
           ))}
-
-          {tutors.slice(1, 2).map((tutor) => (
-            <UserCard key={tutor.id} role="student" tutorData={tutor} />
-          ))}
-
-          {tutors.slice(2, 3).map((tutor) => (
-            <UserCard
-              key={tutor.id}
-              role="student"
-              tutorData={tutor}
-              handleSubmit={true}
+          {tutors.length > visibleCount && (
+            <Button
+              text="Показать еще"
+              variant="transparent"
+              size="large"
+              className={styles.catalog__button}
+              onClick={handleShowMore}
             />
-          ))}
-
-          {tutors.slice(3, 4).map((tutor) => (
-            <UserCard key={tutor.id} role="card" tutorData={tutor} />
-          ))}
-
-          {students.slice(0, 1).map((student) => (
-            <UserCard key={student.id} role="tutor" studentData={student} />
-          ))}
-
-          {students.slice(1, 2).map((student) => (
-            <UserCard
-              key={student.id}
-              role="tutor"
-              studentData={student}
-              handleSubmit={true}
-            />
-          ))}
+          )}
         </div>
-        <TutorFilters
-          onSubmit={(values) => console.log(values)}
-          percentage={10}
-        />
-        <TelegramBlock />
+        <div className={styles.catalog__filters}>
+          <TutorFilters
+            onSubmit={(values) => console.log(values)}
+            percentage={percentageValue}
+          />
+        </div>
+        <div className={styles.catalog__link}>
+          <TelegramBlock />
+        </div>
       </main>
-      {/* <Footer role="unauthorized" /> */}
+      <Footer role="unauthorized" goTelegram={true} />
     </>
   );
 };

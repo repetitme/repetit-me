@@ -30,7 +30,8 @@
     transition: border-color 0.3s;
     cursor: pointer;
 
-    &:hover {
+    &:hover,
+    &--accent {
       color: var(--clr-primary-default);
       border-bottom: 2px solid var(--clr-primary-default, #6757f1);
     }

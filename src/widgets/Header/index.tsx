@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { useNavigate } from 'react-router';
+import classNames from 'classnames';
+import { useLocation, useNavigate } from 'react-router';
 
 import logo from '../../assets/images/logo.svg';
 import icon from '../../assets/images/telegram_icon.svg';
@@ -14,6 +15,7 @@ import { HeaderProps, TAuth } from './types';
 
 const Header: React.FC<HeaderProps> = ({ auth }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [authHeader, setAuthHeader] = useState<TAuth>(auth ? auth : 'unauth');
 
   useEffect(() => {
@@ -28,6 +30,8 @@ const Header: React.FC<HeaderProps> = ({ auth }) => {
     setAuthHeader('unauth');
   };
 
+  const isTutorCatalog = location.pathname === '/tutor-catalog';
+
   return (
     <header className={styles.header}>
       <div className={styles.header__logo}>
@@ -41,7 +45,15 @@ const Header: React.FC<HeaderProps> = ({ auth }) => {
       </div>
       {authHeader === 'unauth' && (
         <nav className={styles.header__menu}>
-          <button className={styles.header__button}>Репетиторы</button>
+          <button
+            className={classNames(
+              styles.header__button,
+              isTutorCatalog && styles['header__button--accent']
+            )}
+            onClick={() => navigate('/tutor-catalog')}
+          >
+            Репетиторы
+          </button>
           <button className={styles.header__button} onClick={handleLogin}>
             Войти
           </button>
