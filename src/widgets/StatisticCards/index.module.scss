@@ -30,8 +30,8 @@
     font-weight: 700;
     font-size: 20px;
     color: var(--clr-black);
-    margin-left: 2px;
-    margin-bottom: 10px;
+    margin-inline-start: 2px;
+    margin-block-end: 10px;
   }
 
   &__value {
@@ -42,10 +42,6 @@
     font-weight: 500;
     font-size: 20px;
     letter-spacing: -0.3px;
-  }
-
-  &__currency {
-    color: var(--clr-black);
   }
 
   &__additional {
