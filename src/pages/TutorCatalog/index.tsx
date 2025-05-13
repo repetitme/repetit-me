@@ -1,11 +1,9 @@
 import { useState } from 'react';
 
-import { TutorFilters } from '../../features/TutorFilters';
+import TutorFilters from '../../features/TutorFilters/ui';
 import { ITutorData } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
 import { TelegramBlock } from '../../shared/ui/telegramBlock';
-import Footer from '../../widgets/Footer';
-import Header from '../../widgets/Header';
 import UserCard from '../../widgets/UserCard';
 import useUsersData from '../../widgets/UserCard/fakeApi/useUserData';
 
@@ -35,14 +33,13 @@ const TutorCatalog = () => {
   }
 
   const handleShowMore = () => {
-    setVisibleCount((prevCount) => prevCount + 5); // Увеличиваем количество видимых репетиторов на 5
+    setVisibleCount((prevCount) => prevCount + 5);
   };
 
   const displayedTutors = tutors.slice(0, visibleCount);
 
   return (
     <>
-      <Header auth="unauth" />
       <main className={styles.catalog}>
         <div className={styles.catalog__cards}>
           {percentageValue <= 1 && (
@@ -73,7 +70,6 @@ const TutorCatalog = () => {
           <TelegramBlock />
         </div>
       </main>
-      <Footer role="unauthorized" goTelegram={true} />
     </>
   );
 };

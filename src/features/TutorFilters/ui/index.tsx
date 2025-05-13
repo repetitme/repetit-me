@@ -1,4 +1,3 @@
-import editIcon from '../../../assets/icons/editIcon.svg';
 import Button from '../../../shared/ui/button';
 import { accordionGroups, titles } from '../config/constants';
 import * as data from '../config/data';
@@ -9,7 +8,7 @@ import styles from './index.module.scss';
 
 import { TButton, TutorFiltersProps } from '../types/types';
 
-export const TutorFilters = ({
+const TutorFilters = ({
   onSubmit,
   noResultsFound,
   percentage = 1
@@ -32,13 +31,12 @@ export const TutorFilters = ({
         variant={reset ? 'reset' : 'purple'}
         text={reset ? 'Сбросить фильтр' : 'Применить'}
         onClick={reset ? handleReset : undefined}
-        icon={reset ? editIcon : ''}
       />
     );
   };
 
   return (
-    <section className={styles.filters}>
+    <section className={styles.filters} id="filters">
       <div className={styles.filters__title__main}>
         <h2>Запросы на репетитора</h2>
         <span className={styles.filters__title__sub}>{`${percentage}%`}</span>

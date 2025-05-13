@@ -5,8 +5,6 @@ import classNames from 'classnames';
 import AuthForm from '../../features/auth/form';
 import Advantages from '../../widgets/Advantages';
 import Chat from '../../widgets/Chat';
-import Footer from '../../widgets/Footer';
-import Header from '../../widgets/Header';
 import MainBlock from '../../widgets/MainBlock';
 import Perks from '../../widgets/Perks';
 import QuestionList from '../../widgets/QuestionList';
@@ -21,7 +19,6 @@ const MainPage = () => {
   const [isActive, setIsActive] = useState(false);
   return (
     <>
-      <Header auth={'student'} />
       <main className={styles.container}>
         <div className={styles.container__mainblock}>
           <MainBlock isActive={isActive} setIsActive={setIsActive} />
@@ -77,7 +74,6 @@ const MainPage = () => {
           </>
         )}
       </main>
-      <Footer role="student" />
     </>
   );
 };

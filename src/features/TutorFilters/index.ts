@@ -1,1 +1,1 @@
-export { default as TutorFilters } from './ui';
+export { default } from './ui';
