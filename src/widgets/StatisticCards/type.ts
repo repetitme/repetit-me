@@ -1,7 +1,7 @@
 export interface Card {
   title: string;
-  value: number | string;
-  currency?: string;
+  value?: number;
+  currency?: number;
   additionalInfo?: string;
   additionalValue?: number | string;
 }

@@ -8,16 +8,14 @@ export const cards: Card[] = [
   },
   {
     title: 'Уроков проведено',
-    value: '50'
+    value: 50
   },
   {
     title: 'Доход за октябрь',
-    value: '15000',
-    currency: 'руб'
+    currency: 15000
   },
   {
     title: 'Бонусы',
-    value: '500',
-    currency: 'руб'
+    currency: 500
   }
 ];

@@ -18,7 +18,10 @@ const StatCards: React.FC = () => {
             <p className={styles.cards__value}>
               {card.value}
               {card.currency && (
-                <span className={styles.cards__title}> {card.currency}</span>
+                <p>
+                  {card.currency}
+                  <span className={styles.cards__title}> руб</span>
+                </p>
               )}
             </p>
           </div>
