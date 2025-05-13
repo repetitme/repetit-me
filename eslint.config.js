@@ -4,6 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
 
+import pluginQuery from '@tanstack/eslint-plugin-query';
 import tsEslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 
@@ -27,7 +28,8 @@ export default [
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
       '@typescript-eslint': tsEslint,
-      prettier
+      prettier,
+      '@tanstack/query': pluginQuery
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -44,7 +46,8 @@ export default [
         'warn',
         { allowConstantExport: true }
       ],
-      'prettier/prettier': 'error'
+      'prettier/prettier': 'error',
+      '@tanstack/query/exhaustive-deps': 'error'
     },
     settings: {
       react: {
