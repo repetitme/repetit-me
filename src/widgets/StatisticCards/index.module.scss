@@ -9,12 +9,6 @@
   max-inline-size: 1200px;
   margin: auto;
 
-  &__withAdditionalInfo {
-    display: flex;
-    margin-bottom: 9px;
-    align-items: center;
-  }
-
   &__list {
     background-color: var(--clr-main);
     border-radius: var(--border-radius-chat);
@@ -26,22 +20,32 @@
     gap: 12px;
   }
 
+  &__withAdditionalInfo {
+    display: flex;
+    align-items: center;
+  }
+
   &__title {
     font-family: var(--ffm-default, 'Montserrat', courier, monospace);
     font-weight: 700;
     font-size: 20px;
     color: var(--clr-black);
     margin-left: 2px;
+    margin-bottom: 10px;
   }
 
   &__value {
     font-family: var(--ffm-title, 'Druktextwidecur', courier, monospace);
 
-    @include text-gradient (#3dc5ff, #ff71f9);
+    @include text-gradient(#865bff, #ff71f9);
 
     font-weight: 500;
     font-size: 20px;
     letter-spacing: -0.3px;
+  }
+
+  &__currency {
+    color: var(--clr-black);
   }
 
   &__additional {
