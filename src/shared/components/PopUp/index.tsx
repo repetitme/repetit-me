@@ -2,7 +2,7 @@ import React from 'react';
 
 import closeIcon from '../../../assets/icons/close.svg';
 import useClickOutside from '../../hooks/useClickOutside';
-import { ModalOverlay } from '../Overlay';
+import { ModalOverlay } from '../../ui/overlay';
 import { popupContent } from './data';
 
 import styles from './index.module.scss';
