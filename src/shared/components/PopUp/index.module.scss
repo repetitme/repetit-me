@@ -30,8 +30,8 @@
     background: none;
     border: none;
     cursor: pointer;
-    width: 14px;
-    height: 14px;
+    width: 32px;
+    height: 32px;
     z-index: 2;
   }
 
@@ -48,7 +48,7 @@
     line-height: 1.36;
     font-family: var(--ffm-default);
     color: var(--clr-black);
-    margin-block-end: 3px;
+    margin-block-end: 6px;
   }
 
   &__p {
@@ -75,13 +75,13 @@
     transition: background 0.2s;
   }
 
-  &_variant_white {
+  &_color_white {
     &__button {
       border: 2px solid #ff4d4f;
     }
   }
 
-  &_variant_purple {
+  &_color_purple {
     background: var(--clr-primary-default);
     color: var(--clr-main);
     padding: 16px 24px;

@@ -1,6 +1,9 @@
-import React, { useCallback, useEffect } from 'react';
-import closeIcon from '../../../assets/icons/close.png';
+import React from 'react';
+
+import closeIcon from '../../../assets/icons/close.svg';
+import useClickOutside from '../../hooks/useClickOutside';
 import { ModalOverlay } from '../Overlay';
+import { popupContent } from './data';
 
 import styles from './index.module.scss';
 
@@ -14,45 +17,18 @@ const Popup: React.FC<PopupProps> = ({
   showCloseButton = true,
   onConfirm
 }) => {
-  const handleEscape = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    },
-    [onClose]
-  );
-
-  useEffect(() => {
-    if (isOpen) {
-      window.addEventListener('keydown', handleEscape);
-    }
-    return () => window.removeEventListener('keydown', handleEscape);
-  }, [isOpen, handleEscape]);
+  const ref = useClickOutside(() => {
+    onClose();
+  });
 
   if (!isOpen) return null;
-
-  const popupContent = {
-    request: {
-      title: 'По вашему запросу репетиторы не найдены',
-      text: 'Вы можете оставить заявку, и мы поищем репетитора под ваш запрос в нашей дополнительной базе. Отправить заявку?',
-      confirmButtonText: 'Да',
-      cancelButtonText: 'Нет',
-      variant: 'white'
-    },
-    notFound: {
-      title: 'Вы откликнулись!',
-      text: 'Отклик отправлен успешно! Когда преподаватель примет заявку, мы обменяемся с Вами контактами в Telegram, уведомление придёт автоматически через бота. Отменить или посмотреть статус заявки можно в разделе «Мои заявки».',
-      confirmButtonText: 'Мои заявки',
-      cancelButtonText: null,
-      variant: 'purple'
-    }
-  };
 
   const { title, text, confirmButtonText, cancelButtonText } =
     popupContent[variant];
 
   return (
     <>
-      <div className={styles.popup}>
+      <div className={styles.popup} ref={ref}>
         <div className={styles.popup__content}>
           {showCloseButton && (
             <button className={styles.popup__close} onClick={onClose}>
@@ -73,7 +49,7 @@ const Popup: React.FC<PopupProps> = ({
             )}
             {confirmButtonText && (
               <button
-                className={`${styles.popup__button} ${styles[`popup_variant_${popupContent[variant].variant}`]}`}
+                className={`${styles.popup__button} ${styles[`popup_color_${popupContent[variant].color}`]}`}
                 onClick={onConfirm}
               >
                 {confirmButtonText}
