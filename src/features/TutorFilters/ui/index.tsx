@@ -11,7 +11,8 @@ import { TButton, TutorFiltersProps } from '../types/types';
 const TutorFilters = ({
   onSubmit,
   noResultsFound,
-  percentage = 1
+  percentage = 1,
+  onToggleTooltip
 }: TutorFiltersProps) => {
   const {
     values,
@@ -38,7 +39,7 @@ const TutorFilters = ({
   return (
     <section className={styles.filters} id="filters">
       <div className={styles.filters__title__main}>
-        <h2>Запросы на репетитора</h2>
+        <h2 onClick={onToggleTooltip}>Запросы на репетитора</h2>
         <span className={styles.filters__title__sub}>{`${percentage}%`}</span>
       </div>
       <form onSubmit={handleSubmit} className={styles.filters__form}>

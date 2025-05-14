@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import TutorFilters from '../../features/TutorFilters/ui';
+import useClickOutside from '../../shared/hooks/useClickOutside';
 import { ITutorData } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
 import { TelegramBlock } from '../../shared/ui/telegramBlock';
@@ -9,7 +10,7 @@ import useUsersData from '../../widgets/UserCard/fakeApi/useUserData';
 
 import styles from './index.module.scss';
 
-const TutorCatalog = () => {
+const TutorCatalogPage = () => {
   /* Для вызова компонента, необходимо вызвать хук для отображения 
   моковых данных через промисы апи. В дальнейшем, для работы с карточками, нужно вызвать 
   в компонентах, где нужны карточки пользователей, и передавать им через пропсы данные и 
@@ -22,7 +23,8 @@ const TutorCatalog = () => {
   } = useUsersData<ITutorData>('tutors');
 
   const [visibleCount, setVisibleCount] = useState(5);
-  const percentageValue = 1;
+  const [tooltipVisible, setTooltipVisible] = useState(false);
+  const tooltipRef = useClickOutside(() => setTooltipVisible(false));
 
   if (loadingTutors) {
     return <div>Loading...</div>;
@@ -42,11 +44,12 @@ const TutorCatalog = () => {
     <>
       <main className={styles.catalog}>
         <div className={styles.catalog__cards}>
-          {percentageValue <= 1 && (
+          {tooltipVisible && (
             <h3 className={styles.catalog__search_hint}>
               Чтобы найти специалиста, заполните детали заказа
             </h3>
           )}
+
           {displayedTutors.map((tutor) => (
             <UserCard key={tutor.id} role="unAuthorized" tutorData={tutor} />
           ))}
@@ -60,10 +63,11 @@ const TutorCatalog = () => {
             />
           )}
         </div>
-        <div className={styles.catalog__filters}>
+        <div className={styles.catalog__filters} ref={tooltipRef}>
           <TutorFilters
             onSubmit={(values) => console.log(values)}
-            percentage={percentageValue}
+            percentage={1}
+            onToggleTooltip={() => setTooltipVisible((prev) => !prev)}
           />
         </div>
         <div className={styles.catalog__link}>
@@ -74,4 +78,4 @@ const TutorCatalog = () => {
   );
 };
 
-export default TutorCatalog;
+export default TutorCatalogPage;

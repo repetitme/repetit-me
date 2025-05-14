@@ -38,6 +38,8 @@
       margin-block-end: 32px;
       font-weight: 700;
       font-size: 20px;
+      user-select: none;
+      cursor: pointer;
 
       h2 {
         font-weight: inherit;

@@ -1,6 +1,6 @@
 import TutorFilters from '../../features/TutorFilters';
 import MainPage from '../../pages/MainPage';
-import TutorCatalog from '../../pages/TutorCatalog';
+import TutorCatalogPage from '../../pages/TutorCatalogPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
 import { IRoute } from './type';
@@ -13,7 +13,7 @@ export const routesConfig: IRoute[] = [
   },
   {
     path: '/tutor-catalog',
-    element: <TutorCatalog />,
+    element: <TutorCatalogPage />,
     auth: false
   },
   {
