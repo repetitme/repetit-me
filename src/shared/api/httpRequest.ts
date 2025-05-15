@@ -3,13 +3,13 @@ export function httpRequest<T>(
   endpoint: string,
   config?: {
     params?: Record<string, string | number | boolean | undefined>;
-    body?: unknown; // Объекты, массивы, примитивы (кроме undefined)
+    body?: unknown;
   }
 ): Promise<T> {
   const options = {
     method,
     params: config?.params,
-    body: config?.body !== undefined ? JSON.stringify(config.body) : undefined,
+    body: config?.body !== undefined ? JSON.stringify(config.body) : undefined
   };
 
   return httpJson<T>(endpoint, options);
