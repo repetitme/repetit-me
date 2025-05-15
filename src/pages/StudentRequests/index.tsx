@@ -1,31 +1,35 @@
-import React from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import cn from 'classnames';
 
-import { ITutorData } from '../../shared/types/userData';
+import { ITutorData, navOptions } from '../../shared/types/userData';
 import TelegramBlock from '../../shared/ui/telegramBlock';
 import UserCard from '../../widgets/UserCard';
-import { mockTutors } from './mockData';
+import { getTutors } from '../../widgets/UserCard/fakeApi/userApi';
 
 import styles from './index.module.scss';
 
-enum navOptions {
-  myTutors = 'Мои репетиторы',
-  myRequests = 'Заявки',
-  tutorRequests = 'Запросы'
-}
-
-const StudentRequests: React.FC = () => {
-  const [active, setActive] = React.useState(navOptions.myTutors);
+const StudentRequests: FC = () => {
+  const [active, setActive] = useState(navOptions.myTutors);
   const onClick = (value: navOptions) => () => setActive(value);
-  const [count, setCount] = React.useState(
-    Object.values(navOptions).map(() => 0)
-  );
-  React.useEffect(() => {
-    setCount(Object.values(navOptions).map(() => 0));
+  const [tutorsList, setTutorsList] = useState<ITutorData[]>([]);
+  const [count, setCount] = useState([0, 0, 0]);
+  const [visible, setVisible] = useState(2);
+
+  useEffect(() => {
+    getTutors().then((res) => {
+      res.map((_, index) => {
+        setCount((prev) => {
+          prev[index] = res.length;
+          return prev;
+        });
+      });
+      setTutorsList(res);
+    });
   }, []);
 
-  const filter = () => mockTutors.filter((item) => item.status === active);
+  // temp
+  const filter = () => tutorsList;
 
   return (
     <>
@@ -54,11 +58,21 @@ const StudentRequests: React.FC = () => {
           <TelegramBlock />
         </aside>
         <section className={styles.content}>
-          {filter().map((tutor: ITutorData) => (
-            <article key={tutor.id} className={styles.content__item}>
-              <UserCard role="student" tutorData={tutor} handleSubmit={true} />
-            </article>
-          ))}
+          {filter()
+            .slice(0, visible)
+            .map((tutor: ITutorData) => (
+              <article key={tutor.id} className={styles.content__item}>
+                <UserCard role="tutor" navOption={active} tutorData={tutor} />
+              </article>
+            ))}
+          {visible < count[0] && (
+            <button
+              className={styles.content__btn}
+              onClick={() => setVisible((prev) => prev + 5)}
+            >
+              <p>Показать ещё</p>
+            </button>
+          )}
         </section>
       </section>
     </>

@@ -1,4 +1,4 @@
-import { IUserData } from '../../shared/types/userData';
+import { IUserData, navOptions } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
 import StudentProfile from '../UserProfile/StudentProfile';
 import TutorProfile from '../UserProfile/TutorProfile';
@@ -9,22 +9,33 @@ const UserCard: React.FC<IUserData> = ({
   role,
   tutorData,
   studentData,
-  handleSubmit
+  handleSubmit,
+  navOption
 }) => {
-  return role === 'student' || role === 'unAuthorized' ? ( // Карточка репетитора
+  const isMyTutors = navOption === navOptions.myTutors;
+  const isMyRequests = navOption === navOptions.myRequests;
+  const isTutorRequests = navOption === navOptions.tutorRequests;
+  return role === 'tutor' || role === 'unAuthorized' ? (
+    // Карточка репетитора
     <div className={styles.card}>
       {tutorData ? <TutorProfile {...tutorData} /> : <p>Репетитор не найден</p>}
       <div className={styles.card__buttons}>
         <Button text="Подробнее" variant="white" />
-        {role === 'student' &&
-          (!handleSubmit ? (
-            <Button text="Связаться" variant="purple" />
-          ) : (
-            <Button text="Отменить заявку" variant="red" />
-          ))}
+        {!isMyTutors && (
+          <Button
+            text={
+              !navOption
+                ? 'Связаться'
+                : isTutorRequests
+                  ? 'Принять'
+                  : 'Отменить заявку'
+            }
+            variant={!isMyRequests ? 'purple' : 'red'}
+          />
+        )}
       </div>
     </div>
-  ) : role === 'tutor' ? (
+  ) : role === 'student' ? (
     // Карточка ученика
     <div className={styles.card}>
       {studentData ? (

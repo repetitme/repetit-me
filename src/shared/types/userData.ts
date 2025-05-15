@@ -27,9 +27,16 @@ export interface IStudentData extends IUserBaseData {
 
 type TUserRole = 'student' | 'tutor' | 'unAuthorized' | 'card';
 
+export enum navOptions {
+  myTutors = 'Мои репетиторы',
+  myRequests = 'Заявки',
+  tutorRequests = 'Запросы'
+}
+
 export interface IUserData {
   role: TUserRole;
   tutorData?: ITutorData;
   studentData?: IStudentData;
   handleSubmit?: boolean; // !!! Временный пропс, его наличие предполагает, что сабмит по заявке репетитору от ученика отправлен. Его видит репетитор и ученик у себя
+  navOption?: navOptions;
 }
