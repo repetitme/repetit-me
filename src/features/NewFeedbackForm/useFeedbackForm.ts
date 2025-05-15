@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 
-const MIN_LENGTH = 5;
-export const MAX_LENGTH = 500;
+const MIN_LENGTH = 30;
+export const MAX_LENGTH = 1000;
 
 const validateFeedback = (content: string) => {
   const trimmedLength = content.trim().length;

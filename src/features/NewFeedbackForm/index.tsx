@@ -1,13 +1,10 @@
-
-
 import Button from '../../shared/ui/button';
 import StarRating from '../../shared/ui/starRating';
+import { MAX_LENGTH, useFeedbackForm } from './useFeedbackForm';
 
 import styles from '../NewFeedbackForm/index.module.scss';
 
 import { NewFeedbackFormProps } from './type';
-import { MAX_LENGTH, useFeedbackForm } from './useFeedbackForm'
-
 
 const NewFeedbackForm: React.FC<NewFeedbackFormProps> = ({ toggleVisible }) => {
   const {
@@ -16,13 +13,12 @@ const NewFeedbackForm: React.FC<NewFeedbackFormProps> = ({ toggleVisible }) => {
     error,
     onRatingChange,
     handleContentChange,
-    isButtonDisabled,
+    isButtonDisabled
   } = useFeedbackForm();
 
-  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: добавить отправку отзыва на сервер 
+    // TODO: добавить отправку отзыва на сервер
     toggleVisible();
   };
 
