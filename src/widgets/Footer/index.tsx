@@ -13,7 +13,7 @@ import { TfakeUser } from './type';
 const Footer: React.FC<TfakeUser> = ({ role }) => {
   return (
     <footer className={styles.footer}>
-      <div className={styles.footer__top}>
+      {role === 'unauthorized' && <div className={styles.footer__top}>
         <p className={styles.telegram__text}>
           Переходите в&nbsp;
           <span className={styles['telegram__text--gradient']}>Telegram</span> —
@@ -27,7 +27,7 @@ const Footer: React.FC<TfakeUser> = ({ role }) => {
           icon={telegram}
         />
         <img src={phone} alt="Phone" className={styles.phone__image} />
-      </div>
+      </div>}
       <div className={styles.footer__bottom}>
         <img
           src={logo}

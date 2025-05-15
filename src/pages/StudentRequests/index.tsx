@@ -32,7 +32,7 @@ const StudentRequests: FC = () => {
   const filter = () => tutorsList;
 
   return (
-    <>
+    <main className={styles.wrapper}>
       <h2 className={styles.title}>Мои заявки</h2>
       <section className={styles.container}>
         <aside className={styles.sidebar}>
@@ -75,7 +75,7 @@ const StudentRequests: FC = () => {
           )}
         </section>
       </section>
-    </>
+    </main>
   );
 };
 

@@ -1,3 +1,7 @@
+.wrapper {
+  padding: 44px 122px 0;
+}
+
 .title {
   font-weight: 500;
   font-size: 32px;
@@ -10,6 +14,7 @@
   grid-template-columns: 376px 1fr;
   gap: 28px;
   inline-size: 100%;
+  margin-block-end: 92px;
 
   button {
     border: none;
