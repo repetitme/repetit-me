@@ -25,13 +25,19 @@ export interface IStudentData extends IUserBaseData {
   workingStatus?: string; // Например, "занятия еще не начались"
 }
 
-type TUserRole = 'student' | 'tutor' | 'unAuthorized' | 'card';
-
 export enum navOptions {
   myTutors = 'Мои репетиторы',
   myRequests = 'Заявки',
   tutorRequests = 'Запросы'
 }
+
+export interface IStudentProfile extends IStudentData {
+  requests: {
+    [key in navOptions]: { ids: string[] }; // Массив id репетиторов в профиле ученика
+  };
+}
+
+type TUserRole = 'student' | 'tutor' | 'unAuthorized' | 'card';
 
 export interface IUserData {
   role: TUserRole;

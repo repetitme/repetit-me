@@ -2,34 +2,54 @@ import { FC, useEffect, useState } from 'react';
 
 import cn from 'classnames';
 
-import { ITutorData, navOptions } from '../../shared/types/userData';
+import {
+  IStudentProfile,
+  ITutorData,
+  navOptions
+} from '../../shared/types/userData';
 import TelegramBlock from '../../shared/ui/telegramBlock';
 import UserCard from '../../widgets/UserCard';
-import { getTutors } from '../../widgets/UserCard/fakeApi/userApi';
+import { mockStudentProfile } from '../../widgets/UserCard/fakeApi/mockData';
+import {
+  getStudentProfile,
+  getTutors
+} from '../../widgets/UserCard/fakeApi/userApi';
 
 import styles from './index.module.scss';
 
 const StudentRequests: FC = () => {
+  const requests = Object.values(navOptions);
   const [active, setActive] = useState(navOptions.myTutors);
   const onClick = (value: navOptions) => () => setActive(value);
-  const [tutorsList, setTutorsList] = useState<ITutorData[]>([]);
+  const [tutorsList, setTutorsList] = useState<Array<ITutorData[]>>([
+    [],
+    [],
+    []
+  ]);
   const [count, setCount] = useState([0, 0, 0]);
   const [visible, setVisible] = useState(2);
 
-  useEffect(() => {
-    getTutors().then((res) => {
-      res.map((_, index) => {
-        setCount((prev) => {
-          prev[index] = res.length;
-          return prev;
-        });
-      });
-      setTutorsList(res);
-    });
-  }, []);
+  console.log(tutorsList);
 
-  // temp
-  const filter = () => tutorsList;
+  useEffect(() => {
+    getStudentProfile(mockStudentProfile[0].id).then(
+      (profile: IStudentProfile | undefined) => {
+        if (profile && profile.requests) {
+          setCount(
+            requests.map((value) => profile.requests?.[value].ids.length || 0)
+          );
+        }
+        getTutors().then((tutors) => {
+          const filtered = requests.map((key) => {
+            return tutors.filter((tutor) => {
+              return profile?.requests?.[key].ids.includes(tutor.id);
+            });
+          });
+          setTutorsList(filtered);
+        });
+      }
+    );
+  }, []);
 
   return (
     <main className={styles.wrapper}>
@@ -58,7 +78,7 @@ const StudentRequests: FC = () => {
           <TelegramBlock />
         </aside>
         <section className={styles.content}>
-          {filter()
+          {tutorsList[Object.values(navOptions).indexOf(active)]
             .slice(0, visible)
             .map((tutor: ITutorData) => (
               <article key={tutor.id} className={styles.content__item}>

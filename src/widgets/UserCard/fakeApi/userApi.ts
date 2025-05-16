@@ -1,5 +1,9 @@
-import { IStudentData, ITutorData } from '../../../shared/types/userData';
-import { mockStudents, mockTutors } from './mockData';
+import {
+  IStudentData,
+  IStudentProfile,
+  ITutorData
+} from '../../../shared/types/userData';
+import { mockStudentProfile, mockStudents, mockTutors } from './mockData';
 
 export const getTutors = (): Promise<ITutorData[]> => {
   return new Promise((resolve, reject) => {
@@ -42,6 +46,18 @@ export const getStudent = (id: string) => {
     setTimeout(() => {
       if (mockStudents) {
         resolve(mockStudents.find((student) => student.id === id));
+      } else {
+        reject(new Error('Не удалось загрузить данные ученика'));
+      }
+    }, 250);
+  });
+};
+
+export const getStudentProfile = (id: string) => {
+  return new Promise<IStudentProfile | undefined>((resolve, reject) => {
+    setTimeout(() => {
+      if (mockStudentProfile) {
+        resolve(mockStudentProfile.find((student) => student.id === id));
       } else {
         reject(new Error('Не удалось загрузить данные ученика'));
       }

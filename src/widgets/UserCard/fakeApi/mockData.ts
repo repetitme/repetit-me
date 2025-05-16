@@ -8,7 +8,11 @@ import Aleksandr1 from '../../../assets/images/UserCardIcons/TutorImg/tutor_alek
 import Aleksandr2 from '../../../assets/images/UserCardIcons/TutorImg/tutor_aleksandr-2.png';
 import Aleksandra1 from '../../../assets/images/UserCardIcons/TutorImg/tutor_aleksandra-1.png';
 import Vyacheslav from '../../../assets/images/UserCardIcons/TutorImg/tutor_vyacheslav-1.png';
-import { IStudentData, ITutorData } from '../../../shared/types/userData';
+import {
+  IStudentData,
+  IStudentProfile,
+  ITutorData
+} from '../../../shared/types/userData';
 
 export const mockTutors: ITutorData[] = [
   {
@@ -126,5 +130,27 @@ export const mockStudents: IStudentData[] = [
     subjects: ['Русский язык'],
     studentAudience: ['9-11 класс'],
     purpose: ['Подготовка к ЕГЭ', 'Повышение успеваемости']
+  }
+];
+
+export const mockStudentProfile: IStudentProfile[] = [
+  {
+    id: uuidv4(),
+    name: 'Виктор',
+    image: Victor,
+    importantInfo: 437,
+    additionalInfo: 'Имеется возможность заниматься только в ПН, СР с 18:00 ',
+    activityStatus: 0,
+    lessonsCompleted: 2,
+    price: '2000-2500 ₽/час',
+    subjects: ['Математика'],
+    studentAudience: ['9-11 класс'],
+    purpose: ['Подготовка к ЕГЭ', 'Повышение успеваемости'],
+    workingStatus: 'Занятия начались',
+    requests: {
+      'Мои репетиторы': { ids: [mockTutors[0].id, mockTutors[1].id] },
+      Заявки: { ids: [mockTutors[2].id, mockTutors[3].id] },
+      Запросы: { ids: [mockTutors[3].id] }
+    }
   }
 ];
