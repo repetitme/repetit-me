@@ -13,7 +13,7 @@ export const getTutors = (): Promise<ITutorData[]> => {
       } else {
         reject(new Error('Не удалось загрузить данные репетиторов'));
       }
-    }, 250);
+    }, 2500);
   });
 };
 

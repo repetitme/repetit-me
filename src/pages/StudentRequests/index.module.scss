@@ -54,6 +54,20 @@
   &__item_active {
     color: var(--clr-primary-default);
     font-weight: 700;
+    pointer-events: none;
+  }
+
+  &__count {
+    opacity: 0;
+    transform: translate(0, -10px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  &__count_active {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -63,6 +77,10 @@
   display: flex;
   flex-direction: column;
   gap: 28px;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  opacity: 1;
 
   &__item {
     background-color: var(--clr-main);
@@ -75,9 +93,22 @@
     color: var(--clr-primary-default);
     font-size: 20px;
     text-decoration: underline;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: transform 0.5s ease;
 
     & p {
       font-weight: 700;
     }
   }
+
+  &__btn_active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loading {
+  opacity: 0;
+  transform: translateY(-10px);
 }

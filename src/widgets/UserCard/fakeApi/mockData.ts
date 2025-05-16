@@ -77,6 +77,64 @@ export const mockTutors: ITutorData[] = [
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 5.0,
     link: '#!'
+  },
+  {
+    id: uuidv4(),
+    name: 'Александра Александровна Иванова',
+    description: `Индивидуальный подход: Каждый ученик уникален, и я адаптирую свои методы 
+    обучения под конкретные потребности, интересы и цели.`,
+    image: Aleksandra1,
+    status: 'Частный преподаватель',
+    experienceYears: 5,
+    price: '2100 ₽/50мин',
+    subjects: ['Математика', 'Физика'],
+    studentAudience: ['5-8 класс', '9-11 класс'],
+    purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
+    rating: 2.9,
+    link: '#!'
+  },
+  {
+    id: uuidv4(),
+    name: 'Эдуард Эдуардович Эдуардов',
+    description: `Здравствуйте! Меня зовут Александр, и я репетитор по математике с 5-летним опытом работы, Каждый ученик уникален, и я адаптирую свои методы 
+    обучения под конкретные потребности, интересы и цели.`,
+    image: Aleksandr2,
+    status: 'Частный преподаватель',
+    experienceYears: 10,
+    price: '2100 ₽/50мин',
+    subjects: ['Английский язык'],
+    studentAudience: ['5-8 класс', '9-11 класс'],
+    purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
+    rating: 5.0,
+    link: '#!'
+  },
+  {
+    id: uuidv4(),
+    name: 'Иван Иванович Иванов',
+    description: `Каждый ученик уникален`,
+    image: Aleksandra1,
+    status: 'Частный преподаватель',
+    experienceYears: 5,
+    price: '2100 ₽/50мин',
+    subjects: ['Математика', 'Физика'],
+    studentAudience: ['5-8 класс', '9-11 класс'],
+    purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
+    rating: 4.9,
+    link: '#!'
+  },
+  {
+    id: uuidv4(),
+    name: 'Олег Олегович Олегов',
+    description: `Здравствуйте!`,
+    image: Aleksandr2,
+    status: 'Частный преподаватель',
+    experienceYears: 10,
+    price: '2100 ₽/50мин',
+    subjects: ['Английский язык'],
+    studentAudience: ['5-8 класс', '9-11 класс'],
+    purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
+    rating: 5.0,
+    link: '#!'
   }
 ];
 
@@ -150,7 +208,14 @@ export const mockStudentProfile: IStudentProfile[] = [
     requests: {
       'Мои репетиторы': { ids: [mockTutors[0].id, mockTutors[1].id] },
       Заявки: { ids: [mockTutors[2].id, mockTutors[3].id] },
-      Запросы: { ids: [mockTutors[3].id] }
+      Запросы: {
+        ids: [
+          mockTutors[4].id,
+          mockTutors[5].id,
+          mockTutors[6].id,
+          mockTutors[7].id
+        ]
+      }
     }
   }
 ];
