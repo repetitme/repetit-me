@@ -75,11 +75,10 @@ const useStudentRequests = () => {
 
   useEffect(() => {
     setTimeout(() => {
-    listHeight === undefined
-      ? setListHeight(1500)
-      : setListHeight(listHeight + 1400);
-    }
-    , 10);
+      listHeight === undefined
+        ? setListHeight(1500)
+        : setListHeight(listHeight + 1400);
+    }, 10);
   }, [visible, active]);
 
   return {
