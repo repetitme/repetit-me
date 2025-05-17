@@ -35,12 +35,8 @@ const Popup: React.FC<PopupProps> = ({
               <img src={closeIcon} alt="иконка закрытия попапа" />
             </button>
           )}
-          {title && <h2 className={styles.popup__title}>{title}</h2>}
-          {text && (
-            <div className={styles.popup__text}>
-              <p className={styles.popup__p}>{text}</p>
-            </div>
-          )}
+          <h2 className={styles.popup__title}>{title}</h2>
+          <div className={styles.popup__text}>{text}</div>
           <div className={styles.popup__buttons}>
             {showCancelButton && cancelButtonText && (
               <button className={styles.popup__button} onClick={onClose}>

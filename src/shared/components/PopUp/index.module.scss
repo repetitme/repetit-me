@@ -49,11 +49,9 @@
     font-family: var(--ffm-default);
     color: var(--clr-black);
     margin-block-end: 6px;
-  }
-
-  &__p {
     white-space: pre-line;
   }
+
 
   &__buttons {
     display: flex;
