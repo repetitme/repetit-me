@@ -49,6 +49,10 @@
     block-size: 48px;
     cursor: pointer;
     transition: all 0.4s ease;
+
+    &:hover {
+      color: var(--clr-primary-hover);
+    }
   }
 
   &__item_active {
