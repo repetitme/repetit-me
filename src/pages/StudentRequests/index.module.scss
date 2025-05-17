@@ -79,8 +79,10 @@
   gap: 28px;
   transition:
     opacity 0.3s ease,
-    transform 0.3s ease;
+    transform 0.3s ease,
+    max-height 1s ease;
   opacity: 1;
+  overflow: hidden;
 
   &__item {
     background-color: var(--clr-main);
