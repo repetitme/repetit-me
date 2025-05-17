@@ -37,7 +37,7 @@ const useStudentRequests = () => {
     setLoaded({ ...loadedState, content: false, btn: false });
     setActive(value);
     setListHeight(undefined);
-    setVisible(2);
+    setVisible(3);
     setTimeout(() => {
       setLoaded(loadedState);
     }, 200);
@@ -74,9 +74,12 @@ const useStudentRequests = () => {
   }, []);
 
   useEffect(() => {
+    setTimeout(() => {
     listHeight === undefined
       ? setListHeight(1500)
       : setListHeight(listHeight + 1400);
+    }
+    , 10);
   }, [visible, active]);
 
   return {
