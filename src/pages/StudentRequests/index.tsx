@@ -50,6 +50,11 @@ const StudentRequests: React.FC = () => {
           </nav>
           <TelegramBlock />
         </aside>
+        {!loaded.count && (
+          <div className={styles.loader}>
+            <div className={styles.loader__spinner} />
+          </div>
+        )}
         <section
           className={cn(styles.content, {
             [styles.loading]: !loaded.content
@@ -70,7 +75,7 @@ const StudentRequests: React.FC = () => {
               className={cn(styles.content__btn, {
                 [styles.content__btn_active]: loaded.btn
               })}
-              onClick={() => setVisible((prev) => prev + 5)}
+              onClick={() => setVisible((prev) => prev + 3)}
             >
               <p>Показать ещё</p>
             </button>

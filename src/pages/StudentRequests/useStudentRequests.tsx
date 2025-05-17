@@ -31,7 +31,7 @@ const useStudentRequests = () => {
     []
   ]);
   const [count, setCount] = useState(['', '', '']);
-  const [visible, setVisible] = useState(2);
+  const [visible, setVisible] = useState(3);
   const onClick = (value: navOptions) => () => {
     if (active === value) return;
     setLoaded({ ...loadedState, content: false, btn: false });
@@ -75,8 +75,8 @@ const useStudentRequests = () => {
 
   useEffect(() => {
     listHeight === undefined
-      ? setListHeight(1200)
-      : setListHeight(listHeight * 2);
+      ? setListHeight(1500)
+      : setListHeight(listHeight + 1400);
   }, [visible, active]);
 
   return {

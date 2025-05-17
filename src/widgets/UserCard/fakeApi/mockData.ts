@@ -206,7 +206,18 @@ export const mockStudentProfile: IStudentProfile[] = [
     purpose: ['Подготовка к ЕГЭ', 'Повышение успеваемости'],
     workingStatus: 'Занятия начались',
     requests: {
-      'Мои репетиторы': { ids: [mockTutors[0].id, mockTutors[1].id, mockTutors[2].id, mockTutors[3].id] },
+      'Мои репетиторы': {
+        ids: [
+          mockTutors[0].id,
+          mockTutors[1].id,
+          mockTutors[2].id,
+          mockTutors[3].id,
+          mockTutors[4].id,
+          mockTutors[5].id,
+          mockTutors[6].id,
+          mockTutors[7].id
+        ]
+      },
       Заявки: { ids: [mockTutors[2].id, mockTutors[3].id] },
       Запросы: {
         ids: [
