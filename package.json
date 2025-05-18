@@ -9,7 +9,9 @@
     "lint": "eslint .",
     "stylelint": "stylelint **/*.scss",
     "format": "prettier --write .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "docker: build": "docker build -t repetit-me-frontend .",
+    "docker: run": "docker run -p 8080:80 repetit-me-frontend"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.76.0",
