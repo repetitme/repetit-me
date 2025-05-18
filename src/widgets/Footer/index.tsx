@@ -1,5 +1,7 @@
 import React from 'react';
 
+import classNames from 'classnames';
+
 import phone from '../../assets/images/phone_with_qr-code.svg';
 import logo from '../../assets/images/repetit-me_logo.svg';
 import telegram from '../../assets/images/telegram_icon.svg';
@@ -38,8 +40,14 @@ const Footer: React.FC<TfakeUser> = ({ role, goTelegram }) => {
           alt="Логотип repetitMe"
           className={styles.repetitme__logo}
         />
-        <div className={styles['footer__bottom--content']}>
-          {role !== 'unauthorized' && (
+        <div
+          className={classNames(
+            styles['footer__bottom--content'],
+            role !== 'unauthorized' &&
+              styles['footer__bottom--content__correct']
+          )}
+        >
+          {role === 'unauthorized' && (
             <div className={styles.links}>
               <a className={styles.links_item} href="#student">
                 Ученику
@@ -49,7 +57,12 @@ const Footer: React.FC<TfakeUser> = ({ role, goTelegram }) => {
               </a>
             </div>
           )}
-          <div className={styles.contact}>
+          <div
+            className={classNames(
+              styles.contact,
+              role !== 'unauthorized' && styles.contact__correct
+            )}
+          >
             Связаться с нами: <br />
             <a className={styles.underline}>Менеджер в Telegram</a>
           </div>

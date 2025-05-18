@@ -4,13 +4,16 @@
   grid-template-rows: auto 1fr;
   gap: 32px 20px;
   justify-items: center;
-  max-width: 1200px;
+  max-inline-size: 1200px;
   margin-inline: auto;
   margin-block: 31px 94px;
 
   &__cards {
+    display: flex;
+    flex-direction: column;
     grid-column: 2 / 3;
     grid-row: 1 / -1;
+    row-gap: 32px;
   }
 
   &__button {
@@ -39,5 +42,13 @@
       border-bottom: 12px solid transparent;
       border-radius: 1px;
     }
+  }
+
+  &__filters {
+    inline-size: 387px;
+  }
+
+  &__link {
+    inline-size: 100%;
   }
 }

@@ -3,7 +3,9 @@
 .filters {
   font-family: var(--ffm-default, courier, monospace);
   font-size: 16px;
-  max-inline-size: 339px;
+  background-color: var(--clr-main);
+  border-radius: 20px;
+  padding: var(--border-radius-chat);
 
   &__form {
     display: flex;

@@ -11,7 +11,7 @@ const UserCard: React.FC<IUserData> = ({
   studentData,
   handleSubmit
 }) => {
-  return role === 'student' || role === 'unAuthorized' ? ( // Карточка репетитора
+  return role === 'student' || role === 'unauthorized' ? ( // Карточка репетитора
     <div className={styles.card}>
       {tutorData ? <TutorProfile {...tutorData} /> : <p>Репетитор не найден</p>}
       <div className={styles.card__buttons}>
@@ -24,7 +24,7 @@ const UserCard: React.FC<IUserData> = ({
           ))}
       </div>
     </div>
-  ) : role === 'tutor' ? (
+  ) : role === 'teacher' ? (
     // Карточка ученика
     <div className={styles.card}>
       {studentData ? (
