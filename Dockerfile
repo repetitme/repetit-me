@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY package.json yarn.lock ./
 
-RUN yarn install && yarn add --dev esbuild@latest --force
+RUN yarn install --frozen-lockfile
 
 COPY . .
 
