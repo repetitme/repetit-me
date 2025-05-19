@@ -10,7 +10,7 @@
     "stylelint": "stylelint **/*.scss",
     "format": "prettier --write .",
     "preview": "vite preview",
-    "docker:build": "rimraf dist && docker build -t repetit-me-frontend .",
+    "docker:build": "docker build -t repetit-me-frontend .",
     "docker:run": "docker run --name repetit-me -p 8080:80 repetit-me-frontend"
   },
   "dependencies": {
@@ -41,7 +41,6 @@
     "globals": "^15.14.0",
     "postcss": "^8.5.2",
     "prettier": "^3.5.1",
-    "rimraf": "^6.0.1",
     "sass": "^1.85.0",
     "stylelint": "^16.14.1",
     "stylelint-config-standard-scss": "^14.0.0",
