@@ -67,7 +67,9 @@ yarn docker:run
 ```
 docker stop repetit-me
 ```
-или 
+
+или
+
 ```
 ctrl+c в консоли
 ```
