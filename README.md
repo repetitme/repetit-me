@@ -46,14 +46,16 @@ yarn dev
 yarn build
 ```
 
-## Запуск приложения в Docker:
+## Запуск в Docker:
 
 1. Сборка Docker-образа
+
 ```
 yarn docker:build
 ```
 
 2. Запуск контейнера
+
 ```
 yarn docker:run
 ```
@@ -61,16 +63,19 @@ yarn docker:run
 3. Переходим по адресу http://localhost:8080
 
 4. (Опционально) Остановить контейнер
+
 ```
 docker stop repetit-me или ctrl+c в консоли
 ```
 
 5. (Опционально) Удалить контейнер
+
 ```
 docker rm repetit-me
 ```
 
 5. (Опционально) Удалить образ
+
 ```
 docker rmi repetit-me-frontend
 ```
