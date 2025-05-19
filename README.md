@@ -66,8 +66,9 @@ yarn docker:run
 
 ```
 docker stop repetit-me
-```
+
 или ctrl+c в консоли
+```
 
 5. (Опционально) Удалить контейнер
 
