@@ -1,3 +1,5 @@
+@import '../../assets/styles/mixins/flexCenter.scss';
+
 .catalog {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -45,10 +47,56 @@
   }
 
   &__filters {
+    grid-column: 1 / 2;
     inline-size: 387px;
   }
 
   &__link {
+    grid-column: 1 / 2;
     inline-size: 100%;
+  }
+}
+
+.loader {
+  position: fixed;
+  top: 40%;
+  left: 65%;
+  inline-size: 48px;
+  block-size: 48px;
+  border-radius: 50%;
+
+  animation: rotate 1s linear infinite;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0px;
+    border-radius: 50%;
+    border: 5px solid var(--clr-primary-default);
+    animation: prixClipFix 2s linear infinite;
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+  }
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  }
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
   }
 }

@@ -29,14 +29,6 @@ const TutorCatalogPage = () => {
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const tooltipRef = useClickOutside(() => setTooltipVisible(false));
 
-  if (loadingTutors) {
-    return <div>Loading...</div>;
-  }
-
-  if (errorTutors) {
-    return <div>{errorTutors}</div>;
-  }
-
   const handleShowMore = () => {
     setVisibleCount((prevCount) => prevCount + 5);
   };
@@ -47,23 +39,31 @@ const TutorCatalogPage = () => {
     <>
       <main className={styles.catalog}>
         <div className={styles.catalog__cards}>
-          {tooltipVisible && (
-            <h3 className={styles.catalog__search_hint}>
-              Чтобы найти специалиста, заполните детали заказа
-            </h3>
-          )}
+          {loadingTutors ? (
+            <div className={styles.loader} />
+          ) : errorTutors ? (
+            <div>{errorTutors}</div>
+          ) : (
+            <>
+              {tooltipVisible && (
+                <h3 className={styles.catalog__search_hint}>
+                  Чтобы найти специалиста, заполните детали заказа
+                </h3>
+              )}
 
-          {displayedTutors.map((tutor) => (
-            <UserCard key={tutor.id} role={role} tutorData={tutor} />
-          ))}
-          {tutors.length > visibleCount && (
-            <Button
-              text="Показать еще"
-              variant="transparent"
-              size="large"
-              className={styles.catalog__button}
-              onClick={handleShowMore}
-            />
+              {displayedTutors.map((tutor) => (
+                <UserCard key={tutor.id} role={role} tutorData={tutor} />
+              ))}
+              {tutors.length > visibleCount && (
+                <Button
+                  text="Показать еще"
+                  variant="transparent"
+                  size="large"
+                  className={styles.catalog__button}
+                  onClick={handleShowMore}
+                />
+              )}
+            </>
           )}
         </div>
         <div className={styles.catalog__filters} ref={tooltipRef}>
