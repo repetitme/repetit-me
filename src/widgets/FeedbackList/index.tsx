@@ -1,4 +1,3 @@
-
 import sortIcon from '../../assets/icons/iconSorting.svg';
 import pencilIcon from '../../assets/icons/pencilIcon.svg';
 import Button from '../../shared/ui/button';
@@ -11,11 +10,10 @@ import styles from './index.module.scss';
 import { IFeedbackListProps } from './type';
 
 const FeedbackList: React.FC<IFeedbackListProps> = ({ updateModalData }) => {
-  const { sortedFeedbacks, isAscending, toggleSort } =
-    useFeedbackList({
-      initialData: feedbackData,
-      onDataChange: updateModalData
-    });
+  const { sortedFeedbacks, isAscending, toggleSort } = useFeedbackList({
+    initialData: feedbackData,
+    onDataChange: updateModalData
+  });
 
   return (
     <section className={styles.section}>

@@ -1,17 +1,18 @@
-FROM node:20
+FROM node:23-alpine AS build
 
 WORKDIR /app
 
-COPY package.json ./
-COPY yarn.lock ./
+COPY package.json yarn.lock ./
 
-RUN yarn install
+RUN yarn install && yarn add --dev esbuild@latest --force
 
 COPY . .
 
 RUN yarn build
 
-FROM nginx:latest
+FROM nginx:alpine
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=build /app/dist /usr/share/nginx/html
 
