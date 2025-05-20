@@ -1,0 +1,7 @@
+@use '../../../../assets/styles/mixins/formField.scss' as *;
+
+.textarea {
+  @include form-field;
+  resize: vertical;
+  min-height: 100px;
+}

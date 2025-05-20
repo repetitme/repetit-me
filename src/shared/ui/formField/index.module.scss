@@ -1,0 +1,28 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: var(--ffm-default);
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.label {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.error {
+  position: absolute;
+  bottom: -28px;
+  left: 0;
+  font-family: var(--ffm-default);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--clr-secondary-default);
+  min-height: 20px;
+  margin: 0;
+}
