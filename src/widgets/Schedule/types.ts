@@ -1,7 +1,7 @@
 export type TSchedule = Record<string, Record<string, boolean>>;
 
 export type TOnChange = {
-  onChange: (schedule:Record<string, string[]>) => void;
+  onChange: (schedule: Record<string, string[]>) => void;
 };
 
 export interface TUseSchedule {

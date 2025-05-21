@@ -9,7 +9,7 @@ const useSchedule = ({ onChange }: TOnChange): TUseSchedule => {
     const cleanedSchedule: { [key: string]: string[] } = {};
 
     Object.entries(schedule).forEach(([day, times]) => {
-      const cleanedTimes = Object.keys(times)
+      const cleanedTimes = Object.keys(times);
       cleanedSchedule[day] = cleanedTimes;
     });
     onChange(cleanedSchedule);

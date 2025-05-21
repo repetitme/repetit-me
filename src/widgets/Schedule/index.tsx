@@ -4,10 +4,11 @@ import * as data from './data';
 import useSchedule from './useSchedule';
 
 import styles from './index.module.scss';
+
 import { TOnChange } from './types';
 
-const Schedule: React.FC<TOnChange> = ({onChange}) => {
-  const { schedule, time, handleChange } = useSchedule({onChange});
+const Schedule: React.FC<TOnChange> = ({ onChange }) => {
+  const { schedule, time, handleChange } = useSchedule({ onChange });
 
   return (
     <section className={styles.wrapper}>

@@ -39,7 +39,11 @@ export const routesConfig: IRoute[] = [
     path: '/test',
     element: (
       <div style={{ margin: '100px auto' }}>
-        <Schedule onChange={(value) => {console.log(value);}} />
+        <Schedule
+          onChange={(value) => {
+            console.log(value);
+          }}
+        />
       </div>
     ),
     auth: false
