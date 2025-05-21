@@ -17,13 +17,18 @@ const useSchedule = ({ onChange }: TOnChange): TUseSchedule => {
       },
       {}
     );
-    const onlyFreeTime: { [key: string]: string[] } = Object.entries(freeSchedule).reduce((acc, [day, times]) => {
-      const freeTimes = times.filter((time) => !schedule[day]?.[time]);
-      if (freeTimes.length > 0) {
-        acc[day] = freeTimes;
-      }
-      return acc;
-    } , {} as { [key: string]: string[] });
+    const onlyFreeTime: { [key: string]: string[] } = Object.entries(
+      freeSchedule
+    ).reduce(
+      (acc, [day, times]) => {
+        const freeTimes = times.filter((time) => !schedule[day]?.[time]);
+        if (freeTimes.length > 0) {
+          acc[day] = freeTimes;
+        }
+        return acc;
+      },
+      {} as { [key: string]: string[] }
+    );
     onChange(onlyFreeTime);
   }, [schedule]);
 
