@@ -1,10 +1,19 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 
-const useSchedule = () => {
-  const [schedule, setSchedule] = React.useState<
-    Record<string, Record<string, boolean>>
-  >({});
-  console.log(schedule);
+import { TOnChange, TSchedule, TUseSchedule } from './types';
+
+const useSchedule = ({ onChange }: TOnChange): TUseSchedule => {
+  const [schedule, setSchedule] = useState<TSchedule>({});
+
+  useEffect(() => {
+    const cleanedSchedule: { [key: string]: string[] } = {};
+
+    Object.entries(schedule).forEach(([day, times]) => {
+      const cleanedTimes = Object.keys(times)
+      cleanedSchedule[day] = cleanedTimes;
+    });
+    onChange(cleanedSchedule);
+  }, [schedule]);
 
   const handleChange = (day: string, time: string) => {
     setSchedule((prev) => ({
