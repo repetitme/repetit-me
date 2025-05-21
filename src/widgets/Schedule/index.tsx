@@ -8,7 +8,17 @@ import styles from './index.module.scss';
 import { TOnChange } from './types';
 
 const Schedule: React.FC<TOnChange> = ({ onChange }) => {
-  const { schedule, time, handleChange } = useSchedule({ onChange });
+  const {
+    schedule,
+    time,
+    pressedMouse,
+    active,
+    handleActive,
+    handleMouse,
+    handleChange
+  } = useSchedule({
+    onChange
+  });
 
   return (
     <section className={styles.wrapper}>
@@ -16,7 +26,14 @@ const Schedule: React.FC<TOnChange> = ({ onChange }) => {
         <h2 className={styles.title}>{data.description.title}</h2>
         <p className={styles.text}>{data.description.text}</p>
       </article>
-      <table className={styles.table}>
+      <table
+        onMouseDown={() => handleMouse(true)}
+        onMouseUp={() => {
+          handleMouse(false);
+        }}
+        onMouseLeave={() => handleMouse(false)}
+        className={styles.table}
+      >
         <thead>
           <tr>
             <th></th>
@@ -36,10 +53,22 @@ const Schedule: React.FC<TOnChange> = ({ onChange }) => {
               {time.map((time) => (
                 <td key={time + day}>
                   <input
+                    onMouseEnter={() => {
+                      if (pressedMouse) handleActive(day, time);
+                    }}
+                    onMouseDown={() => {
+                      handleMouse(true);
+                      handleActive(day, time);
+                    }}
                     className={styles.checkbox}
+                    style={{
+                      transform: active.includes(day + time) ? 'scale(1.1)' : ''
+                    }}
                     type="checkbox"
                     checked={!!schedule[day]?.[time]}
-                    onChange={() => handleChange(day, time)}
+                    onChange={() => {
+                      if (active.length !== 0) handleChange(day, time);
+                    }}
                   />
                 </td>
               ))}

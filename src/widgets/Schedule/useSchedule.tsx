@@ -4,6 +4,8 @@ import { TOnChange, TSchedule, TUseSchedule } from './types';
 
 const useSchedule = ({ onChange }: TOnChange): TUseSchedule => {
   const [schedule, setSchedule] = useState<TSchedule>({});
+  const [pressedMouse, setPressedMouse] = useState(false);
+  const [active, setActive] = useState<string[]>([]);
 
   useEffect(() => {
     const cleanedSchedule: { [key: string]: string[] } = {};
@@ -22,12 +24,30 @@ const useSchedule = ({ onChange }: TOnChange): TUseSchedule => {
     }));
   };
 
+  const handleActive = (day: string, time: string) => {
+    handleChange(day, time);
+    setActive((prev) => [...prev, day + time]);
+  };
+
+  const handleMouse = (pressed: boolean) => {
+    setPressedMouse(pressed);
+    setActive([]);
+  };
+
   const time: string[] = [];
   for (let i = 6; i <= 23; i++) {
     time.push(`${i}:00`);
   }
 
-  return { schedule, time, handleChange };
+  return {
+    schedule,
+    time,
+    pressedMouse,
+    active,
+    handleActive,
+    handleMouse,
+    handleChange
+  };
 };
 
 export default useSchedule;

@@ -82,6 +82,10 @@
   &:active {
     transform: scale(1.2);
   }
+
+  &:hover {
+    background-color: #d8f2d9;
+  }
 }
 
 .info {
