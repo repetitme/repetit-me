@@ -1,5 +1,6 @@
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
+import Schedule from '../../widgets/Schedule';
 
 import { IRoute } from './type';
 
@@ -32,6 +33,15 @@ export const routesConfig: IRoute[] = [
   {
     path: '*',
     element: <NotFoundPage />,
+    auth: false
+  },
+  {
+    path: '/test',
+    element: (
+      <div style={{ margin: '100px auto' }}>
+        <Schedule />
+      </div>
+    ),
     auth: false
   }
 ];
