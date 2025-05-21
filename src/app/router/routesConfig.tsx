@@ -41,7 +41,7 @@ export const routesConfig: IRoute[] = [
       <div style={{ margin: '100px auto' }}>
         <Schedule
           onChange={(value) => {
-            console.log(value);
+            console.log('Свободное время', value);
           }}
         />
       </div>

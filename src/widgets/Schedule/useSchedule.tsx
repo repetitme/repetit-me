@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import * as data from './data';
+
 import { TOnChange, TSchedule, TUseSchedule } from './types';
 
 const useSchedule = ({ onChange }: TOnChange): TUseSchedule => {
@@ -8,13 +10,21 @@ const useSchedule = ({ onChange }: TOnChange): TUseSchedule => {
   const [active, setActive] = useState<string[]>([]);
 
   useEffect(() => {
-    const cleanedSchedule: { [key: string]: string[] } = {};
-
-    Object.entries(schedule).forEach(([day, times]) => {
-      const cleanedTimes = Object.keys(times);
-      cleanedSchedule[day] = cleanedTimes;
-    });
-    onChange(cleanedSchedule);
+    const freeSchedule = data.week.reduce(
+      (acc: { [key: string]: string[] }, day) => {
+        acc[day] = [...time];
+        return acc;
+      },
+      {}
+    );
+    const onlyFreeTime: { [key: string]: string[] } = Object.entries(freeSchedule).reduce((acc, [day, times]) => {
+      const freeTimes = times.filter((time) => !schedule[day]?.[time]);
+      if (freeTimes.length > 0) {
+        acc[day] = freeTimes;
+      }
+      return acc;
+    } , {} as { [key: string]: string[] });
+    onChange(onlyFreeTime);
   }, [schedule]);
 
   const handleChange = (day: string, time: string) => {
