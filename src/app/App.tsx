@@ -1,5 +1,6 @@
 //import FeedbackList from '../widgets/FeedbackList';
 import StatCards from '../widgets/StatisticCards';
+import TutorDocuments from '../widgets/TutorDocuments';
 import AppRouter from './router/AppRouter';
 
 import '../assets/index.scss';
@@ -11,6 +12,7 @@ function App() {
     <>
       <AppRouter />
       <StatCards cards={cards} />
+      <TutorDocuments />
     </>
   );
 }

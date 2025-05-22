@@ -1,0 +1,36 @@
+.container {
+  padding: 32px;
+  max-width: 895px;
+  background-color: rgb(208 208 208);
+  border-radius: 20px;
+
+  &__title {
+    font-family: var(--ffm-default);
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  &__documents {
+    margin-top: 19px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    &_document {
+      position: relative;
+      cursor: pointer;
+    }
+
+    &_document:hover::after {
+      content: '';
+      position: absolute;
+      background-image: url('../../assets/icons/search.svg');
+      top: calc((100% / 2) - 18px);
+      left: calc((100% / 2) - 18px);
+      inline-size: 36px;
+      block-size: 36px;
+    }
+  }
+}
