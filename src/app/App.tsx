@@ -1,15 +1,19 @@
 import AuthForm from '../features/auth/form';
+import ReviewList from '../shared/components/SortByDate';
+import VideoStart from '../widgets/VideoStart';
 
 import '../assets/index.scss';
-import ReviewList from '../shared/components/SortByDate';
 
 function App() {
-  return (<>
-    <ReviewList/>
-    <div className="App">
-      <AuthForm login={false} />
-    </div>
- </> );
+  return (
+    <>
+      <ReviewList />
+      <div className="App">
+        <AuthForm login={false} />
+      </div>
+      <VideoStart />
+    </>
+  );
 }
 
 export default App;

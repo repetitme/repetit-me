@@ -1,0 +1,45 @@
+.container {
+  padding: 32px;
+  max-width: 895px;
+  background-color: rgb(208 208 208);
+  border-radius: 20px;
+
+  &__title {
+    font-family: var(--ffm-default);
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  &__videos {
+    margin-top: 19px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    &_video {
+      position: relative;
+      cursor: pointer;
+      inline-size: 328px;
+      block-size: 136px;
+      background-size: contain;
+
+      &_file {
+        inline-size: 100%;
+        block-size: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &_video:hover::after {
+      content: '';
+      position: absolute;
+      background-image: url('../../assets/icons/playerIcon.svg');
+      top: calc((100% / 2) - 20px);
+      left: calc((100% / 2) - 20px);
+      inline-size: 40px;
+      block-size: 40px;
+    }
+  }
+}
