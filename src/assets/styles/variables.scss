@@ -21,33 +21,21 @@
   --clr-2: #eee;
   --clr-3: #d1d4db;
   --clr-4: #858585;
-  // grey
-  --clr-1: #f5f5f7;
-  --clr-2: #eee;
-  --clr-3: #d1d4db;
-  --clr-4: #858585;
+  --clr-5: #cfdadc;
+  --clr-6: #85919d;
 
   // type
   --clr-primary-default: #6757f1;
   --clr-primary-pressed: #2e276c;
   --clr-primary-hover: #5246c1;
-  --clr-primary-disabled: #eee;
-  --clr-secondary-default: #f04040;
-  --clr-secondary-pressed: #904040;
-  --clr-secondary-hover: #b04040;
-  --clr-secondary-disabled: #be9999;
-  // type
-  --clr-primary-default: #6757f1;
-  --clr-primary-pressed: #2e276c;
-  --clr-primary-hover: #5246c1;
+  --clr-primary-input: #9747ff;
+  --clr-caret-green: #23540e;
   --clr-primary-disabled: #eee;
   --clr-secondary-default: #f04040;
   --clr-secondary-pressed: #904040;
   --clr-secondary-hover: #b04040;
   --clr-secondary-disabled: #be9999;
 
-  /* text */
-  --tdn: underline solid;
   /* text */
   --tdn: underline solid;
 
@@ -61,6 +49,7 @@
   --ffm-default: 'Montserrat', courier, monospace;
   --ffm-tag: 'Open-Sans', courier, monospace;
   --ffm-title: 'Druktextwidecur', courier, monospace;
+  --ffm-price: 'GolosText', courier, monospace;
 
   /* indentation */
   --padding-inline: 120px;

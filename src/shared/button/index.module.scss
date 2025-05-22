@@ -2,78 +2,98 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--border-radius-btn, 16px);
-  cursor: pointer;
+  border-radius: var(--border-radius-btn);
+  border: none;
   padding: 1em;
   font-size: 16px;
   line-height: 1.22;
   font-family: var(--ffm-default);
   font-weight: 700;
   inline-size: 100%;
+  transition: background-color var(--delay-dekstop) var(--timing);
 
   &.large {
     font-size: 20px;
   }
 
+  &:disabled {
+    cursor: default;
+  }
+
   &.white {
-    background-color: var(--clr-main, white);
-    border: 1px solid var(--clr-primary-default, #6757F1);
-    color: var(--clr-primary-default, #6757F1);
-  }
+    background-color: var(--clr-main);
+    border: 1px solid var(--clr-primary-default);
+    color: var(--clr-primary-default);
+    column-gap: 8px;
 
-  &.white:hover {
-    border: 1px solid var(--clr-primary-hover, #5246C1);
-    color: var(--clr-primary-hover, #5246C1);
-  }
+    &.icon {
+      inline-size: 20px;
+      block-size: 20px;
+    }
 
-  &.white:active {
-    border: 1px solid var(--clr-primary-pressed, #2E276C);
-    color: var(--clr-primary-pressed, #2E276C);
-  }
+    &:hover {
+      border: 1px solid var(--clr-primary-hover);
+      color: var(--clr-primary-hover);
+    }
 
-  &.white:disabled {
-    border: 1px solid var(--clr-primary-disabled, #EEE);
-    color: var(--clr-3, #D1D4DB);
-    cursor:default;
+    &:active {
+      border: 1px solid var(--clr-primary-pressed);
+      color: var(--clr-primary-pressed);
+    }
+
+    &:disabled {
+      border: 1px solid var(--clr-primary-disabled);
+      color: var(--clr-3);
+    }
   }
 
   &.purple {
-    background-color: var(--clr-primary-default, #6757F1);
-    color: var(--clr-main, white);
-    border: none;
-  }
+    background-color: var(--clr-primary-default);
+    color: var(--clr-main);
 
-  &.purple:hover {
-    background-color: var(--clr-primary-hover, #5246C1);
-  }
+    &:hover {
+      background-color: var(--clr-primary-hover);
+    }
 
-  &.purple:active {
-    background-color: var(--clr-primary-pressed, #2E276C);
-  }
+    &:active {
+      background-color: var(--clr-primary-pressed);
+    }
 
-  &.purple:disabled {
-    background-color: var(--clr-primary-disabled, #EEE);
-    color: var(--clr-4, #858585);
-    pointer-events: none;
+    &:disabled {
+      background-color: var(--clr-primary-disabled);
+      color: var(--clr-4);
+    }
   }
 
   &.red {
-    background-color: var(--clr-secondary-default, #F04040);
-    color: var(--clr-main, white);
-    border: none;
+    background-color: var(--clr-secondary-default);
+    color: var(--clr-main);
+
+    &:hover {
+      background-color: var(--clr-secondary-hover);
+    }
+
+    &:active {
+      background-color: var(--clr-secondary-pressed);
+    }
+
+    &:disabled {
+      background-color: var(--clr-secondary-disabled);
+      color: #c2c7db;
+    }
   }
 
-  &.red:hover {
-    background-color: var(--clr-secondary-hover, #B04040);
-  }
+  &.social {
+    column-gap: 12px;
+    background-color: var(--clr-blue);
+    color: var(--clr-main);
+    border-radius: var(--border-radius-btn-social);
+    padding-inline: 12px;
+    line-height: 1;
 
-  &.red:active {
-    background-color: var(--clr-secondary-pressed, #904040);
-  }
-
-  &.red:disabled {
-    background-color: var(--clr-secondary-disabled, #BE9999);
-    color: #C2C7DB;
-    cursor: not-allowed;
+    &.icon {
+      inline-size: 21px;
+      block-size: 18px;
+    }
   }
 }

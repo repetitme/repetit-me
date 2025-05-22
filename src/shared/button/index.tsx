@@ -1,25 +1,18 @@
 import classNames from 'classnames';
+
 import styles from './index.module.scss';
 
-interface ButtonProps {
-  text: string;
-  variant: 'white' | 'purple' | 'red';
-  // size: по дефолту размер текста 16px, при large - 20px. Возможно, добавятся еще размеры (есть в макете):
-  size?: 'large';
-  Icon?: React.ReactNode;
-  disabled?: boolean;
-  className?: string; // для добавления стилей при необходимости
-  onClick?: () => void;
-}
+import { ButtonProps } from './type';
 
 const Button: React.FC<ButtonProps> = ({
   text,
   variant,
   size,
-  Icon,
+  icon,
   disabled = false,
   className,
-  onClick
+  onClick,
+  href
 }) => {
   const buttonClass = classNames(
     styles.button,
@@ -30,16 +23,24 @@ const Button: React.FC<ButtonProps> = ({
     },
     className
   );
+
+  const ButtonElement = variant === 'social' ? 'a' : 'button';
+
+  const attributes = {
+    className: buttonClass,
+    onClick,
+    disabled,
+    'aria-disabled': disabled,
+    ...(variant === 'social'
+      ? { href, target: '_blank', rel: 'noopener noreferrer' }
+      : {})
+  };
+
   return (
-    <button
-      className={buttonClass}
-      onClick={onClick}
-      disabled={disabled}
-      aria-disabled={disabled}
-    >
+    <ButtonElement {...attributes}>
+      {icon && <img src={icon} className={styles.icon} alt="" />}
       {text}
-      {Icon && <span className={styles.icon}>{Icon}</span>}
-    </button>
+    </ButtonElement>
   );
 };
 

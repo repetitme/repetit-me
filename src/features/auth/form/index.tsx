@@ -1,160 +1,119 @@
-import Inputs from '../auth-inputs';
-import { AuthModal } from '../../../widgets/ui/AuthModal';
-import FC, { useState, useRef } from 'react';
-import { useForm } from '../../../shared/hooks/useForm';
+import { useEffect, useRef, useState } from 'react';
+
+import { AuthSelectRole, FormTabs } from '../../../shared/authSelectRole';
+import Button from '../../../shared/button';
+import useForm from '../../../shared/hooks/useForm';
+import AuthInputs from '../inputs';
+
 import styles from './index.module.scss';
 import AuthButton from '../auth-button';
 import AuthSelectRole from '../authSelectRole';
 
-const AuthForm = ({ login }: { login: boolean }) => {
-  const [currentTab, setCurrentTab] = useState('Как ученик');
-  const { values, handleChange } = useForm({
-    name: '',
-    tg: '',
-    link: '',
-    code: ''
-  });
+import { TAuthData, TFormTabs, TInputProps, TLogin } from './types';
+
+enum AuthType {
+  LOGIN = 'login',
+  REGISTER = 'register'
+}
+
+const defaultValues: TAuthData = {
+  authType: AuthType.REGISTER,
+  role: FormTabs.STUDENT,
+  name: '',
+  tg: '',
+  link: '',
+  code: ''
+};
+
+const AuthForm: React.FC<TLogin> = ({ login, closeModal }) => {
+  const { values, handleChange, setValues } = useForm(defaultValues);
+  const [currentTab, setStudentTab] = useState<TFormTabs>(FormTabs.STUDENT);
   const [isValid, setIsValid] = useState(false);
   const [code, setReceived] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Код получен
-    setReceived(true);
-    setIsValid(false);
+  // Сброс кода при изменении данных после его получения
+  useEffect(() => {
+    if (code) {
+      setReceived(false);
+    }
+  }, [values.name, values.tg, values.link]);
+
+  useEffect(() => {
+    setValues((prev) => ({
+      ...prev,
+      authType: login ? AuthType.LOGIN : AuthType.REGISTER,
+      role: currentTab
+    }));
+  }, [login, currentTab]);
+
+  const handleValidity = () => {
+    setIsValid(!!formRef.current?.checkValidity());
   };
 
-  const handleActiveTab = (value: string) => {
-    setCurrentTab(value);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsValid(false);
+    if (code) {
+      setValues(defaultValues);
+      closeModal();
+      // Close modal
+      return;
+    }
+    // Код получен
+    setReceived(true);
+  };
+
+  const handleActiveTab = (value: TFormTabs) => {
+    setStudentTab(value);
     setReceived(false);
   };
 
-  const handleValidity = () => {
-    if (formRef.current?.checkValidity()) {
-      setIsValid(true);
+  const AuthButton = () => {
+    let text = '';
+    if (login && code) {
+      text = 'Войти';
     } else {
-      setIsValid(false);
+      text = code ? 'Зарегистрироваться' : 'Получить код';
     }
-  };
 
-  const handleSuccess = () => {
-    // Тестовый вывод данных в консоль
-    console.log(
-      `Success! Имя: ${values.name}, Tg: ${values.tg}, Ссылка: ${values.link}, Код: ${values.code}.`
-    );
-    setIsValid(false);
-  };
-
-  if (login) {
     return (
-      <div className={styles.auth}>
-        <AuthSelectRole OnChangeSelect={handleActiveTab} />
-        <form
-          ref={formRef}
-          className={styles.auth__form}
-          onChange={handleValidity}
-          onSubmit={handleSubmit}
-        >
-          {Inputs.tg(values.value, handleChange)}
-          {!code && (
-            <AuthButton
-              type="A"
-              disabled={!isValid}
-              onClick={() => handleSubmit}
-            />
-          )}
-          {code && (
-            <>
-              {Inputs.code(values.value, handleChange)}
-              <AuthButton
-                type="B"
-                disabled={!isValid}
-                onClick={handleSuccess}
-              />
-            </>
-          )}
-        </form>
-      </div>
+      <Button size="large" variant="purple" disabled={!isValid} text={text} />
     );
-  }
+  };
+
+  const inputProps: TInputProps = {
+    values,
+    handleChange
+  };
 
   return (
     <div className={styles.auth}>
-      <AuthSelectRole OnChangeSelect={handleActiveTab} />
-      {currentTab === 'Как ученик' && (
-        <form
-          ref={formRef}
-          className={styles.auth__form}
-          onChange={handleValidity}
-          onSubmit={handleSubmit}
-        >
-          {Inputs.name(values.value, handleChange, 'Необязательно')}
-          {Inputs.tg(values.value, handleChange)}
-          {Inputs.link(values.value, handleChange)}
-          {!code && (
-            <AuthButton
-              type="A"
-              disabled={!isValid}
-              onClick={() => handleSubmit}
-            />
+      <AuthSelectRole onChangeSelect={handleActiveTab} />
+      <form
+        ref={formRef}
+        className={styles.auth__form}
+        onChange={handleValidity}
+        onSubmit={handleSubmit}
+      >
+        {/* Имя */}
+        {!login &&
+          AuthInputs.name(
+            inputProps,
+            currentTab === FormTabs.TUTOR ? 'notRequired' : ''
           )}
-          {code && (
-            <>
-              {Inputs.code(values.value, handleChange)}
-              <AuthButton
-                type="B"
-                disabled={!isValid}
-                onClick={handleSuccess}
-              />
-            </>
-          )}
-        </form>
-      )}
-      {currentTab === 'Как репетитор' && (
-        <form
-          ref={formRef}
-          className={styles.auth__form}
-          onChange={handleValidity}
-          onSubmit={handleSubmit}
-        >
-          {Inputs.name(values.value, handleChange, 'Необязательно')}
-          {Inputs.tg(values.value, handleChange)}
-          {!code && (
-            <AuthButton
-              type="A"
-              disabled={!isValid}
-              onClick={() => handleSubmit}
-            />
-          )}
-          {code && (
-            <>
-              {Inputs.code(values.value, handleChange)}
-              <AuthButton
-                type="B"
-                disabled={!isValid}
-                onClick={handleSuccess}
-              />
-            </>
-          )}
-        </form>
-      )}
+        {/* Telegram */}
+        {AuthInputs.tg(inputProps)}
+        {/* Ссылка */}
+        {currentTab === FormTabs.STUDENT &&
+          !login &&
+          AuthInputs.link(inputProps)}{' '}
+        {/* Код */}
+        {code && AuthInputs.code(inputProps)}
+        <AuthButton />
+      </form>
     </div>
   );
 };
 
-const AuthModalForm = ({ onClose }: { onClose: () => void }) => {
-  const [login, setLogin] = useState(false);
-
-  return (
-    <AuthModal
-      type={login}
-      toLogin={() => setLogin(true)}
-      onClose={onClose}
-    >
-      <AuthForm login={login} />
-    </AuthModal>
-  );
-};
-
-export default AuthModalForm;
+export default AuthForm;

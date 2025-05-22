@@ -1,4 +1,4 @@
-@use '../../../assets/styles/mixins/gradient.scss' as *;
+@use '../../assets/styles/mixins/gradient.scss' as *;
 
 .modal {
   position: fixed;
@@ -20,9 +20,9 @@
       #ffaa47 116.71%
     );
   border-radius: 40px;
-  width: 100%;
-  max-width: 800px;
-  z-index: 3;
+  inline-size: 100%;
+  max-inline-size: 800px;
+  z-index: 1000;
 
   &__header {
     display: flex;
@@ -43,18 +43,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     border: none;
     outline: none;
     background-color: transparent;
   }
 
   &__content {
+<<<<<<< HEAD:src/widgets/ui/AuthModal/index.module.scss
     display: flex;
     flex-direction: column;
     font-weight: 500;
     line-height: 19.5px;
     width: 100%;
+=======
+    inline-size: 100%;
+    overflow: hidden;
+>>>>>>> ca7f4903ee37260cedafd88a4b4e9b1a9f733853:src/widgets/AuthModal/index.module.scss
   }
 
   &__footer {
@@ -67,11 +71,19 @@
     font-family: var(--ffm-default, montserrat, courier, monospace);
     line-height: 19.5px;
     text-align: center;
-    text-underline-offset: 2px;
-    text-decoration-skip-ink: none;
+
+    a {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-skip-ink: none;
+    }
   }
 
   &__enter {
-    color: var(--clr-primary-default, #6757f1);
+    font-size: 20px;
+
+    a {
+      color: var(--clr-primary-default, #6757f1);
+    }
   }
 }

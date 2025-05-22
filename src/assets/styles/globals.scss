@@ -1,7 +1,7 @@
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html,
@@ -32,4 +32,6 @@ a {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
