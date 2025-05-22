@@ -1,6 +1,6 @@
 export type TLogin = {
   login: boolean;
-  closeModal: () => void;
+  mainPageRegister?: boolean;
 };
 
 export type TFormTabs = 'Как ученик' | 'Как репетитор';

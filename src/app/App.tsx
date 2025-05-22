@@ -1,22 +1,21 @@
+import Footer from '../widgets/Footer';
+import Header from '../widgets/Header';
+import AppRouter from './router/AppRouter';
+
 import '../assets/index.scss';
-import { useState } from 'react';
-import AuthModalForm from '../features/auth/form';
-import Button from '../shared/button';
+import styles from './index.module.scss';
+
 function App() {
   const [isAuthFormOpen, setIsAuthFormOpen] = useState(false);
   const switchModalState = () => {
     isAuthFormOpen ? setIsAuthFormOpen(false) : setIsAuthFormOpen(true);
   };
   return (
-    <>
-      <Button
-        text="Открыть форму регистрации"
-        variant="purple"
-        onClick={switchModalState}
-      />
-      {isAuthFormOpen && <AuthModalForm onClose={switchModalState} />}
-    </>
+    <div className={styles.app}>
+      <Header auth={'student'} />
+      <AppRouter />
+      <Footer role="student" />
+    </div>
   );
 }
-
 export default App;

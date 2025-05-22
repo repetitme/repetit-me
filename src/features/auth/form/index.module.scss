@@ -1,15 +1,18 @@
 .auth {
-  max-width: 680px;
+  background-color: var(--clr-main);
+  padding: 69px 61px 0;
+  border-radius: 29px;
+  margin: 32px;
 
   &__form {
     display: flex;
-    gap: 21px;
+    gap: 26px;
     flex-direction: column;
-    inline-size: 100%;
-    margin-block-start: 40px;
+    min-width: 711px;
+    min-height: 484px;
 
     button {
-      margin-top: 20px;
+      margin-top: 6px;
     }
   }
 }

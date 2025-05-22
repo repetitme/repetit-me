@@ -1,11 +1,7 @@
 import { FC } from 'react';
 
-<<<<<<< HEAD:src/widgets/ui/AuthModal/index.tsx
-export const AuthModal: FC<AuthModalProps> = ({ type, children, toLogin, onClose }) => {
-=======
-import iconClose from '../../assets/icons/closeIcon.svg';
-import useClickOutside from '../../shared/hooks/useClickOutside';
-import { ModalOverlay } from '../../shared/ui/Overlay';
+import iconClose from '../../../assets/icons/closeIcon.svg';
+import { ModalOverlay } from '../../../shared/ui/overlay';
 
 import styles from './index.module.scss';
 

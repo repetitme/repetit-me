@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { AuthSelectRole, FormTabs } from '../../../shared/authSelectRole';
-import Button from '../../../shared/button';
 import useForm from '../../../shared/hooks/useForm';
+import Button from '../../../shared/ui/button';
 import AuthInputs from '../inputs';
 
 import styles from './index.module.scss';
@@ -25,9 +24,11 @@ const defaultValues: TAuthData = {
   code: ''
 };
 
-const AuthForm: React.FC<TLogin> = ({ login, closeModal }) => {
+const AuthForm: React.FC<TLogin> = ({ login, mainPageRegister }) => {
   const { values, handleChange, setValues } = useForm(defaultValues);
-  const [currentTab, setStudentTab] = useState<TFormTabs>(FormTabs.STUDENT);
+  const [currentTab, setStudentTab] = useState<TFormTabs>(
+    mainPageRegister ? FormTabs.TUTOR : FormTabs.STUDENT
+  );
   const [isValid, setIsValid] = useState(false);
   const [code, setReceived] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -89,7 +90,9 @@ const AuthForm: React.FC<TLogin> = ({ login, closeModal }) => {
 
   return (
     <div className={styles.auth}>
-      <AuthSelectRole onChangeSelect={handleActiveTab} />
+      {!mainPageRegister && (
+        <Tab currentTab={currentTab} onClick={handleActiveTab} />
+      )}
       <form
         ref={formRef}
         className={styles.auth__form}
