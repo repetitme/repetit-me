@@ -1,4 +1,4 @@
-@import '../../assets/styles/mixins/flexCenter.scss';
+@use '../../assets/styles/mixins/flexCenter.scss' as *;
 
 .catalog {
   display: grid;

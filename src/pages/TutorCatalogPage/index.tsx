@@ -33,8 +33,6 @@ const TutorCatalogPage = () => {
     setVisibleCount((prevCount) => prevCount + 5);
   };
 
-  const displayedTutors = tutors.slice(0, visibleCount);
-
   return (
     <>
       <main className={styles.catalog}>
@@ -51,9 +49,10 @@ const TutorCatalogPage = () => {
                 </h3>
               )}
 
-              {displayedTutors.map((tutor) => (
-                <UserCard key={tutor.id} role={role} tutorData={tutor} />
+              {tutors.slice(0, visibleCount).map((tutor) => (
+                <UserCard role={role} tutorData={tutor} />
               ))}
+
               {tutors.length > visibleCount && (
                 <Button
                   text="Показать еще"
