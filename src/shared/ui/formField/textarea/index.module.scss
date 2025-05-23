@@ -2,6 +2,8 @@
 
 .textarea {
   @include form-field;
-  min-height: 100px;
+  min-block-size: 164px;
+  font-size: 15px;
+  line-height: 1.6;
   resize: vertical;
 }

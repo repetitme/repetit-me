@@ -2,28 +2,13 @@ import FormField from '../index.tsx';
 
 import styles from './index.module.scss';
 
-export type TextareaProps = {
-  id: string;
-  label?: string;
-  error?: string;
-  rows: number;
-};
+type TextareaProps = Omit<React.ComponentProps<typeof FormField>, 'children'> &
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
-const Textarea: React.FC<TextareaProps> = ({
-  id,
-  label,
-  error,
-  rows = 4,
-  ...props
-}) => {
+const Textarea = ({ label, error, htmlFor, ...props }: TextareaProps) => {
   return (
-    <FormField label={label} htmlFor={id} error={error}>
-      <textarea
-        id={id}
-        rows={rows}
-        className={`${styles.textarea} ${error ? styles.error : ''}`}
-        {...props}
-      />
+    <FormField label={label} htmlFor={htmlFor} error={error}>
+      <textarea className={styles.textarea} {...props} />
     </FormField>
   );
 };
