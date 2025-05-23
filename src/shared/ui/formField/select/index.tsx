@@ -29,7 +29,7 @@ const Select: React.FC<SelectProps> = ({
       label={label}
       htmlFor={id}
       error={error}
-      description={description}
+     
     >
       <select
         id={id}

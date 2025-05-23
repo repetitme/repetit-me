@@ -1,14 +1,23 @@
 @mixin form-field {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 1rem;
-  transition: border-color 0.3s;
+  inline-size: 100%; // ???
+  border: 2px solid transparent;
+    
+    border-radius: 12px;
+    background:
+      linear-gradient(var(--clr-main), var(--clr-main)) padding-box,
+      linear-gradient(
+          180deg,
+          var(--clr-primary-input) 0%,
+          var(--clr-primary-default) 100%
+        )
+        border-box;
+  font-family: var(--ffm-default);
+  font-size: 16px;
+  padding: 12px 16px;
+  transition: border-color 0.3s; // ???
 
   &:focus {
-    border-color: #4285f4;
     outline: none;
+    border-color: var(--clr-blue);
   }
 }

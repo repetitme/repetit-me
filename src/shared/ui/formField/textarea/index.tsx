@@ -6,7 +6,6 @@ export type TextareaProps = {
   id: string;
   label?: string;
   error?: string;
-  description?: string;
   rows: number;
 };
 
@@ -14,17 +13,11 @@ const Textarea: React.FC<TextareaProps> = ({
   id,
   label,
   error,
-  description,
   rows = 4,
   ...props
 }) => {
   return (
-    <FormField
-      label={label}
-      htmlFor={id}
-      error={error}
-      description={description}
-    >
+    <FormField label={label} htmlFor={id} error={error}>
       <textarea
         id={id}
         rows={rows}

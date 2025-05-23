@@ -1,13 +1,5 @@
 @use '../../../../assets/styles/mixins/formField.scss' as *;
 
 .input {
- 
-  font-family: inherit;
-  font-size: 1rem;
-  transition: border-color 0.3s;
-
-  &:focus {
-    border-color: #4285f4;
-    outline: none;
-  }
+  @include form-field;
 }

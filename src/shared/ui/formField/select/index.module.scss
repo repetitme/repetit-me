@@ -2,9 +2,4 @@
 
 .select {
   @include form-field;
-  appearance: none;
-  background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg...');
-  background-repeat: no-repeat;
-  background-position: right 0.75rem center;
-  padding-right: 10px;
 }

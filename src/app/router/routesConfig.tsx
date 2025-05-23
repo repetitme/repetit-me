@@ -17,16 +17,17 @@ export const routesConfig: IRoute[] = [
     element: (
       <div style={{ margin: '10px 100px' }}>
         <InputField
-          id="telegram"
-          type="text"
-          label="Ник в Telegram"
-          description="Например, @username"
+          id="email"
+          label="Почта"
+          type="email"
+          placeholder="sasha@ya.ru"
+          required
         />
         <Textarea
           id="about"
           label="Обо мне"
           rows={4}
-          description="Расскажите о своём опыте и подходе к обучению"
+          // placeholder="Расскажите о своём опыте и подходе к обучению"
         />
         <Select
           id="subject"

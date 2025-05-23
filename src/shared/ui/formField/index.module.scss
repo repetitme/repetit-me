@@ -1,8 +1,9 @@
+@use '../../../assets/styles/mixins/formField.scss' as *;
+
 .form {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  font-family: var(--ffm-default);
   margin-bottom: 32px;
   position: relative;
 }

@@ -2,7 +2,7 @@ import styles from './index.module.scss';
 
 export interface FormFieldProps {
   label?: string;
-  error?: string | boolean | React.ReactNode;
+  error?: string | boolean;
   htmlFor?: string;
   children: React.ReactNode;
   className?: string;
