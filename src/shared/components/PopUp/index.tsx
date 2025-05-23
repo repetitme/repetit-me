@@ -14,7 +14,6 @@ const Popup: React.FC<PopupProps> = ({
   onClose,
   variant,
   showCancelButton = true,
-  showCloseButton = true,
   onConfirm
 }) => {
   const ref = useClickOutside(() => {
@@ -30,7 +29,7 @@ const Popup: React.FC<PopupProps> = ({
     <>
       <div className={styles.popup} ref={ref}>
         <div className={styles.popup__content}>
-          {showCloseButton && (
+          {showCancelButton && (
             <button className={styles.popup__close} onClick={onClose}>
               <img src={closeIcon} alt="иконка закрытия попапа" />
             </button>

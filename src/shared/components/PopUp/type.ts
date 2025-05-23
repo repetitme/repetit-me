@@ -3,6 +3,5 @@ export interface PopupProps {
   onClose: () => void;
   variant: 'request' | 'notFound';
   showCancelButton?: boolean;
-  showCloseButton?: boolean;
   onConfirm?: () => void;
 }

@@ -19,9 +19,8 @@ function App() {
       <Popup
         isOpen={isPopupOpen}
         onClose={handleClosePopup}
-       /*   variant='request'*/
-         
-       variant="notFound"
+        /*   variant='request'*/
+        variant="notFound"
         onConfirm={handleClosePopup}
       />
 
