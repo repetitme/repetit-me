@@ -1,3 +1,5 @@
+import { AuthModalWithForm } from '../../features/Auth/authModalWithForm';
+import AuthForm from '../../features/Auth/form';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
@@ -28,6 +30,16 @@ export const routesConfig: IRoute[] = [
     path: '/teacher-profile',
     element: <>TeacherProfile</>,
     auth: true
+  },
+  {
+    path: '/register',
+    element: <AuthModalWithForm />,
+    auth: false
+  },
+  {
+    path: '/login',
+    element: <AuthForm />,
+    auth: false
   },
   {
     path: '*',

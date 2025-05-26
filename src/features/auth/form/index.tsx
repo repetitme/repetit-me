@@ -3,10 +3,9 @@ import { useEffect, useRef, useState } from 'react';
 import useForm from '../../../shared/hooks/useForm';
 import Button from '../../../shared/ui/button';
 import AuthInputs from '../inputs';
+import { FormTabs, Tab } from '../tabs';
 
 import styles from './index.module.scss';
-import AuthButton from '../auth-button';
-import AuthSelectRole from '../authSelectRole';
 
 import { TAuthData, TFormTabs, TInputProps, TLogin } from './types';
 
@@ -24,11 +23,12 @@ const defaultValues: TAuthData = {
   code: ''
 };
 
-const AuthForm: React.FC<TLogin> = ({ login, mainPageRegister }) => {
+const AuthForm: React.FC<TLogin> = ({ mainPageRegister, closeModal }) => {
   const { values, handleChange, setValues } = useForm(defaultValues);
   const [currentTab, setStudentTab] = useState<TFormTabs>(
     mainPageRegister ? FormTabs.TUTOR : FormTabs.STUDENT
   );
+  const [authType, setAuthType] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const [code, setReceived] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -43,10 +43,10 @@ const AuthForm: React.FC<TLogin> = ({ login, mainPageRegister }) => {
   useEffect(() => {
     setValues((prev) => ({
       ...prev,
-      authType: login ? AuthType.LOGIN : AuthType.REGISTER,
+      authType: authType ? AuthType.LOGIN : AuthType.REGISTER,
       role: currentTab
     }));
-  }, [login, currentTab]);
+  }, [authType, currentTab]);
 
   const handleValidity = () => {
     setIsValid(!!formRef.current?.checkValidity());
@@ -57,8 +57,7 @@ const AuthForm: React.FC<TLogin> = ({ login, mainPageRegister }) => {
     setIsValid(false);
     if (code) {
       setValues(defaultValues);
-      closeModal();
-      // Close modal
+      closeModal?.();
       return;
     }
     // Код получен
@@ -72,14 +71,33 @@ const AuthForm: React.FC<TLogin> = ({ login, mainPageRegister }) => {
 
   const AuthButton = () => {
     let text = '';
-    if (login && code) {
+    if (authType && code) {
       text = 'Войти';
     } else {
       text = code ? 'Зарегистрироваться' : 'Получить код';
     }
 
     return (
-      <Button size="large" variant="purple" disabled={!isValid} text={text} />
+      <div className={styles.auth__wrapper}>
+        <Button size="large" variant="purple" disabled={!isValid} text={text} />
+        <div className={styles.auth__text}>
+          <p>
+            Нажимая «Получить код» вы соглашаетесь с{' '}
+            <a href="#" target="_blank">
+              политикой конфиденциальности
+            </a>{' '}
+            и
+          </p>
+          <a href="#" target="_blank">
+            пользовательским соглашением
+          </a>
+          {!authType && (
+            <p className={styles.auth__text__enter}>
+              Уже есть аккаунт? <a onClick={() => setAuthType(true)}>Войти</a>
+            </p>
+          )}
+        </div>
+      </div>
     );
   };
 
@@ -91,7 +109,12 @@ const AuthForm: React.FC<TLogin> = ({ login, mainPageRegister }) => {
   return (
     <div className={styles.auth}>
       {!mainPageRegister && (
-        <Tab currentTab={currentTab} onClick={handleActiveTab} />
+        <>
+          <h2 className={styles.auth__title}>
+            {authType ? 'Вход' : 'Регистрация'}
+          </h2>
+          <Tab currentTab={currentTab} onClick={handleActiveTab} />
+        </>
       )}
       <form
         ref={formRef}
@@ -100,7 +123,7 @@ const AuthForm: React.FC<TLogin> = ({ login, mainPageRegister }) => {
         onSubmit={handleSubmit}
       >
         {/* Имя */}
-        {!login &&
+        {!authType &&
           AuthInputs.name(
             inputProps,
             currentTab === FormTabs.TUTOR ? 'notRequired' : ''
@@ -109,7 +132,7 @@ const AuthForm: React.FC<TLogin> = ({ login, mainPageRegister }) => {
         {AuthInputs.tg(inputProps)}
         {/* Ссылка */}
         {currentTab === FormTabs.STUDENT &&
-          !login &&
+          !authType &&
           AuthInputs.link(inputProps)}{' '}
         {/* Код */}
         {code && AuthInputs.code(inputProps)}

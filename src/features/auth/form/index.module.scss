@@ -1,18 +1,58 @@
+@use '../../../assets/styles/mixins/gradient.scss' as *;
+
 .auth {
-  background-color: var(--clr-main);
-  padding: 69px 61px 0;
-  border-radius: 29px;
-  margin: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-block-end: 80px;
+
+  &__title {
+    font-size: 32px;
+    font-family: var(--ffm-title, druktextwidecur, courier, monospace);
+    font-weight: 500;
+    margin-block-end: 8px;
+
+    @include title-gradient(356deg);
+  }
 
   &__form {
     display: flex;
-    gap: 26px;
+    gap: 20px;
     flex-direction: column;
-    min-width: 711px;
-    min-height: 484px;
 
     button {
-      margin-top: 6px;
+      margin-top: 20px;
     }
+  }
+
+  &__text {
+    color: var(--clr-4, #858585);
+    font-weight: 500;
+    font-family: var(--ffm-default, montserrat, courier, monospace);
+    line-height: 1.3;
+    text-align: center;
+
+    a {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-skip-ink: none;
+    }
+
+    &__enter {
+      font-size: 20px;
+      margin-top: 16px;
+
+      a {
+        color: var(--clr-primary-default, #6757f1);
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    white-space: nowrap;
   }
 }
