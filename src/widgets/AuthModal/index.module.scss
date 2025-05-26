@@ -1,5 +1,6 @@
 .modal {
   position: fixed;
+  transition: all 0.3s ease;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -31,8 +32,8 @@
   &__close {
     position: absolute;
     border: none;
-    top: 59px;
-    right: 59px;
+    top: 0;
+    right: 0;
     cursor: pointer;
     outline: none;
     background-color: transparent;
