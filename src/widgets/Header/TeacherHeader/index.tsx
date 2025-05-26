@@ -11,7 +11,7 @@ const TeacherHeader: React.FC<CommonHeaderProps> = ({ onLogout }) => {
       <button className={styles.header__button}>Мои заявки</button>
       <button className={styles.header__button}>Личный кабинет</button>
       <div className={styles.header__avatar} onClick={onLogout}>
-        <img src="src\assets\images\avatar.svg" alt="Аватар" />
+        <img src="\assets\images\avatar.svg" alt="Аватар" />
       </div>
     </nav>
   );
