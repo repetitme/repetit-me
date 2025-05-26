@@ -1,15 +1,20 @@
 import { FC } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import iconClose from '../../assets/icons/closeIcon.svg';
+import AuthForm from '../../features/Auth/form';
 import useClickOutside from '../../shared/hooks/useClickOutside';
 import { ModalOverlay } from '../../shared/ui/overlay';
 
 import styles from './index.module.scss';
 
-import { AuthModalProps } from './types';
-
-export const AuthModal: FC<AuthModalProps> = ({ onClose, children }) => {
+export const AuthModal: FC = () => {
+  const onClose = () => {
+    navigate(-1);
+  };
   const modalRef = useClickOutside(onClose);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -19,7 +24,7 @@ export const AuthModal: FC<AuthModalProps> = ({ onClose, children }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className={styles.modal__content}>
-          {children}
+          <AuthForm closeModal={onClose} />
           <button onClick={onClose} className={styles.modal__close}>
             <img
               src={iconClose}

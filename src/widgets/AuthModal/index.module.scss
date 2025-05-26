@@ -20,21 +20,21 @@
   border-radius: 40px;
   inline-size: 100%;
   max-inline-size: 800px;
-  z-index: 1000;
-
-  &__close {
-    position: absolute;
-    border: none;
-    top: 0;
-    right: 0;
-    cursor: pointer;
-    outline: none;
-    background-color: transparent;
-  }
-
+  z-index: 1000;c
+  
   &__content {
     position: relative;
     inline-size: 100%;
     overflow: hidden;
+  }
+
+  &__close {
+    position: absolute;
+    border: none;
+    top: 59px;
+    right: 59px;
+    cursor: pointer;
+    outline: none;
+    background-color: transparent;
   }
 }

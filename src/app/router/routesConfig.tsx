@@ -1,6 +1,6 @@
-import { AuthModalWithForm } from '../../features/Auth/authModalWithForm';
 import AuthForm from '../../features/Auth/form';
 import MainPage from '../../pages/MainPage';
+import { AuthModal } from '../../widgets/AuthModal';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
 import { IRoute } from './type';
@@ -33,7 +33,7 @@ export const routesConfig: IRoute[] = [
   },
   {
     path: '/register',
-    element: <AuthModalWithForm />,
+    element: <AuthModal />,
     auth: false
   },
   {
