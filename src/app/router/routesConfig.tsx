@@ -1,6 +1,6 @@
 import AuthForm from '../../features/Auth';
 import MainPage from '../../pages/MainPage';
-import AuthModal from '../../widgets/AuthModal';
+import FeedbackList from '../../widgets/FeedbackList';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
 import { IRoute } from './type';
@@ -9,6 +9,15 @@ export const routesConfig: IRoute[] = [
   {
     path: '/',
     element: <MainPage />,
+    auth: false
+  },
+  {
+    path: '/test',
+    element: (
+      <div style={{ margin: '10px 100px' }}>
+        <FeedbackList updateModalData={() => {}} />
+      </div>
+    ),
     auth: false
   },
   {
