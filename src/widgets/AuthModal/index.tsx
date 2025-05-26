@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import iconClose from '../../assets/icons/closeIcon.svg';
-import AuthForm from '../../features/Auth';
+import AuthForm from '../../features/TEMP';
 import useClickOutside from '../../shared/hooks/useClickOutside';
 import { ModalOverlay } from '../../shared/ui/overlay';
 
