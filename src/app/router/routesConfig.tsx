@@ -1,5 +1,6 @@
 import AuthForm from '../../features/Auth';
 import MainPage from '../../pages/MainPage';
+import AuthModal from '../../widgets/AuthModal';
 import FeedbackList from '../../widgets/FeedbackList';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
