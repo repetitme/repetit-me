@@ -3,13 +3,13 @@ import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import iconClose from '../../assets/icons/closeIcon.svg';
-import AuthForm from '../../features/Auth/form';
+import AuthForm from '../../features/Auth';
 import useClickOutside from '../../shared/hooks/useClickOutside';
 import { ModalOverlay } from '../../shared/ui/overlay';
 
 import styles from './index.module.scss';
 
-export const AuthModal: FC = () => {
+const AuthModal: FC = () => {
   const onClose = () => {
     navigate(-1);
   };
@@ -37,3 +37,5 @@ export const AuthModal: FC = () => {
     </>
   );
 };
+
+export default AuthModal;

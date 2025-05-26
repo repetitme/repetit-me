@@ -1,6 +1,6 @@
-import AuthForm from '../../features/Auth/form';
+import AuthForm from '../../features/Auth';
 import MainPage from '../../pages/MainPage';
-import { AuthModal } from '../../widgets/AuthModal';
+import AuthModal from '../../widgets/AuthModal';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
 import { IRoute } from './type';

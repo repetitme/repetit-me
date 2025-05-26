@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import classNames from 'classnames';
 
-import AuthForm from '../../features/Auth/form';
+import AuthForm from '../../features/Auth';
 import Advantages from '../../widgets/Advantages';
 import Chat from '../../widgets/Chat';
 import MainBlock from '../../widgets/MainBlock';
