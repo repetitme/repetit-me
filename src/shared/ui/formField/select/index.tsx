@@ -2,40 +2,28 @@ import FormField from '../index.tsx';
 
 import styles from './index.module.scss';
 
-export type SelectOption = {
+type SelectOption = {
   value: string | number;
   label: string;
 };
 
-export type SelectProps = {
-  label?: string;
-  error?: string;
-  description?: string;
-  options: SelectOption[];
-  placeholder?: string;
-} & React.SelectHTMLAttributes<HTMLSelectElement>;
+type SelectProps = Omit<React.ComponentProps<typeof FormField>, 'children'> &
+  React.SelectHTMLAttributes<HTMLSelectElement> & {
+    options: SelectOption[];
+    placeholder?: string;
+  };
 
-const Select: React.FC<SelectProps> = ({
-  id,
+const Select = ({
   label,
-  options = [],
   error,
-  description,
+  htmlFor,
+  options = [],
   placeholder,
   ...props
-}) => {
+}: SelectProps) => {
   return (
-    <FormField
-      label={label}
-      htmlFor={id}
-      error={error}
-     
-    >
-      <select
-        id={id}
-        className={`${styles.select} ${error ? styles.error : ''}`}
-        {...props}
-      >
+    <FormField label={label} htmlFor={htmlFor} error={error}>
+      <select className={styles.select} {...props}>
         {placeholder && (
           <option value="" disabled>
             {placeholder}

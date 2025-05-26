@@ -8,7 +8,7 @@ export interface FormFieldProps {
   className?: string;
 }
 
-export const FormField = ({
+const FormField = ({
   children,
   label,
   htmlFor,
