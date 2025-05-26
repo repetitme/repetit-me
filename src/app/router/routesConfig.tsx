@@ -1,4 +1,4 @@
-import AuthForm from '../../features/TEMP';
+import AuthForm from '../../features/Auth';
 import MainPage from '../../pages/MainPage';
 import AuthModal from '../../widgets/AuthModal';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
