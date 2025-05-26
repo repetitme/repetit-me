@@ -14,7 +14,7 @@
     "docker:run": "docker run --name repetit-me -p 8080:80 repetit-me-frontend"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.76.0",
+    "@tanstack/react-query": "^5.76.1",
     "classnames": "^2.5.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
