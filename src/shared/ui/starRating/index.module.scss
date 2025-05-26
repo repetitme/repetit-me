@@ -1,0 +1,12 @@
+.star {
+  cursor: pointer;
+  transition: fill 0.2s ease;
+}
+
+.star.active {
+  fill: #f6da43;
+}
+
+.star.inactive {
+  fill: #ddd;
+}
