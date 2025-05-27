@@ -2,4 +2,11 @@
 
 .select {
   @include form-field;
+  
+ 
+
+  &:focus {
+    border-color: var(--clr-blue);
+    background-image: url("data:image/svg+xml,..."); 
+  }
 }

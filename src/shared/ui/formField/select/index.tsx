@@ -1,3 +1,5 @@
+import { useCallback, useState } from 'react';
+
 import FormField from '../index.tsx';
 
 import styles from './index.module.scss';
@@ -21,9 +23,27 @@ const Select = ({
   placeholder,
   ...props
 }: SelectProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleFocus = useCallback(() => {
+    setIsOpen(true);
+  }, []);
+
+  const handleBlur = useCallback(() => {
+    setIsOpen(false);
+  }, []);
   return (
-    <FormField label={label} htmlFor={htmlFor} error={error}>
-      <select className={styles.select} {...props}>
+    <FormField
+      label={label}
+      htmlFor={htmlFor}
+      error={error}
+      className={`wrapper ${isOpen ? 'open' : ''}`}
+    >
+      <select
+        className={styles.select}
+        {...props}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      >
         {placeholder && (
           <option value="" disabled>
             {placeholder}
