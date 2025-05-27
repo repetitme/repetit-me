@@ -12,7 +12,6 @@ type SelectOption = {
 type SelectProps = Omit<React.ComponentProps<typeof FormField>, 'children'> &
   React.SelectHTMLAttributes<HTMLSelectElement> & {
     options: SelectOption[];
-    placeholder?: string;
   };
 
 const Select = ({
@@ -20,7 +19,6 @@ const Select = ({
   error,
   htmlFor,
   options = [],
-  placeholder,
   ...props
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,28 +30,21 @@ const Select = ({
     setIsOpen(false);
   }, []);
   return (
-    <FormField
-      label={label}
-      htmlFor={htmlFor}
-      error={error}
-      className={`wrapper ${isOpen ? 'open' : ''}`}
-    >
+    <FormField label={label} htmlFor={htmlFor} error={error}>
       <select
-        className={styles.select}
+        className={`${styles.select} ${isOpen ? styles.open : styles.select}}`}
         {...props}
         onFocus={handleFocus}
         onBlur={handleBlur}
       >
-        {placeholder && (
-          <option value="" disabled>
-            {placeholder}
-          </option>
-        )}
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
+        <div className={styles.options}>
+           {options.map((option) => (
+          <option key={option.value} value={option.value} className={styles.option}>
             {option.label}
           </option>
         ))}
+        </div>
+       
       </select>
     </FormField>
   );
