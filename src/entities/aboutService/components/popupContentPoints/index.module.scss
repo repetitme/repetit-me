@@ -1,0 +1,34 @@
+.popup__content_points {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &_container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        inline-size: 100%;
+        block-size: 89px;
+        padding: 24px;
+        background: var( --clr-main);
+        border-radius: var(--border-radius-blocks);
+    };
+
+    &_text {
+        font-family: var(--ffm-title);
+        font-size: inherit;
+        font-weight: 500;
+        color: var(--clr-primary-default);
+    };
+
+    &_number {
+        font-family: var(--ffm-title);
+        font-size: 32px;
+        font-weight: 500;
+        background-image: linear-gradient(138.84deg, rgba(61, 197, 255, 0.65) 0%, rgba(69, 88, 255, 0.65) 23.95%, rgba(134, 91, 255, 0.65) 53.47%, rgba(255, 113, 249, 0.65) 80.76%, rgba(255, 170, 71, 0.65) 106.94%);
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+    }
+}

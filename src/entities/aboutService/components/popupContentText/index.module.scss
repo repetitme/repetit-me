@@ -1,0 +1,26 @@
+.popup__content_text {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    &_paragraph {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        min-block-size: 89px;
+
+        &_question {
+            font-family: var(--ffm-title);
+            font-size: inherit;
+            font-weight: 500;
+            color: inherit;
+        }
+
+        &_answer {
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            color: inherit;
+        }
+    }
+}
