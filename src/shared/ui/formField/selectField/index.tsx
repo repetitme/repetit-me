@@ -11,7 +11,7 @@ type SelectOption = {
   label: string;
 };
 
-type CustomSelectProps = Omit<
+type SelectFieldProps = Omit<
   React.ComponentProps<typeof FormField>,
   'children'
 > & {
@@ -23,7 +23,7 @@ type CustomSelectProps = Omit<
   defaultValue?: SelectOption;
 };
 
-const CustomSelect = ({
+const SelectField = ({
   label,
   error,
   htmlFor,
@@ -34,7 +34,7 @@ const CustomSelect = ({
   isSearchable = false,
   defaultValue,
   ...props
-}: CustomSelectProps) => {
+}: SelectFieldProps) => {
   // Кастомный индикатор стрелки
   const DropdownIndicator = (props: any) => {
     return (
@@ -97,9 +97,9 @@ const CustomSelect = ({
               '0px 0px 2px rgba(0, 0, 0, 0.1), 0px 4px 12px rgba(0, 0, 0, 0.1)',
             width: 'calc(100% - 12px)',
             left: '6px',
-            marginTop: '-12px', // Поднимаем меню вверх на 12px
-            zIndex: 1, // Чтобы меню было над селектом
-            position: 'relative' // Для корректного позиционирования
+            marginTop: '-12px', 
+            zIndex: 1, 
+            position: 'relative' 
           }),
           menuList: (base) => ({
             ...base,
@@ -144,4 +144,4 @@ const CustomSelect = ({
   );
 };
 
-export default CustomSelect;
+export default SelectField;
