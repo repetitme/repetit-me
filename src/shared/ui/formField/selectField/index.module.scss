@@ -1,5 +1,6 @@
 .reactSelectContainer {
   width: 100%;
+  position: relative;
   
   .custom-select__control {
     min-height: 48px;
@@ -8,7 +9,7 @@
     transition: border-color 0.3s;
     
     &--is-focused {
-      border-color: var(--clr-blue) !important;
+      border-color: var(--clr-blue);
     }
   }
   
@@ -21,11 +22,4 @@
     cursor: pointer;
   }
   
-  .custom-select__placeholder {
-    color: var(--placeholder-color);
-  }
-  
-  .custom-select__single-value {
-    color: var(--clr-text);
-  }
 }

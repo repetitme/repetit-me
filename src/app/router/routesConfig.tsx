@@ -1,7 +1,7 @@
 import MainPage from '../../pages/MainPage';
 import InputField from '../../shared/ui/formField/input';
 import Select from '../../shared/ui/formField/select';
-import CustomSelect from '../../shared/ui/formField/selectField'
+import CustomSelect from '../../shared/ui/formField/selectField';
 import Textarea from '../../shared/ui/formField/textarea';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
@@ -30,14 +30,16 @@ export const routesConfig: IRoute[] = [
           placeholder="Добавьте информацию о себе. О вашей квалификации, сертификатах, об опыте преподавания. Объясните, какими будут ваши уроки, какие методы обучения используете в работе, как это помогает ученикам."
         />
         <CustomSelect
-  label="Город"
-  options={[
-    { value: 'msk', label: 'Москва' },
-    { value: 'spb', label: 'Санкт-Петербург' }
-  ]}
-  onChange={(selected) => console.log(selected)}
- 
-/>
+          label="Предметы"
+          options={[
+            { value: 'english', label: 'Английский язык' },
+            { value: 'math', label: 'Математика' },
+            { value: 'chemistry', label: 'Химия' },
+            { value: 'phisics', label: 'Физика' }
+          ]}
+          onChange={(selected) => console.log(selected)}
+          placeholder='Математика'
+        />
         <Select
           id="subject"
           name="subject"
@@ -46,7 +48,6 @@ export const routesConfig: IRoute[] = [
             { value: 'math', label: 'Математика' },
             { value: 'physics', label: 'Физика' }
           ]}
-      
         />
       </div>
     ),
