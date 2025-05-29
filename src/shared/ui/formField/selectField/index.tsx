@@ -99,7 +99,7 @@ const SelectField = ({
             left: '6px',
             marginTop: '-12px', 
             zIndex: 1, 
-            position: 'relative' 
+            position: 'absolute' 
           }),
           menuList: (base) => ({
             ...base,

@@ -27,8 +27,8 @@ export const routesConfig: IRoute[] = [
           id="about"
           label="Обо мне"
           placeholder="Добавьте информацию о себе. О вашей квалификации, сертификатах, об опыте преподавания. Объясните, какими будут ваши уроки, какие методы обучения используете в работе, как это помогает ученикам."
-          maxLength={5}
-          error='error' 
+          // maxLength={5}
+          // error='error' 
         />
         <SelectField
           label="Предметы"
