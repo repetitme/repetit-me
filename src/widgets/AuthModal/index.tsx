@@ -1,25 +1,40 @@
 import { FC } from 'react';
+import { useEffect, useState } from 'react';
 
+import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
 
 import iconClose from '../../assets/icons/closeIcon.svg';
 import AuthForm from '../../features/Auth';
 import useClickOutside from '../../shared/hooks/useClickOutside';
-import { ModalOverlay } from '../../shared/ui/overlay';
+import ModalOverlay from '../../shared/ui/overlay';
 
 import styles from './index.module.scss';
 
 const AuthModal: FC = () => {
-  const onClose = () => {
-    navigate(-1);
-  };
-  const modalRef = useClickOutside(onClose);
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const onClose = () => {
+    setIsOpen(false);
+    setTimeout(() => {
+      navigate(-1);
+    }, 300);
+  };
+  useEffect(() => {
+    if (!isOpen) {
+      setTimeout(() => {
+        setIsOpen(true);
+      }, 300);
+    }
+  }, []);
+  const modalRef = useClickOutside(onClose);
 
   return (
     <>
       <div
-        className={styles.modal}
+        className={cn(styles.modal, {
+          [styles.active]: isOpen
+        })}
         ref={modalRef}
         onClick={(e) => e.stopPropagation()}
       >
@@ -33,7 +48,7 @@ const AuthModal: FC = () => {
           </button>
         </div>
       </div>
-      <ModalOverlay />
+      <ModalOverlay isOpen={isOpen} />
     </>
   );
 };

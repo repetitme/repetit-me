@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import logo from '../../assets/images/logo.svg';
 import icon from '../../assets/images/telegram_icon.svg';
@@ -15,6 +15,7 @@ import { HeaderProps, TAuth } from './types';
 const Header: React.FC<HeaderProps> = ({ auth }) => {
   const [authHeader, setAuthHeader] = useState<TAuth>(auth ? auth : 'unauth');
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     setAuthHeader(auth);
@@ -22,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ auth }) => {
 
   const handleLogin = () => {
     // setAuthHeader('student');
-    navigate('/register', { state: { backgroundLocation: location.pathname } });
+    navigate('/register', { state: { backgroundLocation: location } });
   };
 
   const handleLogout = () => {
@@ -31,7 +32,7 @@ const Header: React.FC<HeaderProps> = ({ auth }) => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.header__logo}>
+      <div className={styles.header__logo} onClick={() => navigate('/')}>
         <img src={logo} alt="Логотип Repetit Me" />
       </div>
       {authHeader === 'unauth' && (
