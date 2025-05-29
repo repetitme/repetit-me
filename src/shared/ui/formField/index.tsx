@@ -2,20 +2,15 @@ import styles from './index.module.scss';
 
 export interface FormFieldProps {
   label?: string;
-  error?: string | boolean;
+  error?: string;
   htmlFor?: string;
   children: React.ReactNode;
   className?: string;
 }
 
-const FormField = ({
-  children,
-  label,
-  htmlFor,
-  error
-}: FormFieldProps) => {
+const FormField = ({ children, label, htmlFor, error }: FormFieldProps) => {
   return (
-    <div className={styles.form}>
+    <div className={`${styles.form} ${error ? styles['form--has-error'] : ''}`}>
       {label && (
         <label htmlFor={htmlFor} className={styles.label}>
           {label}

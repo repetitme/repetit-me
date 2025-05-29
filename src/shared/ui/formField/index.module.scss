@@ -6,6 +6,13 @@
   gap: 16px;
   margin-bottom: 32px;
   position: relative;
+
+  &.form--has-error {
+    & textarea,
+    & input {
+      border-color: var(--clr-secondary-default);
+    }
+  }
 }
 
 .label {
@@ -17,7 +24,7 @@
 
 .error {
   position: absolute;
-  bottom: -28px;
+  bottom: -20px;
   left: 0;
   font-family: var(--ffm-default);
   font-weight: 500;

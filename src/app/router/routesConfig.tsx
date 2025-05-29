@@ -1,5 +1,5 @@
 import MainPage from '../../pages/MainPage';
-import InputField from '../../shared/ui/formField/input';
+import InputField from '../../shared/ui/formField/inputField';
 import SelectField from '../../shared/ui/formField/selectField';
 import Textarea from '../../shared/ui/formField/textarea';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
@@ -27,6 +27,8 @@ export const routesConfig: IRoute[] = [
           id="about"
           label="Обо мне"
           placeholder="Добавьте информацию о себе. О вашей квалификации, сертификатах, об опыте преподавания. Объясните, какими будут ваши уроки, какие методы обучения используете в работе, как это помогает ученикам."
+          maxLength={5}
+          error='error' 
         />
         <SelectField
           label="Предметы"

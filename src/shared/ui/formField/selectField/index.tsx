@@ -2,7 +2,7 @@ import React from 'react';
 
 import Select from 'react-select';
 
-import FormField from '..';
+import FormField from './../index.tsx';
 
 import styles from './index.module.scss';
 
@@ -75,8 +75,8 @@ const SelectField = ({
         styles={{
           control: (base, { menuIsOpen }) => ({
             ...base,
-            zIndex: 2, // Селект под меню
-            position: 'relative', // Для z-index
+            zIndex: 2,
+            position: 'relative',
             border: '2px solid transparent',
             borderRadius: '12px',
             background: `
