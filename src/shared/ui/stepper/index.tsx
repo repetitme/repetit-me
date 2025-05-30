@@ -4,12 +4,12 @@ import StepIcon from './stepIcon';
 
 import styles from './index.module.scss';
 
-type TStepperProps = {
+interface StepperProps {
   currentStep: number;
   totalSteps?: number;
-};
+}
 
-const Stepper = ({ currentStep, totalSteps = 5 }: TStepperProps) => {
+const Stepper = ({ currentStep, totalSteps = 5 }: StepperProps) => {
   return (
     <div className={styles.stepper}>
       {Array.from({ length: totalSteps }).map((_, index) => {

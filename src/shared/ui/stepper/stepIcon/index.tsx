@@ -1,10 +1,10 @@
-type TStepIcon = {
+interface StepIconProps {
   number: number;
   isActive: boolean;
   isCompleted: boolean;
-};
+}
 
-const StepIcon = ({ number, isActive, isCompleted }: TStepIcon) => {
+const StepIcon = ({ number, isActive, isCompleted }: StepIconProps) => {
   const circleFill = isCompleted
     ? 'var(--clr-primary-default)'
     : 'var(--clr-main)';
@@ -13,7 +13,7 @@ const StepIcon = ({ number, isActive, isCompleted }: TStepIcon) => {
     isActive || isCompleted ? 'var(--clr-primary-default)' : 'var(--clr-black)';
 
   const textColor = isCompleted
-    ? 'white'
+    ? 'var(--clr-main)'
     : isActive
       ? 'var(--clr-primary-default)'
       : 'var(--clr-black)';
