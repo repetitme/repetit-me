@@ -112,7 +112,11 @@ const Input: React.FC<IInput> = ({
         value={value}
         onChange={handleChange}
       />
-      <span className={cn(styles.error__text, { [styles.error__active]: error })}>{error}</span>
+      <span
+        className={cn(styles.error__text, { [styles.error__active]: error })}
+      >
+        {error}
+      </span>
     </div>
   );
 };

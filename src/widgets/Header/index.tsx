@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/images/logo.svg';
 import icon from '../../assets/images/telegram_icon.svg';

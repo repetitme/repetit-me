@@ -2,8 +2,8 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 
 import ProtectedRoute from '../../features/ProtectedRoute/ProtectedRoute';
 import { useAuth } from '../../shared/hooks/useAuth';
-import { routesConfig } from './routesConfig';
 import AuthModal from '../../widgets/AuthModal';
+import { routesConfig } from './routesConfig';
 
 const AppRouter: React.FC = () => {
   const { isAuth } = useAuth();
@@ -34,7 +34,7 @@ const AppRouter: React.FC = () => {
 
       {backgroundLocation && (
         <Routes>
-          <Route path='/register' element={<AuthModal />} />
+          <Route path="/register" element={<AuthModal />} />
         </Routes>
       )}
     </>
