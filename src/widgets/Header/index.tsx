@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ auth }) => {
 
   const handleLogin = () => {
     // setAuthHeader('student');
-    navigate('/register', { state: { backgroundLocation: location } });
+    navigate('/auth', { state: { backgroundLocation: location } });
   };
 
   const handleLogout = () => {

@@ -3,9 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 
 import useForm from '../../../shared/hooks/useForm';
-import Button from '../../../shared/ui/button';
-import AuthInputs from '../inputs';
-import { FormTabs, Tab } from '../tabs';
+import { AuthButtons, AuthInputs, FormTabs, Tab } from './components';
 
 import styles from './index.module.scss';
 
@@ -93,41 +91,16 @@ const AuthForm: React.FC<TLogin> = ({ mainPageRegister, closeModal }) => {
     }, 300);
   };
 
-  const AuthButton = () => {
-    let text = '';
-    if (authType && code) {
-      text = 'Войти';
-    } else {
-      text = code ? 'Зарегистрироваться' : 'Получить код';
-    }
-
-    return (
-      <div className={styles.auth__wrapper}>
-        <Button size="large" variant="purple" disabled={!isValid} text={text} />
-        <div className={styles.auth__text}>
-          <p>
-            Нажимая «Получить код» вы соглашаетесь с{' '}
-            <a href="#" target="_blank">
-              политикой конфиденциальности
-            </a>{' '}
-            и
-          </p>
-          <a href="#" target="_blank">
-            пользовательским соглашением
-          </a>
-          {!authType && (
-            <p className={styles.auth__text__enter}>
-              Уже есть аккаунт? <a onClick={handleAuthTypeChange}>Войти</a>
-            </p>
-          )}
-        </div>
-      </div>
-    );
-  };
-
   const inputProps: TInputProps = {
     values,
     handleChange
+  };
+
+  const buttonProps = {
+    authType,
+    code,
+    isValid,
+    handleAuthTypeChange
   };
 
   return (
@@ -162,7 +135,7 @@ const AuthForm: React.FC<TLogin> = ({ mainPageRegister, closeModal }) => {
           AuthInputs.link(inputProps)}
         {/* Код */}
         {code && AuthInputs.code(inputProps)}
-        <AuthButton />
+        <AuthButtons buttonProps={buttonProps} />
       </form>
     </div>
   );

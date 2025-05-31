@@ -1,4 +1,4 @@
-import Input from '../../../shared/ui/input';
+import Input from '../../../../../shared/ui/input';
 import inputData from './data';
 
 import { TAuthInputInterface, TInputFactory, TInputs } from './types';
@@ -31,11 +31,9 @@ const createInput: TInputFactory =
     />
   );
 
-const AuthInputs: TInputs = {
+export const AuthInputs: TInputs = {
   name: createInput(...inputData.name),
   tg: createInput(...inputData.tg),
   link: createInput(...inputData.link),
   code: createInput(...inputData.code)
 };
-
-export default AuthInputs;

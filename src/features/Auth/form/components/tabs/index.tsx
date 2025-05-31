@@ -4,7 +4,7 @@ import cn from 'classnames';
 
 import styles from './index.module.scss';
 
-import { TFormTabs } from '../form/types';
+import { TFormTabs } from '../../types';
 
 // Временный компонент
 

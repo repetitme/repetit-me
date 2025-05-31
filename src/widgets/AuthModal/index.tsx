@@ -20,6 +20,7 @@ const AuthModal: FC = () => {
       navigate(-1);
     }, 300);
   };
+
   useEffect(() => {
     if (!isOpen) {
       setTimeout(() => {
@@ -27,6 +28,23 @@ const AuthModal: FC = () => {
       }, 300);
     }
   }, []);
+
+  // No scroll, no shift
+  useEffect(() => {
+    const scrollBar = window.innerWidth - document.documentElement.clientWidth;
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = `${scrollBar}px`;
+    } else {
+      document.body.style.overflow = 'auto';
+      document.body.style.paddingRight = '';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+      document.body.style.paddingRight = '';
+    };
+  }, [isOpen]);
+
   const modalRef = useClickOutside(onClose);
 
   return (
