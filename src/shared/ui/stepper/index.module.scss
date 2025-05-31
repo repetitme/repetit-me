@@ -1,8 +1,14 @@
 .stepper {
   display: flex;
-  padding: 0 60px;
-  align-items: center;
-  gap: 0;
+  flex-direction: column;
+  gap: 28px;
+
+  &__steps {
+    display: flex;
+    padding: 0 60px 0 60px;
+    align-items: center;
+    gap: 0;
+  }
 }
 
 .line {
