@@ -27,6 +27,7 @@ const Stepper = ({
           const step = index + 1;
           const isActive = step === currentStep;
           const isCompleted = step < currentStep;
+          const shouldShowLine = index < totalSteps - 1;
 
           return (
             <React.Fragment key={step}>
@@ -36,7 +37,7 @@ const Stepper = ({
                 isCompleted={isCompleted}
               />
 
-              {step < totalSteps && (
+              {shouldShowLine && (
                 <div
                   className={`${styles.line} ${isCompleted ? styles.line__completed : ''}`}
                 />
