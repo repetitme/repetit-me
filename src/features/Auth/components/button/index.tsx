@@ -1,13 +1,21 @@
 import { FC } from 'react';
 
-import Button from '../../../../../shared/ui/button';
+import Button from '../../../../shared/ui/button';
 
 import styles from './index.module.scss';
 
-import { IAuthButtonsProps } from './types';
+export interface IAuthButtonsProps {
+  authType: boolean;
+  code: boolean;
+  isValid: boolean;
+  handleAuthTypeChange(): void;
+}
 
 export const AuthButtons: FC<IAuthButtonsProps> = ({
-  buttonProps: { authType, code, isValid, handleAuthTypeChange }
+  authType,
+  code,
+  isValid,
+  handleAuthTypeChange
 }) => {
   let text = '';
   if (authType && code) {

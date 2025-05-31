@@ -1,29 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 
-import cn from 'classnames';
+import useForm from '../../shared/hooks/useForm';
+import { IAuthButtonsProps } from './components/button';
+import { AuthType, FormTabs, defaultValues } from './constants';
 
-import useForm from '../../../shared/hooks/useForm';
-import { AuthButtons, AuthInputs, FormTabs, Tab } from './components';
+import { TFormTabs, TInputProps } from './types';
 
-import styles from './index.module.scss';
-
-import { TAuthData, TFormTabs, TInputProps, TLogin } from './types';
-
-enum AuthType {
-  LOGIN = 'login',
-  REGISTER = 'register'
-}
-
-const defaultValues: TAuthData = {
-  authType: AuthType.REGISTER,
-  role: FormTabs.STUDENT,
-  name: '',
-  tg: '',
-  link: '',
-  code: ''
-};
-
-const AuthForm: React.FC<TLogin> = ({ mainPageRegister, closeModal }) => {
+const useAuth = (mainPageRegister?: boolean, closeModal?: () => void) => {
   const { values, handleChange, setValues } = useForm(defaultValues);
   const [currentTab, setStudentTab] = useState<TFormTabs>(
     mainPageRegister ? FormTabs.TUTOR : FormTabs.STUDENT
@@ -96,49 +79,27 @@ const AuthForm: React.FC<TLogin> = ({ mainPageRegister, closeModal }) => {
     handleChange
   };
 
-  const buttonProps = {
+  const buttonProps: IAuthButtonsProps = {
     authType,
     code,
     isValid,
     handleAuthTypeChange
   };
 
-  return (
-    <div className={styles.auth}>
-      {!mainPageRegister && (
-        <>
-          <h2 className={styles.auth__title}>
-            {authType ? 'Вход' : 'Регистрация'}
-          </h2>
-          <Tab currentTab={currentTab} onClick={handleActiveTab} />
-        </>
-      )}
-      <form
-        ref={formRef}
-        className={cn(styles.auth__form, {
-          [styles.auth__form__change]: formChange
-        })}
-        style={{
-          blockSize: `${104 * inputCount + 164 + (authType ? 0 : 42)}px`
-        }}
-        onChange={handleValidity}
-        onSubmit={handleSubmit}
-      >
-        {/* Имя */}
-        {!authType &&
-          AuthInputs.name(inputProps, currentTab === FormTabs.TUTOR)}
-        {/* Telegram */}
-        {AuthInputs.tg(inputProps)}
-        {/* Ссылка */}
-        {delayedTab === FormTabs.STUDENT &&
-          !authType &&
-          AuthInputs.link(inputProps)}
-        {/* Код */}
-        {code && AuthInputs.code(inputProps)}
-        <AuthButtons buttonProps={buttonProps} />
-      </form>
-    </div>
-  );
+  return {
+    currentTab,
+    authType,
+    code,
+    formRef,
+    inputCount,
+    formChange,
+    delayedTab,
+    handleValidity,
+    handleSubmit,
+    handleActiveTab,
+    inputProps,
+    buttonProps
+  };
 };
 
-export default AuthForm;
+export default useAuth;

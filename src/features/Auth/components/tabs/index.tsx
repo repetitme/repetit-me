@@ -2,21 +2,16 @@ import React from 'react';
 
 import cn from 'classnames';
 
+import { FormTabs } from '../../constants';
+
 import styles from './index.module.scss';
 
 import { TFormTabs } from '../../types';
-
-// Временный компонент
 
 type TabProps = {
   currentTab: TFormTabs;
   onClick: (value: TFormTabs) => void;
 };
-
-export enum FormTabs {
-  STUDENT = 'Как ученик',
-  TUTOR = 'Как репетитор'
-}
 
 export const Tab: React.FC<TabProps> = ({ currentTab, onClick }) => {
   return (

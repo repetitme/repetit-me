@@ -1,3 +1,65 @@
-import AuthForm from './form';
+import cn from 'classnames';
+
+import { AuthButtons, AuthInputs, Tab } from './components';
+import { FormTabs } from './constants';
+import useAuth from './useAuth';
+
+import styles from './index.module.scss';
+
+import { TLogin } from './types';
+
+const AuthForm: React.FC<TLogin> = ({ mainPageRegister, closeModal }) => {
+  const {
+    currentTab,
+    authType,
+    code,
+    formRef,
+    inputCount,
+    formChange,
+    delayedTab,
+    handleValidity,
+    handleSubmit,
+    handleActiveTab,
+    inputProps,
+    buttonProps
+  } = useAuth(mainPageRegister, closeModal);
+
+  return (
+    <div className={styles.auth}>
+      {!mainPageRegister && (
+        <>
+          <h2 className={styles.auth__title}>
+            {authType ? 'Вход' : 'Регистрация'}
+          </h2>
+          <Tab currentTab={currentTab} onClick={handleActiveTab} />
+        </>
+      )}
+      <form
+        ref={formRef}
+        className={cn(styles.auth__form, {
+          [styles.auth__form__change]: formChange
+        })}
+        style={{
+          blockSize: `${104 * inputCount + 164 + (authType ? 0 : 42)}px`
+        }}
+        onChange={handleValidity}
+        onSubmit={handleSubmit}
+      >
+        {/* Имя */}
+        {!authType &&
+          AuthInputs.name(inputProps, currentTab === FormTabs.TUTOR)}
+        {/* Telegram */}
+        {AuthInputs.tg(inputProps)}
+        {/* Ссылка */}
+        {delayedTab === FormTabs.STUDENT &&
+          !authType &&
+          AuthInputs.link(inputProps)}
+        {/* Код */}
+        {code && AuthInputs.code(inputProps)}
+        <AuthButtons {...buttonProps} />
+      </form>
+    </div>
+  );
+};
 
 export default AuthForm;
