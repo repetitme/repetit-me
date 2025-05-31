@@ -57,7 +57,16 @@
     &__text {
       color: var(--clr-secondary-default, #fc4a4a);
       top: 100%;
+      opacity: 0;
+      block-size: 0;
+      transform: translate(-20px);
+      transition: all 0.3s ease;
     }
+
+    &__active {
+      opacity: 1;
+      block-size: 20px;
+      transform: translate(0);    }
   }
 
   &.price {

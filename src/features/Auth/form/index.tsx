@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
+import cn from 'classnames';
+
 import useForm from '../../../shared/hooks/useForm';
 import Button from '../../../shared/ui/button';
 import AuthInputs from '../inputs';
@@ -32,6 +34,15 @@ const AuthForm: React.FC<TLogin> = ({ mainPageRegister, closeModal }) => {
   const [isValid, setIsValid] = useState(false);
   const [code, setReceived] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
+  const [inputCount, setInputCount] = useState(0);
+  const [formChange, setFormChange] = useState(false);
+  const [delayedTab, setDelayedTab] = useState<TFormTabs>(currentTab);
+
+  useEffect(() => {
+    if (formRef.current) {
+      setInputCount(formRef.current.querySelectorAll('input').length);
+    }
+  }, [authType, code, delayedTab]);
 
   // Сброс кода при изменении данных после его получения
   useEffect(() => {
@@ -65,8 +76,21 @@ const AuthForm: React.FC<TLogin> = ({ mainPageRegister, closeModal }) => {
   };
 
   const handleActiveTab = (value: TFormTabs) => {
-    setStudentTab(value);
+    setFormChange(true);
     setReceived(false);
+    setStudentTab(value);
+    setTimeout(() => {
+      setFormChange(false);
+      setDelayedTab(value);
+    }, 500);
+  };
+
+  const handleAuthTypeChange = () => {
+    setFormChange(true);
+    setTimeout(() => {
+      setFormChange(false);
+      setAuthType(true);
+    }, 300);
   };
 
   const AuthButton = () => {
@@ -93,7 +117,7 @@ const AuthForm: React.FC<TLogin> = ({ mainPageRegister, closeModal }) => {
           </a>
           {!authType && (
             <p className={styles.auth__text__enter}>
-              Уже есть аккаунт? <a onClick={() => setAuthType(true)}>Войти</a>
+              Уже есть аккаунт? <a onClick={handleAuthTypeChange}>Войти</a>
             </p>
           )}
         </div>
@@ -118,22 +142,24 @@ const AuthForm: React.FC<TLogin> = ({ mainPageRegister, closeModal }) => {
       )}
       <form
         ref={formRef}
-        className={styles.auth__form}
+        className={cn(styles.auth__form, {
+          [styles.auth__form__change]: formChange
+        })}
+        style={{
+          blockSize: `${104 * inputCount + 164 + (authType ? 0 : 42)}px`
+        }}
         onChange={handleValidity}
         onSubmit={handleSubmit}
       >
         {/* Имя */}
         {!authType &&
-          AuthInputs.name(
-            inputProps,
-            currentTab === FormTabs.TUTOR ? 'notRequired' : ''
-          )}
+          AuthInputs.name(inputProps, currentTab === FormTabs.TUTOR)}
         {/* Telegram */}
         {AuthInputs.tg(inputProps)}
         {/* Ссылка */}
-        {currentTab === FormTabs.STUDENT &&
+        {delayedTab === FormTabs.STUDENT &&
           !authType &&
-          AuthInputs.link(inputProps)}{' '}
+          AuthInputs.link(inputProps)}
         {/* Код */}
         {code && AuthInputs.code(inputProps)}
         <AuthButton />
