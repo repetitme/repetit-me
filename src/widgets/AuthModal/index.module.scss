@@ -1,9 +1,7 @@
 .modal {
   position: fixed;
-  transition: all 0.3s ease;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   padding: 60px 60px 0;
   border: 1px solid transparent;
   background-clip: padding-box, border-box;
