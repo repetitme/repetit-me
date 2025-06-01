@@ -2,11 +2,11 @@ import React from 'react';
 
 import cn from 'classnames';
 
-import { FormTabs } from '../../constants';
+import { FormTabs } from '../../../constants';
 
 import styles from './index.module.scss';
 
-import { TFormTabs } from '../../types';
+import { TFormTabs } from '../../../types';
 
 type TabProps = {
   currentTab: TFormTabs;

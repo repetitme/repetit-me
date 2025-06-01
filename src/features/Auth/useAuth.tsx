@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 
 import useForm from '../../shared/hooks/useForm';
-import { IAuthButtonsProps } from './components/button';
 import { AuthType, FormTabs, defaultValues } from './constants';
+import { IAuthButtonsProps } from './ui/components/button';
 
 import { TFormTabs, TInputProps } from './types';
 

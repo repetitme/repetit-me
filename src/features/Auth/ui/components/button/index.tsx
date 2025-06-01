@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import Button from '../../../../shared/ui/button';
+import Button from '../../../../../shared/ui/button';
 
 import styles from './index.module.scss';
 

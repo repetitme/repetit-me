@@ -1,14 +1,14 @@
 import cn from 'classnames';
 
+import { FormTabs } from '../constants';
+import useAuth from '../useAuth';
 import { AuthButtons, AuthInputs, Tab } from './components';
-import { FormTabs } from './constants';
-import useAuth from './useAuth';
 
 import styles from './index.module.scss';
 
-import { TLogin } from './types';
+import { TLogin } from '../types';
 
-const AuthForm: React.FC<TLogin> = ({ mainPageRegister, closeModal }) => {
+export const AuthForm: React.FC<TLogin> = ({ mainPageRegister, closeModal }) => {
   const {
     currentTab,
     authType,
@@ -61,5 +61,3 @@ const AuthForm: React.FC<TLogin> = ({ mainPageRegister, closeModal }) => {
     </div>
   );
 };
-
-export default AuthForm;

@@ -1,4 +1,4 @@
-import Input from '../../../../shared/ui/input';
+import Input from '../../../../../shared/ui/input';
 import { authInputsData, requiredErrorMessage } from './data';
 
 import { TInputFactory, TInputs } from './types';
