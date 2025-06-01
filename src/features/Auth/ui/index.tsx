@@ -8,7 +8,10 @@ import styles from './index.module.scss';
 
 import { TLogin } from '../types';
 
-export const AuthForm: React.FC<TLogin> = ({ mainPageRegister, closeModal }) => {
+export const AuthForm: React.FC<TLogin> = ({
+  mainPageRegister,
+  closeModal
+}) => {
   const {
     currentTab,
     authType,
