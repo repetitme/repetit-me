@@ -12,7 +12,9 @@
     font-weight: 500;
     margin-block-end: 8px;
 
-    @include title-gradient(356deg);
+    & span {
+      @include title-gradient();
+    }
   }
 
   &__form {

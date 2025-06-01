@@ -32,7 +32,7 @@ export const AuthForm: React.FC<TLogin> = ({
       {!mainPageRegister && (
         <>
           <h2 className={styles.auth__title}>
-            {authType ? 'Вход' : 'Регистрация'}
+            <span>{authType ? 'Вход' : 'Регистрация'}</span>
           </h2>
           <Tab currentTab={currentTab} onClick={handleActiveTab} />
         </>
