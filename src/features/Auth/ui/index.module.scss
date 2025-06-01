@@ -13,7 +13,7 @@
     margin-block-end: 8px;
 
     & span {
-      @include title-gradient();
+      @include title-gradient;
     }
   }
 
