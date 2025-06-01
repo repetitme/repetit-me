@@ -1,5 +1,4 @@
 import MainPage from '../../pages/MainPage';
-import FeedbackList from '../../widgets/FeedbackList';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 import Schedule from '../../widgets/Schedule';
 
@@ -9,15 +8,6 @@ export const routesConfig: IRoute[] = [
   {
     path: '/',
     element: <MainPage />,
-    auth: false
-  },
-  {
-    path: '/test',
-    element: (
-      <div style={{ margin: '10px 100px' }}>
-        <FeedbackList updateModalData={() => {}} />
-      </div>
-    ),
     auth: false
   },
   {
