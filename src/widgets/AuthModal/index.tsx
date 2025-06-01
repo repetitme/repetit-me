@@ -8,6 +8,7 @@ import iconClose from '../../assets/icons/closeIcon.svg';
 import AuthForm from '../../features/Auth';
 import useClickOutside from '../../shared/hooks/useClickOutside';
 import ModalOverlay from '../../shared/ui/overlay';
+import useScrollLock from '../../shared/hooks/useScrollLock';
 
 import styles from './index.module.scss';
 
@@ -29,21 +30,7 @@ const AuthModal: FC = () => {
     }
   }, []);
 
-  // No scroll, no shift
-  useEffect(() => {
-    const scrollBar = window.innerWidth - document.documentElement.clientWidth;
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      document.body.style.paddingRight = `${scrollBar}px`;
-    } else {
-      document.body.style.overflow = 'auto';
-      document.body.style.paddingRight = '';
-    }
-    return () => {
-      document.body.style.overflow = 'auto';
-      document.body.style.paddingRight = '';
-    };
-  }, [isOpen]);
+  useScrollLock(isOpen);
 
   const modalRef = useClickOutside(onClose);
 
