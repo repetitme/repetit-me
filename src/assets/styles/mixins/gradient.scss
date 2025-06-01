@@ -4,9 +4,9 @@
   color: transparent;
 }
 
-@mixin title-gradient($angle: 289deg) {
+@mixin title-gradient() {
   background: linear-gradient(
-    $angle,
+    289deg,
     #3dc5ff 5.24%,
     #4558ff 29.77%,
     #865bff 60.98%,
