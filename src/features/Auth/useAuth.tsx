@@ -8,13 +8,15 @@ import { TFormTabs, TInputProps } from './types';
 
 const useAuth = (mainPageRegister?: boolean, closeModal?: () => void) => {
   const { values, handleChange, setValues } = useForm(defaultValues);
+  const formRef = useRef<HTMLFormElement | null>(null);
+
   const [currentTab, setStudentTab] = useState<TFormTabs>(
     mainPageRegister ? FormTabs.TUTOR : FormTabs.STUDENT
   );
   const [authType, setAuthType] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const [code, setReceived] = useState(false);
-  const formRef = useRef<HTMLFormElement | null>(null);
+
   const [inputCount, setInputCount] = useState(0);
   const [formChange, setFormChange] = useState(false);
   const [delayedTab, setDelayedTab] = useState<TFormTabs>(currentTab);
