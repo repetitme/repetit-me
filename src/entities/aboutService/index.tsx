@@ -1,68 +1,87 @@
-import { ServiceButton } from './components/serviceButtons/serviceButton';
-import { ButtonsContainer } from './components/ButtonsContainer';
+import { ServiceButton } from './components/serviceButton/serviceButton';
 import { PopupContainer } from './components/popupContainer';
-import { ServiceURL } from './components/serviceButtons/ServiceURL';
 import { PopupContentText } from './components/popupContentText';
 import { PopupContentPoints } from './components/popupContentPoints';
 import { PopupContentList } from './components/popupContentList';
 
-import { IAboutService } from "./type";
+import aboutIcon from '../../assets/icons/iconAboutService.svg';
+import walletIcon from '../../assets/icons/conisWithAWalletIcon.svg';
+import fundsIcon from '../../assets/icons/funds.svg';
+import orderIcon from '../../assets/icons/transactionOrder.svg';
 
+import { IAboutService } from './type';
+
+import styles from './index.module.scss';
 import { useState } from 'react';
 
-export const AboutService: React.FC<IAboutService> = ({bonusPopup, reviewPopup}) => {
-    const [isBonusPopupOpen, setIsBonusPopupOpen] = useState(false);
-    const [isReviewPopupOpen, setIsReviewPopupOpen] = useState(false);
-    const [listItems, setListItems] = useState<React.ReactNode[]>([]);
+export const AboutService: React.FC<IAboutService> = ({
+  bonusPopup,
+  reviewPopup
+}) => {
+  const [isBonusPopupOpen, setIsBonusPopupOpen] = useState(false);
+  const [isReviewPopupOpen, setIsReviewPopupOpen] = useState(false);
+  const [listItems, setListItems] = useState<React.ReactNode[]>([]);
 
-    const points = bonusPopup.points
-    const isBonusPopupDisabled = points < 500
-    const isReviewPopupDisabled = listItems.length === 0;
+  const points = bonusPopup.points;
+  const isBonusPopupDisabled = points < 500;
+  const isReviewPopupDisabled = listItems.length === 0;
 
-    return (
-        <>
-            <ButtonsContainer>
-                <ServiceURL
-                    title='Как пользоваться платформой'
-                    icon='src/entities/aboutService/data/iconAboutService.svg'
-                    url='#0'
-                ></ServiceURL>
+  return (
+    <>
+      <div className={styles.buttons__container}>
+        <ServiceButton
+          title="Как пользоваться платформой"
+          icon={aboutIcon}
+          url="#0"
+        ></ServiceButton>
 
-                <ServiceURL
-                    title='Условия сотрудничества'
-                    icon='src/entities/aboutService/data/conisWithAWalletIcon.svg'
-                    url='#0'
-                ></ServiceURL>
+        <ServiceButton
+          title="Условия сотрудничества"
+          icon={walletIcon}
+          url="#0"
+        ></ServiceButton>
 
-                <ServiceButton
-                    title='Бонусная программа'
-                    icon='src/entities/aboutService/data/funds.svg'
-                    onModal={() => setIsBonusPopupOpen(true)}
-                ></ServiceButton>
+        <ServiceButton
+          title="Бонусная программа"
+          icon={fundsIcon}
+          onModal={() => setIsBonusPopupOpen(true)}
+        ></ServiceButton>
 
-                <ServiceButton
-                    title='Перенос ваших отзывов'
-                    icon='src/entities/aboutService/data/transactionOrder.svg'
-                    onModal={() => setIsReviewPopupOpen(true)}
-                ></ServiceButton>
-            </ButtonsContainer>
+        <ServiceButton
+          title="Перенос ваших отзывов"
+          icon={orderIcon}
+          onModal={() => setIsReviewPopupOpen(true)}
+        ></ServiceButton>
+      </div>
 
-            <PopupContainer isOpen={isBonusPopupOpen} onClose={() => setIsBonusPopupOpen(false)} popupTitle={bonusPopup.title} buttonTitle={bonusPopup.buttonText} isDisabled={isBonusPopupDisabled}>
-                <PopupContentPoints
-                    inputName='Реферальная ссылка'
-                    url={bonusPopup.URL}
-                    points={points}
-                    readOnly={true}
-                ></PopupContentPoints>
-                <PopupContentText text={bonusPopup.text}></PopupContentText>
-            </PopupContainer>
+      <PopupContainer
+        isOpen={isBonusPopupOpen}
+        onClose={() => setIsBonusPopupOpen(false)}
+        popupTitle={bonusPopup.title}
+        buttonTitle={bonusPopup.buttonText}
+        isDisabled={isBonusPopupDisabled}
+        URL="#0"
+      >
+        <PopupContentPoints
+          inputName="Реферальная ссылка"
+          url={bonusPopup.URL}
+          points={points}
+          readOnly={true}
+        ></PopupContentPoints>
+        <PopupContentText text={bonusPopup.text}></PopupContentText>
+      </PopupContainer>
 
-            <PopupContainer isOpen={isReviewPopupOpen} onClose={() => setIsReviewPopupOpen(false)} popupTitle={reviewPopup.title} buttonTitle={reviewPopup.buttonText} isDisabled={isReviewPopupDisabled}>
-                <PopupContentText text={reviewPopup.text}></PopupContentText>
-                <PopupContentList
-                    onListChange={setListItems}
-                ></PopupContentList>
-            </PopupContainer>
-        </>
-    )
-}
+      <PopupContainer
+        isOpen={isReviewPopupOpen}
+        onClose={() => setIsReviewPopupOpen(false)}
+        popupTitle={reviewPopup.title}
+        buttonTitle={reviewPopup.buttonText}
+        isDisabled={isReviewPopupDisabled}
+        URL="#0"
+      >
+        <PopupContentText text={reviewPopup.text}></PopupContentText>
+        <PopupContentList onListChange={setListItems}></PopupContentList>
+      </PopupContainer>
+    </>
+  );
+};

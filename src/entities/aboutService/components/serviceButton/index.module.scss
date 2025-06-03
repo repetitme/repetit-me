@@ -1,0 +1,46 @@
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  inline-size: 209px;
+  block-size: 154px;
+  padding: 20px;
+  padding-right: 16px;
+  gap: 15px;
+  border: none;
+  background-color: var(--clr-main);
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 25px;
+    padding: 1px;
+    background: linear-gradient(180deg, #3049f3 0%, #f299de 50%, #e530ad 100%);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    z-index: -1;
+  }
+
+  &__title {
+    text-align: start;
+    font-family: var(--ffm-default);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--clr-black);
+  }
+
+  &__icon {
+    block-size: 60px;
+    inline-size: 60px;
+  }
+}

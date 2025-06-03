@@ -1,14 +1,9 @@
-export const bonusPopupData: {
-    title: string
-    text: string
-    buttonText: string
-    URL: string
-    points: number
-} = {
-    title: 'Бонусная программа',
+import { bonusPopupType, reviewPopupType } from './type';
 
-    text: 
-    `
+export const bonusPopupData: bonusPopupType = {
+  title: 'Бонусная программа',
+
+  text: `
         Зачем получать баллы?
         Баллы можно обменять на денежное вознаграждение
 
@@ -23,20 +18,15 @@ export const bonusPopupData: {
         1 занятие = 100 баллов
     `,
 
-    buttonText: 'Вывести баллы',
-    URL: 'https://www.figma.com/design222gyrtrfggggggggggg',
-    points: 500
-}
+  buttonText: 'Вывести баллы',
+  URL: 'https://www.figma.com/design222gyrtrfggggggggggg',
+  points: 500
+};
 
-export const reviewPopupData: {
-    title: string
-    text: string
-    buttonText: string
-} = {
-    title: 'Перенос отзывов',
+export const reviewPopupData: reviewPopupType = {
+  title: 'Перенос отзывов',
 
-    text: 
-    `
+  text: `
         Как перенести отзывы с других платформ?
         Вы можете перенести до 10 верифицированных отзывов с других платформ (профи, авито, и тд).
 
@@ -47,5 +37,5 @@ export const reviewPopupData: {
         Прикрепите ссылки на свои анкеты в других сервисах, где есть отзывы о ваших уроках. Мы их проверим и перенесем на нашу платформу.
     `,
 
-    buttonText: 'Отправить'
-}
+  buttonText: 'Отправить'
+};

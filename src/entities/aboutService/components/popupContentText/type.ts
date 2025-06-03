@@ -1,3 +1,3 @@
 export interface IPopupContentText {
-    text: string;
+  text: string;
 }

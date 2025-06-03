@@ -1,12 +1,23 @@
-import { IPopupContainer } from './type'
-import styles from './index.module.scss'
+import { IPopupContainer } from './type';
+import styles from './index.module.scss';
 import { useEffect, useRef } from 'react';
 
-export const PopupContainer: React.FC<IPopupContainer> = ({isOpen, onClose, children, popupTitle, buttonTitle, isDisabled}) => {
+import { ModalOverlay } from '../../../../shared/components/Overlay';
+import Button from '../../../../shared/button';
+import closeIcon from '../../../../assets/icons/close.svg';
+
+export const PopupContainer: React.FC<IPopupContainer> = ({
+  isOpen,
+  onClose,
+  children,
+  popupTitle,
+  buttonTitle,
+  isDisabled,
+  URL
+}) => {
   const popupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
         onClose();
@@ -24,22 +35,31 @@ export const PopupContainer: React.FC<IPopupContainer> = ({isOpen, onClose, chil
 
   if (!isOpen) return null;
 
-    return (
-        <div className={styles.popup__overlay}>
-            <div className={styles.popup} ref={popupRef}>
-                <div className={styles.popup__close}>
-                  <button className={styles.popup__close_button} onClick={onClose}>
-                    <img  className={styles.popup__close_image} src='src/entities/aboutService/data/close.svg' alt="Закрыть"></img>
-                  </button>
-                </div>
-                <div className={styles.popup__container}>
-                  <p className={styles.popup__title}>{popupTitle}</p>
-                  <div className={styles.popup__content}>
-                    {children}
-                  </div>
-                  <button className={styles.popup__button} disabled={isDisabled}>{buttonTitle}</button>
-                </div>
-            </div>
+  return (
+    <>
+      <ModalOverlay onClose={onClose}></ModalOverlay>
+      <div className={styles.popup} ref={popupRef}>
+        <div className={styles.popup__close}>
+          <button className={styles.popup__close_button} onClick={onClose}>
+            <img
+              className={styles.popup__close_image}
+              src={closeIcon}
+              alt="Закрыть"
+            ></img>
+          </button>
         </div>
-    );
+        <div className={styles.popup__container}>
+          <p className={styles.popup__title}>{popupTitle}</p>
+          <div className={styles.popup__content}>{children}</div>
+          <Button
+            text={buttonTitle}
+            variant="purple"
+            className={styles.popup__button}
+            disabled={isDisabled}
+            href={URL}
+          ></Button>
+        </div>
+      </div>
+    </>
+  );
 };
