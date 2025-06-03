@@ -1,5 +1,6 @@
 import MainPage from '../../pages/MainPage';
 import TutorCatalogPage from '../../pages/TutorCatalogPage';
+import FeedbackList from '../../widgets/FeedbackList';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
 import { IRoute } from './type';
@@ -13,6 +14,15 @@ export const routesConfig: IRoute[] = [
   {
     path: '/tutor-catalog',
     element: <TutorCatalogPage />,
+    auth: false
+  },
+  {
+    path: '/test',
+    element: (
+      <div style={{ margin: '10px 100px' }}>
+        <FeedbackList updateModalData={() => {}} />
+      </div>
+    ),
     auth: false
   },
   {

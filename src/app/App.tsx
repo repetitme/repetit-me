@@ -6,14 +6,11 @@ import Header from '../widgets/Header';
 import { AppProvider } from './AppContext';
 import AppRouter from './router/AppRouter';
 
-import '../assets/index.scss';
+import '../assets/styles/index.scss';
 import styles from './index.module.scss';
 
 function App() {
-  const location = useLocation();
-  const showTelegramBlock = location.pathname === '/';
-  const role: TUserRole = 'unauthorized'; // "student" "unauthorized"
-
+  //const [auth, setAuth] = useState<'unauth' | 'student' | 'teacher'>('unauth');
   return (
     <AppProvider role={role}>
       <div className={styles.app}>
