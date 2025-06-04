@@ -18,10 +18,7 @@
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     border-radius: 25px;
     padding: 1px;
     background: linear-gradient(180deg, #3049f3 0%, #f299de 50%, #e530ad 100%);
