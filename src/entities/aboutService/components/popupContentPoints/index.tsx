@@ -6,7 +6,6 @@ import { IPopupContentPoints } from './type';
 
 export const PopupContentPoints: React.FC<IPopupContentPoints> = ({
   inputName,
-  icon,
   url,
   points
 }) => {
@@ -14,7 +13,7 @@ export const PopupContentPoints: React.FC<IPopupContentPoints> = ({
     <div className={styles.popup__content_points}>
       <PopupContentURL
         inputName={inputName}
-        icon={icon}
+        readOnly={true}
         url={url}
       ></PopupContentURL>
       <div className={styles.popup__content_points_container}>
