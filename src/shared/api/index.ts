@@ -16,7 +16,7 @@ export async function httpJson<T>(path: string): Promise<T> {
     }
   })
   .catch((err) => {
-    console.log("Запрос не выполнен ",err)
+    throw new Error(`Запрос не выполнен ,${err}`);
   })  
-  return response.json() as Promise<T>;  
+  return response; 
 }
