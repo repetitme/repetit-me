@@ -2,6 +2,7 @@
 
 .textarea {
   @include form-field;
+
   min-block-size: 164px;
   font-size: 15px;
   line-height: 1.6;
