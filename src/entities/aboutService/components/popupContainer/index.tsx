@@ -1,10 +1,12 @@
-import { IPopupContainer } from './type';
-import styles from './index.module.scss';
 import { useEffect, useRef } from 'react';
 
-import { ModalOverlay } from '../../../../shared/components/Overlay';
-import Button from '../../../../shared/button';
 import closeIcon from '../../../../assets/icons/close.svg';
+import Button from '../../../../shared/ui/button';
+import { ModalOverlay } from '../../../../shared/ui/overlay';
+
+import styles from './index.module.scss';
+
+import { IPopupContainer } from './type';
 
 export const PopupContainer: React.FC<IPopupContainer> = ({
   isOpen,

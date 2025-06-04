@@ -1,9 +1,11 @@
-import { IPopupContentList } from './type';
-import styles from './index.module.scss';
 import { useEffect, useState } from 'react';
 
-import { PopupContentURL } from '../popupContentURL';
 import iconAdd from '../../../../assets/icons/iconAdd.svg';
+import { PopupContentURL } from '../popupContentURL';
+
+import styles from './index.module.scss';
+
+import { IPopupContentList } from './type';
 
 export const PopupContentList: React.FC<IPopupContentList> = ({
   onListChange

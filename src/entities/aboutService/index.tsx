@@ -1,18 +1,18 @@
-import { ServiceButton } from './components/serviceButton/serviceButton';
-import { PopupContainer } from './components/popupContainer';
-import { PopupContentText } from './components/popupContentText';
-import { PopupContentPoints } from './components/popupContentPoints';
-import { PopupContentList } from './components/popupContentList';
+import { useEffect, useState } from 'react';
 
-import aboutIcon from '../../assets/icons/iconAboutService.svg';
 import walletIcon from '../../assets/icons/conisWithAWalletIcon.svg';
 import fundsIcon from '../../assets/icons/funds.svg';
+import aboutIcon from '../../assets/icons/iconAboutService.svg';
 import orderIcon from '../../assets/icons/transactionOrder.svg';
-
-import { IAboutService } from './type';
+import { PopupContainer } from './components/popupContainer';
+import { PopupContentList } from './components/popupContentList';
+import { PopupContentPoints } from './components/popupContentPoints';
+import { PopupContentText } from './components/popupContentText';
+import { ServiceButton } from './components/serviceButton/serviceButton';
 
 import styles from './index.module.scss';
-import { useState } from 'react';
+
+import { IAboutService } from './type';
 
 export const AboutService: React.FC<IAboutService> = ({
   bonusPopup,
@@ -25,6 +25,18 @@ export const AboutService: React.FC<IAboutService> = ({
   const points = bonusPopup.points;
   const isBonusPopupDisabled = points < 500;
   const isReviewPopupDisabled = listItems.length === 0;
+
+  useEffect(() => {
+    if (isBonusPopupOpen || isReviewPopupOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isBonusPopupOpen, isReviewPopupOpen]);
 
   return (
     <>

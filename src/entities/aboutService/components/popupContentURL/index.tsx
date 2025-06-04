@@ -1,8 +1,10 @@
-import { IPopupContentURL } from './type';
-import styles from './index.module.scss';
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import unionIcon from '../../../../assets/icons/Union.svg';
+
+import styles from './index.module.scss';
+
+import { IPopupContentURL } from './type';
 
 export const PopupContentURL: React.FC<IPopupContentURL> = ({
   inputName,

@@ -1,0 +1,62 @@
+.main {
+  &__block {
+    display: flex;
+    justify-content: center;
+    margin-block-start: 61px;
+  }
+
+  &__background {
+    max-inline-size: 1200px;
+    min-block-size: 628px;
+    width: 100%;
+    border-radius: 28px;
+    background-size: cover;
+
+    &--student {
+      background-image: url('../../assets/images/StudentIcons/backgroundStudent.png');
+    }
+
+    &--teacher {
+      background-image: url('../../assets/images/TeacherIcons/backgroundTeacher.png');
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 11px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: var(--ffm-default);
+    color: var(--clr-main);
+  }
+
+  &__switch {
+    margin-block-start: 60px;
+  }
+
+  &__title {
+    font-size: 40px;
+    line-height: 132%;
+    font-family: var(--ffm-title);
+    margin-block-start: 29px;
+    padding: 0 219px;
+  }
+
+  &__text {
+    padding: 0 259px;
+    margin-block-start: 23px;
+  }
+
+  &__button {
+    margin-block-start: 48px;
+    padding: 16px 24px;
+    border-radius: var(--border-radius-btn-social);
+    background-color: var(--clr-main);
+    font-weight: 700;
+    border: none;
+    color: var(--clr-black);
+  }
+}

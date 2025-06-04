@@ -1,5 +1,6 @@
-import { IServiceButtons } from './type';
 import styles from './index.module.scss';
+
+import { IServiceButtons } from './type';
 
 export const ServiceButton: React.FC<IServiceButtons> = ({
   title,

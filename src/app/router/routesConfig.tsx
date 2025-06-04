@@ -1,10 +1,27 @@
-import NotFoundPage from '../../shared/NotFoundPage';
+import { AboutService } from '../../entities/aboutService';
+import {
+  bonusPopupData,
+  reviewPopupData
+} from '../../entities/aboutService/data';
+import MainPage from '../../pages/MainPage';
+import FeedbackList from '../../widgets/FeedbackList';
+import NotFoundPage from '../../widgets/NotFoundPage/index';
+
 import { IRoute } from './type';
 
 export const routesConfig: IRoute[] = [
   {
     path: '/',
-    element: <>MainPage</>,
+    element: <MainPage />,
+    auth: false
+  },
+  {
+    path: '/test',
+    element: (
+      <div style={{ margin: '10px 100px' }}>
+        <FeedbackList updateModalData={() => {}} />
+      </div>
+    ),
     auth: false
   },
   {
@@ -30,6 +47,18 @@ export const routesConfig: IRoute[] = [
   {
     path: '*',
     element: <NotFoundPage />,
+    auth: false
+  },
+  {
+    path: '/aboutService',
+    element: (
+      <div style={{ inlineSize: 'fit-content', margin: '20px auto' }}>
+        <AboutService
+          bonusPopup={bonusPopupData}
+          reviewPopup={reviewPopupData}
+        />
+      </div>
+    ),
     auth: false
   }
 ];

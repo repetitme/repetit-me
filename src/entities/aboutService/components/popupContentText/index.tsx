@@ -1,5 +1,6 @@
-import { IPopupContentText } from './type';
 import styles from './index.module.scss';
+
+import { IPopupContentText } from './type';
 
 export const PopupContentText: React.FC<IPopupContentText> = ({ text }) => {
   const lines = text.split('\n').filter((line) => line.trim() !== '');

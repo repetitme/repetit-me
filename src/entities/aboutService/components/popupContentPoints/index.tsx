@@ -1,6 +1,8 @@
-import { IPopupContentPoints } from './type';
-import styles from './index.module.scss';
 import { PopupContentURL } from '../popupContentURL';
+
+import styles from './index.module.scss';
+
+import { IPopupContentPoints } from './type';
 
 export const PopupContentPoints: React.FC<IPopupContentPoints> = ({
   inputName,

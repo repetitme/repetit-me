@@ -1,0 +1,43 @@
+.section {
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px 32px;
+  gap: 24px;
+  background-color: #f6f6f6;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  inline-size: 256px;
+  padding: 16px 20px;
+  border-radius: var(--border-radius-btn-social);
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.36;
+  font-family: var(--ffm-default);
+  cursor: pointer;
+  background-color: var(--clr-main);
+  color: #292f3b;
+  white-space: nowrap;
+}
+
+.button {
+  inline-size: min-content;
+  white-space: nowrap;
+  padding: 18px 24px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

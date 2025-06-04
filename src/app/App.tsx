@@ -1,19 +1,17 @@
-import '../../src/assets/styles/globals.scss';
-import '../../src/assets/styles/variables.scss';
-import './App.scss';
+import Footer from '../widgets/Footer';
+import Header from '../widgets/Header';
+import AppRouter from './router/AppRouter';
 
-import { AboutService } from '../entities/aboutService';
-import { bonusPopupData, reviewPopupData } from '../entities/aboutService/data';
+import '../assets/styles/index.scss';
+import styles from './index.module.scss';
 
 function App() {
   return (
-    <>
-      <AboutService
-        bonusPopup={bonusPopupData}
-        reviewPopup={reviewPopupData}
-      ></AboutService>
-    </>
+    <div className={styles.app}>
+      <Header auth={'student'} />
+      <AppRouter />
+      <Footer role="student" />
+    </div>
   );
 }
-
 export default App;

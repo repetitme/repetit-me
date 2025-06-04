@@ -1,0 +1,62 @@
+.header {
+  background-color: var(--clr-main);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-inline-size: 1200px;
+  padding-block: 19px;
+  margin: 0 auto;
+  border-radius: var(--border-radius-blocks);
+
+  &__logo {
+    margin: 0 35px;
+  }
+
+  &__menu {
+    display: flex;
+    gap: 43px;
+    margin: auto 35px;
+
+    &--student {
+      gap: 49px;
+      margin-inline-end: 64px;
+    }
+  }
+
+  &__button {
+    border: 2px solid transparent;
+    background: none;
+    transition: border-color 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--clr-primary-default);
+      border-bottom: 2px solid var(--clr-primary-default, #6757f1);
+    }
+  }
+
+  &__svg {
+    margin-inline-end: 10px;
+  }
+
+  &__avatar {
+    position: relative;
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: -32px;
+      top: 44%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      background-image: url('../../assets/images/arrow.svg');
+    }
+  }
+}
+
+.telegram {
+  padding-block: 19px;
+  padding-inline: 17px !important;
+}
