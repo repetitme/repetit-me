@@ -1,5 +1,5 @@
 import MainPage from '../../pages/MainPage';
-import FeedbackList from '../../widgets/FeedbackList';
+import FeedbacksModal from '../../widgets/FeedbacksModal';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
 import { IRoute } from './type';
@@ -14,7 +14,7 @@ export const routesConfig: IRoute[] = [
     path: '/test',
     element: (
       <div style={{ margin: '10px 100px' }}>
-        <FeedbackList updateModalData={() => {}} />
+        <FeedbacksModal onClose={() => {}} />
       </div>
     ),
     auth: false
