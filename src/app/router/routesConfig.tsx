@@ -1,9 +1,9 @@
-import { AboutService } from '../../widgets/AboutService';
+import MainPage from '../../pages/MainPage';
+import { AboutService } from '../../widgets/aboutService';
 import {
   bonusPopupData,
   reviewPopupData
-} from '../../widgets/AboutService/data';
-import MainPage from '../../pages/MainPage';
+} from '../../widgets/aboutService/data';
 import FeedbackList from '../../widgets/FeedbackList';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 

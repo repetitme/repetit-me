@@ -19,7 +19,7 @@
     max-inline-size: 800px;
     inline-size: 90%;
     overflow-y: auto;
-    
+
     &::-webkit-scrollbar {
       inline-size: 6px;
       background: transparent;
@@ -28,14 +28,14 @@
     &::-webkit-scrollbar-track {
       margin: 20px 0;
     }
-    
+
     &::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 0.2);
+      background: rgb(0 0 0 20%);
       border-radius: 4px;
     }
-    
+
     &::-webkit-scrollbar-thumb:hover {
-      background: rgba(0, 0, 0, 0.3);
+      background: rgb(0 0 0 30%);
     }
   }
 
