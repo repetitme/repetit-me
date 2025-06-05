@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import closeIcon from '../../../../assets/icons/close.svg';
 import Button from '../../../../shared/ui/button';
 import { ModalOverlay } from '../../../../shared/ui/overlay';
+import useClickOutside from '../../../../shared/hooks/useClickOutside';
 
 import styles from './index.module.scss';
 
@@ -18,22 +19,32 @@ export const PopupContainer: React.FC<IPopupContainer> = ({
   URL
 }) => {
   const popupRef = useRef<HTMLDivElement>(null);
+  const initializedRef = useRef(false);
+
+  const clickOutsideRef = useClickOutside(() => {
+    if (initializedRef.current) {
+      onClose();
+    }
+  });
 
   useEffect(() => {
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape') {
-        onClose();
-      }
-    }
-
     if (isOpen) {
-      document.addEventListener('keydown', handleKeyDown);
+      const timer = setTimeout(() => {
+        initializedRef.current = true;
+      }, 0);
+      
+      return () => {
+        clearTimeout(timer);
+        initializedRef.current = false;
+      };
     }
+  }, [isOpen]);
 
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isOpen, onClose]);
+  useEffect(() => {
+    if (popupRef.current && clickOutsideRef.current) {
+      clickOutsideRef.current = popupRef.current;
+    }
+  }, []);
 
   if (!isOpen) return null;
 
