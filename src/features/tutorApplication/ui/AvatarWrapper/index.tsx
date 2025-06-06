@@ -2,12 +2,7 @@ import tutorIcon from '../../../../assets/icons/tutorIcon.svg';
 
 import styles from './index.module.scss';
 
-interface AvatarWrapperProps {
-  avatarUrl?: string;
-  size?: number;
-  iconWidth?: number;
-  iconHeight?: number;
-}
+import { AvatarWrapperProps } from './type';
 
 export const AvatarWrapper = ({
   avatarUrl,
