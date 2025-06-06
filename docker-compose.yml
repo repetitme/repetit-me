@@ -3,15 +3,16 @@ version: '3.9'
 services:
   frontend:
     build:
+      context: .
       dockerfile: Dockerfile
     environment:
       - VIRTUAL_HOST=repetitmeweb.ru
       - LETSENCRYPT_HOST=repetitmeweb.ru
       - LETSENCRYPT_EMAIL=mail@repetitmeweb.ru
     networks:
-      - nginx-proxy
+      - reverse-proxy
     restart: always
 
 networks:
-  nginx-proxy:
+  reverse-proxy:
     external: true
