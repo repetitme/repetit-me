@@ -1,3 +1,4 @@
+import { AvatarWrapper } from '../../features/tutorApplication/ui/AvatarWrapper';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 import { AboutService } from '../../widgets/AboutService';
@@ -12,6 +13,15 @@ export const routesConfig: IRoute[] = [
   {
     path: '/',
     element: <MainPage />,
+    auth: false
+  },
+  {
+    path: '/test',
+    element: (
+      <div style={{ margin: '10px 0 10px 120px', maxWidth: '1200px' }}>
+        <AvatarWrapper />
+      </div>
+    ),
     auth: false
   },
   {
