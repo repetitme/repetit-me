@@ -11,7 +11,7 @@
     "format": "prettier --write .",
     "preview": "vite preview",
     "docker:build": "docker build -t repetit-me-frontend .",
-    "docker:run": "docker run -d --name repetit-me --network nginx-proxy -e VIRTUAL_HOST=repetitmeweb.ru -e LETSENCRYPT_HOST=repetitmeweb.ru -e LETSENCRYPT_EMAIL=mail@repetitmeweb.ru repetit-me-frontend"
+    "docker:run": "docker run -d --name repetit-me repetit-me-frontend"
 
   },
   "dependencies": {
