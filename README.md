@@ -62,6 +62,14 @@ yarn docker:run
 
 3. Переходим по адресу http://localhost:8080
 
+### Запуск в Docker на сервере
+
+- Запуск Docker-compose
+
+```
+yarn compose:up
+```
+
 ### Необязательные действия
 
 - Остановить контейнер

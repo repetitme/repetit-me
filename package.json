@@ -11,8 +11,8 @@
     "format": "prettier --write .",
     "preview": "vite preview",
     "docker:build": "docker build -t repetit-me-frontend .",
-    "docker:run": "docker run -d --name repetit-me repetit-me-frontend"
-
+    "docker:run": "docker run -d --name repetit-me repetit-me-frontend",
+    "compose:up": "docker-compose up -d"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.76.1",
