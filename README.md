@@ -64,10 +64,22 @@ yarn docker:run
 
 ### Запуск в Docker на сервере
 
+- Сборка образа Docker-compose
+
+```
+yarn compose:build
+```
+
 - Запуск Docker-compose
 
 ```
 yarn compose:up
+```
+
+- Остановка и удаление контейнера
+
+```
+yarn compose:down
 ```
 
 ### Необязательные действия

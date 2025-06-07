@@ -1,4 +1,4 @@
-FROM node:23-alpine AS build
+FROM node:lts-alpine AS build
 
 WORKDIR /app
 
@@ -7,6 +7,10 @@ COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
 COPY . .
+
+RUN chown -R node:node .
+
+USER node
 
 RUN yarn build
 
