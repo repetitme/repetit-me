@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Wrapper from '../../shared/ui/wrapper';
+import Wrapper from '../../../../shared/ui/wrapper';
 import * as data from './data';
 import useSchedule from './useSchedule';
 
