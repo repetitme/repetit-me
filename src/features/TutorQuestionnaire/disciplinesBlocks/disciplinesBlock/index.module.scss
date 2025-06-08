@@ -1,0 +1,68 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &--disabled {
+    opacity: 0.5;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &__title {
+    font-size: 20px;
+    font-weight: 500;
+    font-family: var(--ffm-title);
+  }
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 40px 48px;
+
+  &__disciplines,
+  &__status,
+  &__target {
+    inline-size: 363px;
+  }
+
+  &__categories {
+    grid-column: 1/-1;
+    grid-row: 2/3;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__experience {
+    max-inline-size: 120px;
+    grid-column: 3/4;
+    grid-row: 1/2;
+  }
+
+  &__target {
+    grid-column: 1/4;
+    grid-row: 3/4;
+    justify-self: start;
+  }
+
+  &__added-disciplines {
+    display: flex;
+    justify-self: start;
+    align-items: center;
+    flex-direction: row;
+    gap: 12px;
+    border: none;
+    color: var(--clr-primary-default);
+    font-size: 20px;
+    font-weight: 700;
+    background-color: transparent;
+    margin-block-end: 12px;
+  }
+}

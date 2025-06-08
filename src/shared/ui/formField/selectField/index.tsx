@@ -97,15 +97,15 @@ const SelectField = ({
               '0px 0px 2px rgba(0, 0, 0, 0.1), 0px 4px 12px rgba(0, 0, 0, 0.1)',
             width: 'calc(100% - 12px)',
             left: '6px',
-            marginTop: '-12px', 
-            zIndex: 1, 
-            position: 'absolute' 
+            marginTop: '2px',
+            zIndex: 3,
+            position: 'absolute'
           }),
           menuList: (base) => ({
             ...base,
             maxHeight: '200px',
             overflow: 'auto',
-            padding: '16px 0 4px 0',
+            padding: '5px 0 4px 0',
             borderRadius: '12px'
           }),
           option: (base, { isFocused, isSelected }) => ({
@@ -119,11 +119,14 @@ const SelectField = ({
             color: 'var(--clr-black)',
             '&:active': {
               backgroundColor: 'rgba(0, 0, 0, 0.05)'
-            }
+            },
+            cursor: 'pointer'
           }),
           singleValue: (base) => ({
             ...base,
-            color: 'var(--clr-black)'
+            color: 'var(--clr-black)',
+            cursor: 'pointer',
+            fontWeight: 500
           }),
           placeholder: (base) => ({
             ...base,
@@ -135,7 +138,8 @@ const SelectField = ({
           }),
           indicatorsContainer: (base) => ({
             ...base,
-            padding: 0
+            padding: 0,
+            cursor: 'pointer'
           })
         }}
         {...props}

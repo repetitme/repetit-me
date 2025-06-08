@@ -1,3 +1,5 @@
+import cn from 'classnames';
+
 import styles from './index.module.scss';
 
 export interface FormFieldProps {
@@ -5,12 +7,11 @@ export interface FormFieldProps {
   error?: string;
   htmlFor?: string;
   children: React.ReactNode;
-  className?: string;
 }
 
 const FormField = ({ children, label, htmlFor, error }: FormFieldProps) => {
   return (
-    <div className={`${styles.form} ${error ? styles['form--has-error'] : ''}`}>
+    <div className={cn(styles.form, error && styles['form--has-error'])}>
       {label && (
         <label htmlFor={htmlFor} className={styles.label}>
           {label}
