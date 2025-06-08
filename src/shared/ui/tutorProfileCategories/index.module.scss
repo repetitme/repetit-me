@@ -32,9 +32,9 @@
 
     &--added {
       @include flex-center;
+
       grid-column: 3/4;
       grid-row: 2/3;
-
       flex-direction: row;
       gap: 12px;
       border: none;
