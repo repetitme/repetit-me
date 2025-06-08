@@ -1,15 +1,16 @@
-import '../../src/assets/styles/globals.scss';
-import '../../src/assets/styles/variables.scss';
-import './App.scss';
+import Footer from '../widgets/Footer';
+import Header from '../widgets/Header';
+import AppRouter from './router/AppRouter';
 
-import { textContent, servicesList } from '../entities/aboutMe/data';
-
-import { AboutMe } from '../entities/aboutMe';
+import '../assets/styles/index.scss';
+import styles from './index.module.scss';
 
 function App() {
   return (
-    <div className='App'>
-      <AboutMe textContent={ textContent } servicesList={ servicesList }/>
+    <div className={styles.app}>
+      <Header auth={'student'} />
+      <AppRouter />
+      <Footer role="student" />
     </div>
   );
 }

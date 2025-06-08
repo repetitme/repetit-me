@@ -1,7 +1,10 @@
+import { useState } from 'react';
 
 import sortIcon from '../../assets/icons/iconSorting.svg';
 import pencilIcon from '../../assets/icons/pencilIcon.svg';
+import NewFeedbackForm from '../../features/NewFeedbackForm';
 import Button from '../../shared/ui/button';
+import ButtonBack from '../../shared/ui/buttonBack';
 import FeedbackItem from '../../shared/ui/feedbackItem';
 import { feedbackData } from './feedbackData';
 import useFeedbackList from './useFeedbackList';
@@ -11,11 +14,23 @@ import styles from './index.module.scss';
 import { IFeedbackListProps } from './type';
 
 const FeedbackList: React.FC<IFeedbackListProps> = ({ updateModalData }) => {
-  const { sortedFeedbacks, isAscending, toggleSort } =
-    useFeedbackList({
-      initialData: feedbackData,
-      onDataChange: updateModalData
-    });
+  const [isFormVisible, setIsFormVisible] = useState(false);
+
+  const { sortedFeedbacks, isAscending, toggleSort } = useFeedbackList({
+    initialData: feedbackData,
+    onDataChange: updateModalData
+  });
+
+  const toggleVisible = () => setIsFormVisible((prev) => !prev);
+
+  if (isFormVisible) {
+    return (
+      <section className={styles.section}>
+        <ButtonBack text="Вернуться к отзывам" onClick={toggleVisible} />
+        <NewFeedbackForm toggleVisible={toggleVisible} />
+      </section>
+    );
+  }
 
   return (
     <section className={styles.section}>
@@ -33,6 +48,7 @@ const FeedbackList: React.FC<IFeedbackListProps> = ({ updateModalData }) => {
           variant="white"
           icon={pencilIcon}
           className={styles.button}
+          onClick={toggleVisible}
         />
       </div>
 

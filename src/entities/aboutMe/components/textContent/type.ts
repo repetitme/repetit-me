@@ -1,3 +1,3 @@
 export interface ITextContent {
-    content: string;
+  content: string;
 }

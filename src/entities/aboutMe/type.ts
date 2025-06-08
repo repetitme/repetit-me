@@ -1,9 +1,9 @@
 export interface IAboutMe {
-    textContent: string;
-    servicesList: ServicesListItem[];
+  textContent: string;
+  servicesList: ServicesListItem[];
 }
 
 export type ServicesListItem = {
-    service: string;
-    price: number;
-}
+  service: string;
+  price: number;
+};

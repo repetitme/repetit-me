@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { IAboutMe } from "./type";
+import { useState } from 'react';
 
-import { CardContainer } from "./components/cardContainer/index.tsx"
-import { TextContent } from "./components/textContent/index.tsx"
-import { ServicesList } from "./components/servicesList/index.tsx"
+import { CardContainer } from './components/cardContainer/index.tsx';
+import { ServicesList } from './components/servicesList/index.tsx';
+import { TextContent } from './components/textContent/index.tsx';
+
+import { IAboutMe } from './type';
 
 export const AboutMe: React.FC<IAboutMe> = ({ textContent, servicesList }) => {
   const [aboutMeHidden, setAboutMeHidden] = useState(true);
@@ -14,9 +15,9 @@ export const AboutMe: React.FC<IAboutMe> = ({ textContent, servicesList }) => {
 
   return (
     <>
-      <CardContainer 
-        title="Обо мне" 
-        isHidden={aboutMeHidden} 
+      <CardContainer
+        title="Обо мне"
+        isHidden={aboutMeHidden}
         toggleVisibility={toggleAboutMeVisibility}
         hiddenClassName={'container__content_text_hidden'}
         buttonText="Читать дальше"
@@ -24,9 +25,9 @@ export const AboutMe: React.FC<IAboutMe> = ({ textContent, servicesList }) => {
         <TextContent content={textContent} />
       </CardContainer>
 
-      <CardContainer 
-        title="Услуги и цены" 
-        isHidden={listHidden} 
+      <CardContainer
+        title="Услуги и цены"
+        isHidden={listHidden}
         toggleVisibility={toggleListVisibility}
         hiddenClassName={'container__content_list_hidden'}
         buttonText="Развернуть"

@@ -1,8 +1,8 @@
 type ServicesListItem = {
-    service: string;
-    price: number;
-}
+  service: string;
+  price: number;
+};
 
 export interface IServicesList {
-    services: ServicesListItem[];
+  services: ServicesListItem[];
 }

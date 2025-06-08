@@ -1,59 +1,59 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    inline-size: 100%;
-    block-size: fit-content;
-    padding: var(--padding-blocks);
-    gap: 16px;
-    border-radius: var(--border-radius-blocks);
-    background-color: var(--clr-main);
-    font-family: var(--ffm-default);
-    color: var(--clr-black);
+  display: flex;
+  flex-direction: column;
+  inline-size: 100%;
+  block-size: fit-content;
+  padding: var(--padding-blocks);
+  gap: 16px;
+  border-radius: var(--border-radius-blocks);
+  background-color: var(--clr-main);
+  font-family: var(--ffm-default);
+  color: var(--clr-black);
+  font-size: 20px;
+  font-weight: 700;
+
+  &:first-of-type {
+    margin-bottom: var(--gap-blocks);
+  }
+
+  &__header {
+    line-height: 1;
+    inline-size: max-content;
     font-size: 20px;
+  }
+
+  &__content {
+    max-block-size: max-content;
+
+    &_text_hidden {
+      display: -webkit-box;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      max-block-size: 8.5em;
+    }
+
+    &_list_hidden {
+      overflow: hidden;
+      max-block-size: 5em;
+    }
+  }
+
+  &__button {
+    width: fit-content;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
     font-weight: 700;
+    color: var(--clr-primary-default);
+    border-bottom: solid 2px;
 
-    &:first-of-type {
-        margin-bottom: var(--gap-blocks);
+    &:hover {
+      color: var(--clr-primary-hover);
     }
 
-    &__header {
-        line-height: 1;
-        inline-size: max-content;
-        font-size: 20px; 
+    &:active {
+      color: var(--clr-primary-pressed);
     }
-
-    &__content {
-        max-block-size: max-content;
-
-        &_text_hidden {
-            display: -webkit-box;
-            -webkit-line-clamp: 6;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            max-block-size: 8.5em;
-        }
-
-        &_list_hidden {
-            overflow: hidden;
-            max-block-size: 5em;
-        }
-    }
-
-    &__button {
-        width: fit-content;
-        border: none;
-        background-color: transparent;
-        font-size: 16px;
-        font-weight: 700;
-        color: var(--clr-primary-default);
-        border-bottom: solid 2px;
-
-        &:hover {
-            color: var(--clr-primary-hover);
-        }
-
-        &:active {
-            color: var(--clr-primary-pressed);
-        }
-    }
+  }
 }
