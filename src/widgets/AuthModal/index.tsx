@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
 
 import iconClose from '../../assets/icons/closeIcon.svg';
-import AuthForm from '../../features/auth new';
+import AuthForm from '../../features/auth';
 import useClickOutside from '../../shared/hooks/useClickOutside';
 import ModalOverlay from '../../shared/ui/overlay';
 import useScrollLock from '../../shared/hooks/useScrollLock';
