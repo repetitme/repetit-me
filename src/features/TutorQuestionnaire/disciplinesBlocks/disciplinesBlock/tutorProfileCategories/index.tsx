@@ -1,6 +1,7 @@
-import InputField from '../formField/inputField';
-import SelectField from '../formField/selectField';
-import iconAdd from './../../../assets/images/icon_add.svg';
+import useForm from '../../../../../shared/hooks/useForm';
+import SelectField from '../../../../../shared/ui/formField/selectField';
+import Input from '../../../../../shared/ui/input';
+import iconAdd from './../../../../../assets/images/icon_add.svg';
 
 import styles from './index.module.scss';
 
@@ -12,6 +13,8 @@ const TutorProfileCategories = ({
   isLast,
   onAddCategory
 }: TutorProfileCategoriesProps) => {
+  const { values, handleChange } = useForm({});
+
   return (
     <div className={styles.container__auxiliary}>
       <div className={styles['container__options--age']}>
@@ -22,15 +25,17 @@ const TutorProfileCategories = ({
           defaultValue={data.find(
             (option) => option.label === category.ageCategory
           )}
-          onChange={(selected) => console.log(selected)}
         />
       </div>
       <div className={styles['container__options--price']}>
-        <InputField
-          id="price"
+        <Input
+          name="price"
+          value={values.price}
+          onChange={handleChange}
           label="Цена"
-          type="number"
           placeholder={category.price}
+          type="number"
+          style={{ inlineSize: '97px' }}
           required
         />
         <p className={styles['container__options--price-currency']}>руб/час</p>

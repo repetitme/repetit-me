@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 
 import cn from 'classnames';
 
-import InputField from '../../../../shared/ui/formField/inputField';
+import useForm from '../../../../shared/hooks/useForm';
 import SelectField from '../../../../shared/ui/formField/selectField';
+import Input from '../../../../shared/ui/input';
 import Switcher from '../../../../shared/ui/switcher';
-import TutorProfileCategories from '../../../../shared/ui/tutorProfileCategories';
 import Wrapper from '../../../../shared/ui/wrapper';
 import * as data from './data';
+import TutorProfileCategories from './tutorProfileCategories';
 
 import styles from './index.module.scss';
 
 import { DisciplinesBlockProps } from './type';
 
 const DisciplinesBlock: React.FC<DisciplinesBlockProps> = ({ index }) => {
+  const { values, handleChange } = useForm({});
   const [isActive, setIsActive] = useState<boolean>(true);
   const [categories, setCategories] = useState<
     Array<{ ageCategory: string; price: string }>
@@ -47,7 +49,6 @@ const DisciplinesBlock: React.FC<DisciplinesBlockProps> = ({ index }) => {
             options={data.disciplines}
             placeholder="Математика"
             defaultValue={data.disciplines[0]}
-            onChange={(selected) => console.log(selected)}
           />
         </div>
         <div className={styles.options__status}>
@@ -56,7 +57,6 @@ const DisciplinesBlock: React.FC<DisciplinesBlockProps> = ({ index }) => {
             options={data.status}
             placeholder="Частный преподаватель"
             defaultValue={data.status[0]}
-            onChange={(selected) => console.log(selected)}
           />
         </div>
         <div className={styles['options__categories']}>
@@ -76,15 +76,17 @@ const DisciplinesBlock: React.FC<DisciplinesBlockProps> = ({ index }) => {
             options={data.target}
             placeholder="Повышение успеваемости"
             defaultValue={data.target[0]}
-            onChange={(selected) => console.log(selected)}
           />
         </div>
         <div className={styles.options__experience}>
-          <InputField
-            id="experience"
+          <Input
+            name="experience"
+            value={values.experience}
+            onChange={handleChange}
             label="Стаж"
-            type="textarea"
             placeholder="3 года"
+            type="text"
+            style={{ inlineSize: '100%' }}
             required
           />
         </div>
