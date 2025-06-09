@@ -9,7 +9,7 @@ interface AvatarUploadModalProps {
   onClose: () => void;
 }
 
-export const AvatarUploadModal = ({ onClose }: AvatarUploadModalProps) => {
+const AvatarUploadModal = ({ onClose }: AvatarUploadModalProps) => {
   const modalRef = useClickOutside(onClose);
   return (
     <>
@@ -42,3 +42,5 @@ export const AvatarUploadModal = ({ onClose }: AvatarUploadModalProps) => {
     </>
   );
 };
+
+export default AvatarUploadModal
