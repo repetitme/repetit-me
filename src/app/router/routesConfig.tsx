@@ -1,6 +1,6 @@
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
-import Schedule from '../../features/tutorApplication/ui/Schedule';
+import Schedule from '../../features/tutorApplication/ui/schedule';
 
 import { IRoute } from './type';
 
