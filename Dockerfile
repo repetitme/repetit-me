@@ -8,7 +8,7 @@ RUN yarn install --frozen-lockfile
 
 COPY . .
 
-RUN chown -R node:node .
+RUN mkdir -p /home/node/.cache/yarn && chown -R node:node /home/node/.cache/yarn && chown -R node:node .
 
 USER node
 
