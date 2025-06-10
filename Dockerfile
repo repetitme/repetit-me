@@ -1,5 +1,7 @@
 FROM node:lts-alpine AS build
 
+ARG domain
+
 WORKDIR /app
 
 COPY package.json yarn.lock ./
