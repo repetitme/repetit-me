@@ -10,7 +10,7 @@ RUN yarn install --frozen-lockfile
 
 COPY . .
 
-RUN chown -R node:node .
+RUN chown -R node:node /app
 
 USER node
 
