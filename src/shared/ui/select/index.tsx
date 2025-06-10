@@ -1,31 +1,11 @@
-import React from 'react';
-
-import Select from 'react-select';
-
-import FormField from './../index.tsx';
+import ReactSelect from 'react-select';
 
 import styles from './index.module.scss';
 
-type SelectOption = {
-  value: string | number;
-  label: string;
-};
+import SelectProps from './type';
 
-type SelectFieldProps = Omit<
-  React.ComponentProps<typeof FormField>,
-  'children'
-> & {
-  options: SelectOption[];
-  value?: SelectOption | null;
-  onChange?: (option: SelectOption | null) => void;
-  placeholder?: string;
-  isSearchable?: boolean;
-  defaultValue?: SelectOption;
-};
-
-const SelectField = ({
+const Select = ({
   label,
-  error,
   htmlFor,
   options,
   value,
@@ -34,7 +14,7 @@ const SelectField = ({
   isSearchable = false,
   defaultValue,
   ...props
-}: SelectFieldProps) => {
+}: SelectProps) => {
   // Кастомный индикатор стрелки
   const DropdownIndicator = (props: any) => {
     return (
@@ -61,8 +41,13 @@ const SelectField = ({
   };
 
   return (
-    <FormField label={label} htmlFor={htmlFor} error={error}>
-      <Select
+    <div className={styles.select}>
+      {label && (
+        <label htmlFor={htmlFor} className={styles.select__label}>
+          {label}
+        </label>
+      )}
+      <ReactSelect
         options={options}
         value={value}
         onChange={onChange}
@@ -97,9 +82,9 @@ const SelectField = ({
               '0px 0px 2px rgba(0, 0, 0, 0.1), 0px 4px 12px rgba(0, 0, 0, 0.1)',
             width: 'calc(100% - 12px)',
             left: '6px',
-            marginTop: '-12px', 
-            zIndex: 1, 
-            position: 'absolute' 
+            marginTop: '-12px',
+            zIndex: 1,
+            position: 'absolute'
           }),
           menuList: (base) => ({
             ...base,
@@ -140,8 +125,8 @@ const SelectField = ({
         }}
         {...props}
       />
-    </FormField>
+    </div>
   );
 };
 
-export default SelectField;
+export default Select;

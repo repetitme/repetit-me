@@ -1,14 +1,8 @@
+import classNames from 'classnames';
 
-
-import classNames from 'classnames'
 import styles from './index.module.scss';
 
-type TextareaProps = {
-  label?: string;
-  error?: string;
-  htmlFor?: string;
-  classname?: string;
-} & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+import TextareaProps from './type';
 
 const Textarea = ({
   label,
@@ -25,7 +19,7 @@ const Textarea = ({
         </label>
       )}
       <textarea
-         className={classNames(styles.textarea__area, { [styles.error]: error })}
+        className={classNames(styles.textarea__area, { [styles.error]: error })}
         {...props}
       />
       {error && <span className={styles.textarea__error}>{error}</span>}
