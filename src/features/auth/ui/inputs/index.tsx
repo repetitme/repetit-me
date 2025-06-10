@@ -1,4 +1,4 @@
-import Input from '../../../shared/ui/input';
+import Input from '../../../../shared/ui/input';
 import inputData from './data';
 
 import { TAuthInputInterface, TInputFactory, TInputs } from './types';

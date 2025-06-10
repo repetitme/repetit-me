@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
-import useForm from '../../../shared/hooks/useForm';
-import Button from '../../../shared/ui/button';
+import useForm from '../../../../shared/hooks/useForm';
+import Button from '../../../../shared/ui/button';
 import AuthInputs from '../inputs';
 import { FormTabs, Tab } from '../tabs';
 
