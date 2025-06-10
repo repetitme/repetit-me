@@ -5,6 +5,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      - VIRTUAL_HOST=repetitmeweb.ru
+      - LETSENCRYPT_HOST=repetitmeweb.ru
+      - LETSENCRYPT_EMAIL=mail@repetitmeweb.ru
     networks:
       - reverse-proxy
     restart: always
