@@ -1,5 +1,7 @@
 FROM node:lts-alpine AS build
 
+ARG domain
+
 WORKDIR /app
 
 COPY package.json yarn.lock ./
@@ -8,7 +10,7 @@ RUN yarn install --frozen-lockfile
 
 COPY . .
 
-RUN chown -R node:node .
+RUN chown -R node:node . && chown -R node:node /home/node/.cache/yarn
 
 USER node
 
