@@ -4,29 +4,31 @@ import cn from 'classnames';
 
 import styles from './index.module.scss';
 
-import { IInput } from './types';
+import IInput from './types';
 
 const Input: React.FC<IInput> = ({
   variant = 'form',
-  label,
-  value,
   name,
+  label,
+  placeholder,
+  value,
   type,
   required,
-  placeholder,
+  minLength,
+  maxLength,
+  autoComplete,
+  disable,
   style,
   extraClass,
   pattern,
   title,
   requiredError = 'Поле обязательно для заполнения',
-
-  multiline = false,
   onChange
 }) => {
   const [error, setError] = useState<string>('');
   const isPrice: boolean = variant === 'price';
 
-  const validate = (target: HTMLInputElement | HTMLTextAreaElement): string => {
+  const validate = (target: HTMLInputElement): string => {
     if (target.validity.valueMissing && required) {
       return requiredError;
     }
@@ -71,13 +73,11 @@ const Input: React.FC<IInput> = ({
       } as React.ChangeEvent<HTMLInputElement>);
     }
   };
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    if (!multiline && variant !== 'auth') {
-      formatInput(e as React.ChangeEvent<HTMLInputElement>);
-    } else {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    if (variant === 'auth') {
       onChange(e);
+    } else {
+      formatInput(e);
     }
     setError(validate(e.target));
   };
@@ -95,32 +95,28 @@ const Input: React.FC<IInput> = ({
           {label}
         </label>
       )}
-      {multiline ? (
-        <textarea id={name}
-          className={cn(styles.input, { [styles.error]: error })}
-          value={value}
-          onChange={handleChange}
-          required={required}
-          name={name}
-          title={title}
-          placeholder={error ? '' : placeholder}
-        />
-      ) : (
-        <input
-          id={name}
-          className={cn(styles.input, { [styles.error]: error })}
-          required={required}
-          name={name}
-          pattern={pattern}
-          title={title}
-          type={type}
-          placeholder={error ? '' : placeholder}
-          onKeyDown={handleBackspace}
-          value={value}
-          onChange={handleChange}
-        />
-      )}
-      {error && <span className={styles.error__text}>{error}</span>}
+      <input
+        id={name}
+        className={cn(styles.input, { [styles.error]: error })}
+        required={required}
+        autoComplete={autoComplete}
+        name={name}
+        pattern={pattern}
+        title={title}
+        type={type}
+        placeholder={error ? '' : placeholder}
+        disabled={disable}
+        minLength={minLength}
+        maxLength={maxLength}
+        onKeyDown={handleBackspace}
+        value={value}
+        onChange={handleChange}
+      />
+      <span
+        className={cn(styles.error__text, { [styles.error__active]: error })}
+      >
+        {error}
+      </span>
     </div>
   );
 };
