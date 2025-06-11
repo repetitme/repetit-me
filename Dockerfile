@@ -2,6 +2,8 @@ FROM node:lts-alpine AS build
 
 WORKDIR /app
 
+ARG domain
+
 COPY package.json yarn.lock ./
 
 RUN yarn install --frozen-lockfile
