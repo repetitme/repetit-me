@@ -1,10 +1,22 @@
-const URL = process.env.REPETIT_ME_URL;
+const URL  = import.meta.env.VITE_REPETIT_ME_URL
 
-export async function httpJson<T>(path: string): Promise<T> {
-  const response = await fetch(`${URL}/${path}`, {
-    headers: {
-      'Content-Type': 'application/json'
+
+export async function httpJson<T>(
+  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH',
+  endpoint: string,
+    config?: {
+      params?: Record<string, string | number | boolean | undefined>;
+      body?: unknown;
+      headers?: Record<string, string>;  
     }
+  ): Promise<T> {
+  const response = await fetch(`${URL}/${endpoint}`, {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+      ...config?.headers,
+    },
+    body: config?.body !== undefined ? JSON.stringify(config.body) : undefined
   })
     .then((response) => {
       if (response.ok) {
