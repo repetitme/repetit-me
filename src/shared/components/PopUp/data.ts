@@ -1,16 +1,38 @@
-export const popupContent = {
-  request: {
+import { PopupData } from "./type";
+
+export const popupContent: Record<string, PopupData> = {
+  notFound: {
     title: 'По вашему запросу репетиторы не найдены',
     text: 'Вы можете оставить заявку, и мы поищем репетитора под ваш запрос в нашей дополнительной базе. Отправить заявку?',
     confirmButtonText: 'Да',
     cancelButtonText: 'Нет',
     color: 'white'
   },
-  notFound: {
+  responseSent: {
     title: 'Вы откликнулись!',
     text: 'Отклик отправлен успешно! \nКогда преподаватель примет заявку, мы обменяем \nВас контактами в Telegram, уведомление придёт автоматически через бота. \nОтменить или посмотреть статус заявки можно \nв разделе "Мои заявки".',
     confirmButtonText: 'Мои заявки',
     cancelButtonText: null,
     color: 'purple'
+  },
+  cancelRequest: {
+    title: 'Вы уверены, что хотите отменить данную заявку?',
+    confirmButtonText: 'Да',
+    cancelButtonText: 'Нет',
+    color: 'white'
+  },
+
+  acceptRequest: {
+    title: 'Вы приняли запрос!',
+    text: 'Мы свяжемся с преподавателем и обменяем Вас контактами в Telegram. Уведомление об этом будет отправлено автоматически через бота.',
+    confirmButtonText: 'Мои репетиторы',
+    cancelButtonText: null,
+    color: 'purple'
+  },
+
+  rejectRequest: {
+    title: 'Вы уверены, что хотите отклонить запрос от этого преподавателя?',
+    confirmButtonText: 'Да',
+    cancelButtonText: 'Нет'
   }
 };
