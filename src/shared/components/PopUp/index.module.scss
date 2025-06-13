@@ -17,7 +17,7 @@
     background: #fff;
     border-radius: var(--border-radius-blocks);
     padding: 32px 32px 40px;
-    max-inline-size: 600px;
+    min-inline-size: 600px;
     text-align: center;
     box-shadow: 0 0 12px 0 rgb(134 91 255 / 32%);
     animation: fade 0.3s ease-in-out;

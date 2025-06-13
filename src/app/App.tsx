@@ -19,12 +19,13 @@ function App() {
       <Popup
         isOpen={isPopupOpen}
         onClose={handleClosePopup}
-        /*   variant='responseSent'
-        variant="notFound"*/
-        variant="cancelRequest"
+        /*   variant='responseSent'*/
+        variant="notFound"
+       /* variant="cancelRequest"*/
         /*showCancelButton={false}*/
-        /* variant='acceptRequest'
+       /*  variant='acceptRequest'
         variant='rejectRequest'*/
+       
         onConfirm={handleClosePopup}
       />
 

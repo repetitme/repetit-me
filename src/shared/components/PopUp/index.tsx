@@ -35,7 +35,10 @@ const Popup: React.FC<PopupProps> = ({
             </button>
           )}
           <h2 className={styles.popup__title}>{title}</h2>
-          <div className={styles.popup__text}>{text}</div>
+          <div
+            className={styles.popup__text}
+            dangerouslySetInnerHTML={{ __html: text ?? '' }}
+          />
           <div className={styles.popup__buttons}>
             {showCancelButton && cancelButtonText && (
               <button className={styles.popup__button} onClick={onClose}>

@@ -7,7 +7,7 @@ export interface PopupProps {
 }
 
 export interface PopupData {
-  title: string;
+  title?: string;
   text?: string | null;
   confirmButtonText: string;
   cancelButtonText?: string | null;
