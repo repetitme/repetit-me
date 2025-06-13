@@ -9,7 +9,9 @@
     "lint": "eslint .",
     "stylelint": "stylelint **/*.scss",
     "format": "prettier --write .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "docker:build": "docker build -t repetit-me-frontend .",
+    "docker:run": "docker run --name repetit-me -p 8080:80 repetit-me-frontend"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.76.1",
@@ -47,6 +49,7 @@
     "stylelint-scss": "^6.11.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.22.0",
-    "vite": "^6.2.0"
+    "vite": "^6.2.0",
+    "vite-plugin-static-copy": "^3.0.0"
   }
 }
