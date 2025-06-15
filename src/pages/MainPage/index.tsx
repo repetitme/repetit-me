@@ -59,7 +59,7 @@ const MainPage = () => {
           </div>
           <div className={styles.container__form}>
             <TutorFormBlock>
-              <AuthForm mainPageRegister={true} login={false} />
+              <AuthForm mainPageRegister />
             </TutorFormBlock>
           </div>
           <div
