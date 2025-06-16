@@ -20,3 +20,8 @@ export type TInputProps = {
   values: Record<string, string>;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
+
+export type Token = {
+  accessToken: string;
+  refreshToken: string;
+};
