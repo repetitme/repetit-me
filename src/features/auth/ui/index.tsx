@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
 import { FormTabs } from '../constants';
-import useAuth from '../useAuth';
+import useAuth from '../model/useAuth';
 import { AuthButtons, AuthInputs, Tab } from './components';
 
 import styles from './index.module.scss';
