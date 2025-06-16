@@ -1,0 +1,117 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-inline-size: 1200px;
+  inline-size: 100%;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &-title {
+      font-family: var(--ffm-title);
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 100%;
+    }
+
+    &-counter {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 100%;
+      color: var(--clr-4);
+    }
+  }
+
+  &__description {
+    font-weight: 500;
+    line-height: 136%;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: 1fr;
+    grid-auto-rows: auto;
+    justify-items: center;
+    gap: 20px;
+
+    &-item {
+      max-inline-size: 350px;
+      max-block-size: 235px;
+    }
+
+    &-image {
+      inline-size: 100%;
+      block-size: 100%;
+      object-fit: cover;
+    }
+
+    &-error {
+      font-size: 20;
+      font-weight: 500;
+      color: var(--clr-secondary-default);
+    }
+  }
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  max-inline-size: 1032px;
+  min-block-size: 169px;
+  inline-size: 100%;
+  border: 2px dashed #818181; //Сделать кастомный border
+  border-radius: 10px;
+  margin-inline: auto;
+  margin-block: 43px;
+  padding: 20px;
+  color: #545252;
+  line-height: 136%;
+
+  &__dragging-text {
+    align-self: center;
+    color: var(--clr-primary-default);
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &--drag {
+    border-color: var(--clr-primary-hover);
+  }
+
+  &__title {
+    font-weight: 500;
+
+    &--link {
+      color: var(--clr-primary-default);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &-requirements {
+      margin-left: 23px;
+
+      li {
+        position: relative;
+
+        &::before {
+          content: '•';
+          position: absolute;
+          left: -15px;
+        }
+      }
+    }
+  }
+}
