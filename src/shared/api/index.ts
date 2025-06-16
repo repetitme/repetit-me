@@ -2,21 +2,21 @@ const URL  = import.meta.env.VITE_REPETIT_ME_URL
 
 
 export async function httpJson<T>(
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH',
   endpoint: string,
-    config?: {
-      params?: Record<string, string | number | boolean | undefined>;
-      body?: unknown;
-      headers?: Record<string, string>;  
-    }
+  options: {
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
+    headers?: Record<string, string>;
+    body?: unknown;
+    params?: Record<string, string | number | boolean | undefined>;
+  } 
   ): Promise<T> {
   const response = await fetch(`${URL}/${endpoint}`, {
-    method,
+    method:options.method,
     headers: {
       'Content-Type': 'application/json',
-      ...config?.headers,
+      ...options.headers,
     },
-    body: config?.body !== undefined ? JSON.stringify(config.body) : undefined
+    body: options.body !== undefined ? JSON.stringify(options.body) : undefined
   })
     .then((response) => {
       if (response.ok) {
