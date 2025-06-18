@@ -1,5 +1,5 @@
 import MainPage from '../../pages/MainPage';
-import Stepper from '../../shared/ui/stepper';
+import FeedbacksModal from '../../widgets/FeedbacksModal';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
 import { IRoute } from './type';
@@ -13,8 +13,8 @@ export const routesConfig: IRoute[] = [
   {
     path: '/test',
     element: (
-      <div style={{ margin: '10px 0 10px 120px', maxWidth: '1200px' }}>
-        <Stepper currentStep={1} />
+      <div style={{ margin: '10px 100px' }}>
+        <FeedbacksModal onClose={() => {}} />
       </div>
     ),
     auth: false
