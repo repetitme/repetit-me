@@ -1,6 +1,6 @@
 import MainPage from '../../pages/MainPage';
 import TutorCatalogPage from '../../pages/TutorCatalogPage';
-import FeedbackList from '../../widgets/FeedbackList';
+import Stepper from '../../shared/ui/stepper';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
 import { IRoute } from './type';
@@ -19,8 +19,8 @@ export const routesConfig: IRoute[] = [
   {
     path: '/test',
     element: (
-      <div style={{ margin: '10px 100px' }}>
-        <FeedbackList updateModalData={() => {}} />
+      <div style={{ margin: '10px 0 10px 120px', maxWidth: '1200px' }}>
+        <Stepper currentStep={1} />
       </div>
     ),
     auth: false

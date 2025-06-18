@@ -1,3 +1,5 @@
+import cn from 'classnames';
+
 import { IUserData } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
 import StudentProfile from '../UserProfile/StudentProfile';
@@ -12,7 +14,7 @@ const UserCard: React.FC<IUserData> = ({
   handleSubmit
 }) => {
   return (
-    <div className={styles.card}>
+    <div className={cn(styles.card, role === 'card' && styles.card__resize)}>
       {role === 'student' || role === 'unauthorized' ? (
         // Карточка репетитора
         <>
@@ -57,11 +59,13 @@ const UserCard: React.FC<IUserData> = ({
         // Маленькая карточка
         <>
           {tutorData ? (
-            <TutorProfile
-              {...tutorData}
-              isCard={true}
-              stylesValue={styles['card__small-avatar']}
-            />
+            <div className={styles.card__small}>
+              <TutorProfile
+                {...tutorData}
+                isCard={true}
+                stylesValue={styles['card__small-avatar']}
+              />
+            </div>
           ) : (
             <p>Репетитор не найден</p>
           )}

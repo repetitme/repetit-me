@@ -10,6 +10,11 @@
   background-color: var(--clr-main);
   border-radius: 20px;
 
+  &__resize {
+    column-gap: 0;
+    padding: 0;
+  }
+
   &__buttons {
     grid-column: 1/-1;
     grid-row: 2/3;
@@ -28,7 +33,7 @@
     flex-direction: column;
     max-inline-size: 387px;
     inline-size: 100%;
-    gap: 28px;
+    row-gap: 28px;
 
     &-avatar {
       max-inline-size: 387px;
