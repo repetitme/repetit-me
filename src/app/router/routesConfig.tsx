@@ -1,5 +1,6 @@
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
+import TutorDocuments from '../../widgets/TutorDocuments';
 
 import { IRoute } from './type';
 
@@ -29,6 +30,12 @@ export const routesConfig: IRoute[] = [
     element: <>TeacherProfile</>,
     auth: true
   },
+  {
+    path: '/test',
+    element: <TutorDocuments />,
+    auth: false
+  },
+
   {
     path: '*',
     element: <NotFoundPage />,

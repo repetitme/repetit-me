@@ -1,24 +1,23 @@
 import { FC } from 'react';
 
 import { mockTutors } from '../UserCard/fakeApi/mockData';
+import InfoBlock from '../infoBlock';
 
 import styles from './index.module.scss';
 
-const TutorDocuments: FC = () => (
-  <div className={styles.container}>
-    <h3 className={styles.container__title}>Дипломы и сертификаты</h3>
-    <div className={styles.container__documents}>
+const TutorDiploma: FC = () => (
+  <InfoBlock title="Дипломы и сертификаты">
+    <div className={styles.container}>
       {mockTutors[0].documents.map((document, index) => (
-        <div className={styles.container__documents_document}>
+        <div className={styles.container__document} key={index}>
           <img
-            className={styles.container__documents_document_img}
-            key={index}
+            className={styles.container__document_img}
             src={document}
+            alt="Документ репетитора"
           />
         </div>
       ))}
     </div>
-  </div>
+  </InfoBlock>
 );
-
-export default TutorDocuments;
+export default TutorDiploma;

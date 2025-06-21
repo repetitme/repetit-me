@@ -1,18 +1,15 @@
 import { v4 as uuidv4 } from 'uuid';
 
+//import Elizaveta from '../../../assets/images/UserCardIcons/StudentImg/student_elizaveta-1.png';
+//import Sergey1 from '../../../assets/images/UserCardIcons/StudentImg/student_sergey-1.png';
+//import Sergey2 from '../../../assets/images/UserCardIcons/StudentImg/student_sergey-2.png';
+//import Victor from '../../../assets/images/UserCardIcons/StudentImg/student_victor-1.png';
+//import Aleksandr1 from '../../../assets/images/UserCardIcons/TutorImg/tutor_aleksandr-1.png';
+//import Aleksandr2 from '../../../assets/images/UserCardIcons/TutorImg/tutor_aleksandr-2.png';
+//import Aleksandra1 from '../../../assets/images/UserCardIcons/TutorImg/tutor_aleksandra-1.png';
+//import Vyacheslav from '../../../assets/images/UserCardIcons/TutorImg/tutor_vyacheslav-1.png';
 import certificate from '../../../assets/images/certificate.png';
-/*
-import Elizaveta from '../../../assets/images/UserCardIcons/StudentImg/student_elizaveta-1.png';
-import Sergey1 from '../../../assets/images/UserCardIcons/StudentImg/student_sergey-1.png';
-import Sergey2 from '../../../assets/images/UserCardIcons/StudentImg/student_sergey-2.png';
-import Victor from '../../../assets/images/UserCardIcons/StudentImg/student_victor-1.png';
-import Aleksandr1 from '../../../assets/images/UserCardIcons/TutorImg/tutor_aleksandr-1.png';
-import Aleksandr2 from '../../../assets/images/UserCardIcons/TutorImg/tutor_aleksandr-2.png';
-import Aleksandra1 from '../../../assets/images/UserCardIcons/TutorImg/tutor_aleksandra-1.png';
-import Vyacheslav from '../../../assets/images/UserCardIcons/TutorImg/tutor_vyacheslav-1.png';
-*/
-
-import diplom from '../../../assets/images/diplom.png';
+import diploma from '../../../assets/images/diploma.png';
 import { IStudentData, ITutorData } from '../../../shared/types/userData';
 
 export const mockTutors: ITutorData[] = [
@@ -32,7 +29,7 @@ export const mockTutors: ITutorData[] = [
     rating: 5.0,
     link: '#!',
     documents: [
-      diplom,
+      diploma,
       certificate,
       certificate,
       certificate,
@@ -54,7 +51,7 @@ export const mockTutors: ITutorData[] = [
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 4.2,
-    documents: [diplom, certificate]
+    documents: [diploma, certificate]
   },
   {
     id: uuidv4(),
@@ -71,7 +68,7 @@ export const mockTutors: ITutorData[] = [
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 2.9,
     link: '#!',
-    documents: [diplom, certificate]
+    documents: [diploma, certificate]
   },
   {
     id: uuidv4(),
@@ -88,7 +85,7 @@ export const mockTutors: ITutorData[] = [
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 3.9,
     link: '#!',
-    documents: [diplom, certificate]
+    documents: [diploma, certificate]
   },
   {
     id: uuidv4(),
@@ -104,7 +101,7 @@ export const mockTutors: ITutorData[] = [
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 1.5,
-    documents: [diplom, certificate]
+    documents: [diploma, certificate]
   },
   {
     id: uuidv4(),
@@ -121,7 +118,7 @@ export const mockTutors: ITutorData[] = [
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 4,
     link: '#!',
-    documents: [diplom, certificate]
+    documents: [diploma, certificate]
   },
   {
     id: uuidv4(),
@@ -137,7 +134,7 @@ export const mockTutors: ITutorData[] = [
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 4.2,
-    documents: [diplom, certificate]
+    documents: [diploma, certificate]
   },
   {
     id: uuidv4(),
@@ -154,7 +151,7 @@ export const mockTutors: ITutorData[] = [
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 2.9,
     link: '#!',
-    documents: [diplom, certificate]
+    documents: [diploma, certificate]
   },
   {
     id: uuidv4(),
@@ -170,7 +167,7 @@ export const mockTutors: ITutorData[] = [
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 4.2,
-    documents: [diplom, certificate]
+    documents: [diploma, certificate]
   },
   {
     id: uuidv4(),
@@ -187,7 +184,7 @@ export const mockTutors: ITutorData[] = [
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 2.9,
     link: '#!',
-    documents: [diplom, certificate]
+    documents: [diploma, certificate]
   },
   {
     id: uuidv4(),
@@ -203,7 +200,7 @@ export const mockTutors: ITutorData[] = [
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 4.2,
-    documents: [diplom, certificate]
+    documents: [diploma, certificate]
   },
   {
     id: uuidv4(),
@@ -220,7 +217,7 @@ export const mockTutors: ITutorData[] = [
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 2.9,
     link: '#!',
-    documents: [diplom, certificate]
+    documents: [diploma, certificate]
   }
 ];
 
