@@ -9,25 +9,25 @@ export async function httpJson<T>(
     body?: unknown;
     params?: Record<string, string | number | boolean | undefined>;
   } 
-  ): Promise<T> {
-  const response = await fetch(`${URL}/${endpoint}`, {
-    method:options.method,
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers,
-    },
-    body: options.body !== undefined ? JSON.stringify(options.body) : undefined
-  })
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      }
+  ): Promise<T> {    
+    try {
+      const response = await fetch(`${URL}/${endpoint}`, {
+        method: options.method,
+        headers: {
+          'Content-Type': 'application/json',
+          ...options.headers,
+        },
+        body: options.body !== undefined ? JSON.stringify(options.body) : undefined,
+      });
+      
       if (!response.ok) {
-        throw new Error(`Error, status: ${response.status}`);
+        throw new Error(`Error, статус: ${response.status}`);
       }
-    })
-    .catch((err) => {
-      throw new Error(`Запрос не выполнен ,${err}`);
-    });
-  return response;
-}
+      
+      const data = await response.json();
+      return data;
+    } 
+    catch (err) {
+      throw new Error(`Запрос не выполнен, ${err}`);
+    }
+  }
