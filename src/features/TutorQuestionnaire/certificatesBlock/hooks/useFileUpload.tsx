@@ -11,20 +11,37 @@ export const useFileUpload = ({
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setErrorMessage(null);
     if (!e.target.files) return;
 
     const selectedFiles = Array.from(e.target.files);
 
-    const validFiles = selectedFiles.filter((file) =>
+    const validTypeFiles = selectedFiles.filter((file) =>
       acceptTypes.includes(file.type)
     );
 
-    if (files.length + validFiles.length > 10) {
+    const maxSizeBytes = 10 * 1024 * 1024;
+
+    const oversizedFiles = validTypeFiles.filter(
+      (file) => file.size > maxSizeBytes
+    );
+
+    if (oversizedFiles.length > 0) {
+      const fileNames = oversizedFiles.map((f) => f.name).join(', ');
+      setErrorMessage(`Файлы ${fileNames} превышают лимит по размеру (10 МБ).`);
+      return;
+    }
+
+    const validSizeFiles = validTypeFiles.filter(
+      (file) => file.size <= maxSizeBytes
+    );
+
+    if (files.length + validSizeFiles.length > maxFiles) {
       setErrorMessage(`Можно загрузить не более ${maxFiles} документов`);
       return;
     }
 
-    setFiles((prev) => [...prev, ...validFiles]);
+    setFiles((prev) => [...prev, ...validSizeFiles]);
     setErrorMessage(null);
     e.target.value = '';
   };

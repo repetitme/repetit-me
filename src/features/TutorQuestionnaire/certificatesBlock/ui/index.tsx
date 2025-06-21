@@ -30,7 +30,8 @@ const CertificatesBlock: React.FC = () => {
     handleDragOver,
     handleDragEnter,
     handleDragLeave,
-    handleDrop
+    handleDrop,
+    errorMessageDrop
   } = useDragAndDrop({
     onFilesDropped: (droppedFiles) => {
       // Создаем Fake событие для handleFileChange
@@ -77,8 +78,10 @@ const CertificatesBlock: React.FC = () => {
         </div>
       )}
 
-      {errorMessage && (
-        <p className={styles['wrapper__content-error']}>{errorMessage}</p>
+      {(errorMessage || errorMessageDrop) && (
+        <p className={styles['wrapper__content-error']}>
+          {errorMessage || errorMessageDrop}
+        </p>
       )}
 
       <input

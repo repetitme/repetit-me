@@ -8,6 +8,7 @@ export const useDragAndDrop = ({
   currentFileCount
 }: IDragAndDropProps) => {
   const [isDragging, setIsDragging] = useState(false);
+  const [errorMessageDrop, setErrorMessageDrop] = useState<string | null>(null);
   const dragCounter = useRef(0);
 
   const handleDragOver = useCallback((e: React.DragEvent<HTMLDivElement>) => {
@@ -36,20 +37,35 @@ export const useDragAndDrop = ({
       dragCounter.current = 0;
       setIsDragging(false);
 
+      setErrorMessageDrop(null);
+
       if (!e.dataTransfer.files) return;
 
       const droppedFiles = Array.from(e.dataTransfer.files);
 
-      const validFiles = droppedFiles.filter((file) =>
+      const validTypeFiles = droppedFiles.filter((file) =>
         ['image/png', 'image/jpg', 'image/jpeg'].includes(file.type)
       );
 
-      if (currentFileCount + validFiles.length > maxFiles) {
+      const maxSizeBytes = 10 * 1024 * 1024;
+      let sizeFilteredFiles: File[] = [];
+
+      for (const file of validTypeFiles) {
+        if (file.size > maxSizeBytes) {
+          setErrorMessageDrop(
+            `Файл ${file.name} превышает лимит по размеру (10 МБ).`
+          );
+        } else {
+          sizeFilteredFiles.push(file);
+        }
+      }
+
+      if (currentFileCount + sizeFilteredFiles.length > maxFiles) {
         alert(`Можно загрузить не более ${maxFiles} документов`);
         return;
       }
 
-      onFilesDropped(validFiles);
+      onFilesDropped(sizeFilteredFiles);
     },
     [onFilesDropped, maxFiles, currentFileCount]
   );
@@ -59,6 +75,7 @@ export const useDragAndDrop = ({
     handleDragOver,
     handleDragEnter,
     handleDragLeave,
-    handleDrop
+    handleDrop,
+    errorMessageDrop
   };
 };
