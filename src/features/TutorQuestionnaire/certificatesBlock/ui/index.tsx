@@ -34,7 +34,6 @@ const CertificatesBlock: React.FC = () => {
     errorMessageDrop
   } = useDragAndDrop({
     onFilesDropped: (droppedFiles) => {
-      // Создаем Fake событие для handleFileChange
       const fileList = createFileList(droppedFiles);
       const fakeEvent = {
         target: { files: fileList }
