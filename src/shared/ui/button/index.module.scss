@@ -96,4 +96,24 @@
       block-size: 18px;
     }
   }
+
+  &.underline {
+    background: none;
+    border: none;
+    color: var(--clr-primary-default);
+    font-family: var(--ffm-default);
+    font-weight: 500;
+    line-height: 1.4;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    font-family: Montserrat;
+
+    &:hover {
+      color: var(--clr-primary-hover);
+    }
+
+    &:active {
+      color: var(--clr-primary-pressed);
+    }
+  }
 }
