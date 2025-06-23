@@ -1,3 +1,4 @@
+import Button from '../../../../shared/ui/button'
 import Input from '../../../../shared/ui/input';
 import { AvatarWrapper } from '../AvatarWrapper';
 
@@ -9,9 +10,8 @@ const ProfileInfo = () => {
     <div className={styles.wrapper}>
       <div className={styles.avatar}>
         <AvatarWrapper />
-        <button type="button" className={styles.avatar__button}>
-          Загрузить фотографию
-        </button>
+        <Button 
+          text="Загрузить фотографию " variant='underline'/>
       </div>
 
       <form className="form">
