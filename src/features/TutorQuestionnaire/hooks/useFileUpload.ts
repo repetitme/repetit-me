@@ -1,15 +1,21 @@
 import { useRef, useState } from 'react';
 
-import { IFileUploadProps, IFileUploadReturn } from '../type';
+import { IFileUploadProps } from '../type';
 
 export const useFileUpload = ({
+  files,
+  setFiles,
   maxFiles,
   acceptTypes,
   typeConstraints = {}
-}: IFileUploadProps): IFileUploadReturn => {
-  const [files, setFiles] = useState<File[]>([]);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+}: IFileUploadProps): {
+  handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  triggerFileSelect: () => void;
+  fileInputRef: React.RefObject<HTMLInputElement | null>;
+  errorMessage: string | null;
+} => {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setErrorMessage(null);
@@ -20,6 +26,12 @@ export const useFileUpload = ({
     const validTypeFiles = selectedFiles.filter((file) =>
       acceptTypes.includes(file.type)
     );
+
+    if (validTypeFiles.length === 0) {
+      setErrorMessage('Неподдерживаемый тип файла');
+
+      return;
+    }
 
     for (const file of validTypeFiles) {
       const constraint = typeConstraints[file.type];
@@ -50,7 +62,6 @@ export const useFileUpload = ({
   };
 
   return {
-    files,
     handleFileChange,
     triggerFileSelect,
     fileInputRef,

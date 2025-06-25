@@ -23,18 +23,25 @@
 }
 
 .container {
-  grid-row: 3 / 4;
-  grid-column: 1 / 2;
-
   &_drop {
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
     display: flex;
     flex-direction: column;
     gap: 12px;
+
+    min-block-size: 169px;
     border: 2px dashed #818181;
     border-radius: 10px;
     color: #545252;
     line-height: 136%;
     padding: 20px;
+
+    &--drag {
+      justify-content: center;
+      text-align: center;
+      border-color: var(--clr-primary-hover);
+    }
   }
 
   &_drop,
@@ -78,6 +85,13 @@
         }
       }
     }
+  }
+
+  &__dragging-text {
+    color: var(--clr-primary-default);
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 136%;
   }
 
   &_advices {
