@@ -1,4 +1,4 @@
-import ProfileInfo from '../../features/tutorApplication/ui/Profile';
+import ProfileInfo from '../../features/TutorApplication/ui/ProfileInfo';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 import { AboutService } from '../../widgets/AboutService';

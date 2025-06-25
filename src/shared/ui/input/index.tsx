@@ -11,7 +11,7 @@ const Input: React.FC<IInput> = ({
   name,
   label,
   placeholder,
-  value,
+  value = '',
   type,
   required,
   minLength,
@@ -26,6 +26,7 @@ const Input: React.FC<IInput> = ({
   onChange
 }) => {
   const [error, setError] = useState<string>('');
+  const [isFocused, setIsFocused] = useState(false);
   const isPrice: boolean = variant === 'price';
 
   const validate = (target: HTMLInputElement): string => {
@@ -104,13 +105,15 @@ const Input: React.FC<IInput> = ({
         pattern={pattern}
         title={title}
         type={type}
-        placeholder={error ? '' : placeholder}
+        placeholder={error || (value && isFocused) ? '' : placeholder}
         disabled={disable}
         minLength={minLength}
         maxLength={maxLength}
         onKeyDown={handleBackspace}
         value={value}
         onChange={handleChange}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
       />
       <span
         className={cn(styles.error__text, { [styles.error__active]: error })}
