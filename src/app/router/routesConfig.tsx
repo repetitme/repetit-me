@@ -1,4 +1,4 @@
-import ProfileInfo from '../../features/TutorApplication/ui/ProfileInfo';
+import ProfileInfo from '../../features/tutorApplication/ui/ProfileInfo';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 import { AboutService } from '../../widgets/AboutService';
@@ -23,26 +23,6 @@ export const routesConfig: IRoute[] = [
       </div>
     ),
     auth: false
-  },
-  {
-    path: '/student-application',
-    element: <>StudentApplication</>,
-    auth: true
-  },
-  {
-    path: '/student-profile',
-    element: <>StudentProfile</>,
-    auth: true
-  },
-  {
-    path: '/teacher-application',
-    element: <>TeacherApplication</>,
-    auth: true
-  },
-  {
-    path: '/teacher-profile',
-    element: <>TeacherProfile</>,
-    auth: true
   },
   {
     path: '*',
