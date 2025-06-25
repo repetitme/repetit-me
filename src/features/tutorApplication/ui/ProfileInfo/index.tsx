@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Button from '../../../../shared/ui/button';
 import Input from '../../../../shared/ui/input';
 import Textarea from '../../../../shared/ui/textarea';
-import { AvatarWrapper } from '../AvatarWrapper';
+import AvatarWrapper from '../AvatarWrapper';
 
 import styles from './index.module.scss';
 
