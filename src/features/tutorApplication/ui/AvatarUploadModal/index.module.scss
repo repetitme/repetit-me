@@ -1,0 +1,11 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: grey;
+
+  &__title {
+    font-size: 20px;
+    font-family: var(--ffm-title);
+  }
+}

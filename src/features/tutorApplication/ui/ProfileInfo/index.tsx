@@ -3,21 +3,44 @@ import { useState } from 'react';
 import Button from '../../../../shared/ui/button';
 import Input from '../../../../shared/ui/input';
 import Textarea from '../../../../shared/ui/textarea';
+import Wrapper from '../../../../shared/ui/wrapper';
+import AvatarUploadModal from '../AvatarUploadModal';
 import AvatarWrapper from '../AvatarWrapper';
 
 import styles from './index.module.scss';
 
+type ProfileFormData = {
+  firstName: string;
+  lastName: string;
+  telegram: string;
+  email: string;
+  about?: string;
+  avatar: File | string;
+};
+
 const ProfileInfo = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ProfileFormData>({
     firstName: '',
     lastName: '',
     telegram: '',
     email: '',
-    about: ''
+    about: '',
+    avatar: ''
   });
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleAvatarUpload = (file: File) => {
+    // Можно сразу создать preview:
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setFormData((prev) => ({ ...prev, avatar: e.target?.result as string }));
+    };
+    reader.readAsDataURL(file);
+  };
+
   const handleInputChange =
-    (field: keyof typeof formData) =>
+    (field: keyof Omit<ProfileFormData, 'avatar'>) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setFormData((prev) => ({
         ...prev,
@@ -25,23 +48,26 @@ const ProfileInfo = () => {
       }));
     };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Отправляем данные:', formData);
-    // Здесь нужно добавить API-запрос
-  };
-
   return (
-    // заменить wrapper на компонент Wrapper
-    <div className={styles.wrapper}>
-      <form className={styles.form} onSubmit={handleSubmit}>
+    <Wrapper large className={styles.wrapper}>
+      <div className={styles.form}>
         <div className={styles.form__avatar}>
-          <AvatarWrapper />
-          <Button
-            text="Загрузить фотографию "
-            variant="underline"
-            onClick={() => {}}
+          <AvatarWrapper
+            avatarUrl={
+              typeof formData.avatar === 'string' ? formData.avatar : undefined
+            }
           />
+          <Button
+            text="Загрузить фотографию"
+            variant="underline"
+            onClick={() => setIsModalOpen(true)}
+          />
+          {isModalOpen && (
+            <AvatarUploadModal
+              onClose={() => setIsModalOpen(false)}
+              onUpload={handleAvatarUpload}
+            />
+          )}
         </div>
         <div className={styles.form__inputs}>
           <Input
@@ -85,8 +111,8 @@ const ProfileInfo = () => {
             maxLength={2000}
           />
         </div>
-      </form>
-    </div>
+      </div>
+    </Wrapper>
   );
 };
 
