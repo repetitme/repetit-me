@@ -9,13 +9,19 @@
   background-color: #f9f9f9;
 }
 
-.avatar {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
 .form {
   display: flex;
-  gap: 32px;
+  gap: 48px;
+
+  &__avatar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 29px 47px;
+  }
 }

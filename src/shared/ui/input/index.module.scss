@@ -1,5 +1,4 @@
 @use '../../../assets/styles/mixins/gradient.scss' as *;
-
 .input-wrapper {
   display: flex;
   flex-direction: column;
@@ -98,6 +97,7 @@
     .input {
       padding: 11px 15px;
       font-size: 16px;
+      line-height: 1.4;
       margin-block-start: 1px;
       border-radius: 12px;
       outline: none;
@@ -110,6 +110,7 @@
 
       &::placeholder {
         font-size: 16px;
+        line-height: 1.4;
       }
     }
   }

@@ -1,6 +1,7 @@
 @use '../../../assets/styles/mixins/gradient.scss' as *;
 
 .textarea {
+  grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
   font-family: var(--ffm-default);
@@ -8,6 +9,7 @@
   font-weight: 500;
   line-height: 1.36;
   position: relative;
+  inline-size: 100%;
 
   &__label {
     font-weight: 700;
