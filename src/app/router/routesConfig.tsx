@@ -1,3 +1,4 @@
+import TutorQuestionnaire from '../../features/TutorQuestionnaire';
 import MainPage from '../../pages/MainPage';
 import FeedbacksModal from '../../widgets/FeedbacksModal';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
@@ -12,11 +13,7 @@ export const routesConfig: IRoute[] = [
   },
   {
     path: '/test',
-    element: (
-      <div style={{ margin: '10px 100px' }}>
-        <FeedbacksModal onClose={() => {}} />
-      </div>
-    ),
+    element: <TutorQuestionnaire />,
     auth: false
   },
   {
