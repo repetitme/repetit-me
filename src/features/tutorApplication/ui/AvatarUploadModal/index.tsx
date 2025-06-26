@@ -1,9 +1,9 @@
 import { useRef } from 'react';
 
-import useClickOutside from '../../../../shared/hooks/useClickOutside';
 import Button from '../../../../shared/ui/button';
 import { ModalOverlay } from '../../../../shared/ui/overlay';
 import AvatarWrapper from '../AvatarWrapper';
+import closeIcon from '../../../../assets/icons/closeIconWhite.svg'
 
 import styles from './index.module.scss';
 
@@ -13,7 +13,9 @@ interface AvatarUploadModalProps {
 }
 
 const AvatarUploadModal = ({ onClose, onUpload }: AvatarUploadModalProps) => {
-  const modalRef = useClickOutside(onClose);
+  // const modalRef = useClickOutside(onClose);
+  const modalRef = useRef<HTMLDivElement>(null);
+
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,10 +27,20 @@ const AvatarUploadModal = ({ onClose, onUpload }: AvatarUploadModalProps) => {
 
   return (
     <>
-      <ModalOverlay onClose={onClose} />
-      <div className={styles.modal} ref={modalRef}>
+      <div
+        className={styles.modal}
+        ref={modalRef}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button onClick={onClose} className={styles.modal__close}>
+              <img
+                src={closeIcon}
+                alt="иконка закрытия модального окна уведомления"
+              />
+            </button>
         <h5 className={styles.modal__title}>Каким должно быть фото</h5>
-        <AvatarWrapper size={220} iconHeight={134} iconWidth={132} />
+        <div className={styles.modal__content}>
+        <div className={styles.modal__avatar}><AvatarWrapper size={220} iconHeight={134} iconWidth={132} />
         <input
           type="file"
           ref={fileInputRef}
@@ -40,24 +52,29 @@ const AvatarUploadModal = ({ onClose, onUpload }: AvatarUploadModalProps) => {
           text="Загрузить фотографию"
           variant="underline"
           onClick={() => fileInputRef.current?.click()}
-        />
+          className={styles.modal__button}
+        /></div>
+        
         <div className={styles.requirements}>
-          <ul className={styles.requirements_approve}>
-            Фото подойдет
+          <p className={styles.requirement__title}>Фото подойдет</p>
+          <ul>
             <li>На фото изображены вы</li>
             <li>Лицо видно полностью</li>
             <li>
               Фотография лучше цветная, с высоким разрешением и без фильтров
             </li>
           </ul>
-          <ul className={styles.requirements_noapprove}>
-            Фото не подойдет
+          <p className={styles.requirement__title}>Фото подойдет</p>
+          <ul >
+            
             <li>На фото есть посторонние люди</li>
             <li>Это не ваше фото</li>
             <li>На фото есть запрещенные предметы</li>
           </ul>
         </div>
+        </div>
       </div>
+      <ModalOverlay onClose={onClose} />
     </>
   );
 };
