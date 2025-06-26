@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-const MIN_LENGTH = 30;
+export const MIN_LENGTH = 30;
 export const MAX_LENGTH = 1000;
 
 const validateFeedback = (content: string) => {
