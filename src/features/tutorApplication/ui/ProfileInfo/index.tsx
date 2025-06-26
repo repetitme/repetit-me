@@ -49,70 +49,78 @@ const ProfileInfo = () => {
     };
 
   return (
-    <Wrapper large className={styles.wrapper}>
-      <div className={styles.form}>
-        <div className={styles.form__avatar}>
-          <AvatarWrapper
-            avatarUrl={
-              typeof formData.avatar === 'string' ? formData.avatar : undefined
-            }
-          />
-          <Button
-            text="Загрузить фотографию"
-            variant="underline"
-            onClick={() => setIsModalOpen(true)}
-          />
-          {isModalOpen && (
-            <AvatarUploadModal
-              onClose={() => setIsModalOpen(false)}
-              onUpload={handleAvatarUpload}
+    <>
+      <Wrapper large className={styles.wrapper}>
+        <div className={styles.form}>
+          <div className={styles.form__avatar}>
+            <AvatarWrapper
+              avatarUrl={
+                typeof formData.avatar === 'string'
+                  ? formData.avatar
+                  : undefined
+              }
             />
-          )}
-        </div>
-        <div className={styles.form__inputs}>
-          <Input
-            value={formData.firstName}
-            type="text"
-            label="Имя (Отчество)"
-            placeholder="Александр"
-            onChange={handleInputChange('firstName')}
-            required
-          />
-          <Input
-            value={formData.lastName}
-            type="text"
-            label="Фамилия"
-            placeholder="Иванов"
-            onChange={handleInputChange('lastName')}
-            required
-          />
-          <Input
-            value={formData.telegram}
-            label="Ник в телеграм"
-            placeholder="@alex"
-            onChange={handleInputChange('telegram')}
-            minLength={2}
-            required
-          />
-          <Input
-            value={formData.email}
-            type="email"
-            label="Почта"
-            placeholder="alex@ya.ru"
-            onChange={handleInputChange('email')}
-          />
-          <Textarea
-            value={formData.about}
-            label="Обо мне"
-            placeholder="Добавьте информацию о себе. 
+            <Button
+              text="Загрузить фотографию"
+              variant="underline"
+              onClick={() => {
+                console.log('Кнопка нажата');
+                setIsModalOpen(true);
+              }}
+            />
+          </div>
+
+          <div className={styles.form__inputs}>
+            <Input
+              value={formData.firstName}
+              type="text"
+              label="Имя (Отчество)"
+              placeholder="Александр"
+              onChange={handleInputChange('firstName')}
+              required
+            />
+            <Input
+              value={formData.lastName}
+              type="text"
+              label="Фамилия"
+              placeholder="Иванов"
+              onChange={handleInputChange('lastName')}
+              required
+            />
+            <Input
+              value={formData.telegram}
+              label="Ник в телеграм"
+              placeholder="@alex"
+              onChange={handleInputChange('telegram')}
+              minLength={2}
+              required
+            />
+            <Input
+              value={formData.email}
+              type="email"
+              label="Почта"
+              placeholder="alex@ya.ru"
+              onChange={handleInputChange('email')}
+            />
+            <Textarea
+              value={formData.about}
+              label="Обо мне"
+              placeholder="Добавьте информацию о себе. 
 О вашей квалификации, сертификатах, об опыте преподавания. Объясните, какими будут ваши уроки, какие методы обучения используете в работе, как это помогает ученикам."
-            onChange={handleInputChange('about')}
-            minLength={100}
-            maxLength={2000}
-          />
+              onChange={handleInputChange('about')}
+              minLength={100}
+              maxLength={2000}
+            />
+          </div>
         </div>
-      </div>
-    </Wrapper>
+      </Wrapper>{' '}
+      {isModalOpen && (
+        <AvatarUploadModal
+          onClose={() => setIsModalOpen(false)}
+          onUpload={handleAvatarUpload}
+        />
+      )}
+    </>
   );
 };
 
