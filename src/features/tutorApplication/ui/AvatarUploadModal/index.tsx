@@ -1,12 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import closeIcon from '../../../../assets/icons/closeIconWhite.svg';
+import useFileUpload from '../../../../shared/hooks/useFileUpload';
 import Button from '../../../../shared/ui/button';
 import { ModalOverlay } from '../../../../shared/ui/overlay';
 import AvatarBlock from '../AvatarBlock';
 
 import styles from './index.module.scss';
-import useFileUpload from '../../../../shared/hooks/useFileUpload'
 
 interface AvatarUploadModalProps {
   onClose: (file?: File) => void;
@@ -20,19 +20,17 @@ const AvatarUploadModal = ({
   // const modalRef = useClickOutside(() => handleClose());
   const modalRef = useRef<HTMLDivElement>(null);
 
-  const {
-    files,
-    handleFileChange,
-    triggerFileSelect,
-    fileInputRef,
-    errorMessage
-  } = useFileUpload({
-    maxFiles: 1, // Только 1 файл
-    acceptTypes: ['image/jpeg', 'image/png', 'image/webp'] // Только изображения
-  });
+  const { files, handleFileChange, fileInputRef, errorMessage } = useFileUpload(
+    {
+      maxFiles: 1,
+      acceptTypes: ['image/jpeg', 'image/png', 'image/webp']
+    }
+  );
 
-   const [avatarPreview, setAvatarPreview] = useState<string | undefined>(previewAvatar);
-  
+  const [avatarPreview, setAvatarPreview] = useState<string | undefined>(
+    previewAvatar
+  );
+
   useEffect(() => {
     if (files[0]) {
       const reader = new FileReader();
@@ -43,33 +41,13 @@ const AvatarUploadModal = ({
     }
   }, [files]);
 
+  const handleUploadClick = useCallback(() => {
+    fileInputRef.current?.click();
+  }, [fileInputRef]);
+
   const handleClose = () => {
-    onClose(files[0]); // Передаем выбранный файл при закрытии
+    onClose(files[0]);
   };
-
-
-  // const fileInputRef = useRef<HTMLInputElement>(null);
-  // const [avatarPreview, setAvatarPreview] = useState<string | undefined>(
-  //   previewAvatar
-  // );
-  // const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
-  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (e.target.files?.[0]) {
-  //     const file = e.target.files[0];
-  //     setSelectedFile(file);
-
-  //     const reader = new FileReader();
-  //     reader.onload = (e) => {
-  //       setAvatarPreview(e.target?.result as string);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
-
-  // const handleClose = () => {
-  //   onClose(selectedFile || undefined);
-  // };
 
   return (
     <>
@@ -101,7 +79,7 @@ const AvatarUploadModal = ({
             <Button
               text="Загрузить фотографию"
               variant="underline"
-              onClick={() => fileInputRef.current?.click()}
+              onClick={handleUploadClick}
               className={styles.modal__button}
             />
           </div>
