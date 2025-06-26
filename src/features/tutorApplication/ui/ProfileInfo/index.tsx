@@ -4,8 +4,8 @@ import Button from '../../../../shared/ui/button';
 import Input from '../../../../shared/ui/input';
 import Textarea from '../../../../shared/ui/textarea';
 import Wrapper from '../../../../shared/ui/wrapper';
+import AvatarBlock from '../AvatarBlock';
 import AvatarUploadModal from '../AvatarUploadModal';
-import AvatarWrapper from '../AvatarWrapper';
 
 import styles from './index.module.scss';
 
@@ -15,7 +15,7 @@ type ProfileFormData = {
   telegram: string;
   email: string;
   about?: string;
-  avatar: File | string;
+  avatar: string;
 };
 
 const ProfileInfo = () => {
@@ -30,13 +30,18 @@ const ProfileInfo = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleAvatarUpload = (file: File) => {
-    // Можно сразу создать preview:
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      setFormData((prev) => ({ ...prev, avatar: e.target?.result as string }));
-    };
-    reader.readAsDataURL(file);
+  const handleAvatarUpload = (file?: File) => {
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setFormData((prev) => ({
+          ...prev,
+          avatar: e.target?.result as string
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
+    setIsModalOpen(false);
   };
 
   const handleInputChange =
@@ -53,18 +58,11 @@ const ProfileInfo = () => {
       <Wrapper large className={styles.wrapper}>
         <div className={styles.form}>
           <div className={styles.form__avatar}>
-            <AvatarWrapper
-              avatarUrl={
-                typeof formData.avatar === 'string'
-                  ? formData.avatar
-                  : undefined
-              }
-            />
+            <AvatarBlock avatarUrl={formData.avatar} />
             <Button
               text="Загрузить фотографию"
               variant="underline"
               onClick={() => {
-                console.log('Кнопка нажата');
                 setIsModalOpen(true);
               }}
             />
@@ -116,8 +114,8 @@ const ProfileInfo = () => {
       </Wrapper>{' '}
       {isModalOpen && (
         <AvatarUploadModal
-          onClose={() => setIsModalOpen(false)}
-          onUpload={handleAvatarUpload}
+          onClose={handleAvatarUpload}
+          previewAvatar={formData.avatar}
         />
       )}
     </>

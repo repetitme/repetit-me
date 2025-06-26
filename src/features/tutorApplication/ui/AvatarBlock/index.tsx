@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 
 import AvatarWrapperProps from './type';
 
-const AvatarWrapper = ({
+const AvatarBlock = ({
   avatarUrl,
   size = 258,
   iconWidth = 157,
@@ -32,4 +32,4 @@ const AvatarWrapper = ({
   );
 };
 
-export default AvatarWrapper;
+export default AvatarBlock;
