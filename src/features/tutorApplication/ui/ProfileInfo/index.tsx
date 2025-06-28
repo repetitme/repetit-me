@@ -8,9 +8,10 @@ import AvatarBlock from '../AvatarBlock';
 import AvatarUploadModal from '../AvatarUploadModal';
 
 import styles from './index.module.scss';
+import useForm from '../../../../shared/hooks/useForm'
 
 type ProfileFormData = {
-  firstName: string;
+  
   lastName: string;
   telegram: string;
   email: string;
@@ -20,13 +21,14 @@ type ProfileFormData = {
 
 const ProfileInfo = () => {
   const [formData, setFormData] = useState<ProfileFormData>({
-    firstName: '',
     lastName: '',
     telegram: '',
     email: '',
     about: '',
     avatar: ''
   });
+
+   const{ values, handleChange } = useForm({});
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -70,11 +72,13 @@ const ProfileInfo = () => {
 
           <div className={styles.form__inputs}>
             <Input
-              value={formData.firstName}
+            
+            name='firstName'
+              value={values.firstName}
               type="text"
               label="Имя (Отчество)"
               placeholder="Александр"
-              onChange={handleInputChange('firstName')}
+              onChange={handleChange}
               required
             />
             <Input
