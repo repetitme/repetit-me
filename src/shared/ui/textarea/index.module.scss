@@ -6,8 +6,6 @@
   flex-direction: column;
   font-family: var(--ffm-default);
   gap: 16px;
-  font-weight: 500;
-  line-height: 1.36;
   position: relative;
   inline-size: 100%;
 
@@ -21,6 +19,7 @@
     display: flex;
     align-items: flex-start;
     padding: 12px 16px;
+    font-weight: 500;
     inline-size: 100%;
     min-block-size: 164px;
     font-family: var(--ffm-default);
