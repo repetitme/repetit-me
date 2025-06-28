@@ -1,9 +1,11 @@
 import { useState } from 'react';
 
-export default function useForm(inputValues: { [key: string]: string }) {
-  const [values, setValues] = useState(inputValues);
+export default function useForm<T>(inputValues: T) {
+  const [values, setValues] = useState<T>(inputValues);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { value, name } = event.target;
     setValues({ ...values, [name]: value });
   };

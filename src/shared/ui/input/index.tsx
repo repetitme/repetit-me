@@ -50,7 +50,7 @@ const Input: React.FC<IInput> = ({
   };
 
   const formatInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    let value = e.target.value;
+    let {value, name} = e.target
     // Запрещает вводить буквы в поле с ценой
     if (isPrice) {
       value = value.replace(/\D/g, '');
@@ -60,7 +60,7 @@ const Input: React.FC<IInput> = ({
       value = formatNumber(value);
     }
     onChange({
-      target: { value: value }
+      target: { value: value, name }
     } as React.ChangeEvent<HTMLInputElement>);
   };
 
