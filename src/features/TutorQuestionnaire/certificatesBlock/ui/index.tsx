@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import cn from 'classnames';
 
 import Wrapper from '../../../../shared/ui/wrapper';
-import { useDragAndDrop } from '../../hooks/UseDragAndDropProps';
-import { useFileUpload } from '../../hooks/useFileUpload';
+import { useDragAndDrop } from '../hooks/UseDragAndDropProps';
+import { useFileUpload } from '../hooks/useFileUpload';
 import { blockContent, requirements } from './data';
 
 import styles from './index.module.scss';
