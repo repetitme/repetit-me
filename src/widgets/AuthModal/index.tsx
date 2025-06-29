@@ -12,7 +12,11 @@ import useScrollLock from '../../shared/hooks/useScrollLock';
 
 import styles from './index.module.scss';
 
-const AuthModal: FC = () => {
+interface AuthModalProps {
+  login?: boolean;
+}
+
+const AuthModal: FC<AuthModalProps> = ({ login }) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const onClose = () => {
@@ -44,7 +48,7 @@ const AuthModal: FC = () => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className={styles.modal__content}>
-          <AuthForm closeModal={onClose} />
+          <AuthForm closeModal={onClose} login={login} />
           <button onClick={onClose} className={styles.modal__close}>
             <img
               src={iconClose}

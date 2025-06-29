@@ -10,6 +10,7 @@ import { TLogin } from '../types';
 
 export const AuthForm: React.FC<TLogin> = ({
   mainPageRegister,
+  login,
   closeModal
 }) => {
   const {
@@ -25,7 +26,7 @@ export const AuthForm: React.FC<TLogin> = ({
     handleActiveTab,
     inputProps,
     buttonProps
-  } = useAuth(mainPageRegister, closeModal);
+  } = useAuth({mainPageRegister, login, closeModal});
 
   return (
     <div className={styles.auth}>

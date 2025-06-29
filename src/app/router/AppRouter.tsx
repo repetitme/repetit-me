@@ -34,7 +34,8 @@ const AppRouter: React.FC = () => {
 
       {backgroundLocation && (
         <Routes>
-          <Route path="/auth" element={<AuthModal />} />
+          <Route path="/register" element={<AuthModal />} />
+          <Route path="/login" element={<AuthModal login />} />
         </Routes>
       )}
     </>

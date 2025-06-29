@@ -4,16 +4,16 @@ import useForm from '../../shared/hooks/useForm';
 import { AuthType, FormTabs, defaultValues } from './constants';
 import { IAuthButtonsProps } from './ui/components/button';
 
-import { TFormTabs, TInputProps } from './types';
+import { TFormTabs, TInputProps, TUseAuth } from './types';
 
-const useAuth = (mainPageRegister?: boolean, closeModal?: () => void) => {
+const useAuth= ({mainPageRegister, login = false, closeModal} : TUseAuth) => {
   const { values, handleChange, setValues } = useForm(defaultValues);
   const formRef = useRef<HTMLFormElement | null>(null);
 
   const [currentTab, setStudentTab] = useState<TFormTabs>(
     mainPageRegister ? FormTabs.TUTOR : FormTabs.STUDENT
   );
-  const [authType, setAuthType] = useState(false);
+  const [authType, setAuthType] = useState(login);
   const [isValid, setIsValid] = useState(false);
   const [code, setReceived] = useState(false);
 
