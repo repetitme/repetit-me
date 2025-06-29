@@ -11,7 +11,7 @@ const StudentHeader: React.FC<CommonHeaderProps> = ({ onLogout }) => {
   const [isActive, setIsActive] = React.useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   const handleDropdownToggle = () => {
     setIsActive(!isActive);
   };

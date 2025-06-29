@@ -5,4 +5,4 @@ type TextareaProps = {
   classname?: string;
 } & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
-export default TextareaProps
+export default TextareaProps;

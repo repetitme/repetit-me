@@ -26,7 +26,7 @@ export const AuthForm: React.FC<TLogin> = ({
     handleActiveTab,
     inputProps,
     buttonProps
-  } = useAuth({mainPageRegister, login, closeModal});
+  } = useAuth({ mainPageRegister, login, closeModal });
 
   return (
     <div className={styles.auth}>

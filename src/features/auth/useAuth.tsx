@@ -6,7 +6,7 @@ import { IAuthButtonsProps } from './ui/components/button';
 
 import { TFormTabs, TInputProps, TUseAuth } from './types';
 
-const useAuth= ({mainPageRegister, login = false, closeModal} : TUseAuth) => {
+const useAuth = ({ mainPageRegister, login = false, closeModal }: TUseAuth) => {
   const { values, handleChange, setValues } = useForm(defaultValues);
   const formRef = useRef<HTMLFormElement | null>(null);
 
