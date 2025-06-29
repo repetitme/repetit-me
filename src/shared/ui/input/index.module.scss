@@ -1,3 +1,5 @@
+@use '../../../assets/styles/mixins/gradient.scss' as *;
+
 .input-wrapper {
   display: flex;
   flex-direction: column;
@@ -99,10 +101,8 @@
       margin-block-start: 1px;
       border-radius: 12px;
       outline: none;
-      border: 2px solid transparent;
-      background:
-        linear-gradient(white, white) padding-box,
-        linear-gradient(90deg, #9747ff, #6757f1) border-box;
+
+      @include inputs-gradient;
 
       &.error {
         border: 2px solid var(--clr-secondary-default, #fc4a4a);

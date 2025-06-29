@@ -1,3 +1,15 @@
+.select {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__label {
+    font-size: 20px;
+    font-weight: 700;
+line-height: 1;
+  }
+}
+
 .reactSelectContainer {
   width: 100%;
   position: relative;

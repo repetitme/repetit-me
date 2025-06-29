@@ -1,31 +1,11 @@
-import React from 'react';
-
-import Select from 'react-select';
-
-import FormField from './../index.tsx';
+import ReactSelect from 'react-select';
 
 import styles from './index.module.scss';
 
-type SelectOption = {
-  value: string | number;
-  label: string;
-};
+import SelectProps from './type';
 
-type SelectFieldProps = Omit<
-  React.ComponentProps<typeof FormField>,
-  'children'
-> & {
-  options: SelectOption[];
-  value?: SelectOption | null;
-  onChange?: (option: SelectOption | null) => void;
-  placeholder?: string;
-  isSearchable?: boolean;
-  defaultValue?: SelectOption;
-};
-
-const SelectField = ({
+const Select = ({
   label,
-  error,
   htmlFor,
   options,
   value,
@@ -34,7 +14,7 @@ const SelectField = ({
   isSearchable = false,
   defaultValue,
   ...props
-}: SelectFieldProps) => {
+}: SelectProps) => {
   // Кастомный индикатор стрелки
   const DropdownIndicator = (props: any) => {
     return (
@@ -61,8 +41,13 @@ const SelectField = ({
   };
 
   return (
-    <FormField label={label} htmlFor={htmlFor} error={error}>
-      <Select
+    <div className={styles.select}>
+      {label && (
+        <label htmlFor={htmlFor} className={styles.select__label}>
+          {label}
+        </label>
+      )}
+      <ReactSelect
         options={options}
         value={value}
         onChange={onChange}
@@ -88,7 +73,8 @@ const SelectField = ({
             minHeight: 'auto',
             '&:hover': {
               borderColor: menuIsOpen ? 'var(--clr-blue)' : 'transparent'
-            }
+            },
+            cursor: 'pointer'
           }),
           menu: (base) => ({
             ...base,
@@ -97,7 +83,7 @@ const SelectField = ({
               '0px 0px 2px rgba(0, 0, 0, 0.1), 0px 4px 12px rgba(0, 0, 0, 0.1)',
             width: 'calc(100% - 12px)',
             left: '6px',
-            marginTop: '2px',
+            marginTop: '0',
             zIndex: 3,
             position: 'absolute'
           }),
@@ -105,7 +91,7 @@ const SelectField = ({
             ...base,
             maxHeight: '200px',
             overflow: 'auto',
-            padding: '5px 0 4px 0',
+            padding: '16px 0 4px 0',
             borderRadius: '12px'
           }),
           option: (base, { isFocused, isSelected }) => ({
@@ -124,9 +110,7 @@ const SelectField = ({
           }),
           singleValue: (base) => ({
             ...base,
-            color: 'var(--clr-black)',
-            cursor: 'pointer',
-            fontWeight: 500
+            color: 'var(--clr-black)'
           }),
           placeholder: (base) => ({
             ...base,
@@ -138,14 +122,13 @@ const SelectField = ({
           }),
           indicatorsContainer: (base) => ({
             ...base,
-            padding: 0,
-            cursor: 'pointer'
+            padding: 0
           })
         }}
         {...props}
       />
-    </FormField>
+    </div>
   );
 };
 
-export default SelectField;
+export default Select;

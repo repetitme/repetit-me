@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import cn from 'classnames';
 
 import useForm from '../../../../shared/hooks/useForm';
-import SelectField from '../../../../shared/ui/formField/selectField';
 import Input from '../../../../shared/ui/input';
+import Select from '../../../../shared/ui/select';
 import Switcher from '../../../../shared/ui/switcher';
 import Wrapper from '../../../../shared/ui/wrapper';
 import * as data from './data';
@@ -22,14 +22,14 @@ const DisciplinesBlock: React.FC<DisciplinesBlockProps> = ({ index }) => {
   >([
     {
       ageCategory: data.ageCategories[0].label,
-      price: '1500'
+      price: '1 500'
     }
   ]);
 
   const handleAddCategory = () => {
     setCategories((prev) => [
       ...prev,
-      { ageCategory: data.ageCategories[0].label, price: '1500' }
+      { ageCategory: data.ageCategories[0].label, price: '1 500' }
     ]);
   };
 
@@ -44,15 +44,15 @@ const DisciplinesBlock: React.FC<DisciplinesBlockProps> = ({ index }) => {
       </div>
       <div className={styles.options}>
         <div className={styles.options__disciplines}>
-          <SelectField
-            label="Предметы"
+          <Select
+            label="Предмет"
             options={data.disciplines}
             placeholder="Математика"
             defaultValue={data.disciplines[0]}
           />
         </div>
         <div className={styles.options__status}>
-          <SelectField
+          <Select
             label="Статус"
             options={data.status}
             placeholder="Частный преподаватель"
@@ -71,8 +71,8 @@ const DisciplinesBlock: React.FC<DisciplinesBlockProps> = ({ index }) => {
           ))}
         </div>
         <div className={styles.options__target}>
-          <SelectField
-            label="Цель занятия"
+          <Select
+            label="Цель занятий"
             options={data.target}
             placeholder="Повышение успеваемости"
             defaultValue={data.target[0]}

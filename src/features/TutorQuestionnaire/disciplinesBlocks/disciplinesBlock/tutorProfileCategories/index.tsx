@@ -1,6 +1,6 @@
 import useForm from '../../../../../shared/hooks/useForm';
-import SelectField from '../../../../../shared/ui/formField/selectField';
 import Input from '../../../../../shared/ui/input';
+import Select from '../../../../../shared/ui/select';
 import iconAdd from './../../../../../assets/images/icon_add.svg';
 
 import styles from './index.module.scss';
@@ -18,8 +18,8 @@ const TutorProfileCategories = ({
   return (
     <div className={styles.container__auxiliary}>
       <div className={styles['container__options--age']}>
-        <SelectField
-          label="Возрастная категория"
+        <Select
+          label="Возрастные категории"
           options={data}
           placeholder={category.ageCategory}
           defaultValue={data.find(
