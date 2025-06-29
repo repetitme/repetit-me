@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 import cn from 'classnames';
 
+import { useDragAndDrop } from '../../../../shared/hooks/useDragAndDropProps';
+import { useFileUpload } from '../../../../shared/hooks/useFileUpload';
 import Wrapper from '../../../../shared/ui/wrapper';
-import { useDragAndDrop } from '../hooks/UseDragAndDropProps';
-import { useFileUpload } from '../hooks/useFileUpload';
 import { blockContent, requirements } from './data';
 
 import styles from './index.module.scss';

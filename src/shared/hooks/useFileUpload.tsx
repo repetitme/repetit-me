@@ -1,6 +1,16 @@
 import { useRef, useState } from 'react';
 
-import { IFileUploadProps } from '../type';
+export interface ITypeConstraint {
+  maxSizeBytes?: number;
+}
+
+export interface IFileUploadProps {
+  files: File[];
+  setFiles: React.Dispatch<React.SetStateAction<File[]>>;
+  maxFiles: number;
+  acceptTypes: string[];
+  typeConstraints?: Record<string, ITypeConstraint>;
+}
 
 export const useFileUpload = ({
   files,

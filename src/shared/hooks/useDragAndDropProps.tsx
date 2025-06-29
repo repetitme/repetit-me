@@ -1,6 +1,12 @@
 import { useCallback, useRef, useState } from 'react';
 
-import { IDragAndDropProps } from '../type';
+export interface IDragAndDropProps {
+  onFilesDropped: (files: File[]) => void;
+  maxFiles: number;
+  currentFileCount: number;
+  acceptTypes?: string[];
+  maxSizeBytes?: number;
+}
 
 export const useDragAndDrop = ({
   onFilesDropped,
