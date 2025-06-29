@@ -5,7 +5,9 @@ import { IDragAndDropProps } from '../type';
 export const useDragAndDrop = ({
   onFilesDropped,
   maxFiles,
-  currentFileCount
+  currentFileCount,
+  acceptTypes = [],
+  maxSizeBytes
 }: IDragAndDropProps) => {
   const [isDragging, setIsDragging] = useState(false);
   const [errorMessageDrop, setErrorMessageDrop] = useState<string | null>(null);
@@ -36,38 +38,44 @@ export const useDragAndDrop = ({
       e.preventDefault();
       dragCounter.current = 0;
       setIsDragging(false);
-
       setErrorMessageDrop(null);
 
-      if (!e.dataTransfer.files) return;
+      if (!e.dataTransfer.files || e.dataTransfer.files.length === 0) return;
 
       const droppedFiles = Array.from(e.dataTransfer.files);
 
-      const validTypeFiles = droppedFiles.filter((file) =>
-        ['image/png', 'image/jpg', 'image/jpeg'].includes(file.type)
-      );
+      let filteredByType: File[] = [];
+      if (acceptTypes.length > 0) {
+        filteredByType = droppedFiles.filter((file) =>
+          acceptTypes.includes(file.type)
+        );
 
-      const maxSizeBytes = 10 * 1024 * 1024;
-      let sizeFilteredFiles: File[] = [];
+        if (filteredByType.length !== droppedFiles.length) {
+          setErrorMessageDrop('Файл имеет неподдерживаемый формат.');
+        }
+      } else {
+        filteredByType = droppedFiles;
+      }
 
-      for (const file of validTypeFiles) {
-        if (file.size > maxSizeBytes) {
+      const validFiles: File[] = [];
+      for (const file of filteredByType) {
+        if (maxSizeBytes && file.size > maxSizeBytes) {
           setErrorMessageDrop(
-            `Файл ${file.name} превышает лимит по размеру (10 МБ).`
+            `Файл ${file.name} превышает лимит по размеру (${(maxSizeBytes / (1024 * 1024)).toFixed(2)} МБ).`
           );
         } else {
-          sizeFilteredFiles.push(file);
+          validFiles.push(file);
         }
       }
 
-      if (currentFileCount + sizeFilteredFiles.length > maxFiles) {
+      if (currentFileCount + validFiles.length > maxFiles) {
         alert(`Можно загрузить не более ${maxFiles} документов`);
         return;
       }
 
-      onFilesDropped(sizeFilteredFiles);
+      onFilesDropped(validFiles);
     },
-    [onFilesDropped, maxFiles, currentFileCount]
+    [onFilesDropped, maxFiles, currentFileCount, acceptTypes, maxSizeBytes]
   );
 
   return {

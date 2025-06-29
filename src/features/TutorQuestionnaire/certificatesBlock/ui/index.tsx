@@ -1,29 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import cn from 'classnames';
 
 import Wrapper from '../../../../shared/ui/wrapper';
-import { useDragAndDrop } from '../hooks/UseDragAndDropProps';
-import { useFileUpload } from '../hooks/useFileUpload';
+import { useDragAndDrop } from '../../hooks/UseDragAndDropProps';
+import { useFileUpload } from '../../hooks/useFileUpload';
 import { blockContent, requirements } from './data';
 
 import styles from './index.module.scss';
 
-const MAX_DOCUMENTS = 10;
-
 const CertificatesBlock: React.FC = () => {
-  const {
-    files: documents,
-    handleFileChange,
-    triggerFileSelect,
-    fileInputRef,
-    errorMessage
-  } = useFileUpload({
-    maxFiles: MAX_DOCUMENTS,
-    acceptTypes: ['image/png', 'image/jpg', 'image/jpeg']
-  });
+  const MAX_DOCUMENTS = 10;
+  const maxSizeBytes = 10 * 1024 * 1024;
+  const acceptTypesVideo = ['image/png', 'image/jpg', 'image/jpeg'];
+  const [files, setFiles] = useState<File[]>([]);
 
-  const currentFileCount = documents.length;
+  const handleProcessedFiles = (newFiles: File[]) => {
+    const combinedFiles = [...files, ...newFiles];
+    if (combinedFiles.length > MAX_DOCUMENTS) {
+      setFiles(combinedFiles.slice(0, MAX_DOCUMENTS));
+    } else {
+      setFiles(combinedFiles);
+    }
+  };
 
   const {
     isDragging,
@@ -33,22 +32,25 @@ const CertificatesBlock: React.FC = () => {
     handleDrop,
     errorMessageDrop
   } = useDragAndDrop({
-    onFilesDropped: (droppedFiles) => {
-      const fileList = createFileList(droppedFiles);
-      const fakeEvent = {
-        target: { files: fileList }
-      } as React.ChangeEvent<HTMLInputElement>;
-      handleFileChange(fakeEvent);
-    },
+    onFilesDropped: handleProcessedFiles,
     maxFiles: MAX_DOCUMENTS,
-    currentFileCount
+    currentFileCount: files.length,
+    acceptTypes: acceptTypesVideo,
+    maxSizeBytes: maxSizeBytes
   });
 
-  function createFileList(files: File[]): FileList {
-    const dataTransfer = new DataTransfer();
-    files.forEach((file) => dataTransfer.items.add(file));
-    return dataTransfer.files;
-  }
+  const { handleFileChange, triggerFileSelect, fileInputRef, errorMessage } =
+    useFileUpload({
+      files,
+      setFiles,
+      maxFiles: MAX_DOCUMENTS,
+      acceptTypes: acceptTypesVideo,
+      typeConstraints: {
+        'image/png': { maxSizeBytes },
+        'image/jpg': { maxSizeBytes },
+        'image/jpeg': { maxSizeBytes }
+      }
+    });
 
   return (
     <Wrapper large className={styles.wrapper}>
@@ -57,15 +59,15 @@ const CertificatesBlock: React.FC = () => {
           {blockContent.wrapperTitle}
         </h3>
         <p className={styles['wrapper__header-counter']}>
-          {`Доступно ${MAX_DOCUMENTS - documents.length} из ${MAX_DOCUMENTS}`}
+          {`Доступно ${MAX_DOCUMENTS - files.length} из ${MAX_DOCUMENTS}`}
         </p>
       </div>
       <p className={styles.wrapper__description}>
         {blockContent.wrapperDescription}
       </p>
-      {documents.length > 0 && (
+      {files.length > 0 && (
         <div className={styles.wrapper__content}>
-          {documents.map((file, index) => (
+          {files.map((file, index) => (
             <div key={index} className={styles['wrapper__content-item']}>
               <img
                 src={URL.createObjectURL(file)}
@@ -92,7 +94,7 @@ const CertificatesBlock: React.FC = () => {
         onChange={handleFileChange}
       />
 
-      {documents.length < 10 && (
+      {files.length < 10 && (
         <div
           className={cn(
             styles.container,
