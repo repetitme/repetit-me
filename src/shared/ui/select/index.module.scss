@@ -1,0 +1,36 @@
+.select {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__label {
+    font-size: 20px;
+    font-weight: 700;
+line-height: 1;
+  }
+}
+
+.reactSelectContainer {
+  width: 100%;
+  position: relative;
+
+  .custom-select__control {
+    min-height: 48px;
+    font-family: var(--ffm-default);
+    font-size: 16px;
+    transition: border-color 0.3s;
+
+    &--is-focused {
+      border-color: var(--clr-blue);
+    }
+  }
+
+  .custom-select__menu {
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+  }
+
+  .custom-select__option {
+    cursor: pointer;
+  }
+}
