@@ -1,7 +1,13 @@
 import MainPage from '../../pages/MainPage';
 
 import StudentRequests from '../../pages/StudentRequests';
+
 import NotFoundPage from '../../widgets/NotFoundPage/index';
+import { AboutService } from '../../widgets/AboutService';
+import {
+  bonusPopupData,
+  reviewPopupData
+} from '../../widgets/AboutService/data';
 
 import { IRoute } from './type';
 
@@ -39,6 +45,18 @@ export const routesConfig: IRoute[] = [
   {
     path: '*',
     element: <NotFoundPage />,
+    auth: false
+  },
+  {
+    path: '/aboutService',
+    element: (
+      <div style={{ inlineSize: 'fit-content', margin: '20px auto' }}>
+        <AboutService
+          bonusPopup={bonusPopupData}
+          reviewPopup={reviewPopupData}
+        />
+      </div>
+    ),
     auth: false
   }
 ];

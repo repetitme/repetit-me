@@ -3,3 +3,14 @@
   background-clip: text;
   color: transparent;
 }
+
+@mixin inputs-gradient(
+  $color1: var(--clr-main),
+  $color2: var(--clr-primary-input),
+  $color3: var(--clr-primary-default)
+) {
+  border: 2px solid transparent;
+  background:
+    linear-gradient($color1, $color1) padding-box,
+    linear-gradient(180deg, $color2 0%, $color3 100%) border-box;
+}
