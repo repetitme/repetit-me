@@ -1,0 +1,48 @@
+@use '../../../../../../assets/styles/mixins/flexCenter.scss' as *;
+
+.container {
+  &__auxiliary {
+    grid-column: 1/-1;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 48px;
+  }
+
+  &__options {
+    &--age {
+      inline-size: 363px;
+    }
+
+    &--price {
+      display: flex;
+      flex-direction: row;
+      align-items: end;
+      gap: 12px;
+      inline-size: 173px;
+
+      &-currency {
+        line-height: 100%;
+        font-weight: 500;
+        inline-size: 100%;
+        margin-block-end: 12px;
+        block-size: 20px;
+      }
+    }
+
+    &--added {
+      @include flex-center;
+
+      grid-column: 3/4;
+      grid-row: 2/3;
+      flex-direction: row;
+      gap: 12px;
+      border: none;
+      color: var(--clr-primary-default);
+      font-size: 16px;
+      font-weight: 600;
+      background-color: transparent;
+      margin-block-end: 12px;
+    }
+  }
+}
