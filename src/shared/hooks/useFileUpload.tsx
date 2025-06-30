@@ -1,25 +1,31 @@
 import { useRef, useState } from 'react';
 
-export interface IFileUploadProps {
-  maxFiles: number;
-  acceptTypes: string[];
+export interface ITypeConstraint {
+  maxSizeBytes?: number;
 }
 
-export interface IFileUploadReturn {
+export interface IFileUploadProps {
   files: File[];
+  setFiles: React.Dispatch<React.SetStateAction<File[]>>;
+  maxFiles: number;
+  acceptTypes: string[];
+  typeConstraints?: Record<string, ITypeConstraint>;
+}
+
+export const useFileUpload = ({
+  files,
+  setFiles,
+  maxFiles,
+  acceptTypes,
+  typeConstraints = {}
+}: IFileUploadProps): {
   handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   triggerFileSelect: () => void;
   fileInputRef: React.RefObject<HTMLInputElement | null>;
   errorMessage: string | null;
-}
-
-const useFileUpload = ({
-  maxFiles,
-  acceptTypes
-}: IFileUploadProps): IFileUploadReturn => {
-  const [files, setFiles] = useState<File[]>([]);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+} => {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setErrorMessage(null);
@@ -31,28 +37,30 @@ const useFileUpload = ({
       acceptTypes.includes(file.type)
     );
 
-    const maxSizeBytes = 10 * 1024 * 1024;
+    if (validTypeFiles.length === 0) {
+      setErrorMessage('Неподдерживаемый тип файла');
 
-    const oversizedFiles = validTypeFiles.filter(
-      (file) => file.size > maxSizeBytes
-    );
-
-    if (oversizedFiles.length > 0) {
-      const fileNames = oversizedFiles.map((f) => f.name).join(', ');
-      setErrorMessage(`Файлы ${fileNames} превышают лимит по размеру (10 МБ).`);
       return;
     }
 
-    const validSizeFiles = validTypeFiles.filter(
-      (file) => file.size <= maxSizeBytes
-    );
+    for (const file of validTypeFiles) {
+      const constraint = typeConstraints[file.type];
+      const maxSizeBytes = constraint?.maxSizeBytes ?? Infinity;
 
-    if (files.length + validSizeFiles.length > maxFiles) {
-      setErrorMessage(`Можно загрузить не более ${maxFiles} документов`);
+      if (file.size > maxSizeBytes) {
+        setErrorMessage(
+          `Файл ${file.name} превышает лимит по размеру (${maxSizeBytes / (1024 * 1024)} МБ).`
+        );
+        return;
+      }
+    }
+
+    if (files.length + validTypeFiles.length > maxFiles) {
+      setErrorMessage(`Можно загрузить не более ${maxFiles} файлов`);
       return;
     }
 
-    setFiles((prev) => [...prev, ...validSizeFiles]);
+    setFiles((prev) => [...prev, ...validTypeFiles]);
     setErrorMessage(null);
     e.target.value = '';
   };
@@ -64,7 +72,6 @@ const useFileUpload = ({
   };
 
   return {
-    files,
     handleFileChange,
     triggerFileSelect,
     fileInputRef,
@@ -72,4 +79,3 @@ const useFileUpload = ({
   };
 };
 
-export default useFileUpload;
