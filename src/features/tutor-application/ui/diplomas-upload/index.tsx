@@ -9,7 +9,7 @@ import { blockContent, requirements } from './data';
 
 import styles from './index.module.scss';
 
-const CertificatesBlock: React.FC = () => {
+const DiplomasUpload: React.FC = () => {
   const MAX_DOCUMENTS = 10;
   const maxSizeBytes = 10 * 1024 * 1024;
   const acceptTypesVideo = ['image/png', 'image/jpg', 'image/jpeg'];
@@ -136,4 +136,4 @@ const CertificatesBlock: React.FC = () => {
   );
 };
 
-export default CertificatesBlock;
+export default DiplomasUpload;

@@ -1,4 +1,4 @@
-import TutorQuestionnaire from '../../features/TutorQuestionnaire';
+import TutorQuestionnaire from '../../features/tutor-application/ui';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
