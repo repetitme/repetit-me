@@ -2,7 +2,7 @@ import { useState } from 'react';
 import React from 'react';
 
 import iconAdd from '../../../../assets/icons/icon_add.svg';
-import SubjectFormItem from './SubjectFormItem';
+import SubjectFormItem from './subject-form-item';
 
 import styles from './index.module.scss';
 
