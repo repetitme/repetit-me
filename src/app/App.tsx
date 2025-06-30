@@ -9,7 +9,6 @@ function App() {
   return (
     <div className={styles.app}>      
       <Header auth={'student'} />
-      
       <AppRouter />
       <Footer role="student" />
     </div>
