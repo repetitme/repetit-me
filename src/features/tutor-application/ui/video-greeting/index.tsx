@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 import cn from 'classnames';
 
+import { useDragAndDrop } from '../../../../shared/hooks/useDragAndDrop';
+import { useFileUpload } from '../../../../shared/hooks/useFileUpload';
 import Wrapper from '../../../../shared/ui/wrapper';
-import { useDragAndDrop } from '../../hooks/useDragAndDrop';
-import { useFileUpload } from '../../hooks/useFileUpload';
 import { adviсes, blockContent, requirements } from './data';
 
 import styles from './index.module.scss';
 
-const VideoGreetingBlock: React.FC = () => {
+const VideoGreeting: React.FC = () => {
   const maxSizeBytes = 20 * 1024 * 1024;
   const acceptTypesVideo = ['video/mp4', 'video/quicktime', 'video/3gpp'];
   const [files, setFiles] = useState<File[]>([]);
@@ -137,4 +137,4 @@ const VideoGreetingBlock: React.FC = () => {
   );
 };
 
-export default VideoGreetingBlock;
+export default VideoGreeting;

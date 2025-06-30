@@ -2,17 +2,17 @@ import React from 'react';
 
 import Button from '../../shared/ui/button';
 import Stepper from '../../shared/ui/stepper';
-import VideoGreetingBlock from './videoGreetingBlock/ui';
+import VideoGreeting from './ui/video-greeting';
 
 import styles from './index.module.scss';
 
-const TutorQuestionnaire: React.FC = () => {
+const TutorApplication: React.FC = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.questionnaire}>
-        <h2 className={styles.questionnaire__title}>Анкета</h2>
+      <div className={styles.application}>
+        <h2 className={styles.application__title}>Анкета</h2>
         <Stepper currentStep={4} totalSteps={5} />
-        <VideoGreetingBlock />
+        <VideoGreeting />
       </div>
       <div className={styles.container__buttons}>
         <Button
@@ -32,4 +32,4 @@ const TutorQuestionnaire: React.FC = () => {
   );
 };
 
-export default TutorQuestionnaire;
+export default TutorApplication;

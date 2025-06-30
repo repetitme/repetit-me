@@ -1,6 +1,5 @@
-import TutorQuestionnaire from '../../features/TutorQuestionnaire';
+import TutorApplication from '../../features/tutor-application';
 import MainPage from '../../pages/MainPage';
-import FeedbacksModal from '../../widgets/FeedbacksModal';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
 import { IRoute } from './type';
@@ -13,7 +12,7 @@ export const routesConfig: IRoute[] = [
   },
   {
     path: '/test',
-    element: <TutorQuestionnaire />,
+    element: <TutorApplication />,
     auth: false
   },
   {
