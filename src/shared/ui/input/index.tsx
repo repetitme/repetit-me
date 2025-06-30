@@ -39,6 +39,9 @@ const Input: React.FC<IInput> = ({
     if (target.validity.patternMismatch) {
       return title || target.validationMessage;
     }
+    if (pattern && !new RegExp(pattern).test(target.value)) {
+      return title || 'Некорректный формат';
+    }
     return '';
   };
 
@@ -50,7 +53,7 @@ const Input: React.FC<IInput> = ({
   };
 
   const formatInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    let {value, name} = e.target
+    let { value, name } = e.target;
     // Запрещает вводить буквы в поле с ценой
     if (isPrice) {
       value = value.replace(/\D/g, '');
