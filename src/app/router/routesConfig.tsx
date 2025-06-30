@@ -1,11 +1,6 @@
 import TutorFilters from '../../features/TutorFilters';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
-import { AboutService } from '../../widgets/AboutService';
-import {
-  bonusPopupData,
-  reviewPopupData
-} from '../../widgets/AboutService/data';
 
 import { IRoute } from './type';
 

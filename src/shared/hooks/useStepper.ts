@@ -4,11 +4,11 @@ export const useStepper = (totalSteps: number) => {
   const [currentStep, setCurrentStep] = useState(1);
 
   const next = () => {
-    if (currentStep < totalSteps) setCurrentStep(s => s + 1);
+    if (currentStep < totalSteps) setCurrentStep((s) => s + 1);
   };
 
   const prev = () => {
-    if (currentStep > 1) setCurrentStep(s => s - 1);
+    if (currentStep > 1) setCurrentStep((s) => s - 1);
   };
 
   const reset = () => setCurrentStep(1);
@@ -20,6 +20,6 @@ export const useStepper = (totalSteps: number) => {
     prev,
     reset,
     isFirstStep: currentStep === 1,
-    isLastStep: currentStep === totalSteps,
+    isLastStep: currentStep === totalSteps
   };
 };
