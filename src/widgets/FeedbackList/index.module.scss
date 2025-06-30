@@ -1,10 +1,9 @@
 .section {
-  inline-size: 100%;
   display: flex;
   flex-direction: column;
-  padding: 24px 32px 32px;
-  gap: 24px;
+  gap: 18px;
   background-color: #f6f6f6;
+  inline-size: 100%;
 }
 
 .container {
@@ -14,30 +13,29 @@
 
 .sort {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  inline-size: 256px;
-  padding: 16px 20px;
-  border-radius: var(--border-radius-btn-social);
+  align-items: center;
   border: none;
+  border-radius: var(--border-radius-btn-social);
+  padding: 16px 20px;
+  color: #292f3b;
+  font-family: var(--ffm-default);
   font-weight: 500;
   font-size: 16px;
   line-height: 1.36;
-  font-family: var(--ffm-default);
-  cursor: pointer;
   background-color: var(--clr-main);
-  color: #292f3b;
+  inline-size: 256px;
   white-space: nowrap;
 }
 
 .button {
+  padding: 16px 20px;
   inline-size: min-content;
   white-space: nowrap;
-  padding: 18px 24px;
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
