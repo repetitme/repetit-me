@@ -1,12 +1,14 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import closeIcon from '../../../../assets/icons/closeIconWhite.svg';
-import useFileUpload from '../../../../shared/hooks/useFileUpload';
+import { useFileUpload } from '../../../../shared/hooks/useFileUpload';
 import Button from '../../../../shared/ui/button';
 import { ModalOverlay } from '../../../../shared/ui/overlay';
 import AvatarBlock from '../AvatarBlock';
 
 import styles from './index.module.scss';
+
+const MAX_AVATAR_SIZE = 2 * 1024 * 1024;
 
 interface AvatarUploadModalProps {
   onClose: (file?: File) => void;
@@ -17,15 +19,21 @@ const AvatarUploadModal = ({
   onClose,
   previewAvatar
 }: AvatarUploadModalProps) => {
-  // const modalRef = useClickOutside(() => handleClose());
   const modalRef = useRef<HTMLDivElement>(null);
+  const [files, setFiles] = useState<File[]>([]);
 
-  const { files, handleFileChange, fileInputRef, errorMessage } = useFileUpload(
-    {
+  const { handleFileChange, triggerFileSelect, fileInputRef, errorMessage } =
+    useFileUpload({
+      files,
+      setFiles,
       maxFiles: 1,
-      acceptTypes: ['image/jpeg', 'image/png', 'image/webp']
-    }
-  );
+      acceptTypes: ['image/jpeg', 'image/png', 'image/webp'],
+      typeConstraints: {
+        'image/jpeg': { maxSizeBytes: MAX_AVATAR_SIZE },
+        'image/png': { maxSizeBytes: MAX_AVATAR_SIZE },
+        'image/webp': { maxSizeBytes: MAX_AVATAR_SIZE }
+      }
+    });
 
   const [avatarPreview, setAvatarPreview] = useState<string | undefined>(
     previewAvatar
@@ -38,12 +46,10 @@ const AvatarUploadModal = ({
         setAvatarPreview(e.target?.result as string);
       };
       reader.readAsDataURL(files[0]);
+    } else {
+      setAvatarPreview(previewAvatar);
     }
   }, [files]);
-
-  const handleUploadClick = useCallback(() => {
-    fileInputRef.current?.click();
-  }, [fileInputRef]);
 
   const handleClose = () => {
     onClose(files[0]);
@@ -72,16 +78,17 @@ const AvatarUploadModal = ({
               type="file"
               ref={fileInputRef}
               onChange={handleFileChange}
-              accept="image/*"
+              accept="image/jpeg, image/png, image/webp"
               style={{ display: 'none' }}
             />
-            {errorMessage && <div className={styles.error}>{errorMessage}</div>}
+            
             <Button
               text="Загрузить фотографию"
               variant="underline"
-              onClick={handleUploadClick}
+              onClick={triggerFileSelect}
               className={styles.modal__button}
             />
+            {errorMessage && <div className={styles.modal__error}>{errorMessage}</div>}
           </div>
 
           <div className={styles.requirements}>
