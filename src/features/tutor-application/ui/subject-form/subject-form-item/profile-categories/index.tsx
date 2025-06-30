@@ -1,5 +1,6 @@
 import iconAdd from '../../../../../../assets/icons/icon_add.svg';
 import useForm from '../../../../../../shared/hooks/useForm';
+import Button from '../../../../../../shared/ui/button';
 import Input from '../../../../../../shared/ui/input';
 import Select from '../../../../../../shared/ui/select';
 
@@ -41,13 +42,13 @@ const ProfileCategories = ({
         <p className={styles['container__options--price-currency']}>руб/час</p>
       </div>
       {isLast && (
-        <button
+        <Button
+          text="Добавить категорию"
+          variant="transparent"
+          icon={iconAdd}
           onClick={onAddCategory}
           className={styles['container__options--added']}
-        >
-          <img src={iconAdd} alt="Добавить категорию" />
-          <p>Добавить категорию</p>
-        </button>
+        />
       )}
     </div>
   );
