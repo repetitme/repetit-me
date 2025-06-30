@@ -1,6 +1,5 @@
 import Footer from '../widgets/Footer';
 import Header from '../widgets/Header';
-import StatCards from '../widgets/StatisticCards';
 import AppRouter from './router/AppRouter';
 
 import '../assets/styles/index.scss';
