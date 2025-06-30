@@ -2,22 +2,22 @@ import { useState } from 'react';
 import React from 'react';
 
 import iconAdd from '../../../../assets/icons/icon_add.svg';
-import DisciplinesBlock from './subject-form-item';
+import SubjectFormItem from './SubjectFormItem';
 
 import styles from './index.module.scss';
 
 const MAX_BLOCKS = 3;
 
-const DisciplinesBlocks: React.FC = () => {
+const SubjectForm: React.FC = () => {
   const [blocksData, setBlocksData] = useState<React.ReactNode[]>([
-    <DisciplinesBlock key={0} index={0} />
+    <SubjectFormItem key={0} index={0} />
   ]);
 
   const handleAddBlock = () => {
     if (blocksData.length < MAX_BLOCKS) {
       setBlocksData((prev) => [
         ...prev,
-        <DisciplinesBlock key={prev.length} index={prev.length} />
+        <SubjectFormItem key={prev.length} index={prev.length} />
       ]);
     }
   };
@@ -25,7 +25,7 @@ const DisciplinesBlocks: React.FC = () => {
   return (
     <div className={styles.container}>
       {blocksData.map((_, index) => (
-        <DisciplinesBlock key={index} index={index} />
+        <SubjectFormItem key={index} index={index} />
       ))}
       {blocksData.length < MAX_BLOCKS && (
         <button
@@ -40,4 +40,4 @@ const DisciplinesBlocks: React.FC = () => {
   );
 };
 
-export default DisciplinesBlocks;
+export default SubjectForm;

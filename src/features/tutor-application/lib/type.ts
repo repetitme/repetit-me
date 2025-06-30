@@ -2,7 +2,7 @@ export interface DisciplinesBlockProps {
   index: number;
 }
 
-export interface TutorProfileCategoriesProps {
+export interface ProfileCategoriesProps {
   category: {
     ageCategory: string;
     price: string;

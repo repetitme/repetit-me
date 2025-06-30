@@ -5,15 +5,16 @@ import cn from 'classnames';
 import useForm from '../../../../../shared/hooks/useForm';
 import Input from '../../../../../shared/ui/input';
 import Select from '../../../../../shared/ui/select';
+import Switcher from '../../../../../shared/ui/switcher';
 import Wrapper from '../../../../../shared/ui/wrapper';
 import * as data from './data';
-import TutorProfileCategories from './profile-categories';
+import ProfileCategories from './profile-categories';
 
 import styles from './index.module.scss';
 
 import { DisciplinesBlockProps } from '../../../lib/type';
 
-const DisciplinesBlock: React.FC<DisciplinesBlockProps> = ({ index }) => {
+const SubjectFormItem: React.FC<DisciplinesBlockProps> = ({ index }) => {
   const { values, handleChange } = useForm({});
   const [isActive, setIsActive] = useState<boolean>(true);
   const [categories, setCategories] = useState<
@@ -60,7 +61,7 @@ const DisciplinesBlock: React.FC<DisciplinesBlockProps> = ({ index }) => {
         </div>
         <div className={styles['options__categories']}>
           {categories.map((category, index) => (
-            <TutorProfileCategories
+            <ProfileCategories
               key={index}
               data={data.ageCategories}
               category={category}
@@ -94,4 +95,4 @@ const DisciplinesBlock: React.FC<DisciplinesBlockProps> = ({ index }) => {
   );
 };
 
-export default DisciplinesBlock;
+export default SubjectFormItem;

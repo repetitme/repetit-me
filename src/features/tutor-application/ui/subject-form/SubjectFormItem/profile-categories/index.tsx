@@ -5,14 +5,14 @@ import Select from '../../../../../../shared/ui/select';
 
 import styles from './index.module.scss';
 
-import { TutorProfileCategoriesProps } from '../../../../lib/type';
+import { ProfileCategoriesProps } from '../../../../lib/type';
 
-const TutorProfileCategories = ({
+const ProfileCategories = ({
   data,
   category,
   isLast,
   onAddCategory
-}: TutorProfileCategoriesProps) => {
+}: ProfileCategoriesProps) => {
   const { values, handleChange } = useForm({});
 
   return (
@@ -53,4 +53,4 @@ const TutorProfileCategories = ({
   );
 };
 
-export default TutorProfileCategories;
+export default ProfileCategories;
