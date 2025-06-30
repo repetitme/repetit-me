@@ -8,7 +8,7 @@ import AvatarBlock from '../AvatarBlock';
 
 import styles from './index.module.scss';
 
-const MAX_AVATAR_SIZE = 2 * 1024 * 1024;
+const MAX_AVATAR_SIZE = 5 * 1024 * 1024;
 
 interface AvatarUploadModalProps {
   onClose: (file?: File) => void;
@@ -81,14 +81,16 @@ const AvatarUploadModal = ({
               accept="image/jpeg, image/png, image/webp"
               style={{ display: 'none' }}
             />
-            
+
             <Button
               text="Загрузить фотографию"
               variant="underline"
               onClick={triggerFileSelect}
               className={styles.modal__button}
             />
-            {errorMessage && <div className={styles.modal__error}>{errorMessage}</div>}
+            {errorMessage && (
+              <div className={styles.modal__error}>{errorMessage}</div>
+            )}
           </div>
 
           <div className={styles.requirements}>

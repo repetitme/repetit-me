@@ -56,7 +56,16 @@ export const useFileUpload = ({
     }
 
     if (files.length + validTypeFiles.length > maxFiles) {
-      setErrorMessage(`Можно загрузить не более ${maxFiles} файлов`);
+     
+      if (validTypeFiles.length <= maxFiles) {
+        setFiles([...validTypeFiles]);
+      } else {
+        setErrorMessage(
+          maxFiles === 1
+            ? `Можно загрузить не более 1 файла`
+            : `Можно загрузить не более ${maxFiles} файлов`
+        );
+      }
       return;
     }
 
@@ -78,4 +87,3 @@ export const useFileUpload = ({
     errorMessage
   };
 };
-

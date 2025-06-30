@@ -68,6 +68,10 @@ const ProfileInfo = () => {
               label="Имя (Отчество)"
               placeholder="Александр"
               onChange={handleChange}
+              pattern="^[A-Za-zА-Яа-яЁё\s-]+$"
+              title="Поле может содержать только буквы, пробелы и дефисы"
+              minLength={1}
+              maxLength={50}
               required
             />
             <Input
@@ -77,6 +81,10 @@ const ProfileInfo = () => {
               label="Фамилия"
               placeholder="Иванов"
               onChange={handleChange}
+              pattern="^[A-Za-zА-Яа-яЁё\s-]+$"
+              title="Поле может содержать только буквы, пробелы и дефисы"
+              minLength={1}
+              maxLength={100}
               required
             />
             <Input
@@ -86,6 +94,8 @@ const ProfileInfo = () => {
               placeholder="@alex"
               onChange={handleChange}
               minLength={2}
+              pattern="^@[A-Za-z0-9_]+$"
+              title="Ник должен начинаться с @ и содержать только латинские буквы, цифры или _"
               required
             />
             <Input
@@ -95,7 +105,6 @@ const ProfileInfo = () => {
               label="Почта"
               placeholder="alex@ya.ru"
               onChange={handleChange}
-              title="В адресе отсутствует символ @"
             />
             <Textarea
               name="about"
@@ -106,6 +115,7 @@ const ProfileInfo = () => {
               onChange={handleChange}
               minLength={100}
               maxLength={2000}
+              error="Минимум 100 символов"
             />
           </div>
         </div>
