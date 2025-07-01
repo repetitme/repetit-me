@@ -24,7 +24,7 @@ export type TInputFactory = (...args: TInputData[keyof TInputData]) => (
     values: Record<TAuthInputInterface['name'], string>;
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   },
-  notRequired?: string
+  notRequired?: boolean
 ) => React.ReactElement;
 
 export type TInputs = Record<
