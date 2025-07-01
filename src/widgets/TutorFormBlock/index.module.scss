@@ -34,6 +34,14 @@
     text-align: center;
   }
 
+  &__form {
+    padding: 69px 61px 0;
+    background-color: var(--clr-main);
+    border-radius: 29px;
+    margin: 32px;
+    inline-size: 834px;
+  }
+
   &__form::after {
     content: '';
     background-image: url('../../assets/images/sahedron.png');

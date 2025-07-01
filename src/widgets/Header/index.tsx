@@ -16,36 +16,34 @@ import { HeaderProps, TAuth } from './types';
 const Header: React.FC<HeaderProps> = ({ auth }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [authHeader, setAuthHeader] = useState<TAuth>(
-    auth ? auth : 'unauthorized'
-  );
+  const [authHeader, setAuthHeader] = useState<TAuth>(auth ? auth : 'unauth');
 
   useEffect(() => {
     setAuthHeader(auth);
   }, [auth]);
 
   const handleLogin = () => {
-    setAuthHeader('student');
+    // setAuthHeader('student');
+    navigate('/register', { state: { backgroundLocation: location } });
   };
 
   const handleLogout = () => {
-    setAuthHeader('unauthorized');
+    setAuthHeader('unauth');
   };
 
   const isTutorCatalog = location.pathname === '/tutor-catalog';
 
   return (
     <header className={styles.header}>
-      <div className={styles.header__logo}>
-        <img
-          src={logo}
-          alt="Логотип RepetitMe"
-          onClick={() => {
-            navigate('/');
-          }}
-        />
+      <div
+        className={styles.header__logo}
+        onClick={() => {
+          navigate('/');
+        }}
+      >
+        <img src={logo} alt="Логотип RepetitMe" />
       </div>
-      {authHeader === 'unauthorized' && (
+      {authHeader === 'unauth' && (
         <nav className={styles.header__menu}>
           <button
             className={classNames(

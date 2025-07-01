@@ -8,5 +8,13 @@ export default defineConfig({
   plugins: [
     react(),
     viteStaticCopy({ targets: [{ src: 'src/assets', dest: '.' }] })
-  ]
+  ],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://test.repetitmeweb.ru',
+        changeOrigin: true
+      }
+    }
+  }
 });
