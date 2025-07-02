@@ -70,7 +70,7 @@ const ProfileInfo = () => {
               label="Имя (Отчество)"
               placeholder="Александр"
               onChange={handleChange}
-              pattern="^[A-Za-zА-Яа-яЁё\s-]+$"
+              pattern="^[A-Za-zА-Яа-яЁё \-]+$"
               title="Поле может содержать только буквы, пробелы и дефисы"
               minLength={1}
               maxLength={50}
@@ -83,7 +83,7 @@ const ProfileInfo = () => {
               label="Фамилия"
               placeholder="Иванов"
               onChange={handleChange}
-              pattern="^[A-Za-zА-Яа-яЁё\s-]+$"
+              pattern="^[A-Za-zА-Яа-яЁё \-]+$"
               title="Поле может содержать только буквы, пробелы и дефисы"
               minLength={1}
               maxLength={100}
