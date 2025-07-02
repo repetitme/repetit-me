@@ -1,4 +1,4 @@
-@use '../../../../assets/styles/mixins/gradient.scss' as *;
+@use '../../../../assets/styles/mixins/avatarGradient.scss' as *;
 @use '../../../../assets/styles/mixins/flexCenter.scss' as *;
 
 .wrapper {
@@ -6,7 +6,7 @@
   border-radius: 40px;
   border: 2px solid transparent;
 
-  @include border-gradient;
+  @include avatar-gradient;
 
   box-shadow: 0 1px 4px 1px rgb(0 0 0 / 25%);
   overflow: hidden;
