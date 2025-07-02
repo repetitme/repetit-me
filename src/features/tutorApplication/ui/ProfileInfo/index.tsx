@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import useForm from '../../../../shared/hooks/useForm';
+import useScrollLock from '../../../../shared/hooks/useScrollLock';
 import Button from '../../../../shared/ui/button';
 import Input from '../../../../shared/ui/input';
 import Textarea from '../../../../shared/ui/textarea';
@@ -30,6 +31,7 @@ const ProfileInfo = () => {
   });
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  useScrollLock(isModalOpen);
 
   const handleAvatarUpload = (file?: File) => {
     if (file) {

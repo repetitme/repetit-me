@@ -111,7 +111,7 @@ const AvatarUploadModal = ({
           </div>
         </div>
       </div>
-      <ModalOverlay onClose={handleClose} />
+      <ModalOverlay onClose={handleClose} isOpen={true}/>
     </>
   );
 };
