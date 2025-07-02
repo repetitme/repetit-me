@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
+import cn from 'classnames';
+
 import closeIcon from '../../../../assets/icons/closeIconWhite.svg';
 import { useFileUpload } from '../../../../shared/hooks/useFileUpload';
 import Button from '../../../../shared/ui/button';
@@ -21,6 +23,7 @@ const AvatarUploadModal = ({
 }: AvatarUploadModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const [files, setFiles] = useState<File[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { handleFileChange, triggerFileSelect, fileInputRef, errorMessage } =
     useFileUpload({
@@ -40,6 +43,8 @@ const AvatarUploadModal = ({
   );
 
   useEffect(() => {
+    setIsModalOpen(true);
+
     if (files[0]) {
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -52,13 +57,14 @@ const AvatarUploadModal = ({
   }, [files]);
 
   const handleClose = () => {
-    onClose(files[0]);
+    setIsModalOpen(false);
+    setTimeout(() => onClose(files[0]), 300);
   };
 
   return (
     <>
       <div
-        className={styles.modal}
+        className={cn(styles.modal, { [styles.active]: isModalOpen })}
         ref={modalRef}
         onClick={(e) => e.stopPropagation()}
       >
@@ -111,7 +117,7 @@ const AvatarUploadModal = ({
           </div>
         </div>
       </div>
-      <ModalOverlay onClose={handleClose} isOpen={true}/>
+      <ModalOverlay onClose={handleClose} isOpen={isModalOpen} />
     </>
   );
 };
