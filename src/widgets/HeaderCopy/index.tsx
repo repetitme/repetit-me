@@ -6,7 +6,7 @@ import logo from '../../assets/images/logo.svg';
 import icon from '../../assets/images/telegram_icon.svg';
 import Button from '../../shared/ui/button';
 import StudentHeader from './StudentHeader';
-import TutorHeader from './TeacherHeader';
+import TutorHeader from './TutorHeader';
 
 import styles from './index.module.scss';
 

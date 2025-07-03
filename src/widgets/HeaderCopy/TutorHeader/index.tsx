@@ -1,23 +1,25 @@
 import React from 'react';
 
+import { useNavigate } from 'react-router';
+
 import AuthHeader from '../AuthHeader';
 
 import { CommonHeaderProps } from '../types';
-import { useNavigate } from 'react-router'
 
-const StudentHeader: React.FC<CommonHeaderProps> = ({ onLogout }) => {
+const TutorHeader: React.FC<CommonHeaderProps> = ({ onLogout }) => {
   const navigate = useNavigate();
+
   return (
     <AuthHeader
-      
       navItems={[
-        { text: 'Репетиторы', path: '/tutors' },
-        { text: 'Мои заявки', path: '/student-requests' }
+        { text: 'Анкета', path: '/application' },
+        { text: 'Мои заявки', path: '/tutor-requests' },
+        { text: 'Личный кабинет', path: '/profile' }
       ]}
       avatarMenuItems={[
         {
           text: 'Сменить аккаунт',
-          icon: '/assets/icons/change.svg',
+          icon: '../../../assets/icons/change.svg',
           onClick: () => {
             navigate('/login');
           }
@@ -32,4 +34,4 @@ const StudentHeader: React.FC<CommonHeaderProps> = ({ onLogout }) => {
   );
 };
 
-export default StudentHeader;
+export default TutorHeader;

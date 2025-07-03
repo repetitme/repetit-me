@@ -2,26 +2,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
   border-radius: var(--border-radius-blocks);
-  padding-block: 19px;
+  padding: 26px 32px;
   background-color: var(--clr-main);
   max-inline-size: 1200px;
 
   &__logo {
-    margin: 0 35px;
     cursor: pointer;
   }
 
   &__menu {
     display: flex;
-    gap: 43px;
-    margin: auto 35px;
-
-    &--student {
-      gap: 49px;
-      margin-inline-end: 64px;
-    }
+    gap: 48px;
   }
 
   &__button {
@@ -51,12 +43,13 @@
   &__avatar {
     position: relative;
     cursor: pointer;
+    padding-right: 40px;
 
     &__chevron {
       content: '';
       position: absolute;
       top: 20%;
-      right: -32px;
+      right: 8px;
       width: 24px;
       height: 24px;
       border: none;
@@ -73,7 +66,7 @@
   &__submenu {
     position: absolute;
     top: 51px;
-    right: -70%;
+    right: 5px;
     visibility: hidden;
     opacity: 0;
     transition: all 0.3s ease;
