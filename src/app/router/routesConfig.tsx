@@ -1,10 +1,6 @@
 import MainPage from '../../pages/MainPage';
+import HeaderCopy from '../../widgets/HeaderCopy';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
-import { AboutService } from '../../widgets/AboutService';
-import {
-  bonusPopupData,
-  reviewPopupData
-} from '../../widgets/AboutService/data';
 
 import { IRoute } from './type';
 
@@ -15,40 +11,17 @@ export const routesConfig: IRoute[] = [
     auth: false
   },
   {
-    path: '/student-application',
-    element: <>StudentApplication</>,
-    auth: true
-  },
-  {
-    path: '/student-profile',
-    element: <>StudentProfile</>,
-    auth: true
-  },
-  {
-    path: '/teacher-application',
-    element: <>TeacherApplication</>,
-    auth: true
-  },
-  {
-    path: '/teacher-profile',
-    element: <>TeacherProfile</>,
-    auth: true
+    path: '/test',
+    element: (
+      <div style={{ margin: '20px auto' }}>
+        <HeaderCopy auth={'student'} />
+      </div>
+    ),
+    auth: false
   },
   {
     path: '*',
     element: <NotFoundPage />,
-    auth: false
-  },
-  {
-    path: '/aboutService',
-    element: (
-      <div style={{ inlineSize: 'fit-content', margin: '20px auto' }}>
-        <AboutService
-          bonusPopup={bonusPopupData}
-          reviewPopup={reviewPopupData}
-        />
-      </div>
-    ),
     auth: false
   }
 ];
