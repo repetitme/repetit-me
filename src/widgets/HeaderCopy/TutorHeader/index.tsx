@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
 import AuthHeader from '../AuthHeader';
 
@@ -8,7 +8,7 @@ import { CommonHeaderProps } from '../types';
 
 const TutorHeader: React.FC<CommonHeaderProps> = ({ onLogout }) => {
   const navigate = useNavigate();
-
+  const location = useLocation();
   return (
     <AuthHeader
       navItems={[
@@ -19,9 +19,10 @@ const TutorHeader: React.FC<CommonHeaderProps> = ({ onLogout }) => {
       avatarMenuItems={[
         {
           text: 'Сменить аккаунт',
-          icon: '../../../assets/icons/change.svg',
+          icon: '/assets/icons/change.svg',
           onClick: () => {
-            navigate('/login');
+            navigate('/login', { state: { backgroundLocation: location } });
+            onLogout();
           }
         },
         {
