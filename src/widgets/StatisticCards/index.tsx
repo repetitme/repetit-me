@@ -4,7 +4,7 @@ import { cards } from './data';
 
 import styles from './index.module.scss';
 
-const StatCards: React.FC = () => {
+const StatisticCards = () => {
   return (
     <div className={styles.cards}>
       {cards.map((card, index) => (
@@ -38,4 +38,4 @@ const StatCards: React.FC = () => {
   );
 };
 
-export default StatCards;
+export default StatisticCards;
