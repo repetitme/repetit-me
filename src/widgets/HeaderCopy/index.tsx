@@ -54,8 +54,12 @@ const HeaderCopy: React.FC<HeaderProps> = ({ auth }) => {
           />
         </nav>
       )}
-      {authHeader === 'student' && <StudentHeader onLogout={handleLogout} />}
-      {authHeader === 'tutor' && <TutorHeader onLogout={handleLogout} />}
+      {authHeader === 'student' && (
+        <StudentHeader role="student" onLogout={handleLogout} />
+      )}
+      {authHeader === 'tutor' && (
+        <TutorHeader role="tutor" onLogout={handleLogout} />
+      )}
     </header>
   );
 };

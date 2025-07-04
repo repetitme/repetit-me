@@ -4,7 +4,10 @@ export interface HeaderProps {
   auth: TAuth;
 }
 
+type Role = 'student' | 'tutor';
+
 export interface CommonHeaderProps {
+  role: Role;
   onLogout: () => void;
 }
 
