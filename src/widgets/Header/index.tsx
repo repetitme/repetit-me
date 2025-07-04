@@ -6,14 +6,16 @@ import logo from '../../assets/images/logo.svg';
 import icon from '../../assets/images/telegram_icon.svg';
 import Button from '../../shared/ui/button';
 import StudentHeader from './StudentHeader';
-import TeacherHeader from './TeacherHeader';
+import TutorHeader from './TutorHeader';
 
 import styles from './index.module.scss';
 
-import { HeaderProps, TAuth } from './types';
+import { HeaderProps, TUserRole } from './types';
 
-const Header: React.FC<HeaderProps> = ({ auth }) => {
-  const [authHeader, setAuthHeader] = useState<TAuth>(auth ? auth : 'unauth');
+const Header = ({ auth }: HeaderProps) => {
+  const [authHeader, setAuthHeader] = useState<TUserRole>(
+    auth ? auth : 'unauth'
+  );
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -36,7 +38,12 @@ const Header: React.FC<HeaderProps> = ({ auth }) => {
       </div>
       {authHeader === 'unauth' && (
         <nav className={styles.header__menu}>
-          <button className={styles.header__button}>Репетиторы</button>
+          <button
+            className={styles.header__button}
+            onClick={() => navigate('/tutors')}
+          >
+            Репетиторы
+          </button>
           <button className={styles.header__button} onClick={handleLogin}>
             Войти
           </button>
@@ -49,8 +56,12 @@ const Header: React.FC<HeaderProps> = ({ auth }) => {
           />
         </nav>
       )}
-      {authHeader === 'student' && <StudentHeader onLogout={handleLogout} />}
-      {authHeader === 'teacher' && <TeacherHeader onLogout={handleLogout} />}
+      {authHeader === 'student' && (
+        <StudentHeader role="student" onLogout={handleLogout} />
+      )}
+      {authHeader === 'tutor' && (
+        <TutorHeader role="tutor" onLogout={handleLogout} />
+      )}
     </header>
   );
 };
