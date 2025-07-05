@@ -36,6 +36,8 @@
     font-weight: 500;
     font-size: 20px;
     line-height: 25px;
+    display: inline-block;
+    width: fit-content;
 
     @include number-gradient;
   }
