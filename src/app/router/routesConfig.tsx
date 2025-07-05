@@ -1,10 +1,6 @@
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
-import { AboutService } from '../../widgets/AboutService';
-import {
-  bonusPopupData,
-  reviewPopupData
-} from '../../widgets/AboutService/data';
+import Schedule from '../../features/tutorApplication/ui/schedule';
 
 import { IRoute } from './type';
 
@@ -40,12 +36,13 @@ export const routesConfig: IRoute[] = [
     auth: false
   },
   {
-    path: '/aboutService',
+    path: '/test',
     element: (
-      <div style={{ inlineSize: 'fit-content', margin: '20px auto' }}>
-        <AboutService
-          bonusPopup={bonusPopupData}
-          reviewPopup={reviewPopupData}
+      <div style={{ margin: '100px auto' }}>
+        <Schedule
+          onChange={(value) => {
+            console.log('Свободное время', value);
+          }}
         />
       </div>
     ),
