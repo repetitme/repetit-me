@@ -1,0 +1,40 @@
+.popup__content_list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &_container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &_button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    block-size: 60px;
+    gap: 12px;
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 700;
+    color: var(--clr-primary-default);
+
+    &_amount {
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: 700;
+      color: var(--clr-4);
+    }
+
+    &:hover {
+      color: var(--clr-primary-hover);
+    }
+
+    &:active {
+      color: var(--clr-primary-pressed);
+    }
+  }
+}
