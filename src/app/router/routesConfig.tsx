@@ -1,3 +1,4 @@
+import ProfileInfo from '../../features/tutorApplication/ui/ProfileInfo';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 

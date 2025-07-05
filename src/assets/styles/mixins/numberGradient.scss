@@ -1,0 +1,14 @@
+@mixin number-gradient() {
+  background:
+    linear-gradient(
+      138.84deg,
+      rgb(61 197 255 / 65%) 0%,
+      rgb(69 88 255 / 65%) 23.95%,
+      rgb(134 91 255 / 65%) 53.47%,
+      rgb(255 113 249 / 65%) 80.76%,
+      rgb(255 170 71 / 65%) 106.94%
+    ),
+    linear-gradient(0deg, rgb(0 0 0 / 15%), rgb(0 0 0 / 15%));
+  background-clip: text;
+  color: transparent;
+}
