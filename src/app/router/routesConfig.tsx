@@ -1,12 +1,6 @@
-import { AboutMe } from '../../entities/aboutMe';
-import { servicesList, textContent } from '../../entities/aboutMe/data';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
-import { AboutService } from '../../widgets/AboutService';
-import {
-  bonusPopupData,
-  reviewPopupData
-} from '../../widgets/AboutService/data';
+import StatisticCards from '../../widgets/StatisticCards';
 
 import { IRoute } from './type';
 
@@ -17,49 +11,18 @@ export const routesConfig: IRoute[] = [
     auth: false
   },
   {
-    path: '/student-application',
-    element: <>StudentApplication</>,
-    auth: true
+    path: '/test',
+    element: (
+      <div style={{ margin: '10px 0 10px 120px', maxWidth: '1200px' }}>
+        <StatisticCards />
+      </div>
+    ),
+    auth: false
   },
-  {
-    path: '/student-profile',
-    element: <>StudentProfile</>,
-    auth: true
-  },
-  {
-    path: '/teacher-application',
-    element: <>TeacherApplication</>,
-    auth: true
-  },
-  {
-    path: '/teacher-profile',
-    element: <>TeacherProfile</>,
-    auth: true
-  },
+
   {
     path: '*',
     element: <NotFoundPage />,
-    auth: false
-  },
-  {
-    path: '/aboutService',
-    element: (
-      <div style={{ inlineSize: 'fit-content', margin: '20px auto' }}>
-        <AboutService
-          bonusPopup={bonusPopupData}
-          reviewPopup={reviewPopupData}
-        />
-      </div>
-    ),
-    auth: false
-  },
-  {
-    path: '/aboutMe',
-    element: (
-      <div style={{ inlineSize: '895px', margin: '20px auto' }}>
-        <AboutMe textContent={textContent} servicesList={servicesList} />
-      </div>
-    ),
     auth: false
   }
 ];
