@@ -7,10 +7,17 @@ import styles from './index.module.scss';
 interface IWrapperProps {
   children: React.ReactNode;
   large?: boolean;
+  className?: string;
 }
 
-const Wrapper: FC<IWrapperProps> = ({ children, large }) => (
-  <div className={cn(styles.wrapper, { [styles['wrapper--large']]: large })}>
+const Wrapper: FC<IWrapperProps> = ({ children, large, className }) => (
+  <div
+    className={cn(
+      styles.wrapper,
+      { [styles['wrapper--large']]: large },
+      className
+    )}
+  >
     {children}
   </div>
 );

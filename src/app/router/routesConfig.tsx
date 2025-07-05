@@ -11,25 +11,15 @@ export const routesConfig: IRoute[] = [
     auth: false
   },
   {
-    path: '/student-application',
-    element: <>StudentApplication</>,
-    auth: true
+    path: '/test',
+    element: (
+      <div style={{ margin: '10px 0 10px 120px', maxWidth: '1200px' }}>
+        <ProfileInfo />
+      </div>
+    ),
+    auth: false
   },
-  {
-    path: '/student-profile',
-    element: <>StudentProfile</>,
-    auth: true
-  },
-  {
-    path: '/teacher-application',
-    element: <>TeacherApplication</>,
-    auth: true
-  },
-  {
-    path: '/teacher-profile',
-    element: <>TeacherProfile</>,
-    auth: true
-  },
+
   {
     path: '*',
     element: <NotFoundPage />,
