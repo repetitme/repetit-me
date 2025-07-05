@@ -24,7 +24,7 @@
     line-height: 1;
     border: 2px solid transparent;
     background: none;
-    transition: border-color 0.3s;
+    transition: all 0.3s ease;
     cursor: pointer;
 
     &:hover {
@@ -67,12 +67,15 @@
     position: absolute;
     top: 51px;
     right: 5px;
+    pointer-events: none;
     visibility: hidden;
     opacity: 0;
-    transition: all 0.3s ease;
-    transform: translateY(-11px);
     background-color: var(--clr-main);
     border-radius: var(--border-radius-blocks);
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+    transform: translateY(-10px);
 
     &__list {
       display: flex;
@@ -86,13 +89,19 @@
         align-items: center;
         padding: 8px;
         font-size: 14px;
+        font-weight: 500;
         border: none;
         background: none;
         inline-size: 191px;
+
+        &:hover {
+          font-weight: 700;
+        }
       }
     }
 
     &--active {
+      pointer-events: auto;
       visibility: visible;
       opacity: 1;
       transform: translateY(0);
@@ -101,6 +110,6 @@
 }
 
 .telegram {
-  padding-inline: 17px !important;
+  padding-inline: 17px;
   padding-block: 19px;
 }
