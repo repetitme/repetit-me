@@ -19,6 +19,7 @@ export const routesConfig: IRoute[] = [
     ),
     auth: false
   },
+
   {
     path: '*',
     element: <NotFoundPage />,
