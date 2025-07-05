@@ -17,13 +17,9 @@ const StatisticCards = () => {
             <h3 className={styles.cards__title}>{card.title}</h3>
             <p className={styles.cards__value}>
               {card.value}
-              {card.currency && (
-                <span>
-                  {card.currency}
-                  <span className={styles.cards__title}> руб</span>
-                </span>
-              )}
+              {card.currency}
             </p>
+            {card.currency && <span className={styles.cards__title}> руб</span>}
           </div>
           {card.additionalInfo && (
             <div className={styles.cards__additional}>
