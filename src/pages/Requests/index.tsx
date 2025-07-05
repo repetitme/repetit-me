@@ -9,7 +9,7 @@ import useStudentRequests from './useStudentRequests';
 
 import styles from './index.module.scss';
 
-const StudentRequests: React.FC = () => {
+const Requests: React.FC = () => {
   const {
     listHeight,
     active,
@@ -86,4 +86,4 @@ const StudentRequests: React.FC = () => {
   );
 };
 
-export default StudentRequests;
+export default Requests;

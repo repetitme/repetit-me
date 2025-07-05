@@ -1,6 +1,6 @@
 import ProfileInfo from '../../features/tutorApplication/ui/ProfileInfo';
 import MainPage from '../../pages/MainPage';
-import StudentRequests from '../../pages/StudentRequests';
+import Requests from '../../pages/Requests';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
 import { IRoute } from './type';
@@ -12,8 +12,8 @@ export const routesConfig: IRoute[] = [
     auth: false
   },
   {
-    path: '/student-requests',
-    element: <StudentRequests />,
+    path: '/requests',
+    element: <Requests />,
     auth: false
   },
   {
