@@ -4,7 +4,7 @@
   color: transparent;
 }
 
-@mixin title-gradient {
+@mixin title-gradient() {
   background: linear-gradient(
     289deg,
     #3dc5ff 5.24%,

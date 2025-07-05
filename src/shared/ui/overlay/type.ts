@@ -1,3 +1,4 @@
 export type ModalOverlayProps = {
-  onClose: () => void;
+  onClose?: () => void;
+  isOpen?: boolean;
 };

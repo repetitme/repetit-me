@@ -1,6 +1,7 @@
 export type TLogin = {
-  login: boolean;
   mainPageRegister?: boolean;
+  login?: boolean;
+  closeModal?: () => void;
 };
 
 export type TFormTabs = 'Как ученик' | 'Как репетитор';
@@ -19,4 +20,10 @@ export type TAuthData = {
 export type TInputProps = {
   values: Record<string, string>;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+export type TUseAuth = {
+  mainPageRegister?: boolean;
+  login?: boolean;
+  closeModal?: () => void;
 };

@@ -17,11 +17,13 @@
     font-size: 20px;
     line-height: 1.36;
     color: var(--clr-black, #000);
+    transition: all 0.3s ease;
   }
 
   .current {
     pointer-events: none;
     color: var(--clr-primary-default, #6757f1);
     border-bottom: var(--clr-primary-default, #6757f1) solid 2px;
+    font-weight: 700;
   }
 }
