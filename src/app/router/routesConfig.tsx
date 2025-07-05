@@ -1,5 +1,5 @@
 import MainPage from '../../pages/MainPage';
-import NotFoundPage from '../../widgets/NotFoundPage/index';
+import NotFoundPage from '../../pages/NotFoundPage';
 
 import { IRoute } from './type';
 

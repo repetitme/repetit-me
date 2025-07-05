@@ -12,26 +12,38 @@
     cursor: pointer;
   }
 
-  &__menu {
+  &__nav {
     display: flex;
     gap: 48px;
   }
 
-  &__button {
+  // &__button {
+  //   display: inline-block;
+  //   font-family: var(--ffm-default, 'Montserrat', courier, monospace);
+  //   font-weight: 400;
+  //   font-size: 16px;
+  //   line-height: 1;
+  //   border: 2px solid transparent;
+  //   background: none;
+  //   transition: all 0.3s ease;
+  //   cursor: pointer;
+
+  &__link {
+    border: none;
+    background: none;
+    text-decoration: none;
+    background-color: transparent;
     font-family: var(--ffm-default, 'Montserrat', courier, monospace);
     font-weight: 400;
     font-size: 16px;
-    line-height: 1;
-    border: 2px solid transparent;
-    background: none;
-    transition: all 0.3s ease;
+
+    transition: all 0.1s ease;
     cursor: pointer;
 
     &:hover {
-      font-weight: 600;
+      font-weight: 500;
       font-size: 16px;
-      line-height: 20px;
-      border-bottom: 2px solid var(--clr-primary-default);
+      text-decoration: underline;
       color: var(--clr-primary-default);
     }
   }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/images/logo.svg';
 import icon from '../../assets/images/telegram_icon.svg';
@@ -37,16 +37,19 @@ const Header = ({ auth }: HeaderProps) => {
         <img src={logo} alt="Логотип Repetit Me" />
       </div>
       {authHeader === 'unauth' && (
-        <nav className={styles.header__menu}>
-          <button
-            className={styles.header__button}
-            onClick={() => navigate('/tutors')}
-          >
-            Репетиторы
-          </button>
-          <button className={styles.header__button} onClick={handleLogin}>
-            Войти
-          </button>
+        <nav className={styles.header__nav}>
+          <div className={styles.header__nav__menu}>
+            <Link to="/tutors" className={styles.header__nav__menu__link}>
+              Репетиторы
+            </Link>
+            <Link
+              to="/register"
+              className={styles.header__nav__menu__link}
+              state={{ backgroundLocation: location }}
+            >
+              Войти
+            </Link>
+          </div>
           <Button
             variant="social"
             size="large"
