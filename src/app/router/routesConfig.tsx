@@ -37,7 +37,6 @@ export const routesConfig: IRoute[] = [
   },
   {
     path: '/test',
-    path: '/test',
     element: (
       <div style={{ margin: '10px 100px' }}>
         <TutorFilters onSubmit={() => {}} percentage={10} />
