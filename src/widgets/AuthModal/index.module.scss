@@ -1,11 +1,8 @@
-@use '../../../assets/styles/mixins/gradient.scss' as *;
-
 .modal {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 60px 60px 80px;
+  padding: 60px 60px 0;
   border: 1px solid transparent;
   background-clip: padding-box, border-box;
   background-origin: border-box;
@@ -20,53 +17,33 @@
       #ffaa47 116.71%
     );
   border-radius: 40px;
-  width: 100%;
-  max-width: 800px;
+  inline-size: 100%;
+  max-inline-size: 800px;
   z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%) scale(0.8);
 
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-block-end: 3rem;
-  }
-
-  &__title {
-    font-size: 32px;
-    font-family: var(--ffm-title, druktextwidecur, courier, monospace);
-    font-weight: 500;
-
-    @include text-gradient;
+  &__content {
+    position: relative;
+    inline-size: 100%;
+    overflow: hidden;
   }
 
   &__close {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
     border: none;
+    top: 0;
+    right: 0;
+    cursor: pointer;
     outline: none;
     background-color: transparent;
   }
 
-  &__content {
-    width: 100%;
-  }
-
-  &__footer {
-    padding-block-start: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    color: var(--clr-4, #858585);
-    font-weight: 500;
-    font-family: var(--ffm-default, montserrat, courier, monospace);
-    line-height: 19.5px;
-    text-align: center;
-    text-underline-offset: 2px;
-    text-decoration-skip-ink: none;
-  }
-
-  &__enter {
-    color: var(--clr-primary-default, #6757f1);
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
   }
 }

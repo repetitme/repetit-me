@@ -1,25 +1,54 @@
 import { FC } from 'react';
+import { useEffect, useState } from 'react';
 
-import iconClose from '../../../assets/icons/closeIcon.svg';
-import { ModalOverlay } from '../../shared/ui/overlay';
+import cn from 'classnames';
+import { useNavigate } from 'react-router-dom';
+
+import iconClose from '../../assets/icons/closeIcon.svg';
+import AuthForm from '../../features/auth';
+import useClickOutside from '../../shared/hooks/useClickOutside';
+import useScrollLock from '../../shared/hooks/useScrollLock';
+import ModalOverlay from '../../shared/ui/overlay';
 
 import styles from './index.module.scss';
 
-import { AuthModalProps } from './types';
+interface AuthModalProps {
+  login?: boolean;
+}
 
-export const AuthModal: FC<AuthModalProps> = ({
-  type,
-  onClose,
-  onToggle,
-  children
-}) => {
+const AuthModal: FC<AuthModalProps> = ({ login }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const onClose = () => {
+    setIsOpen(false);
+    setTimeout(() => {
+      navigate(-1);
+    }, 300);
+  };
+
+  useEffect(() => {
+    if (!isOpen) {
+      setTimeout(() => {
+        setIsOpen(true);
+      }, 300);
+    }
+  }, []);
+
+  useScrollLock(isOpen);
+
+  const modalRef = useClickOutside(onClose);
+
   return (
     <>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.modal__header}>
-          <h2 className={styles.modal__title}>
-            {type ? 'Вход' : 'Регистрация'}
-          </h2>
+      <div
+        className={cn(styles.modal, {
+          [styles.active]: isOpen
+        })}
+        ref={modalRef}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className={styles.modal__content}>
+          <AuthForm closeModal={onClose} login={login} />
           <button onClick={onClose} className={styles.modal__close}>
             <img
               src={iconClose}
@@ -27,26 +56,10 @@ export const AuthModal: FC<AuthModalProps> = ({
             />
           </button>
         </div>
-        <div className={styles.modal__content}>{children}</div>
-        <div className={styles.modal__footer}>
-          <p>
-            Нажимая «Получить код» вы соглашаетесь с{' '}
-            <a href="#" target="_blank">
-              политикой конфиденциальности и пользовательским соглашением
-            </a>
-          </p>
-          {!type && (
-            <p>
-              Уже есть аккаунт?{' '}
-              {/*TODO: когда будет готов роутинг заменить на Link*/}
-              <a href="#" className={styles.modal__enter} onClick={onToggle}>
-                Войти
-              </a>
-            </p>
-          )}
-        </div>
       </div>
-      <ModalOverlay onClose={onClose}></ModalOverlay>
+      <ModalOverlay isOpen={isOpen} />
     </>
   );
 };
+
+export default AuthModal;

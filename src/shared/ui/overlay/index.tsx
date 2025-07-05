@@ -1,7 +1,14 @@
+import cn from 'classnames';
+
 import styles from './index.module.scss';
 
 import { ModalOverlayProps } from './type';
 
-export const ModalOverlay = ({ onClose }: ModalOverlayProps) => (
-  <div className={styles.overlay} onClick={onClose} />
+const ModalOverlay = ({ onClose, isOpen }: ModalOverlayProps) => (
+  <div
+    className={cn(styles.overlay, { [styles.active]: isOpen })}
+    onClick={onClose}
+  />
 );
+
+export default ModalOverlay;
