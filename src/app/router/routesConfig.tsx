@@ -11,16 +11,6 @@ export const routesConfig: IRoute[] = [
     auth: false
   },
   {
-    path: '/test',
-    element: (
-      <div style={{ margin: '10px 0 10px 120px', maxWidth: '1200px' }}>
-        <ProfileInfo />
-      </div>
-    ),
-    auth: false
-  },
-
-  {
     path: '*',
     element: <NotFoundPage />,
     auth: false
