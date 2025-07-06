@@ -1,4 +1,4 @@
-import TutorApplication from '../../features/tutor-application';
+import TutorApplication from '../../features/tutorApplication';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
