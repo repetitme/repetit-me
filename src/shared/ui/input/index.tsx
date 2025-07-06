@@ -11,7 +11,7 @@ const Input: React.FC<IInput> = ({
   name,
   label,
   placeholder,
-  value,
+  value = '',
   type,
   required,
   minLength,
@@ -26,6 +26,7 @@ const Input: React.FC<IInput> = ({
   onChange
 }) => {
   const [error, setError] = useState<string>('');
+  const [isFocused, setIsFocused] = useState(false);
   const isPrice: boolean = variant === 'price';
 
   const validate = (target: HTMLInputElement): string => {
@@ -38,6 +39,9 @@ const Input: React.FC<IInput> = ({
     if (target.validity.patternMismatch) {
       return title || target.validationMessage;
     }
+    if (pattern && !new RegExp(pattern).test(target.value)) {
+      return title || 'Некорректный формат';
+    }
     return '';
   };
 
@@ -49,7 +53,7 @@ const Input: React.FC<IInput> = ({
   };
 
   const formatInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    let value = e.target.value;
+    let { value, name } = e.target;
     // Запрещает вводить буквы в поле с ценой
     if (isPrice) {
       value = value.replace(/\D/g, '');
@@ -59,7 +63,7 @@ const Input: React.FC<IInput> = ({
       value = formatNumber(value);
     }
     onChange({
-      target: { value: value }
+      target: { value: value, name }
     } as React.ChangeEvent<HTMLInputElement>);
   };
 
@@ -104,15 +108,21 @@ const Input: React.FC<IInput> = ({
         pattern={pattern}
         title={title}
         type={type}
-        placeholder={error ? '' : placeholder}
+        placeholder={error || (value && isFocused) ? '' : placeholder}
         disabled={disable}
         minLength={minLength}
         maxLength={maxLength}
         onKeyDown={handleBackspace}
         value={value}
         onChange={handleChange}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
       />
-      {error && <span className={styles.error__text}>{error}</span>}
+      <span
+        className={cn(styles.error__text, { [styles.error__active]: error })}
+      >
+        {error}
+      </span>
     </div>
   );
 };
