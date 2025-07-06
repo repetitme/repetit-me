@@ -14,7 +14,7 @@ const ProfileCategories = ({
   isLast,
   onAddCategory
 }: ProfileCategoriesProps) => {
-  const { values, handleChange } = useForm({});
+  const { values, handleChange } = useForm({ price: '' });
 
   return (
     <div className={styles.container__auxiliary}>

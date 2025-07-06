@@ -8,14 +8,14 @@ import Select from '../../../../../shared/ui/select';
 import Switcher from '../../../../../shared/ui/switcher';
 import Wrapper from '../../../../../shared/ui/wrapper';
 import * as data from './data';
-import ProfileCategories from './profile-categories';
+import ProfileCategories from './profileCategories';
 
 import styles from './index.module.scss';
 
 import { DisciplinesBlockProps } from '../../../lib/type';
 
 const SubjectFormItem: React.FC<DisciplinesBlockProps> = ({ index }) => {
-  const { values, handleChange } = useForm({});
+  const { values, handleChange } = useForm({ experience: '' });
   const [isActive, setIsActive] = useState<boolean>(true);
   const [categories, setCategories] = useState<
     Array<{ ageCategory: string; price: string }>
