@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import classNames from 'classnames';
 
-import AuthForm from '../../features/auth/form';
+import AuthForm from '../../features/auth';
 import Advantages from '../../widgets/Advantages';
 import Chat from '../../widgets/Chat';
 import MainBlock from '../../widgets/MainBlock';
@@ -59,7 +59,7 @@ const MainPage = () => {
           </div>
           <div className={styles.container__form}>
             <TutorFormBlock>
-              <AuthForm mainPageRegister={true} login={false} />
+              <AuthForm mainPageRegister />
             </TutorFormBlock>
           </div>
           <div
