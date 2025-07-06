@@ -114,4 +114,22 @@
       color: var(--clr-primary-hover);
     }
   }
+
+  &.underline {
+    background: none;
+    border: none;
+    color: var(--clr-primary-default);
+    font-weight: 500;
+    line-height: 1.4;
+    text-decoration: underline;
+    text-decoration-style: solid;
+
+    &:hover {
+      color: var(--clr-primary-hover);
+    }
+
+    &:active {
+      color: var(--clr-primary-pressed);
+    }
+  }
 }
