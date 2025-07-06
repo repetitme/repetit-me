@@ -56,7 +56,32 @@ export const useFileUpload = ({
     }
 
     if (files.length + validTypeFiles.length > maxFiles) {
-      setErrorMessage(`Можно загрузить не более ${maxFiles} файлов`);
+      const availableSlots = maxFiles - files.length;
+
+      if (availableSlots > 0) {
+        // Добавляем только допустимое количество новых файлов
+        const filesToAdd = validTypeFiles.slice(0, availableSlots);
+        setFiles((prev) => [...prev, ...filesToAdd]);
+
+        // Если есть еще файлы, которые не поместились — показываем сообщение
+        if (validTypeFiles.length > availableSlots) {
+          setErrorMessage(
+            maxFiles === 1
+              ? `Можно загрузить не более 1 файла`
+              : `Можно загрузить не более ${maxFiles} файлов`
+          );
+        } else {
+          setErrorMessage(null);
+        }
+      } else {
+        // Нет свободных слотов — показываем сообщение
+        setErrorMessage(
+          maxFiles === 1
+            ? `Можно загрузить не более 1 файла`
+            : `Можно загрузить не более ${maxFiles} файлов`
+        );
+      }
+
       return;
     }
 

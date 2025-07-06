@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from '../../shared/ui/button';
 import Stepper from '../../shared/ui/stepper';
-import VideoGreeting from './ui/video-greeting';
+import VideoGreeting from './ui/videoGreeting';
 
 import styles from './index.module.scss';
 
