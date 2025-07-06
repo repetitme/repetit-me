@@ -35,6 +35,7 @@ export const routesConfig: IRoute[] = [
     element: <>TeacherProfile</>,
     auth: true
   },
+
   {
     path: '*',
     element: <NotFoundPage />,

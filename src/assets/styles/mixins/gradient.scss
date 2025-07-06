@@ -4,13 +4,15 @@
   color: transparent;
 }
 
-@mixin inputs-gradient(
-  $color1: var(--clr-main),
-  $color2: var(--clr-primary-input),
-  $color3: var(--clr-primary-default)
-) {
-  border: 2px solid transparent;
-  background:
-    linear-gradient($color1, $color1) padding-box,
-    linear-gradient(180deg, $color2 0%, $color3 100%) border-box;
+@mixin title-gradient() {
+  background: linear-gradient(
+    289deg,
+    #3dc5ff 5.24%,
+    #4558ff 29.77%,
+    #865bff 60.98%,
+    #ff71f9 89.96%,
+    #ffaa47 116.71%
+  );
+  background-clip: text;
+  color: transparent;
 }
