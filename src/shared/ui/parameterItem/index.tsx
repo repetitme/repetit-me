@@ -1,6 +1,9 @@
 import styles from './index.module.scss';
 
-import { TParameterItem } from './type';
+export type TParameterItem = {
+  src: string;
+  items: string[];
+};
 
 const ParameterItem: React.FC<TParameterItem> = ({ src, items }) => {
   return (

@@ -2,11 +2,20 @@ import disciplineIcon from '../../../assets/images/UserCardIcons/disciplines_ico
 import studentCategory from '../../../assets/images/UserCardIcons/student_category_icon.svg';
 import tutorTask from '../../../assets/images/UserCardIcons/tutors_task_icon.svg';
 import useWindowSize from '../../hooks/useWindowSize';
-import ParametrItem from '../ParameterItem';
+import ParametrItem from '../parameterItem';
 
 import styles from './index.module.scss';
 
-import { IUserInfo } from './type';
+export interface IUserInfo {
+  data: {
+    name: string;
+    subjects: string[];
+    studentAudience: string[];
+    purpose: string[];
+  };
+  children: React.ReactNode;
+  isCard?: boolean;
+}
 
 const UserInfo: React.FC<IUserInfo> = ({ data, children, isCard }) => {
   const { width } = useWindowSize();

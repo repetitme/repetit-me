@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 
-import UserInfo from '../../../shared/components/UserInfo';
 import { ITutorData } from '../../../shared/types/userData';
 import TutorRating from '../../../shared/ui/tutorRating';
+import UserInfo from '../../../shared/ui/userInfo';
 
 import styles from '../index.module.scss';
 
