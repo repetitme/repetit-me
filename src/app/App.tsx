@@ -15,7 +15,7 @@ function App() {
   );
 
   return (
-    <div className={styles.app}>      
+    <div className={styles.app}>
       <Header auth={'student'} />
       <AppRouter />
       <Footer role={role} goTelegram={showTelegramBlock} />

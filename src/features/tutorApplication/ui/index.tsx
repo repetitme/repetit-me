@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from '../../../shared/ui/button';
 import Stepper from '../../../shared/ui/stepper';
-import DiplomasUpload from './diplomas-upload';
+import DiplomasUpload from './diplomasUpload';
 
 import styles from './index.module.scss';
 
