@@ -1,0 +1,60 @@
+@use '../../assets/styles/mixins/numberGradient.scss' as *;
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 20px;
+  background-color: var(--clr-1);
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background-color: var(--clr-main);
+    border-radius: var(--border-radius-chat);
+    padding: 24px;
+    min-inline-size: 285px;
+  }
+
+  &__withAdditionalInfo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: var(--ffm-default, 'Montserrat', courier, monospace);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--clr-black);
+    margin-inline-start: 2px;
+    margin-block-end: 10px;
+  }
+
+  &__value {
+    font-family: var(--ffm-title, 'Druktextwidecur', courier, monospace);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25px;
+    display: inline-block;
+    width: fit-content;
+
+    @include number-gradient;
+  }
+
+  &__additional {
+    display: flex;
+    max-inline-size: 237px;
+    border-radius: var(--border-radius-btn);
+    background-color: #feedeb;
+    padding: 12px 20px;
+
+    &--text {
+      font-family: var(--ffm-default, 'Montserrat', courier, monospace);
+      color: #c91b1a;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.36;
+    }
+  }
+}

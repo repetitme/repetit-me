@@ -1,3 +1,4 @@
+import ProfileInfo from '../../features/tutorApplication/ui/ProfileInfo';
 import MainPage from '../../pages/MainPage';
 import TutorCatalogPage from '../../pages/TutorCatalogPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
@@ -35,6 +36,7 @@ export const routesConfig: IRoute[] = [
     element: <>TeacherProfile</>,
     auth: true
   },
+
   {
     path: '*',
     element: <NotFoundPage />,
