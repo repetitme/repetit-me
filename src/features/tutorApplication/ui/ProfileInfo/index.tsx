@@ -6,8 +6,8 @@ import Button from '../../../../shared/ui/button';
 import Input from '../../../../shared/ui/input';
 import Textarea from '../../../../shared/ui/textarea';
 import Wrapper from '../../../../shared/ui/wrapper';
-import AvatarBlock from '../AvatarBlock';
-import AvatarUploadModal from '../AvatarUploadModal';
+import AvatarBlock from './AvatarBlock';
+import AvatarUploadModal from './AvatarUploadModal';
 
 import styles from './index.module.scss';
 
