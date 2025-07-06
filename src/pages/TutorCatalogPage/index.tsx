@@ -49,8 +49,8 @@ const TutorCatalogPage = () => {
                 </h3>
               )}
 
-              {tutors.slice(0, visibleCount).map((tutor) => (
-                <UserCard role={role} tutorData={tutor} />
+              {tutors.slice(0, visibleCount).map((tutor, index) => (
+                <UserCard key={index} role={role} tutorData={tutor} />
               ))}
 
               {tutors.length > visibleCount && (
@@ -67,7 +67,7 @@ const TutorCatalogPage = () => {
         </div>
         <div className={styles.catalog__filters} ref={tooltipRef}>
           <TutorFilters
-            onSubmit={(values) => console.log(values)}
+            onSubmit={() => {}} // Возвращает массив объектов
             percentage={1}
             onToggleTooltip={() => setTooltipVisible((prev) => !prev)}
           />
