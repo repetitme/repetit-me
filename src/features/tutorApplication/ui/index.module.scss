@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  max-inline-size: 1200px;
+  margin-inline: auto;
+  margin-block: 40px 128px;
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 16px;
+  }
+}
+
+.button {
+  &--back {
+    max-inline-size: 325px;
+  }
+
+  &--forward {
+    inline-size: 341px;
+  }
+}
+
+.questionnaire {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 500;
+    font-family: var(--ffm-title);
+  }
+}
