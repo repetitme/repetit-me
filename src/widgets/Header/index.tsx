@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import logo from '../../assets/images/logo.svg';
 import icon from '../../assets/images/telegram_icon.svg';
@@ -16,7 +16,7 @@ const Header = ({ auth }: HeaderProps) => {
   const [authHeader, setAuthHeader] = useState<TUserRole>(
     auth ? auth : 'unauth'
   );
-  const navigate = useNavigate();
+
   const location = useLocation();
 
   useEffect(() => {
@@ -29,23 +29,22 @@ const Header = ({ auth }: HeaderProps) => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.header__logo} onClick={() => navigate('/')}>
+      <Link to="/" className={styles.header__logo} aria-label="На главную">
         <img src={logo} alt="Логотип Repetit Me" />
-      </div>
+      </Link>
       {authHeader === 'unauth' && (
         <nav className={styles.header__nav}>
-          <div className={styles.header__nav__menu}>
-            <Link to="/tutors" className={styles.header__nav__menu__link}>
-              Репетиторы
-            </Link>
-            <Link
-              to="/register"
-              className={styles.header__nav__menu__link}
-              state={{ backgroundLocation: location }}
-            >
-              Войти
-            </Link>
-          </div>
+          <Link to="/tutors" className={styles.header__nav__link}>
+            Репетиторы
+          </Link>
+          <Link
+            to="/register"
+            className={styles.header__nav__link}
+            state={{ backgroundLocation: location }}
+          >
+            Войти
+          </Link>
+
           <Button
             variant="social"
             size="large"

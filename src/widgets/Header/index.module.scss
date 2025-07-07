@@ -6,6 +6,7 @@
   padding: 26px 32px;
   background-color: var(--clr-main);
   max-inline-size: 1200px;
+  block-size: 105px;
   margin: auto;
 
   &__logo {
@@ -14,29 +15,24 @@
 
   &__nav {
     display: flex;
-    gap: 48px;
+    align-items: center;
+    gap: 32px;
 
-    &__menu {
-      display: flex;
-      align-items: center;
-      gap: 32px;
+    &__link {
+      display: block;
+      padding: 8px;
+      border: none;
+      background: none;
+      text-decoration: none;
+      font-family: var(--ffm-default, 'Montserrat', courier, monospace);
+      font-weight: 400;
+      font-size: 16px;
+      transition: all 0.1s ease;
 
-      &__link {
-        display: block;
-        padding: 8px;
-        border: none;
-        background: none;
-        text-decoration: none;
-        font-family: var(--ffm-default, 'Montserrat', courier, monospace);
-        font-weight: 400;
-        font-size: 16px;
-        transition: all 0.1s ease;
-
-        &:hover {
-          font-weight: 500;
-          color: var(--clr-primary-default);
-          border-bottom: 2px solid currentColor;
-        }
+      &:hover {
+        font-weight: 500;
+        color: var(--clr-primary-default);
+        border-bottom: 2px solid currentColor;
       }
     }
   }
