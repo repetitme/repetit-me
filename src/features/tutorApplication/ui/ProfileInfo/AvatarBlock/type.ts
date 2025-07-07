@@ -5,4 +5,4 @@ interface AvatarWrapperProps {
   iconHeight?: number;
 }
 
-export default AvatarWrapperProps
+export default AvatarWrapperProps;

@@ -11,7 +11,7 @@ export function httpRequest<T>(
     method,
     headers: {
       'Content-Type': 'application/json',
-      ...config?.headers,
+      ...config?.headers
     },
     params: config?.params,
     body: config?.body !== undefined ? JSON.stringify(config.body) : undefined
@@ -19,4 +19,6 @@ export function httpRequest<T>(
 
   return httpJson<T>(endpoint, options);
 }
-async function httpJson<T>( endpoint: string, options: any) { return {endpoint, options} as T}
+async function httpJson<T>(endpoint: string, options: any) {
+  return { endpoint, options } as T;
+}

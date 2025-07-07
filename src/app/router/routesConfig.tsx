@@ -42,3 +42,7 @@ export const routesConfig: IRoute[] = [
     auth: false
   }
 ];
+
+export const knownPaths = routesConfig
+  .filter((route) => (route.path !== '*', route.path !== '/tutor-catalog'))
+  .map((route) => route.path);

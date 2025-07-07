@@ -56,7 +56,6 @@ export const useFileUpload = ({
     }
 
     if (files.length + validTypeFiles.length > maxFiles) {
-     
       if (validTypeFiles.length <= maxFiles) {
         setFiles([...validTypeFiles]);
       } else {
