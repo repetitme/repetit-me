@@ -97,8 +97,22 @@
     }
   }
 
-  &.transparent {
+  &.reset {
+    color: var(--clr-secondary-default);
     background-color: transparent;
+    display: flex;
+    column-gap: 8px;
+    border: 1px solid var(--clr-secondary-default);
+  }
+
+  &.transparent {
+    border: none;
+    background-color: transparent;
+    color: var(--clr-primary-default);
+
+    &:hover {
+      color: var(--clr-primary-hover);
+    }
   }
 
   &.underline {
