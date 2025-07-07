@@ -151,7 +151,6 @@
   version "7.27.7"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.27.7.tgz#8355c39be6818362eace058cf7f3e25ac2ec3b55"
   integrity sha512-X6ZlfR/O/s5EQ/SnUSLzr+6kGnkg8HXGMzpgsMsrJVcfDtH1vIp6ctCN4eZ1LS5c0+te5Cb6Y514fASjMRJ1nw==
-
   dependencies:
     "@babel/code-frame" "^7.27.1"
     "@babel/generator" "^7.27.5"
@@ -676,7 +675,6 @@
   resolved "https://registry.yarnpkg.com/@pkgr/core/-/core-0.2.7.tgz#eb5014dfd0b03e7f3ba2eeeff506eed89b028058"
   integrity sha512-YLT9Zo3oNPJoBjBc4q8G2mjU4tqIbf5CEOORbUUr48dCD9q3umJ3IPlVqOqDakPfd2HuwccBaqlGhN4Gmr5OWg==
 
-
 "@rolldown/pluginutils@1.0.0-beta.19":
   version "1.0.0-beta.19"
   resolved "https://registry.yarnpkg.com/@rolldown/pluginutils/-/pluginutils-1.0.0-beta.19.tgz#fc3b95145a8e7a3bf92754269d8e4f40eea8a244"
@@ -855,6 +853,13 @@
   version "7.0.15"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.15.tgz#596a1747233694d50f6ad8a7869fcb6f56cf5841"
   integrity sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==
+
+"@types/node@^22.15.18":
+  version "22.16.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.16.0.tgz#352bc4951fd089df32f2b6412a61d339b67ded8b"
+  integrity sha512-B2egV9wALML1JCpv3VQoQ+yesQKAmNMBIAY7OteVrikcOcAkWm+dGL6qpeCktPjAv6N1JLnhbNiqS35UpFyBsQ==
+  dependencies:
+    undici-types "~6.21.0"
 
 "@types/parse-json@^4.0.0":
   version "4.0.2"
@@ -1216,7 +1221,6 @@ buffer@^6.0.3:
     base64-js "^1.3.1"
     ieee754 "^1.2.1"
 
-
 cacheable@^1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/cacheable/-/cacheable-1.10.0.tgz#844dc3bc299344af373b728d9f4f0906ee67c1c9"
@@ -1255,7 +1259,6 @@ callsites@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/callsites/-/callsites-3.1.0.tgz#b3630abd8943432f54b3f0519238e33cd7df2f73"
   integrity sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==
-
 
 caniuse-lite@^1.0.30001726:
   version "1.0.30001726"
@@ -1415,13 +1418,6 @@ data-view-byte-offset@^1.0.1:
     is-data-view "^1.0.1"
 
 debug@^4.1.0, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4, debug@^4.4.1:
-  version "4.4.1"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.4.1.tgz#e5a8bc6cbc4c6cd3e64308b0693a3d4fa550189b"
-  integrity sha512-KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==
-  dependencies:
-    ms "^2.1.3"
-
-debug@^4.4.1:
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.4.1.tgz#e5a8bc6cbc4c6cd3e64308b0693a3d4fa550189b"
   integrity sha512-KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==
@@ -2131,7 +2127,6 @@ hasown@^2.0.2:
   integrity sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==
   dependencies:
     function-bind "^1.1.2"
-
 
 hoist-non-react-statics@^3.3.1:
   version "3.3.2"
