@@ -23,10 +23,6 @@ const Header = ({ auth }: HeaderProps) => {
     setAuthHeader(auth);
   }, [auth]);
 
-  const handleLogin = () => {
-    navigate('/register', { state: { backgroundLocation: location } });
-  };
-
   const handleLogout = () => {
     setAuthHeader('unauth');
   };

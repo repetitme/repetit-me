@@ -6,7 +6,7 @@
   padding: 26px 32px;
   background-color: var(--clr-main);
   max-inline-size: 1200px;
-  margin-left: 110px;
+  margin: auto;
 
   &__logo {
     cursor: pointer;
@@ -15,36 +15,29 @@
   &__nav {
     display: flex;
     gap: 48px;
-  }
 
-  // &__button {
-  //   display: inline-block;
-  //   font-family: var(--ffm-default, 'Montserrat', courier, monospace);
-  //   font-weight: 400;
-  //   font-size: 16px;
-  //   line-height: 1;
-  //   border: 2px solid transparent;
-  //   background: none;
-  //   transition: all 0.3s ease;
-  //   cursor: pointer;
+    &__menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
 
-  &__link {
-    border: none;
-    background: none;
-    text-decoration: none;
-    background-color: transparent;
-    font-family: var(--ffm-default, 'Montserrat', courier, monospace);
-    font-weight: 400;
-    font-size: 16px;
+      &__link {
+        display: block;
+        padding: 8px;
+        border: none;
+        background: none;
+        text-decoration: none;
+        font-family: var(--ffm-default, 'Montserrat', courier, monospace);
+        font-weight: 400;
+        font-size: 16px;
+        transition: all 0.1s ease;
 
-    transition: all 0.1s ease;
-    cursor: pointer;
-
-    &:hover {
-      font-weight: 500;
-      font-size: 16px;
-      text-decoration: underline;
-      color: var(--clr-primary-default);
+        &:hover {
+          font-weight: 500;
+          color: var(--clr-primary-default);
+          border-bottom: 2px solid currentColor;
+        }
+      }
     }
   }
 
@@ -86,7 +79,8 @@
     border-radius: var(--border-radius-blocks);
     transition:
       opacity 0.3s ease,
-      visibility 0.3s ease;
+      visibility 0.3s ease,
+      transform 0.3s ease;
     transform: translateY(-10px);
 
     &__list {

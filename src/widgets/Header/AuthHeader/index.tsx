@@ -22,7 +22,8 @@ const AuthHeader: React.FC<AuthHeaderProps> = ({
   };
 
   return (
-    <nav className={cn(styles.header__menu, styles['header__menu--auth'])}>
+    // <nav className={cn(styles.header__menu, styles['header__menu--auth'])}>
+    <nav className={styles.header__nav__menu}>
       {navItems.map((item) => (
         <button
           key={item.text}
@@ -53,7 +54,13 @@ const AuthHeader: React.FC<AuthHeaderProps> = ({
                 setIsMenuOpen(false);
               }}
             >
-              {item.icon && <img src={item.icon} alt="" className={styles.header__submenu__list__icon} />}
+              {item.icon && (
+                <img
+                  src={item.icon}
+                  alt=""
+                  className={styles.header__submenu__list__icon}
+                />
+              )}
               {item.text}
             </button>
           ))}
