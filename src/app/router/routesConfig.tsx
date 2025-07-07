@@ -1,3 +1,4 @@
+import TutorApplication from '../../features/tutorApplication';
 import MainPage from '../../pages/MainPage';
 import TutorCatalogPage from '../../pages/TutorCatalogPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
