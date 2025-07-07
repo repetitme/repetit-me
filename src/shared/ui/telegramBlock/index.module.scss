@@ -6,7 +6,6 @@
   padding: 24px;
   font-family: var(--ffm-default);
   background-color: var(--clr-main);
-  max-inline-size: 387px;
   max-block-size: 398px;
 }
 
@@ -25,5 +24,6 @@
 
 .btn {
   max-inline-size: 286px;
+  text-decoration: none;
   justify-content: flex-start;
 }

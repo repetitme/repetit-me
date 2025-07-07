@@ -1,0 +1,25 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  inline-size: 40px;
+  block-size: 24px;
+  border-radius: 33px;
+  background-color: var(--clr-primary-default);
+  cursor: pointer;
+
+  &__button {
+    margin-inline: 2px;
+    inline-size: 16px;
+    block-size: 16px;
+    border-radius: 50%;
+    background-color: var(--clr-main);
+    transform: translateX(0);
+    transition: transform var(--delay-desktop) var(--timing);
+    border: none;
+
+    &--inactive {
+      transform: translateX(-20px);
+    }
+  }
+}

@@ -26,7 +26,7 @@ const StudentHeader: React.FC<CommonHeaderProps> = ({ onLogout }) => {
       <button className={styles.header__button}>Репетиторы</button>
       <button className={styles.header__button}>Мои заявки</button>
       <div className={styles.header__avatar} onClick={handleDropdownToggle}>
-        <img src="\assets\images\avatar.svg" alt="Аватар" />
+        <img src="\assets\images\userAvatar.png" alt="Аватар" />
         <div
           className={cn(styles.header__submenu, {
             [styles['header__submenu--active']]: isActive
