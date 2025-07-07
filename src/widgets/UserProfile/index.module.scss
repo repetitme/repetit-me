@@ -1,0 +1,198 @@
+.profile {
+  &__avatar {
+    position: relative;
+    grid-column: 1/2;
+    grid-row: 1/2;
+    max-inline-size: 208px;
+    max-block-size: 312px;
+
+    &--image {
+      inline-size: 100%;
+      block-size: 100%;
+      border-radius: var(--border-radius-btn-social);
+      object-fit: cover;
+    }
+
+    &--link {
+      position: absolute;
+      right: 12px;
+      bottom: 7px;
+      inline-size: 44px;
+      block-size: 44px;
+      background: url('../../assets/images/UserCardIcons/tutor_video_icon.svg')
+        no-repeat center / contain;
+
+      &_tablet {
+        position: absolute;
+        right: 12px;
+        bottom: 7px;
+        inline-size: 44px;
+        block-size: 44px;
+        background: url('../../assets/images/UserCardIcons/tutor_video_icon.svg')
+          no-repeat center / contain;
+
+        @media screen and (min-width = 376px) and (max-width = 620px) {
+          right: 16px;
+          bottom: -25px;
+          inline-size: 62px;
+          block-size: 62px;
+          background: url('../../assets/images/UserCardIcons/tutor_video_icon--big.svg')
+            no-repeat center / contain;
+        }
+      }
+    }
+  }
+
+  &__parameters {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &_speciality {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+
+      &--status {
+        color: var(--clr-4);
+        font-weight: 500;
+      }
+
+      &--experience {
+        font-weight: 600;
+      }
+    }
+
+    &_description {
+      display: -webkit-box;
+      max-width: 100%;
+      max-height: 4.5em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+
+      &--accent {
+        font-weight: 600;
+      }
+    }
+
+    &_price {
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    &_activity {
+      font-weight: 500;
+      color: var(--clr-4);
+    }
+
+    &_important {
+      font-weight: 600;
+      font-size: 18px;
+      color: var(--clr-secondary-default);
+    }
+
+    &_working {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      padding: 8px 16px;
+      border-radius: 40px;
+      background-color: #e7f6f1;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+
+  &__rating {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+}
+
+.card__small-avatar--link {
+  right: 16px;
+  bottom: -25px;
+  inline-size: 62px;
+  block-size: 62px;
+  background: url('../../assets/images/UserCardIcons/tutor_video_icon--big.svg')
+    no-repeat center / contain;
+}
+
+@media screen and (max-width = 620px) {
+  .profile {
+    &__avatar {
+      max-inline-size: 100%;
+      max-block-size: 100%;
+      aspect-ratio: 1/1;
+
+      &--link {
+        right: 13px;
+        bottom: 15px;
+      }
+    }
+
+    &__parameters {
+      gap: 16px;
+
+      &_description {
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      &_description--accent {
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      &_speciality {
+        gap: 8px;
+
+        &--status {
+          font-size: 14px;
+          font-weight: 400;
+        }
+
+        &--experience {
+          font-size: 14px;
+          font-weight: 500;
+        }
+      }
+
+      &_working {
+        top: 35px;
+        right: 25px;
+      }
+
+      &_important {
+        font-size: 16px;
+      }
+    }
+
+    &__rating {
+      right: 34px;
+      top: 36px;
+    }
+  }
+}
+
+@media screen and (max-width = 375px) {
+  .profile {
+    &__parameters {
+      &_important {
+        font-size: 14px;
+      }
+    }
+
+    &__avatar {
+      &--link {
+        &_tablet {
+          right: 13px;
+          bottom: 15px;
+        }
+      }
+    }
+  }
+}

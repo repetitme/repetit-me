@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { useLocation, useNavigate } from 'react-router-dom';
+import classNames from 'classnames';
+import { useLocation, useNavigate } from 'react-router';
 
 import logo from '../../assets/images/logo.svg';
 import icon from '../../assets/images/telegram_icon.svg';
@@ -13,9 +14,11 @@ import styles from './index.module.scss';
 import { HeaderProps, TAuth } from './types';
 
 const Header: React.FC<HeaderProps> = ({ auth }) => {
-  const [authHeader, setAuthHeader] = useState<TAuth>(auth ? auth : 'unauth');
   const navigate = useNavigate();
   const location = useLocation();
+  const [authHeader, setAuthHeader] = useState<TAuth>(
+    auth ? auth : 'unauthorized'
+  );
 
   useEffect(() => {
     setAuthHeader(auth);
@@ -27,17 +30,32 @@ const Header: React.FC<HeaderProps> = ({ auth }) => {
   };
 
   const handleLogout = () => {
-    setAuthHeader('unauth');
+    setAuthHeader('unauthorized');
   };
+
+  const isTutorCatalog = location.pathname === '/tutor-catalog';
 
   return (
     <header className={styles.header}>
-      <div className={styles.header__logo} onClick={() => navigate('/')}>
-        <img src={logo} alt="Логотип Repetit Me" />
+      <div
+        className={styles.header__logo}
+        onClick={() => {
+          navigate('/');
+        }}
+      >
+        <img src={logo} alt="Логотип RepetitMe" />
       </div>
-      {authHeader === 'unauth' && (
+      {authHeader === 'unauthorized' && (
         <nav className={styles.header__menu}>
-          <button className={styles.header__button}>Репетиторы</button>
+          <button
+            className={classNames(
+              styles.header__button,
+              isTutorCatalog && styles['header__button--accent']
+            )}
+            onClick={() => navigate('/tutor-catalog')}
+          >
+            Репетиторы
+          </button>
           <button className={styles.header__button} onClick={handleLogin}>
             Войти
           </button>
