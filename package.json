@@ -11,12 +11,15 @@
     "format": "prettier --write .",
     "preview": "vite preview",
     "docker:build": "docker build -t repetit-me-frontend .",
-    "docker:run": "docker run --name repetit-me -p 8080:80 repetit-me-frontend"
+    "docker:run": "docker run -d --name repetit-me -p 8080:80 repetit-me-frontend",
+    "compose:build": "docker-compose build",
+    "compose:up": "docker-compose up -d",
+    "compose:down": "docker-compose down"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.76.1",
     "classnames": "^2.5.1",
-    "fdir": "^6.4.5",
+    "rc-slider": "^11.1.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router": "^7.4.0",

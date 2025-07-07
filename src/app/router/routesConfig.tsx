@@ -1,4 +1,5 @@
 import MainPage from '../../pages/MainPage';
+import TutorCatalogPage from '../../pages/TutorCatalogPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
 import { IRoute } from './type';
@@ -7,6 +8,11 @@ export const routesConfig: IRoute[] = [
   {
     path: '/',
     element: <MainPage />,
+    auth: false
+  },
+  {
+    path: '/tutor-catalog',
+    element: <TutorCatalogPage />,
     auth: false
   },
   {
@@ -29,9 +35,14 @@ export const routesConfig: IRoute[] = [
     element: <>TeacherProfile</>,
     auth: true
   },
+
   {
     path: '*',
     element: <NotFoundPage />,
     auth: false
   }
 ];
+
+export const knownPaths = routesConfig
+  .filter((route) => (route.path !== '*', route.path !== '/tutor-catalog'))
+  .map((route) => route.path);
