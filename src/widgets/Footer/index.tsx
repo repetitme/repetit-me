@@ -15,7 +15,7 @@ import { TfakeUser } from './type';
 const Footer: React.FC<TfakeUser> = ({ role, goTelegram }) => {
   return (
     <footer className={styles.footer}>
-      {goTelegram && (
+      {!goTelegram && (
         <div className={styles.footer__top}>
           <p className={styles.telegram__text}>
             Переходите в&nbsp;
@@ -52,9 +52,6 @@ const Footer: React.FC<TfakeUser> = ({ role, goTelegram }) => {
               <a className={styles.links_item} href="#student">
                 Ученику
               </a>
-              <a className={styles.links_item} href="#tutor">
-                Репетитору
-              </a>
             </div>
           )}
           <div
@@ -76,5 +73,4 @@ const Footer: React.FC<TfakeUser> = ({ role, goTelegram }) => {
     </footer>
   );
 };
-
 export default Footer;

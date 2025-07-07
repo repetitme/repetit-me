@@ -44,6 +44,10 @@
       flex-direction: row;
       justify-content: space-around;
       gap: 20px;
+
+      &__correct {
+        justify-content: end;
+      }
     }
   }
 }
@@ -96,6 +100,10 @@
   padding-inline-end: 53px;
   font-size: 20px;
   padding-block-start: var(--padding-blocks);
+
+  &__correct {
+    padding-inline-end: 150px;
+  }
 }
 
 .underline {

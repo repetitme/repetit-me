@@ -1,0 +1,27 @@
+.rc-slider-track {
+  background-color: #6757f1;
+  height: 12px;
+}
+
+.rc-slider-rail {
+  background-color: #cfdadc;
+  height: 12px;
+  border-radius: 10px;
+}
+
+.rc-slider-handle {
+  transition: transform 0.3s ease;
+  background: #fff;
+  border: none;
+  height: 20px;
+  width: 20px;
+  margin-bottom: 0;
+  opacity: 1;
+}
+
+.rc-slider-handle:active,
+.rc-slider-handle:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  transform: scale(1.6) !important;
+}

@@ -1,5 +1,5 @@
-import TutorApplication from '../../features/tutorApplication';
 import MainPage from '../../pages/MainPage';
+import TutorCatalogPage from '../../pages/TutorCatalogPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
 
 import { IRoute } from './type';
@@ -11,9 +11,29 @@ export const routesConfig: IRoute[] = [
     auth: false
   },
   {
-    path: '/test',
-    element: <TutorApplication />,
+    path: '/tutor-catalog',
+    element: <TutorCatalogPage />,
     auth: false
+  },
+  {
+    path: '/student-application',
+    element: <>StudentApplication</>,
+    auth: true
+  },
+  {
+    path: '/student-profile',
+    element: <>StudentProfile</>,
+    auth: true
+  },
+  {
+    path: '/teacher-application',
+    element: <>TeacherApplication</>,
+    auth: true
+  },
+  {
+    path: '/teacher-profile',
+    element: <>TeacherProfile</>,
+    auth: true
   },
 
   {
@@ -22,3 +42,7 @@ export const routesConfig: IRoute[] = [
     auth: false
   }
 ];
+
+export const knownPaths = routesConfig
+  .filter((route) => (route.path !== '*', route.path !== '/tutor-catalog'))
+  .map((route) => route.path);
