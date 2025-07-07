@@ -1,6 +1,6 @@
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
-import TutorDocuments from '../../widgets/TutorDocuments';
+import TutorPriseList from '../../widgets/PriseList';
 
 import { IRoute } from './type';
 
@@ -32,7 +32,7 @@ export const routesConfig: IRoute[] = [
   },
   {
     path: '/test',
-    element: <TutorDocuments />,
+    element: <TutorPriseList />,
     auth: false
   },
 

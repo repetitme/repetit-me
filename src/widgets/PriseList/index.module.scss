@@ -1,0 +1,32 @@
+.container {
+  display: block;
+
+  &__price {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    padding-top: 18px;
+
+    &_item {
+      font-family: var(--ffm-default);
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 1.87;
+      letter-spacing: 0;
+    }
+  }
+
+  &__button {
+    font-family: var(--ffm-default);
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 100%;
+    vertical-align: middle;
+    background-color: transparent;
+    border: none;
+    color: rgb(103 87 241 / 100%);
+    border-bottom: solid 2px rgb(103 87 241 / 100%);
+    padding-top: 17px;
+    cursor: pointer;
+  }
+}
