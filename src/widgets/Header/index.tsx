@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/images/logo.svg';
 import icon from '../../assets/images/telegram_icon.svg';
@@ -18,6 +18,7 @@ const Header = ({ auth }: HeaderProps) => {
   );
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setAuthHeader(auth);
@@ -25,6 +26,7 @@ const Header = ({ auth }: HeaderProps) => {
 
   const handleLogout = () => {
     setAuthHeader('unauth');
+    navigate('/');
   };
 
   return (

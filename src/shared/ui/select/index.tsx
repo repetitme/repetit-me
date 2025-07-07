@@ -73,7 +73,8 @@ const Select = ({
             minHeight: 'auto',
             '&:hover': {
               borderColor: menuIsOpen ? 'var(--clr-blue)' : 'transparent'
-            }
+            },
+            cursor: 'pointer'
           }),
           menu: (base) => ({
             ...base,
@@ -82,8 +83,8 @@ const Select = ({
               '0px 0px 2px rgba(0, 0, 0, 0.1), 0px 4px 12px rgba(0, 0, 0, 0.1)',
             width: 'calc(100% - 12px)',
             left: '6px',
-            marginTop: '-12px',
-            zIndex: 1,
+            marginTop: '0',
+            zIndex: 3,
             position: 'absolute'
           }),
           menuList: (base) => ({
@@ -104,7 +105,8 @@ const Select = ({
             color: 'var(--clr-black)',
             '&:active': {
               backgroundColor: 'rgba(0, 0, 0, 0.05)'
-            }
+            },
+            cursor: 'pointer'
           }),
           singleValue: (base) => ({
             ...base,

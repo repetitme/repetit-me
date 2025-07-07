@@ -6,3 +6,5 @@ export type TFeedbackItemProps = {
   rating: number;
   date: Date;
 };
+
+export type TNewFeedback = Omit<TFeedbackItemProps, 'image'>;
