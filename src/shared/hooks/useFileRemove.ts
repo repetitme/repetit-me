@@ -6,7 +6,7 @@ type TUseRemoveFile = {
   removeFile: (fileOrIndex: File | number) => void;
 };
 
-export const useRemoveFile = (
+export const useFileRemove = (
   files: File[],
   setFiles: Dispatch<SetStateAction<File[]>>
 ): TUseRemoveFile => {
