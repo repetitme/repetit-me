@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 
 import cn from 'classnames';
 
-import { useDragAndDrop } from '../../../../shared/hooks/useDragAndDropProps';
+import closeIcon from '../../../../assets/icons/closeIcon.svg';
+import { useDragAndDrop } from '../../../../shared/hooks/useDragAndDrop';
 import { useFileUpload } from '../../../../shared/hooks/useFileUpload';
+import { useRemoveFile } from '../../../../shared/hooks/useRemoveFile';
+import Button from '../../../../shared/ui/button';
 import Wrapper from '../../../../shared/ui/wrapper';
 import { blockContent, requirements } from './data';
 
@@ -14,6 +17,7 @@ const DiplomasUpload: React.FC = () => {
   const maxSizeBytes = 10 * 1024 * 1024;
   const acceptTypesVideo = ['image/png', 'image/jpg', 'image/jpeg'];
   const [files, setFiles] = useState<File[]>([]);
+  const { removeFile } = useRemoveFile(files, setFiles);
 
   const handleProcessedFiles = (newFiles: File[]) => {
     const combinedFiles = [...files, ...newFiles];
@@ -73,6 +77,13 @@ const DiplomasUpload: React.FC = () => {
                 src={URL.createObjectURL(file)}
                 alt={`Документ ${index + 1}`}
                 className={styles['wrapper__content-image']}
+              />
+              <Button
+                text=""
+                icon={closeIcon}
+                variant="transparent"
+                onClick={() => removeFile(index)}
+                className={styles['wrapper__content-item--remove']}
               />
             </div>
           ))}
