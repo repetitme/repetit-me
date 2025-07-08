@@ -2,24 +2,32 @@ import React from 'react';
 
 import cn from 'classnames';
 
-import { ITutorData, navOptions } from '../../shared/types/userData';
+import {
+  IStudentData,
+  ITutorData,
+  IUserData,
+  navOptions,
+  navOptionsStudent,
+  navOptionsTutor
+} from '../../shared/types/userData';
 import TelegramBlock from '../../shared/ui/telegramBlock';
 import UserCard from '../../widgets/UserCard';
 import useStudentRequests from './useStudentRequests';
 
 import styles from './index.module.scss';
 
-const Requests: React.FC = () => {
+const Requests: React.FC<IUserData> = ({ role }) => {
+  const isStudent = role === 'student';
   const {
     listHeight,
     active,
     loaded,
-    tutorsList,
+    list,
     count,
     visible,
     onClick,
     setVisible
-  } = useStudentRequests();
+  } = useStudentRequests(isStudent);
   return (
     <main className={styles.wrapper}>
       <h2 className={styles.title}>Мои заявки</h2>
@@ -27,7 +35,7 @@ const Requests: React.FC = () => {
         <aside className={styles.sidebar}>
           <nav className={styles.tabs}>
             <ul className={styles.tabs__list}>
-              {Object.values(navOptions).map((value) => (
+              {Object.values(navOptions[isStudent ? 'student' : 'tutor']).map((value) => (
                 <li
                   key={value}
                   className={cn(styles.tabs__item, {
@@ -42,7 +50,7 @@ const Requests: React.FC = () => {
                       [styles.tabs__count_active]: loaded.count
                     })}
                   >
-                    {count[Object.values(navOptions).indexOf(value)]}
+                    {count[Object.values(navOptions[isStudent ? 'student' : 'tutor']).indexOf(value)]}
                   </span>
                 </li>
               ))}
@@ -62,15 +70,20 @@ const Requests: React.FC = () => {
           style={{ maxHeight: listHeight ? `${listHeight}px` : undefined }}
         >
           {loaded.content &&
-            tutorsList[Object.values(navOptions).indexOf(active)]
+            list[Object.values(isStudent ? navOptionsStudent : navOptionsTutor).indexOf(active)]
               .slice(0, visible)
-              .map((tutor: ITutorData) => (
-                <article key={tutor.id} className={styles.content__item}>
-                  <UserCard role="tutor" navOption={active} tutorData={tutor} />
+              .map((person: ITutorData | IStudentData) => (
+                <article key={person.id} className={styles.content__item}>
+                  <UserCard
+                    role={isStudent ? 'student' : 'tutor'}
+                    navOption={active as unknown as navOptionsStudent | navOptionsTutor}
+                    tutorData={person as ITutorData}
+                    studentData={person as IStudentData}
+                  />
                 </article>
               ))}
           {visible <
-            Number(count[Object.values(navOptions).indexOf(active)]) && (
+            Number(count[Object.values(navOptions[isStudent ? 'student' : 'tutor']).indexOf(active)]) && (
             <button
               className={cn(styles.content__btn, {
                 [styles.content__btn_active]: loaded.btn

@@ -25,15 +25,32 @@ export interface IStudentData extends IUserBaseData {
   workingStatus?: string; // Например, "занятия еще не начались"
 }
 
-export enum navOptions {
-  myTutors = 'Мои репетиторы',
+export enum navOptionsStudent {
+  myList = 'Мои репетиторы',
   myRequests = 'Заявки',
   tutorRequests = 'Запросы'
 }
 
+export enum navOptionsTutor {
+  myList = 'Мои ученики',
+  myRequests = 'Заявки',
+  tutorRequests = 'Запросы'
+}
+
+export const navOptions = {
+  'student': navOptionsStudent,
+  'tutor': navOptionsTutor
+}
+
 export interface IStudentProfile extends IStudentData {
   requests: {
-    [key in navOptions]: { ids: string[] }; // Массив id репетиторов в профиле ученика
+    [key in navOptionsStudent]: { ids: string[] }; // Массив id репетиторов в профиле ученика
+  };
+}
+
+export interface ITutorProfile extends ITutorData {
+  requests: {
+    [key in navOptionsTutor]: { ids: string[] }; // Массив id учеников в профиле репетитора
   };
 }
 
@@ -44,5 +61,5 @@ export interface IUserData {
   tutorData?: ITutorData;
   studentData?: IStudentData;
   handleSubmit?: boolean; // !!! Временный пропс, его наличие предполагает, что сабмит по заявке репетитору от ученика отправлен. Его видит репетитор и ученик у себя
-  navOption?: navOptions;
+  navOption?: navOptionsStudent | navOptionsTutor; // Опция навигации, которая активна в данный момент
 }

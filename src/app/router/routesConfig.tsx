@@ -1,4 +1,3 @@
-import ProfileInfo from '../../features/tutorApplication/ui/ProfileInfo';
 import MainPage from '../../pages/MainPage';
 import Requests from '../../pages/Requests';
 import NotFoundPage from '../../widgets/NotFoundPage/index';
@@ -13,14 +12,14 @@ export const routesConfig: IRoute[] = [
   },
   {
     path: '/requests',
-    element: <Requests />,
+    element: <Requests role='student'/>,
     auth: false
   },
   {
     path: '/test',
     element: (
       <div style={{ margin: '10px 0 10px 120px', maxWidth: '1200px' }}>
-        <ProfileInfo />
+        <NotFoundPage />
       </div>
     ),
     auth: false

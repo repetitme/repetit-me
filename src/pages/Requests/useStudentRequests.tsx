@@ -3,7 +3,11 @@ import { useEffect, useState } from 'react';
 import {
   IStudentProfile,
   ITutorData,
-  navOptions
+  navOptions,
+  navOptionsStudent,
+  navOptionsTutor,
+  ITutorProfile,
+  IStudentData
 } from '../../shared/types/userData';
 import { mockStudentProfile } from '../../widgets/UserCard/fakeApi/mockData';
 import {
@@ -16,23 +20,24 @@ const loadedState = {
   count: true,
   btn: true
 };
-const useStudentRequests = () => {
+
+const useStudentRequests = (isStudent: boolean) => {
   const [listHeight, setListHeight] = useState<number | undefined>(undefined);
-  const requests = Object.values(navOptions);
-  const [active, setActive] = useState(navOptions.myTutors);
+  const requests = Object.values(navOptions[isStudent ? 'student' : 'tutor']);
+  const [active, setActive] = useState(navOptions[isStudent ? 'student' : 'tutor']);
   const [loaded, setLoaded] = useState(
     Object.fromEntries(
       Object.entries(loadedState).map(([key, value]) => [key, !value])
     )
   );
-  const [tutorsList, setTutorsList] = useState<Array<ITutorData[]>>([
+  const [list, setList] = useState<Array<ITutorData[] | IStudentData[]>>([
     [],
     [],
     []
   ]);
   const [count, setCount] = useState(['', '', '']);
   const [visible, setVisible] = useState(3);
-  const onClick = (value: navOptions) => () => {
+  const onClick = (value: typeof navOptions['student' | 'tutor']) => () => {
     if (active === value) return;
     setLoaded({ ...loadedState, content: false, btn: false });
     setActive(value);
@@ -49,7 +54,7 @@ const useStudentRequests = () => {
         if (profile && profile.requests) {
           setCount(
             requests.map((value) =>
-              (profile.requests?.[value].ids.length || 0).toString()
+              (profile.requests?.[value as keyof typeof profile.requests].ids.length || 0).toString()
             )
           );
         }
@@ -58,10 +63,10 @@ const useStudentRequests = () => {
             getTutors().then((tutors) => {
               const filtered = requests.map((key) => {
                 return tutors.filter((tutor) => {
-                  return profile?.requests?.[key].ids.includes(tutor.id);
+                  return profile?.requests?.[key as keyof typeof profile.requests].ids.includes(tutor.id);
                 });
               });
-              setTutorsList(filtered);
+              setList(filtered);
               setLoaded(loadedState);
             }),
           1000
@@ -85,7 +90,7 @@ const useStudentRequests = () => {
     listHeight,
     active,
     loaded,
-    tutorsList,
+    list,
     count,
     visible,
     onClick,
