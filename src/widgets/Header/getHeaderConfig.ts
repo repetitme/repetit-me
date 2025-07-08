@@ -12,16 +12,16 @@ const getHeaderConfig = ({
 }) => {
   const navItems: Record<TUserRole, NavItem[]> = {
     unauth: [
-      { text: 'Репетиторы', path: '/tutors' }
+      { text: 'Репетиторы', path: '/tutor-catalog' }
     ],
     student: [
-      { text: 'Репетиторы', path: '/tutors' },
+      { text: 'Репетиторы', path: '/tutor-catalog' },
       { text: 'Мои заявки', path: '/student-requests' }
     ],
     tutor: [
-      { text: 'Анкета', path: '/application' },
+      { text: 'Анкета', path: '/tutor-application' },
       { text: 'Мои заявки', path: '/tutor-requests' },
-      { text: 'Личный кабинет', path: '/profile' }
+      { text: 'Личный кабинет', path: '/tutor-profile' }
     ]
   };
 

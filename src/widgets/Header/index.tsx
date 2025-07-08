@@ -68,7 +68,7 @@ const Header = ({ auth }: HeaderProps) => {
           />
         </nav>
       ) : (
-        <>
+        <div className={styles.header__menu}>
           <nav className={styles.header__nav}>
             {navItems[authHeader].map((item) => (
               <Link
@@ -85,8 +85,12 @@ const Header = ({ auth }: HeaderProps) => {
             className={styles.header__avatar}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            <img src={avatar} alt="Аватар" />
-            <div className={styles.header__avatar__image} />
+            <img
+              src={avatar}
+              alt="Аватар"
+              className={styles.header__avatar__image}
+            />
+            <div />
 
             <div
               className={cn(styles.header__submenu, {
@@ -117,7 +121,7 @@ const Header = ({ auth }: HeaderProps) => {
               })}
             />
           </div>
-        </>
+        </div>
       )}
     </header>
   );

@@ -1,0 +1,22 @@
+// Градиент для рамки фото репетитора в шапке
+@mixin avatarHeader-gradient(
+  $color1: #3dc5ff,
+  $color2: #4558ff,
+  $color3: #865bff,
+  $color4: #ff71f9,
+  $color5: #ffaa47,
+  $color6: #f9f9f9
+) {
+  border: 1px solid transparent;
+  background:
+    linear-gradient($color6, $color6) padding-box,
+    linear-gradient(
+        288.86deg,
+        $color1 5.24%,
+        $color2 29.77%,
+        $color3 60.98%,
+        $color4 89.96%,
+        $color5 116.71%
+      )
+      border-box;
+}

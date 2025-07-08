@@ -1,3 +1,5 @@
+@use '../../assets/styles/mixins/avatarHeaderGradient.scss' as *;
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -11,6 +13,12 @@
 
   &__logo {
     cursor: pointer;
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    gap: 48px;
   }
 
   &__nav {
@@ -38,6 +46,8 @@
   }
 
   &__svg {
+    width: 24px;
+    height: 24px;
     margin-inline-end: 10px;
   }
 
@@ -45,6 +55,14 @@
     position: relative;
     cursor: pointer;
     padding-right: 40px;
+
+    &__image {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+
+      @include avatarHeader-gradient;
+    }
 
     &__chevron {
       content: '';
