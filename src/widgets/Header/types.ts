@@ -26,5 +26,3 @@ export interface DropDownItem {
   icon?: string;
   onClick: () => void;
 }
-
-

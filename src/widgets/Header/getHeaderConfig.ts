@@ -1,4 +1,5 @@
 import { Location, NavigateFunction } from 'react-router-dom';
+
 import { DropDownItem, HeaderConfigProps, NavItem, TUserRole } from './types';
 
 const getHeaderConfig = ({
@@ -11,9 +12,7 @@ const getHeaderConfig = ({
   location: Location;
 }) => {
   const navItems: Record<TUserRole, NavItem[]> = {
-    unauth: [
-      { text: 'Репетиторы', path: '/tutor-catalog' }
-    ],
+    unauth: [{ text: 'Репетиторы', path: '/tutor-catalog' }],
     student: [
       { text: 'Репетиторы', path: '/tutor-catalog' },
       { text: 'Мои заявки', path: '/student-requests' }
@@ -25,20 +24,24 @@ const getHeaderConfig = ({
     ]
   };
 
-   const dropDownItems: DropDownItem[] = role !== 'unauth' ? [
-    {
-      text: 'Сменить аккаунт',
-      icon: '/assets/icons/change.svg',
-      onClick: () => navigate('/login', { state: { backgroundLocation: location } })
-    },
-    {
-      text: 'Выход',
-      icon: '/assets/icons/exit.svg',
-      onClick: onLogout
-    }
-  ] : [];
+  const dropDownItems: DropDownItem[] =
+    role !== 'unauth'
+      ? [
+          {
+            text: 'Сменить аккаунт',
+            icon: '/assets/icons/change.svg',
+            onClick: () =>
+              navigate('/login', { state: { backgroundLocation: location } })
+          },
+          {
+            text: 'Выход',
+            icon: '/assets/icons/exit.svg',
+            onClick: onLogout
+          }
+        ]
+      : [];
 
   return { navItems, dropDownItems };
 };
 
-export default getHeaderConfig
+export default getHeaderConfig;
