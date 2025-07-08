@@ -43,11 +43,10 @@ const Footer: React.FC<TfakeUser> = ({ role, goTelegram }) => {
         <div
           className={classNames(
             styles['footer__bottom--content'],
-            role !== 'unauthorized' &&
-              styles['footer__bottom--content__correct']
+            role !== 'unauth' && styles['footer__bottom--content__correct']
           )}
         >
-          {role === 'unauthorized' && (
+          {role === 'unauth' && (
             <div className={styles.links}>
               <a className={styles.links_item} href="#student">
                 Ученику
@@ -57,7 +56,7 @@ const Footer: React.FC<TfakeUser> = ({ role, goTelegram }) => {
           <div
             className={classNames(
               styles.contact,
-              role !== 'unauthorized' && styles.contact__correct
+              role !== 'unauth' && styles.contact__correct
             )}
           >
             Связаться с нами: <br />
