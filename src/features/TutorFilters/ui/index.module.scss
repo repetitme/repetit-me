@@ -47,7 +47,7 @@
         font-weight: inherit;
         font-size: inherit;
 
-        @include text-gradient;
+        @include title-gradient;
       }
 
       span {
@@ -55,7 +55,7 @@
         font-weight: inherit;
         font-size: 24px;
 
-        @include text-gradient;
+        @include title-gradient;
       }
     }
   }
