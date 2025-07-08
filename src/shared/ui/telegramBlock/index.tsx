@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
-import TG from '../../../assets/Group.svg';
 import phone from '../../../assets/images/QR+button.svg';
+import TG from '../../../assets/images/telegram_icon.svg';
 import Button from '../button';
 
 import styles from './index.module.scss';

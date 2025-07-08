@@ -2,6 +2,7 @@ export interface TutorFiltersProps {
   onSubmit: (values: TState) => void;
   noResultsFound?: boolean;
   percentage?: number;
+  onToggleTooltip?: () => void;
 }
 
 export type TUseTutorFilters = { onSubmit: (values: TState) => void };

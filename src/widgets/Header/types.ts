@@ -1,4 +1,4 @@
-export type TAuth = 'unauth' | 'student' | 'teacher';
+export type TAuth = 'unauthorized' | 'student' | 'teacher';
 
 export interface HeaderProps {
   auth: TAuth;
