@@ -5,11 +5,22 @@ import SubjectFormItem from './subjectFormItem';
 
 import styles from './index.module.scss';
 
-import { SubjectFormProps } from './type';
+import { Subject, SubjectFormProps } from './type';
 
 const MAX_BLOCKS = 3;
 
 const SubjectForm = ({ onChange }: SubjectFormProps) => {
+
+  const [subjects, setSubjects] = useState<Subject[]>([]);
+
+  // Обработчик изменений для каждого предмета
+  const handleSubjectChange = (index: number) => (newSubject: Subject) => {
+    const updatedSubjects = [...subjects];
+    updatedSubjects[index] = newSubject;
+    setSubjects(updatedSubjects);
+    onChange(updatedSubjects.filter(subject => subject.isActive)); // Фильтруем активные
+  };
+
   const [blocksData, setBlocksData] = useState<React.ReactNode[]>([
     <SubjectFormItem key={0} index={0} />
   ]);
