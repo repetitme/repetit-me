@@ -12,3 +12,4 @@ const ModalOverlay = ({ onClose, isOpen }: ModalOverlayProps) => (
 );
 
 export default ModalOverlay;
+
