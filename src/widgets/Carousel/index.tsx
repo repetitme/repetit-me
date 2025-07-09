@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import arrow_left from '../../assets/images/arrow-left.svg';
 import arrow_right from '../../assets/images/arrow-right.svg';
+import UserCard from '../UserCard';
 
 import styles from './index.module.scss';
 
@@ -44,12 +45,7 @@ const Carousel: FC<ITutorCardProps> = ({ tutorsCard }) => {
         {tutorsCard
           .map((tutor, index) => (
             <li className={styles.container__cards_card} key={index}>
-              <img
-                className={styles.container__cards_card_img}
-                src={tutor}
-                key={`${tutor}-${index}`}
-                alt={tutor}
-              />
+              <UserCard role="card" tutorData={tutor} />
             </li>
           ))
           .slice(firstCard, firstCard + CARD_RENDERED_COUNT)}

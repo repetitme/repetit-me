@@ -1,5 +1,7 @@
 import React from 'react';
 
+import classNames from 'classnames';
+
 import phone from '../../assets/images/phone_with_qr-code.svg';
 import logo from '../../assets/images/repetit-me_logo.svg';
 import telegram from '../../assets/images/telegram_icon.svg';
@@ -10,10 +12,10 @@ import styles from './index.module.scss';
 
 import { TfakeUser } from './type';
 
-const Footer: React.FC<TfakeUser> = ({ role }) => {
+const Footer: React.FC<TfakeUser> = ({ role, goTelegram }) => {
   return (
     <footer className={styles.footer}>
-      {role === 'unauthorized' && (
+      {!goTelegram && (
         <div className={styles.footer__top}>
           <p className={styles.telegram__text}>
             Переходите в&nbsp;
@@ -38,18 +40,25 @@ const Footer: React.FC<TfakeUser> = ({ role }) => {
           alt="Логотип repetitMe"
           className={styles.repetitme__logo}
         />
-        <div className={styles['footer__bottom--content']}>
-          {role !== 'unauthorized' && (
+        <div
+          className={classNames(
+            styles['footer__bottom--content'],
+            role !== 'unauth' && styles['footer__bottom--content__correct']
+          )}
+        >
+          {role === 'unauth' && (
             <div className={styles.links}>
               <a className={styles.links_item} href="#student">
                 Ученику
               </a>
-              <a className={styles.links_item} href="#tutor">
-                Репетитору
-              </a>
             </div>
           )}
-          <div className={styles.contact}>
+          <div
+            className={classNames(
+              styles.contact,
+              role !== 'unauth' && styles.contact__correct
+            )}
+          >
             Связаться с нами: <br />
             <a className={styles.underline}>Менеджер в Telegram</a>
           </div>
@@ -63,5 +72,4 @@ const Footer: React.FC<TfakeUser> = ({ role }) => {
     </footer>
   );
 };
-
 export default Footer;

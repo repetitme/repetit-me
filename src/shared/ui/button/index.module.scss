@@ -90,10 +90,33 @@
     border-radius: var(--border-radius-btn-social);
     padding-inline: 12px;
     line-height: 1;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
 
     &.icon {
       inline-size: 21px;
       block-size: 18px;
+    }
+  }
+
+  &.reset {
+    color: var(--clr-secondary-default);
+    background-color: transparent;
+    display: flex;
+    column-gap: 8px;
+    border: 1px solid var(--clr-secondary-default);
+  }
+
+  &.transparent {
+    border: none;
+    background-color: transparent;
+    color: var(--clr-primary-default);
+
+    &:hover {
+      color: var(--clr-primary-hover);
     }
   }
 

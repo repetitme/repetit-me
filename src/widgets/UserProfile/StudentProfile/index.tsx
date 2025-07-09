@@ -1,5 +1,5 @@
-import UserInfo from '../../../shared/components/UserInfo';
 import { IStudentData } from '../../../shared/types/userData';
+import UserInfo from '../../../shared/ui/userInfo';
 import { getTimeAgoText } from '../../../shared/utils/TimeAgo';
 
 import styles from '../index.module.scss';

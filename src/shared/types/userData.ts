@@ -54,7 +54,7 @@ export interface ITutorProfile extends ITutorData {
   };
 }
 
-type TUserRole = 'student' | 'tutor' | 'unAuthorized' | 'card';
+type TUserRole = 'student' | 'tutor' | 'unauth' | 'card';
 
 export interface IUserData {
   role: TUserRole;

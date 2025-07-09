@@ -1,3 +1,5 @@
+import cn from 'classnames';
+
 import { IUserData, navOptions } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
 import StudentProfile from '../UserProfile/StudentProfile';
@@ -15,13 +17,19 @@ const UserCard: React.FC<IUserData> = ({
   const isMyTutors = navOption === navOptions.myTutors;
   const isMyRequests = navOption === navOptions.myRequests;
   const isTutorRequests = navOption === navOptions.tutorRequests;
-  return role === 'tutor' || role === 'unAuthorized' ? (
-    // Карточка репетитора
-    <div className={styles.card}>
-      {tutorData ? <TutorProfile {...tutorData} /> : <p>Репетитор не найден</p>}
-      <div className={styles.card__buttons}>
-        <Button text="Подробнее" variant="white" />
-        {!isMyTutors && (
+  return (
+    <div className={cn(styles.card, role === 'card' && styles.card__resize)}>
+      {role === 'student' || role === 'unauth' ? (
+        // Карточка репетитора
+        <>
+          {tutorData ? (
+            <TutorProfile {...tutorData} />
+          ) : (
+            <p>Репетитор не найден</p>
+          )}
+          <div className={styles.card__buttons}>
+            <Button text="Подробнее" variant="white" />
+           {!isMyTutors && (
           <Button
             text={
               !navOption
@@ -33,33 +41,45 @@ const UserCard: React.FC<IUserData> = ({
             variant={!isMyRequests ? 'purple' : 'red'}
           />
         )}
-      </div>
-    </div>
-  ) : role === 'student' ? (
-    // Карточка ученика
-    <div className={styles.card}>
-      {studentData ? (
-        <StudentProfile handleSubmit={handleSubmit ?? false} {...studentData} />
+          </div>
+        </>
+      ) : role === 'teacher' ? (
+        // Карточка ученика
+        <>
+          {studentData ? (
+            <StudentProfile
+              handleSubmit={handleSubmit ?? false}
+              {...studentData}
+            />
+          ) : (
+            <p>Ученик не найден</p>
+          )}
+          <div className={styles.card__buttons}>
+            {!handleSubmit ? (
+              <Button text="Создать отчет" variant="purple" />
+            ) : (
+              <>
+                <Button text="Отклонить" variant="red" />
+                <Button text="Принять" variant="purple" />
+              </>
+            )}
+          </div>
+        </>
       ) : (
-        <p>Ученик не найден</p>
-      )}
-      <div className={styles.card__buttons}>
-        {!handleSubmit ? (
-          <Button text="Создать отчет" variant="purple" />
-        ) : (
-          <>
-            <Button text="Отклонить" variant="red" />
-            <Button text="Принять" variant="purple" />
-          </>
-        )}
-      </div>
-    </div>
-  ) : (
-    <div className={styles.card}>
-      {tutorData ? (
-        <TutorProfile {...tutorData} isCard={true} />
-      ) : (
-        <p>Репетитор не найден</p>
+        // Маленькая карточка
+        <>
+          {tutorData ? (
+            <div className={styles.card__small}>
+              <TutorProfile
+                {...tutorData}
+                isCard={true}
+                stylesValue={styles['card__small-avatar']}
+              />
+            </div>
+          ) : (
+            <p>Репетитор не найден</p>
+          )}
+        </>
       )}
     </div>
   );
