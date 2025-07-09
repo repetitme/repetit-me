@@ -6,15 +6,23 @@ import Select from '../../../../../../shared/ui/select';
 
 import styles from './index.module.scss';
 
-import { ProfileCategoriesProps } from '../../../../lib/type';
+import { ProfileCategoriesProps } from '../../type';
 
 const ProfileCategories = ({
   data,
   category,
   isLast,
-  onAddCategory
+  onAddCategory,
+  onChange // Добавляем этот пропс
 }: ProfileCategoriesProps) => {
-  const { values, handleChange } = useForm({ price: '' });
+  // const { values, handleChange } = useForm({ price: '' });
+  const { values, handleChange } = useForm({ price: category.price }); // Используем price из category
+
+  // Изменение: передаём новую цену родителю
+  const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleChange(e); // Обновляем локальное состояние
+    onChange?.(e.target.value); // Сообщаем родителю о новой цене
+  };
 
   return (
     <div className={styles.container__auxiliary}>
@@ -32,7 +40,7 @@ const ProfileCategories = ({
         <Input
           name="price"
           value={values.price}
-          onChange={handleChange}
+          onChange={handlePriceChange}
           label="Цена"
           placeholder={category.price}
           type="number"

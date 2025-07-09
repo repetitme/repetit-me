@@ -1,11 +1,26 @@
+export interface ProfileCategoriesProps {
+  category: {
+    ageCategory: string;
+    price: string;
+  };
+  data: {
+    value: string;
+    label: string;
+  }[];
+  isLast?: boolean;
+  onAddCategory?: () => void;
+  onChange?: (price: string) => void;
+  className?: string;
+}
+
 export interface Subject {
   discipline: string;
-  status: string; 
+  status: string;
   target: string;
   experience: string;
   isActive: boolean;
   categories: {
-    ageCategory: string; 
+    ageCategory: string;
     price: string;
   }[];
 }
