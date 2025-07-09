@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import cn from 'classnames';
 
@@ -12,9 +12,9 @@ import ProfileCategories from './profileCategories';
 
 import styles from './index.module.scss';
 
-import { DisciplinesBlockProps } from '../../../lib/type';
+import { SubjectFormItemProps } from '../type';
 
-const SubjectFormItem: React.FC<DisciplinesBlockProps> = ({ index }) => {
+const SubjectFormItem = ({ index, onChange }: SubjectFormItemProps) => {
   const { values, handleChange } = useForm({ experience: '' });
   const [isActive, setIsActive] = useState<boolean>(true);
   const [categories, setCategories] = useState<

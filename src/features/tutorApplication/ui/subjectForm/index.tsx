@@ -1,14 +1,15 @@
-import { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 
 import iconAdd from '../../../../assets/icons/icon_add.svg';
 import SubjectFormItem from './subjectFormItem';
 
 import styles from './index.module.scss';
 
+import { SubjectFormProps } from './type';
+
 const MAX_BLOCKS = 3;
 
-const SubjectForm: React.FC = () => {
+const SubjectForm = ({ onChange }: SubjectFormProps) => {
   const [blocksData, setBlocksData] = useState<React.ReactNode[]>([
     <SubjectFormItem key={0} index={0} />
   ]);

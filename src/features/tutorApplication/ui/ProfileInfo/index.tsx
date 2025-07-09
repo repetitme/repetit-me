@@ -11,14 +11,7 @@ import AvatarUploadModal from './AvatarUploadModal';
 
 import styles from './index.module.scss';
 
-type ProfileFormData = {
-  firstName: string;
-  lastName: string;
-  telegram: string;
-  email: string;
-  about?: string;
-  avatar: string;
-};
+import { ProfileFormData } from './type';
 
 const ProfileInfo = () => {
   const { values, handleChange, setValues } = useForm<ProfileFormData>({
@@ -102,7 +95,7 @@ const ProfileInfo = () => {
             />
             <Input
               name="email"
-              value={values.email}
+              value={values.email || ''}
               type="email"
               label="Почта"
               placeholder="alex@ya.ru"

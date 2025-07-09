@@ -1,6 +1,4 @@
-export interface DisciplinesBlockProps {
-  index: number;
-}
+
 
 export interface ProfileCategoriesProps {
   category: {

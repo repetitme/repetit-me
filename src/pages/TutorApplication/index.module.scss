@@ -1,0 +1,15 @@
+.application {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-inline-size: 1200px;
+  margin-inline: auto;
+  margin-block: 31px 94px;
+
+  &__title {
+    font-family: var(--ffm-title);
+    font-size: 32px;
+    font-weight: 500;
+    text-align: left;
+  }
+}
