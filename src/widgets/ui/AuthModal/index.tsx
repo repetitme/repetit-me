@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import iconClose from '../../../assets/icons/closeIcon.svg';
-import { ModalOverlay } from '../../../shared/components/Overlay';
+import ModalOverlay from '../../../shared/ui/overlay';
 
 import styles from './index.module.scss';
 

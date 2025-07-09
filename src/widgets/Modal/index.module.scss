@@ -1,0 +1,16 @@
+.container {
+  display: grid;
+  place-items: center;
+  position: fixed;
+  inset: 0;
+
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    z-index: 1000;
+
+    &_close {
+      cursor: pointer;
+    }
+  }
+}

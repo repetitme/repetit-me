@@ -1,0 +1,36 @@
+.switch {
+  &__background {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    inline-size: 265px;
+    block-size: 48px;
+    background: var(--clr-transparent30);
+    border-radius: 100px;
+  }
+
+  &__button {
+    font-family: var(--ffm-default);
+    font-weight: 700;
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: var(--clr-main);
+    padding: 8px 15px;
+    cursor: pointer;
+    transition:
+      color 0.5s ease,
+      transform 0.5s ease;
+
+    &:active {
+      transform: scale(0.8);
+    }
+
+    &--active {
+      color: var(--clr-black);
+      background: var(--clr-main);
+      border-radius: 45px;
+      margin-inline-end: 4px;
+    }
+  }
+}

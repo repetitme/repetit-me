@@ -1,0 +1,22 @@
+.container {
+  margin-top: 19px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  &__document {
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__document:hover::after {
+    content: '';
+    position: absolute;
+    background-image: url('../../assets/icons/zoom_in.svg');
+    top: calc((100% / 2) - 18px);
+    left: calc((100% / 2) - 18px);
+    inline-size: 36px;
+    block-size: 36px;
+  }
+}

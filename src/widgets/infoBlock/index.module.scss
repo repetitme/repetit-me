@@ -1,0 +1,13 @@
+.container {
+  padding: 32px;
+  max-width: 895px;
+  background-color: rgb(255 255 255 / 100%);
+  border-radius: 20px;
+
+  &__title {
+    font-family: var(--ffm-default);
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1;
+  }
+}

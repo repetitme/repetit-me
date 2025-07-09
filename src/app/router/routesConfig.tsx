@@ -1,11 +1,13 @@
-import NotFoundPage from '../../shared/NotFoundPage';
+import MainPage from '../../pages/MainPage';
+import NotFoundPage from '../../widgets/NotFoundPage/index';
+import TutorVideoStart from '../../widgets/TutorVideoStart';
 
 import { IRoute } from './type';
 
 export const routesConfig: IRoute[] = [
   {
     path: '/',
-    element: <>MainPage</>,
+    element: <MainPage />,
     auth: false
   },
   {
@@ -28,6 +30,12 @@ export const routesConfig: IRoute[] = [
     element: <>TeacherProfile</>,
     auth: true
   },
+  {
+    path: '/test',
+    element: <TutorVideoStart />,
+    auth: false
+  },
+
   {
     path: '*',
     element: <NotFoundPage />,
