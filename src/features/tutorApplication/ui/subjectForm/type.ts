@@ -14,9 +14,9 @@ export interface ProfileCategoriesProps {
 }
 
 export interface Subject {
-  discipline: string;
-  status: string;
-  target: string;
+  discipline: { value: string; label: string };
+  status: { value: string; label: string };
+  target: { value: string; label: string };
   experience: string;
   isActive: boolean;
   categories: {
