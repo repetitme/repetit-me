@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useAppContext } from '../../app/AppContext';
 
+import { useAppContext } from '../../app/AppContext';
 import {
+  IStudentData,
   IStudentProfile,
   ITutorData,
+  ITutorProfile,
   navOptions,
   navOptionsStudent,
-  navOptionsTutor,
-  ITutorProfile,
-  IStudentData
+  navOptionsTutor
 } from '../../shared/types/userData';
 import { mockStudentProfile } from '../../widgets/UserCard/fakeApi/mockData';
 import {
@@ -26,7 +26,9 @@ const useStudentRequests = () => {
   const { role } = useAppContext();
   const [listHeight, setListHeight] = useState<number | undefined>(undefined);
   const requests = Object.values(navOptions[role as keyof typeof navOptions]);
-  const [active, setActive] = useState(navOptions[role as keyof typeof navOptions]);
+  const [active, setActive] = useState(
+    navOptions[role as keyof typeof navOptions]
+  );
   const [loaded, setLoaded] = useState(
     Object.fromEntries(
       Object.entries(loadedState).map(([key, value]) => [key, !value])
@@ -39,7 +41,7 @@ const useStudentRequests = () => {
   ]);
   const [count, setCount] = useState(['', '', '']);
   const [visible, setVisible] = useState(3);
-  const onClick = (value: typeof navOptions['student' | 'tutor']) => () => {
+  const onClick = (value: (typeof navOptions)['student' | 'tutor']) => () => {
     if (active === value) return;
     setLoaded({ ...loadedState, content: false, btn: false });
     setActive(value);
@@ -56,7 +58,10 @@ const useStudentRequests = () => {
         if (profile && profile.requests) {
           setCount(
             requests.map((value) =>
-              (profile.requests?.[value as keyof typeof profile.requests].ids.length || 0).toString()
+              (
+                profile.requests?.[value as keyof typeof profile.requests].ids
+                  .length || 0
+              ).toString()
             )
           );
         }
@@ -65,7 +70,9 @@ const useStudentRequests = () => {
             getTutors().then((tutors) => {
               const filtered = requests.map((key) => {
                 return tutors.filter((tutor) => {
-                  return profile?.requests?.[key as keyof typeof profile.requests].ids.includes(tutor.id);
+                  return profile?.requests?.[
+                    key as keyof typeof profile.requests
+                  ].ids.includes(tutor.id);
                 });
               });
               setList(filtered);

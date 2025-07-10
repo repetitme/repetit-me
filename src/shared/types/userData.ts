@@ -38,9 +38,9 @@ export enum navOptionsTutor {
 }
 
 export const navOptions = {
-  'student': navOptionsStudent,
-  'tutor': navOptionsTutor
-}
+  student: navOptionsStudent,
+  tutor: navOptionsTutor
+};
 
 export interface IStudentProfile extends IStudentData {
   requests: {

@@ -29,18 +29,18 @@ const UserCard: React.FC<IUserData> = ({
           )}
           <div className={styles.card__buttons}>
             <Button text="Подробнее" variant="white" />
-           {!isMyTutors && (
-          <Button
-            text={
-              !navOption
-                ? 'Связаться'
-                : isTutorRequests
-                  ? 'Принять'
-                  : 'Отменить заявку'
-            }
-            variant={!isMyRequests ? 'purple' : 'red'}
-          />
-        )}
+            {!isMyTutors && (
+              <Button
+                text={
+                  !navOption
+                    ? 'Связаться'
+                    : isTutorRequests
+                      ? 'Принять'
+                      : 'Отменить заявку'
+                }
+                variant={!isMyRequests ? 'purple' : 'red'}
+              />
+            )}
           </div>
         </>
       ) : role === 'teacher' ? (
