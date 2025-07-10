@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 
-import iconClose from '../../assets/icons/closeIcon.svg';
+import iconCloseWhite from '../../assets/icons/closeIconWhite.svg';
 import ModalOverlay from '../../shared/ui/overlay';
 
 import styles from './index.module.scss';
@@ -22,7 +22,7 @@ export const Modal: FC<TModal> = ({
         {children}
         <img
           className={styles.container__content_close}
-          src={iconClose}
+          src={iconCloseWhite}
           alt="Закрыть окно"
           onClick={onToggleModalState}
         />
