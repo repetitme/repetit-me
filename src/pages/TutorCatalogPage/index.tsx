@@ -5,7 +5,7 @@ import TutorFilters from '../../features/TutorFilters/ui';
 import useClickOutside from '../../shared/hooks/useClickOutside';
 import { ITutorData } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
-import { TelegramBlock } from '../../shared/ui/telegramBlock';
+import TelegramBlock from '../../shared/ui/telegramBlock';
 import UserCard from '../../widgets/UserCard';
 import useUsersData from '../../widgets/UserCard/fakeApi/useUserData';
 

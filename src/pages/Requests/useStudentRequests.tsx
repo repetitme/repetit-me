@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useAppContext } from '../../app/AppContext';
 
 import {
   IStudentProfile,
@@ -21,10 +22,11 @@ const loadedState = {
   btn: true
 };
 
-const useStudentRequests = (isStudent: boolean) => {
+const useStudentRequests = () => {
+  const { role } = useAppContext();
   const [listHeight, setListHeight] = useState<number | undefined>(undefined);
-  const requests = Object.values(navOptions[isStudent ? 'student' : 'tutor']);
-  const [active, setActive] = useState(navOptions[isStudent ? 'student' : 'tutor']);
+  const requests = Object.values(navOptions[role as keyof typeof navOptions]);
+  const [active, setActive] = useState(navOptions[role as keyof typeof navOptions]);
   const [loaded, setLoaded] = useState(
     Object.fromEntries(
       Object.entries(loadedState).map(([key, value]) => [key, !value])

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import cn from 'classnames';
 
+import { useAppContext } from '../../app/AppContext';
 import {
   IStudentData,
   ITutorData,
@@ -16,8 +17,8 @@ import useStudentRequests from './useStudentRequests';
 
 import styles from './index.module.scss';
 
-const Requests: React.FC<IUserData> = ({ role }) => {
-  const isStudent = role === 'student';
+const Requests: React.FC = () => {
+  const { role } = useAppContext();
   const {
     listHeight,
     active,
@@ -27,7 +28,7 @@ const Requests: React.FC<IUserData> = ({ role }) => {
     visible,
     onClick,
     setVisible
-  } = useStudentRequests(isStudent);
+  } = useStudentRequests();
   return (
     <main className={styles.wrapper}>
       <h2 className={styles.title}>Мои заявки</h2>
@@ -35,25 +36,36 @@ const Requests: React.FC<IUserData> = ({ role }) => {
         <aside className={styles.sidebar}>
           <nav className={styles.tabs}>
             <ul className={styles.tabs__list}>
-              {Object.values(navOptions[isStudent ? 'student' : 'tutor']).map((value) => (
-                <li
-                  key={value}
-                  className={cn(styles.tabs__item, {
-                    [styles.tabs__item_active]: active === value
-                  })}
-                >
-                  <button className={styles.tabs__btn} onClick={onClick(value)}>
-                    {value}
-                  </button>
-                  <span
-                    className={cn(styles.tabs__count, {
-                      [styles.tabs__count_active]: loaded.count
+              {Object.values(navOptions[role as keyof typeof navOptions]).map(
+                (value) => (
+                  <li
+                    key={value}
+                    className={cn(styles.tabs__item, {
+                      [styles.tabs__item_active]: active === value
                     })}
                   >
-                    {count[Object.values(navOptions[isStudent ? 'student' : 'tutor']).indexOf(value)]}
-                  </span>
-                </li>
-              ))}
+                    <button
+                      className={styles.tabs__btn}
+                      onClick={onClick(value)}
+                    >
+                      {value}
+                    </button>
+                    <span
+                      className={cn(styles.tabs__count, {
+                        [styles.tabs__count_active]: loaded.count
+                      })}
+                    >
+                      {
+                        count[
+                          Object.values(
+                            navOptions[role as keyof typeof navOptions]
+                          ).indexOf(value)
+                        ]
+                      }
+                    </span>
+                  </li>
+                )
+              )}
             </ul>
           </nav>
           <TelegramBlock />
@@ -70,20 +82,32 @@ const Requests: React.FC<IUserData> = ({ role }) => {
           style={{ maxHeight: listHeight ? `${listHeight}px` : undefined }}
         >
           {loaded.content &&
-            list[Object.values(isStudent ? navOptionsStudent : navOptionsTutor).indexOf(active)]
+            list[
+              Object.values(
+                navOptions[role as keyof typeof navOptions]
+              ).indexOf(active)
+            ]
               .slice(0, visible)
               .map((person: ITutorData | IStudentData) => (
                 <article key={person.id} className={styles.content__item}>
                   <UserCard
-                    role={isStudent ? 'student' : 'tutor'}
-                    navOption={active as unknown as navOptionsStudent | navOptionsTutor}
+                    role={role}
+                    navOption={
+                      active as unknown as navOptionsStudent | navOptionsTutor
+                    }
                     tutorData={person as ITutorData}
                     studentData={person as IStudentData}
                   />
                 </article>
               ))}
           {visible <
-            Number(count[Object.values(navOptions[isStudent ? 'student' : 'tutor']).indexOf(active)]) && (
+            Number(
+              count[
+                Object.values(
+                  navOptions[role as keyof typeof navOptions]
+                ).indexOf(active)
+              ]
+            ) && (
             <button
               className={cn(styles.content__btn, {
                 [styles.content__btn_active]: loaded.btn

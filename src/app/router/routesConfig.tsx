@@ -13,7 +13,7 @@ export const routesConfig: IRoute[] = [
   },
   {
     path: '/requests',
-    element: <Requests role='student'/>,
+    element: <Requests />,
     auth: false
   },
   {
