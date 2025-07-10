@@ -1,10 +1,11 @@
-import { ProfileFormData } from '../../features/TutorApplication/ui/profileInfo/type';
-import { Subject } from '../../features/TutorApplication/ui/subjectForm/type'
+import { Diploma } from '../../features/tutorApplication/ui/diplomasUpload/ type'
+import { ProfileFormData } from '../../features/tutorApplication/ui/ProfileInfo/type';
+import { Subject } from '../../features/tutorApplication/ui/subjectForm/type';
 
-export interface TutorApplicationData {
+export default interface TutorApplicationData {
   profileInfo: ProfileFormData;
   subjects: Subject[];
-  // diplomas: Diploma[];
-  // videos: { url: string };
-  // schedule: { days: string[] };
+  diplomas: Diploma[];
+  videos: { url: string };
+  schedule: { days: string[] };
 }

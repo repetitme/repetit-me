@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { SetStateAction, useCallback, useState } from 'react';
 
 import cn from 'classnames';
 
@@ -9,20 +9,50 @@ import { blockContent, requirements } from './data';
 
 import styles from './index.module.scss';
 
-const DiplomasUpload: React.FC = () => {
+import { Diploma, DiplomasUploadProps } from './ type';
+
+const DiplomasUpload: React.FC = ({
+  onDiplomasChange
+}: DiplomasUploadProps) => {
   const MAX_DOCUMENTS = 10;
   const maxSizeBytes = 10 * 1024 * 1024;
   const acceptTypesVideo = ['image/png', 'image/jpg', 'image/jpeg'];
   const [files, setFiles] = useState<File[]>([]);
 
-  const handleProcessedFiles = (newFiles: File[]) => {
-    const combinedFiles = [...files, ...newFiles];
-    if (combinedFiles.length > MAX_DOCUMENTS) {
-      setFiles(combinedFiles.slice(0, MAX_DOCUMENTS));
-    } else {
-      setFiles(combinedFiles);
-    }
-  };
+  const handleFilesUpdate = useCallback(
+    (newFilesOrUpdater: SetStateAction<File[]>) => {
+      setFiles((prevFiles) => {
+        // Вычисляем новое значение файлов в зависимости от типа аргумента
+        const newFiles =
+          typeof newFilesOrUpdater === 'function'
+            ? newFilesOrUpdater(prevFiles)
+            : newFilesOrUpdater;
+
+        // Вызываем колбэк с преобразованными данными
+        if (onDiplomasChange) {
+          const diplomas: Diploma[] = newFiles.map((file) => ({
+            file,
+            url: URL.createObjectURL(file)
+          }));
+          onDiplomasChange(diplomas);
+        }
+
+        return newFiles;
+      });
+    },
+    [onDiplomasChange]
+  );
+
+  // Обработчик для drag and drop
+  const handleProcessedFiles = useCallback(
+    (newFiles: File[]) => {
+      handleFilesUpdate((prevFiles) => {
+        const combinedFiles = [...prevFiles, ...newFiles];
+        return combinedFiles.slice(0, MAX_DOCUMENTS);
+      });
+    },
+    [MAX_DOCUMENTS, handleFilesUpdate]
+  );
 
   const {
     isDragging,
@@ -42,7 +72,7 @@ const DiplomasUpload: React.FC = () => {
   const { handleFileChange, triggerFileSelect, fileInputRef, errorMessage } =
     useFileUpload({
       files,
-      setFiles,
+      setFiles: handleFilesUpdate,
       maxFiles: MAX_DOCUMENTS,
       acceptTypes: acceptTypesVideo,
       typeConstraints: {
