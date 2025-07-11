@@ -48,12 +48,12 @@ const TutorApplication = () => {
 
   const handleBack = () => setCurrentStep((prev) => prev - 1);
 
-  const handleDiplomasChange = (diplomas: Diploma[]) => {
-    setTutorData((prev) => ({
-      ...prev,
-      diplomas: [...diplomas]
-    }));
-  };
+  // const handleDiplomasChange = (diplomas: Diploma[]) => {
+  //   setTutorData((prev) => ({
+  //     ...prev,
+  //     diplomas: [...diplomas]
+  //   }));
+  // };
 
   const handleModalClose = () => {
     // setIsModalOpen(false);
@@ -88,7 +88,7 @@ const TutorApplication = () => {
         text={currentStep === 5 ? 'Сохранить анкету' : 'Сохранить и продолжить'}
         variant={isStepValid() ? 'purple' : 'white'}
         disabled={!isStepValid()}
-        onClick={() => (currentStep === 5 ? handleSubmit() : () => {})} // handlenext
+        onClick={() => (currentStep === 5 ? handleSubmit() : handleNext)}
       />
     </div>
   );
@@ -109,13 +109,13 @@ const TutorApplication = () => {
           <SubjectForm
             initialData={tutorData.subjects}
             onChange={(subjects: Subject[]) =>
-              setTutorData((prev) => ({ ...prev, subjects: data }))
+              setTutorData((prev) => ({ ...prev, subjects: subjects }))
             }
           />
         )}
-        {currentStep === 3 && (
+        {/* {currentStep === 3 && (
           <DiplomasUpload onDiplomasChange={handleDiplomasChange} />
-        )}
+        )} */}
 
         {/* Добавьте другие шаги по мере необходимости */}
 

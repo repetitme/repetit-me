@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import iconAdd from '../../../../assets/icons/icon_add.svg';
 import SubjectFormItem from './subjectFormItem';
@@ -20,12 +20,12 @@ const SubjectForm = ({ onChange, initialData }: SubjectFormProps) => {
     onChange(updatedSubjects.filter((subject) => subject.isActive)); // Фильтруем активные
   };
 
- const [blocksCount, setBlocksCount] = useState(1);
+  const [blocksCount, setBlocksCount] = useState(1);
 
   const handleAddBlock = () => {
     if (blocksCount < MAX_BLOCKS) {
-      setBlocksCount(prev => prev + 1);
-      setSubjects(prev => [
+      setBlocksCount((prev) => prev + 1);
+      setSubjects((prev) => [
         ...prev,
         {
           discipline: { value: '', label: '' },
@@ -39,10 +39,9 @@ const SubjectForm = ({ onChange, initialData }: SubjectFormProps) => {
     }
   };
 
-
   return (
     <div className={styles.container}>
-       {Array.from({ length: blocksCount }).map((_, index) => (
+      {Array.from({ length: blocksCount }).map((_, index) => (
         <SubjectFormItem
           key={index}
           index={index}
