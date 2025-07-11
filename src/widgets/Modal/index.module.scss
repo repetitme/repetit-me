@@ -1,0 +1,46 @@
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  padding: 40px;
+  border: 1px solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  background-image:
+    linear-gradient(white, white),
+    linear-gradient(
+      288.86deg,
+      #3dc5ff 5.24%,
+      #4558ff 29.77%,
+      #865bff 60.98%,
+      #ff71f9 89.96%,
+      #ffaa47 116.71%
+    );
+  border-radius: 40px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+
+  &__content {
+    position: relative;
+    inline-size: 100%;
+  }
+
+  &__close {
+    position: absolute;
+    border: none;
+    top: -60px;
+    right: -80px;
+    cursor: pointer;
+    outline: none;
+    background-color: transparent;
+  }
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
