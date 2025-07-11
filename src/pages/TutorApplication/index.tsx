@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 import ApplicationSuccessModal from '../../features/tutorApplication/ui/ApplicationSuccessModal';
 import ProfileInfo from '../../features/tutorApplication/ui/ProfileInfo';
-import DiplomasUpload from '../../features/tutorApplication/ui/diplomasUpload';
 import SubjectForm from '../../features/tutorApplication/ui/subjectForm';
 import Button from '../../shared/ui/button';
 import Stepper from '../../shared/ui/stepper';
@@ -10,6 +9,7 @@ import Stepper from '../../shared/ui/stepper';
 import styles from './index.module.scss';
 
 import { Diploma } from '../../features/tutorApplication/ui/diplomasUpload/ type';
+import { Subject } from '../../features/tutorApplication/ui/subjectForm/type';
 import TutorApplicationData from './type';
 
 // Начальные значения, соответствующие типам
@@ -86,9 +86,9 @@ const TutorApplication = () => {
       )}
       <Button
         text={currentStep === 5 ? 'Сохранить анкету' : 'Сохранить и продолжить'}
-        variant={isStepValid() ? 'purple' : 'disabled'}
+        variant={isStepValid() ? 'purple' : 'white'}
         disabled={!isStepValid()}
-        onClick={() => (currentStep === 5 ? handleSubmit() : handleNext())}
+        onClick={() => (currentStep === 5 ? handleSubmit() : () => {})} // handlenext
       />
     </div>
   );
@@ -108,7 +108,7 @@ const TutorApplication = () => {
         {currentStep === 2 && (
           <SubjectForm
             initialData={tutorData.subjects}
-            onDataChange={(data) =>
+            onChange={(subjects: Subject[]) =>
               setTutorData((prev) => ({ ...prev, subjects: data }))
             }
           />
