@@ -19,7 +19,7 @@ const getHeaderConfig = ({
     ],
     tutor: [
       { text: 'Анкета', path: '/tutor-application' },
-      { text: 'Мои заявки', path: '/tutor-requests' },
+      { text: 'Мои заявки', path: '/requests' },
       { text: 'Личный кабинет', path: '/tutor-profile' }
     ]
   };

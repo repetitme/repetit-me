@@ -36,7 +36,7 @@ const Requests: React.FC = () => {
         <aside className={styles.sidebar}>
           <nav className={styles.tabs}>
             <ul className={styles.tabs__list}>
-              {Object.values(navOptions[role as keyof typeof navOptions]).map(
+              {Object.values(navOptionsStudent || navOptionsTutor).map(
                 (value) => (
                   <li
                     key={value}

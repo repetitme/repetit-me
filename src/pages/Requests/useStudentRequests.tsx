@@ -27,8 +27,9 @@ const useStudentRequests = () => {
   const [listHeight, setListHeight] = useState<number | undefined>(undefined);
   const requests = Object.values(navOptions[role as keyof typeof navOptions]);
   const [active, setActive] = useState(
-    navOptions[role as keyof typeof navOptions]
+    navOptions[role as keyof typeof navOptions].myRequests
   );
+  console.log(navOptions[role as keyof typeof navOptions], 'role', role);
   const [loaded, setLoaded] = useState(
     Object.fromEntries(
       Object.entries(loadedState).map(([key, value]) => [key, !value])
@@ -41,7 +42,7 @@ const useStudentRequests = () => {
   ]);
   const [count, setCount] = useState(['', '', '']);
   const [visible, setVisible] = useState(3);
-  const onClick = (value: (typeof navOptions)['student' | 'tutor']) => () => {
+  const onClick = (value: typeof active) => () => {
     if (active === value) return;
     setLoaded({ ...loadedState, content: false, btn: false });
     setActive(value);
