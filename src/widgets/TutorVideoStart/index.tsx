@@ -9,7 +9,6 @@ import styles from './index.module.scss';
 
 const TutorVideoStart: FC = () => {
   const [openModalState, setOpenModalState] = useState(false);
-
   const onToggleModalState = () => {
     setOpenModalState(!openModalState);
   };
@@ -28,17 +27,8 @@ const TutorVideoStart: FC = () => {
       </InfoBlock>
 
       {openModalState && (
-        <Modal
-          onToggleModalState={onToggleModalState}
-          openModalState={openModalState}
-        >
-          <div className={styles.container__videos_video}>
-            <video
-              controls
-              className={styles.container__full}
-              src={videoMock}
-            />
-          </div>
+        <Modal>
+          <video controls className={styles.container__full} src={videoMock} />
         </Modal>
       )}
     </>

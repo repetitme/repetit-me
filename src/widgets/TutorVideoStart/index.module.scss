@@ -19,6 +19,7 @@
     inline-size: 40px;
     block-size: 40px;
     visibility: hidden;
+    pointer-events: none;
   }
 
   &__full {

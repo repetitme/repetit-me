@@ -1,9 +1,10 @@
-import { FC, ReactNode, useEffect, useState } from 'react';
+import { FC } from 'react';
+import { useEffect, useState } from 'react';
 
 import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
 
-import iconCloseWhite from '../../assets/icons/closeIconWhite.svg';
+import iconClose from '../../assets/icons/closeIcon.svg';
 import AuthForm from '../../features/auth';
 import useClickOutside from '../../shared/hooks/useClickOutside';
 import useScrollLock from '../../shared/hooks/useScrollLock';
@@ -11,22 +12,18 @@ import ModalOverlay from '../../shared/ui/overlay';
 
 import styles from './index.module.scss';
 
-type TModal = {
+interface AuthModalProps {
   login?: boolean;
-  children: ReactNode;
-};
+}
 
-export const Modal: FC<TModal> = ({ login, children }) => {
+const AuthModal: FC<AuthModalProps> = ({ login }) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const onClose = () => {
     setIsOpen(false);
-    if (!children) {
-      setTimeout(() => {
-        navigate(-1);
-      }, 300);
-      return;
-    }
+    setTimeout(() => {
+      navigate(-1);
+    }, 300);
   };
 
   useEffect(() => {
@@ -44,15 +41,17 @@ export const Modal: FC<TModal> = ({ login, children }) => {
   return (
     <>
       <div
-        className={cn(styles.modal, { [styles.active]: isOpen })}
+        className={cn(styles.modal, {
+          [styles.active]: isOpen
+        })}
         ref={modalRef}
         onClick={(e) => e.stopPropagation()}
       >
         <div className={styles.modal__content}>
-          {children ?? <AuthForm closeModal={onClose} login={login} />}
+          <AuthForm closeModal={onClose} login={login} />
           <button onClick={onClose} className={styles.modal__close}>
             <img
-              src={iconCloseWhite}
+              src={iconClose}
               alt="иконка закрытия модального окна авторизации"
             />
           </button>
@@ -63,4 +62,4 @@ export const Modal: FC<TModal> = ({ login, children }) => {
   );
 };
 
-export default Modal;
+export default AuthModal;

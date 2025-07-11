@@ -2,8 +2,7 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.8);
-  padding: 40px;
+  padding: 60px 60px 0;
   border: 1px solid transparent;
   background-clip: padding-box, border-box;
   background-origin: border-box;
@@ -18,21 +17,25 @@
       #ffaa47 116.71%
     );
   border-radius: 40px;
+  inline-size: 100%;
+  max-inline-size: 800px;
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
+  transform: translate(-50%, -50%) scale(0.8);
 
   &__content {
     position: relative;
     inline-size: 100%;
+    overflow: hidden;
   }
 
   &__close {
     position: absolute;
     border: none;
-    top: -60px;
-    right: -80px;
+    top: 0;
+    right: 0;
     cursor: pointer;
     outline: none;
     background-color: transparent;

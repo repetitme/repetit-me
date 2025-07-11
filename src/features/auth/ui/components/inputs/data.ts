@@ -1,6 +1,6 @@
-import { TInputData } from './types';
+import { TAuthInputInterface, TInputData } from './types';
 
-const authInputsData: TInputData = {
+export const authInputsData: TInputData = {
   name: [
     'name',
     'Введите имя',
@@ -32,4 +32,10 @@ const authInputsData: TInputData = {
   ]
 };
 
-export default authInputsData;
+export const requiredErrorMessage: Partial<
+  Record<TAuthInputInterface['name'], string>
+> = {
+  name: 'Пожалуйста, укажите имя',
+  tg: 'Пожалуйста, укажите никнейм',
+  code: 'Пожалуйста, введите шестизначный код'
+};
