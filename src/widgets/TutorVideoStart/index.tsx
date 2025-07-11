@@ -27,7 +27,7 @@ const TutorVideoStart: FC = () => {
       </InfoBlock>
 
       {openModalState && (
-        <Modal>
+        <Modal close={onToggleModalState} >
           <video controls className={styles.container__full} src={videoMock} />
         </Modal>
       )}

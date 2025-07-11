@@ -14,19 +14,19 @@ import styles from './index.module.scss';
 type TModal = {
   login?: boolean;
   children: ReactNode;
+  close?: () => void;
 };
 
-export const Modal: FC<TModal> = ({ login, children }) => {
+export const Modal: FC<TModal> = ({ login, children, close }) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const onClose = () => {
     setIsOpen(false);
+    setTimeout(() => {
     if (!children) {
-      setTimeout(() => {
         navigate(-1);
+      } else close && close();
       }, 300);
-      return;
-    }
   };
 
   useEffect(() => {
