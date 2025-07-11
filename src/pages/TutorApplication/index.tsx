@@ -10,6 +10,7 @@ import styles from './index.module.scss';
 
 import { Diploma } from '../../features/tutorApplication/ui/diplomasUpload/ type';
 import TutorApplicationData from './type';
+import ApplicationSuccessModal from '../../features/tutorApplication/ui/ApplicationSuccessModal'
 
 // Начальные значения, соответствующие типам
 const initialTutorData: TutorApplicationData = {
@@ -21,7 +22,7 @@ const initialTutorData: TutorApplicationData = {
   },
   subjects: [],
   diplomas: [],
-  video: {
+  videos: {
     url: ''
   },
   schedule: {
@@ -56,7 +57,7 @@ const TutorApplication = () => {
 
   const handleSubmit = () => {
     console.log('Данные анкеты:', tutorData); // Для отладки
-    setIsModalOpen(true); // Показываем модалку "Успешно"
+    setIsModalOpen(true);
   };
 
   const isStepValid = () => {
@@ -114,7 +115,7 @@ const TutorApplication = () => {
         {/* Добавьте другие шаги по мере необходимости */}
 
         {renderButtons()}
-        {isModalOpen && <ApplicationSuccessModal />}
+         <ApplicationSuccessModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </main>
     </>
   );

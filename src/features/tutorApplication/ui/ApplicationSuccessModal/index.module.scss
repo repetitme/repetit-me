@@ -1,0 +1,58 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  inline-size: 100%;
+  max-inline-size: 600px;
+  padding: 32px 32px 40px;
+  border-radius: var(--border-radius-blocks);
+  background-color: var(--clr-main);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%) scale(0.8);
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &__close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    inline-size: 24px;
+    block-size: 24px;
+    position: absolute;
+    top: -45px;
+    right: 0;
+    z-index: 1;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-family: var(--ffm-title);
+    font-weight: 500;
+    margin-block-end: 16px;
+  }
+
+  &__text {
+    font-size: 20px;
+    font-family: var(--ffm-default);
+    line-height: 1.36;
+    text-align: center;
+    margin-block-end: 28px;
+  }
+
+  &__button {
+    max-inline-size: 312px;
+  }
+}
