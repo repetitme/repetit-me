@@ -24,6 +24,7 @@ const ApplicationSuccessModal = ({
 
   const handleProfileClick = () => {
     onClose();
+
     navigate('/tutor-profile');
   };
 

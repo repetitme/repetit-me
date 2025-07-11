@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import useForm from '../../../../shared/hooks/useForm';
 import useScrollLock from '../../../../shared/hooks/useScrollLock';
@@ -11,9 +11,9 @@ import AvatarUploadModal from './AvatarUploadModal';
 
 import styles from './index.module.scss';
 
-import { ProfileFormData } from './type';
+import { ProfileFormData, ProfileInfoProps } from './type';
 
-const ProfileInfo = () => {
+const ProfileInfo = ({ onDataChange }: ProfileInfoProps) => {
   const { values, handleChange, setValues } = useForm<ProfileFormData>({
     firstName: '',
     lastName: '',
@@ -22,6 +22,10 @@ const ProfileInfo = () => {
     about: '',
     avatar: ''
   });
+
+  useEffect(() => {
+    onDataChange(values);
+  }, [values, onDataChange]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   useScrollLock(isModalOpen);

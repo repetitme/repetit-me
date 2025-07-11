@@ -6,3 +6,7 @@ export type ProfileFormData = {
   about?: string;
   avatar: string;
 };
+
+export interface ProfileInfoProps {
+  onDataChange: (data: ProfileFormData) => void;
+}

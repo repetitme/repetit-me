@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import ApplicationSuccessModal from '../../features/tutorApplication/ui/ApplicationSuccessModal';
 import ProfileInfo from '../../features/tutorApplication/ui/ProfileInfo';
 import DiplomasUpload from '../../features/tutorApplication/ui/diplomasUpload';
 import SubjectForm from '../../features/tutorApplication/ui/subjectForm';
@@ -10,7 +11,6 @@ import styles from './index.module.scss';
 
 import { Diploma } from '../../features/tutorApplication/ui/diplomasUpload/ type';
 import TutorApplicationData from './type';
-import ApplicationSuccessModal from '../../features/tutorApplication/ui/ApplicationSuccessModal'
 
 // Начальные значения, соответствующие типам
 const initialTutorData: TutorApplicationData = {
@@ -53,6 +53,11 @@ const TutorApplication = () => {
       ...prev,
       diplomas: [...diplomas]
     }));
+  };
+
+  const handleModalClose = () => {
+    // setIsModalOpen(false);
+    console.log('Модалка');
   };
 
   const handleSubmit = () => {
@@ -115,7 +120,10 @@ const TutorApplication = () => {
         {/* Добавьте другие шаги по мере необходимости */}
 
         {renderButtons()}
-         <ApplicationSuccessModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        <ApplicationSuccessModal
+          isOpen={isModalOpen}
+          onClose={handleModalClose}
+        />
       </main>
     </>
   );

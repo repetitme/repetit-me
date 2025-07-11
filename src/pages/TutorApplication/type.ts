@@ -7,5 +7,5 @@ export default interface TutorApplicationData {
   subjects: Subject[];
   diplomas: Diploma[];
   videos: { url: string };
-  schedule: { days: string[] };
+  // schedule: { days: string[] };
 }
