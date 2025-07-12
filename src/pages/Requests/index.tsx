@@ -36,7 +36,7 @@ const Requests: React.FC = () => {
         <aside className={styles.sidebar}>
           <nav className={styles.tabs}>
             <ul className={styles.tabs__list}>
-              {Object.values(navOptionsStudent || navOptionsTutor).map(
+              {Object.values(navOptions[role as keyof typeof navOptions]).map(
                 (value) => (
                   <li
                     key={value}
@@ -88,13 +88,11 @@ const Requests: React.FC = () => {
               ).indexOf(active)
             ]
               .slice(0, visible)
-              .map((person: ITutorData | IStudentData) => (
+              .map((person) => (
                 <article key={person.id} className={styles.content__item}>
                   <UserCard
                     role={role}
-                    navOption={
-                      active as unknown as navOptionsStudent | navOptionsTutor
-                    }
+                    navOption={active}
                     tutorData={person as ITutorData}
                     studentData={person as IStudentData}
                   />

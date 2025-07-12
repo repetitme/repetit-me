@@ -14,12 +14,12 @@ const UserCard: React.FC<IUserData> = ({
   handleSubmit,
   navOption
 }) => {
-  const isMyTutors = navOption === navOptions.myTutors;
-  const isMyRequests = navOption === navOptions.myRequests;
-  const isTutorRequests = navOption === navOptions.tutorRequests;
+  const isMyList = navOption === navOptions[role as keyof typeof navOptions].myList;
+  const isMyRequests = navOption === navOptions[role as keyof typeof navOptions].myRequests;
+  const isTutorRequests = navOption === navOptions[role as keyof typeof navOptions].tutorRequests;
   return (
     <div className={cn(styles.card, role === 'card' && styles.card__resize)}>
-      {role === 'student' || role === 'unauth' ? (
+      {role === 'tutor' || role === 'unauth' ? (
         // Карточка репетитора
         <>
           {tutorData ? (
@@ -29,7 +29,7 @@ const UserCard: React.FC<IUserData> = ({
           )}
           <div className={styles.card__buttons}>
             <Button text="Подробнее" variant="white" />
-            {!isMyTutors && (
+            {!isMyList && (
               <Button
                 text={
                   !navOption
@@ -43,7 +43,7 @@ const UserCard: React.FC<IUserData> = ({
             )}
           </div>
         </>
-      ) : role === 'teacher' ? (
+      ) : role === 'student' ? (
         // Карточка ученика
         <>
           {studentData ? (

@@ -25,11 +25,10 @@ const loadedState = {
 const useStudentRequests = () => {
   const { role } = useAppContext();
   const [listHeight, setListHeight] = useState<number | undefined>(undefined);
-  const requests = Object.values(navOptions[role as keyof typeof navOptions]);
+  const requests = Object.values(navOptionsStudent || navOptionsTutor);
   const [active, setActive] = useState(
-    navOptions[role as keyof typeof navOptions].myRequests
+    navOptions[role as keyof typeof navOptions].myList
   );
-  console.log(navOptions[role as keyof typeof navOptions], 'role', role);
   const [loaded, setLoaded] = useState(
     Object.fromEntries(
       Object.entries(loadedState).map(([key, value]) => [key, !value])
@@ -58,22 +57,17 @@ const useStudentRequests = () => {
       .then((profile: IStudentProfile | undefined) => {
         if (profile && profile.requests) {
           setCount(
-            requests.map((value) =>
-              (
-                profile.requests?.[value as keyof typeof profile.requests].ids
-                  .length || 0
-              ).toString()
+            requests.map((value: navOptionsStudent) =>
+              (profile.requests?.[value].ids.length || 0).toString()
             )
           );
         }
         setTimeout(
           () =>
             getTutors().then((tutors) => {
-              const filtered = requests.map((key) => {
+              const filtered = requests.map((key: navOptionsStudent) => {
                 return tutors.filter((tutor) => {
-                  return profile?.requests?.[
-                    key as keyof typeof profile.requests
-                  ].ids.includes(tutor.id);
+                  return profile?.requests?.[key].ids.includes(tutor.id);
                 });
               });
               setList(filtered);
