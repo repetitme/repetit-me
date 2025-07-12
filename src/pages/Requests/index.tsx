@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 import cn from 'classnames';
 
@@ -6,10 +6,7 @@ import { useAppContext } from '../../app/AppContext';
 import {
   IStudentData,
   ITutorData,
-  IUserData,
-  navOptions,
-  navOptionsStudent,
-  navOptionsTutor
+  navOptions
 } from '../../shared/types/userData';
 import TelegramBlock from '../../shared/ui/telegramBlock';
 import UserCard from '../../widgets/UserCard';

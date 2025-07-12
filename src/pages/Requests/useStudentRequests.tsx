@@ -5,7 +5,6 @@ import {
   IStudentData,
   IStudentProfile,
   ITutorData,
-  ITutorProfile,
   navOptions,
   navOptionsStudent,
   navOptionsTutor
