@@ -1,0 +1,30 @@
+.lessonStudent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inline-size: 20px;
+    block-size: 20px;
+    border: 1px solid;
+    border-radius: 20px;
+
+    &_text {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 0;
+    }
+  }
+
+  &__purple {
+    color: #9747ff;
+  }
+
+  &__pink {
+    color: #e530ad;
+  }
+}
