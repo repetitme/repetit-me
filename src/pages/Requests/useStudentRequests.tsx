@@ -10,7 +10,10 @@ import {
   navOptionsStudent,
   navOptionsTutor
 } from '../../shared/types/userData';
-import { mockStudentProfile, mockTutorProfile } from '../../widgets/UserCard/fakeApi/mockData';
+import {
+  mockStudentProfile,
+  mockTutorProfile
+} from '../../widgets/UserCard/fakeApi/mockData';
 import {
   getProfile,
   getStudents,
@@ -27,7 +30,9 @@ const useStudentRequests = () => {
   const { role } = useAppContext();
   const isStudent = role === 'student';
   const [listHeight, setListHeight] = useState<number | undefined>(undefined);
-  const requests = Object.values(navOptionsStudent || navOptionsTutor);
+  const requests = Object.values(
+    role === 'student' ? navOptionsStudent : navOptionsTutor
+  );
   const [active, setActive] = useState(
     navOptions[role as keyof typeof navOptions].myList
   );
@@ -57,7 +62,7 @@ const useStudentRequests = () => {
   useEffect(() => {
     // Mock API call to get the student or tutor profile
     getProfile(
-      role === 'student' ? mockStudentProfile[0].id : mockTutorProfile[0].id, 
+      role === 'student' ? mockStudentProfile[0].id : mockTutorProfile[0].id,
       role as 'student' | 'tutor'
     )
       .then((profile: IStudentProfile | ITutorProfile | undefined) => {
@@ -80,13 +85,16 @@ const useStudentRequests = () => {
               const filtered = requests.map(
                 (key: navOptionsStudent | navOptionsTutor) => {
                   return person.filter((person) => {
-                    return profile && (
-                      profile.requests?.[
-                        key as keyof typeof profile.requests
-                      ] as {
-                        ids: string[];
-                      }
-                    )?.ids.includes(person.id);
+                    return (
+                      profile &&
+                      (
+                        profile.requests?.[
+                          key as keyof typeof profile.requests
+                        ] as {
+                          ids: string[];
+                        }
+                      )?.ids.includes(person.id)
+                    );
                   });
                 }
               ) as Array<ITutorData[] | IStudentData[]>;

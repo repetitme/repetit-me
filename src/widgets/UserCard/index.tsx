@@ -14,9 +14,12 @@ const UserCard: React.FC<IUserData> = ({
   handleSubmit,
   navOption
 }) => {
-  const isMyList = navOption === navOptions[role as keyof typeof navOptions].myList;
-  const isMyRequests = navOption === navOptions[role as keyof typeof navOptions].myRequests;
-  const isTutorRequests = navOption === navOptions[role as keyof typeof navOptions].tutorRequests;
+  const isMyList =
+    navOption === navOptions[role as keyof typeof navOptions].myList;
+  const isMyRequests =
+    navOption === navOptions[role as keyof typeof navOptions].myRequests;
+  const isTutorRequests =
+    navOption === navOptions[role as keyof typeof navOptions].tutorRequests;
   return (
     <div className={cn(styles.card, role === 'card' && styles.card__resize)}>
       {role === 'tutor' || role === 'unauth' ? (
