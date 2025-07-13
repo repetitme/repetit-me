@@ -11,7 +11,7 @@ import styles from './index.module.scss';
 
 function App() {
   const location = useLocation();
-  const role = 'tutor'; // unauth, student, tutor
+  const role = 'student'; // unauth, student, tutor
   const showTelegramBlock = !knownPaths.includes(location.pathname); // Булевое значения для выбранных путей
 
   return (

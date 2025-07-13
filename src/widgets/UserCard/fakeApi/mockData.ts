@@ -11,7 +11,8 @@ import Vyacheslav from '../../../assets/images/UserCardIcons/TutorImg/tutor_vyac
 import {
   IStudentData,
   IStudentProfile,
-  ITutorData
+  ITutorData,
+  ITutorProfile,
 } from '../../../shared/types/userData';
 
 export const mockTutors: ITutorData[] = [
@@ -349,6 +350,35 @@ export const mockStudentProfile: IStudentProfile[] = [
           mockTutors[5].id,
           mockTutors[6].id,
           mockTutors[7].id
+        ]
+      }
+    }
+  }
+];
+
+export const mockTutorProfile: ITutorProfile[] = [
+  {
+    id: uuidv4(),
+    name: 'Виктор',
+    image: Victor,
+    experienceYears: 5,
+    description: `Имеется возможность заниматься только в ПН, СР с 18:00 `,
+    price: '2000-2500 ₽/час',
+    subjects: ['Математика'],
+    studentAudience: ['9-11 класс'],
+    purpose: ['Подготовка к ЕГЭ', 'Повышение успеваемости'],
+    rating: 4.5,
+    status: 'Частный преподаватель',
+    requests: {
+      ['Мои ученики']: {
+        ids: [
+          mockStudents[1].id,
+          mockStudents[2].id,    ]
+      },
+      Заявки: { ids: [mockStudents[0].id]},
+      Запросы: {
+        ids: [
+          mockStudents[3].id,
         ]
       }
     }

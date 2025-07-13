@@ -5,13 +5,15 @@ import {
   IStudentData,
   IStudentProfile,
   ITutorData,
+  ITutorProfile,
   navOptions,
   navOptionsStudent,
   navOptionsTutor
 } from '../../shared/types/userData';
-import { mockStudentProfile } from '../../widgets/UserCard/fakeApi/mockData';
+import { mockStudentProfile, mockTutorProfile } from '../../widgets/UserCard/fakeApi/mockData';
 import {
-  getStudentProfile,
+  getProfile,
+  getStudents,
   getTutors
 } from '../../widgets/UserCard/fakeApi/userApi';
 
@@ -23,6 +25,7 @@ const loadedState = {
 
 const useStudentRequests = () => {
   const { role } = useAppContext();
+  const isStudent = role === 'student';
   const [listHeight, setListHeight] = useState<number | undefined>(undefined);
   const requests = Object.values(navOptionsStudent || navOptionsTutor);
   const [active, setActive] = useState(
@@ -52,23 +55,41 @@ const useStudentRequests = () => {
   };
 
   useEffect(() => {
-    getStudentProfile(mockStudentProfile[0].id)
-      .then((profile: IStudentProfile | undefined) => {
+    // Mock API call to get the student or tutor profile
+    getProfile(
+      role === 'student' ? mockStudentProfile[0].id : mockTutorProfile[0].id, 
+      role as 'student' | 'tutor'
+    )
+      .then((profile: IStudentProfile | ITutorProfile | undefined) => {
         if (profile && profile.requests) {
           setCount(
-            requests.map((value: navOptionsStudent) =>
-              (profile.requests?.[value].ids.length || 0).toString()
+            requests.map((key: navOptionsStudent | navOptionsTutor) =>
+              (
+                (
+                  profile.requests?.[key as keyof typeof profile.requests] as {
+                    ids: string[];
+                  }
+                )?.ids?.length || 0
+              ).toString()
             )
           );
         }
         setTimeout(
           () =>
-            getTutors().then((tutors) => {
-              const filtered = requests.map((key: navOptionsStudent) => {
-                return tutors.filter((tutor) => {
-                  return profile?.requests?.[key].ids.includes(tutor.id);
-                });
-              });
+            (isStudent ? getTutors() : getStudents()).then((person) => {
+              const filtered = requests.map(
+                (key: navOptionsStudent | navOptionsTutor) => {
+                  return person.filter((person) => {
+                    return profile && (
+                      profile.requests?.[
+                        key as keyof typeof profile.requests
+                      ] as {
+                        ids: string[];
+                      }
+                    )?.ids.includes(person.id);
+                  });
+                }
+              ) as Array<ITutorData[] | IStudentData[]>;
               setList(filtered);
               setLoaded(loadedState);
             }),
@@ -76,7 +97,10 @@ const useStudentRequests = () => {
         );
       })
       .catch((error) => {
-        console.error('Ошибка при загрузке профиля студента:', error);
+        console.error(
+          `Ошибка при загрузке профиля ${isStudent ? 'студента' : 'репетитора'} :`,
+          error
+        );
         setLoaded(loadedState);
       });
   }, []);
