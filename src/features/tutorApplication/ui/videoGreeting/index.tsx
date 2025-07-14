@@ -53,18 +53,18 @@ const VideoGreeting = ({ onVideoChange, initialVideo }: VideoGreetingProps) => {
   );
 
   useEffect(() => {
-  if (files.length > 0) {
-    const videoData = {
-      file: files[0],
-      url: URL.createObjectURL(files[0])
-    };
-    setVideoPreviewUrl(videoData.url);
-    onVideoChange(videoData);
-  } else {
-    setVideoPreviewUrl(null);
-    onVideoChange(null);
-  }
-}, [files, onVideoChange]);
+    if (files.length > 0) {
+      const videoData = {
+        file: files[0],
+        url: URL.createObjectURL(files[0])
+      };
+      setVideoPreviewUrl(videoData.url);
+      onVideoChange(videoData);
+    } else {
+      setVideoPreviewUrl(null);
+      onVideoChange(null);
+    }
+  }, [files]);
 
   return (
     <Wrapper large className={styles.wrapper}>

@@ -25,7 +25,7 @@ const ProfileInfo = ({ onDataChange }: ProfileInfoProps) => {
 
   useEffect(() => {
     onDataChange(values);
-  }, [values, onDataChange]);
+  }, [values]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   useScrollLock(isModalOpen);
