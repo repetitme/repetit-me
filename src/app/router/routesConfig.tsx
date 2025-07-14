@@ -2,7 +2,7 @@ import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import Requests from '../../pages/Requests';
 import TutorCatalogPage from '../../pages/TutorCatalogPage';
-import PopupWrapper from '../../shared/ui/popupWrapper';
+import Popup from '../../shared/ui/popup';
 
 import { IRoute } from './type';
 
@@ -31,7 +31,7 @@ export const routesConfig: IRoute[] = [
     path: '/test',
     element: (
       <div>
-        <PopupWrapper children={<div>test</div>} buttonText="test" />
+        <Popup children={<div>test</div>} buttonText="test" />
       </div>
     ),
     auth: false

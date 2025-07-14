@@ -11,7 +11,7 @@ import ModalOverlay from '../overlay';
 import styles from './index.module.scss';
 
 interface PopupProps {
-  variant?: 'default' | 'small';
+  variant?: 'default' | 'small' | 'form';
   title?: string;
   children?: ReactNode;
   buttonText?: string;
@@ -20,7 +20,7 @@ interface PopupProps {
   secondaryButtonOnClick?: () => void;
 }
 
-const PopupWrapper: FC<PopupProps> = ({
+const Popup: FC<PopupProps> = ({
   variant = 'default',
   title,
   children,
@@ -30,17 +30,11 @@ const PopupWrapper: FC<PopupProps> = ({
   secondaryButtonOnClick
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const onClose = () => {
     setIsOpen(false);
     setTimeout(() => {
       //delete
     }, 300);
-  };
-
-  const onSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // send
   };
 
   useEffect(() => {
@@ -69,7 +63,7 @@ const PopupWrapper: FC<PopupProps> = ({
           <img src={iconClose} alt="иконка закрытия модального окна" />
         </button>
         <h2 className={styles.popup__title}>{title}</h2>
-        <form className={styles.popup__content} onSubmit={onSubmit}>
+        <div className={styles.popup__content}>
           {children}
           <div className={styles.popup__buttons}>
             <Button
@@ -85,11 +79,11 @@ const PopupWrapper: FC<PopupProps> = ({
               />
             )}
           </div>
-        </form>
+        </div>
       </div>
       <ModalOverlay isOpen={isOpen} />
     </>
   );
 };
 
-export default PopupWrapper;
+export default Popup;
