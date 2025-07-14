@@ -24,7 +24,6 @@ const ApplicationSuccessModal = ({
 
   const handleProfileClick = () => {
     onClose();
-
     navigate('/tutor-profile');
   };
 
@@ -35,7 +34,7 @@ const ApplicationSuccessModal = ({
         ref={modalRef}
         onClick={(e) => e.stopPropagation()}
       >
-        <button onClick={(onClose)} className={styles.modal__close}>
+        <button onClick={onClose} className={styles.modal__close}>
           <img src={closeIcon} alt="иконка закрытия модального окна" />
         </button>
 

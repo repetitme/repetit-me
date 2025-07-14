@@ -1,6 +1,6 @@
 export interface Diploma {
   file: File;
-  url: string; // Object URL для предпросмотра
+  url: string;
 }
 
 export interface DiplomasUploadProps {

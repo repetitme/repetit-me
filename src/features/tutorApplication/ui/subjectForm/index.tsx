@@ -12,7 +12,6 @@ const MAX_BLOCKS = 3;
 const SubjectForm = ({ onChange, initialData }: SubjectFormProps) => {
   const [subjects, setSubjects] = useState<Subject[]>(initialData);
 
-  // Обработчик изменений для каждого предмета
   const handleSubjectChange = (index: number) => (newSubject: Subject) => {
     const updatedSubjects = [...subjects];
     updatedSubjects[index] = newSubject;

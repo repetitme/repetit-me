@@ -13,15 +13,13 @@ const ProfileCategories = ({
   category,
   isLast,
   onAddCategory,
-  onChange // Добавляем этот пропс
+  onChange
 }: ProfileCategoriesProps) => {
-  // const { values, handleChange } = useForm({ price: '' });
-  const { values, handleChange } = useForm({ price: category.price }); // Используем price из category
+  const { values, handleChange } = useForm({ price: category.price });
 
-  // Изменение: передаём новую цену родителю
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleChange(e); // Обновляем локальное состояние
-    onChange?.(e.target.value); // Сообщаем родителю о новой цене
+    handleChange(e);
+    onChange?.(e.target.value);
   };
 
   return (

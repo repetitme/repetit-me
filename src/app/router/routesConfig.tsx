@@ -1,4 +1,3 @@
-import ApplicationSuccessModal from '../../features/tutorApplication/ui/ApplicationSuccessModal';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import TutorApplication from '../../pages/TutorApplication';
@@ -15,11 +14,6 @@ export const routesConfig: IRoute[] = [
   {
     path: '/tutor-catalog',
     element: <TutorCatalogPage />,
-    auth: false
-  },
-  {
-    path: '/test',
-    element: <ApplicationSuccessModal isOpen={true} onClose={() => {}} />,
     auth: false
   },
   {

@@ -20,13 +20,11 @@ const DiplomasUpload = ({ onDiplomasChange }: DiplomasUploadProps) => {
   const handleFilesUpdate = useCallback(
     (newFilesOrUpdater: SetStateAction<File[]>) => {
       setFiles((prevFiles) => {
-        // Вычисляем новое значение файлов в зависимости от типа аргумента
         const newFiles =
           typeof newFilesOrUpdater === 'function'
             ? newFilesOrUpdater(prevFiles)
             : newFilesOrUpdater;
 
-        // Вызываем колбэк с преобразованными данными
         if (onDiplomasChange) {
           const diplomas: Diploma[] = newFiles.map((file) => ({
             file,
@@ -41,7 +39,6 @@ const DiplomasUpload = ({ onDiplomasChange }: DiplomasUploadProps) => {
     [onDiplomasChange]
   );
 
-  // Обработчик для drag and drop
   const handleProcessedFiles = useCallback(
     (newFiles: File[]) => {
       handleFilesUpdate((prevFiles) => {

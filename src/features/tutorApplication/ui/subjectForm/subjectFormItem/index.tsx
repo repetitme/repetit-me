@@ -15,30 +15,17 @@ import styles from './index.module.scss';
 import { SubjectFormItemProps } from '../type';
 
 const SubjectFormItem = ({ index, onChange }: SubjectFormItemProps) => {
-  // const { values, handleChange } = useForm({ experience: '' });
   const [isActive, setIsActive] = useState<boolean>(true);
-  // const [categories, setCategories] = useState<
-  //   Array<{ ageCategory: string; price: string }>
-  // >([
-  //   {
-  //     ageCategory: data.ageCategories[0].label,
-  //     price: '1 500'
-  //   }
-  // ]);
 
   const { values, handleChange, setValues } = useForm({
-    discipline: data.disciplines[0], // Выбранный предмет
-    status: data.status[0], // Выбранный статус
-    target: data.subjectTarget[0], // Выбранная цель
-    experience: '', // Стаж
-    isActive: true, // Активен ли предмет
-    categories: [
-      // Массив категорий
-      { ageCategory: data.ageCategories[0].label, price: '1500' }
-    ]
+    discipline: data.disciplines[0],
+    status: data.status[0],
+    target: data.subjectTarget[0],
+    experience: '',
+    isActive: true,
+    categories: [{ ageCategory: data.ageCategories[0].label, price: '1500' }]
   });
 
-  // 1. Обработчик изменения цены в категории
   const handleCategoryPriceChange =
     (categoryIndex: number) => (newPrice: string) => {
       const updatedCategories = [...values.categories];
@@ -49,17 +36,15 @@ const SubjectFormItem = ({ index, onChange }: SubjectFormItemProps) => {
 
       const newValues = { ...values, categories: updatedCategories };
       setValues(newValues);
-      onChange?.(newValues); // Отправляем новые данные родителю
+      onChange?.(newValues);
     };
 
-  // 2. Обработчик для Select (предмет, статус, цель)
   const handleSelectChange = (fieldName: string) => (selectedOption: any) => {
     const newValues = { ...values, [fieldName]: selectedOption };
     setValues(newValues);
     onChange?.(newValues);
   };
 
-  // 3. Добавление новой категории
   const handleAddCategory = () => {
     const newCategory = {
       ageCategory: data.ageCategories[0].label,
@@ -72,13 +57,6 @@ const SubjectFormItem = ({ index, onChange }: SubjectFormItemProps) => {
     setValues(newValues);
     onChange?.(newValues);
   };
-
-  // const handleAddCategory = () => {
-  //   setCategories((prev) => [
-  //     ...prev,
-  //     { ageCategory: data.ageCategories[0].label, price: '1 500' }
-  //   ]);
-  // };
 
   return (
     <Wrapper
@@ -96,8 +74,8 @@ const SubjectFormItem = ({ index, onChange }: SubjectFormItemProps) => {
             options={data.disciplines}
             placeholder="Математика"
             defaultValue={data.disciplines[0]}
-            value={values.discipline} // Управляемое значение
-            onChange={handleSelectChange('discipline')} // Передаём имя поля
+            value={values.discipline}
+            onChange={handleSelectChange('discipline')}
           />
         </div>
         <div className={styles.options__status}>
@@ -116,7 +94,7 @@ const SubjectFormItem = ({ index, onChange }: SubjectFormItemProps) => {
               category={category}
               isLast={index === values.categories.length - 1}
               onAddCategory={handleAddCategory}
-              onChange={handleCategoryPriceChange(index)} // Передаём индекс категории
+              onChange={handleCategoryPriceChange(index)}
             />
           ))}
         </div>
