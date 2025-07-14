@@ -1,5 +1,6 @@
 import { FC } from 'react';
 
+import useForm from '../../shared/hooks/useForm';
 import Input from '../../shared/ui/input';
 import Textarea from '../../shared/ui/textarea';
 
@@ -10,6 +11,7 @@ interface TutorDialogsProps {
 }
 
 const TutorDialogs: FC<TutorDialogsProps> = ({ variant }) => {
+  const { values, setValues } = useForm('');
   const radio = (futureLesson?: boolean) => {
     return (
       <div>
@@ -27,7 +29,18 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant }) => {
   const dialogs = () => {
     switch (variant) {
       case 'arrangement':
-        return radio();
+        return (
+          <div>
+            (radio()
+            <Input
+              value={values}
+              onChange={(e) => setValues(e.target.value)}
+              type="text"
+              placeholder="Введите тему занятия"
+            />
+            <Textarea placeholder="Введите комментарий" />
+          </div>
+        );
       case 'hadFirstClass':
         return radio();
       case 'report':
@@ -35,7 +48,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant }) => {
     }
   };
 
-  return <div>{dialogs()}</div>;
+  return <div className={styles.dialogs}>{dialogs()}</div>;
 };
 
 export default TutorDialogs;
