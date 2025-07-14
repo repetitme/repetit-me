@@ -2,8 +2,10 @@ import { SetStateAction, useCallback, useState } from 'react';
 
 import cn from 'classnames';
 
-import { useDragAndDrop } from '../../../../shared/hooks/useDragAndDropProps';
+import { useDragAndDrop } from '../../../../shared/hooks/useDragAndDrop';
+import { useFileRemove } from '../../../../shared/hooks/useFileRemove';
 import { useFileUpload } from '../../../../shared/hooks/useFileUpload';
+import ButtonRemove from '../../../../shared/ui/buttonRemove';
 import Wrapper from '../../../../shared/ui/wrapper';
 import { blockContent, requirements } from './data';
 
@@ -16,6 +18,7 @@ const DiplomasUpload = ({ onDiplomasChange }: DiplomasUploadProps) => {
   const maxSizeBytes = 10 * 1024 * 1024;
   const acceptTypesVideo = ['image/png', 'image/jpg', 'image/jpeg'];
   const [files, setFiles] = useState<File[]>([]);
+  const { removeFile } = useFileRemove(files, setFiles);
 
   const handleFilesUpdate = useCallback(
     (newFilesOrUpdater: SetStateAction<File[]>) => {
@@ -99,6 +102,7 @@ const DiplomasUpload = ({ onDiplomasChange }: DiplomasUploadProps) => {
                 alt={`Документ ${index + 1}`}
                 className={styles['wrapper__content-image']}
               />
+              <ButtonRemove removeFile={removeFile} index={index} />
             </div>
           ))}
         </div>

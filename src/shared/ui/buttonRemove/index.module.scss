@@ -1,0 +1,22 @@
+.video-remove {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  max-inline-size: 35px;
+  max-block-size: 35px;
+  inline-size: 100%;
+  block-size: 100%;
+  padding: 0;
+  background-color: var(--clr-main) !important;
+  border-radius: 50%;
+  transform: scale(1);
+  transition: transform var(--fast-transition);
+
+  & img {
+    inline-size: 100%;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
