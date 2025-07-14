@@ -1,7 +1,9 @@
 import { FC } from 'react';
+
 import Input from '../../shared/ui/input';
-import styles from './index.module.scss';
 import Textarea from '../../shared/ui/textarea';
+
+import styles from './index.module.scss';
 
 interface TutorDialogsProps {
   variant: 'arrangement' | 'hadFirstClass' | 'report';

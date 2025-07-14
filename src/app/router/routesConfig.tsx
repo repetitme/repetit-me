@@ -29,7 +29,11 @@ export const routesConfig: IRoute[] = [
   },
   {
     path: '/test',
-    element: <div><PopupWrapper children={<div>test</div>} buttonText="test"  /></div>,
+    element: (
+      <div>
+        <PopupWrapper children={<div>test</div>} buttonText="test" />
+      </div>
+    ),
     auth: false
   }
 ];
