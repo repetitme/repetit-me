@@ -2,7 +2,7 @@ import React from 'react';
 
 import Button from '../../shared/ui/button';
 import Stepper from '../../shared/ui/stepper';
-import SubjectForm from './ui/subjectForm';
+import VideoGreeting from './ui/videoGreeting';
 
 import styles from './index.module.scss';
 
@@ -11,8 +11,8 @@ const TutorApplication: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.application}>
         <h2 className={styles.application__title}>Анкета</h2>
-        <Stepper currentStep={2} totalSteps={5} />
-        <SubjectForm />
+        <Stepper currentStep={3} totalSteps={5} />
+        <VideoGreeting />
       </div>
       <div className={styles.container__buttons}>
         <Button
