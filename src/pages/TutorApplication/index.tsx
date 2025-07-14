@@ -3,6 +3,7 @@ import { useState } from 'react';
 import ApplicationSuccessModal from '../../features/tutorApplication/ui/ApplicationSuccessModal';
 import ProfileInfo from '../../features/tutorApplication/ui/ProfileInfo';
 import DiplomasUpload from '../../features/tutorApplication/ui/diplomasUpload';
+import Schedule from '../../features/tutorApplication/ui/schedule';
 import SubjectForm from '../../features/tutorApplication/ui/subjectForm';
 import VideoGreeting from '../../features/tutorApplication/ui/videoGreeting';
 import Button from '../../shared/ui/button';
@@ -11,11 +12,11 @@ import { initialTutorData } from './data';
 
 import styles from './index.module.scss';
 
+import { ProfileFormData } from '../../features/tutorApplication/ui/ProfileInfo/type';
 import { Diploma } from '../../features/tutorApplication/ui/diplomasUpload/type';
 import { Subject } from '../../features/tutorApplication/ui/subjectForm/type';
 import { VideoData } from '../../features/tutorApplication/ui/videoGreeting/type';
 import TutorApplicationData from './type';
-import { ProfileFormData } from '../../features/tutorApplication/ui/ProfileInfo/type'
 
 const TutorApplication = () => {
   const [currentStep, setCurrentStep] = useState<number>(2);
@@ -25,11 +26,13 @@ const TutorApplication = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleNext = (stepData: ProfileFormData | Subject | Subject | Diploma | VideoData) => {
+  const handleNext = (
+    stepData: ProfileFormData | Subject | Subject | Diploma | VideoData
+  ) => {
     // any лучше заменить на конкретный тип, например ProfileInfoData | SubjectData | ....
     setTutorData((prev) => ({ ...prev, ...stepData }));
     if (currentStep < 5) setCurrentStep((prev) => prev + 1);
-    else setIsModalOpen(true); 
+    else setIsModalOpen(true);
     // Здесь потом добавить отправку данных на сервер
   };
 
@@ -52,6 +55,22 @@ const TutorApplication = () => {
     setIsModalOpen(false);
   };
 
+  const handleScheduleChange = (freeTime: Record<string, string[]>) => {
+    // Приводим данные к нужному формату
+    const scheduleData = Object.keys(freeTime).reduce(
+      (acc, day) => {
+        acc[day] = freeTime[day];
+        return acc;
+      },
+      {} as Record<string, string[]>
+    );
+
+    setTutorData((prev) => ({
+      ...prev,
+      schedule: scheduleData
+    }));
+  };
+
   const handleSubmit = () => {
     console.log('Данные анкеты:', tutorData); // Для отладки
     setIsModalOpen(true);
@@ -67,6 +86,8 @@ const TutorApplication = () => {
         return tutorData.diplomas.length > 0;
       case 4:
         return !!tutorData.video?.url;
+      case 5:
+        return tutorData.schedule && Object.keys(tutorData.schedule).length > 0;
       default:
         return true;
     }
@@ -116,8 +137,7 @@ const TutorApplication = () => {
             initialVideo={tutorData.video}
           />
         )}
-
-        {/* Добавьте другие шаги по мере необходимости */}
+        {currentStep === 5 && <Schedule onChange={handleScheduleChange} />}
 
         {renderButtons()}
         <ApplicationSuccessModal
@@ -125,28 +145,50 @@ const TutorApplication = () => {
           onClose={handleModalClose}
         />
 
-        {/* <div style={{ 
-          display: 'flex', 
-          gap: '10px', 
-          marginBottom: '20px',
-          justifyContent: 'center'
-        }}>
-          <Button 
-            text="Шаг 1" 
-            variant="white" 
-            onClick={() => setCurrentStep(1)} 
+        <Button
+          text="Шаг 4"
+          variant="white"
+          onClick={() => setCurrentStep(4)}
+        />
+        <Button
+          text="Шаг 5"
+          variant="white"
+          onClick={() => setCurrentStep(5)}
+        />
+        <div
+          style={{
+            display: 'flex',
+            gap: '10px',
+            marginBottom: '20px',
+            justifyContent: 'center'
+          }}
+        >
+          <Button
+            text="Шаг 1"
+            variant="white"
+            onClick={() => setCurrentStep(1)}
           />
-          <Button 
-            text="Шаг 2" 
-            variant="white" 
-            onClick={() => setCurrentStep(2)} 
-          /> */}
-        {/* <Button 
-            text="Шаг 3" 
-            variant="white" 
-            onClick={() => setCurrentStep(3)} 
-          /> */}
-        {/* </div> */}
+          <Button
+            text="Шаг 2"
+            variant="white"
+            onClick={() => setCurrentStep(2)}
+          />
+          <Button
+            text="Шаг 3"
+            variant="white"
+            onClick={() => setCurrentStep(3)}
+          />
+          <Button
+            text="Шаг 4"
+            variant="white"
+            onClick={() => setCurrentStep(4)}
+          />
+          <Button
+            text="Шаг 5"
+            variant="white"
+            onClick={() => setCurrentStep(5)}
+          />
+        </div>
       </main>
     </>
   );

@@ -8,5 +8,5 @@ export default interface TutorApplicationData {
   subjects: Subject[];
   diplomas: Diploma[];
   video: VideoData | null;
-  schedule: { days: string[] };
+  schedule: Record<string, string[]>;
 }
