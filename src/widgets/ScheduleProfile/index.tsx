@@ -6,9 +6,9 @@ import { ScheduleContainer } from './components/ScheduleContainer';
 
 import styles from './index.module.scss';
 
-import { ISchedule } from './type';
+import { IScheduleProfile } from './type';
 
-export const Schedule: React.FC<ISchedule> = ({
+export const ScheduleProfile: React.FC<IScheduleProfile> = ({
   firstLessons,
   scheduleLessons
 }) => {

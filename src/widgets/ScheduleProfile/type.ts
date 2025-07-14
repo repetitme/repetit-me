@@ -1,4 +1,4 @@
-export interface ISchedule {
+export interface IScheduleProfile {
   firstLessons: firstLessonType[];
   scheduleLessons: scheduleLessonType[];
 }

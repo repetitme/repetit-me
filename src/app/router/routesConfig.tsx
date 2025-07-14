@@ -1,11 +1,11 @@
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import TutorCatalogPage from '../../pages/TutorCatalogPage';
-import { Schedule } from '../../widgets/Schedule';
+import { ScheduleProfile } from '../../widgets/ScheduleProfile';
 import {
   firstLessonsData,
   scheduleLessonsData
-} from '../../widgets/Schedule/data';
+} from '../../widgets/ScheduleProfile/data';
 
 import { IRoute } from './type';
 
@@ -26,10 +26,10 @@ export const routesConfig: IRoute[] = [
     auth: false
   },
   {
-    path: '/schedule',
+    path: '/scheduleProfile',
     element: (
       <div style={{ margin: '20px auto' }}>
-        <Schedule
+        <ScheduleProfile
           firstLessons={firstLessonsData}
           scheduleLessons={scheduleLessonsData}
         />
