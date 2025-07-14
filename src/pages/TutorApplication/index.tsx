@@ -19,7 +19,7 @@ import { VideoData } from '../../features/tutorApplication/ui/videoGreeting/type
 import TutorApplicationData from './type';
 
 const TutorApplication = () => {
-  const [currentStep, setCurrentStep] = useState<number>(2);
+  const [currentStep, setCurrentStep] = useState<number>(1);
 
   const [tutorData, setTutorData] =
     useState<TutorApplicationData>(initialTutorData);
@@ -29,7 +29,6 @@ const TutorApplication = () => {
   const handleNext = (
     stepData: ProfileFormData | Subject | Subject | Diploma | VideoData
   ) => {
-    // any лучше заменить на конкретный тип, например ProfileInfoData | SubjectData | ....
     setTutorData((prev) => ({ ...prev, ...stepData }));
     if (currentStep < 5) setCurrentStep((prev) => prev + 1);
     else setIsModalOpen(true);
@@ -56,7 +55,6 @@ const TutorApplication = () => {
   };
 
   const handleScheduleChange = (freeTime: Record<string, string[]>) => {
-    // Приводим данные к нужному формату
     const scheduleData = Object.keys(freeTime).reduce(
       (acc, day) => {
         acc[day] = freeTime[day];
@@ -72,7 +70,6 @@ const TutorApplication = () => {
   };
 
   const handleSubmit = () => {
-    console.log('Данные анкеты:', tutorData); // Для отладки
     setIsModalOpen(true);
   };
 
@@ -94,15 +91,21 @@ const TutorApplication = () => {
   };
 
   const renderButtons = () => (
-    <div className={styles.container__buttons}>
+    <div className={styles.buttons}>
       {currentStep > 1 && (
-        <Button text="Назад" variant="white" onClick={handleBack} />
+        <Button
+          text="Назад"
+          variant="white"
+          onClick={handleBack}
+          className={styles.button}
+        />
       )}
       <Button
         text={currentStep === 5 ? 'Сохранить анкету' : 'Сохранить и продолжить'}
         variant={isStepValid() ? 'purple' : 'white'}
         disabled={!isStepValid()}
         onClick={() => (currentStep === 5 ? handleSubmit() : handleNext)}
+        className={currentStep === 5 ? styles.button : styles.buttonNext}
       />
     </div>
   );
@@ -145,16 +148,6 @@ const TutorApplication = () => {
           onClose={handleModalClose}
         />
 
-        <Button
-          text="Шаг 4"
-          variant="white"
-          onClick={() => setCurrentStep(4)}
-        />
-        <Button
-          text="Шаг 5"
-          variant="white"
-          onClick={() => setCurrentStep(5)}
-        />
         <div
           style={{
             display: 'flex',

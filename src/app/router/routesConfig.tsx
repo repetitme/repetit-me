@@ -1,8 +1,7 @@
-
 import ApplicationSuccessModal from '../../features/tutorApplication/ui/ApplicationSuccessModal';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
-import TutorApplication from '../../pages/TutorApplication'
+import TutorApplication from '../../pages/TutorApplication';
 import TutorCatalogPage from '../../pages/TutorCatalogPage';
 
 import { IRoute } from './type';
