@@ -1,4 +1,4 @@
-import React, { SetStateAction, useCallback, useState } from 'react';
+import { SetStateAction, useCallback, useState } from 'react';
 
 import cn from 'classnames';
 
@@ -9,11 +9,9 @@ import { blockContent, requirements } from './data';
 
 import styles from './index.module.scss';
 
-import { Diploma, DiplomasUploadProps } from './ type';
+import { Diploma, DiplomasUploadProps } from './type';
 
-const DiplomasUpload: React.FC = ({
-  onDiplomasChange
-}: DiplomasUploadProps) => {
+const DiplomasUpload = ({ onDiplomasChange }: DiplomasUploadProps) => {
   const MAX_DOCUMENTS = 10;
   const maxSizeBytes = 10 * 1024 * 1024;
   const acceptTypesVideo = ['image/png', 'image/jpg', 'image/jpeg'];

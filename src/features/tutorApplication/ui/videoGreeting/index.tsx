@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import cn from 'classnames';
 
@@ -9,7 +9,9 @@ import { adviсes, blockContent, requirements } from './data';
 
 import styles from './index.module.scss';
 
-const VideoGreeting: React.FC = () => {
+import { VideoGreetingProps } from './type';
+
+const VideoGreeting = ({ onVideoChange, initialVideo }: VideoGreetingProps) => {
   const maxSizeBytes = 20 * 1024 * 1024;
   const acceptTypesVideo = ['video/mp4', 'video/quicktime', 'video/3gpp'];
   const [files, setFiles] = useState<File[]>([]);
@@ -46,19 +48,23 @@ const VideoGreeting: React.FC = () => {
       }
     });
 
-  const [videoPreviewUrl, setVideoPreviewUrl] = useState<string | null>(null);
+  const [videoPreviewUrl, setVideoPreviewUrl] = useState<string | null>(
+    initialVideo?.url || null
+  );
 
   useEffect(() => {
-    if (files.length > 0) {
-      const url = URL.createObjectURL(files[0]);
-      setVideoPreviewUrl(url);
-
-      return () => {
-        URL.revokeObjectURL(url);
-        setVideoPreviewUrl(null);
-      };
-    }
-  }, [files]);
+  if (files.length > 0) {
+    const videoData = {
+      file: files[0],
+      url: URL.createObjectURL(files[0])
+    };
+    setVideoPreviewUrl(videoData.url);
+    onVideoChange(videoData);
+  } else {
+    setVideoPreviewUrl(null);
+    onVideoChange(null);
+  }
+}, [files, onVideoChange]);
 
   return (
     <Wrapper large className={styles.wrapper}>

@@ -5,7 +5,7 @@ import cn from 'classnames';
 import { useFileUpload } from '../../../../../shared/hooks/useFileUpload';
 import Button from '../../../../../shared/ui/button';
 import ModalOverlay from '../../../../../shared/ui/overlay';
-import closeIcon from '../../../../assets/icons/closeIconWhite.svg';
+import closeIcon from '../../../../../assets/icons/closeIconWhite.svg';
 import AvatarBlock from '../AvatarBlock';
 
 import styles from './index.module.scss';

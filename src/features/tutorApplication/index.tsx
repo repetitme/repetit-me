@@ -6,7 +6,7 @@ import SubjectForm from './ui/subjectForm';
 
 import styles from './index.module.scss';
 
-const TutorApplication: React.FC = () => {
+const TutorApplicationOld: React.FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.application}>
@@ -32,4 +32,4 @@ const TutorApplication: React.FC = () => {
   );
 };
 
-export default TutorApplication;
+export default TutorApplicationOld;
