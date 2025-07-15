@@ -8,9 +8,15 @@ import styles from './index.module.scss';
 
 type ApplicationProgressProps = {
   progress?: number;
+  isProfileHidden: boolean;
+  onToggleVisibility: (value: boolean) => void;
 };
 
-const ApplicationProgress = ({ progress = 90 }: ApplicationProgressProps) => {
+const ApplicationProgress = ({
+  progress = 90,
+  isProfileHidden,
+  onToggleVisibility
+}: ApplicationProgressProps) => {
   return (
     <div className={styles.wrapper}>
       <h3 className={styles.title}>Завершенность анкеты</h3>
@@ -27,7 +33,7 @@ const ApplicationProgress = ({ progress = 90 }: ApplicationProgressProps) => {
               stroke: '#f0f0f0'
             },
             text: {
-              fill: 'url(#circleGradient)',
+              fill: 'url(#textGradient)',
               fontFamily: 'var(--ffm-title)',
               fontSize: '18px',
               fontWeight: '500',
@@ -40,7 +46,8 @@ const ApplicationProgress = ({ progress = 90 }: ApplicationProgressProps) => {
       </div>
       <div className={styles.switcher}>
         <p className={styles.switcher__text}>Скрыть анкету от учеников</p>
-        <Switcher isActive={true} onChange={() => {}} />
+        <Switcher  isActive={!isProfileHidden} 
+          onChange={onToggleVisibility} />
       </div>
     </div>
   );
