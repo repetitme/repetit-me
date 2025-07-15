@@ -10,7 +10,7 @@ export const GradientDefs = () => (
         gradientUnits="userSpaceOnUse"
       >
         <stop offset="0%" stopColor="#865BFF" stopOpacity="0.68" />
-        <stop offset="29.77%" stopColor="#FF71F9" stopOpacity="0.68" />
+        <stop offset="19.77%" stopColor="#FF71F9" stopOpacity="0.68" />
         <stop offset="60.98%" stopColor="#865BFF" stopOpacity="0.68" />
         <stop offset="100%" stopColor="#3DC5FF" stopOpacity="0.68" />
       </linearGradient>

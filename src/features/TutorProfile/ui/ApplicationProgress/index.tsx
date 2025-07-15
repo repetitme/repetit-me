@@ -3,6 +3,7 @@ import 'react-circular-progressbar/dist/styles.css';
 
 import Switcher from '../../../../shared/ui/switcher';
 import { GradientDefs } from './gradientDefs';
+
 import styles from './index.module.scss';
 
 type ApplicationProgressProps = {
@@ -16,29 +17,31 @@ const ApplicationProgress = ({ progress = 90 }: ApplicationProgressProps) => {
       <div className={styles.circleProgress}>
         <CircularProgressbar
           value={progress}
-          strokeWidth={16}
+          strokeWidth={14}
           styles={{
             path: {
               stroke: 'url(#circleGradient)',
-              strokeLinecap: "butt",
+              strokeLinecap: 'butt'
             },
             trail: {
-              stroke: '#f0f0f0' // Цвет фоновой линии
+              stroke: '#f0f0f0'
             },
             text: {
-              fill: '#333', // Цвет текста
-              fontSize: '24px',
-              fontWeight: 'bold'
+              fill: 'url(#circleGradient)',
+              fontFamily: 'var(--ffm-title)',
+              fontSize: '18px',
+              fontWeight: '500',
+              paintOrder: 'stroke'
             }
           }}
           text={`${progress}%`}
         />
         <GradientDefs />
       </div>
-
-     
-      <p>Скрыть анкету от учеников</p>
-      <Switcher isActive={true} onChange={() => {}} />
+      <div className={styles.switcher}>
+        <p className={styles.switcher__text}>Скрыть анкету от учеников</p>
+        <Switcher isActive={true} onChange={() => {}} />
+      </div>
     </div>
   );
 };

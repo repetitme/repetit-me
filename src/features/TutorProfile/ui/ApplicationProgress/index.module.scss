@@ -4,7 +4,7 @@
   max-inline-size: 285px;
   gap: 16px;
   padding: 24px 16px;
-  border: var(--border-radius-blocks);
+  border-radius: var(--border-radius-blocks);
   background-color: var(--clr-main);
 }
 
@@ -22,11 +22,18 @@
   margin: auto 44.5px;
 }
 
-p {
+.switcher {
+  display: flex;
+  justify-content: space-between;
+
+  &__text {
   font-family: var(--ffm-default);
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.36;
 }
+}
+
+
 
 
 
