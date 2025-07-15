@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  max-inline-size: 285px;
+  gap: 16px;
+  padding: 24px 16px;
+  border: var(--border-radius-blocks);
+  background-color: var(--clr-main);
+}
+
+.title {
+  font-family: var(--ffm-title);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--clr-primary-default);
+  text-align: center;
+}
+
+.circleProgress {
+  width: 164px;
+  height: 164px;
+  margin: auto 44.5px;
+}
+
+p {
+  font-family: var(--ffm-default);
+  font-size: 10px;
+  line-height: 1.36;
+}
+
+
+
+

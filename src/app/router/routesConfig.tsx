@@ -1,3 +1,4 @@
+import ApplicationProgress from '../../features/TutorProfile/ui/ApplicationProgress'
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import TutorCatalogPage from '../../pages/TutorCatalogPage'
@@ -13,6 +14,11 @@ export const routesConfig: IRoute[] = [
   {
     path: '/tutor-catalog',
     element: <TutorCatalogPage />,
+    auth: false
+  },
+  {
+    path: '/test',
+    element: <ApplicationProgress />,
     auth: false
   },
   {
