@@ -14,7 +14,8 @@ import Popup from './popup';
 type dataProps = {
   title?: string;
   description?: string;
-}
+  variant?: 'default' | 'small' | 'form';
+};
 
 type TPopups = {
   close: () => void;
@@ -27,13 +28,13 @@ type TPopups = {
 type TFactory = Record<string, (params: TPopups) => JSX.Element>;
 
 function renderPopup(
-  { title, description }: dataProps,
+  { title, description, variant }: dataProps,
   props: TPopups
 ): JSX.Element {
-  return <Popup title={title} children={description} {...props} />;
+  return <Popup title={title} children={description} variant={variant} {...props} />;
 }
 
-export const Popups: TFactory = {
+const Popups: TFactory = {
   noTutorsFound: (params) => renderPopup(noTutorsFound, params),
   responded: (params) => renderPopup(responded, params),
   cancelRequest: (params) => renderPopup(cancelRequest, params),
@@ -43,4 +44,4 @@ export const Popups: TFactory = {
   formSaved: (params) => renderPopup(formSaved, params)
 };
 
-export default Popup;
+export default Popups;

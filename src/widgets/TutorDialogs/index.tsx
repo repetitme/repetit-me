@@ -25,7 +25,11 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant }) => {
     hadFirstClass: '',
     report: ''
   });
-  let buttonText = variant === TutorDialogsVariant.arrangement || variant === TutorDialogsVariant.hadFirstClass ? button[0] : button[3];
+  let buttonText =
+    variant === TutorDialogsVariant.arrangement ||
+    variant === TutorDialogsVariant.hadFirstClass
+      ? button[0]
+      : button[3];
 
   const onSubmit = () => {
     switch (variant) {
@@ -47,7 +51,12 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant }) => {
     return (
       <div>
         <label>{!futureLesson ? 'Да' : hadFirstClass.options[0]}</label>
-        <input type="radio" name="dialog" checked onChange={() => setFinal(true)} />
+        <input
+          type="radio"
+          name="dialog"
+          checked
+          onChange={() => setFinal(true)}
+        />
         <label>{!futureLesson ? 'Нет' : hadFirstClass.options[1]}</label>
         <input type="radio" name="dialogs" />
         (futureLesson && <label>{hadFirstClass.options[2]}</label>

@@ -16,16 +16,29 @@
     font-size: 24px;
     line-height: 32px;
     color: var(--clr-black);
-    margin-bottom: 24px;
+    margin-bottom: 16px;
+    font-family: var(--ffm-title);
+    text-align: center;
   }
 
   &__content {
     position: relative;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    font-family: var(--ffm-default);
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
   }
 
   &__small {
     inline-size: 600px;
     padding: 24px;
+
+    &__content {
+      gap: 40px;
+    }
   }
 
   &__close {

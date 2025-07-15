@@ -25,6 +25,7 @@ const Popup: FC<PopupProps> = ({
   variant = 'default',
   title,
   children,
+  close,
   buttonText,
   buttonOnClick,
   secondaryButtonText,
