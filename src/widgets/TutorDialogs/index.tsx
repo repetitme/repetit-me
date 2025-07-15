@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 
 import useForm from '../../shared/hooks/useForm';
 import Button from '../../shared/ui/button';
-import Input from '../../shared/ui/input';
+// import Input from '../../shared/ui/input';
 import Textarea from '../../shared/ui/textarea';
 import {
   TutorDialogsVariant,
@@ -31,6 +31,16 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant }) => {
       ? button[0]
       : button[3];
 
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value
+    });
+    if (e.target.name === 'dialog') {
+      setFinal(true);
+    }
+  };
+
   const onSubmit = () => {
     switch (variant) {
       case arrangement.variant:
@@ -55,7 +65,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant }) => {
           type="radio"
           name="dialog"
           checked
-          onChange={() => setFinal(true)}
+          onChange={onChange}
         />
         <label>{!futureLesson ? 'Нет' : hadFirstClass.options[1]}</label>
         <input type="radio" name="dialogs" />
