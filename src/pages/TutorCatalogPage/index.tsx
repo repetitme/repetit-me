@@ -29,13 +29,10 @@ const TutorCatalogPage = () => {
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const tooltipRef = useClickOutside(() => setTooltipVisible(false));
 
-  const handleShowMore = () => {
-    setVisibleCount((prevCount) => prevCount + 5);
-  };
-
   return (
     <>
       <main className={styles.catalog}>
+        <h2 className={styles.catalog__title}>Репетиторы</h2>
         <div className={styles.catalog__cards}>
           {loadingTutors ? (
             <div className={styles.loader} />
@@ -59,7 +56,7 @@ const TutorCatalogPage = () => {
                   variant="transparent"
                   size="large"
                   className={styles.catalog__button}
-                  onClick={handleShowMore}
+                  onClick={() => setVisibleCount((prevCount) => prevCount + 5)}
                 />
               )}
             </>
