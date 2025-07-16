@@ -33,11 +33,11 @@ const Popup: FC<PopupProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => {
-    setIsOpen(false);
-    setTimeout(() => {
-      close();
-      //delete
-    }, 300);
+    // setIsOpen(false);
+    // setTimeout(() => {
+    //   close();
+    //   //delete
+    // }, 300);
   };
 
   useEffect(() => {
@@ -66,7 +66,11 @@ const Popup: FC<PopupProps> = ({
           <img src={iconClose} alt="иконка закрытия модального окна" />
         </button>
         <h2 className={styles.popup__title}>{title}</h2>
-        <div className={styles.popup__content}>
+        <div
+          className={cn(styles.popup__content, {
+            [styles.popup__form]: variant === 'form'
+          })}
+        >
           {children}
           <div className={styles.popup__buttons}>
             <Button

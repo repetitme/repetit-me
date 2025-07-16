@@ -1,25 +1,32 @@
+import { useState } from 'react';
+
 import cn from 'classnames';
 
 import { IUserData, navOptions } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
 import StudentProfile from '../UserProfile/StudentProfile';
 import TutorProfile from '../UserProfile/TutorProfile';
+import {TutorDialogsVariant } from '../TutorDialogs/data';
 
 import styles from './index.module.scss';
+import TutorDialogs from '../TutorDialogs';
 
 const UserCard: React.FC<IUserData> = ({
-  role,
+  role = 'card',
   tutorData,
   studentData,
   handleSubmit,
   navOption
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen((prev) => !prev);
+  const navRole = role === 'tutor' ? 'tutor' : 'student';
   const isMyList =
-    navOption === navOptions[role as keyof typeof navOptions].myList;
+    navOption === navOptions[navRole as keyof typeof navOptions].myList;
   const isMyRequests =
-    navOption === navOptions[role as keyof typeof navOptions].myRequests;
+    navOption === navOptions[navRole as keyof typeof navOptions].myRequests;
   const isTutorRequests =
-    navOption === navOptions[role as keyof typeof navOptions].tutorRequests;
+    navOption === navOptions[navRole as keyof typeof navOptions].tutorRequests;
   return (
     <div className={cn(styles.card, role === 'card' && styles.card__resize)}>
       {role === 'tutor' || role === 'unauth' ? (
@@ -59,7 +66,11 @@ const UserCard: React.FC<IUserData> = ({
           )}
           <div className={styles.card__buttons}>
             {!handleSubmit ? (
-              <Button text="Создать отчет" variant="purple" />
+              <Button
+                text="Создать отчет"
+                onClick={toggle}
+                variant="purple"
+              />
             ) : (
               <>
                 <Button text="Отклонить" variant="red" />
@@ -67,6 +78,7 @@ const UserCard: React.FC<IUserData> = ({
               </>
             )}
           </div>
+          {isOpen && <TutorDialogs close = {toggle} variant={TutorDialogsVariant.report} /> }
         </>
       ) : (
         // Маленькая карточка

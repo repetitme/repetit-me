@@ -3,3 +3,46 @@
   flex-direction: column;
   gap: 24px;
 }
+
+.radio {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: 500;
+    font-size: 15px;
+    block-size: 24px;
+
+    & input {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      border: 4px solid var(--clr-3);
+      border-radius: 50%;
+      transition: all var(--fast-transition);
+      cursor: pointer;
+
+      &:checked {
+        border-color: var(--clr-primary-default);
+      }
+    }
+  }
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.textarea {
+  & label {
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}

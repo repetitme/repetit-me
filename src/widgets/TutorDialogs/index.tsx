@@ -1,8 +1,8 @@
 import { FC, useState } from 'react';
 
 import useForm from '../../shared/hooks/useForm';
-import Button from '../../shared/ui/button';
-// import Input from '../../shared/ui/input';
+import Input from '../../shared/ui/input';
+import Popup from '../../shared/ui/popup/popup';
 import Textarea from '../../shared/ui/textarea';
 import {
   TutorDialogsVariant,
@@ -16,39 +16,56 @@ import styles from './index.module.scss';
 
 interface TutorDialogsProps {
   variant: TutorDialogsVariant;
+  close: () => void;
 }
 
-const TutorDialogs: FC<TutorDialogsProps> = ({ variant }) => {
+const TutorDialogs: FC<TutorDialogsProps> = ({ variant, close }) => {
   const [final, setFinal] = useState(false);
+  const [state, setState] = useState({
+    arrangement: {
+      title: arrangement.mainTitles[0],
+      button: button[0]
+    },
+    hadFirstClass: {
+      title: hadFirstClass.mainTitles[0],
+      button: button[0]
+    },
+    report: {
+      title: report.mainTitles[0],
+      button: button[3]
+    }
+  });
+
   const { values, setValues } = useForm({
     arrangement: '',
     hadFirstClass: '',
     report: ''
   });
-  let buttonText =
-    variant === TutorDialogsVariant.arrangement ||
-    variant === TutorDialogsVariant.hadFirstClass
-      ? button[0]
-      : button[3];
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setValues({
       ...values,
       [e.target.name]: e.target.value
     });
-    if (e.target.name === 'dialog') {
-      setFinal(true);
-    }
+    setFinal(true);
   };
 
   const onSubmit = () => {
     switch (variant) {
       case arrangement.variant:
-        buttonText = buttonText[1];
+        setState({
+          ...state,
+          arrangement: { ...state.arrangement, button: button[1] }
+        });
         final && console.log('Arrangement submitted:', values.arrangement);
         break;
       case hadFirstClass.variant:
-        buttonText = buttonText[2];
+        setState({
+          ...state,
+          hadFirstClass: { ...state.hadFirstClass, button: button[2] }
+        });
         final &&
           console.log('Had first class submitted:', values.hadFirstClass);
         break;
@@ -59,43 +76,106 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant }) => {
 
   const radio = (futureLesson?: boolean) => {
     return (
-      <div>
-        <label>{!futureLesson ? 'Да' : hadFirstClass.options[0]}</label>
-        <input
-          type="radio"
-          name="dialog"
-          checked
-          onChange={onChange}
-        />
-        <label>{!futureLesson ? 'Нет' : hadFirstClass.options[1]}</label>
-        <input type="radio" name="dialogs" />
-        (futureLesson && <label>{hadFirstClass.options[2]}</label>
-        <input type="radio" name="dialog" />)
+      <div className={styles.radio}>
+        <label className={styles.radio__checkbox}>
+          <input
+            type="radio"
+            name={variant}
+            onChange={onChange}
+            value="Да"
+            checked={values[variant] === 'Да'}
+          />
+          {!futureLesson ? 'Да' : hadFirstClass.options[0]}
+        </label>
+        <label className={styles.radio__checkbox}>
+          <input
+            type="radio"
+            name={variant}
+            onChange={onChange}
+            value="Нет"
+            checked={values[variant] === hadFirstClass.options[1]}
+          />
+          {!futureLesson ? 'Нет' : hadFirstClass.options[1]}
+        </label>
+        {futureLesson && (
+          <>
+            <label className={styles.radio__checkbox}>
+              <input
+                type="radio"
+                name={variant}
+                onChange={onChange}
+                value="Да"
+                checked={values[variant] === hadFirstClass.options[2]}
+              />
+              {hadFirstClass.options[2]}
+            </label>
+          </>
+        )}
       </div>
     );
   };
 
   const dialogs = () => {
     switch (variant) {
-      case 'arrangement':
+      case TutorDialogsVariant.arrangement:
         return (
           <div>
-            radio()
+            {radio()}
             <Textarea placeholder="Введите комментарий" />
           </div>
         );
-      case 'hadFirstClass':
-        return radio();
-      case 'report':
-        return radio();
+      case TutorDialogsVariant.hadFirstClass:
+        return (
+          <div>
+            {radio()}
+            <Textarea placeholder="Введите комментарий" />
+          </div>
+        );
+      case TutorDialogsVariant.report:
+        return (
+          <div className={styles.inputs}>
+            <Input
+              placeholder={report.placeholder[0]}
+              onChange={onChange}
+              value={values[variant]}
+              variant="report"
+              label={report.secondaryTitles[0]}
+            />
+            <Input
+              placeholder={report.placeholder[1]}
+              onChange={onChange}
+              value={values[variant]}
+              variant="report"
+              label={report.secondaryTitles[1]}
+            />
+            <Input
+              placeholder={report.placeholder[2]}
+              onChange={onChange}
+              value={values[variant]}
+              variant="report"
+              label={report.secondaryTitles[2]}
+            />
+            <Textarea
+              className={styles.textarea}
+              onChange={onChange}
+              value={values[variant]}
+              label={report.secondaryTitles[3]}
+            />
+          </div>
+        );
     }
   };
 
   return (
-    <form className={styles.dialogs}>
-      {dialogs()}
-      <Button onClick={onSubmit} text={buttonText} variant="purple" />
-    </form>
+    <Popup
+      title={state[variant].title}
+      close={close}
+      buttonText={state[variant].button}
+      buttonOnClick={onSubmit}
+      variant="form"
+    >
+      <form className={styles.dialogs}>{dialogs()}</form>
+    </Popup>
   );
 };
 
