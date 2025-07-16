@@ -33,11 +33,11 @@ const Popup: FC<PopupProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => {
-    // setIsOpen(false);
-    // setTimeout(() => {
-    //   close();
-    //   //delete
-    // }, 300);
+    setIsOpen(false);
+    setTimeout(() => {
+      close();
+      //delete
+    }, 300);
   };
 
   useEffect(() => {
