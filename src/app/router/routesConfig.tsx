@@ -2,6 +2,7 @@ import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import Requests from '../../pages/Requests';
 import TutorCatalogPage from '../../pages/TutorCatalogPage';
+
 // import Popups from '../../shared/ui/popup';
 
 import { IRoute } from './type';
@@ -26,7 +27,7 @@ export const routesConfig: IRoute[] = [
     path: '*',
     element: <NotFoundPage />,
     auth: false
-  },
+  }
   // {
   //   path: '/test',
   //   element: Popups.noTutorsFound({ close: () => {} }),

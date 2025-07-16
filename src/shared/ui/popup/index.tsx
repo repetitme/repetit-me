@@ -31,7 +31,9 @@ function renderPopup(
   { title, description, variant }: dataProps,
   props: TPopups
 ): JSX.Element {
-  return <Popup title={title} children={description} variant={variant} {...props} />;
+  return (
+    <Popup title={title} children={description} variant={variant} {...props} />
+  );
 }
 
 const Popups: TFactory = {

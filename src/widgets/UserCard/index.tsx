@@ -4,12 +4,12 @@ import cn from 'classnames';
 
 import { IUserData, navOptions } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
+import TutorDialogs from '../TutorDialogs';
+import { TutorDialogsVariant } from '../TutorDialogs/data';
 import StudentProfile from '../UserProfile/StudentProfile';
 import TutorProfile from '../UserProfile/TutorProfile';
-import {TutorDialogsVariant } from '../TutorDialogs/data';
 
 import styles from './index.module.scss';
-import TutorDialogs from '../TutorDialogs';
 
 const UserCard: React.FC<IUserData> = ({
   role = 'card',
@@ -66,11 +66,7 @@ const UserCard: React.FC<IUserData> = ({
           )}
           <div className={styles.card__buttons}>
             {!handleSubmit ? (
-              <Button
-                text="Создать отчет"
-                onClick={toggle}
-                variant="purple"
-              />
+              <Button text="Создать отчет" onClick={toggle} variant="purple" />
             ) : (
               <>
                 <Button text="Отклонить" variant="red" />
@@ -78,7 +74,9 @@ const UserCard: React.FC<IUserData> = ({
               </>
             )}
           </div>
-          {isOpen && <TutorDialogs close = {toggle} variant={TutorDialogsVariant.report} /> }
+          {isOpen && (
+            <TutorDialogs close={toggle} variant={TutorDialogsVariant.report} />
+          )}
         </>
       ) : (
         // Маленькая карточка

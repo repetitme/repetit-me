@@ -1,6 +1,8 @@
-import { useLocation } from 'react-router';
 import { useState } from 'react';
 
+import { useLocation } from 'react-router';
+
+import Popups from '../shared/ui/popup';
 import Footer from '../widgets/Footer';
 import Header from '../widgets/Header';
 import { AppProvider } from './AppContext';
@@ -9,7 +11,6 @@ import { knownPaths } from './router/routesConfig';
 
 import '../assets/styles/index.scss';
 import styles from './index.module.scss';
-import Popups from '../shared/ui/popup';
 
 function App() {
   const location = useLocation();
