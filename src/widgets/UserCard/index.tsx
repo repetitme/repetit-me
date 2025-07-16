@@ -12,7 +12,7 @@ import TutorProfile from '../UserProfile/TutorProfile';
 import styles from './index.module.scss';
 
 const UserCard: React.FC<IUserData> = ({
-  role = 'card',
+  role,
   tutorData,
   studentData,
   handleSubmit,
@@ -27,6 +27,13 @@ const UserCard: React.FC<IUserData> = ({
     navOption === navOptions[navRole as keyof typeof navOptions].myRequests;
   const isTutorRequests =
     navOption === navOptions[navRole as keyof typeof navOptions].tutorRequests;
+  const report =
+    studentData?.workingStatus === 'Занятия не начались'
+      ? TutorDialogsVariant.arrangement
+      : (studentData?.lessonsCompleted ?? 0) > 1
+        ? TutorDialogsVariant.report
+        : TutorDialogsVariant.hadFirstClass;
+
   return (
     <div className={cn(styles.card, role === 'card' && styles.card__resize)}>
       {role === 'tutor' || role === 'unauth' ? (
@@ -66,7 +73,16 @@ const UserCard: React.FC<IUserData> = ({
           )}
           <div className={styles.card__buttons}>
             {!handleSubmit ? (
-              <Button text="Создать отчет" onClick={toggle} variant="purple" />
+              <>
+                <Button
+                  text="Создать отчет"
+                  onClick={toggle}
+                  variant="purple"
+                />
+                {(studentData?.lessonsCompleted ?? 0) > 1 && (
+                  <Button text="Подробнее" variant="white" />
+                )}
+              </>
             ) : (
               <>
                 <Button text="Отклонить" variant="red" />
@@ -74,9 +90,7 @@ const UserCard: React.FC<IUserData> = ({
               </>
             )}
           </div>
-          {isOpen && (
-            <TutorDialogs close={toggle} variant={TutorDialogsVariant.report} />
-          )}
+          {isOpen && <TutorDialogs close={toggle} variant={report} />}
         </>
       ) : (
         // Маленькая карточка

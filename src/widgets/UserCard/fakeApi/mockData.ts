@@ -287,7 +287,8 @@ export const mockStudents: IStudentData[] = [
     price: '2000-2500 ₽/час',
     subjects: ['Физика'],
     studentAudience: ['9-11 класс'],
-    purpose: ['Повышение успеваемости']
+    purpose: ['Повышение успеваемости'],
+    workingStatus: 'Занятия не начались'
   },
   {
     id: uuidv4(),
@@ -312,7 +313,8 @@ export const mockStudents: IStudentData[] = [
     price: '2000-2500 ₽/час',
     subjects: ['Русский язык'],
     studentAudience: ['9-11 класс'],
-    purpose: ['Повышение успеваемости']
+    purpose: ['Повышение успеваемости'],
+    workingStatus: 'Занятия начались'
   },
   {
     id: uuidv4(),
@@ -324,7 +326,8 @@ export const mockStudents: IStudentData[] = [
     price: '2000-2500 ₽/час',
     subjects: ['Информатика'],
     studentAudience: ['9 класс'],
-    purpose: ['Подготовка к ОГЭ']
+    purpose: ['Подготовка к ОГЭ'],
+    workingStatus: 'Занятия начались'
   },
   {
     id: uuidv4(),
@@ -336,7 +339,8 @@ export const mockStudents: IStudentData[] = [
     price: '2000-2500 ₽/час',
     subjects: ['Обществознание'],
     studentAudience: ['10 класс'],
-    purpose: ['Повышение успеваемости']
+    purpose: ['Повышение успеваемости'],
+    workingStatus: 'Занятия не начались'
   },
   {
     id: uuidv4(),
@@ -360,7 +364,8 @@ export const mockStudents: IStudentData[] = [
     price: '2000-2500 ₽/час',
     subjects: ['География'],
     studentAudience: ['8 класс'],
-    purpose: ['Повышение успеваемости']
+    purpose: ['Повышение успеваемости'],
+    workingStatus: 'Занятия не начались'
   },
   {
     id: uuidv4(),
@@ -384,7 +389,8 @@ export const mockStudents: IStudentData[] = [
     price: '2000-2500 ₽/час',
     subjects: ['Биология'],
     studentAudience: ['8 класс'],
-    purpose: ['Повышение успеваемости']
+    purpose: ['Повышение успеваемости'],
+    workingStatus: 'Занятия не начались'
   },
   {
     id: uuidv4(),
@@ -396,7 +402,8 @@ export const mockStudents: IStudentData[] = [
     price: '2000-2500 ₽/час',
     subjects: ['Литература'],
     studentAudience: ['10 класс'],
-    purpose: ['Подготовка к ЕГЭ']
+    purpose: ['Подготовка к ЕГЭ'],
+    workingStatus: 'Занятия начались'
   },
   {
     id: uuidv4(),
@@ -407,7 +414,8 @@ export const mockStudents: IStudentData[] = [
     price: '2000-2500 ₽/час',
     subjects: ['Физика'],
     studentAudience: ['9 класс'],
-    purpose: ['Повышение успеваемости']
+    purpose: ['Повышение успеваемости'],
+    workingStatus: 'Занятия начались'
   },
   {
     id: uuidv4(),
@@ -419,7 +427,8 @@ export const mockStudents: IStudentData[] = [
     price: '2000-2500 ₽/час',
     subjects: ['Английский язык'],
     studentAudience: ['7 класс'],
-    purpose: ['Повышение успеваемости']
+    purpose: ['Повышение успеваемости'],
+    workingStatus: 'Занятия начались'
   },
   {
     id: uuidv4(),
@@ -430,7 +439,8 @@ export const mockStudents: IStudentData[] = [
     price: '2000-2500 ₽/час',
     subjects: ['Математика'],
     studentAudience: ['5-6 класс'],
-    purpose: ['Общее развитие']
+    purpose: ['Общее развитие'],
+    workingStatus: 'Занятия не начались'
   },
   {
     id: uuidv4(),
@@ -441,7 +451,8 @@ export const mockStudents: IStudentData[] = [
     price: '2000-2500 ₽/час',
     subjects: ['История'],
     studentAudience: ['11 класс'],
-    purpose: ['Подготовка к ЕГЭ']
+    purpose: ['Подготовка к ЕГЭ'],
+    workingStatus: 'Занятия не начались'
   }
 ];
 

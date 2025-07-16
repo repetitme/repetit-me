@@ -9,7 +9,7 @@ export interface IUserBaseData {
 }
 
 export interface ITutorData extends IUserBaseData {
-  status: 'Частный преподаватель' | string;
+  status: string;
   experienceYears: number;
   description: string;
   rating: number; // Рейтинг
