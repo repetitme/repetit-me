@@ -34,7 +34,7 @@
     text-underline-offset: 3px;
   }
 
-  &__search_hint {
+  &__hint {
     position: relative;
     padding: 24px 0 24px 20px;
     max-inline-size: 100%;
@@ -54,6 +54,15 @@
       border-top: 12px solid transparent;
       border-bottom: 12px solid transparent;
       border-radius: 1px;
+    }
+
+    &_search {
+      padding: 24px 0 24px 20px;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 24px;
+      font-family: var(--ffm-title);
+      letter-spacing: -0.24px;
     }
   }
 
@@ -86,6 +95,55 @@
     border-radius: 50%;
     border: 5px solid var(--clr-primary-default);
     animation: prix-clip-fix 2s linear infinite;
+  }
+}
+
+.modal__accept {
+  @include flex-center();
+
+  gap: 28px;
+  max-inline-size: 598px;
+  max-block-size: 357px;
+  inline-size: 100%;
+  block-size: 100%;
+
+  &_context {
+    @include flex-center();
+
+    gap: 16px;
+    max-inline-size: 534px;
+
+    &--title {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 100%;
+      font-family: var(--ffm-title);
+    }
+
+    &--text {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 136%;
+    }
+  }
+
+  &_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    inline-size: 100%;
+    block-size: 56px;
+
+    &--item {
+      padding: 0;
+      max-inline-size: 149px;
+      inline-size: 100%;
+      block-size: 100%;
+    }
   }
 }
 

@@ -17,7 +17,7 @@ export const Modal: FC<ModalProps> = ({ haveCloseIcon, onClose, children }) => {
         className={styles.modal}
         onClick={(e) => e.stopPropagation()}
       >
-        {!haveCloseIcon && (
+        {haveCloseIcon && (
           <button onClick={onClose} className={styles.modal__close}>
             <img
               src={closeIconWhite}

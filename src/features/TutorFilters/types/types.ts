@@ -3,9 +3,13 @@ export interface TutorFiltersProps {
   noResultsFound?: boolean;
   percentage?: number;
   onToggleTooltip?: () => void;
+  onReset: (values: TState) => void;
 }
 
-export type TUseTutorFilters = { onSubmit: (values: TState) => void };
+export type TUseTutorFilters = {
+  onSubmit: (values: TState) => void;
+  onReset: (values: TState) => void;
+};
 
 export type TButton = {
   reset?: boolean;

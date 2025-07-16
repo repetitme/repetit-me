@@ -11,7 +11,7 @@ import * as data from '../config/data';
 
 import { TUseTutorFilters } from '../types/types';
 
-const useTutorFilters = ({ onSubmit }: TUseTutorFilters) => {
+const useTutorFilters = ({ onSubmit, onReset }: TUseTutorFilters) => {
   const [values, setState] = useState(defaultState);
   const [errorMessage, setErrorMessage] = useState('');
   const [isOpen, setIsOpen] = useState<boolean[]>(
@@ -110,7 +110,7 @@ const useTutorFilters = ({ onSubmit }: TUseTutorFilters) => {
   };
 
   const scrollToTop = (): void => {
-    const el = document.getElementById('filters') as HTMLElement;
+    const el = document.getElementById('catalog') as HTMLElement;
     if (el) {
       window.scrollTo({ top: el.offsetTop, behavior: 'smooth' });
     }
@@ -130,6 +130,7 @@ const useTutorFilters = ({ onSubmit }: TUseTutorFilters) => {
   const handleReset = (): void => {
     scrollToTop();
     setState({ ...defaultState });
+    onReset({ ...defaultState });
   };
 
   return {
