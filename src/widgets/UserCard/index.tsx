@@ -18,8 +18,14 @@ const UserCard: React.FC<IUserData> = ({
   handleSubmit,
   navOption
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen((prev) => !prev);
+  const [modalState, setModalState] = useState({
+    isOpen: false,
+    isMounted: false
+  });
+  const toggle = () => {
+    setModalState({ ...modalState, isOpen: !modalState.isOpen });
+    setTimeout(() => setModalState({ ...modalState, isMounted: false }), 300);
+  };
   const navRole = role === 'tutor' ? 'tutor' : 'student';
   const isMyList =
     navOption === navOptions[navRole as keyof typeof navOptions].myList;
@@ -76,7 +82,9 @@ const UserCard: React.FC<IUserData> = ({
               <>
                 <Button
                   text="Создать отчет"
-                  onClick={toggle}
+                  onClick={() =>
+                    setModalState({ ...modalState, isMounted: true })
+                  }
                   variant="purple"
                 />
                 {(studentData?.lessonsCompleted ?? 0) > 1 && (
@@ -90,7 +98,9 @@ const UserCard: React.FC<IUserData> = ({
               </>
             )}
           </div>
-          {isOpen && <TutorDialogs close={toggle} variant={report} />}
+          {modalState.isMounted && (
+            <TutorDialogs close={toggle} variant={report} />
+          )}
         </>
       ) : (
         // Маленькая карточка
