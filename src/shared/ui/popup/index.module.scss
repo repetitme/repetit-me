@@ -19,6 +19,7 @@
     margin-block-end: 32px;
     font-family: var(--ffm-title);
     text-align: center;
+    white-space: pre-line;
   }
 
   &__content {
@@ -42,7 +43,7 @@
   }
 
   &__form {
-    gap: 49px;
+    gap: 63px;
   }
 
   &__close {

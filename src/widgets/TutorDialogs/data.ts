@@ -10,14 +10,14 @@ export const button = ['Далее', 'Создать', 'Отправить', 'О
 
 export const arrangement = {
   variant: TutorDialogsVariant.arrangement,
-  mainTitles: ['Договорились о первом занятии', 'Создание урока'],
+  mainTitles: ['Договорились о \n первом \n занятии?', 'Создание урока'],
   secondaryTitles: [
     'Причина',
     'Стоимость занятия (за час), ₽',
     'Дата',
     'Время'
   ],
-  placeholder: placeholder
+  placeholder: [placeholder, '0', 'Выберите дату', 'Выберите время']
 };
 
 export const hadFirstClass = {
