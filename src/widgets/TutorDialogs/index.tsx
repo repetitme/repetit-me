@@ -214,7 +214,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
               </div>
             )}
             {state.arrangement.step === 2 && (
-              <div>
+              <div className={styles.inputs}>
                 <Input
                   placeholder={arrangement.placeholder[1]}
                   onChange={onChange}
@@ -242,7 +242,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
         );
       case TutorDialogsVariant.hadFirstClass:
         return (
-          <div>
+          <div style={{ inlineSize: '360px' }}>
             {radio()}
             {values.hadFirstClass.hadClass === 'Да' ? (
               state.hadFirstClass.step === 2 && radio(true)

@@ -36,7 +36,7 @@ const Popup: FC<PopupProps> = ({
   const [isVisible, setIsVisible] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  const onClose = () => {
+  const handleClose = () => {
     setIsVisible(false);
     setTimeout(() => {
       setIsMounted(false);
@@ -61,21 +61,22 @@ const Popup: FC<PopupProps> = ({
 
   useScrollLock(isMounted);
 
-  const modalRef = useClickOutside(onClose);
+  // TODO: double toggle fix
+  // const modalRef = useClickOutside(handleClose);
 
   if (!isMounted) return null;
 
   return (
     <>
       <div
-        ref={modalRef}
+        // ref={modalRef}
         className={cn(styles.popup, {
           [styles.active]: isVisible,
           [styles.popup__small]: variant === 'small'
         })}
         onClick={(e) => e.stopPropagation()}
       >
-        <button onClick={onClose} className={styles.popup__close}>
+        <button onClick={handleClose} className={styles.popup__close}>
           <img src={iconClose} alt="иконка закрытия модального окна" />
         </button>
         <h2 className={styles.popup__title}>{title}</h2>

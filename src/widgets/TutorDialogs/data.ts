@@ -22,7 +22,7 @@ export const arrangement = {
 
 export const hadFirstClass = {
   variant: TutorDialogsVariant.hadFirstClass,
-  mainTitles: ['Прошло ли первое занятие?'],
+  mainTitles: ['Прошло ли первое \n занятие?'],
   secondaryTitles: ['Причина', 'Планируете ли дальнейшие занятия?'],
   options: [
     'Планируются дальнейшие занятия',
