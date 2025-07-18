@@ -46,7 +46,8 @@ const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
 
   const isSmall = variant === 'small';
   const isMedium = variant === 'medium';
-  const isLarge = variant === 'large';
+  const isOnCard = variant === 'onCard';
+  const isOnProfile = variant === 'onProfile';
 
   if (isSmall || isMedium) {
     return (
@@ -70,7 +71,7 @@ const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
       </div>
     );
   }
-  if (isLarge) {
+  if (isOnCard) {
     return (
       <div className={classNames(styles.container, sizeClass[0])}>
         <div className={styles.container__info}>
@@ -83,6 +84,17 @@ const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
           />
         </div>
         <button className={styles.container__button}>Отзывы</button>
+      </div>
+    );
+  }
+   if (isOnProfile) {
+    return (
+      <div className={classNames(styles.container, styles.onProfile)}>
+        <div className={styles.onProfile__content}>
+          <img className={styles.onProfile__star} src={star} alt="Rating star" />
+          <p className={styles.onProfile__text}>Рейтинг</p>
+          <p className={styles.onProfile__rating}>{rating.toFixed(1)}</p>
+        </div>
       </div>
     );
   }

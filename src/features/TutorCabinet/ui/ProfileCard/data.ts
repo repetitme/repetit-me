@@ -1,3 +1,5 @@
+import tutorAvatar from './../../../../assets/images/tutor_Alex.png';
+
 export interface ProfileCardProps {
   name: string;
   status: string;
@@ -13,5 +15,5 @@ export const profileCardData: ProfileCardProps = {
   tg: '@rabov654',
   link: 'https://www.figma.com/designvfbnbgngfmnLuyeugfkfe',
   rating: 4.6,
-  avatar: ''
+  avatar: tutorAvatar
 };
