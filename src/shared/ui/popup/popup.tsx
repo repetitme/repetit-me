@@ -62,14 +62,14 @@ const Popup: FC<PopupProps> = ({
   useScrollLock(isMounted);
 
   // TODO: double toggle fix
-  // const modalRef = useClickOutside(handleClose);
+  const modalRef = useClickOutside(handleClose);
 
   if (!isMounted) return null;
 
   return (
     <>
       <div
-        // ref={modalRef}
+        ref={modalRef}
         className={cn(styles.popup, {
           [styles.active]: isVisible,
           [styles.popup__small]: variant === 'small'
