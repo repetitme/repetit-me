@@ -38,7 +38,7 @@
 .info {
   display: flex;
   flex-direction: column;
-  padding: 12px 50px 0 0;
+  padding: 12px 100px 0 0;
 }
 
 .name {
@@ -70,7 +70,6 @@
 
 .refBlock {
   display: flex;
-  
   gap: 12px;
   font-family: var(--ffm-default);
   font-size: 16px;
