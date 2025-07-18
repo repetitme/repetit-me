@@ -18,6 +18,7 @@ type dataProps = {
 };
 
 type TPopups = {
+  isOpen: boolean;
   close: () => void;
   buttonText?: string;
   secondaryButtonText?: string;
