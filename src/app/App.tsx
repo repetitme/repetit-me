@@ -24,7 +24,7 @@ function App() {
       <div className={styles.app}>
         <Header auth={role} />
         <button onClick={toggle}>Open</button>
-        {isOpen && Popups.noTutorsFound({ close: toggle })}
+        {isOpen && Popups.noTutorsFound({ close: toggle, isOpen })}
         <AppRouter />
         <Footer role={role} goTelegram={showTelegramBlock} />
       </div>
