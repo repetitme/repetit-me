@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import cn from 'classnames';
 
@@ -18,14 +18,11 @@ const UserCard: React.FC<IUserData> = ({
   handleSubmit,
   navOption
 }) => {
-  const [modalState, setModalState] = useState({
-    isOpen: false,
-    isMounted: false
-  });
+  const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
-    setModalState({ ...modalState, isOpen: !modalState.isOpen });
-    setTimeout(() => setModalState({ ...modalState, isMounted: false }), 300);
+    setIsOpen(!isOpen);
   };
+
   const navRole = role === 'tutor' ? 'tutor' : 'student';
   const isMyList =
     navOption === navOptions[navRole as keyof typeof navOptions].myList;
@@ -82,9 +79,7 @@ const UserCard: React.FC<IUserData> = ({
               <>
                 <Button
                   text="Создать отчет"
-                  onClick={() =>
-                    setModalState({ ...modalState, isMounted: true })
-                  }
+                  onClick={toggle}
                   variant="purple"
                 />
                 {(studentData?.lessonsCompleted ?? 0) > 1 && (
@@ -98,9 +93,7 @@ const UserCard: React.FC<IUserData> = ({
               </>
             )}
           </div>
-          {modalState.isMounted && (
-            <TutorDialogs close={toggle} variant={report} />
-          )}
+          <TutorDialogs isOpen={isOpen} close={toggle} variant={report} />
         </>
       ) : (
         // Маленькая карточка

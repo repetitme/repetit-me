@@ -11,6 +11,7 @@ import ModalOverlay from '../overlay';
 import styles from './index.module.scss';
 
 interface PopupProps {
+  isOpen: boolean;
   close: () => void;
   variant?: 'default' | 'small' | 'form';
   title?: string;
@@ -25,39 +26,51 @@ const Popup: FC<PopupProps> = ({
   variant = 'default',
   title,
   children,
+  isOpen,
   close,
   buttonText,
   buttonOnClick,
   secondaryButtonText,
   secondaryButtonOnClick
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
   const onClose = () => {
-    setIsOpen(false);
+    setIsVisible(false);
     setTimeout(() => {
+      setIsMounted(false);
       close();
       //delete
     }, 300);
   };
 
   useEffect(() => {
-    if (!isOpen) {
+    if (isOpen) {
+      setIsMounted(true);
       setTimeout(() => {
-        setIsOpen(true);
+        setIsVisible(true);
+      }, 300);
+    } else {
+      setIsVisible(false);
+      setTimeout(() => {
+        setIsMounted(false);
       }, 300);
     }
-  }, []);
+  }, [isOpen]);
 
-  useScrollLock(isOpen);
+  useScrollLock(isMounted);
 
   const modalRef = useClickOutside(onClose);
+
+  if (!isMounted) return null;
 
   return (
     <>
       <div
         ref={modalRef}
         className={cn(styles.popup, {
-          [styles.active]: isOpen,
+          [styles.active]: isVisible,
           [styles.popup__small]: variant === 'small'
         })}
         onClick={(e) => e.stopPropagation()}
@@ -88,7 +101,7 @@ const Popup: FC<PopupProps> = ({
           </div>
         </div>
       </div>
-      <ModalOverlay isOpen={isOpen} />
+      <ModalOverlay isOpen={isVisible} />
     </>
   );
 };

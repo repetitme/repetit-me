@@ -16,6 +16,7 @@ import styles from './index.module.scss';
 
 interface TutorDialogsProps {
   variant: TutorDialogsVariant;
+  isOpen: boolean;
   close: () => void;
 }
 
@@ -40,7 +41,7 @@ type formData<T = string> = {
   };
 };
 
-const TutorDialogs: FC<TutorDialogsProps> = ({ variant, close }) => {
+const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
   const [state, setState] = useState({
     arrangement: {
       title: arrangement.mainTitles[0],
@@ -107,8 +108,9 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, close }) => {
         break;
       case hadFirstClass.variant:
         if (values.hadFirstClass.hadClass === 'Нет') {
+          close();
           console.log('Had first class submitted:', values.hadFirstClass);
-        } else {
+        } else if (values.hadFirstClass.hadClass === 'Да') {
           setState((prevState) => ({
             ...prevState,
             hadFirstClass: {
@@ -117,9 +119,14 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, close }) => {
               step: 2
             }
           }));
+          console.log('Had first submitted:', values.hadFirstClass);
+        } else if (state.hadFirstClass.step === 2) {
+          close();
+          console.log('Had first class submitted:', values.hadFirstClass);
         }
         break;
       case report.variant:
+        close();
         console.log('Report submitted:', values.report);
     }
   };
@@ -288,6 +295,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, close }) => {
   return (
     <Popup
       title={state[variant].title}
+      isOpen={isOpen}
       close={close}
       buttonText={state[variant].button}
       buttonOnClick={onSubmit}
