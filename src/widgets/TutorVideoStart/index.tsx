@@ -7,7 +7,11 @@ import InfoBlock from '../infoBlock';
 
 import styles from './index.module.scss';
 
-const TutorVideoStart: FC = () => {
+interface ITutorVideoStart {
+  video: string;
+}
+
+const TutorVideoStart: FC<ITutorVideoStart> = ({ video }) => {
   const [openModalState, setOpenModalState] = useState(false);
   const onToggleModalState = () => {
     setOpenModalState(!openModalState);
@@ -20,14 +24,14 @@ const TutorVideoStart: FC = () => {
           <img className={styles.container__icon} src={playerIcon} />
           <video
             className={styles.container__file}
-            src={videoMock}
+            src={video}
             onClick={onToggleModalState}
           />
         </div>
       </InfoBlock>
 
       {openModalState && (
-        <Modal close={onToggleModalState} >
+        <Modal close={onToggleModalState}>
           <video controls className={styles.container__full} src={videoMock} />
         </Modal>
       )}

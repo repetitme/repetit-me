@@ -1,0 +1,62 @@
+@use '../../../assets/styles/mixins/gradient.scss' as *;
+
+.filters {
+  font-family: var(--ffm-default, courier, monospace);
+  font-size: 16px;
+  background-color: var(--clr-main);
+  border-radius: 20px;
+  padding: var(--border-radius-chat);
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+
+    > :nth-child(4) {
+      margin-block-end: 7px;
+    }
+
+    > :nth-child(7) {
+      margin-block-start: 2px;
+    }
+
+    > :nth-child(9) {
+      margin-block-start: 16px;
+    }
+  }
+
+  > :last-child {
+    margin-block-start: 12px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 16px;
+
+    &__main {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-block-end: 32px;
+      font-weight: 700;
+      font-size: 20px;
+      user-select: none;
+      cursor: pointer;
+
+      h2 {
+        font-weight: inherit;
+        font-size: inherit;
+
+        @include title-gradient;
+      }
+
+      span {
+        padding-bottom: 1px;
+        font-weight: inherit;
+        font-size: 24px;
+
+        @include title-gradient;
+      }
+    }
+  }
+}

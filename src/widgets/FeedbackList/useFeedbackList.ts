@@ -4,7 +4,7 @@ import { TFeedbackItemProps } from '../../shared/ui/feedbackItem/type';
 
 interface UseFeedbackListProps {
   initialData: TFeedbackItemProps[];
-  onDataChange: (feedbacks: TFeedbackItemProps[]) => void;
+  onDataChange: (raitings: number[]) => void;
 }
 
 const useFeedbackList = ({
@@ -15,7 +15,8 @@ const useFeedbackList = ({
   const [isAscending, setIsAscending] = useState<boolean>(true);
 
   useEffect(() => {
-    onDataChange(feedbacks);
+    const raitings = feedbacks.map((item) => item.rating);
+    onDataChange(raitings);
   }, [feedbacks, onDataChange]);
 
   const sortedFeedbacks = useMemo(() => {

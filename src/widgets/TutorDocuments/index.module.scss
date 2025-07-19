@@ -6,8 +6,20 @@
   gap: 8px;
 
   &__document {
+    max-block-size: 138px;
+    max-inline-size: 200px;
     position: relative;
     cursor: pointer;
+
+    &_img {
+      object-fit: contain;
+      max-width: 100%;
+    }
+  }
+
+  &__full {
+    max-width: 80vw;
+    max-height: 80vh;
   }
 
   &__document:hover::after {

@@ -1,0 +1,13 @@
+.wrapper {
+  margin: 0 auto;
+  border-radius: var(--border-radius-blocks);
+  padding: 24px;
+  background-color: var(--clr-main);
+
+  &--large {
+    padding: 60px;
+    border-radius: var(--border-radius-chat);
+    inline-size: 1200px;
+    box-shadow: 0 0 4px 1px rgb(0 0 0 / 25%);
+  }
+}

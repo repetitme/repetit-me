@@ -2,6 +2,7 @@
   position: fixed;
   inset: 0;
   background: rgb(0 0 0 / 60%);
+  z-index: 999;
   opacity: 0;
   transition: all 0.3s ease;
   visibility: hidden;
@@ -9,6 +10,5 @@
   &.active {
     opacity: 1;
     visibility: visible;
-    z-index: 999;
   }
 }

@@ -23,10 +23,10 @@ export const Modal: FC<TModal> = ({ login, children, close }) => {
   const onClose = () => {
     setIsOpen(false);
     setTimeout(() => {
-    if (!children) {
+      if (!children) {
         navigate(-1);
       } else close && close();
-      }, 300);
+    }, 300);
   };
 
   useEffect(() => {

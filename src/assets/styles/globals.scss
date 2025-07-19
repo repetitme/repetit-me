@@ -24,8 +24,14 @@ ul {
 
 button,
 a {
+  cursor: pointer;
   color: currentcolor;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  text-decoration: none;
+}
+
+input {
+  appearance: none;
 }

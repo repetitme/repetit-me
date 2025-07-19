@@ -1,7 +1,9 @@
+import { ServicesListItem } from '../../widgets/AboutMe/type';
+
 export interface IUserBaseData {
   id: string;
   name: string;
-  //image: string;
+  image: string;
   subjects: string[]; // Массив предметов
   studentAudience: string[]; // Для какой аудиторий учеников
   purpose: string[]; // Для чего нужен преподаватель
@@ -12,10 +14,13 @@ export interface ITutorData extends IUserBaseData {
   status: 'Частный преподаватель' | string;
   experienceYears: number;
   description: string;
+  autobiography: string;
   rating: number; // Рейтинг
   link?: string; // Ссылка на приветственное видео от репетитора, если оно у него есть
   isCard?: boolean;
+  servicesList: ServicesListItem[];
   documents: string[];
+  videoStart: string;
 }
 
 export interface IStudentData extends IUserBaseData {
@@ -26,7 +31,7 @@ export interface IStudentData extends IUserBaseData {
   workingStatus?: string; // Например, "занятия еще не начались"
 }
 
-type TUserRole = 'student' | 'tutor' | 'unAuthorized' | 'card';
+export type TUserRole = 'student' | 'teacher' | 'unauth' | 'card';
 
 export interface IUserData {
   role: TUserRole;

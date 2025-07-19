@@ -1,0 +1,19 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 24px;
+
+  &__title {
+    font-family: var(--ffm-title);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  &__button {
+    align-self: flex-end;
+    max-inline-size: 355px;
+    margin-block-start: 10px;
+  }
+}

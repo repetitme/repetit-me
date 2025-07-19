@@ -1,3 +1,5 @@
+@use '../../../assets/styles/mixins/inputsGradient.scss' as *;
+
 .input-wrapper {
   display: flex;
   flex-direction: column;
@@ -16,6 +18,7 @@
     background-color: var(--clr-main, #fff);
     color: var(--crl-black, #000);
     border: none;
+    transition: all 0.5s ease;
     border-radius: 10px;
     font-family: inherit;
     font-weight: 500;
@@ -57,6 +60,16 @@
     &__text {
       color: var(--clr-secondary-default, #fc4a4a);
       top: 100%;
+      opacity: 0;
+      block-size: 0;
+      transform: translate(-20px);
+      transition: all 0.3s ease;
+    }
+
+    &__active {
+      opacity: 1;
+      block-size: 20px;
+      transform: translate(0);
     }
   }
 
@@ -96,13 +109,12 @@
     .input {
       padding: 11px 15px;
       font-size: 16px;
+      line-height: 1.4;
       margin-block-start: 1px;
       border-radius: 12px;
       outline: none;
-      border: 2px solid transparent;
-      background:
-        linear-gradient(white, white) padding-box,
-        linear-gradient(90deg, #9747ff, #6757f1) border-box;
+
+      @include inputs-gradient;
 
       &.error {
         border: 2px solid var(--clr-secondary-default, #fc4a4a);
@@ -110,6 +122,7 @@
 
       &::placeholder {
         font-size: 16px;
+        line-height: 1.4;
       }
     }
   }
