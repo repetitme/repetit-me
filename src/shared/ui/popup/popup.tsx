@@ -69,16 +69,18 @@ const Popup: FC<PopupProps> = ({
   return (
     <>
       <div
-        ref={modalRef}
+        ref={variant === 'small' ? null : modalRef}
         className={cn(styles.popup, {
           [styles.active]: isVisible,
           [styles.popup__small]: variant === 'small'
         })}
         onClick={(e) => e.stopPropagation()}
       >
-        <button onClick={handleClose} className={styles.popup__close}>
-          <img src={iconClose} alt="иконка закрытия модального окна" />
-        </button>
+        {variant !== 'small' && (
+          <button onClick={handleClose} className={styles.popup__close}>
+            <img src={iconClose} alt="иконка закрытия модального окна" />
+          </button>
+        )}
         <h2 className={styles.popup__title}>{title}</h2>
         <div
           className={cn(styles.popup__content, {
@@ -88,13 +90,15 @@ const Popup: FC<PopupProps> = ({
           {children}
           <div className={styles.popup__buttons}>
             <Button
-              text={buttonText || 'Закрыть'}
-              variant="purple"
+              className={styles.popup__button}
+              text={variant === 'small' ? 'Нет' : buttonText || 'Закрыть'}
+              variant={variant === 'small' ? 'white' : 'purple'}
               onClick={buttonOnClick}
             />
-            {secondaryButtonText && (
+            {secondaryButtonOnClick && (
               <Button
-                text={secondaryButtonText}
+                className={styles.popup__button}
+                text={secondaryButtonText || 'Да'}
                 variant="white"
                 onClick={secondaryButtonOnClick}
               />

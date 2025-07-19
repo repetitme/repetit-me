@@ -4,8 +4,9 @@ import cn from 'classnames';
 
 import { IUserData, navOptions } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
+import Popups from '../../shared/ui/popup';
 import TutorDialogs from '../TutorDialogs';
-import { TutorDialogsVariant } from '../TutorDialogs/data';
+import { TutorDialogsVariant } from '../TutorDialogs/constants';
 import StudentProfile from '../UserProfile/StudentProfile';
 import TutorProfile from '../UserProfile/TutorProfile';
 
@@ -48,18 +49,41 @@ const UserCard: React.FC<IUserData> = ({
             <p>Репетитор не найден</p>
           )}
           <div className={styles.card__buttons}>
-            <Button text="Подробнее" variant="white" />
+            <Button
+              text="Подробнее"
+              variant="white"
+              onClick={() => console.log('Подробнее')}
+            />
             {!isMyList && (
-              <Button
-                text={
-                  !navOption
-                    ? 'Связаться'
-                    : isTutorRequests
-                      ? 'Принять'
-                      : 'Отменить заявку'
-                }
-                variant={!isMyRequests ? 'purple' : 'red'}
-              />
+              <>
+                <Button
+                  text={
+                    !navOption
+                      ? 'Связаться'
+                      : isTutorRequests
+                        ? 'Принять'
+                        : 'Отменить заявку'
+                  }
+                  variant={!isMyRequests ? 'purple' : 'red'}
+                  onClick={toggle}
+                />
+                {!navOption
+                  ? Popups.responded({ isOpen, close: toggle })
+                  : isTutorRequests
+                    ? Popups.receivedRequest({
+                        isOpen,
+                        close: toggle,
+                        buttonOnClick: toggle
+                      })
+                    : Popups.cancelRequest({
+                        isOpen,
+                        close: toggle,
+                        buttonOnClick: toggle,
+                        secondaryButtonOnClick: () => {
+                          console.log('cancel');
+                        }
+                      })}
+              </>
             )}
           </div>
         </>
@@ -83,7 +107,13 @@ const UserCard: React.FC<IUserData> = ({
                   variant="purple"
                 />
                 {(studentData?.lessonsCompleted ?? 0) > 1 && (
-                  <Button text="Подробнее" variant="white" />
+                  <Button
+                    text="Подробнее"
+                    variant="white"
+                    onClick={() => {
+                      console.log('Подробнее');
+                    }}
+                  />
                 )}
               </>
             ) : (

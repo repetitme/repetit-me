@@ -1,93 +1,41 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import useForm from '../../shared/hooks/useForm';
 import Input from '../../shared/ui/input';
 import Popup from '../../shared/ui/popup/popup';
 import Textarea from '../../shared/ui/textarea';
-import {
-  TutorDialogsVariant,
-  arrangement,
-  button,
-  hadFirstClass,
-  report
-} from './data';
+import { TutorDialogsVariant, initialState, initialValues } from './constants';
+import { arrangement, button, hadFirstClass, report } from './data';
 
 import styles from './index.module.scss';
 
-interface TutorDialogsProps {
-  variant: TutorDialogsVariant;
-  isOpen: boolean;
-  close: () => void;
-}
-
-type formData<T = string> = {
-  arrangement: {
-    arranged: T;
-    cause?: T;
-    price?: T;
-    date?: T;
-    time?: T;
-  };
-  hadFirstClass: {
-    hadClass: T;
-    cause?: T;
-    futurePlan?: T;
-  };
-  report: {
-    price: T;
-    duration: T;
-    planedNumberOfLessons: T;
-    additionalInfo?: T;
-  };
-};
+import { TState, TutorDialogsProps, formData } from './types';
 
 const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
-  const [state, setState] = useState({
-    arrangement: {
-      title: arrangement.mainTitles[0],
-      button: button[0],
-      step: 1
-    },
-    hadFirstClass: {
-      title: hadFirstClass.mainTitles[0],
-      button: button[0],
-      step: 1
-    },
-    report: {
-      title: report.mainTitles[0],
-      button: button[3],
-      step: 1
-    }
-  });
+  const [state, setState] = useState(initialState);
 
-  const { values, setValues } = useForm<formData>({
-    arrangement: {
-      arranged: 'Да',
-      cause: '',
-      price: '',
-      date: '',
-      time: ''
-    },
-    hadFirstClass: {
-      hadClass: 'Да',
-      cause: '',
-      futurePlan: ''
-    },
-    report: {
-      price: '',
-      duration: '',
-      planedNumberOfLessons: ''
-    }
-  });
-
-  console.log(values);
+  const { values, setValues, handleChange } = useForm<formData>(initialValues);
 
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target;
-    setValues({ ...values, [variant]: { ...values[variant], [name]: value } });
+    handleChange(e, variant);
   };
+
+  const onStateChange = (
+    value: Partial<TState[keyof TState]>,
+    path: TutorDialogsVariant
+  ) => {
+    setState((prevState) => ({
+      ...prevState,
+      [path]: { ...prevState[path], ...value }
+    }));
+  };
+
+  useEffect(() => {
+    setValues(initialValues);
+    setState(initialState);
+  }, [isOpen]);
 
   const onSubmit = () => {
     switch (variant) {
@@ -96,14 +44,14 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
           close();
           console.log('Arrangement submitted:', values.arrangement);
         } else {
-          setState((prevState) => ({
-            ...prevState,
-            arrangement: {
+          onStateChange(
+            {
               title: arrangement.mainTitles[1],
               button: button[1],
               step: 2
-            }
-          }));
+            },
+            TutorDialogsVariant.arrangement
+          );
         }
         break;
       case hadFirstClass.variant:
@@ -111,14 +59,13 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
           close();
           console.log('Had first class submitted:', values.hadFirstClass);
         } else if (values.hadFirstClass.hadClass === 'Да') {
-          setState((prevState) => ({
-            ...prevState,
-            hadFirstClass: {
-              ...prevState.hadFirstClass,
+          onStateChange(
+            {
               button: button[2],
               step: 2
-            }
-          }));
+            },
+            TutorDialogsVariant.hadFirstClass
+          );
           console.log('Had first submitted:', values.hadFirstClass);
         } else if (state.hadFirstClass.step === 2) {
           close();
@@ -216,6 +163,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
             {state.arrangement.step === 2 && (
               <div className={styles.inputs}>
                 <Input
+                  name="price"
                   placeholder={arrangement.placeholder[1]}
                   onChange={onChange}
                   value={values.arrangement.price || ''}
@@ -223,6 +171,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
                   label={arrangement.secondaryTitles[1]}
                 />
                 <Input
+                  name="date"
                   placeholder={arrangement.placeholder[2]}
                   onChange={onChange}
                   value={values.arrangement.date || ''}
@@ -230,6 +179,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
                   label={arrangement.secondaryTitles[2]}
                 />
                 <Input
+                  name="time"
                   placeholder={arrangement.placeholder[3]}
                   onChange={onChange}
                   value={values.arrangement.time || ''}
@@ -248,6 +198,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
               state.hadFirstClass.step === 2 && radio(true)
             ) : (
               <Textarea
+                name="cause"
                 className={styles.textarea}
                 onChange={onChange}
                 value={values.hadFirstClass.cause}
@@ -261,6 +212,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
         return (
           <div className={styles.inputs}>
             <Input
+              name="price"
               placeholder={report.placeholder[0]}
               onChange={onChange}
               value={values.report.price}
@@ -268,6 +220,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
               label={report.secondaryTitles[0]}
             />
             <Input
+              name="duration"
               placeholder={report.placeholder[1]}
               onChange={onChange}
               value={values.report.duration}
@@ -275,6 +228,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
               label={report.secondaryTitles[1]}
             />
             <Input
+              name="planedNumberOfLessons"
               placeholder={report.placeholder[2]}
               onChange={onChange}
               value={values.report.planedNumberOfLessons}
@@ -282,6 +236,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
               label={report.secondaryTitles[2]}
             />
             <Textarea
+              name="additionalInfo"
               className={styles.textarea}
               onChange={onChange}
               value={values.report.additionalInfo}

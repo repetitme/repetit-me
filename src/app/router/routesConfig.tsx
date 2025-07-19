@@ -3,8 +3,6 @@ import NotFoundPage from '../../pages/NotFoundPage';
 import Requests from '../../pages/Requests';
 import TutorCatalogPage from '../../pages/TutorCatalogPage';
 
-// import Popups from '../../shared/ui/popup';
-
 import { IRoute } from './type';
 
 export const routesConfig: IRoute[] = [
@@ -28,11 +26,6 @@ export const routesConfig: IRoute[] = [
     element: <NotFoundPage />,
     auth: false
   }
-  // {
-  //   path: '/test',
-  //   element: Popups.noTutorsFound({ close: () => {} }),
-  //   auth: false
-  // }
 ];
 
 export const knownPaths = routesConfig

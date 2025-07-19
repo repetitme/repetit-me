@@ -1,15 +1,9 @@
 const placeholder = 'Клиент не читает сообщения, не сошлись в расписании';
 
-export enum TutorDialogsVariant {
-  arrangement = 'arrangement',
-  hadFirstClass = 'hadFirstClass',
-  report = 'report'
-}
-
 export const button = ['Далее', 'Создать', 'Отправить', 'Отправить отчёт'];
 
 export const arrangement = {
-  variant: TutorDialogsVariant.arrangement,
+  variant: 'arrangement',
   mainTitles: ['Договорились о \n первом \n занятии?', 'Создание урока'],
   secondaryTitles: [
     'Причина',
@@ -21,7 +15,7 @@ export const arrangement = {
 };
 
 export const hadFirstClass = {
-  variant: TutorDialogsVariant.hadFirstClass,
+  variant: 'hadFirstClass',
   mainTitles: ['Прошло ли первое \n занятие?'],
   secondaryTitles: ['Причина', 'Планируете ли дальнейшие занятия?'],
   options: [
@@ -33,7 +27,7 @@ export const hadFirstClass = {
 };
 
 export const report = {
-  variant: TutorDialogsVariant.report,
+  variant: 'report',
   mainTitles: ['Создание отчёта'],
   secondaryTitles: [
     'Стоимость занятия (за час), ₽',
