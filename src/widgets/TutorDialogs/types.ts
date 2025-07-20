@@ -34,3 +34,8 @@ export type formData<T = string> = {
     additionalInfo?: T;
   };
 };
+
+export type InputFactoryProps = {
+  name: keyof formData[keyof formData];
+  textarea?: boolean;
+};

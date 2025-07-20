@@ -9,11 +9,15 @@ import { arrangement, button, hadFirstClass, report } from './data';
 
 import styles from './index.module.scss';
 
-import { TState, TutorDialogsProps, formData } from './types';
+import {
+  InputFactoryProps,
+  TState,
+  TutorDialogsProps,
+  formData
+} from './types';
 
 const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
   const [state, setState] = useState(initialState);
-
   const { values, setValues, handleChange } = useForm<formData>(initialValues);
 
   const onChange = (
@@ -33,8 +37,10 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
   };
 
   useEffect(() => {
-    setValues(initialValues);
-    setState(initialState);
+    setTimeout(() => {
+      setValues(initialValues);
+      setState(initialState);
+    }, 300);
   }, [isOpen]);
 
   const onSubmit = () => {
@@ -42,7 +48,6 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
       case arrangement.variant:
         if (values.arrangement.arranged === 'Нет') {
           close();
-          console.log('Arrangement submitted:', values.arrangement);
         } else {
           onStateChange(
             {
@@ -53,12 +58,17 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
             TutorDialogsVariant.arrangement
           );
         }
+        if (state.arrangement.step === 2) {
+          close();
+        }
         break;
       case hadFirstClass.variant:
-        if (values.hadFirstClass.hadClass === 'Нет') {
+        if (
+          state.hadFirstClass.step === 1 &&
+          values.hadFirstClass.hadClass === 'Нет'
+        ) {
           close();
-          console.log('Had first class submitted:', values.hadFirstClass);
-        } else if (values.hadFirstClass.hadClass === 'Да') {
+        } else {
           onStateChange(
             {
               button: button[2],
@@ -66,15 +76,13 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
             },
             TutorDialogsVariant.hadFirstClass
           );
-          console.log('Had first submitted:', values.hadFirstClass);
-        } else if (state.hadFirstClass.step === 2) {
+        }
+        if (state.hadFirstClass.step === 2) {
           close();
-          console.log('Had first class submitted:', values.hadFirstClass);
         }
         break;
-      case report.variant:
+      default:
         close();
-        console.log('Report submitted:', values.report);
     }
   };
 
@@ -137,6 +145,25 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
           </>
         )}
       </div>
+    );
+  };
+
+  const inputFactory = ({ name, textarea }: InputFactoryProps) => {
+    const variantData = {
+      [TutorDialogsVariant.arrangement]: arrangement,
+      [TutorDialogsVariant.hadFirstClass]: hadFirstClass,
+      [TutorDialogsVariant.report]: report
+    };
+    const Tag = textarea ? Textarea : Input;
+    return (
+      <Tag
+        name={name}
+        placeholder={variantData[variant].placeholder[1]}
+        onChange={onChange}
+        value={values[variant][name] || ''}
+        variant="report"
+        label={variantData[variant].secondaryTitles[1]}
+      />
     );
   };
 

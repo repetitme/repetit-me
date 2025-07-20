@@ -8,8 +8,7 @@
   z-index: 1000;
   opacity: 0;
   background: var(--clr-1);
-
-  // max-inline-size: 640px;
+  max-inline-size: 640px;
   visibility: hidden;
   transition: all 0.3s ease;
   transform: translate(-50%, -50%) scale(0.8);
@@ -42,6 +41,10 @@
     &__content {
       gap: 40px;
     }
+
+    &__button {
+      inline-size: 149px;
+    }
   }
 
   &__form {
@@ -68,10 +71,6 @@
     display: flex;
     justify-content: center;
     gap: 16px;
-  }
-
-  &__button {
-    inline-size: 149px;
   }
 }
 
