@@ -63,7 +63,6 @@ const Popup: FC<PopupProps> = ({
 
   useScrollLock(isMounted);
 
-  // TODO: double toggle fix
   const modalRef = useClickOutside(handleClose);
 
   if (!isMounted) return null;
