@@ -23,7 +23,7 @@ export const hadFirstClass = {
     'Дальнейших занятий не будет',
     'Неизвестно планируются ли дальнейшие занятия'
   ],
-  placeholder: placeholder
+  placeholder: [placeholder]
 };
 
 export const report = {
@@ -35,5 +35,5 @@ export const report = {
     'Предполагаемое количество \n занятий в неделю',
     'Доп. информация (не обязательно)'
   ],
-  placeholder: ['0', 'Выберите дату', 'Выберите время']
+  placeholder: ['0', 'Выберите дату', 'Выберите время', '']
 };

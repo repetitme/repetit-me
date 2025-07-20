@@ -118,13 +118,11 @@ const Input: React.FC<IInput> = ({
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
       />
-      {error && (
         <span
           className={cn(styles.error__text, { [styles.error__active]: error })}
         >
           {error}
         </span>
-      )}
     </div>
   );
 };

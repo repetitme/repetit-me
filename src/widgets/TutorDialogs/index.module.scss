@@ -9,13 +9,21 @@
   flex-direction: column;
   gap: 25px;
 
+  &__title {
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    margin-block-start: 28px;
+  }
+
   &__checkbox {
     display: flex;
-    align-items: center;
+    // align-items: center;
     gap: 7px;
     font-weight: 500;
     font-size: 15px;
     block-size: 24px;
+    text-align: left;
 
     & input {
       position: relative;

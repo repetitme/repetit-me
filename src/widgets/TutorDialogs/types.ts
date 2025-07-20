@@ -36,6 +36,7 @@ export type formData<T = string> = {
 };
 
 export type InputFactoryProps = {
-  name: keyof formData[keyof formData];
+  name: string;
   textarea?: boolean;
+  index: number;
 };

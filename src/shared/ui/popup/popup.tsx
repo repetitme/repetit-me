@@ -15,6 +15,7 @@ interface PopupProps {
   close: () => void;
   variant?: 'default' | 'small' | 'form';
   title?: string;
+  isValid?: boolean;
   children?: ReactNode;
   buttonText?: string;
   secondaryButtonText?: string;
@@ -26,6 +27,7 @@ const Popup: FC<PopupProps> = ({
   variant = 'default',
   title,
   children,
+  isValid,
   isOpen,
   close,
   buttonText,
@@ -94,6 +96,7 @@ const Popup: FC<PopupProps> = ({
               text={variant === 'small' ? 'Нет' : buttonText || 'Закрыть'}
               variant={variant === 'small' ? 'white' : 'purple'}
               onClick={buttonOnClick}
+              disabled={!isValid}
             />
             {secondaryButtonOnClick && (
               <Button

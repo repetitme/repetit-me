@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 
 import useForm from '../../shared/hooks/useForm';
 import Input from '../../shared/ui/input';
@@ -19,6 +19,7 @@ import {
 const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
   const [state, setState] = useState(initialState);
   const { values, setValues, handleChange } = useForm<formData>(initialValues);
+  const [isValid, setIsValid] = useState(false);
 
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -40,10 +41,12 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     setTimeout(() => {
       setValues(initialValues);
       setState(initialState);
+      handleValidity();
     }, 300);
   }, [isOpen]);
 
   const onSubmit = () => {
+    setIsValid(false);
     switch (variant) {
       case arrangement.variant:
         if (values.arrangement.arranged === 'Нет') {
@@ -86,6 +89,31 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     }
   };
 
+  // type radioFactoryProps = { futureLesson?: boolean; name: string };
+
+  // const radioFactory = ({ futureLesson, name }: radioFactoryProps) => {
+  //   <input
+  //     type="radio"
+  //     name={futureLesson ? 'futurePlan' : fieldName}
+  //     value={futureLesson ? hadFirstClass.options[0] : 'Да'}
+  //     checked={
+  //       futureLesson
+  //         ? values.hadFirstClass.futurePlan === hadFirstClass.options[0]
+  //         : fieldValue === 'Да'
+  //     }
+  //     onChange={onChange}
+  //   />;
+  // };
+
+  const formRef = useRef<HTMLFormElement | null>(null);
+
+  const handleValidity = () => {
+    requestAnimationFrame(() => {
+      if (formRef.current) {
+        setIsValid(!!formRef.current?.checkValidity());
+      }
+    });
+  };
   const radio = (futureLesson?: boolean) => {
     const fieldName =
       variant === TutorDialogsVariant.arrangement ? 'arranged' : 'hadClass';
@@ -133,7 +161,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
             <label className={styles.radio__checkbox}>
               <input
                 type="radio"
-                name={'futurePlan'}
+                name='futurePlan'
                 onChange={onChange}
                 value={hadFirstClass.options[2]}
                 checked={
@@ -148,7 +176,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     );
   };
 
-  const inputFactory = ({ name, textarea }: InputFactoryProps) => {
+  const inputFactory = ({ name, textarea, index }: InputFactoryProps) => {
     const variantData = {
       [TutorDialogsVariant.arrangement]: arrangement,
       [TutorDialogsVariant.hadFirstClass]: hadFirstClass,
@@ -157,12 +185,18 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     const Tag = textarea ? Textarea : Input;
     return (
       <Tag
+        className={textarea ? styles.textarea : ''}
         name={name}
-        placeholder={variantData[variant].placeholder[1]}
+        placeholder={variantData[variant].placeholder[index]}
         onChange={onChange}
-        value={values[variant][name] || ''}
+        value={
+          (values as { [key: string]: { [key: string]: string } })[variant][
+            name
+          ] || ''
+        }
         variant="report"
-        label={variantData[variant].secondaryTitles[1]}
+        label={variantData[variant].secondaryTitles[index]}
+        required={textarea ? false : true}
       />
     );
   };
@@ -175,44 +209,19 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
             {state.arrangement.step === 1 && (
               <div style={{ inlineSize: '360px' }}>
                 {radio()}
-                {values.arrangement.arranged === 'Нет' && (
-                  <Textarea
-                    className={styles.textarea}
-                    name="cause"
-                    onChange={onChange}
-                    value={values.arrangement.cause}
-                    label={arrangement.secondaryTitles[0]}
-                    placeholder={arrangement.placeholder[0]}
-                  />
-                )}
+                {values.arrangement.arranged === 'Нет' &&
+                  inputFactory({
+                    name: 'cause',
+                    textarea: true,
+                    index: 0
+                  })}
               </div>
             )}
             {state.arrangement.step === 2 && (
               <div className={styles.inputs}>
-                <Input
-                  name="price"
-                  placeholder={arrangement.placeholder[1]}
-                  onChange={onChange}
-                  value={values.arrangement.price || ''}
-                  variant="report"
-                  label={arrangement.secondaryTitles[1]}
-                />
-                <Input
-                  name="date"
-                  placeholder={arrangement.placeholder[2]}
-                  onChange={onChange}
-                  value={values.arrangement.date || ''}
-                  variant="report"
-                  label={arrangement.secondaryTitles[2]}
-                />
-                <Input
-                  name="time"
-                  placeholder={arrangement.placeholder[3]}
-                  onChange={onChange}
-                  value={values.arrangement.time || ''}
-                  variant="report"
-                  label={arrangement.secondaryTitles[3]}
-                />
+                {inputFactory({ name: 'price', index: 1 })}
+                {inputFactory({ name: 'date', index: 2 })}
+                {inputFactory({ name: 'time', index: 3 })}
               </div>
             )}
           </>
@@ -221,54 +230,18 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
         return (
           <div style={{ inlineSize: '360px' }}>
             {radio()}
-            {values.hadFirstClass.hadClass === 'Да' ? (
-              state.hadFirstClass.step === 2 && radio(true)
-            ) : (
-              <Textarea
-                name="cause"
-                className={styles.textarea}
-                onChange={onChange}
-                value={values.hadFirstClass.cause}
-                label={hadFirstClass.secondaryTitles[0]}
-                placeholder={hadFirstClass.placeholder}
-              />
-            )}
+            {values.hadFirstClass.hadClass === 'Да'
+              ? state.hadFirstClass.step === 2 && radio(true)
+              : inputFactory({ name: 'cause', textarea: true, index: 0 })}
           </div>
         );
       case TutorDialogsVariant.report:
         return (
           <div className={styles.inputs}>
-            <Input
-              name="price"
-              placeholder={report.placeholder[0]}
-              onChange={onChange}
-              value={values.report.price}
-              variant="report"
-              label={report.secondaryTitles[0]}
-            />
-            <Input
-              name="duration"
-              placeholder={report.placeholder[1]}
-              onChange={onChange}
-              value={values.report.duration}
-              variant="report"
-              label={report.secondaryTitles[1]}
-            />
-            <Input
-              name="planedNumberOfLessons"
-              placeholder={report.placeholder[2]}
-              onChange={onChange}
-              value={values.report.planedNumberOfLessons}
-              variant="report"
-              label={report.secondaryTitles[2]}
-            />
-            <Textarea
-              name="additionalInfo"
-              className={styles.textarea}
-              onChange={onChange}
-              value={values.report.additionalInfo}
-              label={report.secondaryTitles[3]}
-            />
+            {inputFactory({ name: 'price', index: 0 })}
+            {inputFactory({ name: 'duration', index: 1 })}
+            {inputFactory({ name: 'planedNumberOfLessons', index: 2 })}
+            {inputFactory({ name: 'additionalInfo', textarea: true, index: 3 })}
           </div>
         );
     }
@@ -282,8 +255,16 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
       buttonText={state[variant].button}
       buttonOnClick={onSubmit}
       variant="form"
+      isValid={isValid}
     >
-      <form className={styles.dialogs}>{dialogs()}</form>
+      <form
+        onSubmit={onSubmit}
+        onChange={handleValidity}
+        ref={formRef}
+        className={styles.dialogs}
+      >
+        {dialogs()}
+      </form>
     </Popup>
   );
 };
