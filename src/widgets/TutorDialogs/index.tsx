@@ -89,21 +89,44 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     }
   };
 
-  // type radioFactoryProps = { futureLesson?: boolean; name: string };
+  type radioFactoryProps = {
+    futureLesson?: boolean;
+    index: number;
+  };
 
-  // const radioFactory = ({ futureLesson, name }: radioFactoryProps) => {
-  //   <input
-  //     type="radio"
-  //     name={futureLesson ? 'futurePlan' : fieldName}
-  //     value={futureLesson ? hadFirstClass.options[0] : 'Да'}
-  //     checked={
-  //       futureLesson
-  //         ? values.hadFirstClass.futurePlan === hadFirstClass.options[0]
-  //         : fieldValue === 'Да'
-  //     }
-  //     onChange={onChange}
-  //   />;
-  // };
+  const radioFactory = ({ futureLesson, index }: radioFactoryProps) => {
+    const fieldName =
+      variant === TutorDialogsVariant.arrangement ? 'arranged' : 'hadClass';
+    const fieldValue =
+      variant === TutorDialogsVariant.arrangement
+        ? values.arrangement.arranged
+        : values.hadFirstClass.hadClass;
+    return (
+      <label className={styles.radio__checkbox} htmlFor={'radio' + index}>
+        <input
+          id={'radio' + index}
+          type="radio"
+          name={futureLesson ? 'futurePlan' : fieldName}
+          value={
+            futureLesson ? hadFirstClass.options[0] : index === 0 ? 'Да' : 'Нет'
+          }
+          checked={
+            futureLesson
+              ? values.hadFirstClass.futurePlan === hadFirstClass.options[index]
+              : index === 0
+                ? fieldValue === 'Да'
+                : fieldValue === 'Нет'
+          }
+          onChange={onChange}
+        />
+        {futureLesson
+          ? hadFirstClass.options[index]
+          : index === 0
+            ? 'Да'
+            : 'Нет'}
+      </label>
+    );
+  };
 
   const formRef = useRef<HTMLFormElement | null>(null);
 
@@ -115,12 +138,6 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     });
   };
   const radio = (futureLesson?: boolean) => {
-    const fieldName =
-      variant === TutorDialogsVariant.arrangement ? 'arranged' : 'hadClass';
-    const fieldValue =
-      variant === TutorDialogsVariant.arrangement
-        ? values.arrangement.arranged
-        : values.hadFirstClass.hadClass;
     return (
       <div className={styles.radio}>
         {futureLesson && (
@@ -128,50 +145,9 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
             {hadFirstClass.secondaryTitles[1]}
           </h3>
         )}
-        <label className={styles.radio__checkbox}>
-          <input
-            type="radio"
-            name={futureLesson ? 'futurePlan' : fieldName}
-            value={futureLesson ? hadFirstClass.options[0] : 'Да'}
-            checked={
-              futureLesson
-                ? values.hadFirstClass.futurePlan === hadFirstClass.options[0]
-                : fieldValue === 'Да'
-            }
-            onChange={onChange}
-          />
-          {!futureLesson ? 'Да' : hadFirstClass.options[0]}
-        </label>
-        <label className={styles.radio__checkbox}>
-          <input
-            type="radio"
-            name={futureLesson ? 'futurePlan' : fieldName}
-            onChange={onChange}
-            value={futureLesson ? hadFirstClass.options[1] : 'Нет'}
-            checked={
-              futureLesson
-                ? values.hadFirstClass.futurePlan === hadFirstClass.options[1]
-                : fieldValue === 'Нет'
-            }
-          />
-          {!futureLesson ? 'Нет' : hadFirstClass.options[1]}
-        </label>
-        {futureLesson && (
-          <>
-            <label className={styles.radio__checkbox}>
-              <input
-                type="radio"
-                name='futurePlan'
-                onChange={onChange}
-                value={hadFirstClass.options[2]}
-                checked={
-                  values.hadFirstClass.hadClass === hadFirstClass.options[2]
-                }
-              />
-              {hadFirstClass.options[2]}
-            </label>
-          </>
-        )}
+        {radioFactory({ index: 0 })}
+        {radioFactory({ index: 1 })}
+        {futureLesson && radioFactory({ futureLesson, index: 2 })}
       </div>
     );
   };
