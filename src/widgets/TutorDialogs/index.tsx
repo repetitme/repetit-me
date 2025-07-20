@@ -13,13 +13,15 @@ import {
   InputFactoryProps,
   TState,
   TutorDialogsProps,
-  formData
+  formData,
+  radioFactoryProps
 } from './types';
 
 const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
   const [state, setState] = useState(initialState);
   const { values, setValues, handleChange } = useForm<formData>(initialValues);
   const [isValid, setIsValid] = useState(false);
+  const formRef = useRef<HTMLFormElement | null>(null);
 
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -45,7 +47,17 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     }, 300);
   }, [isOpen]);
 
+  const handleValidity = () => {
+    requestAnimationFrame(() => {
+      if (formRef.current) {
+        setIsValid(!!formRef.current?.checkValidity());
+      }
+    });
+  };
+
   const onSubmit = () => {
+    // TEST
+    console.log(values);
     setIsValid(false);
     switch (variant) {
       case arrangement.variant:
@@ -89,11 +101,6 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     }
   };
 
-  type radioFactoryProps = {
-    futureLesson?: boolean;
-    index: number;
-  };
-
   const radioFactory = ({ futureLesson, index }: radioFactoryProps) => {
     const fieldName =
       variant === TutorDialogsVariant.arrangement ? 'arranged' : 'hadClass';
@@ -101,54 +108,24 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
       variant === TutorDialogsVariant.arrangement
         ? values.arrangement.arranged
         : values.hadFirstClass.hadClass;
+    const isYes = index === 0 ? 'Да' : 'Нет';
+
     return (
       <label className={styles.radio__checkbox} htmlFor={'radio' + index}>
         <input
           id={'radio' + index}
           type="radio"
           name={futureLesson ? 'futurePlan' : fieldName}
-          value={
-            futureLesson ? hadFirstClass.options[0] : index === 0 ? 'Да' : 'Нет'
-          }
+          value={futureLesson ? hadFirstClass.options[index] : isYes}
           checked={
             futureLesson
               ? values.hadFirstClass.futurePlan === hadFirstClass.options[index]
-              : index === 0
-                ? fieldValue === 'Да'
-                : fieldValue === 'Нет'
+              : fieldValue === isYes
           }
           onChange={onChange}
         />
-        {futureLesson
-          ? hadFirstClass.options[index]
-          : index === 0
-            ? 'Да'
-            : 'Нет'}
+        {futureLesson ? hadFirstClass.options[index] : isYes}
       </label>
-    );
-  };
-
-  const formRef = useRef<HTMLFormElement | null>(null);
-
-  const handleValidity = () => {
-    requestAnimationFrame(() => {
-      if (formRef.current) {
-        setIsValid(!!formRef.current?.checkValidity());
-      }
-    });
-  };
-  const radio = (futureLesson?: boolean) => {
-    return (
-      <div className={styles.radio}>
-        {futureLesson && (
-          <h3 className={styles.radio__title}>
-            {hadFirstClass.secondaryTitles[1]}
-          </h3>
-        )}
-        {radioFactory({ index: 0 })}
-        {radioFactory({ index: 1 })}
-        {futureLesson && radioFactory({ futureLesson, index: 2 })}
-      </div>
     );
   };
 
@@ -174,6 +151,21 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
         label={variantData[variant].secondaryTitles[index]}
         required={textarea ? false : true}
       />
+    );
+  };
+
+  const radio = (futureLesson?: boolean) => {
+    return (
+      <div className={styles.radio}>
+        {futureLesson && (
+          <h3 className={styles.radio__title}>
+            {hadFirstClass.secondaryTitles[1]}
+          </h3>
+        )}
+        {radioFactory({ futureLesson, index: 0 })}
+        {radioFactory({ futureLesson, index: 1 })}
+        {futureLesson && radioFactory({ futureLesson, index: 2 })}
+      </div>
     );
   };
 

@@ -40,3 +40,8 @@ export type InputFactoryProps = {
   textarea?: boolean;
   index: number;
 };
+
+export type radioFactoryProps = {
+  futureLesson?: boolean;
+  index: number;
+};
