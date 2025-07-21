@@ -95,7 +95,6 @@ const TutorApplication = () => {
   const isStepValid = () => {
     switch (currentStep) {
       case 1:
-      case 1:
         const { firstName, lastName, telegram, avatar } = tutorData.profileInfo;
         return Boolean(firstName && lastName && telegram && avatar);
       case 2:
@@ -139,6 +138,7 @@ const TutorApplication = () => {
 
         {currentStep === 1 && (
           <ProfileInfo
+          initialData={tutorData.profileInfo} 
             onDataChange={(data) =>
               setTutorData((prev) => ({ ...prev, profileInfo: data }))
             }
@@ -153,7 +153,8 @@ const TutorApplication = () => {
           />
         )}
         {currentStep === 3 && (
-          <DiplomasUpload onDiplomasChange={handleDiplomasChange} />
+          <DiplomasUpload initialData={tutorData.diplomas}
+          onDiplomasChange={handleDiplomasChange} />
         )}
         {currentStep === 4 && (
           <VideoGreeting

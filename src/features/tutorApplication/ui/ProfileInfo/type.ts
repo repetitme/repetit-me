@@ -9,4 +9,5 @@ export type ProfileFormData = {
 
 export interface ProfileInfoProps {
   onDataChange: (data: ProfileFormData) => void;
+  initialData: ProfileFormData;
 }

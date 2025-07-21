@@ -13,15 +13,9 @@ import styles from './index.module.scss';
 
 import { ProfileFormData, ProfileInfoProps } from './type';
 
-const ProfileInfo = ({ onDataChange }: ProfileInfoProps) => {
-  const { values, handleChange, setValues } = useForm<ProfileFormData>({
-    firstName: '',
-    lastName: '',
-    telegram: '',
-    email: '',
-    about: '',
-    avatar: ''
-  });
+const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
+  const { values, handleChange, setValues } =
+    useForm<ProfileFormData>(initialData);
 
   useEffect(() => {
     onDataChange(values);

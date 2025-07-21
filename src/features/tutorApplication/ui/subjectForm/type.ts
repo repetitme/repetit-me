@@ -33,5 +33,4 @@ export interface SubjectFormItemProps {
 export interface SubjectFormProps {
   onChange: (subjects: Subject[]) => void;
   initialData: Subject[];
-  
 }
