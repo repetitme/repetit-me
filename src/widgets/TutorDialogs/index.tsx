@@ -1,5 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react';
 
+import cn from 'classnames';
+
 import useForm from '../../shared/hooks/useForm';
 import Input from '../../shared/ui/input';
 import Popup from '../../shared/ui/popup/popup';
@@ -138,7 +140,9 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     const Tag = textarea ? Textarea : Input;
     return (
       <Tag
-        className={textarea ? styles.textarea : ''}
+        className={cn(textarea && styles.textarea, {
+          [styles.textarea__report]: variant === TutorDialogsVariant.report
+        })}
         name={name}
         placeholder={variantData[variant].placeholder[index]}
         onChange={onChange}
@@ -175,7 +179,11 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
         return (
           <>
             {state.arrangement.step === 1 && (
-              <div style={{ inlineSize: '360px' }}>
+              <div
+                className={cn({
+                  [styles.radio__small]: values.arrangement.arranged === 'Да'
+                })}
+              >
                 {radio()}
                 {values.arrangement.arranged === 'Нет' &&
                   inputFactory({
@@ -196,7 +204,11 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
         );
       case TutorDialogsVariant.hadFirstClass:
         return (
-          <div style={{ inlineSize: '360px' }}>
+          <div
+            className={cn({
+              [styles.radio__small]: values.hadFirstClass.hadClass === 'Да'
+            })}
+          >
             {radio()}
             {values.hadFirstClass.hadClass === 'Да'
               ? state.hadFirstClass.step === 2 && radio(true)

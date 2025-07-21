@@ -39,12 +39,12 @@ const Popup: FC<PopupProps> = ({
   const [isMounted, setIsMounted] = useState(false);
 
   const handleClose = () => {
-    setIsVisible(false);
-    setTimeout(() => {
-      setIsMounted(false);
-      close();
-      //delete
-    }, 300);
+    // setIsVisible(false);
+    // setTimeout(() => {
+    //   setIsMounted(false);
+    //   close();
+    //   //delete
+    // }, 300);
   };
 
   useEffect(() => {

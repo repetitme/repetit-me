@@ -31,7 +31,8 @@
     font-family: var(--ffm-default);
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    // gap: 28px;
+    gap: 40px;
   }
 
   &__small {
@@ -47,9 +48,9 @@
     }
   }
 
-  &__form {
-    gap: 63px;
-  }
+  // &__form {
+  //   gap: 63px;
+  // }
 
   &__close {
     position: absolute;
