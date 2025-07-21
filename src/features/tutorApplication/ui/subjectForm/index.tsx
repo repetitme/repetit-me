@@ -16,7 +16,7 @@ const SubjectForm = ({ onChange, initialData }: SubjectFormProps) => {
     const updatedSubjects = [...subjects];
     updatedSubjects[index] = newSubject;
     setSubjects(updatedSubjects);
-    onChange(updatedSubjects.filter((subject) => subject.isActive)); // Фильтруем активные
+    onChange(updatedSubjects.filter((subject) => subject.isActive));
   };
 
   const [blocksCount, setBlocksCount] = useState(1);

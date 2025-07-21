@@ -12,7 +12,6 @@ import { initialTutorData } from './data';
 
 import styles from './index.module.scss';
 
-import { ProfileFormData } from '../../features/tutorApplication/ui/ProfileInfo/type';
 import { Diploma } from '../../features/tutorApplication/ui/diplomasUpload/type';
 import { Subject } from '../../features/tutorApplication/ui/subjectForm/type';
 import { VideoData } from '../../features/tutorApplication/ui/videoGreeting/type';
@@ -26,9 +25,29 @@ const TutorApplication = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleNext = (
-    stepData: ProfileFormData | Subject | Subject | Diploma | VideoData
+  const getCurrentStepData = (
+    tutorData: TutorApplicationData,
+    step: number
   ) => {
+    switch (step) {
+      case 1:
+        return { profileInfo: tutorData.profileInfo };
+      case 2:
+        return { subjects: tutorData.subjects };
+      case 3:
+        return { diplomas: tutorData.diplomas };
+      case 4:
+        return { video: tutorData.video };
+      case 5:
+        return { schedule: tutorData.schedule };
+      default:
+        return {};
+    }
+  };
+
+  const handleNext = () => {
+    const stepData = getCurrentStepData(tutorData, currentStep);
+
     setTutorData((prev) => ({ ...prev, ...stepData }));
     if (currentStep < 5) setCurrentStep((prev) => prev + 1);
     else setIsModalOpen(true);
@@ -76,7 +95,9 @@ const TutorApplication = () => {
   const isStepValid = () => {
     switch (currentStep) {
       case 1:
-        return Object.keys(tutorData.profileInfo).length > 0;
+      case 1:
+        const { firstName, lastName, telegram, avatar } = tutorData.profileInfo;
+        return Boolean(firstName && lastName && telegram && avatar);
       case 2:
         return tutorData.subjects.length > 0;
       case 3:
@@ -104,7 +125,7 @@ const TutorApplication = () => {
         text={currentStep === 5 ? 'Сохранить анкету' : 'Сохранить и продолжить'}
         variant={isStepValid() ? 'purple' : 'white'}
         disabled={!isStepValid()}
-        onClick={() => (currentStep === 5 ? handleSubmit() : handleNext)}
+        onClick={() => (currentStep === 5 ? handleSubmit() : handleNext())}
         className={currentStep === 5 ? styles.button : styles.buttonNext}
       />
     </div>
