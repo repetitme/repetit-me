@@ -2,7 +2,11 @@ import { useState } from 'react';
 
 import cn from 'classnames';
 
-import { IUserData, navOptions } from '../../shared/types/userData';
+import {
+  IUserData,
+  navOptionsStudent,
+  navOptionsTutor
+} from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
 import Popups from '../../shared/ui/popup';
 import TutorDialogs from '../TutorDialogs';
@@ -17,27 +21,36 @@ const UserCard: React.FC<IUserData> = ({
   tutorData,
   studentData,
   handleSubmit,
-  navOption
+  navOption,
+  changeTab
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAccepted, setIsAccepted] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
-  const navRole = role === 'tutor' ? 'tutor' : 'student';
-  const isMyList =
-    navOption === navOptions[navRole as keyof typeof navOptions].myList;
-  const isMyRequests =
-    navOption === navOptions[navRole as keyof typeof navOptions].myRequests;
-  const isTutorRequests =
-    navOption === navOptions[navRole as keyof typeof navOptions].tutorRequests;
+  const navRole = role === 'tutor' ? navOptionsStudent : navOptionsTutor;
+  const isMyList = navOption === navRole.myList;
+  const isMyRequests = navOption === navRole.myRequests;
+  const isTutorRequests = navOption === navRole.tutorRequests;
   const report =
     studentData?.workingStatus === 'Занятия не начались'
       ? TutorDialogsVariant.arrangement
       : (studentData?.lessonsCompleted ?? 0) > 1
         ? TutorDialogsVariant.report
         : TutorDialogsVariant.hadFirstClass;
+  const handleChangeTab = () => {
+    if (changeTab) {
+      changeTab(navRole.myList);
+      close();
+    }
+  };
 
+  const handleAccept = (isAccepted: boolean) => {
+    setIsAccepted(isAccepted);
+    toggle();
+  };
   return (
     <div className={cn(styles.card, role === 'card' && styles.card__resize)}>
       {role === 'tutor' || role === 'unauth' ? (
@@ -68,19 +81,25 @@ const UserCard: React.FC<IUserData> = ({
                   onClick={toggle}
                 />
                 {!navOption
-                  ? Popups.responded({ isOpen, close: toggle })
+                  ? Popups.responded({
+                      isOpen,
+                      close: toggle,
+                      buttonOnClick: toggle,
+                      secondaryButtonOnClick: toggle
+                    })
                   : isTutorRequests
                     ? Popups.receivedRequest({
                         isOpen,
                         close: toggle,
-                        buttonOnClick: toggle
+                        buttonOnClick: handleChangeTab,
+                        buttonText: navOptionsStudent.myList
                       })
                     : Popups.cancelRequest({
                         isOpen,
                         close: toggle,
                         buttonOnClick: toggle,
                         secondaryButtonOnClick: () => {
-                          console.log('cancel');
+                          toggle();
                         }
                       })}
               </>
@@ -99,7 +118,7 @@ const UserCard: React.FC<IUserData> = ({
             <p>Ученик не найден</p>
           )}
           <div className={styles.card__buttons}>
-            {!handleSubmit ? (
+            {isMyList ? (
               <>
                 <Button
                   text="Создать отчет"
@@ -118,12 +137,35 @@ const UserCard: React.FC<IUserData> = ({
               </>
             ) : (
               <>
-                <Button text="Отклонить" variant="red" />
-                <Button text="Принять" variant="purple" />
+                <Button
+                  text="Отклонить"
+                  variant="red"
+                  onClick={() => handleAccept(false)}
+                />
+                <Button
+                  text="Принять"
+                  variant="purple"
+                  onClick={() => handleAccept(true)}
+                />
+                {!isMyList && isAccepted
+                  ? Popups.receivedRequest({
+                      isOpen,
+                      close: toggle,
+                      buttonOnClick: toggle,
+                      secondaryButtonOnClick: toggle
+                    })
+                  : Popups.rejectTutor({
+                      isOpen,
+                      close: toggle,
+                      buttonOnClick: toggle,
+                      secondaryButtonOnClick: toggle
+                    })}
               </>
             )}
           </div>
-          <TutorDialogs isOpen={isOpen} close={toggle} variant={report} />
+          {isMyList && (
+            <TutorDialogs isOpen={isOpen} close={toggle} variant={report} />
+          )}
         </>
       ) : (
         // Маленькая карточка

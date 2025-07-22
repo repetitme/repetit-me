@@ -62,4 +62,5 @@ export interface IUserData {
   studentData?: IStudentData;
   handleSubmit?: boolean; // !!! Временный пропс, его наличие предполагает, что сабмит по заявке репетитору от ученика отправлен. Его видит репетитор и ученик у себя
   navOption?: navOptionsStudent | navOptionsTutor; // Опция навигации, которая активна в данный момент
+  changeTab?: (tab: navOptionsStudent | navOptionsTutor) => void;
 }

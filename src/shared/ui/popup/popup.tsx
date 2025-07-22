@@ -39,12 +39,12 @@ const Popup: FC<PopupProps> = ({
   const [isMounted, setIsMounted] = useState(false);
 
   const handleClose = () => {
-    // setIsVisible(false);
-    // setTimeout(() => {
-    //   setIsMounted(false);
-    //   close();
-    //   //delete
-    // }, 300);
+    setIsVisible(false);
+    setTimeout(() => {
+      setIsMounted(false);
+      close();
+      //delete
+    }, 300);
   };
 
   useEffect(() => {
@@ -95,7 +95,7 @@ const Popup: FC<PopupProps> = ({
               text={variant === 'small' ? 'Нет' : buttonText || 'Закрыть'}
               variant={variant === 'small' ? 'white' : 'purple'}
               onClick={buttonOnClick}
-              disabled={!isValid}
+              disabled={variant === 'form' ? !isValid : false}
             />
             {secondaryButtonOnClick && (
               <Button

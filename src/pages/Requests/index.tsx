@@ -92,6 +92,9 @@ const Requests: React.FC = () => {
                     navOption={active}
                     tutorData={person as ITutorData}
                     studentData={person as IStudentData}
+                    changeTab={onClick(
+                      navOptions[role as keyof typeof navOptions].myList
+                    )}
                   />
                 </article>
               ))}
