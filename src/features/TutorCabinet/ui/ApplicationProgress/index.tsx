@@ -46,8 +46,7 @@ const ApplicationProgress = ({
       </div>
       <div className={styles.switcher}>
         <p className={styles.switcher__text}>Скрыть анкету от учеников</p>
-        <Switcher  isActive={!isProfileHidden} 
-          onChange={onToggleVisibility} />
+        <Switcher isActive={!isProfileHidden} onChange={onToggleVisibility} />
       </div>
     </div>
   );

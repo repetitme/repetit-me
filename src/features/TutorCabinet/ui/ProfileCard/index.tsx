@@ -1,7 +1,8 @@
 import TutorRating from '../../../../shared/ui/tutorRating';
-import { ProfileCardProps } from './data';
 
 import styles from './index.module.scss';
+
+import { ProfileCardProps } from './type';
 
 const ProfileCard = ({
   name,
@@ -26,11 +27,7 @@ const ProfileCard = ({
         ) : (
           <div className={styles.img__noPhoto}>Нет фото</div>
         )}
-        <TutorRating
-          variant="onProfile"
-          rating={rating}
-
-        />
+        <TutorRating variant="onProfile" rating={rating} />
       </div>
 
       <div className={styles.info}>

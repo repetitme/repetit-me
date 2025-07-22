@@ -1,13 +1,6 @@
-import tutorAvatar from './../../../../assets/images/tutor_Alex.png';
+import tutorAvatar from './../../../../assets/images/UserCardIcons/TutorImg/tutor_aleksandr-1.png';
 
-export interface ProfileCardProps {
-  name: string;
-  status: string;
-  tg: string;
-  link: string;
-  rating: number;
-  avatar: string;
-}
+import { ProfileCardProps } from './type';
 
 export const profileCardData: ProfileCardProps = {
   name: 'Александров Александр Александрович',

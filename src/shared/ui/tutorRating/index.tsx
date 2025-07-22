@@ -88,10 +88,10 @@ const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
       </div>
     );
   }
-   if (isOnProfile) {
+  if (isOnProfile) {
     return (
       <div className={classNames(styles.container, styles.onProfile)}>
-         <div className={styles.onProfile__info}>
+        <div className={styles.onProfile__info}>
           <img
             className={styles.onProfile__info_star}
             src={star}
@@ -99,7 +99,6 @@ const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
           />
           <p className={styles.onProfile__info_title}>Рейтинг: </p>
           <p className={styles.onProfile__info_rating}>{rating.toFixed(1)}</p>
-          
         </div>
         <button className={styles.onProfile__button}>Отзывы</button>
       </div>
