@@ -25,33 +25,10 @@ const TutorApplication = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const getCurrentStepData = (
-    tutorData: TutorApplicationData,
-    step: number
-  ) => {
-    switch (step) {
-      case 1:
-        return { profileInfo: tutorData.profileInfo };
-      case 2:
-        return { subjects: tutorData.subjects };
-      case 3:
-        return { diplomas: tutorData.diplomas };
-      case 4:
-        return { video: tutorData.video };
-      case 5:
-        return { schedule: tutorData.schedule };
-      default:
-        return {};
-    }
-  };
-
   const handleNext = () => {
-    const stepData = getCurrentStepData(tutorData, currentStep);
-
-    setTutorData((prev) => ({ ...prev, ...stepData }));
     if (currentStep < 5) setCurrentStep((prev) => prev + 1);
     else setIsModalOpen(true);
-    // Здесь потом добавить отправку данных на сервер
+    // TODO: добавить отправку данных на сервер
   };
 
   const handleBack = () => setCurrentStep((prev) => prev - 1);
@@ -74,18 +51,7 @@ const TutorApplication = () => {
   };
 
   const handleScheduleChange = (freeTime: Record<string, string[]>) => {
-    const scheduleData = Object.keys(freeTime).reduce(
-      (acc, day) => {
-        acc[day] = freeTime[day];
-        return acc;
-      },
-      {} as Record<string, string[]>
-    );
-
-    setTutorData((prev) => ({
-      ...prev,
-      schedule: scheduleData
-    }));
+    setTutorData((prev) => ({ ...prev, schedule: { ...freeTime } }));
   };
 
   const isStepValid = () => {
@@ -127,83 +93,46 @@ const TutorApplication = () => {
   );
 
   return (
-    <>
-      <main className={styles.application}>
-        <h2 className={styles.application__title}>Анкета</h2>
-        <Stepper currentStep={currentStep} />
+    <main className={styles.application}>
+      <h2 className={styles.application__title}>Анкета</h2>
+      <Stepper currentStep={currentStep} />
 
-        {currentStep === 1 && (
-          <ProfileInfo
-            initialData={tutorData.profileInfo}
-            onDataChange={(data) =>
-              setTutorData((prev) => ({ ...prev, profileInfo: data }))
-            }
-          />
-        )}
-        {currentStep === 2 && (
-          <SubjectForm
-            initialData={tutorData.subjects}
-            onChange={(subjects: Subject[]) =>
-              setTutorData((prev) => ({ ...prev, subjects: subjects }))
-            }
-          />
-        )}
-        {currentStep === 3 && (
-          <DiplomasUpload
-            initialData={tutorData.diplomas}
-            onDiplomasChange={handleDiplomasChange}
-          />
-        )}
-        {currentStep === 4 && (
-          <VideoGreeting
-            onVideoChange={handleVideoChange}
-            initialVideo={tutorData.video}
-          />
-        )}
-        {currentStep === 5 && <Schedule onChange={handleScheduleChange} />}
-
-        {renderButtons()}
-        <ApplicationSuccessModal
-          isOpen={isModalOpen}
-          onClose={handleModalClose}
+      {currentStep === 1 && (
+        <ProfileInfo
+          initialData={tutorData.profileInfo}
+          onDataChange={(data) =>
+            setTutorData((prev) => ({ ...prev, profileInfo: data }))
+          }
         />
+      )}
+      {currentStep === 2 && (
+        <SubjectForm
+          initialData={tutorData.subjects}
+          onChange={(subjects: Subject[]) =>
+            setTutorData((prev) => ({ ...prev, subjects: subjects }))
+          }
+        />
+      )}
+      {currentStep === 3 && (
+        <DiplomasUpload
+          initialData={tutorData.diplomas}
+          onDiplomasChange={handleDiplomasChange}
+        />
+      )}
+      {currentStep === 4 && (
+        <VideoGreeting
+          onVideoChange={handleVideoChange}
+          initialVideo={tutorData.video}
+        />
+      )}
+      {currentStep === 5 && <Schedule onChange={handleScheduleChange} />}
 
-        <div
-          style={{
-            display: 'flex',
-            gap: '10px',
-            marginBottom: '20px',
-            justifyContent: 'center'
-          }}
-        >
-          <Button
-            text="Шаг 1"
-            variant="white"
-            onClick={() => setCurrentStep(1)}
-          />
-          <Button
-            text="Шаг 2"
-            variant="white"
-            onClick={() => setCurrentStep(2)}
-          />
-          <Button
-            text="Шаг 3"
-            variant="white"
-            onClick={() => setCurrentStep(3)}
-          />
-          <Button
-            text="Шаг 4"
-            variant="white"
-            onClick={() => setCurrentStep(4)}
-          />
-          <Button
-            text="Шаг 5"
-            variant="white"
-            onClick={() => setCurrentStep(5)}
-          />
-        </div>
-      </main>
-    </>
+      {renderButtons()}
+      <ApplicationSuccessModal
+        isOpen={isModalOpen}
+        onClose={handleModalClose}
+      />
+    </main>
   );
 };
 export default TutorApplication;
