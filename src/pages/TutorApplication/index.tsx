@@ -12,10 +12,8 @@ import { initialTutorData } from './data';
 
 import styles from './index.module.scss';
 
-import { Diploma } from '../../features/tutorApplication/ui/diplomasUpload/type';
 import { Subject } from '../../features/tutorApplication/ui/subjectForm/type';
-import { VideoData } from '../../features/tutorApplication/ui/videoGreeting/type';
-import TutorApplicationData from './type';
+import TutorApplicationData, { TutorField } from './type';
 
 const TutorApplication = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
@@ -33,25 +31,15 @@ const TutorApplication = () => {
 
   const handleBack = () => setCurrentStep((prev) => prev - 1);
 
-  const handleDiplomasChange = (diplomas: Diploma[]) => {
-    setTutorData((prev) => ({
-      ...prev,
-      diplomas: [...diplomas]
-    }));
+  const handleFieldChange = <K extends TutorField>(
+    field: K,
+    value: TutorApplicationData[K]
+  ) => {
+    setTutorData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleVideoChange = (video: VideoData | null) => {
-    setTutorData((prev) => ({
-      ...prev,
-      video: video
-    }));
-  };
   const handleModalClose = () => {
     setIsModalOpen(false);
-  };
-
-  const handleScheduleChange = (freeTime: Record<string, string[]>) => {
-    setTutorData((prev) => ({ ...prev, schedule: { ...freeTime } }));
   };
 
   const isStepValid = () => {
@@ -116,16 +104,22 @@ const TutorApplication = () => {
       {currentStep === 3 && (
         <DiplomasUpload
           initialData={tutorData.diplomas}
-          onDiplomasChange={handleDiplomasChange}
+          onDiplomasChange={(diplomas) =>
+            handleFieldChange('diplomas', diplomas)
+          }
         />
       )}
       {currentStep === 4 && (
         <VideoGreeting
-          onVideoChange={handleVideoChange}
+          onVideoChange={(video) => handleFieldChange('video', video)}
           initialVideo={tutorData.video}
         />
       )}
-      {currentStep === 5 && <Schedule onChange={handleScheduleChange} />}
+      {currentStep === 5 && (
+        <Schedule
+          onChange={(freeTime) => handleFieldChange('schedule', freeTime)}
+        />
+      )}
 
       {renderButtons()}
       <ApplicationSuccessModal

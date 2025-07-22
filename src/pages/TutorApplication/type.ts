@@ -10,3 +10,5 @@ export default interface TutorApplicationData {
   video: VideoData | null;
   schedule: Record<string, string[]>;
 }
+
+export type TutorField = keyof TutorApplicationData;
