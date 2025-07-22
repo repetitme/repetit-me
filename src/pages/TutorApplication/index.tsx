@@ -88,10 +88,6 @@ const TutorApplication = () => {
     }));
   };
 
-  const handleSubmit = () => {
-    setIsModalOpen(true);
-  };
-
   const isStepValid = () => {
     switch (currentStep) {
       case 1:
@@ -124,7 +120,7 @@ const TutorApplication = () => {
         text={currentStep === 5 ? 'Сохранить анкету' : 'Сохранить и продолжить'}
         variant={isStepValid() ? 'purple' : 'white'}
         disabled={!isStepValid()}
-        onClick={() => (currentStep === 5 ? handleSubmit() : handleNext())}
+        onClick={handleNext}
         className={currentStep === 5 ? styles.button : styles.buttonNext}
       />
     </div>
@@ -138,7 +134,7 @@ const TutorApplication = () => {
 
         {currentStep === 1 && (
           <ProfileInfo
-          initialData={tutorData.profileInfo} 
+            initialData={tutorData.profileInfo}
             onDataChange={(data) =>
               setTutorData((prev) => ({ ...prev, profileInfo: data }))
             }
@@ -153,8 +149,10 @@ const TutorApplication = () => {
           />
         )}
         {currentStep === 3 && (
-          <DiplomasUpload initialData={tutorData.diplomas}
-          onDiplomasChange={handleDiplomasChange} />
+          <DiplomasUpload
+            initialData={tutorData.diplomas}
+            onDiplomasChange={handleDiplomasChange}
+          />
         )}
         {currentStep === 4 && (
           <VideoGreeting
