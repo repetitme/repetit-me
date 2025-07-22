@@ -88,7 +88,7 @@ const Requests: React.FC = () => {
               .map((person) => (
                 <article key={person.id} className={styles.content__item}>
                   <UserCard
-                    role={role === 'student' ? 'tutor' : 'student'}
+                    role={role}
                     navOption={active}
                     tutorData={person as ITutorData}
                     studentData={person as IStudentData}

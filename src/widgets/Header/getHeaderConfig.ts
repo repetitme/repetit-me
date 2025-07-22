@@ -15,7 +15,7 @@ const getHeaderConfig = ({
     unauth: [{ text: 'Репетиторы', path: '/tutor-catalog' }],
     student: [
       { text: 'Репетиторы', path: '/tutor-catalog' },
-      { text: 'Мои заявки', path: '/student-requests' }
+      { text: 'Мои заявки', path: '/requests' }
     ],
     tutor: [
       { text: 'Анкета', path: '/tutor-application' },

@@ -53,8 +53,8 @@ const UserCard: React.FC<IUserData> = ({
   };
   return (
     <div className={cn(styles.card, role === 'card' && styles.card__resize)}>
-      {role === 'tutor' || role === 'unauth' ? (
-        // Карточка репетитора
+      {role === 'student' || role === 'unauth' ? (
+        // Карточка репетитора для ученика или незарегистрированного пользователя
         <>
           {tutorData ? (
             <TutorProfile {...tutorData} />
@@ -106,8 +106,8 @@ const UserCard: React.FC<IUserData> = ({
             )}
           </div>
         </>
-      ) : role === 'student' ? (
-        // Карточка ученика
+      ) : role === 'tutor' ? (
+        // Карточка ученика для репетитора
         <>
           {studentData ? (
             <StudentProfile
