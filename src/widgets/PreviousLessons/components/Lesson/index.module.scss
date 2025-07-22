@@ -1,41 +1,41 @@
 .lesson {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 
-    &__title {
-        font-weight: 600;
-        font-size: 18px;
+  &__title {
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  &__mainText {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  &__secondaryText {
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  &__status {
+    padding: 16px 12px;
+    border-radius: 16px;
+
+    &_text {
+      font-weight: 500;
+      font-size: 13px;
+      text-align: center;
     }
 
-    &__mainText {
-        font-weight: 600;
-        font-size: 16px;
+    &_paid {
+      background-color: #e7f6f1;
+      color: #008052;
     }
 
-    &__secondaryText {
-        font-weight: 400;
-        font-size: 16px;
+    &_unpaid {
+      background-color: #feedeb;
+      color: #f04040;
     }
-
-    &__status {
-        padding: 16px 12px;
-        border-radius: 16px;
-        
-        &_text {
-            font-weight: 500;
-            font-size: 13px;
-            text-align: center;
-        }
-
-        &_paid {
-            background-color: #E7F6F1;
-            color: #008052;
-        }
-
-        &_unpaid {
-            background-color: #FEEDEB;
-            color: #F04040;
-        }
-    }
+  }
 }

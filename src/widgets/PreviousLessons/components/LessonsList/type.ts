@@ -1,4 +1,4 @@
 export interface ILessonsList {
-    children?: React.ReactNode,
-    status: 'paid' | 'unpaid'
+  children?: React.ReactNode;
+  status: 'paid' | 'unpaid';
 }

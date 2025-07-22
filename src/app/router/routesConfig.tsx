@@ -1,9 +1,11 @@
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
-import TutorCatalogPage from '../../pages/TutorCatalogPage'
-
+import TutorCatalogPage from '../../pages/TutorCatalogPage';
 import { PreviousLessons } from '../../widgets/PreviousLessons';
-import { lessonsListPaidData, lessonsListUnpaidData } from '../../widgets/PreviousLessons/data';
+import {
+  lessonsListPaidData,
+  lessonsListUnpaidData
+} from '../../widgets/PreviousLessons/data';
 
 import { IRoute } from './type';
 
@@ -26,7 +28,7 @@ export const routesConfig: IRoute[] = [
   {
     path: '/previousLessons',
     element: (
-      <div style={{ margin: '20px auto'}}>
+      <div style={{ margin: '20px auto' }}>
         <PreviousLessons
           lessonsListPaid={lessonsListPaidData}
           lessonsListUnpaid={lessonsListUnpaidData}
@@ -38,5 +40,5 @@ export const routesConfig: IRoute[] = [
 ];
 
 export const knownPaths = routesConfig
-  .filter((route) => (route.path !== '*' && route.path !== '/tutor-catalog'))
+  .filter((route) => route.path !== '*' && route.path !== '/tutor-catalog')
   .map((route) => route.path);

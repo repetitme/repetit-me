@@ -1,7 +1,7 @@
 export interface ILesson {
-    lessonNumber: number,
-    lessonPrice: number,
-    lessonData: string,
-    lessonTime: string,
-    lessonDebt?: number
+  lessonNumber: number;
+  lessonPrice: number;
+  lessonData: string;
+  lessonTime: string;
+  lessonDebt?: number;
 }
