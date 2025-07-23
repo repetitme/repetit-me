@@ -30,7 +30,7 @@ const UserCard: React.FC<IUserData> = ({
     setIsOpen(!isOpen);
   };
 
-  const navRole = role === 'tutor' ? navOptionsStudent : navOptionsTutor;
+  const navRole = role === 'tutor' ? navOptionsTutor : navOptionsStudent;
   const isMyList = navOption === navRole.myList;
   const isMyRequests = navOption === navRole.myRequests;
   const isTutorRequests = navOption === navRole.tutorRequests;

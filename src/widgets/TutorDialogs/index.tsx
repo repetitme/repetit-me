@@ -6,7 +6,13 @@ import useForm from '../../shared/hooks/useForm';
 import Input from '../../shared/ui/input';
 import Popup from '../../shared/ui/popup/popup';
 import Textarea from '../../shared/ui/textarea';
-import { TutorDialogsVariant, initialState, initialValues } from './constants';
+import {
+  TutorDialogsVariant,
+  blocksizes,
+  initialState,
+  initialValues,
+  inlineSizes
+} from './constants';
 import { arrangement, button, hadFirstClass, report } from './data';
 
 import styles from './index.module.scss';
@@ -24,10 +30,27 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
   const { values, setValues, handleChange } = useForm<formData>(initialValues);
   const [isValid, setIsValid] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
+  const [formChange, setFormChange] = useState(false);
+  const defaultWidth =
+    variant === 'report' ||
+    (variant === 'arrangement' && state.arrangement.step === 2)
+      ? inlineSizes[1]
+      : inlineSizes[0];
+  const defaultHeight = variant !== 'report' ? blocksizes[0] : blocksizes[4];
+  const [blockSize, setBlockSize] = useState(defaultHeight);
+  const [inlineSize, setInlineSize] = useState(defaultWidth);
 
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    const { name, value } = e.target;
+    (name === 'arranged' || name === 'hadClass') &&
+      value === 'Нет' &&
+      setBlockSize(blocksizes[1]);
+    value === 'Да' &&
+      name === 'arranged' &&
+      state.hadFirstClass.step === 1 &&
+      setBlockSize(blocksizes[0]);
     handleChange(e, variant);
   };
 
@@ -42,6 +65,8 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
   };
 
   useEffect(() => {
+    setBlockSize(defaultHeight);
+    setInlineSize(defaultWidth);
     setTimeout(() => {
       setValues(initialValues);
       setState(initialState);
@@ -57,50 +82,62 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     });
   };
 
+  const handleFormChange = () => {
+    setFormChange(true);
+    setTimeout(() => {
+      setFormChange(false);
+    }, 500);
+  };
+
   const onSubmit = () => {
-    // TEST
-    console.log(values);
-    setIsValid(false);
-    switch (variant) {
-      case arrangement.variant:
-        if (values.arrangement.arranged === 'Нет') {
+    handleFormChange();
+    setTimeout(() => {
+      setIsValid(false);
+      switch (variant) {
+        case arrangement.variant:
+          if (values.arrangement.arranged === 'Нет') {
+            close();
+          } else {
+            setBlockSize(blocksizes[2]);
+            setInlineSize(inlineSizes[1]);
+            onStateChange(
+              {
+                title: arrangement.mainTitles[1],
+                button: button[1],
+                step: 2
+              },
+              TutorDialogsVariant.arrangement
+            );
+          }
+          if (state.arrangement.step === 2) {
+            close();
+          }
+          break;
+        case hadFirstClass.variant:
+          if (
+            state.hadFirstClass.step === 1 &&
+            values.hadFirstClass.hadClass === 'Нет'
+          ) {
+            setBlockSize(blocksizes[1]);
+            close();
+          } else {
+            setBlockSize(blocksizes[3]);
+            onStateChange(
+              {
+                button: button[2],
+                step: 2
+              },
+              TutorDialogsVariant.hadFirstClass
+            );
+          }
+          if (state.hadFirstClass.step === 2) {
+            close();
+          }
+          break;
+        default:
           close();
-        } else {
-          onStateChange(
-            {
-              title: arrangement.mainTitles[1],
-              button: button[1],
-              step: 2
-            },
-            TutorDialogsVariant.arrangement
-          );
-        }
-        if (state.arrangement.step === 2) {
-          close();
-        }
-        break;
-      case hadFirstClass.variant:
-        if (
-          state.hadFirstClass.step === 1 &&
-          values.hadFirstClass.hadClass === 'Нет'
-        ) {
-          close();
-        } else {
-          onStateChange(
-            {
-              button: button[2],
-              step: 2
-            },
-            TutorDialogsVariant.hadFirstClass
-          );
-        }
-        if (state.hadFirstClass.step === 2) {
-          close();
-        }
-        break;
-      default:
-        close();
-    }
+      }
+    }, 300);
   };
 
   const radioFactory = ({ futureLesson, index }: radioFactoryProps) => {
@@ -238,10 +275,13 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
       isValid={isValid}
     >
       <form
+        style={{ blockSize: `${blockSize}px`, inlineSize: `${inlineSize}px` }}
         onSubmit={onSubmit}
         onChange={handleValidity}
         ref={formRef}
-        className={styles.dialogs}
+        className={cn(styles.dialogs, {
+          [styles.dialogs__change]: formChange
+        })}
       >
         {dialogs()}
       </form>
