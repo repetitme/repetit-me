@@ -103,6 +103,8 @@ const TutorApplication = () => {
   //   }
   // }, []);
 
+  // также добавть при выходе из аккаунта - localStorage.removeItem('tutorProgress');
+
   const renderButtons = () => (
     <div className={styles.buttons}>
       {currentStep > 1 && (
