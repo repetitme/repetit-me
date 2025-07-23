@@ -1,4 +1,8 @@
+@use '../../../../assets/styles/mixins/flexCenter.scss' as *;
+
 .modal {
+  @include flex-center;
+
   gap: 28px;
   max-inline-size: 598px;
   max-block-size: 357px;
@@ -6,6 +10,8 @@
   block-size: 100%;
 
   &__context {
+    @include flex-center;
+
     gap: 16px;
     max-inline-size: 536px;
 
