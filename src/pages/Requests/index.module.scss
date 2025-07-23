@@ -112,6 +112,25 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  &__subtitle {
+    padding: 24px;
+    background-color: #f1d5f6;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    margin-block-end: 28px;
+    opacity: 0;
+    transform: translate(0, -10px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  &__subtitle_active {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .loading {
