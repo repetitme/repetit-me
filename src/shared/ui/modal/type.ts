@@ -1,7 +1,6 @@
-import { ReactNode } from 'react';
-
-export type ModalProps = {
-  haveCloseIcon: boolean;
-  children: ReactNode;
+export type TModalProps = {
+  isOpen: boolean;
   onClose: () => void;
+  children: React.ReactNode;
+  haveCloseIcon?: boolean;
 };

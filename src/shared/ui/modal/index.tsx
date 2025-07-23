@@ -1,16 +1,26 @@
 import { FC } from 'react';
 
+import { createPortal } from 'react-dom';
+
 import closeIconWhite from '../../../assets/icons/closeIconWhite.svg';
 import useClickOutside from '../../hooks/useClickOutside';
 import ModalOverlay from '../overlay';
 
 import styles from './index.module.scss';
 
-import { ModalProps } from './type';
+import { TModalProps } from './type';
 
-export const Modal: FC<ModalProps> = ({ haveCloseIcon, onClose, children }) => {
+const ModalPortal: FC<TModalProps> = ({
+  isOpen,
+  onClose,
+  children,
+  haveCloseIcon = true
+}) => {
   const modalRef = useClickOutside(onClose);
-  return (
+
+  if (!isOpen) return null;
+
+  return createPortal(
     <>
       <div
         ref={modalRef}
@@ -27,7 +37,10 @@ export const Modal: FC<ModalProps> = ({ haveCloseIcon, onClose, children }) => {
         )}
         {children}
       </div>
-      <ModalOverlay isOpen onClose={onClose} />
-    </>
+      <ModalOverlay isOpen={isOpen} onClose={onClose} />
+    </>,
+    document.body
   );
 };
+
+export default ModalPortal;

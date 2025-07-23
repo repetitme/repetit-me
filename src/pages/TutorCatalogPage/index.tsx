@@ -6,19 +6,15 @@ import useClickOutside from '../../shared/hooks/useClickOutside';
 import useScrollLock from '../../shared/hooks/useScrollLock';
 import { ITutorData } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
-import { Modal } from '../../shared/ui/modal';
+import ModalPortal from '../../shared/ui/modal';
 import { TelegramBlock } from '../../shared/ui/telegramBlock';
 import UserCard from '../../widgets/UserCard';
 import useUsersData from '../../widgets/UserCard/fakeApi/useUserData';
+import ModalContent from './components/ModalContent';
 
 import styles from './index.module.scss';
 
 const TutorCatalogPage = () => {
-  /* Для вызова компонента, необходимо вызвать хук для отображения 
-  моковых данных через промисы апи. В дальнейшем, для работы с карточками, нужно вызвать 
-  в компонентах, где нужны карточки пользователей, и передавать им через пропсы данные и 
-  роль пользователя. Из app убрать текущий тестовый стенд */
-
   const { role } = useAppContext();
 
   const {
@@ -27,17 +23,36 @@ const TutorCatalogPage = () => {
     error: errorTutors
   } = useUsersData<ITutorData>('tutors');
 
+  const [activeCards, setActiveCards] = useState<{ [id: string]: boolean }>({});
+
   const [visibleCount, setVisibleCount] = useState(5);
   const [tooltipFilter, setTooltipFilter] = useState(false);
   const [tooltipNotFound, setTooltipNotFound] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState<'submit' | 'filter' | null>(null);
+
   const tooltipRef = useClickOutside(() => setTooltipFilter(false));
 
-  useScrollLock(modalOpen);
+  useScrollLock(modalOpen !== null);
 
-  const handleSubmitFilter = () => {
-    setModalOpen(true);
-    setTooltipNotFound(true);
+  const handleOpenModal = (option: 'submit' | 'filter') => {
+    setModalOpen(option);
+    if (option !== 'submit') {
+      setTooltipNotFound(true);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(null);
+  };
+
+  const handleButtonClick = (tutorId: string) => {
+    setActiveCards((prev) => {
+      const isActive = !!prev[tutorId];
+      if (!isActive) {
+        handleOpenModal('submit');
+      }
+      return { ...prev, [tutorId]: !isActive };
+    });
   };
 
   return (
@@ -62,8 +77,17 @@ const TutorCatalogPage = () => {
                   могут вам подойти
                 </h3>
               )}
-              {tutors.slice(0, visibleCount).map((tutor, index) => (
-                <UserCard key={index} role={role} tutorData={tutor} />
+              {tutors.slice(0, visibleCount).map((tutor) => (
+                <UserCard
+                  key={tutor.id}
+                  role={role}
+                  tutorData={tutor}
+                  onSubmit={!!activeCards[tutor.id]}
+                  handleSubmit={(e) => {
+                    e.stopPropagation();
+                    handleButtonClick(tutor.id);
+                  }}
+                />
               ))}
 
               {tutors.length > visibleCount && (
@@ -80,7 +104,7 @@ const TutorCatalogPage = () => {
         </div>
         <div className={styles.catalog__filters} ref={tooltipRef}>
           <TutorFilters
-            onSubmit={handleSubmitFilter} // Возвращает массив объектов
+            onSubmit={() => handleOpenModal('filter')}
             onReset={() => setTooltipNotFound(false)}
             percentage={1}
             onToggleTooltip={() => setTooltipFilter((prev) => !prev)}
@@ -91,36 +115,14 @@ const TutorCatalogPage = () => {
         </div>
       </main>
 
-      {modalOpen && (
-        <Modal haveCloseIcon={true} onClose={() => setModalOpen(false)}>
-          <div className={styles.modal__accept}>
-            <div className={styles.modal__accept_context}>
-              <h3 className={styles['modal__accept_context--title']}>
-                По вашему запросу репетиторы не найдены
-              </h3>
-              <p className={styles['modal__accept_context--text']}>
-                Вы можете оставить заявку, и мы поищем репетитора под ваш запрос
-                в нашей дополнительной базе. Отправить заявку?
-              </p>
-            </div>
-            <div className={styles.modal__accept_buttons}>
-              <Button
-                text="нет"
-                variant="white"
-                size="large"
-                onClick={() => setModalOpen(false)}
-                className={styles['modal__accept_buttons--item']}
-              />
-              <Button
-                text="да"
-                variant="white"
-                size="large"
-                onClick={() => setModalOpen(false)}
-                className={styles['modal__accept_buttons--item']}
-              />
-            </div>
-          </div>
-        </Modal>
+      {modalOpen !== null && (
+        <ModalPortal
+          isOpen={modalOpen !== null}
+          haveCloseIcon={true}
+          onClose={handleCloseModal}
+        >
+          <ModalContent type={modalOpen} onClose={handleCloseModal} />
+        </ModalPortal>
       )}
     </>
   );

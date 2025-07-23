@@ -11,7 +11,8 @@ const UserCard: React.FC<IUserData> = ({
   role,
   tutorData,
   studentData,
-  handleSubmit
+  handleSubmit,
+  onSubmit
 }) => {
   return (
     <div className={cn(styles.card, role === 'card' && styles.card__resize)}>
@@ -25,27 +26,25 @@ const UserCard: React.FC<IUserData> = ({
           )}
           <div className={styles.card__buttons}>
             <Button text="Подробнее" variant="white" />
-            {role === 'student' &&
-              (!handleSubmit ? (
-                <Button text="Связаться" variant="purple" />
-              ) : (
-                <Button text="Отменить заявку" variant="red" />
-              ))}
+            {role === 'student' && (
+              <Button
+                text={onSubmit ? 'Отменить заявку' : 'Связаться'}
+                variant={onSubmit ? 'red' : 'purple'}
+                onClick={handleSubmit}
+              />
+            )}
           </div>
         </>
       ) : role === 'teacher' ? (
         // Карточка ученика
         <>
           {studentData ? (
-            <StudentProfile
-              handleSubmit={handleSubmit ?? false}
-              {...studentData}
-            />
+            <StudentProfile handleSubmit={onSubmit ?? false} {...studentData} />
           ) : (
             <p>Ученик не найден</p>
           )}
           <div className={styles.card__buttons}>
-            {!handleSubmit ? (
+            {!onSubmit ? (
               <Button text="Создать отчет" variant="purple" />
             ) : (
               <>
