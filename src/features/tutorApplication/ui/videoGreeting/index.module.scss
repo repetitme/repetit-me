@@ -45,11 +45,13 @@
 
   &_drop,
   &_video {
+    position: relative;
     margin: 24px;
     block-size: fit-content;
     max-inline-size: 370px;
 
-    & video {
+    &--item {
+      position: relative;
       border-radius: 10px;
       inline-size: 100%;
     }

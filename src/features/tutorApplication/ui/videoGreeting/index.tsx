@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 
 import { useDragAndDrop } from '../../../../shared/hooks/useDragAndDrop';
+import { useFileRemove } from '../../../../shared/hooks/useFileRemove';
 import { useFileUpload } from '../../../../shared/hooks/useFileUpload';
+import ButtonRemove from '../../../../shared/ui/buttonRemove';
 import Wrapper from '../../../../shared/ui/wrapper';
 import { adviсes, blockContent, requirements } from './data';
 
@@ -13,6 +15,7 @@ const VideoGreeting: React.FC = () => {
   const maxSizeBytes = 20 * 1024 * 1024;
   const acceptTypesVideo = ['video/mp4', 'video/quicktime', 'video/3gpp'];
   const [files, setFiles] = useState<File[]>([]);
+  const { removeFile } = useFileRemove(files, setFiles);
 
   const handleProcessedFiles = (processedFiles: File[]) => {
     setFiles(processedFiles);
@@ -113,9 +116,18 @@ const VideoGreeting: React.FC = () => {
           />
         </div>
       ) : (
-        <div className={styles['container_video']}>
-          {videoPreviewUrl && <video src={videoPreviewUrl} controls />}
-        </div>
+        <>
+          {videoPreviewUrl && (
+            <div className={styles['container_video']}>
+              <video
+                src={videoPreviewUrl}
+                controls
+                className={styles['container_video--item']}
+              />
+              <ButtonRemove removeFile={removeFile} />
+            </div>
+          )}
+        </>
       )}
 
       <div className={styles.container_advices}>
