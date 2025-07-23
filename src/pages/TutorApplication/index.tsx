@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import ApplicationSuccessModal from '../../features/tutorApplication/ui/ApplicationSuccessModal';
 import ProfileInfo from '../../features/tutorApplication/ui/ProfileInfo';
@@ -59,6 +59,49 @@ const TutorApplication = () => {
         return true;
     }
   };
+
+  const calculateProgress = (data: TutorApplicationData): number => {
+    let points = 0;
+
+    if (data.profileInfo.avatar) points += 200;
+
+    points += Math.min(data.diplomas.length * 50, 500);
+
+    if (data.profileInfo.about) {
+      points += 300;
+    }
+    if (data.video?.url) points += 400;
+
+    const percentage = Math.round((points / 1400) * 100);
+    return percentage;
+  };
+
+  const progress = useMemo(() => calculateProgress(tutorData), [tutorData]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      'tutorProgress',
+      JSON.stringify({
+        data: tutorData,
+        progress: progress
+      })
+    );
+  }, [tutorData]);
+
+  // в TutorCatalog
+  //  const [progress, setProgress] = useState(0);
+  // Достаём прогресс при загрузке компонента
+  // useEffect(() => {
+  //   const saved = localStorage.getItem('tutorProgress');
+  //   if (saved) {
+  //     try {
+  //       const { progress } = JSON.parse(saved);
+  //       setProgress(progress);
+  //     } catch (e) {
+  //       console.error('Ошибка чтения прогресса', e);
+  //     }
+  //   }
+  // }, []);
 
   const renderButtons = () => (
     <div className={styles.buttons}>
