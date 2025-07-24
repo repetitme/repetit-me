@@ -13,12 +13,15 @@ import styles from './index.module.scss';
 
 import { Diploma, DiplomasUploadProps } from './type';
 
-const DiplomasUpload = ({ onDiplomasChange, initialData }: DiplomasUploadProps) => {
-   const [files, setFiles] = useState<File[]>(initialData.map(d => d.file));
+const DiplomasUpload = ({
+  onDiplomasChange,
+  initialData
+}: DiplomasUploadProps) => {
+  const [files, setFiles] = useState<File[]>(initialData.map((d) => d.file));
   const MAX_DOCUMENTS = 10;
   const maxSizeBytes = 10 * 1024 * 1024;
   const acceptTypesVideo = ['image/png', 'image/jpg', 'image/jpeg'];
- 
+
   const { removeFile } = useFileRemove(files, setFiles);
 
   const handleFilesUpdate = useCallback(
