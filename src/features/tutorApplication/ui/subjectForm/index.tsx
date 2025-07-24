@@ -11,7 +11,7 @@ const MAX_BLOCKS = 3;
 
 const SubjectForm = ({ onChange, initialData }: SubjectFormProps) => {
   const [subjects, setSubjects] = useState<Subject[]>(
-    initialData.length > 0 ? initialData : [initialSubject()]
+    initialData.length > 0 ? initialData : [initialSubject]
   );
 
   const handleSubjectChange = (index: number) => (newSubject: Subject) => {
@@ -24,7 +24,7 @@ const SubjectForm = ({ onChange, initialData }: SubjectFormProps) => {
 
   const handleAddBlock = () => {
     if (subjects.length < MAX_BLOCKS) {
-      setSubjects((prev) => [...prev, initialSubject()]);
+      setSubjects((prev) => [...prev, initialSubject]);
     }
   };
 

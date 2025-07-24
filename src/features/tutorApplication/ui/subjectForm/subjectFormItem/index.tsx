@@ -22,7 +22,7 @@ const SubjectFormItem = ({
   const [isActive, setIsActive] = useState<boolean>(true);
 
   const { values, handleChange, setValues } = useForm(
-    initialData ?? initialSubject()
+    initialData ?? initialSubject
   );
 
   const handleCategoryChange =

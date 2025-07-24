@@ -41,11 +41,11 @@ export interface SubjectFormProps {
   initialData: Subject[];
 }
 
-export const initialSubject = (): Subject => ({
+export const initialSubject: Subject = {
   discipline: { value: '', label: 'Математика' },
   status: { value: '', label: 'Частный преподаватель' },
   target: { value: '', label: 'Повышение успеваемости' },
   experience: '3 года',
   isActive: true,
   categories: [{ ageCategory: '', price: '2500' }]
-});
+};

@@ -8,7 +8,7 @@ export const initialTutorData: TutorApplicationData = {
     telegram: '',
     avatar: ''
   },
-  subjects: [initialSubject()],
+  subjects: [initialSubject],
   diplomas: [],
   video: null,
   schedule: {
