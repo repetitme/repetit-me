@@ -45,7 +45,7 @@ export const initialSubject: Subject = {
   discipline: { value: '', label: 'Математика' },
   status: { value: '', label: 'Частный преподаватель' },
   target: { value: '', label: 'Повышение успеваемости' },
-  experience: '3 года',
+  experience: '',
   isActive: true,
-  categories: [{ ageCategory: '', price: '2500' }]
+  categories: [{ ageCategory: '', price: '' }]
 };

@@ -51,7 +51,7 @@ const ProfileCategories = ({
           value={values.price}
           onChange={handlePriceChange}
           label="Цена"
-          placeholder={category.price}
+          placeholder="2500"
           type="number"
           style={{ inlineSize: '97px' }}
           required

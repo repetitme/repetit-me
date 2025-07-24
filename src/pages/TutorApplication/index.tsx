@@ -49,10 +49,6 @@ const TutorApplication = () => {
       case 2:
         return tutorData.subjects.length > 0;
       case 3:
-        return tutorData.diplomas.length > 0;
-      case 4:
-        return !!tutorData.video?.url;
-      case 5:
         return tutorData.schedule && Object.keys(tutorData.schedule).length > 0;
       default:
         return true;
