@@ -17,9 +17,19 @@ const ProfileCategories = ({
 }: ProfileCategoriesProps) => {
   const { values, handleChange } = useForm({ price: category.price });
 
+  const handleAgeCategoryChange = (selectedOption: any) => {
+    onChange?.({
+      ageCategory: selectedOption.label,
+      price: values.price
+    });
+  };
+
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     handleChange(e);
-    onChange?.(e.target.value);
+    onChange?.({
+      ageCategory: category.ageCategory,
+      price: e.target.value
+    });
   };
 
   return (
@@ -32,6 +42,7 @@ const ProfileCategories = ({
           defaultValue={data.find(
             (option) => option.label === category.ageCategory
           )}
+          onChange={handleAgeCategoryChange}
         />
       </div>
       <div className={styles['container__options--price']}>

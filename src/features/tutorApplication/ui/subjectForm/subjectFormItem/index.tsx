@@ -14,25 +14,29 @@ import styles from './index.module.scss';
 
 import { SubjectFormItemProps } from '../type';
 
-const SubjectFormItem = ({ index, onChange }: SubjectFormItemProps) => {
+const SubjectFormItem = ({
+  index,
+  onChange,
+  initialData
+}: SubjectFormItemProps) => {
   const [isActive, setIsActive] = useState<boolean>(true);
 
-  const { values, handleChange, setValues } = useForm({
-    discipline: data.disciplines[0],
-    status: data.status[0],
-    target: data.subjectTarget[0],
-    experience: '',
-    isActive: true,
-    categories: [{ ageCategory: data.ageCategories[0].label, price: '1500' }]
-  });
+  const { values, handleChange, setValues } = useForm(
+    initialData ?? {
+      discipline: data.disciplines[0],
+      status: data.status[0],
+      target: data.subjectTarget[0],
+      experience: '',
+      isActive: true,
+      categories: [{ ageCategory: data.ageCategories[0].label, price: '1500' }]
+    }
+  );
 
-  const handleCategoryPriceChange =
-    (categoryIndex: number) => (newPrice: string) => {
+  const handleCategoryChange =
+    (categoryIndex: number) =>
+    (updatedCategory: { ageCategory: string; price: string }) => {
       const updatedCategories = [...values.categories];
-      updatedCategories[categoryIndex] = {
-        ...updatedCategories[categoryIndex],
-        price: newPrice
-      };
+      updatedCategories[categoryIndex] = updatedCategory;
 
       const newValues = { ...values, categories: updatedCategories };
       setValues(newValues);
@@ -96,7 +100,7 @@ const SubjectFormItem = ({ index, onChange }: SubjectFormItemProps) => {
               category={category}
               isLast={index === values.categories.length - 1}
               onAddCategory={handleAddCategory}
-              onChange={handleCategoryPriceChange(index)}
+              onChange={handleCategoryChange(index)}
             />
           ))}
         </div>

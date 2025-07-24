@@ -9,8 +9,13 @@ export interface ProfileCategoriesProps {
   }[];
   isLast?: boolean;
   onAddCategory?: () => void;
-  onChange?: (price: string) => void;
+  onChange?: (updatedCategory: { ageCategory: string; price: string }) => void;
   className?: string;
+}
+
+export interface SelectOption {
+  label: string;
+  value: string;
 }
 
 export interface Subject {

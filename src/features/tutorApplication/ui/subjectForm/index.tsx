@@ -22,14 +22,6 @@ const SubjectForm = ({ onChange, initialData }: SubjectFormProps) => {
     initialData.length > 0 ? initialData : [createEmptySubject()]
   );
 
-  useEffect(() => {
-    if (initialData.length > 0) {
-      setSubjects(initialData);
-    } else {
-      setSubjects([createEmptySubject()]);
-    }
-  }, [initialData]);
-
   const handleSubjectChange = (index: number) => (newSubject: Subject) => {
     const updatedSubjects = subjects.map((subject, i) =>
       i === index ? newSubject : subject
