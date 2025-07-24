@@ -54,6 +54,7 @@ const SubjectFormItem = ({
     setValues(newValues);
     onChange?.(newValues);
   };
+  console.log('dis', data.disciplines);
 
   return (
     <Wrapper
@@ -69,9 +70,8 @@ const SubjectFormItem = ({
           <Select
             label="Предмет"
             options={data.disciplines}
-            // placeholder="Математика"
-            // defaultValue={data.disciplines[0]}
-            value={values.discipline}
+            placeholder="Математика"
+            defaultValue={values.discipline}
             onChange={handleSelectChange('discipline')}
           />
         </div>
@@ -80,8 +80,7 @@ const SubjectFormItem = ({
             label="Статус"
             options={data.status}
             placeholder="Частный преподаватель"
-            // defaultValue={data.status[0]}
-            value={values.status}
+            defaultValue={values.status}
             onChange={handleSelectChange('status')}
           />
         </div>
@@ -102,8 +101,7 @@ const SubjectFormItem = ({
             label="Цель занятий"
             options={data.subjectTarget}
             placeholder="Повышение успеваемости"
-            defaultValue={data.subjectTarget[0]}
-           value={values.target}
+            defaultValue={values.target}
             onChange={handleSelectChange('target')}
           />
         </div>

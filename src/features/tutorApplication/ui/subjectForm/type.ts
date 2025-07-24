@@ -42,10 +42,10 @@ export interface SubjectFormProps {
 }
 
 export const initialSubject = (): Subject => ({
-  discipline: { value: '', label: '' },
-  status: { value: '', label: '' },
-  target: { value: '', label: '' },
-  experience: '',
+  discipline: { value: '', label: 'Математика' },
+  status: { value: '', label: 'Частный преподаватель' },
+  target: { value: '', label: 'Повышение успеваемости' },
+  experience: '3 года',
   isActive: true,
   categories: [{ ageCategory: '', price: '2500' }]
 });
