@@ -84,6 +84,8 @@ const SubjectFormItem = ({ index, onChange }: SubjectFormItemProps) => {
             options={data.status}
             placeholder="Частный преподаватель"
             defaultValue={data.status[0]}
+            value={values.status}
+            onChange={handleSelectChange('status')}
           />
         </div>
         <div className={styles['options__categories']}>
@@ -104,6 +106,8 @@ const SubjectFormItem = ({ index, onChange }: SubjectFormItemProps) => {
             options={data.subjectTarget}
             placeholder="Повышение успеваемости"
             defaultValue={data.subjectTarget[0]}
+            value={values.target}
+            onChange={handleSelectChange('target')}
           />
         </div>
         <div className={styles.options__experience}>

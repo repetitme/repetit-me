@@ -28,7 +28,7 @@ export interface Subject {
 export interface SubjectFormItemProps {
   index: number;
   onChange?: (subject: Subject) => void;
-  initialData: Subject;
+  initialData?: Subject;
 }
 
 export interface SubjectFormProps {
