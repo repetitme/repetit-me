@@ -12,7 +12,6 @@ import { initialTutorData } from './data';
 
 import styles from './index.module.scss';
 
-import { Subject } from '../../features/tutorApplication/ui/subjectForm/type';
 import TutorApplicationData, { TutorField } from './type';
 
 const TutorApplication = () => {
@@ -141,9 +140,7 @@ const TutorApplication = () => {
       {currentStep === 2 && (
         <SubjectForm
           initialData={tutorData.subjects}
-          onChange={(subjects: Subject[]) =>
-            setTutorData((prev) => ({ ...prev, subjects: subjects }))
-          }
+          onChange={(subjects) => handleFieldChange('subjects', subjects)}
         />
       )}
       {currentStep === 3 && (

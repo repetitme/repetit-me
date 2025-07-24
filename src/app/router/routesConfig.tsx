@@ -29,5 +29,10 @@ export const routesConfig: IRoute[] = [
 ];
 
 export const knownPaths = routesConfig
-  .filter((route) => route.path !== '*' && route.path !== '/tutor-catalog')
+  .filter(
+    (route) =>
+      route.path !== '*' &&
+      route.path !== '/tutor-catalog' &&
+      route.path !== '/tutor-application'
+  )
   .map((route) => route.path);

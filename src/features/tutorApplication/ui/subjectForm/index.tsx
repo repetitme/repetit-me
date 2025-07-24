@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import iconAdd from '../../../../assets/icons/icon_add.svg';
 import SubjectFormItem from './subjectFormItem';
@@ -21,6 +21,14 @@ const SubjectForm = ({ onChange, initialData }: SubjectFormProps) => {
   const [subjects, setSubjects] = useState<Subject[]>(
     initialData.length > 0 ? initialData : [createEmptySubject()]
   );
+
+  useEffect(() => {
+    if (initialData.length > 0) {
+      setSubjects(initialData);
+    } else {
+      setSubjects([createEmptySubject()]);
+    }
+  }, [initialData]);
 
   const handleSubjectChange = (index: number) => (newSubject: Subject) => {
     const updatedSubjects = subjects.map((subject, i) =>
