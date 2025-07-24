@@ -1,25 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import iconAdd from '../../../../assets/icons/icon_add.svg';
 import SubjectFormItem from './subjectFormItem';
 
 import styles from './index.module.scss';
 
-import { Subject, SubjectFormProps } from './type';
+import { Subject, SubjectFormProps, initialSubject } from './type';
 
 const MAX_BLOCKS = 3;
 
 const SubjectForm = ({ onChange, initialData }: SubjectFormProps) => {
-  const createEmptySubject = (): Subject => ({
-    discipline: { value: '', label: '' },
-    status: { value: '', label: '' },
-    target: { value: '', label: '' },
-    experience: '',
-    isActive: true,
-    categories: []
-  });
   const [subjects, setSubjects] = useState<Subject[]>(
-    initialData.length > 0 ? initialData : [createEmptySubject()]
+    initialData.length > 0 ? initialData : [initialSubject()]
   );
 
   const handleSubjectChange = (index: number) => (newSubject: Subject) => {
@@ -32,7 +24,7 @@ const SubjectForm = ({ onChange, initialData }: SubjectFormProps) => {
 
   const handleAddBlock = () => {
     if (subjects.length < MAX_BLOCKS) {
-      setSubjects((prev) => [...prev, createEmptySubject()]);
+      setSubjects((prev) => [...prev, initialSubject()]);
     }
   };
 

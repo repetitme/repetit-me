@@ -12,7 +12,7 @@ import ProfileCategories from './profileCategories';
 
 import styles from './index.module.scss';
 
-import { SubjectFormItemProps } from '../type';
+import { SubjectFormItemProps, initialSubject } from '../type';
 
 const SubjectFormItem = ({
   index,
@@ -22,14 +22,7 @@ const SubjectFormItem = ({
   const [isActive, setIsActive] = useState<boolean>(true);
 
   const { values, handleChange, setValues } = useForm(
-    initialData ?? {
-      discipline: data.disciplines[0],
-      status: data.status[0],
-      target: data.subjectTarget[0],
-      experience: '',
-      isActive: true,
-      categories: [{ ageCategory: data.ageCategories[0].label, price: '1500' }]
-    }
+    initialData ?? initialSubject()
   );
 
   const handleCategoryChange =
@@ -76,8 +69,8 @@ const SubjectFormItem = ({
           <Select
             label="Предмет"
             options={data.disciplines}
-            placeholder="Математика"
-            defaultValue={data.disciplines[0]}
+            // placeholder="Математика"
+            // defaultValue={data.disciplines[0]}
             value={values.discipline}
             onChange={handleSelectChange('discipline')}
           />
@@ -87,7 +80,7 @@ const SubjectFormItem = ({
             label="Статус"
             options={data.status}
             placeholder="Частный преподаватель"
-            defaultValue={data.status[0]}
+            // defaultValue={data.status[0]}
             value={values.status}
             onChange={handleSelectChange('status')}
           />
@@ -110,7 +103,7 @@ const SubjectFormItem = ({
             options={data.subjectTarget}
             placeholder="Повышение успеваемости"
             defaultValue={data.subjectTarget[0]}
-            value={values.target}
+           value={values.target}
             onChange={handleSelectChange('target')}
           />
         </div>

@@ -1,3 +1,4 @@
+import { initialSubject } from '../../features/tutorApplication/ui/subjectForm/type';
 import TutorApplicationData from './type';
 
 export const initialTutorData: TutorApplicationData = {
@@ -7,7 +8,7 @@ export const initialTutorData: TutorApplicationData = {
     telegram: '',
     avatar: ''
   },
-  subjects: [],
+  subjects: [initialSubject()],
   diplomas: [],
   video: null,
   schedule: {

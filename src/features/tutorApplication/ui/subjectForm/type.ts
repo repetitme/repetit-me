@@ -40,3 +40,12 @@ export interface SubjectFormProps {
   onChange: (subjects: Subject[]) => void;
   initialData: Subject[];
 }
+
+export const initialSubject = (): Subject => ({
+  discipline: { value: '', label: '' },
+  status: { value: '', label: '' },
+  target: { value: '', label: '' },
+  experience: '',
+  isActive: true,
+  categories: [{ ageCategory: '', price: '2500' }]
+});
