@@ -54,7 +54,6 @@ const SubjectFormItem = ({
     setValues(newValues);
     onChange?.(newValues);
   };
-  console.log('dis', data.disciplines);
 
   return (
     <Wrapper

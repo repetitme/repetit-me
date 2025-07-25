@@ -83,23 +83,6 @@ const TutorApplication = () => {
     );
   }, [tutorData]);
 
-  // в TutorCatalog
-  //  const [progress, setProgress] = useState(0);
-  // Достаём прогресс при загрузке компонента
-  // useEffect(() => {
-  //   const saved = localStorage.getItem('tutorProgress');
-  //   if (saved) {
-  //     try {
-  //       const { progress } = JSON.parse(saved);
-  //       setProgress(progress);
-  //     } catch (e) {
-  //       console.error('Ошибка чтения прогресса', e);
-  //     }
-  //   }
-  // }, []);
-
-  // также добавть при выходе из аккаунта - localStorage.removeItem('tutorProgress');
-
   const renderButtons = () => (
     <div className={styles.buttons}>
       {currentStep > 1 && (
