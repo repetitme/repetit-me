@@ -72,7 +72,9 @@
   &__buttons {
     display: flex;
     justify-content: center;
+    align-self: center;
     gap: 16px;
+    min-inline-size: 312px;
   }
 }
 

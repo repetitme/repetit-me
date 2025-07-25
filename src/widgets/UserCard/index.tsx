@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import cn from 'classnames';
+import { useNavigate } from 'react-router-dom';
 
 import {
   IUserData,
@@ -34,6 +35,7 @@ const UserCard: React.FC<IUserData> = ({
   const isMyList = navOption === navRole.myList;
   const isMyRequests = navOption === navRole.myRequests;
   const isTutorRequests = navOption === navRole.tutorRequests;
+  const navigate = useNavigate();
   const report =
     studentData?.workingStatus === 'Занятия не начались'
       ? TutorDialogsVariant.arrangement
@@ -84,8 +86,10 @@ const UserCard: React.FC<IUserData> = ({
                   ? Popups.responded({
                       isOpen,
                       close: toggle,
-                      buttonOnClick: toggle,
-                      secondaryButtonOnClick: toggle
+                      buttonOnClick: () => {
+                        navigate('/requests');
+                      },
+                      buttonText: 'Мои заявки'
                     })
                   : isTutorRequests
                     ? Popups.receivedRequest({

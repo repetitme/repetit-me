@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import { useAppContext } from '../../app/AppContext';
 import TutorFilters from '../../features/TutorFilters/ui';
 import useClickOutside from '../../shared/hooks/useClickOutside';
 import { ITutorData } from '../../shared/types/userData';
@@ -16,8 +15,6 @@ const TutorCatalogPage = () => {
   моковых данных через промисы апи. В дальнейшем, для работы с карточками, нужно вызвать 
   в компонентах, где нужны карточки пользователей, и передавать им через пропсы данные и 
   роль пользователя. Из app убрать текущий тестовый стенд */
-
-  const { role } = useAppContext();
 
   const {
     data: tutors,
@@ -50,7 +47,7 @@ const TutorCatalogPage = () => {
               )}
 
               {tutors.slice(0, visibleCount).map((tutor, index) => (
-                <UserCard key={index} role={role} tutorData={tutor} />
+                <UserCard key={index} role={'student'} tutorData={tutor} />
               ))}
 
               {tutors.length > visibleCount && (

@@ -68,27 +68,28 @@ const Requests: React.FC = () => {
           <TelegramBlock />
         </aside>
         <div className={styles.content__wrapper}>
-          {navOptions[role as keyof typeof navOptions].myRequests ===
-            active && (
-            <div
-              className={cn(styles.content__subtitle, {
-                [styles.content__subtitle_active]: loaded.content
-              })}
-            >
-              {' '}
-              Заявки учеников, которые выбрали вас напрямую
-            </div>
-          )}
+          {navOptions[role as keyof typeof navOptions].myRequests === active &&
+            role === 'tutor' && (
+              <div
+                className={cn(styles.content__subtitle, {
+                  [styles.content__subtitle_active]: loaded.content
+                })}
+              >
+                {' '}
+                Заявки учеников, которые выбрали вас напрямую
+              </div>
+            )}
           {navOptions[role as keyof typeof navOptions].tutorRequests ===
-            active && (
-            <div
-              className={cn(styles.content__subtitle, {
-                [styles.content__subtitle_active]: loaded.content
-              })}
-            >
-              Ученики, которые возможно вам подойдут
-            </div>
-          )}
+            active &&
+            role === 'tutor' && (
+              <div
+                className={cn(styles.content__subtitle, {
+                  [styles.content__subtitle_active]: loaded.content
+                })}
+              >
+                Ученики, которые возможно вам подойдут
+              </div>
+            )}
           {!loaded.count && (
             <div className={styles.loader}>
               <div className={styles.loader__spinner} />
