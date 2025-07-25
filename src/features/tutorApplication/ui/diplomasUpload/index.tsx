@@ -1,4 +1,4 @@
-import { SetStateAction, useCallback, useState } from 'react';
+import { SetStateAction, useCallback, useEffect, useState } from 'react';
 
 import cn from 'classnames';
 
@@ -11,7 +11,7 @@ import { blockContent, requirements } from './data';
 
 import styles from './index.module.scss';
 
-import { Diploma, DiplomasUploadProps } from './type';
+import { DiplomasUploadProps } from './type';
 
 const DiplomasUpload = ({
   onDiplomasChange,
@@ -31,20 +31,19 @@ const DiplomasUpload = ({
           typeof newFilesOrUpdater === 'function'
             ? newFilesOrUpdater(prevFiles)
             : newFilesOrUpdater;
-
-        if (onDiplomasChange) {
-          const diplomas: Diploma[] = newFiles.map((file) => ({
-            file,
-            url: URL.createObjectURL(file)
-          }));
-          onDiplomasChange(diplomas);
-        }
-
         return newFiles;
       });
     },
     [onDiplomasChange]
   );
+
+  useEffect(() => {
+    return () => {
+      onDiplomasChange!(
+        files.map((file) => ({ file, url: URL.createObjectURL(file) }))
+      );
+    };
+  }, [files]);
 
   const handleProcessedFiles = useCallback(
     (newFiles: File[]) => {
