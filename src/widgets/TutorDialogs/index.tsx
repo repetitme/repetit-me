@@ -31,6 +31,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
   const [isValid, setIsValid] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
   const [formChange, setFormChange] = useState(false);
+  const [inputChange, setInputChange] = useState(false);
   const defaultWidth =
     variant === 'report' ||
     (variant === 'arrangement' && state.arrangement.step === 2)
@@ -43,15 +44,35 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    handleInputChange();
     const { name, value } = e.target;
-    (name === 'arranged' || name === 'hadClass') &&
-      value === 'Нет' &&
+    console.log(state.arrangement);
+    if ((name === 'arranged' || name === 'hadClass') && value === 'Нет') {
       setBlockSize(blocksizes[1]);
-    value === 'Да' &&
-      name === 'arranged' &&
-      state.hadFirstClass.step === 1 &&
+      setState((prevState) => ({
+        ...prevState,
+        [variant]: { ...prevState[variant], button: button[2] }
+      }));
+    }
+    if (
+      value === 'Да' &&
+      (name === 'arranged' || name === 'hadClass') &&
+      state.hadFirstClass.step === 1
+    ) {
       setBlockSize(blocksizes[0]);
-    value === 'Да' && name === 'hadClass' && setBlockSize(blocksizes[0]);
+      setState((prevState) => ({
+        ...prevState,
+        [variant]: { ...prevState[variant], button: button[0] }
+      }));
+    }
+    if (value === 'Да' && name === 'hadClass') {
+      setBlockSize(blocksizes[0]);
+      setState((prevState) => ({
+        ...prevState,
+        [variant]: { ...prevState[variant], step: 1 }
+      }));
+    }
+
     handleChange(e, variant);
   };
 
@@ -87,6 +108,13 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     setFormChange(true);
     setTimeout(() => {
       setFormChange(false);
+    }, 500);
+  };
+
+  const handleInputChange = () => {
+    setInputChange(true);
+    setTimeout(() => {
+      setInputChange(false);
     }, 500);
   };
 
@@ -178,8 +206,10 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     const Tag = textarea ? Textarea : Input;
     return (
       <Tag
-        className={cn(textarea && styles.textarea, {
-          [styles.textarea__report]: variant === TutorDialogsVariant.report
+        className={cn(styles.inactive, {
+          [styles.textarea]: textarea,
+          [styles.textarea__report]: variant === TutorDialogsVariant.report,
+          [styles.active]: !inputChange
         })}
         name={name}
         placeholder={variantData[variant].placeholder[index]}
