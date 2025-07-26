@@ -152,10 +152,12 @@ const UserCard: React.FC<IUserData> = ({
                   onClick={() => handleAccept(true)}
                 />
                 {!isMyList && isAccepted
-                  ? Popups.receivedRequest({
+                  ? Popups.acceptRequest({
                       isOpen,
                       close: toggle,
+                      buttonText: 'Отмена',
                       buttonOnClick: toggle,
+                      secondaryButtonText: 'Далее',
                       secondaryButtonOnClick: toggle
                     })
                   : Popups.rejectTutor({

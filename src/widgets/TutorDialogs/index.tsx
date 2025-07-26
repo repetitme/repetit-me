@@ -51,6 +51,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
       name === 'arranged' &&
       state.hadFirstClass.step === 1 &&
       setBlockSize(blocksizes[0]);
+    value === 'Да' && name === 'hadClass' && setBlockSize(blocksizes[0]);
     handleChange(e, variant);
   };
 

@@ -47,6 +47,31 @@ const Popup: FC<PopupProps> = ({
     }, 300);
   };
 
+  const formatChildren = () => {
+    if (
+      children &&
+      typeof children === 'string' &&
+      children.includes('Далее')
+    ) {
+      const [before, after] = children.split('Далее');
+      return (
+        <span>
+          {before}
+          <span className={styles.bold}>"Далее"</span>
+          {after}
+        </span>
+      );
+    } else {
+      return children;
+    }
+  };
+
+  const isNext = () => {
+    if (secondaryButtonText === 'Далее') {
+      return true;
+    }
+  };
+
   useEffect(() => {
     if (isOpen) {
       setIsMounted(true);
@@ -73,7 +98,8 @@ const Popup: FC<PopupProps> = ({
         ref={variant === 'small' ? null : modalRef}
         className={cn(styles.popup, {
           [styles.active]: isVisible,
-          [styles.popup__small]: variant === 'small'
+          [styles.popup__small]: variant === 'small',
+          [styles.popup__form]: variant === 'form'
         })}
         onClick={(e) => e.stopPropagation()}
       >
@@ -82,17 +108,32 @@ const Popup: FC<PopupProps> = ({
             <img src={iconClose} alt="иконка закрытия модального окна" />
           </button>
         )}
-        <h2 className={styles.popup__title}>{title}</h2>
+        {title && (
+          <h2
+            className={cn(styles.popup__title, {
+              [styles.popup__form__title]: variant === 'form'
+            })}
+          >
+            {title}
+          </h2>
+        )}
         <div
           className={cn(styles.popup__content, {
-            [styles.popup__form]: variant === 'form'
+            [styles.popup__small__content]: variant === 'small',
+            [styles.popup__form__content]: variant === 'form'
           })}
         >
-          {children}
-          <div className={styles.popup__buttons}>
+          {formatChildren()}
+          <div className={cn(styles.popup__buttons, {
+            [styles.popup__form__buttons]: variant === 'form'
+          })}>
             <Button
               className={styles.popup__button}
-              text={variant === 'small' ? 'Нет' : buttonText || 'Закрыть'}
+              text={
+                variant === 'small'
+                  ? (buttonText ?? 'Нет')
+                  : (buttonText ?? 'Закрыть')
+              }
               variant={variant === 'small' ? 'white' : 'purple'}
               onClick={buttonOnClick}
               disabled={variant === 'form' ? !isValid : false}
@@ -101,7 +142,7 @@ const Popup: FC<PopupProps> = ({
               <Button
                 className={styles.popup__button}
                 text={secondaryButtonText || 'Да'}
-                variant="white"
+                variant={isNext() ? 'purple' : 'white'}
                 onClick={secondaryButtonOnClick}
               />
             )}

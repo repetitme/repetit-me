@@ -46,6 +46,6 @@ export const initialValues: formData = {
   }
 };
 
-export const blocksizes = [93, 310, 348, 292, 550];
+export const blocksizes = [93, 310, 332, 292, 580];
 
 export const inlineSizes = [360, 464];
