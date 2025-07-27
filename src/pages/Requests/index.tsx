@@ -11,6 +11,7 @@ import {
 import TelegramBlock from '../../shared/ui/telegramBlock';
 import UserCard from '../../widgets/UserCard';
 import useStudentRequests from './useStudentRequests';
+import Loader from '../../shared/ui/loader';
 
 import styles from './index.module.scss';
 
@@ -90,11 +91,7 @@ const Requests: React.FC = () => {
                 Ученики, которые возможно вам подойдут
               </div>
             )}
-          {!loaded.count && (
-            <div className={styles.loader}>
-              <div className={styles.loader__spinner} />
-            </div>
-          )}
+          { !loaded.content && <Loader />}
           <section
             className={cn(styles.content, {
               [styles.loading]: !loaded.content

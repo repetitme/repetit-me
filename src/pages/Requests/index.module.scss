@@ -137,24 +137,3 @@
   opacity: 0;
   transform: translateY(-10px);
 }
-
-.loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &__spinner {
-    border: 12px solid var(--clr-main);
-    border-top: 12px solid var(--clr-primary-default);
-    border-radius: 50%;
-    width: 70px;
-    height: 70px;
-    animation: spin 0.8s ease infinite;
-  }
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
