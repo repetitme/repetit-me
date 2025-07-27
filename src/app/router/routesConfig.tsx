@@ -39,6 +39,7 @@ export const knownPaths = routesConfig
     (route) =>
       route.path !== '*' &&
       route.path !== '/tutor-catalog' &&
-      route.path !== '/tutor-application'
+      route.path !== '/tutor-application' &&
+      route.path !== '/requests'
   )
   .map((route) => route.path);

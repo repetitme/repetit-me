@@ -13,24 +13,35 @@
     font-family: var(--ffm-default);
     font-weight: 700;
     font-size: 20px;
-    background: none;
+    background-color: transparent;
     border: none;
     color: var(--clr-main);
     padding: 8px 15px;
     cursor: pointer;
+    border-radius: 45px;
     transition:
       color 0.5s ease,
-      transform 0.5s ease;
+      transform 0.5s ease,
+      background-color 0.5s ease;
 
-    &:active {
-      transform: scale(0.8);
+    span {
+      transition: transform 0.5s ease;
+      display: inline-block;
+    }
+
+    &:hover span {
+      transform: scale(1.1);
     }
 
     &--active {
       color: var(--clr-black);
       background: var(--clr-main);
-      border-radius: 45px;
       margin-inline-end: 4px;
+      pointer-events: none;
+
+     &:hover span {
+        transform: none;
+      }
     }
   }
 }
