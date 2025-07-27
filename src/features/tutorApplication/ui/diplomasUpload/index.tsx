@@ -1,28 +1,59 @@
-import React, { useState } from 'react';
+import { SetStateAction, useCallback, useEffect, useState } from 'react';
 
 import cn from 'classnames';
 
-import { useDragAndDrop } from '../../../../shared/hooks/useDragAndDropProps';
+import { useDragAndDrop } from '../../../../shared/hooks/useDragAndDrop';
+import { useFileRemove } from '../../../../shared/hooks/useFileRemove';
 import { useFileUpload } from '../../../../shared/hooks/useFileUpload';
+import ButtonRemove from '../../../../shared/ui/buttonRemove';
 import Wrapper from '../../../../shared/ui/wrapper';
 import { blockContent, requirements } from './data';
 
 import styles from './index.module.scss';
 
-const DiplomasUpload: React.FC = () => {
+import { DiplomasUploadProps } from './type';
+
+const DiplomasUpload = ({
+  onDiplomasChange,
+  initialData
+}: DiplomasUploadProps) => {
+  const [files, setFiles] = useState<File[]>(initialData.map((d) => d.file));
   const MAX_DOCUMENTS = 10;
   const maxSizeBytes = 10 * 1024 * 1024;
   const acceptTypesVideo = ['image/png', 'image/jpg', 'image/jpeg'];
-  const [files, setFiles] = useState<File[]>([]);
 
-  const handleProcessedFiles = (newFiles: File[]) => {
-    const combinedFiles = [...files, ...newFiles];
-    if (combinedFiles.length > MAX_DOCUMENTS) {
-      setFiles(combinedFiles.slice(0, MAX_DOCUMENTS));
-    } else {
-      setFiles(combinedFiles);
-    }
-  };
+  const { removeFile } = useFileRemove(files, setFiles);
+
+  const handleFilesUpdate = useCallback(
+    (newFilesOrUpdater: SetStateAction<File[]>) => {
+      setFiles((prevFiles) => {
+        const newFiles =
+          typeof newFilesOrUpdater === 'function'
+            ? newFilesOrUpdater(prevFiles)
+            : newFilesOrUpdater;
+        return newFiles;
+      });
+    },
+    [onDiplomasChange]
+  );
+
+  useEffect(() => {
+    return () => {
+      onDiplomasChange!(
+        files.map((file) => ({ file, url: URL.createObjectURL(file) }))
+      );
+    };
+  }, [files]);
+
+  const handleProcessedFiles = useCallback(
+    (newFiles: File[]) => {
+      handleFilesUpdate((prevFiles) => {
+        const combinedFiles = [...prevFiles, ...newFiles];
+        return combinedFiles.slice(0, MAX_DOCUMENTS);
+      });
+    },
+    [MAX_DOCUMENTS, handleFilesUpdate]
+  );
 
   const {
     isDragging,
@@ -42,7 +73,7 @@ const DiplomasUpload: React.FC = () => {
   const { handleFileChange, triggerFileSelect, fileInputRef, errorMessage } =
     useFileUpload({
       files,
-      setFiles,
+      setFiles: handleFilesUpdate,
       maxFiles: MAX_DOCUMENTS,
       acceptTypes: acceptTypesVideo,
       typeConstraints: {
@@ -74,6 +105,7 @@ const DiplomasUpload: React.FC = () => {
                 alt={`Документ ${index + 1}`}
                 className={styles['wrapper__content-image']}
               />
+              <ButtonRemove removeFile={removeFile} index={index} />
             </div>
           ))}
         </div>
