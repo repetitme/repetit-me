@@ -124,9 +124,11 @@ const Popup: FC<PopupProps> = ({
           })}
         >
           {formatChildren()}
-          <div className={cn(styles.popup__buttons, {
-            [styles.popup__form__buttons]: variant === 'form'
-          })}>
+          <div
+            className={cn(styles.popup__buttons, {
+              [styles.popup__form__buttons]: variant === 'form'
+            })}
+          >
             <Button
               className={styles.popup__button}
               text={

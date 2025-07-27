@@ -8,10 +8,10 @@ import {
   ITutorData,
   navOptions
 } from '../../shared/types/userData';
+import Loader from '../../shared/ui/loader';
 import TelegramBlock from '../../shared/ui/telegramBlock';
 import UserCard from '../../widgets/UserCard';
 import useStudentRequests from './useStudentRequests';
-import Loader from '../../shared/ui/loader';
 
 import styles from './index.module.scss';
 
@@ -91,7 +91,7 @@ const Requests: React.FC = () => {
                 Ученики, которые возможно вам подойдут
               </div>
             )}
-          { !loaded.content && <Loader />}
+          {!loaded.content && <Loader />}
           <section
             className={cn(styles.content, {
               [styles.loading]: !loaded.content
