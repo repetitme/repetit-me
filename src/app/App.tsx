@@ -27,7 +27,6 @@ function App() {
   return (
     <AppProvider role={role}>
       <div className={styles.app}>
-        
         {/* TEST */}
         <div
           style={{

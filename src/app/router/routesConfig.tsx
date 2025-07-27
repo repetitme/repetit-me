@@ -2,7 +2,7 @@ import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import Requests from '../../pages/Requests';
 import TutorApplication from '../../pages/TutorApplication';
-import TutorCatalogPage from '../../pages/TutorCatalogPage';;
+import TutorCatalogPage from '../../pages/TutorCatalogPage';
 
 import { IRoute } from './type';
 
