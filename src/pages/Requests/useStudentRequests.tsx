@@ -122,7 +122,6 @@ const useStudentRequests = () => {
   }, []);
 
   useEffect(() => {
-    console.log(lines);
     setTimeout(() => {
       listHeight === undefined
         ? lines > 0

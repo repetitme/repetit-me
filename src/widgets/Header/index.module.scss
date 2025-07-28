@@ -96,6 +96,9 @@
       visibility 0.3s ease,
       transform 0.3s ease;
     transform: translateY(-10px);
+    box-shadow:
+      0 4px 6px rgb(0 0 0 / 10%),
+      0 1px 3px rgb(0 0 0 / 8%);
 
     &__list {
       display: flex;
@@ -122,10 +125,12 @@
 
         &:hover {
           transform: scale(1.02);
+
           img {
             filter: invert(36%) sepia(98%) saturate(1033%) hue-rotate(221deg)
               brightness(97%) contrast(104%);
           }
+
           span {
             color: var(--clr-primary-default);
           }
