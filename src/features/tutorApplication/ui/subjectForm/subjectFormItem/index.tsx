@@ -8,6 +8,7 @@ import Select from '../../../../../shared/ui/select';
 import Switcher from '../../../../../shared/ui/switcher';
 import Wrapper from '../../../../../shared/ui/wrapper';
 import * as data from './data';
+import { useExperienceHandler } from './hooks/useExperienceHandler';
 import ProfileCategories from './profileCategories';
 
 import styles from './index.module.scss';
@@ -16,6 +17,7 @@ import { DisciplinesBlockProps } from '../../../lib/type';
 
 const SubjectFormItem: React.FC<DisciplinesBlockProps> = ({ index }) => {
   const { values, handleChange } = useForm({ experience: '' });
+  const [maxInputLength, setMaxInputLength] = useState<number>(6);
   const [isActive, setIsActive] = useState<boolean>(true);
   const [categories, setCategories] = useState<
     Array<{ ageCategory: string; price: string }>
@@ -25,6 +27,11 @@ const SubjectFormItem: React.FC<DisciplinesBlockProps> = ({ index }) => {
       price: '1 500'
     }
   ]);
+
+  const handleExperienceChange = useExperienceHandler(
+    handleChange,
+    setMaxInputLength
+  );
 
   const handleAddCategory = () => {
     setCategories((prev) => [
@@ -39,7 +46,7 @@ const SubjectFormItem: React.FC<DisciplinesBlockProps> = ({ index }) => {
       className={cn(styles.wrapper, !isActive && styles['wrapper--disabled'])}
     >
       <div className={styles.header}>
-        <h3 className={styles.header__title}>{`Предмет №${index + 1}`}</h3>
+        <h3 className={styles.header__title}>{`Предмет № ${index + 1}`}</h3>
         <Switcher isActive={isActive} onChange={setIsActive} />
       </div>
       <div className={styles.options}>
@@ -80,14 +87,16 @@ const SubjectFormItem: React.FC<DisciplinesBlockProps> = ({ index }) => {
         </div>
         <div className={styles.options__experience}>
           <Input
+            variant="form"
             name="experience"
             value={values.experience}
-            onChange={handleChange}
+            onChange={handleExperienceChange}
             label="Стаж"
             placeholder="3 года"
             type="text"
-            style={{ inlineSize: '100%' }}
-            required
+            autoComplete="off"
+            maxLength={maxInputLength}
+            required={true}
           />
         </div>
       </div>

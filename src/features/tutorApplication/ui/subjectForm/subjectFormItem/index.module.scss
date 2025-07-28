@@ -1,7 +1,7 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 39px;
 
   &--disabled {
     opacity: 0.5;
@@ -41,9 +41,13 @@
   }
 
   &__experience {
-    max-inline-size: 120px;
     grid-column: 3/4;
     grid-row: 1/2;
+
+    & input {
+      block-size: 44px;
+      max-inline-size: 120px;
+    }
   }
 
   &__target {

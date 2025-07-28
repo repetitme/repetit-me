@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import cn from 'classnames';
 
@@ -6,11 +6,8 @@ import styles from './index.module.scss';
 
 import IInput from './types';
 
-export const formatNumber = (value: string, isPrice: boolean): string => {
-  return (
-    value.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ' ') +
-    (isPrice ? ' ₽' : '')
-  );
+export const formatNumber = (value: string): string => {
+  return value.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 };
 
 const Input: React.FC<IInput> = ({
@@ -34,6 +31,8 @@ const Input: React.FC<IInput> = ({
 }) => {
   const [error, setError] = useState<string>('');
   const [isFocused, setIsFocused] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const cursorPositionRef = useRef<number | null>(null);
   const isPrice: boolean = variant === 'price';
 
   const validate = (target: HTMLInputElement): string => {
@@ -49,6 +48,7 @@ const Input: React.FC<IInput> = ({
     if (pattern && !new RegExp(pattern).test(target.value)) {
       return title || 'Некорректный формат';
     }
+
     return '';
   };
 
@@ -60,19 +60,31 @@ const Input: React.FC<IInput> = ({
     }
     // Добавляет пробелы между тысячами, если строка из цифр
     if (/^[0-9\s₽]+$/.test(value) && type !== 'number') {
-      value = formatNumber(value, isPrice);
+      value = formatNumber(value);
+    }
+    if (inputRef.current) {
+      cursorPositionRef.current = inputRef.current.selectionStart;
     }
     onChange({
       target: { value: value, name }
     } as React.ChangeEvent<HTMLInputElement>);
   };
 
+  useEffect(() => {
+    if (inputRef.current && cursorPositionRef.current !== null) {
+      const position = cursorPositionRef.current;
+      // Устанавливаем курсор в сохраненную позицию
+      inputRef.current.setSelectionRange(position, position);
+      cursorPositionRef.current = null; // сбрасываем после установки
+    }
+  }, [value]);
+
   const handleBackspace = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     // Исправляет Backspace для поля с ценой
     if (e.key === 'Backspace' && isPrice) {
       onChange({
         target: {
-          value: formatNumber(value.replace(/\D/g, '').slice(0, -1), isPrice)
+          value: formatNumber(value.replace(/\D/g, '').slice(0, -1))
         }
       } as React.ChangeEvent<HTMLInputElement>);
     }
@@ -83,7 +95,7 @@ const Input: React.FC<IInput> = ({
     } else {
       formatInput(e);
     }
-    setError(validate(e.target));
+    setTimeout(() => setError(validate(e.target)), 0);
   };
 
   const wrapperClasses = cn(
@@ -99,32 +111,37 @@ const Input: React.FC<IInput> = ({
           {label}
         </label>
       )}
-      <input
-        id={name}
-        className={cn(styles.input, { [styles.error]: error })}
-        required={required}
-        autoComplete={autoComplete}
-        name={name}
-        pattern={pattern}
-        title={title}
-        type={type}
-        placeholder={error || (value && isFocused) ? '' : placeholder}
-        disabled={disable}
-        minLength={minLength}
-        maxLength={maxLength}
-        onKeyDown={handleBackspace}
-        value={value}
-        onChange={handleChange}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-      />
-      {error && (
-        <span
-          className={cn(styles.error__text, { [styles.error__active]: error })}
-        >
-          {error}
-        </span>
-      )}
+      <div className={styles.error__wrapper}>
+        <input
+          ref={inputRef}
+          id={name}
+          className={cn(styles.input, { [styles.error]: error })}
+          required={required}
+          autoComplete={autoComplete}
+          name={name}
+          pattern={pattern}
+          title={title}
+          type={type}
+          placeholder={error || (value && isFocused) ? '' : placeholder}
+          disabled={disable}
+          minLength={minLength}
+          maxLength={maxLength}
+          onKeyDown={handleBackspace}
+          value={value}
+          onChange={handleChange}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+        />
+        {error && (
+          <span
+            className={cn(styles.error__text, {
+              [styles.error__active]: error
+            })}
+          >
+            {error}
+          </span>
+        )}
+      </div>
     </div>
   );
 };

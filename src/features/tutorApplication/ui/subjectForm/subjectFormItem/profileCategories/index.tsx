@@ -30,13 +30,16 @@ const ProfileCategories = ({
       </div>
       <div className={styles['container__options--price']}>
         <Input
+          variant="price"
           name="price"
           value={values.price}
           onChange={handleChange}
           label="Цена"
           placeholder={category.price}
-          type="number"
-          style={{ inlineSize: '97px' }}
+          type="text"
+          extraClass={styles['container__options--price-input']}
+          maxLength={6}
+          autoComplete="off"
           required
         />
         <p className={styles['container__options--price-currency']}>руб/час</p>
