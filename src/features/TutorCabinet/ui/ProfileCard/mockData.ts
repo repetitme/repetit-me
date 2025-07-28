@@ -9,5 +9,5 @@ export const profileCardData: TutorCabinetCardProps = {
   tg: '@rabov654',
   link: 'https://www.figma.com/designvfbnbgngfmnLuyeugfkfe',
   rating: 4.6,
-  avatar: tutorAvatar
+  image: tutorAvatar
 };

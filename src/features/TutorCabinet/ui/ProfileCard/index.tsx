@@ -9,14 +9,14 @@ const ProfileCard = ({
   tg,
   link,
   rating,
-  avatar
+  image
 }: TutorCabinetCardProps) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.avatar}>
-        {avatar ? (
+        {image ? (
           <img
-            src={avatar}
+            src={image}
             alt={`Аватар ${name}`}
             className={styles.img}
             onError={(e) => {

@@ -34,7 +34,7 @@ export const routesConfig: IRoute[] = [
           onToggleVisibility={() => {}}
         />
         <ProfileCard
-          avatar={profileCardData.avatar}
+          image={profileCardData.image}
           name={profileCardData.name}
           status={profileCardData.status}
           tg={profileCardData.tg}
