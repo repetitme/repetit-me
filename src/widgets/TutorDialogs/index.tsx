@@ -192,7 +192,9 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
           }
           onChange={onChange}
         />
-        {futureLesson ? hadFirstClass.options[index] : isYes}
+        <span>
+          {futureLesson ? hadFirstClass.options[index] : isYes}
+        </span>
       </label>
     );
   };

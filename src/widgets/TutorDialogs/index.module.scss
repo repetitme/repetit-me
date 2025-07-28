@@ -47,8 +47,20 @@
       transition: all var(--fast-transition);
       cursor: pointer;
 
+      & + span {
+        transition: color var(--slow-transition);
+      }
+
+      &:hover {
+        border: 4px solid var(--clr-3);
+      }
+
       &:checked {
         border: 4px solid var(--clr-primary-default);
+
+        & + span {
+          color: var(--clr-primary-default);
+        }
       }
     }
   }
