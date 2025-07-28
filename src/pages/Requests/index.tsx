@@ -72,6 +72,7 @@ const Requests: React.FC = () => {
           <TelegramBlock />
         </aside>
         <div className={styles.content__wrapper}>
+          {!loaded.content && <Loader className={styles.loader} />}
           {navOptions[role as keyof typeof navOptions].myRequests === active &&
             role === 'tutor' && (
               <div
@@ -93,7 +94,6 @@ const Requests: React.FC = () => {
                 Ученики, которые возможно вам подойдут
               </div>
             )}
-          {!loaded.content && <Loader />}
           <section
             className={cn(styles.content, {
               [styles.loading]: !loaded.content
