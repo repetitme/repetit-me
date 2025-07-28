@@ -83,7 +83,7 @@ const Requests: React.FC = () => {
                 Заявки учеников, которые выбрали вас напрямую
               </div>
             )}
-          {navOptions[role as keyof typeof navOptions].tutorRequests ===
+          {navOptions[role as keyof typeof navOptions].requests ===
             active &&
             role === 'tutor' && (
               <div
@@ -122,7 +122,7 @@ const Requests: React.FC = () => {
                   </article>
                 ))}
             {loaded.content &&
-              navOptions[role as keyof typeof navOptions].tutorRequests ===
+              navOptions[role as keyof typeof navOptions].requests ===
                 active &&
               role === 'student' &&
               createdRequest && (

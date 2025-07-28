@@ -28,13 +28,13 @@ export interface IStudentData extends IUserBaseData {
 export enum navOptionsStudent {
   myList = 'Мои репетиторы',
   myRequests = 'Заявки',
-  tutorRequests = 'Запросы'
+  requests = 'Запросы'
 }
 
 export enum navOptionsTutor {
   myList = 'Мои ученики',
   myRequests = 'Заявки',
-  tutorRequests = 'Запросы'
+  requests = 'Запросы'
 }
 
 export const navOptions = {

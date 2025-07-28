@@ -34,7 +34,7 @@ const UserCard: React.FC<IUserData> = ({
   const navRole = role === 'tutor' ? navOptionsTutor : navOptionsStudent;
   const isMyList = navOption === navRole.myList;
   const isMyRequests = navOption === navRole.myRequests;
-  const isTutorRequests = navOption === navRole.tutorRequests;
+  const isRequests = navOption === navRole.requests;
   const navigate = useNavigate();
   const report =
     studentData?.workingStatus === 'Занятия не начались'
@@ -75,7 +75,7 @@ const UserCard: React.FC<IUserData> = ({
                   text={
                     !navOption
                       ? 'Связаться'
-                      : isTutorRequests
+                      : isRequests
                         ? 'Принять'
                         : 'Отменить заявку'
                   }
@@ -91,7 +91,7 @@ const UserCard: React.FC<IUserData> = ({
                       },
                       buttonText: 'Мои заявки'
                     })
-                  : isTutorRequests
+                  : isRequests
                     ? Popups.receivedRequest({
                         isOpen,
                         close: toggle,
