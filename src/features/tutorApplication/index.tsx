@@ -12,7 +12,7 @@ const TutorApplication: React.FC = () => {
       <div className={styles.application}>
         <h2 className={styles.application__title}>Анкета</h2>
         <Stepper currentStep={3} totalSteps={5} />
-        <SubjectForm />
+        <SubjectForm onChange={() => {}} initialData={[]} />
       </div>
       <div className={styles.container__buttons}>
         <Button

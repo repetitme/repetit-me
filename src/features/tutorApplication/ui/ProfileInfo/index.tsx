@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import useForm from '../../../../shared/hooks/useForm';
 import useScrollLock from '../../../../shared/hooks/useScrollLock';
@@ -11,24 +11,15 @@ import AvatarUploadModal from './AvatarUploadModal';
 
 import styles from './index.module.scss';
 
-type ProfileFormData = {
-  firstName: string;
-  lastName: string;
-  telegram: string;
-  email: string;
-  about?: string;
-  avatar: string;
-};
+import { ProfileFormData, ProfileInfoProps } from './type';
 
-const ProfileInfo = () => {
-  const { values, handleChange, setValues } = useForm<ProfileFormData>({
-    firstName: '',
-    lastName: '',
-    telegram: '',
-    email: '',
-    about: '',
-    avatar: ''
-  });
+const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
+  const { values, handleChange, setValues } =
+    useForm<ProfileFormData>(initialData);
+
+  useEffect(() => {
+    onDataChange(values);
+  }, [values]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   useScrollLock(isModalOpen);
@@ -102,7 +93,7 @@ const ProfileInfo = () => {
             />
             <Input
               name="email"
-              value={values.email}
+              value={values.email || ''}
               type="email"
               label="Почта"
               placeholder="alex@ya.ru"
