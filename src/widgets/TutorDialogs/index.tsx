@@ -46,7 +46,6 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
   ) => {
     handleInputChange();
     const { name, value } = e.target;
-    console.log(state.arrangement);
     if ((name === 'arranged' || name === 'hadClass') && value === 'Нет') {
       setBlockSize(blocksizes[1]);
       setState((prevState) => ({
