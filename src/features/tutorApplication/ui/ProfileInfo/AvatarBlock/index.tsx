@@ -1,4 +1,4 @@
-import tutorIcon from '../../../../assets/icons/tutorIcon.svg';
+import tutorIcon from '../../../../../assets/icons/tutorIcon.svg';
 
 import styles from './index.module.scss';
 

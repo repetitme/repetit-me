@@ -6,15 +6,31 @@ import Select from '../../../../../../shared/ui/select';
 
 import styles from './index.module.scss';
 
-import { ProfileCategoriesProps } from '../../../../lib/type';
+import { ProfileCategoriesProps } from '../../type';
 
 const ProfileCategories = ({
   data,
   category,
   isLast,
-  onAddCategory
+  onAddCategory,
+  onChange
 }: ProfileCategoriesProps) => {
-  const { values, handleChange } = useForm({ price: '' });
+  const { values, handleChange } = useForm({ price: category.price });
+
+  const handleAgeCategoryChange = (selectedOption: any) => {
+    onChange?.({
+      ageCategory: selectedOption.label,
+      price: values.price
+    });
+  };
+
+  const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleChange(e);
+    onChange?.({
+      ageCategory: category.ageCategory,
+      price: e.target.value
+    });
+  };
 
   return (
     <div className={styles.container__auxiliary}>
@@ -22,10 +38,11 @@ const ProfileCategories = ({
         <Select
           label="Возрастные категории"
           options={data}
-          placeholder={category.ageCategory}
+          placeholder="Взрослый"
           defaultValue={data.find(
             (option) => option.label === category.ageCategory
           )}
+          onChange={handleAgeCategoryChange}
         />
       </div>
       <div className={styles['container__options--price']}>
@@ -33,7 +50,7 @@ const ProfileCategories = ({
           variant="price"
           name="price"
           value={values.price}
-          onChange={handleChange}
+          onChange={handlePriceChange}
           label="Цена"
           placeholder={category.price}
           type="text"

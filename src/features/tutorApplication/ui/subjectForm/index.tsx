@@ -1,39 +1,50 @@
 import { useState } from 'react';
-import React from 'react';
 
 import iconAdd from '../../../../assets/icons/icon_add.svg';
 import SubjectFormItem from './subjectFormItem';
 
 import styles from './index.module.scss';
 
+import { Subject, SubjectFormProps, initialSubject } from './type';
+
 const MAX_BLOCKS = 3;
 
-const SubjectForm: React.FC = () => {
-  const [blocksData, setBlocksData] = useState<React.ReactNode[]>([
-    <SubjectFormItem key={0} index={0} />
-  ]);
+const SubjectForm = ({ onChange, initialData }: SubjectFormProps) => {
+  const [subjects, setSubjects] = useState<Subject[]>(
+    initialData.length > 0 ? initialData : [initialSubject]
+  );
+
+  const handleSubjectChange = (index: number) => (newSubject: Subject) => {
+    const updatedSubjects = subjects.map((subject, i) =>
+      i === index ? newSubject : subject
+    );
+    setSubjects(updatedSubjects);
+    onChange(updatedSubjects);
+  };
 
   const handleAddBlock = () => {
-    if (blocksData.length < MAX_BLOCKS) {
-      setBlocksData((prev) => [
-        ...prev,
-        <SubjectFormItem key={prev.length} index={prev.length} />
-      ]);
+    if (subjects.length < MAX_BLOCKS) {
+      setSubjects((prev) => [...prev, initialSubject]);
     }
   };
 
   return (
     <div className={styles.container}>
-      {blocksData.map((_, index) => (
-        <SubjectFormItem key={index} index={index} />
+      {subjects.map((subject, index) => (
+        <SubjectFormItem
+          key={index}
+          index={index}
+          onChange={handleSubjectChange(index)}
+          initialData={subject}
+        />
       ))}
-      {blocksData.length < MAX_BLOCKS && (
+      {subjects.length < MAX_BLOCKS && (
         <button
           className={styles['options__added-disciplines']}
           onClick={handleAddBlock}
         >
           <img src={iconAdd} alt="Добавить предмет" />
-          <p>{`Добавить предмет (доступно ${MAX_BLOCKS - blocksData.length} из ${MAX_BLOCKS})`}</p>
+          <p>{`Добавить предмет (доступно ${MAX_BLOCKS - subjects.length} из ${MAX_BLOCKS})`}</p>
         </button>
       )}
     </div>
