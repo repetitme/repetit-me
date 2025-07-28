@@ -46,6 +46,12 @@ export interface IStudentProfile extends IStudentData {
   requests: {
     [key in navOptionsStudent]: { ids: string[] }; // Массив id репетиторов в профиле ученика
   };
+  createdRequest: {
+    id: string;
+    request: {
+      [key: string]: string | string[];
+    };
+  };
 }
 
 export interface ITutorProfile extends ITutorData {

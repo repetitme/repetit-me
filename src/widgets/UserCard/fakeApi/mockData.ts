@@ -8,6 +8,7 @@ import Aleksandr1 from '../../../assets/images/UserCardIcons/TutorImg/tutor_alek
 import Aleksandr2 from '../../../assets/images/UserCardIcons/TutorImg/tutor_aleksandr-2.png';
 import Aleksandra1 from '../../../assets/images/UserCardIcons/TutorImg/tutor_aleksandra-1.png';
 import Vyacheslav from '../../../assets/images/UserCardIcons/TutorImg/tutor_vyacheslav-1.png';
+import { titles } from '../../../features/TutorFilters/config/constants';
 import {
   IStudentData,
   IStudentProfile,
@@ -491,6 +492,19 @@ export const mockStudentProfile: IStudentProfile[] = [
           mockTutors[6].id,
           mockTutors[7].id
         ]
+      }
+    },
+    createdRequest: {
+      id: uuidv4(),
+      request: {
+        [titles.subjects]: ['Математика'],
+        [titles.goals]: ['Подготовка к ЕГЭ'],
+        [titles.ageBrackets]: ['9-11 класс'],
+        [titles.price]: ['2000-2500 ₽/час'],
+        [titles.experience]: ['1-5 лет'],
+        [titles.gender]: ['Женщина'],
+        [titles.rating]: ['Высокий'],
+        [titles.option]: ['С видеопрезентацией']
       }
     }
   }

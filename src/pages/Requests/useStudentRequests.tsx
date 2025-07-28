@@ -41,11 +41,15 @@ const useStudentRequests = () => {
       Object.entries(loadedState).map(([key, value]) => [key, !value])
     )
   );
+  const [lines, setLines] = useState(0);
   const [list, setList] = useState<Array<ITutorData[] | IStudentData[]>>([
     [],
     [],
     []
   ]);
+  const [createdRequest, setCreatedRequests] = useState<
+    Record<string, string[] | string>
+  >({});
   const [count, setCount] = useState(['', '', '']);
   const [visible, setVisible] = useState(3);
   const onClick = (value: typeof active) => () => {
@@ -67,6 +71,10 @@ const useStudentRequests = () => {
     )
       .then((profile: IStudentProfile | ITutorProfile | undefined) => {
         if (profile && profile.requests) {
+          if ('createdRequest' in profile) {
+            setCreatedRequests(profile.createdRequest.request);
+            setLines(Object.values(profile.createdRequest.request).length);
+          }
           setCount(
             requests.map((key: navOptionsStudent | navOptionsTutor) =>
               (
@@ -114,9 +122,12 @@ const useStudentRequests = () => {
   }, []);
 
   useEffect(() => {
+    console.log(lines);
     setTimeout(() => {
       listHeight === undefined
-        ? setListHeight(1500)
+        ? lines > 0
+          ? setListHeight(1700 + lines * 30)
+          : setListHeight(1500)
         : setListHeight(listHeight + 1400);
     }, 10);
   }, [visible, active]);
@@ -128,6 +139,7 @@ const useStudentRequests = () => {
     list,
     count,
     visible,
+    createdRequest,
     onClick,
     setVisible
   };

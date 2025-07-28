@@ -137,3 +137,45 @@
   opacity: 0;
   transform: translateY(-10px);
 }
+
+.request {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--clr-main);
+  gap: 24px;
+
+  &__title {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    color: var(--grey-3, #858585);
+    padding-block-end: 12px;
+    border-block-end: #172936 1px solid;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    inline-size: 745px;
+  }
+
+  &__item {
+    display: flex;
+    gap: 3px;
+    color: #172936;
+    white-space: nowrap;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__text {
+    font-size: 16px;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

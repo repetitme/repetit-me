@@ -8,8 +8,10 @@ import {
   ITutorData,
   navOptions
 } from '../../shared/types/userData';
+import Button from '../../shared/ui/button';
 import Loader from '../../shared/ui/loader';
 import TelegramBlock from '../../shared/ui/telegramBlock';
+import Wrapper from '../../shared/ui/wrapper';
 import UserCard from '../../widgets/UserCard';
 import useStudentRequests from './useStudentRequests';
 
@@ -23,6 +25,7 @@ const Requests: React.FC = () => {
     loaded,
     list,
     count,
+    createdRequest,
     visible,
     onClick,
     setVisible
@@ -118,6 +121,33 @@ const Requests: React.FC = () => {
                     />
                   </article>
                 ))}
+            {loaded.content &&
+              navOptions[role as keyof typeof navOptions].tutorRequests ===
+                active &&
+              role === 'student' &&
+              createdRequest && (
+                <Wrapper>
+                  <article className={styles.request}>
+                    <h3 className={styles.request__title}>
+                      Ищем репетитора в нашей дополнительной базе. В течение 3-5
+                      дней пришлём ответ в Telegram
+                    </h3>
+                    <div className={styles.request__list}>
+                      {Object.values(createdRequest).map((item, index) => {
+                        return (
+                          <div className={styles.request__item} key={index}>
+                            <span className={styles.request__subtitle}>
+                              {Object.keys(createdRequest)[index]}:
+                            </span>
+                            <span className={styles.request__text}>{item}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <Button text="Отменить заявку" variant="reset" />
+                  </article>
+                </Wrapper>
+              )}
             {visible <
               Number(
                 count[
