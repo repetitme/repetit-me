@@ -1,8 +1,7 @@
+import { TutorCabinetCardProps } from '../../../../shared/types/userData';
 import TutorRating from '../../../../shared/ui/tutorRating';
 
 import styles from './index.module.scss';
-
-import { ProfileCardProps } from './type';
 
 const ProfileCard = ({
   name,
@@ -11,7 +10,7 @@ const ProfileCard = ({
   link,
   rating,
   avatar
-}: ProfileCardProps) => {
+}: TutorCabinetCardProps) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.avatar}>

@@ -33,3 +33,12 @@ export interface IUserData {
   studentData?: IStudentData;
   handleSubmit?: boolean; // !!! Временный пропс, его наличие предполагает, что сабмит по заявке репетитору от ученика отправлен. Его видит репетитор и ученик у себя
 }
+
+export interface TutorCabinetCardProps {
+  name: string;
+  status: string;
+  tg: string;
+  link: string;
+  rating: number;
+  avatar: string;
+}

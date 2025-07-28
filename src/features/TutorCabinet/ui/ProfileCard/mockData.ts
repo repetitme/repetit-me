@@ -1,8 +1,9 @@
+import { TutorCabinetCardProps } from '../../../../shared/types/userData'
 import tutorAvatar from './../../../../assets/images/UserCardIcons/TutorImg/tutor_aleksandr-1.png';
 
-import { ProfileCardProps } from './type';
 
-export const profileCardData: ProfileCardProps = {
+
+export const profileCardData: TutorCabinetCardProps = {
   name: 'Александров Александр Александрович',
   status: 'Частный преподаватель',
   tg: '@rabov654',
