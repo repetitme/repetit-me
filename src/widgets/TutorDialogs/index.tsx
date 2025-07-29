@@ -31,7 +31,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
   const [isValid, setIsValid] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
   const [formChange, setFormChange] = useState(false);
-  const [inputChange, setInputChange] = useState(false);
+  const [inputChange, setInputChange] = useState(true);
   const defaultWidth =
     variant === 'report' ||
     (variant === 'arrangement' && state.arrangement.step === 2)
