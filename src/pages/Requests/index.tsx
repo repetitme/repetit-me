@@ -105,6 +105,11 @@ const Requests: React.FC = () => {
                 Object.values(
                   navOptions[role as keyof typeof navOptions]
                 ).indexOf(active)
+              ] !== undefined &&
+              list[
+                Object.values(
+                  navOptions[role as keyof typeof navOptions]
+                ).indexOf(active)
               ]
                 .slice(0, visible)
                 .map((person) => (

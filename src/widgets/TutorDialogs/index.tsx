@@ -44,9 +44,9 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    handleInputChange();
     const { name, value } = e.target;
     if ((name === 'arranged' || name === 'hadClass') && value === 'Нет') {
+      handleInputChange();
       setBlockSize(blocksizes[1]);
       setState((prevState) => ({
         ...prevState,
@@ -58,6 +58,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
       (name === 'arranged' || name === 'hadClass') &&
       state.hadFirstClass.step === 1
     ) {
+      handleInputChange(true);
       setBlockSize(blocksizes[0]);
       setState((prevState) => ({
         ...prevState,
@@ -110,7 +111,11 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     }, 500);
   };
 
-  const handleInputChange = () => {
+  const handleInputChange = (hide?: boolean) => {
+    if (hide) {
+      setInputChange(true);
+      return;
+    }
     setInputChange(true);
     setTimeout(() => {
       setInputChange(false);
@@ -252,12 +257,11 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
                 })}
               >
                 {radio()}
-                {values.arrangement.arranged === 'Нет' &&
-                  inputFactory({
-                    name: 'cause',
-                    textarea: true,
-                    index: 0
-                  })}
+                {inputFactory({
+                  name: 'cause',
+                  textarea: true,
+                  index: 0
+                })}
               </div>
             )}
             {state.arrangement.step === 2 && (
