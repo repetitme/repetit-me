@@ -17,6 +17,10 @@
       align-items: end;
       gap: 12px;
 
+      & .container__options--price-input {
+        inline-size: 97px;
+      }
+
       & .container__options--price-input input {
         block-size: 44px;
         inline-size: 97px;

@@ -9,6 +9,7 @@ import Switcher from '../../../../../shared/ui/switcher';
 import Wrapper from '../../../../../shared/ui/wrapper';
 import * as data from './data';
 import { useExperienceHandler } from './hooks/useExperienceHandler';
+import useFormHandlers from './hooks/useFormHandlers';
 import ProfileCategories from './profileCategories';
 
 import styles from './index.module.scss';
@@ -27,40 +28,17 @@ const SubjectFormItem = ({
   );
   const [maxInputLength, setMaxInputLength] = useState<number>(6);
 
-  const handleCategoryChange =
-    (categoryIndex: number) =>
-    (updatedCategory: { ageCategory: string; price: string }) => {
-      const updatedCategories = [...values.categories];
-      updatedCategories[categoryIndex] = updatedCategory;
-
-      const newValues = { ...values, categories: updatedCategories };
-      setValues(newValues);
-      onChange?.(newValues);
-    };
-
-  const handleSelectChange = (fieldName: string) => (selectedOption: any) => {
-    const newValues = { ...values, [fieldName]: selectedOption };
-    setValues(newValues);
-    onChange?.(newValues);
-  };
+  const { handleCategoryChange, handleSelectChange, handleAddCategory } =
+    useFormHandlers({
+      values,
+      setValues,
+      onChange
+    });
 
   const handleExperienceChange = useExperienceHandler(
     handleChange,
     setMaxInputLength
   );
-
-  const handleAddCategory = () => {
-    const newCategory = {
-      ageCategory: data.ageCategories[0].label,
-      price: '1500'
-    };
-    const newValues = {
-      ...values,
-      categories: [...values.categories, newCategory]
-    };
-    setValues(newValues);
-    onChange?.(newValues);
-  };
 
   return (
     <Wrapper

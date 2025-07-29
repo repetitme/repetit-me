@@ -3,7 +3,6 @@ import React from 'react';
 import Button from '../../shared/ui/button';
 import Stepper from '../../shared/ui/stepper';
 import SubjectForm from './ui/subjectForm';
-import SubjectForm from './ui/subjectForm';
 
 import styles from './index.module.scss';
 
