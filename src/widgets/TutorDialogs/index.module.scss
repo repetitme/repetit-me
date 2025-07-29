@@ -100,9 +100,15 @@
 
 .inactive {
   opacity: 0;
-  transition: opacity 0.3s ease;
+  position: absolute;
+  transform: translate(0, -10px);
+  pointer-events: none;
+  transition: all 0.3s ease;
 }
 
 .active {
+  position: relative;
+  pointer-events: all;
+  transform: translate(0, 0);
   opacity: 1;
 }

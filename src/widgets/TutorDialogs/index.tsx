@@ -13,7 +13,7 @@ import {
   initialValues,
   inlineSizes
 } from './constants';
-import { arrangement, button, hadFirstClass, report } from './data';
+import { arrangement, button, hadFirstClass, report, validation } from './data';
 
 import styles from './index.module.scss';
 
@@ -87,6 +87,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
   };
 
   useEffect(() => {
+    variant === TutorDialogsVariant.report && setInputChange(false);
     setBlockSize(defaultHeight);
     setInlineSize(defaultWidth);
     setTimeout(() => {
@@ -208,6 +209,14 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
       [TutorDialogsVariant.report]: report
     };
     const Tag = textarea ? Textarea : Input;
+    const validate = (isPattern?: boolean) => {
+      const validationParams = validation[name as keyof typeof validation];
+      if (isPattern) {
+        return validationParams[1] as string;
+      }
+      return validationParams[0] as string;
+    };
+
     return (
       <Tag
         className={cn(styles.inactive, {
@@ -226,6 +235,10 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
         variant="report"
         label={variantData[variant].secondaryTitles[index]}
         required={textarea ? false : true}
+        maxLength={textarea ? 500 : 50}
+        title={textarea ? '' : validate()}
+        pattern={textarea ? '' : validate(true)}
+        autoComplete="off"
       />
     );
   };
