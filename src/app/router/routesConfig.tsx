@@ -1,3 +1,6 @@
+import ApplicationProgress from '../../features/TutorCabinet/ui/ApplicationProgress';
+import ProfileCard from '../../features/TutorCabinet/ui/ProfileCard';
+import { profileCardData } from '../../features/TutorCabinet/ui/ProfileCard/mockData';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import Requests from '../../pages/Requests';
@@ -25,6 +28,27 @@ export const routesConfig: IRoute[] = [
   {
     path: '/tutor-application',
     element: <TutorApplication />,
+    auth: false
+  },
+  {
+    path: '/test',
+
+    element: (
+      <>
+        <ApplicationProgress
+          isProfileHidden={true}
+          onToggleVisibility={() => {}}
+        />
+        <ProfileCard
+          image={profileCardData.image}
+          name={profileCardData.name}
+          status={profileCardData.status}
+          tg={profileCardData.tg}
+          link={profileCardData.link}
+          rating={profileCardData.rating}
+        />
+      </>
+    ),
     auth: false
   },
   {

@@ -38,7 +38,6 @@
     border: none;
     font-weight: 600;
     font-size: 14px;
-    letter-spacing: 0;
   }
 
   &__content {
@@ -106,6 +105,54 @@
   border-radius: 10px;
   font-family: var(--ffm-default);
   color: rgb(103 87 241 / 100%);
+}
+
+.onProfile {
+  inline-size: 228px;
+  block-size: 32px;
+  border: 1px solid rgb(103 87 241 / 100%);
+  border-radius: 10px;
+  font-family: var(--ffm-default);
+  color: rgb(103 87 241 / 100%);
+
+  &__info {
+    inline-size: 146px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 12px 6px 10px;
+    border-right: 1px solid var(--clr-primary-default);
+
+    &_star {
+      inline-size: 16px;
+      block-size: 16px;
+      margin-right: 5px;
+    }
+
+    &_title {
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0;
+      margin-right: 4px;
+    }
+
+    &_rating {
+      font-weight: 700;
+      font-size: 14px;
+    }
+  }
+
+  &__button {
+    margin-right: 7px;
+    inline-size: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+  }
 }
 
 .rating_blue {
