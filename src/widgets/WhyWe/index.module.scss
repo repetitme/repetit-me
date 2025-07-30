@@ -17,9 +17,8 @@
 
 .accent {
   background-position: 80% center;
-  background-size: 350% 100%;
 
-  @include text-gradient;
+  @include title-gradient;
 }
 
 .list {
