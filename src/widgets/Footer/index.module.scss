@@ -59,7 +59,8 @@
 
   &--gradient {
     color: transparent;
-    background: linear-gradient(to left, #865bff 88%, #ff71f9 100%);
+
+    background: linear-gradient(to left, #865bff 70%, #a84bff 100%);
     background-clip: text;
   }
 }
