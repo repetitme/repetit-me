@@ -1,5 +1,6 @@
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
+import Requests from '../../pages/Requests';
 import TutorApplication from '../../pages/TutorApplication';
 import TutorCatalogPage from '../../pages/TutorCatalogPage';
 
@@ -9,6 +10,11 @@ export const routesConfig: IRoute[] = [
   {
     path: '/',
     element: <MainPage />,
+    auth: false
+  },
+  {
+    path: '/requests',
+    element: <Requests />,
     auth: false
   },
   {
@@ -33,6 +39,7 @@ export const knownPaths = routesConfig
     (route) =>
       route.path !== '*' &&
       route.path !== '/tutor-catalog' &&
-      route.path !== '/tutor-application'
+      route.path !== '/tutor-application' &&
+      route.path !== '/requests'
   )
   .map((route) => route.path);

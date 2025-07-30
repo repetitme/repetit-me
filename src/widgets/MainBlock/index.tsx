@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import { useNavigate } from 'react-router';
 
 import IconList from '../../shared/ui/iconsList';
-import { iconSources } from '../../shared/ui/iconsList/data';
 import SwitchButton from '../../shared/ui/switchButton';
 
 import styles from './index.module.scss';
@@ -14,7 +13,6 @@ const MainBlock: React.FC<MainBlockProps> = ({ isActive, setIsActive }) => {
   const handleSwitch = () => {
     setIsActive(!isActive);
   };
-  const icons = isActive ? iconSources.teacher : iconSources.student;
   return (
     <section className={styles.main__block}>
       <div
@@ -31,22 +29,22 @@ const MainBlock: React.FC<MainBlockProps> = ({ isActive, setIsActive }) => {
             RepetitMe — сервис подбора онлайн − репетиторов
           </h1>
           <p className={styles.main__text}>
-            Ученикам помогем найти преподавателя для онлайн-занятий, а
+            Ученикам поможем найти преподавателя для онлайн-занятий, а
             репетиторам увеличить свой поток клиентов на 30%
           </p>
           <button
             className={styles.main__button}
-            onClick={() => {
-              if (!isActive) {
-                navigate('/tutor-catalog');
-              }
-            }}
+            onClick={
+              isActive
+                ? () => navigate('/tutor-application')
+                : () => navigate('/tutor-catalog')
+            }
           >
             {isActive ? 'Заполнить анкету' : 'Подобрать репетитора'}
           </button>
         </div>
       </div>
-      <IconList icons={icons} />
+      <IconList isActive={isActive} />
     </section>
   );
 };
