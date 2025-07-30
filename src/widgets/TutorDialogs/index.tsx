@@ -88,6 +88,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
 
   useEffect(() => {
     variant === TutorDialogsVariant.report && setInputChange(false);
+    variant === TutorDialogsVariant.arrangement && setInputChange(true);
     setBlockSize(defaultHeight);
     setInlineSize(defaultWidth);
     setTimeout(() => {
