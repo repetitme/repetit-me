@@ -70,3 +70,8 @@ export interface IUserData {
   navOption?: navOptionsStudent | navOptionsTutor; // Опция навигации, которая активна в данный момент
   changeTab?: (tab: navOptionsStudent | navOptionsTutor) => void;
 }
+
+export interface TutorCabinetCardProps
+  extends Pick<ITutorData, 'name' | 'status' | 'rating' | 'link' | 'image'> {
+  tg: string;
+}
