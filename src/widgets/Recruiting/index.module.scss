@@ -1,3 +1,5 @@
+@use '../../assets/styles/mixins/gradient.scss' as *;
+
 .container {
   display: flex;
   flex-direction: column;
@@ -14,12 +16,10 @@
     font-weight: 500;
     line-height: 1.35;
 
-    &_purple {
-      color: #865bff;
-    }
-
-    &_blue {
-      color: #4558ff;
+    &_accent {
+      color: transparent;
+      background: linear-gradient(315deg, #4558ff 10%, #865bff 90%);
+      background-clip: text;
     }
   }
 

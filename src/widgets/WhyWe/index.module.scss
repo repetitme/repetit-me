@@ -17,8 +17,9 @@
 
 .accent {
   background-position: 80% center;
-
-  @include title-gradient;
+ color: transparent;
+  background: linear-gradient(150deg, #4558ff 50%, #3dc5ff 100%);
+  background-clip: text;
 }
 
 .list {

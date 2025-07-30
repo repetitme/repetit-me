@@ -9,7 +9,7 @@ import styles from './index.module.scss';
 interface ITelegramBlockProps {
   className?: string;
 }
-const TelegramBlock: React.FC<ITelegramBlockProps> = ({ className }) => {
+const TelegramBlock = ({ className }: ITelegramBlockProps) => {
   return (
     <div className={classNames(styles.container, className)}>
       <h4 className={styles.title}>
