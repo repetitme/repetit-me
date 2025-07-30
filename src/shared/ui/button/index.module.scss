@@ -10,7 +10,15 @@
   font-family: var(--ffm-default);
   font-weight: 700;
   inline-size: 100%;
-  transition: background-color var(--delay-dekstop) var(--timing);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  &:active {
+    transform: scale(0.99);
+  }
 
   &.large {
     font-size: 20px;

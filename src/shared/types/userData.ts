@@ -9,7 +9,7 @@ export interface IUserBaseData {
 }
 
 export interface ITutorData extends IUserBaseData {
-  status: 'Частный преподаватель' | string;
+  status: string;
   experienceYears: number;
   description: string;
   rating: number; // Рейтинг
@@ -25,13 +25,50 @@ export interface IStudentData extends IUserBaseData {
   workingStatus?: string; // Например, "занятия еще не начались"
 }
 
-export type TUserRole = 'student' | 'teacher' | 'unauth' | 'card';
+export enum navOptionsStudent {
+  myList = 'Мои репетиторы',
+  myRequests = 'Заявки',
+  requests = 'Запросы'
+}
+
+export enum navOptionsTutor {
+  myList = 'Мои ученики',
+  myRequests = 'Заявки',
+  requests = 'Запросы'
+}
+
+export const navOptions = {
+  student: navOptionsStudent,
+  tutor: navOptionsTutor
+};
+
+export interface IStudentProfile extends IStudentData {
+  requests: {
+    [key in navOptionsStudent]: { ids: string[] }; // Массив id репетиторов в профиле ученика
+  };
+  createdRequest: {
+    id: string;
+    request: {
+      [key: string]: string | string[];
+    };
+  };
+}
+
+export interface ITutorProfile extends ITutorData {
+  requests: {
+    [key in navOptionsTutor]: { ids: string[] }; // Массив id учеников в профиле репетитора
+  };
+}
+
+export type TUserRole = 'student' | 'tutor' | 'unauth' | 'card';
 
 export interface IUserData {
   role: TUserRole;
   tutorData?: ITutorData;
   studentData?: IStudentData;
   handleSubmit?: boolean; // !!! Временный пропс, его наличие предполагает, что сабмит по заявке репетитору от ученика отправлен. Его видит репетитор и ученик у себя
+  navOption?: navOptionsStudent | navOptionsTutor; // Опция навигации, которая активна в данный момент
+  changeTab?: (tab: navOptionsStudent | navOptionsTutor) => void;
 }
 
 export interface TutorCabinetCardProps
