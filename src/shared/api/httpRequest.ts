@@ -1,4 +1,6 @@
-export function httpRequest<T>(
+import { httpJson } from './httpJson';
+
+function httpRequest<T>(
   method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH',
   endpoint: string,
   config?: {
@@ -19,6 +21,5 @@ export function httpRequest<T>(
 
   return httpJson<T>(endpoint, options);
 }
-async function httpJson<T>(endpoint: string, options: any) {
-  return { endpoint, options } as T;
-}
+
+export default httpRequest;

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import useForm from '../../shared/hooks/useForm';
+import { loginAPI, registerAPI } from './api';
 import { AuthType, FormTabs, defaultValues } from './constants';
 import { IAuthButtonsProps } from './ui/components/button';
 
@@ -50,8 +51,26 @@ const useAuth = ({ mainPageRegister, login = false, closeModal }: TUseAuth) => {
     e.preventDefault();
     setIsValid(false);
     if (code) {
-      setValues(defaultValues);
-      closeModal?.();
+      // Тест
+      console.log('LOGIN BODY:', values);
+      login
+        ? loginAPI({ tg: values.tg, code: values.code })
+        : registerAPI({
+            tg: values.tg,
+            name: values.name,
+            code: values.code
+          })
+            .then(() => {
+              if (code) {
+                setReceived(true);
+              } else {
+                setValues(defaultValues);
+                closeModal?.();
+              }
+            })
+            .catch((error) => {
+              console.error('Authentication error:', error);
+            });
       return;
     }
     // Код получен

@@ -12,7 +12,8 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://test.repetitmeweb.ru',
+        // target: 'https://test.repetitmeweb.ru',
+        target: 'https://d3462337-77f3-4977-bb62-55e280a4892a.mock.pstmn.io',
         changeOrigin: true
       }
     }

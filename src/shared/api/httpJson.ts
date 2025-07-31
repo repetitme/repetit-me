@@ -1,5 +1,3 @@
-const URL = import.meta.env.VITE_REPETIT_ME_URL;
-
 export async function httpJson<T>(
   endpoint: string,
   options: {
@@ -10,7 +8,7 @@ export async function httpJson<T>(
   }
 ): Promise<T> {
   try {
-    const response = await fetch(`${URL}/${endpoint}`, {
+    const response = await fetch(`/api/${endpoint}`, {
       method: options.method,
       headers: {
         'Content-Type': 'application/json',
