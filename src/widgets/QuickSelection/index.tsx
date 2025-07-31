@@ -1,9 +1,10 @@
-import { FC, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import classNames from 'classnames';
 import { useNavigate } from 'react-router';
 
 import icon_arrowDown from '../../assets/images/icon-arrowdown.svg';
+import useClickOutside from '../../shared/hooks/useClickOutside';
 import Button from '../../shared/ui/button';
 import { mockTutors } from '../../widgets/UserCard/fakeApi/mockData';
 import Carousel from '../Carousel';
@@ -12,7 +13,7 @@ import { disciplines, dropdown } from './data';
 
 import styles from './index.module.scss';
 
-export const QuickSelection: FC = () => {
+export const QuickSelection = () => {
   const navigate = useNavigate();
   const [stateOption, setStateOption] = useState<'all' | string>('all');
   const [stateMore, setStateMore] = useState(false);
@@ -27,6 +28,26 @@ export const QuickSelection: FC = () => {
     setStateItemOther(itemOther);
     setStateMore(more);
   };
+
+  const dropdownRef = useClickOutside(() => {
+    if (stateMore) {
+      setStateMore(false);
+      setStateItemOther(false);
+    }
+  });
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Escape' && stateMore) {
+      setStateMore(false);
+      setStateItemOther(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [stateMore]);
+
   return (
     <div className={styles.container}>
       <div className={styles.container__header}>
@@ -89,7 +110,10 @@ export const QuickSelection: FC = () => {
               alt="Ещё"
             />
           </li>
-          <div className={styles.container__header_list_dropdown}>
+          <div
+            className={styles.container__header_list_dropdown}
+            ref={dropdownRef}
+          >
             <Dropdown
               list={dropdown}
               setStateMore={setStateMore}

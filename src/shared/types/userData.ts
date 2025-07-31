@@ -61,6 +61,7 @@ export interface ITutorProfile extends ITutorData {
 }
 
 export type TUserRole = 'student' | 'tutor' | 'unauth' | 'card';
+export type TMainRole = Omit<TUserRole, 'card'>;
 
 export interface IUserData {
   role: TUserRole;
