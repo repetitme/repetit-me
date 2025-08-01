@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import classNames from 'classnames';
 import { useNavigate } from 'react-router';
 
 import icon_arrowDown from '../../assets/images/icon-arrowdown.svg';
-import useClickOutside from '../../shared/hooks/useClickOutside';
 import Button from '../../shared/ui/button';
 import { mockTutors } from '../../widgets/UserCard/fakeApi/mockData';
 import Carousel from '../Carousel';
@@ -29,12 +28,26 @@ export const QuickSelection = () => {
     setStateMore(more);
   };
 
-  const dropdownRef = useClickOutside(() => {
-    if (stateMore) {
-      setStateMore(false);
-      setStateItemOther(false);
-    }
-  });
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      const isMoreButton = (e.target as Element).closest(
+        `.${styles.container__header_list_more}`
+      );
+      const isDropdown = dropdownRef.current?.contains(e.target as Node);
+
+      if (!isMoreButton && !isDropdown) {
+        setStateMore(false);
+        setStateItemOther(false);
+      }
+    };
+
+    document.addEventListener('click', handleClick, true);
+    return () => {
+      document.removeEventListener('click', handleClick, true);
+    };
+  }, []);
 
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Escape' && stateMore) {
@@ -96,9 +109,10 @@ export const QuickSelection = () => {
                 ? styles.container__header_item_active
                 : ''
             )}
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setStateMore(!stateMore);
-              setStateItemOther(stateMore == true ? false : true);
+              setStateItemOther(!stateItemOther);
             }}
           >
             <span className={styles.container__header_list_item_text}>
