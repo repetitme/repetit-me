@@ -1,8 +1,17 @@
+import { useState } from 'react';
+
 import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
 
-import { IUserData } from '../../shared/types/userData';
+import {
+  IUserData,
+  navOptionsStudent,
+  navOptionsTutor
+} from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
+import Popups from '../../shared/ui/popup';
+import TutorDialogs from '../TutorDialogs';
+import { TutorDialogsVariant } from '../TutorDialogs/constants';
 import StudentProfile from '../UserProfile/StudentProfile';
 import TutorProfile from '../UserProfile/TutorProfile';
 
@@ -12,13 +21,42 @@ const UserCard: React.FC<IUserData> = ({
   role,
   tutorData,
   studentData,
-  handleSubmit
+  handleSubmit,
+  navOption,
+  changeTab
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isAccepted, setIsAccepted] = useState(false);
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const navRole = role === 'tutor' ? navOptionsTutor : navOptionsStudent;
+  const isMyList = navOption === navRole.myList;
+  const isMyRequests = navOption === navRole.myRequests;
+  const isRequests = navOption === navRole.requests;
   const navigate = useNavigate();
+  const report =
+    studentData?.workingStatus === 'Занятия не начались'
+      ? TutorDialogsVariant.arrangement
+      : (studentData?.lessonsCompleted ?? 0) > 1
+        ? TutorDialogsVariant.report
+        : TutorDialogsVariant.hadFirstClass;
+  const handleChangeTab = () => {
+    if (changeTab) {
+      changeTab(navRole.myList);
+      close();
+    }
+  };
+
+  const handleAccept = (isAccepted: boolean) => {
+    setIsAccepted(isAccepted);
+    toggle();
+  };
   return (
     <div className={cn(styles.card, role === 'card' && styles.card__resize)}>
       {role === 'student' || role === 'unauth' ? (
-        // Карточка репетитора
+        // Карточка репетитора для ученика или незарегистрированного пользователя
         <>
           {tutorData ? (
             <TutorProfile {...tutorData} />
@@ -31,17 +69,49 @@ const UserCard: React.FC<IUserData> = ({
               variant="white"
               onClick={() => navigate(`/tutor-catalog/${tutorData?.id}`)}
             />
-
-            {role === 'student' &&
-              (!handleSubmit ? (
-                <Button text="Связаться" variant="purple" />
-              ) : (
-                <Button text="Отменить заявку" variant="red" />
-              ))}
+            {!isMyList && (
+              <>
+                <Button
+                  text={
+                    !navOption
+                      ? 'Связаться'
+                      : isRequests
+                        ? 'Принять'
+                        : 'Отменить заявку'
+                  }
+                  variant={!isMyRequests ? 'purple' : 'red'}
+                  onClick={toggle}
+                />
+                {!navOption
+                  ? Popups.responded({
+                      isOpen,
+                      close: toggle,
+                      buttonOnClick: () => {
+                        navigate('/requests');
+                      },
+                      buttonText: 'Мои заявки'
+                    })
+                  : isRequests
+                    ? Popups.receivedRequest({
+                        isOpen,
+                        close: toggle,
+                        buttonOnClick: handleChangeTab,
+                        buttonText: navOptionsStudent.myList
+                      })
+                    : Popups.cancelRequest({
+                        isOpen,
+                        close: toggle,
+                        buttonOnClick: toggle,
+                        secondaryButtonOnClick: () => {
+                          toggle();
+                        }
+                      })}
+              </>
+            )}
           </div>
         </>
-      ) : role === 'teacher' ? (
-        // Карточка ученика
+      ) : role === 'tutor' ? (
+        // Карточка ученика для репетитора
         <>
           {studentData ? (
             <StudentProfile
@@ -52,15 +122,56 @@ const UserCard: React.FC<IUserData> = ({
             <p>Ученик не найден</p>
           )}
           <div className={styles.card__buttons}>
-            {!handleSubmit ? (
-              <Button text="Создать отчет" variant="purple" />
+            {isMyList ? (
+              <>
+                <Button
+                  text="Создать отчет"
+                  onClick={toggle}
+                  variant="purple"
+                />
+                {(studentData?.lessonsCompleted ?? 0) > 1 && (
+                  <Button
+                    text="Подробнее"
+                    variant="white"
+                    onClick={() => {
+                      console.log('Подробнее');
+                    }}
+                  />
+                )}
+              </>
             ) : (
               <>
-                <Button text="Отклонить" variant="red" />
-                <Button text="Принять" variant="purple" />
+                <Button
+                  text="Отклонить"
+                  variant="red"
+                  onClick={() => handleAccept(false)}
+                />
+                <Button
+                  text="Принять"
+                  variant="purple"
+                  onClick={() => handleAccept(true)}
+                />
+                {!isMyList && isAccepted
+                  ? Popups.acceptRequest({
+                      isOpen,
+                      close: toggle,
+                      buttonText: 'Отмена',
+                      buttonOnClick: toggle,
+                      secondaryButtonText: 'Далее',
+                      secondaryButtonOnClick: toggle
+                    })
+                  : Popups.rejectTutor({
+                      isOpen,
+                      close: toggle,
+                      buttonOnClick: toggle,
+                      secondaryButtonOnClick: toggle
+                    })}
               </>
             )}
           </div>
+          {isMyList && (
+            <TutorDialogs isOpen={isOpen} close={toggle} variant={report} />
+          )}
         </>
       ) : (
         // Маленькая карточка
