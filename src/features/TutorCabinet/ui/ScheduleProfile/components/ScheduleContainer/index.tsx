@@ -5,18 +5,19 @@ import { IScheduleContainer } from './type';
 export const ScheduleContainer: React.FC<IScheduleContainer> = ({
   title,
   tagName,
-  tagColor,
   children
 }) => {
+  const color = tagName === 'Занятия начались' ? 'green' : 'red';
+
   return (
     <div className={styles.scheduleContainer}>
       <div className={styles.scheduleContainer__title}>
         <p className={styles.scheduleContainer__title_text}>{title}</p>
         <div
-          className={`${styles.scheduleContainer__title_tag} ${styles[`scheduleContainer__title_tag_${tagColor}`]}`}
+          className={`${styles.scheduleContainer__title_tag} ${styles[`scheduleContainer__title_tag_${color}`]}`}
         >
           <p
-            className={`${styles.scheduleContainer__title_tag_text} ${styles[`scheduleContainer__title_tag_${tagColor}`]}`}
+            className={`${styles.scheduleContainer__title_tag_text} ${styles[`scheduleContainer__title_tag_${color}`]}`}
           >
             {tagName}
           </p>

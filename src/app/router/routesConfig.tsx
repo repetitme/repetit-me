@@ -1,16 +1,16 @@
 import ApplicationProgress from '../../features/TutorCabinet/ui/ApplicationProgress';
 import ProfileCard from '../../features/TutorCabinet/ui/ProfileCard';
 import { profileCardData } from '../../features/TutorCabinet/ui/ProfileCard/mockData';
+import { ScheduleProfile } from '../../features/TutorCabinet/ui/ScheduleProfile';
+import {
+  firstLessonsData,
+  scheduleLessonsData
+} from '../../features/TutorCabinet/ui/ScheduleProfile/data';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import Requests from '../../pages/Requests';
 import TutorApplication from '../../pages/TutorApplication';
 import TutorCatalogPage from '../../pages/TutorCatalogPage';
-import { ScheduleProfile } from '../../widgets/ScheduleProfile';
-import {
-  firstLessonsData,
-  scheduleLessonsData
-} from '../../widgets/ScheduleProfile/data';
 
 import { IRoute } from './type';
 

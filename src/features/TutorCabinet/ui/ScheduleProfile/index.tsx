@@ -12,30 +12,35 @@ export const ScheduleProfile: React.FC<IScheduleProfile> = ({
   firstLessons,
   scheduleLessons
 }) => {
+  const nameList: string[] = [];
+
+  const colorClasses = ['purple', 'pink', 'yellow', 'blue', 'green'];
+
+  const getColorClass = (name: string): any => {
+    if (!nameList.includes(name)) {
+      nameList.push(name);
+    }
+
+    const colorIndex = nameList.indexOf(name) % colorClasses.length;
+    return colorClasses[colorIndex];
+  };
+
   return (
     <div className={styles.container}>
-      <ScheduleContainer
-        title="Первые уроки"
-        tagName="Занятия не начались"
-        tagColor="red"
-      >
+      <ScheduleContainer title="Первые уроки" tagName="Занятия не начались">
         <LessonsList>
           {firstLessons.map((lesson, index) => (
             <Lesson key={index} date={lesson.date} subject={lesson.subject}>
               <LessonStudent
                 studentName={lesson.studentName}
-                iconColor={lesson.color}
+                iconColor={getColorClass(lesson.studentName)}
               />
             </Lesson>
           ))}
         </LessonsList>
       </ScheduleContainer>
 
-      <ScheduleContainer
-        title="Расписание уроков"
-        tagName="Занятия начались"
-        tagColor="green"
-      >
+      <ScheduleContainer title="Расписание уроков" tagName="Занятия начались">
         <LessonsList>
           {scheduleLessons.map((lesson, index) => (
             <Lesson key={index} date={lesson.date} subject={lesson.subject}>
@@ -44,7 +49,7 @@ export const ScheduleProfile: React.FC<IScheduleProfile> = ({
               )}
               <LessonStudent
                 studentName={lesson.studentName}
-                iconColor={lesson.color}
+                iconColor={getColorClass(lesson.studentName)}
               />
             </Lesson>
           ))}

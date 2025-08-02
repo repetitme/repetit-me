@@ -1,46 +1,40 @@
-import { firstLessonType, scheduleLessonType } from './type';
+import { LessonType } from './type';
 
-export const firstLessonsData: firstLessonType[] = [
+export const firstLessonsData: LessonType[] = [
   {
     date: '24.07 11:35',
     subject: 'Математика',
-    studentName: 'Виталий',
-    color: 'purple'
+    studentName: 'Виталий'
   },
   {
     date: '25.07 11:35',
     subject: 'Английский язык',
-    studentName: 'Евгений',
-    color: 'pink'
+    studentName: 'Евгений'
   },
   {
     date: '27.07 13:30',
     subject: 'Математика',
-    studentName: 'Виталий',
-    color: 'purple'
+    studentName: 'Виталий'
   }
 ];
 
-export const scheduleLessonsData: scheduleLessonType[] = [
+export const scheduleLessonsData: LessonType[] = [
   {
     date: '24.07 11:35',
     subject: 'Математика',
     studentName: 'Виталий',
-    color: 'purple',
     lessonNumber: 2
   },
   {
     date: '25.07 11:35',
     subject: 'Английский язык',
     studentName: 'Евгений',
-    color: 'pink',
     lessonNumber: 2
   },
   {
     date: '27.07 13:30',
     subject: 'Математика',
     studentName: 'Виталий',
-    color: 'purple',
     lessonNumber: 3
   }
 ];
