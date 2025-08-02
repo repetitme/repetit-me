@@ -9,7 +9,7 @@ import tutorTask from '../../assets/images/UserCardIcons/tutors_task_icon.svg';
 import { ITutorData } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
 import ButtonBack from '../../shared/ui/buttonBack';
-import ParametrItem from '../../shared/ui/parameterItem';
+import ParameterItem from '../../shared/ui/parameterItem';
 import TutorRating from '../../shared/ui/tutorRating';
 import AboutMe from '../../widgets/AboutMe';
 import FeedbacksModal from '../../widgets/FeedbacksModal';
@@ -137,15 +137,15 @@ const TutorPage = () => {
               <div
                 className={styles.container__profile_info_portrait_parametrs}
               >
-                <ParametrItem
+                <ParameterItem
                   src={disciplineIcon}
                   items={dataState?.subjects}
                 />
-                <ParametrItem
+                <ParameterItem
                   src={studentCategory}
                   items={dataState?.studentAudience}
                 />
-                <ParametrItem src={tutorTask} items={dataState.purpose} />
+                <ParameterItem src={tutorTask} items={dataState.purpose} />
               </div>
             </div>
             <div
