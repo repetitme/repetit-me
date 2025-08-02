@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react';
 
 import closeIcon from '../../../../assets/icons/close.svg';
-import useClickOutside from '../../../../shared/hooks/useClickOutside';
-import Button from '../../../../shared/ui/button';
-import ModalOverlay from '../../../../shared/ui/overlay';
+import useClickOutside from '../../../../../../shared/hooks/useClickOutside';
+import Button from '../../../../../../shared/ui/button';
+import ModalOverlay from '../../../../../../shared/ui/overlay';
 
 import styles from './index.module.scss';
 
