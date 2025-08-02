@@ -8,8 +8,12 @@ import styles from './index.module.scss';
 
 import { TutorRatingProps, VariantType } from './type';
 
-
-const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating, setOpenModalState, disabled }) => {
+const TutorRating: React.FC<TutorRatingProps> = ({
+  variant,
+  rating,
+  setOpenModalState,
+  disabled
+}) => {
   const onClick = () => {
     setOpenModalState && setOpenModalState(true);
   };

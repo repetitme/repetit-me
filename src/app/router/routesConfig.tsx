@@ -3,11 +3,10 @@ import ProfileCard from '../../features/TutorCabinet/ui/ProfileCard';
 import { profileCardData } from '../../features/TutorCabinet/ui/ProfileCard/mockData';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
-import TutorCatalogPage from '../../pages/TutorCatalogPage';
-import TutorPage from '../../pages/TutorPage';
 import Requests from '../../pages/Requests';
 import TutorApplication from '../../pages/TutorApplication';
-
+import TutorCatalogPage from '../../pages/TutorCatalogPage';
+import TutorPage from '../../pages/TutorPage';
 
 import { IRoute } from './type';
 

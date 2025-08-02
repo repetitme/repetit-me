@@ -66,7 +66,18 @@ export interface IStudentProfile extends IStudentData {
   };
 }
 
-export interface ITutorProfile extends ITutorData {
+export interface ITutorProfile {
+  id: string;
+  name: string;
+  image: string;
+  experienceYears: number;
+  description: string;
+  price: string;
+  subjects: string[]; // Массив предметов
+  studentAudience: string[]; // Для какой аудиторий учеников
+  purpose: string[]; // Для чего нужен преподаватель
+  rating: number; // Рейтинг
+  status: string;
   requests: {
     [key in navOptionsTutor]: { ids: string[] }; // Массив id учеников в профиле репетитора
   };
