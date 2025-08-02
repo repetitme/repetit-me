@@ -1,5 +1,5 @@
 export interface IFeedbacksModalProps {
   onClose: () => void;
   rating: number;
-  isOpen: boolean
+  isOpen: boolean;
 }

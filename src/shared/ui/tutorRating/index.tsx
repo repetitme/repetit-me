@@ -92,7 +92,11 @@ const TutorRating: React.FC<TutorRatingProps> = ({
             alt="Rating star"
           />
         </div>
-        <button className={classNames(styles.container__button)} onClick={onClick} disabled={disabled}>
+        <button
+          className={classNames(styles.container__button)}
+          onClick={onClick}
+          disabled={disabled}
+        >
           Отзывы
         </button>
       </div>

@@ -27,7 +27,6 @@ export interface ITutorData extends IUserBaseData {
   documents: string[];
   videoStart: string;
   freeTime: IFreeTime[];
-
 }
 
 export interface IStudentData extends IUserBaseData {

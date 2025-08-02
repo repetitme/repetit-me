@@ -26,7 +26,11 @@ const UserCard: React.FC<IUserData> = ({
             <p>Репетитор не найден</p>
           )}
           <div className={styles.card__buttons}>
-              <Button text="Подробнее" variant="white" onClick={() => navigate(`/tutor-catalog/${tutorData?.id}`)} />
+            <Button
+              text="Подробнее"
+              variant="white"
+              onClick={() => navigate(`/tutor-catalog/${tutorData?.id}`)}
+            />
 
             {role === 'student' &&
               (!handleSubmit ? (

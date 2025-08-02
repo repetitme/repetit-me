@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
 import clock from '../../assets/icons/clock.svg';
-import Time from '../Time';
 import { IFreeTime } from '../../shared/types/userData';
+import Time from '../Time';
 
 import styles from './index.module.scss';
 
@@ -10,7 +10,7 @@ interface IFreeTimeTable {
   freeTime: IFreeTime[];
 }
 
-const FreeTimeTable: FC<IFreeTimeTable> = ({freeTime}) => {
+const FreeTimeTable: FC<IFreeTimeTable> = ({ freeTime }) => {
   return (
     <div className={styles.container}>
       <h2 className={styles.container__title}>Свободное время</h2>

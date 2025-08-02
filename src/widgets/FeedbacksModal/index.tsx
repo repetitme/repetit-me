@@ -2,17 +2,20 @@ import { FC, useCallback, useState } from 'react';
 
 import CloseIcon from '../../assets/icons/closeIcon.svg';
 import useClickOutside from '../../shared/hooks/useClickOutside';
+import useScrollLock from '../../shared/hooks/useScrollLock';
 import ModalOverlay from '../../shared/ui/overlay';
 import TutorRating from '../../shared/ui/tutorRating';
 import FeedbackList from '../FeedbackList';
-import useScrollLock from '../../shared/hooks/useScrollLock';
-
 
 import styles from './index.module.scss';
 
 import { IFeedbacksModalProps } from './type';
 
-const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose, rating, isOpen }) => {
+const FeedbacksModal: FC<IFeedbacksModalProps> = ({
+  onClose,
+  rating,
+  isOpen
+}) => {
   const [feedbackData, setFeedbackData] = useState({ count: 0, rating: 0 });
 
   const modalRef = useClickOutside(onClose);
@@ -42,7 +45,7 @@ const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose, rating, isOpen }) =
     }
   };
 
-  useScrollLock(isOpen)
+  useScrollLock(isOpen);
 
   return (
     <>
