@@ -7,7 +7,6 @@ import TutorCatalogPage from '../../pages/TutorCatalogPage';
 import TutorPage from '../../pages/TutorPage';
 import Requests from '../../pages/Requests';
 import TutorApplication from '../../pages/TutorApplication';
-import TutorCatalogPage from '../../pages/TutorCatalogPage';
 
 
 import { IRoute } from './type';
@@ -33,9 +32,10 @@ export const routesConfig: IRoute[] = [
     element: <TutorApplication />,
     auth: false
   },
-  { 
+  {
     path: '/tutor-catalog/:id',
     element: <TutorPage />,
+    auth: false
   },
   {
     path: '/test',

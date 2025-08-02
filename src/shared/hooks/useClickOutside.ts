@@ -15,13 +15,14 @@ const useClickOutside = (callback: () => void) => {
         callback();
       }
     };
+
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleKeyDown);
     };
-
+  }, [callback]);
 
   return ref;
 };

@@ -78,7 +78,7 @@ const TutorPage = () => {
               alt="Фото репетитора"
             />
             <div className={styles.container__profile_contact_connection}>
-              {role === 'student' || role === 'teacher' ? (
+              {role === 'student' || role === 'tutor' ? (
                 <Button text="Связаться" variant="purple" />
               ) : (
                 role === 'unauth' && (
@@ -113,7 +113,7 @@ const TutorPage = () => {
                 </span>
               </p>
               <div className={styles.container__profile_info_portrait_raiting}>
-                {role === 'student' || role === 'teacher' ? (
+                {role === 'student' || role === 'tutor' ? (
                   <TutorRating
                     variant="large"
                     rating={dataState?.rating ?? 0}
