@@ -1,5 +1,10 @@
 import { ServicesListItem } from '../../widgets/AboutMe/type';
 
+export interface IFreeTime {
+  day: string;
+  time: string[];
+}
+
 export interface IUserBaseData {
   id: string;
   name: string;
@@ -21,6 +26,8 @@ export interface ITutorData extends IUserBaseData {
   servicesList: ServicesListItem[];
   documents: string[];
   videoStart: string;
+  freeTime: IFreeTime[];
+
 }
 
 export interface IStudentData extends IUserBaseData {

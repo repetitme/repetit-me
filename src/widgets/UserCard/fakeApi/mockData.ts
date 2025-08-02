@@ -56,7 +56,37 @@ export const mockTutors: ITutorData[] = [
     rating: 5.0,
     link: '#!',
     documents: [diploma, certificate, certificate],
-    videoStart: videoMock
+    videoStart: videoMock,
+    freeTime: [
+      {
+        day: 'Пн',
+        time: ['07:00', '16:00']
+      },
+      {
+        day: 'Вт',
+        time: []
+      },
+      {
+        day: 'Ср',
+        time: ['11:00', '19:00']
+      },
+      {
+        day: 'Чт',
+        time: ['09:00']
+      },
+      {
+        day: 'Пт',
+        time: ['13:00', '16:00', '20:00']
+      },
+      {
+        day: 'Сб',
+        time: ['07:00']
+      },
+      {
+        day: 'Вс',
+        time: []
+      }
+    ]
   },
   {
     id: uuidv4(),
@@ -99,7 +129,37 @@ export const mockTutors: ITutorData[] = [
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 4.2,
     documents: [diploma, certificate],
-    videoStart: videoMock
+    videoStart: videoMock,
+    freeTime: [
+      {
+        day: 'Пн',
+        time: ['07:00', '20:00']
+      },
+      {
+        day: 'Вт',
+        time: []
+      },
+      {
+        day: 'Ср',
+        time: ['11:00', '19:00']
+      },
+      {
+        day: 'Чт',
+        time: ['09:00']
+      },
+      {
+        day: 'Пт',
+        time: ['13:00', '16:00', '20:00']
+      },
+      {
+        day: 'Сб',
+        time: ['07:00']
+      },
+      {
+        day: 'Вс',
+        time: []
+      }
+    ]
   },
   {
     id: uuidv4(),
@@ -143,7 +203,37 @@ export const mockTutors: ITutorData[] = [
     rating: 2.9,
     link: '#!',
     documents: [diploma, certificate],
-    videoStart: videoMock
+    videoStart: videoMock,
+    freeTime: [
+      {
+        day: 'Пн',
+        time: ['07:00', '16:00']
+      },
+      {
+        day: 'Вт',
+        time: []
+      },
+      {
+        day: 'Ср',
+        time: ['11:00', '19:00']
+      },
+      {
+        day: 'Чт',
+        time: ['09:00']
+      },
+      {
+        day: 'Пт',
+        time: ['13:00', '16:00', '20:00']
+      },
+      {
+        day: 'Сб',
+        time: ['07:00']
+      },
+      {
+        day: 'Вс',
+        time: []
+      }
+    ]
   },
   {
     id: uuidv4(),
@@ -187,7 +277,37 @@ export const mockTutors: ITutorData[] = [
     rating: 3.9,
     link: '#!',
     documents: [diploma, certificate],
-    videoStart: videoMock
+    videoStart: videoMock,
+    freeTime: [
+      {
+        day: 'Пн',
+        time: ['07:00', '16:00']
+      },
+      {
+        day: 'Вт',
+        time: []
+      },
+      {
+        day: 'Ср',
+        time: ['11:00', '19:00']
+      },
+      {
+        day: 'Чт',
+        time: ['09:00']
+      },
+      {
+        day: 'Пт',
+        time: ['13:00', '16:00', '20:00']
+      },
+      {
+        day: 'Сб',
+        time: ['07:00']
+      },
+      {
+        day: 'Вс',
+        time: []
+      }
+    ]
   },
   {
     id: uuidv4(),
@@ -230,7 +350,37 @@ export const mockTutors: ITutorData[] = [
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 1.5,
     documents: [diploma, certificate],
-    videoStart: videoMock
+    videoStart: videoMock,
+    freeTime: [
+      {
+        day: 'Пн',
+        time: ['07:00', '16:00']
+      },
+      {
+        day: 'Вт',
+        time: []
+      },
+      {
+        day: 'Ср',
+        time: ['11:00', '19:00']
+      },
+      {
+        day: 'Чт',
+        time: ['09:00']
+      },
+      {
+        day: 'Пт',
+        time: ['13:00', '16:00', '20:00']
+      },
+      {
+        day: 'Сб',
+        time: ['07:00']
+      },
+      {
+        day: 'Вс',
+        time: []
+      }
+    ]
   },
   {
     id: uuidv4(),
@@ -274,7 +424,37 @@ export const mockTutors: ITutorData[] = [
     rating: 4,
     link: '#!',
     documents: [diploma, certificate],
-    videoStart: videoMock
+    videoStart: videoMock,
+    freeTime: [
+      {
+        day: 'Пн',
+        time: ['07:00', '16:00']
+      },
+      {
+        day: 'Вт',
+        time: []
+      },
+      {
+        day: 'Ср',
+        time: ['11:00', '19:00']
+      },
+      {
+        day: 'Чт',
+        time: ['09:00']
+      },
+      {
+        day: 'Пт',
+        time: ['13:00', '16:00', '20:00']
+      },
+      {
+        day: 'Сб',
+        time: ['07:00']
+      },
+      {
+        day: 'Вс',
+        time: []
+      }
+    ]
   },
   {
     id: uuidv4(),
@@ -317,7 +497,37 @@ export const mockTutors: ITutorData[] = [
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 4.2,
     documents: [diploma, certificate],
-    videoStart: videoMock
+    videoStart: videoMock,
+    freeTime: [
+      {
+        day: 'Пн',
+        time: ['07:00', '16:00']
+      },
+      {
+        day: 'Вт',
+        time: []
+      },
+      {
+        day: 'Ср',
+        time: ['11:00', '19:00']
+      },
+      {
+        day: 'Чт',
+        time: ['09:00']
+      },
+      {
+        day: 'Пт',
+        time: ['13:00', '16:00', '20:00']
+      },
+      {
+        day: 'Сб',
+        time: ['07:00']
+      },
+      {
+        day: 'Вс',
+        time: []
+      }
+    ]
   },
   {
     id: uuidv4(),
@@ -361,7 +571,37 @@ export const mockTutors: ITutorData[] = [
     rating: 2.9,
     link: '#!',
     documents: [diploma, certificate],
-    videoStart: videoMock
+    videoStart: videoMock,
+    freeTime: [
+      {
+        day: 'Пн',
+        time: ['07:00', '16:00']
+      },
+      {
+        day: 'Вт',
+        time: []
+      },
+      {
+        day: 'Ср',
+        time: ['11:00', '19:00']
+      },
+      {
+        day: 'Чт',
+        time: ['09:00']
+      },
+      {
+        day: 'Пт',
+        time: ['13:00', '16:00', '20:00']
+      },
+      {
+        day: 'Сб',
+        time: ['07:00']
+      },
+      {
+        day: 'Вс',
+        time: []
+      }
+    ]
   },
   {
     id: uuidv4(),
@@ -404,7 +644,37 @@ export const mockTutors: ITutorData[] = [
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 4.2,
     documents: [diploma, certificate],
-    videoStart: videoMock
+    videoStart: videoMock,
+    freeTime: [
+      {
+        day: 'Пн',
+        time: ['07:00', '16:00']
+      },
+      {
+        day: 'Вт',
+        time: []
+      },
+      {
+        day: 'Ср',
+        time: ['11:00', '19:00']
+      },
+      {
+        day: 'Чт',
+        time: ['09:00']
+      },
+      {
+        day: 'Пт',
+        time: ['13:00', '16:00', '20:00']
+      },
+      {
+        day: 'Сб',
+        time: ['07:00']
+      },
+      {
+        day: 'Вс',
+        time: []
+      }
+    ]
   },
   {
     id: uuidv4(),
@@ -448,7 +718,37 @@ export const mockTutors: ITutorData[] = [
     rating: 2.9,
     link: '#!',
     documents: [diploma, certificate],
-    videoStart: videoMock
+    videoStart: videoMock,
+    freeTime: [
+      {
+        day: 'Пн',
+        time: ['07:00', '16:00']
+      },
+      {
+        day: 'Вт',
+        time: []
+      },
+      {
+        day: 'Ср',
+        time: ['11:00', '19:00']
+      },
+      {
+        day: 'Чт',
+        time: ['09:00']
+      },
+      {
+        day: 'Пт',
+        time: ['13:00', '16:00', '20:00']
+      },
+      {
+        day: 'Сб',
+        time: ['07:00']
+      },
+      {
+        day: 'Вс',
+        time: []
+      }
+    ]
   },
   {
     id: uuidv4(),
@@ -491,7 +791,37 @@ export const mockTutors: ITutorData[] = [
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 4.2,
     documents: [diploma, certificate],
-    videoStart: videoMock
+    videoStart: videoMock,
+    freeTime: [
+      {
+        day: 'Пн',
+        time: ['07:00', '16:00']
+      },
+      {
+        day: 'Вт',
+        time: []
+      },
+      {
+        day: 'Ср',
+        time: ['11:00', '19:00']
+      },
+      {
+        day: 'Чт',
+        time: ['09:00']
+      },
+      {
+        day: 'Пт',
+        time: ['13:00', '16:00', '20:00']
+      },
+      {
+        day: 'Сб',
+        time: ['07:00']
+      },
+      {
+        day: 'Вс',
+        time: []
+      }
+    ]
   },
   {
     id: uuidv4(),
@@ -535,7 +865,37 @@ export const mockTutors: ITutorData[] = [
     rating: 2.9,
     link: '#!',
     documents: [diploma, certificate],
-    videoStart: videoMock
+    videoStart: videoMock,
+    freeTime: [
+      {
+        day: 'Пн',
+        time: ['07:00', '16:00']
+      },
+      {
+        day: 'Вт',
+        time: []
+      },
+      {
+        day: 'Ср',
+        time: ['11:00', '19:00']
+      },
+      {
+        day: 'Чт',
+        time: ['09:00']
+      },
+      {
+        day: 'Пт',
+        time: ['13:00', '16:00', '20:00']
+      },
+      {
+        day: 'Сб',
+        time: ['07:00']
+      },
+      {
+        day: 'Вс',
+        time: []
+      }
+    ]
   }
 ];
 

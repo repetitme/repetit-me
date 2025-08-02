@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { IUserData } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
@@ -14,6 +14,7 @@ const UserCard: React.FC<IUserData> = ({
   studentData,
   handleSubmit
 }) => {
+  const navigate = useNavigate();
   return (
     <div className={cn(styles.card, role === 'card' && styles.card__resize)}>
       {role === 'student' || role === 'unauth' ? (
@@ -25,9 +26,8 @@ const UserCard: React.FC<IUserData> = ({
             <p>Репетитор не найден</p>
           )}
           <div className={styles.card__buttons}>
-            <Link to={`/tutor-catalog/${tutorData?.id}`}>
-              <Button text="Подробнее" variant="white" />
-            </Link>
+              <Button text="Подробнее" variant="white" onClick={() => navigate(`/tutor-catalog/${tutorData?.id}`)} />
+
             {role === 'student' &&
               (!handleSubmit ? (
                 <Button text="Связаться" variant="purple" />

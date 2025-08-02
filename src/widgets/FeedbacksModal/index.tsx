@@ -5,12 +5,14 @@ import useClickOutside from '../../shared/hooks/useClickOutside';
 import ModalOverlay from '../../shared/ui/overlay';
 import TutorRating from '../../shared/ui/tutorRating';
 import FeedbackList from '../FeedbackList';
+import useScrollLock from '../../shared/hooks/useScrollLock';
+
 
 import styles from './index.module.scss';
 
 import { IFeedbacksModalProps } from './type';
 
-const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose, rating }) => {
+const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose, rating, isOpen }) => {
   const [feedbackData, setFeedbackData] = useState({ count: 0, rating: 0 });
 
   const modalRef = useClickOutside(onClose);
@@ -39,6 +41,8 @@ const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose, rating }) => {
       return 'отзывов';
     }
   };
+
+  useScrollLock(isOpen)
 
   return (
     <>

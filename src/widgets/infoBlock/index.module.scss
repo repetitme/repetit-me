@@ -1,7 +1,7 @@
 .container {
   padding: 32px;
-  max-width: 895px;
-  background-color: rgb(255 255 255 / 100%);
+  max-inline-size: 895px;
+  background-color: var(--clr-main);
   border-radius: 20px;
 
   &__title {

@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react';
-
-import { useParams } from 'react-router';
-import { Link } from 'react-router';
-import { useLocation } from 'react-router';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 
 import { useAppContext } from '../../app/AppContext';
 import arrow from '../../assets/icons/arrow.svg';
@@ -21,13 +18,16 @@ import TutorVideoStart from '../../widgets/TutorVideoStart';
 import * as API from '../../widgets/UserCard/fakeApi/userApi';
 
 import styles from './index.module.scss';
+import ButtonBack from '../../shared/ui/buttonBack';
 
 type RouteParams = {
   id: string;
 };
 
 const TutorPage = () => {
-  window.scrollTo(0, 0);
+const navigate = useNavigate();
+    window.scrollTo(0, 0);
+
   const [isOpenModalState, setOpenModalState] = useState(false);
   const [dataState, setDataState] = useState<ITutorData>();
   const params = useParams<RouteParams>();
@@ -46,7 +46,7 @@ const TutorPage = () => {
         const tutorInfo = await API.getTutor(params.id);
         setDataState(tutorInfo);
       } catch (error) {
-        console.log(`Ошибка при загрузке данных:`);
+        console.error(`Ошибка при загрузке данных:`, error);
       } finally {
         console.log(`Загрузка`);
       }
@@ -54,21 +54,18 @@ const TutorPage = () => {
     fetchData();
   }, [params.id, location.key]);
 
+  if (!dataState) return null;
   return (
     <>
       {isOpenModalState && (
         <FeedbacksModal
           onClose={onToggleModalState}
           rating={dataState?.rating ?? 0}
+          isOpen = {isOpenModalState}
         />
       )}
       <div className={styles.container}>
-        <Link to={'/tutor-catalog'}>
-          <button className={styles.container__return}>
-            <img className={styles.container__return_arrow} src={arrow} />
-            <p className={styles.container__return_text}>Вернуться назад</p>
-          </button>
-        </Link>
+        <ButtonBack text={'Вернуться назад'} onClick={() => navigate(`/tutor-catalog`)} />
 
         <main className={styles.container__profile}>
           <div className={styles.container__profile_contact}>
@@ -107,17 +104,27 @@ const TutorPage = () => {
                 {dataState && dataState.name}
               </h2>
               <p className={styles.container__profile_info_portrait_status}>
-                {dataState && dataState.status}
+                {dataState && dataState.status}&nbsp;
                 <span className={styles.container__info_portrait_status_years}>
                   Стаж {dataState && dataState.experienceYears} лет
                 </span>
               </p>
               <div className={styles.container__profile_info_portrait_raiting}>
+                {role === 'student' || role === 'teacher' ? (
                 <TutorRating
                   variant="large"
                   rating={dataState?.rating ?? 0}
                   setOpenModalState={setOpenModalState}
+                  disabled = {false}
+                  
                 />
+                ) : (
+                role === 'unauth' && <TutorRating
+                  variant="large"
+                  rating={dataState?.rating ?? 0}
+                  setOpenModalState={setOpenModalState}
+                  disabled = {true}
+                />)}
               </div>
               <p className={styles.container__profile_info_portrait_price}>
                 {dataState && dataState.price}
@@ -127,15 +134,15 @@ const TutorPage = () => {
               >
                 <ParametrItem
                   src={disciplineIcon}
-                  items={dataState?.subjects ?? []}
+                  items={dataState?.subjects}
                 />
                 <ParametrItem
                   src={studentCategory}
-                  items={dataState?.studentAudience ?? []}
+                  items={dataState?.studentAudience}
                 />
                 <ParametrItem
                   src={tutorTask}
-                  items={dataState?.purpose ?? []}
+                  items={dataState.purpose}
                 />
               </div>
             </div>
@@ -143,13 +150,13 @@ const TutorPage = () => {
               className={styles.container__profile_info_portrait_autobiography}
             >
               <AboutMe
-                textContent={dataState?.autobiography ?? ''}
-                servicesList={dataState?.servicesList ?? []}
+                textContent={dataState.autobiography}
+                servicesList={dataState.servicesList}
               />
             </div>
-            <TutorDiploma documents={dataState?.documents ?? []} />
-            <TutorVideoStart video={dataState?.videoStart ?? ''} />
-            <FreeTimeTable />
+            {dataState.documents[0] && (<TutorDiploma documents={dataState.documents} /> )}            
+            {dataState.videoStart && (<TutorVideoStart video={dataState.videoStart} />)}
+            <FreeTimeTable freeTime={dataState.freeTime} />
           </div>
         </main>
       </div>

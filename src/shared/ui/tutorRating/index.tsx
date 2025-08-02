@@ -11,7 +11,8 @@ import { TutorRatingProps } from './type';
 const TutorRating: React.FC<TutorRatingProps> = ({
   variant,
   rating,
-  setOpenModalState
+  setOpenModalState,
+  disabled
 }) => {
   const onClick = () => {
     setOpenModalState && setOpenModalState(true);
@@ -91,7 +92,7 @@ const TutorRating: React.FC<TutorRatingProps> = ({
             alt="Rating star"
           />
         </div>
-        <button className={styles.container__button} onClick={onClick}>
+        <button className={classNames(styles.container__button)} onClick={onClick} disabled={disabled}>
           Отзывы
         </button>
       </div>
