@@ -5,5 +5,5 @@ export interface IconProps {
 }
 
 export interface IconListProps {
-  icons: IconProps[];
+  isActive: boolean;
 }

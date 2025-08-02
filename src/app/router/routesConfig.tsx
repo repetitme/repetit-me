@@ -1,5 +1,10 @@
+import ApplicationProgress from '../../features/TutorCabinet/ui/ApplicationProgress';
+import ProfileCard from '../../features/TutorCabinet/ui/ProfileCard';
+import { profileCardData } from '../../features/TutorCabinet/ui/ProfileCard/mockData';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
+import Requests from '../../pages/Requests';
+import TutorApplication from '../../pages/TutorApplication';
 import TutorCatalogPage from '../../pages/TutorCatalogPage';
 import { ScheduleProfile } from '../../widgets/ScheduleProfile';
 import {
@@ -16,8 +21,39 @@ export const routesConfig: IRoute[] = [
     auth: false
   },
   {
+    path: '/requests',
+    element: <Requests />,
+    auth: false
+  },
+  {
     path: '/tutor-catalog',
     element: <TutorCatalogPage />,
+    auth: false
+  },
+  {
+    path: '/tutor-application',
+    element: <TutorApplication />,
+    auth: false
+  },
+  {
+    path: '/test',
+
+    element: (
+      <>
+        <ApplicationProgress
+          isProfileHidden={true}
+          onToggleVisibility={() => {}}
+        />
+        <ProfileCard
+          image={profileCardData.image}
+          name={profileCardData.name}
+          status={profileCardData.status}
+          tg={profileCardData.tg}
+          link={profileCardData.link}
+          rating={profileCardData.rating}
+        />
+      </>
+    ),
     auth: false
   },
   {
@@ -40,5 +76,12 @@ export const routesConfig: IRoute[] = [
 ];
 
 export const knownPaths = routesConfig
+  .filter(
+    (route) =>
+      route.path !== '*' &&
+      route.path !== '/tutor-catalog' &&
+      route.path !== '/tutor-application' &&
+      route.path !== '/requests'
+  )
   .filter((route) => route.path !== '*' && route.path !== '/tutor-catalog')
   .map((route) => route.path);

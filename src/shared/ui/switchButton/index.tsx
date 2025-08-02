@@ -13,7 +13,7 @@ const SwitchButton: React.FC<SwitchButtonProps> = ({ isActive, onSwitch }) => {
         })}
         onClick={onSwitch}
       >
-        Ученик
+        <span>Ученик</span>
       </button>
       <button
         className={classNames(styles.switch__button, {
@@ -21,7 +21,7 @@ const SwitchButton: React.FC<SwitchButtonProps> = ({ isActive, onSwitch }) => {
         })}
         onClick={onSwitch}
       >
-        Репетитор
+        <span>Репетитор</span>
       </button>
     </div>
   );

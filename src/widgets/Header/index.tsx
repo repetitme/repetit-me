@@ -110,7 +110,7 @@ const Header = ({ auth }: HeaderProps) => {
                       className={styles.header__submenu__list__icon}
                     />
                   )}
-                  {item.text}
+                  <span>{item.text}</span>
                 </button>
               ))}
             </div>
