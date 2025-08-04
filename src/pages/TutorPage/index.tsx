@@ -113,23 +113,12 @@ const TutorPage = () => {
                 </span>
               </p>
               <div className={styles.container__profile_info_portrait_raiting}>
-                {role === 'student' || role === 'tutor' ? (
-                  <TutorRating
-                    variant="large"
-                    rating={dataState?.rating ?? 0}
-                    setOpenModalState={setOpenModalState}
-                    disabled={false}
-                  />
-                ) : (
-                  role === 'unauth' && (
-                    <TutorRating
-                      variant="large"
-                      rating={dataState?.rating ?? 0}
-                      setOpenModalState={setOpenModalState}
-                      disabled={true}
-                    />
-                  )
-                )}
+                <TutorRating
+                  variant="large"
+                  rating={dataState?.rating ?? 0}
+                  setOpenModalState={setOpenModalState}
+                  disabled={false}
+                />
               </div>
               <p className={styles.container__profile_info_portrait_price}>
                 {dataState && dataState.price}
