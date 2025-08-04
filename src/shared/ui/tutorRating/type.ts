@@ -4,4 +4,6 @@ export type VariantType = 'small' | 'medium' | 'large' | 'onProfile';
 export interface TutorRatingProps {
   variant: VariantType;
   rating: number;
+  setOpenModalState?: (isOpenModalState: boolean) => void;
+  disabled?: boolean;
 }

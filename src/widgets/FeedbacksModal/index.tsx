@@ -2,6 +2,7 @@ import { FC, useCallback, useState } from 'react';
 
 import CloseIcon from '../../assets/icons/closeIcon.svg';
 import useClickOutside from '../../shared/hooks/useClickOutside';
+import useScrollLock from '../../shared/hooks/useScrollLock';
 import ModalOverlay from '../../shared/ui/overlay';
 import TutorRating from '../../shared/ui/tutorRating';
 import FeedbackList from '../FeedbackList';
@@ -10,7 +11,11 @@ import styles from './index.module.scss';
 
 import { IFeedbacksModalProps } from './type';
 
-const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose }) => {
+const FeedbacksModal: FC<IFeedbacksModalProps> = ({
+  onClose,
+  rating,
+  isOpen
+}) => {
   const [feedbackData, setFeedbackData] = useState({ count: 0, rating: 0 });
 
   const modalRef = useClickOutside(onClose);
@@ -40,6 +45,8 @@ const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose }) => {
     }
   };
 
+  useScrollLock(isOpen);
+
   return (
     <>
       <ModalOverlay onClose={onClose} />
@@ -47,7 +54,7 @@ const FeedbacksModal: FC<IFeedbacksModalProps> = ({ onClose }) => {
         <div className={styles.modal__header}>
           <h2 className={styles.modal__title}>Отзывы</h2>
           <div className={styles.modal__rating}>
-            <TutorRating rating={feedbackData.rating} variant="medium" />
+            <TutorRating rating={rating} variant="medium" />
             <p className={styles.modal__ratingQuantity}>
               {feedbackData.count} {getReviewText(feedbackData.count)}
             </p>
