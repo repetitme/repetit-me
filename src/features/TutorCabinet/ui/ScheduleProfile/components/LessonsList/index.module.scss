@@ -1,0 +1,14 @@
+.lessonsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 16px 8px;
+  overflow-y: auto;
+
+  &__error {
+    padding: 0 55px;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+  }
+}

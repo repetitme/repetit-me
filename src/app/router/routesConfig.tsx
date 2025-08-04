@@ -1,6 +1,11 @@
 import ApplicationProgress from '../../features/TutorCabinet/ui/ApplicationProgress';
 import ProfileCard from '../../features/TutorCabinet/ui/ProfileCard';
 import { profileCardData } from '../../features/TutorCabinet/ui/ProfileCard/mockData';
+import { ScheduleProfile } from '../../features/TutorCabinet/ui/ScheduleProfile';
+import {
+  firstLessonsData,
+  scheduleLessonsData
+} from '../../features/TutorCabinet/ui/ScheduleProfile/data';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import Requests from '../../pages/Requests';
@@ -60,6 +65,18 @@ export const routesConfig: IRoute[] = [
     path: '*',
     element: <NotFoundPage />,
     auth: false
+  },
+  {
+    path: '/scheduleProfile',
+    element: (
+      <div style={{ margin: '20px auto' }}>
+        <ScheduleProfile
+          firstLessons={firstLessonsData}
+          scheduleLessons={scheduleLessonsData}
+        />
+      </div>
+    ),
+    auth: false
   }
 ];
 
@@ -71,4 +88,5 @@ export const knownPaths = routesConfig
       route.path !== '/tutor-application' &&
       route.path !== '/requests'
   )
+  .filter((route) => route.path !== '*' && route.path !== '/tutor-catalog')
   .map((route) => route.path);
