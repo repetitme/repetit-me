@@ -31,7 +31,7 @@ const Input: React.FC<IInput> = ({
   title,
   requiredError = 'Поле обязательно для заполнения',
   onChange,
-  onlyNumber = true
+  onlyNumber = false
 }) => {
   const [error, setError] = useState<string>('');
   const [isFocused, setIsFocused] = useState(false);
@@ -57,11 +57,9 @@ const Input: React.FC<IInput> = ({
 
   const formatInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     let { value, name } = e.target;
-    // Запрещает вводить буквы в поле с ценой
     if (isPrice || onlyNumber) {
       value = value.replace(/\D/g, '');
     }
-    // Добавляет пробелы между тысячами, если строка из цифр
     if (/^[0-9\s₽]+$/.test(value) && type !== 'number') {
       value = formatNumber(value, isPrice);
     }
@@ -76,14 +74,12 @@ const Input: React.FC<IInput> = ({
   useEffect(() => {
     if (inputRef.current && cursorPositionRef.current !== null) {
       const position = cursorPositionRef.current;
-      // Устанавливаем курсор в сохраненную позицию
       inputRef.current.setSelectionRange(position, position);
-      cursorPositionRef.current = null; // сбрасываем после установки
+      cursorPositionRef.current = null;
     }
   }, [value]);
 
   const handleBackspace = (e: React.KeyboardEvent<HTMLInputElement>): void => {
-    // Исправляет Backspace для поля с ценой
     if (e.key === 'Backspace' && isPrice) {
       onChange({
         target: {
@@ -104,7 +100,8 @@ const Input: React.FC<IInput> = ({
   const wrapperClasses = cn(
     styles['input-wrapper'],
     styles[variant],
-    extraClass
+    extraClass,
+    error && styles['input-wrapper--gap']
   );
 
   return (

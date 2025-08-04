@@ -7,6 +7,12 @@
   gap: 8px;
   font-weight: 500;
   line-height: 1.36;
+  margin-bottom: 0;
+  transition: margin-bottom var(--slow-transition);
+
+  &--gap {
+    margin-bottom: 20px;
+  }
 
   .label {
     font-size: 20px;
@@ -57,17 +63,17 @@
 
   .error {
     color: var(--clr-secondary-default, #fc4a4a);
+    top: 0;
+    transition: top var(--slow-transition);
 
     &__wrapper {
       position: relative;
       display: flex;
-      align-items: center;
+      flex-direction: column;
     }
 
     &__text {
-      position: absolute;
       color: var(--clr-secondary-default, #fc4a4a);
-      top: 110%;
       opacity: 0;
       block-size: 0;
       transform: translate(-20px);
@@ -75,8 +81,11 @@
     }
 
     &__active {
+      position: absolute;
+      top: 110%;
       opacity: 1;
       block-size: 20px;
+      max-inline-size: 400px;
       inline-size: max-content;
       transform: translate(0);
     }
@@ -90,11 +99,19 @@
       font-size: 16px;
       font-weight: 600;
       line-height: 22px;
+      text-align: left;
+      white-space: pre-line;
     }
 
     .input {
       padding: 24px 16px;
       font-size: 20px;
+    }
+
+    .error {
+      &__text {
+        font-size: 16px;
+      }
     }
   }
 

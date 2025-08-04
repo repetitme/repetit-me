@@ -1,7 +1,8 @@
 import TutorApplication from '../../features/tutorApplication';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
-import TutorApplicationPage from '../../pages/TutorApplication';
+import Requests from '../../pages/Requests';
+import TutorApplicationPage from '../../pages/TutorApplicationPage';
 import TutorCatalogPage from '../../pages/TutorCatalogPage';
 
 import { IRoute } from './type';
@@ -10,6 +11,11 @@ export const routesConfig: IRoute[] = [
   {
     path: '/',
     element: <MainPage />,
+    auth: false
+  },
+  {
+    path: '/requests',
+    element: <Requests />,
     auth: false
   },
   {
@@ -22,14 +28,15 @@ export const routesConfig: IRoute[] = [
     element: <TutorApplicationPage />,
     auth: false
   },
+
   {
-    path: '*',
-    element: <NotFoundPage />,
+    path: '/test',
+    element: <TutorApplication />,
     auth: false
   },
   {
-    path: 'test',
-    element: <TutorApplication />,
+    path: '*',
+    element: <NotFoundPage />,
     auth: false
   }
 ];
@@ -39,6 +46,7 @@ export const knownPaths = routesConfig
     (route) =>
       route.path !== '*' &&
       route.path !== '/tutor-catalog' &&
-      route.path !== '/tutor-application'
+      route.path !== '/tutor-application' &&
+      route.path !== '/requests'
   )
   .map((route) => route.path);
