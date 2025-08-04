@@ -16,7 +16,7 @@ import { Subject } from '../../features/tutorApplication/ui/subjectForm/type';
 import TutorApplicationData, { TutorField } from './type';
 
 const TutorApplicationPage = () => {
-  const [currentStep, setCurrentStep] = useState<number>(2);
+  const [currentStep, setCurrentStep] = useState<number>(1);
 
   const [tutorData, setTutorData] =
     useState<TutorApplicationData>(initialTutorData);

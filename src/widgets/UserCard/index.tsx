@@ -67,7 +67,7 @@ const UserCard: React.FC<IUserData> = ({
             <Button
               text="Подробнее"
               variant="white"
-              onClick={() => console.log('Ссылка на анкету')}
+              onClick={() => navigate(`/tutor-catalog/${tutorData?.id}`)}
             />
             {!isMyList && (
               <>

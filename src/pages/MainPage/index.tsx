@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import classNames from 'classnames';
 
 import AuthForm from '../../features/auth';
+import { TUserRole } from '../../shared/types/userData';
 import Advantages from '../../widgets/Advantages';
 import Chat from '../../widgets/Chat';
 import MainBlock from '../../widgets/MainBlock';
@@ -16,14 +17,27 @@ import WhyWe from '../../widgets/WhyWe';
 import styles from './index.module.scss';
 
 const MainPage = () => {
-  const [isActive, setIsActive] = useState(false);
+  const [userRole, setUserRole] = useState<TUserRole>(() => {
+    const saved = localStorage.getItem('userType') as TUserRole | null;
+    return saved || 'student';
+  });
+  const isTutor = userRole === 'tutor';
+
+  useEffect(() => {
+    localStorage.setItem('userType', userRole);
+  }, [userRole]);
   return (
     <>
       <main className={styles.container}>
         <div className={styles.container__mainblock}>
-          <MainBlock isActive={isActive} setIsActive={setIsActive} />
+          <MainBlock
+            isActive={isTutor}
+            setIsActive={(isActive) =>
+              setUserRole(isActive ? 'tutor' : 'student')
+            }
+          />
         </div>
-        {!isActive && (
+        {!isTutor && (
           <>
             <div className={styles.container__perks}>
               <Perks variant="student" />
@@ -47,7 +61,7 @@ const MainPage = () => {
             </div>
           </>
         )}
-        {isActive && (
+        {isTutor && (
           <>
             <div className={styles.container__perks}>
               <Perks variant="teacher" />

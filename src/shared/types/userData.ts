@@ -1,3 +1,10 @@
+import { ServicesListItem } from '../../widgets/AboutMe/type';
+
+export interface IFreeTime {
+  day: string;
+  time: string[];
+}
+
 export interface IUserBaseData {
   id: string;
   name: string;
@@ -12,9 +19,14 @@ export interface ITutorData extends IUserBaseData {
   status: string;
   experienceYears: number;
   description: string;
+  autobiography: string;
   rating: number; // Рейтинг
   link?: string; // Ссылка на приветственное видео от репетитора, если оно у него есть
   isCard?: boolean;
+  servicesList: ServicesListItem[];
+  documents: string[];
+  videoStart: string;
+  freeTime: IFreeTime[];
 }
 
 export interface IStudentData extends IUserBaseData {
@@ -54,7 +66,18 @@ export interface IStudentProfile extends IStudentData {
   };
 }
 
-export interface ITutorProfile extends ITutorData {
+export interface ITutorProfile {
+  id: string;
+  name: string;
+  image: string;
+  experienceYears: number;
+  description: string;
+  price: string;
+  subjects: string[]; // Массив предметов
+  studentAudience: string[]; // Для какой аудиторий учеников
+  purpose: string[]; // Для чего нужен преподаватель
+  rating: number; // Рейтинг
+  status: string;
   requests: {
     [key in navOptionsTutor]: { ids: string[] }; // Массив id учеников в профиле репетитора
   };

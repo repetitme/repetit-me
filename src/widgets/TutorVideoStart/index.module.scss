@@ -1,0 +1,33 @@
+.container {
+  margin-top: 19px;
+  position: relative;
+  cursor: pointer;
+  inline-size: 328px;
+  block-size: 136px;
+  background-size: contain;
+
+  &__file {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+
+  &__icon {
+    position: absolute;
+    top: calc((100% / 2) - 20px);
+    left: calc((100% / 2) - 20px);
+    inline-size: 40px;
+    block-size: 40px;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  &__full {
+    max-width: 80vw;
+    max-height: 80vh;
+  }
+}
+
+.container:hover .container__icon {
+  visibility: visible;
+}

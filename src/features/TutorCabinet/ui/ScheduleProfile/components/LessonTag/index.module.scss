@@ -1,0 +1,12 @@
+.lessonTag {
+  inline-size: fit-content;
+  padding: 4px 8px;
+  background-color: #e7f6f1;
+  border-radius: 40px;
+
+  &__text {
+    font-weight: 400;
+    font-size: 13px;
+    color: #008052;
+  }
+}

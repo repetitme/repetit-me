@@ -8,7 +8,15 @@ import styles from './index.module.scss';
 
 import { TutorRatingProps, VariantType } from './type';
 
-const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
+const TutorRating: React.FC<TutorRatingProps> = ({
+  variant,
+  rating,
+  setOpenModalState,
+  disabled
+}) => {
+  const onClick = () => {
+    setOpenModalState && setOpenModalState(true);
+  };
   const variantClassMap: Record<VariantType, string[]> = {
     small: [
       styles.small,
@@ -72,6 +80,7 @@ const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
       </div>
     );
   }
+
   if (isLarge) {
     return (
       <div className={classNames(styles.container, sizeClass[0])}>
@@ -84,7 +93,13 @@ const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
             alt="Rating star"
           />
         </div>
-        <button className={styles.container__button}>Отзывы</button>
+        <button
+          className={classNames(styles.container__button)}
+          onClick={onClick}
+          disabled={disabled}
+        >
+          Отзывы
+        </button>
       </div>
     );
   }

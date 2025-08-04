@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import classNames from 'classnames';
 import { useNavigate } from 'react-router';
@@ -12,7 +12,7 @@ import { disciplines, dropdown } from './data';
 
 import styles from './index.module.scss';
 
-export const QuickSelection: FC = () => {
+export const QuickSelection = () => {
   const navigate = useNavigate();
   const [stateOption, setStateOption] = useState<'all' | string>('all');
   const [stateMore, setStateMore] = useState(false);
@@ -27,6 +27,40 @@ export const QuickSelection: FC = () => {
     setStateItemOther(itemOther);
     setStateMore(more);
   };
+
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      const isMoreButton = (e.target as Element).closest(
+        `.${styles.container__header_list_more}`
+      );
+      const isDropdown = dropdownRef.current?.contains(e.target as Node);
+
+      if (!isMoreButton && !isDropdown) {
+        setStateMore(false);
+        setStateItemOther(false);
+      }
+    };
+
+    document.addEventListener('click', handleClick, true);
+    return () => {
+      document.removeEventListener('click', handleClick, true);
+    };
+  }, []);
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Escape' && stateMore) {
+      setStateMore(false);
+      setStateItemOther(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [stateMore]);
+
   return (
     <div className={styles.container}>
       <div className={styles.container__header}>
@@ -75,9 +109,10 @@ export const QuickSelection: FC = () => {
                 ? styles.container__header_item_active
                 : ''
             )}
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setStateMore(!stateMore);
-              setStateItemOther(stateMore == true ? false : true);
+              setStateItemOther(!stateItemOther);
             }}
           >
             <span className={styles.container__header_list_item_text}>
@@ -89,7 +124,10 @@ export const QuickSelection: FC = () => {
               alt="Ещё"
             />
           </li>
-          <div className={styles.container__header_list_dropdown}>
+          <div
+            className={styles.container__header_list_dropdown}
+            ref={dropdownRef}
+          >
             <Dropdown
               list={dropdown}
               setStateMore={setStateMore}

@@ -166,3 +166,7 @@
 .rating_red {
   background-color: #fa7782;
 }
+
+.container__button:disabled {
+  color: rgb(117 117 119);
+}

@@ -35,6 +35,14 @@ const Header = ({ auth }: HeaderProps) => {
     setAuthHeader(auth);
   }, [auth]);
 
+  const handleTelegramClick = () => {
+    window.open('tg://resolve?domain=RepetitMe_bot', '_blank');
+
+    setTimeout(() => {
+      window.open('https://t.me/RepetitMe_bot', '_blank');
+    }, 200);
+  };
+
   return (
     <header className={styles.header}>
       <Link to="/" className={styles.header__logo} aria-label="На главную">
@@ -65,6 +73,7 @@ const Header = ({ auth }: HeaderProps) => {
             text="Перейти в Telegram"
             icon={icon}
             className={styles.telegram}
+            onClick={handleTelegramClick}
           />
         </nav>
       ) : (
