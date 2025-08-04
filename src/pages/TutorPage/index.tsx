@@ -26,18 +26,18 @@ type RouteParams = {
 
 const TutorPage = () => {
   const navigate = useNavigate();
-  
+
   const [isOpenModalState, setOpenModalState] = useState(false);
   const [dataState, setDataState] = useState<ITutorData>();
   const params = useParams<RouteParams>();
-  
+
   const onToggleModalState = () => {
     setOpenModalState(!isOpenModalState);
   };
-  
+
   const { role } = useAppContext();
   const location = useLocation();
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetchData = async () => {
