@@ -1,10 +1,10 @@
 .modal {
   position: fixed;
   inset: 50vh 0 auto auto;
-  transform: translate(0, -50%);
-  z-index: 999;
+  z-index: 1001;
   inline-size: 100%;
   max-inline-size: 1036px;
+  transform: translate(10%, -50%) scale(0.8);
 
   &__header {
     display: flex;

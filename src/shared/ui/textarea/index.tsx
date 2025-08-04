@@ -30,7 +30,7 @@ const Textarea = ({
     }
   };
   return (
-    <div className={styles.textarea}>
+    <div className={styles.textarea + ' ' + className}>
       {label && (
         <label className={styles.textarea__label} htmlFor={htmlFor}>
           {label}

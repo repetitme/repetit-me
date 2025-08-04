@@ -1,0 +1,44 @@
+.scheduleContainer {
+  display: flex;
+  flex-direction: column;
+  inline-size: 590px;
+  block-size: 487px;
+  padding: 24px;
+  gap: var(--gap-blocks);
+  background-color: var(--clr-main);
+  border-radius: var(--border-radius-blocks);
+
+  &__title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &_text {
+      font-weight: 700;
+      font-style: bold;
+      font-size: 20px;
+    }
+
+    &_tag {
+      inline-size: fit-content;
+      padding: 8px 16px;
+      border-radius: 40px;
+
+      &_red {
+        background-color: #feedeb;
+        color: #c91b1a;
+      }
+
+      &_green {
+        background-color: #e7f6f1;
+        color: #008052;
+      }
+
+      &_text {
+        font-weight: 600;
+        font-style: bold;
+        font-size: 14px;
+      }
+    }
+  }
+}

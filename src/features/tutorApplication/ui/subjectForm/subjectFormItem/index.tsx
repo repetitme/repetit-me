@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import cn from 'classnames';
 
@@ -12,25 +12,47 @@ import ProfileCategories from './profileCategories';
 
 import styles from './index.module.scss';
 
-import { DisciplinesBlockProps } from '../../../lib/type';
+import { SubjectFormItemProps, initialSubject } from '../type';
 
-const SubjectFormItem: React.FC<DisciplinesBlockProps> = ({ index }) => {
-  const { values, handleChange } = useForm({ experience: '' });
+const SubjectFormItem = ({
+  index,
+  onChange,
+  initialData
+}: SubjectFormItemProps) => {
   const [isActive, setIsActive] = useState<boolean>(true);
-  const [categories, setCategories] = useState<
-    Array<{ ageCategory: string; price: string }>
-  >([
-    {
-      ageCategory: data.ageCategories[0].label,
-      price: '1 500'
-    }
-  ]);
+
+  const { values, handleChange, setValues } = useForm(
+    initialData ?? initialSubject
+  );
+
+  const handleCategoryChange =
+    (categoryIndex: number) =>
+    (updatedCategory: { ageCategory: string; price: string }) => {
+      const updatedCategories = [...values.categories];
+      updatedCategories[categoryIndex] = updatedCategory;
+
+      const newValues = { ...values, categories: updatedCategories };
+      setValues(newValues);
+      onChange?.(newValues);
+    };
+
+  const handleSelectChange = (fieldName: string) => (selectedOption: any) => {
+    const newValues = { ...values, [fieldName]: selectedOption };
+    setValues(newValues);
+    onChange?.(newValues);
+  };
 
   const handleAddCategory = () => {
-    setCategories((prev) => [
-      ...prev,
-      { ageCategory: data.ageCategories[0].label, price: '1 500' }
-    ]);
+    const newCategory = {
+      ageCategory: data.ageCategories[0].label,
+      price: '1500'
+    };
+    const newValues = {
+      ...values,
+      categories: [...values.categories, newCategory]
+    };
+    setValues(newValues);
+    onChange?.(newValues);
   };
 
   return (
@@ -48,7 +70,8 @@ const SubjectFormItem: React.FC<DisciplinesBlockProps> = ({ index }) => {
             label="Предмет"
             options={data.disciplines}
             placeholder="Математика"
-            defaultValue={data.disciplines[0]}
+            defaultValue={values.discipline}
+            onChange={handleSelectChange('discipline')}
           />
         </div>
         <div className={styles.options__status}>
@@ -56,17 +79,19 @@ const SubjectFormItem: React.FC<DisciplinesBlockProps> = ({ index }) => {
             label="Статус"
             options={data.status}
             placeholder="Частный преподаватель"
-            defaultValue={data.status[0]}
+            defaultValue={values.status}
+            onChange={handleSelectChange('status')}
           />
         </div>
         <div className={styles['options__categories']}>
-          {categories.map((category, index) => (
+          {values.categories.map((category, index) => (
             <ProfileCategories
               key={index}
               data={data.ageCategories}
               category={category}
-              isLast={index === categories.length - 1}
+              isLast={index === values.categories.length - 1}
               onAddCategory={handleAddCategory}
+              onChange={handleCategoryChange(index)}
             />
           ))}
         </div>
@@ -75,7 +100,8 @@ const SubjectFormItem: React.FC<DisciplinesBlockProps> = ({ index }) => {
             label="Цель занятий"
             options={data.subjectTarget}
             placeholder="Повышение успеваемости"
-            defaultValue={data.subjectTarget[0]}
+            defaultValue={values.target}
+            onChange={handleSelectChange('target')}
           />
         </div>
         <div className={styles.options__experience}>

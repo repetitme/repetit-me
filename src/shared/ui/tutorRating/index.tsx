@@ -6,10 +6,18 @@ import star from '../../../assets/icons/star.svg';
 
 import styles from './index.module.scss';
 
-import { TutorRatingProps } from './type';
+import { TutorRatingProps, VariantType } from './type';
 
-const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
-  const variantClassMap = {
+const TutorRating: React.FC<TutorRatingProps> = ({
+  variant,
+  rating,
+  setOpenModalState,
+  disabled
+}) => {
+  const onClick = () => {
+    setOpenModalState && setOpenModalState(true);
+  };
+  const variantClassMap: Record<VariantType, string[]> = {
     small: [
       styles.small,
       styles.small_content,
@@ -22,7 +30,8 @@ const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
       styles.medium_content_rating,
       styles.medium_content_star
     ],
-    large: [styles.large]
+    large: [styles.large],
+    onProfile: [styles.large]
   };
 
   const getRatingColor = (rating: number) => {
@@ -47,6 +56,7 @@ const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
   const isSmall = variant === 'small';
   const isMedium = variant === 'medium';
   const isLarge = variant === 'large';
+  const isOnProfile = variant === 'onProfile';
 
   if (isSmall || isMedium) {
     return (
@@ -70,6 +80,7 @@ const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
       </div>
     );
   }
+
   if (isLarge) {
     return (
       <div className={classNames(styles.container, sizeClass[0])}>
@@ -82,7 +93,29 @@ const TutorRating: React.FC<TutorRatingProps> = ({ variant, rating }) => {
             alt="Rating star"
           />
         </div>
-        <button className={styles.container__button}>Отзывы</button>
+        <button
+          className={classNames(styles.container__button)}
+          onClick={onClick}
+          disabled={disabled}
+        >
+          Отзывы
+        </button>
+      </div>
+    );
+  }
+  if (isOnProfile) {
+    return (
+      <div className={classNames(styles.container, styles.onProfile)}>
+        <div className={styles.onProfile__info}>
+          <img
+            className={styles.onProfile__info_star}
+            src={star}
+            alt="Rating star"
+          />
+          <p className={styles.onProfile__info_title}>Рейтинг: </p>
+          <p className={styles.onProfile__info_rating}>{rating.toFixed(1)}</p>
+        </div>
+        <button className={styles.onProfile__button}>Отзывы</button>
       </div>
     );
   }

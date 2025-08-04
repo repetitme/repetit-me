@@ -3,7 +3,7 @@ import { listItems } from './data';
 
 import styles from './index.module.scss';
 
-export const WhyWe: React.FC = () => (
+const WhyWe = () => (
   <section className={styles.container}>
     <h2 className={styles.title}>
       Почему <span className={styles.accent}>мы</span>?

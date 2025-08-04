@@ -1,0 +1,13 @@
+.container {
+  padding: 32px;
+  max-inline-size: 895px;
+  background-color: var(--clr-main);
+  border-radius: 20px;
+
+  &__title {
+    font-family: var(--ffm-default);
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1;
+  }
+}
