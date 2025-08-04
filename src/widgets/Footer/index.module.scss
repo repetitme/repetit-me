@@ -1,5 +1,3 @@
-@use '../../assets/styles/mixins/gradient.scss' as *;
-
 .footer {
   &__button {
     grid-column: 1/2;
@@ -60,7 +58,9 @@
   font-size: 20px;
 
   &--gradient {
-    @include text-gradient(#865bff, #ff71f9);
+    color: transparent;
+    background: linear-gradient(to left, #865bff 70%, #a84bff 100%);
+    background-clip: text;
   }
 }
 
