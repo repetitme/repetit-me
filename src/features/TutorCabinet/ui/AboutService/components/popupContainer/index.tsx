@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import useClickOutside from '../../../../../../shared/hooks/useClickOutside';
 import Button from '../../../../../../shared/ui/button';
 import ModalOverlay from '../../../../../../shared/ui/overlay';
-import closeIcon from '../../../../assets/icons/close.svg';
+import closeIcon from '../../../../../../assets/icons/closeIcon.svg';
 
 import styles from './index.module.scss';
 
