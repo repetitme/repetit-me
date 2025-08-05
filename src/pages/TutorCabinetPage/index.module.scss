@@ -3,13 +3,12 @@
   flex-direction: column;
   gap: 28px;
   max-inline-size: 1440px;
-  padding: 40px 0 0 120px;
+  padding: 40px 0 97px 120px;
 
   &__title {
+    font-family: var(--ffm-title, 'Druktextwidecur', courier, monospace);
     font-weight: 500;
     font-size: 32px;
-    margin-block-end: 32px;
-    font-family: var(--ffm-title);
   }
 
   &__infoBlock {

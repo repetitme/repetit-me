@@ -115,7 +115,9 @@ const TutorRating: React.FC<TutorRatingProps> = ({
           <p className={styles.onProfile__info_title}>Рейтинг: </p>
           <p className={styles.onProfile__info_rating}>{rating.toFixed(1)}</p>
         </div>
-        <button className={styles.onProfile__button}>Отзывы</button>
+        <button className={styles.onProfile__button} onClick={onClick}>
+          Отзывы
+        </button>
       </div>
     );
   }

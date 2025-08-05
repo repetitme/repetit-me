@@ -8,14 +8,14 @@ import {
 import ApplicationProgress from '../../features/TutorCabinet/ui/ApplicationProgress';
 import ProfileCard from '../../features/TutorCabinet/ui/ProfileCard';
 import { profileCardData } from '../../features/TutorCabinet/ui/ProfileCard/mockData';
-
+import ScheduleProfile from '../../features/TutorCabinet/ui/ScheduleProfile';
 import {
   firstLessonsData,
   scheduleLessonsData
 } from '../../features/TutorCabinet/ui/ScheduleProfile/data';
+import StatisticCards from '../../features/TutorCabinet/ui/StatisticCards';
 
 import styles from './index.module.scss';
-import ScheduleProfile from '../../features/TutorCabinet/ui/ScheduleProfile'
 
 const TutorCabinetPage = () => {
   const [isProfileVisible, setIsProfileVisible] = useState(false);
@@ -36,6 +36,7 @@ const TutorCabinetPage = () => {
           tg={profileCardData.tg}
           rating={profileCardData.rating}
           image={profileCardData.image}
+          link={profileCardData.link}
         />
         <ApplicationProgress
           isProfileHidden={isProfileVisible}
@@ -43,6 +44,7 @@ const TutorCabinetPage = () => {
           progress={90}
         />
       </div>
+      <StatisticCards />
       <ScheduleProfile
         firstLessons={firstLessonsData}
         scheduleLessons={scheduleLessonsData}
