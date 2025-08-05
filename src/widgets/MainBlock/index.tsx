@@ -1,6 +1,10 @@
+import { useEffect } from 'react';
+
 import classNames from 'classnames';
 import { useNavigate } from 'react-router';
 
+import backgroundStudent from '../../assets/images/StudentIcons/backgroundStudent.svg';
+import backgroundTeacher from '../../assets/images/TeacherIcons/backgroundTeacher.svg';
 import IconList from '../../shared/ui/iconsList';
 import SwitchButton from '../../shared/ui/switchButton';
 
@@ -10,6 +14,13 @@ import { MainBlockProps } from './type';
 
 const MainBlock: React.FC<MainBlockProps> = ({ isActive, setIsActive }) => {
   const navigate = useNavigate();
+  useEffect(() => {
+    const imgs = [backgroundStudent, backgroundTeacher];
+    imgs.forEach((img) => {
+      const image = new Image();
+      image.src = img;
+    });
+  }, []);
   const handleSwitch = () => {
     setIsActive(!isActive);
   };
