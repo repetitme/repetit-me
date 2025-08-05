@@ -54,7 +54,7 @@ const TutorPage = () => {
   }, [params.id, location.key]);
 
   if (!dataState) return <Loader className={styles.loader} />;
-  
+
   return (
     <>
       {isOpenModalState && (
@@ -107,7 +107,13 @@ const TutorPage = () => {
                 {dataState.name}
               </h2>
               <p className={styles.container__profile_info_portrait_status}>
-                <span className={styles.container__profile_info_portrait_status_text}>{dataState.status}&nbsp;</span>
+                <span
+                  className={
+                    styles.container__profile_info_portrait_status_text
+                  }
+                >
+                  {dataState.status}&nbsp;
+                </span>
                 <span className={styles.container__info_portrait_status_years}>
                   {formatExperience(dataState.experienceYears)}
                 </span>

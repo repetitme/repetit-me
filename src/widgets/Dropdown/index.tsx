@@ -9,7 +9,7 @@ import { IDropdownProps } from './type';
 export const Dropdown: FC<IDropdownProps> = ({
   list,
   stateMore,
-  setStateOption,
+  setStateOption
 }) => {
   return (
     <ul

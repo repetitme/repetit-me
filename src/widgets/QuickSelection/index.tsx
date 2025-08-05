@@ -34,7 +34,9 @@ export const QuickSelection = () => {
     const newDisciplineList = [...disciplineList];
     newDisciplineList.splice(
       disciplines.length - 2,
-      !dropdownList.some((discipline) => discipline.id === disciplineID) ? 1 : 0,
+      !dropdownList.some((discipline) => discipline.id === disciplineID)
+        ? 1
+        : 0,
       dropdownList.find((discipline) => discipline.id === disciplineID)!
     );
     const newDropdownList = [...dropdownList];
