@@ -22,6 +22,7 @@ export const QuickSelection = () => {
   const [disciplineList, setDisciplineList] = useState(disciplines);
   const [tutors, setTutors] = useState(mockTutors);
   const lastDiscipline = disciplines[disciplines.length - 1];
+  const [change, setChange] = useState(false);
   const handleOptionChange = (option: string) => {
     setStateOption(option);
     setStateItemOther(false);
@@ -47,7 +48,11 @@ export const QuickSelection = () => {
   };
 
   useEffect(() => {
-    filter(stateOption);
+    setChange(true);
+    setTimeout(() => {
+      filter(stateOption);
+      setChange(false);
+    }, 300);
   }, [stateOption, disciplineList]);
 
   const handleOther = (disciplineID: string) => {
@@ -141,7 +146,7 @@ export const QuickSelection = () => {
           </div>
         </ul>
       </div>
-      <Carousel tutorsCard={tutors} />
+      <Carousel tutorsCard={tutors} change={change} />
       <Button
         text={'Посмотреть всех'}
         variant={'purple'}
