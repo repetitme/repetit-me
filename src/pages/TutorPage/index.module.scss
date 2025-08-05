@@ -74,6 +74,10 @@
           line-height: 20px;
           margin-top: 22px;
 
+          &_text {
+            color: var(--clr-7);
+          }
+
           &_years {
             font-family: var(--ffm-default);
             font-weight: 500;
@@ -83,7 +87,7 @@
           }
         }
 
-        &_raiting {
+        &_rating {
           margin-top: 22px;
         }
 
@@ -95,7 +99,7 @@
           margin-top: 29px;
         }
 
-        &_parametrs {
+        &_parameters {
           margin-top: 22px;
           display: flex;
           flex-direction: column;
@@ -104,4 +108,10 @@
       }
     }
   }
+}
+
+.loader {
+  align-items: normal;
+  margin-block-start: 30vh;
+  min-block-size: 100vh;
 }

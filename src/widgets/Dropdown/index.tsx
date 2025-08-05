@@ -9,19 +9,12 @@ import { IDropdownProps } from './type';
 export const Dropdown: FC<IDropdownProps> = ({
   list,
   stateMore,
-  setStateMore,
   setStateOption,
-  setStateItemOther
 }) => {
-  const handleItemClick = (disciplineId: string) => {
-    setStateOption(disciplineId);
-    setStateItemOther(true);
-    setStateMore(false);
-  };
   return (
     <ul
       className={classNames(styles.container, {
-        [styles.container__disabled]: !stateMore
+        [styles.container__active]: stateMore
       })}
     >
       {list.map((discipline) => {
@@ -29,7 +22,7 @@ export const Dropdown: FC<IDropdownProps> = ({
           <li
             className={classNames(styles.container__item)}
             key={discipline.id}
-            onClick={() => handleItemClick(discipline.id)}
+            onClick={() => setStateOption(discipline.id)}
           >
             <span className={styles.container__item_text}>
               {discipline.discipline}

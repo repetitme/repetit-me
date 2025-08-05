@@ -9,6 +9,7 @@ import tutorTask from '../../assets/images/UserCardIcons/tutors_task_icon.svg';
 import { ITutorData } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
 import ButtonBack from '../../shared/ui/buttonBack';
+import Loader from '../../shared/ui/loader';
 import ParameterItem from '../../shared/ui/parameterItem';
 import TutorRating from '../../shared/ui/tutorRating';
 import AboutMe from '../../widgets/AboutMe';
@@ -31,6 +32,10 @@ const TutorPage = () => {
   const [dataState, setDataState] = useState<ITutorData>();
   const params = useParams<RouteParams>();
 
+  const formatExperience = (year: number) => {
+    return `Стаж ${year} ${year === 1 ? 'год' : year > 1 && year < 5 ? 'года' : 'лет'}`;
+  };
+
   const onToggleModalState = () => {
     setOpenModalState(!isOpenModalState);
   };
@@ -42,19 +47,14 @@ const TutorPage = () => {
     window.scrollTo(0, 0);
     const fetchData = async () => {
       if (!params.id) return;
-      try {
-        const tutorInfo = await API.getTutor(params.id);
-        setDataState(tutorInfo);
-      } catch (error) {
-        console.error(`Ошибка при загрузке данных:`, error);
-      } finally {
-        console.log(`Загрузка`);
-      }
+      const tutorInfo = await API.getTutor(params.id);
+      setDataState(tutorInfo);
     };
     fetchData();
   }, [params.id, location.key]);
 
-  if (!dataState) return null;
+  if (!dataState) return <Loader className={styles.loader} />;
+  
   return (
     <>
       {isOpenModalState && (
@@ -74,7 +74,7 @@ const TutorPage = () => {
           <div className={styles.container__profile_contact}>
             <img
               className={styles.container__profile_contact_img}
-              src={dataState && dataState.image}
+              src={dataState.image}
               alt="Фото репетитора"
             />
             <div className={styles.container__profile_contact_connection}>
@@ -104,15 +104,15 @@ const TutorPage = () => {
           <div className={styles.container__profile_info}>
             <div className={styles.container__profile_info_portrait}>
               <h2 className={styles.container__profile_info_portrait_name}>
-                {dataState && dataState.name}
+                {dataState.name}
               </h2>
               <p className={styles.container__profile_info_portrait_status}>
-                {dataState && dataState.status}&nbsp;
+                <span className={styles.container__profile_info_portrait_status_text}>{dataState.status}&nbsp;</span>
                 <span className={styles.container__info_portrait_status_years}>
-                  Стаж {dataState && dataState.experienceYears} лет
+                  {formatExperience(dataState.experienceYears)}
                 </span>
               </p>
-              <div className={styles.container__profile_info_portrait_raiting}>
+              <div className={styles.container__profile_info_portrait_rating}>
                 <TutorRating
                   variant="large"
                   rating={dataState?.rating ?? 0}
@@ -121,10 +121,10 @@ const TutorPage = () => {
                 />
               </div>
               <p className={styles.container__profile_info_portrait_price}>
-                {dataState && dataState.price}
+                {dataState.price}
               </p>
               <div
-                className={styles.container__profile_info_portrait_parametrs}
+                className={styles.container__profile_info_portrait_parameters}
               >
                 <ParameterItem
                   src={disciplineIcon}

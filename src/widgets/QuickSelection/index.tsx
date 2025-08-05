@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 import classNames from 'classnames';
 import { useNavigate } from 'react-router';
 
 import icon_arrowDown from '../../assets/images/icon-arrowdown.svg';
+import useClickOutside from '../../shared/hooks/useClickOutside';
 import Button from '../../shared/ui/button';
 import { mockTutors } from '../../widgets/UserCard/fakeApi/mockData';
 import Carousel from '../Carousel';
@@ -17,49 +18,37 @@ export const QuickSelection = () => {
   const [stateOption, setStateOption] = useState<'all' | string>('all');
   const [stateMore, setStateMore] = useState(false);
   const [stateItemOther, setStateItemOther] = useState(false);
+  const [dropdownList, setDropdownList] = useState(dropdown);
+  const [disciplineList, setDisciplineList] = useState(disciplines);
   const lastDiscipline = disciplines[disciplines.length - 1];
-  const handleOptionChange = (
-    itemOther: boolean,
-    more: boolean,
-    option: string
-  ) => {
+  const handleOptionChange = (option: string) => {
     setStateOption(option);
-    setStateItemOther(itemOther);
-    setStateMore(more);
+    setStateItemOther(false);
   };
+  const dropdownRef = useClickOutside(() => {
+    setStateMore(false);
+    setStateItemOther(false);
+  });
 
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      const isMoreButton = (e.target as Element).closest(
-        `.${styles.container__header_list_more}`
-      );
-      const isDropdown = dropdownRef.current?.contains(e.target as Node);
-
-      if (!isMoreButton && !isDropdown) {
-        setStateMore(false);
-        setStateItemOther(false);
-      }
-    };
-
-    document.addEventListener('click', handleClick, true);
-    return () => {
-      document.removeEventListener('click', handleClick, true);
-    };
-  }, []);
-
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Escape' && stateMore) {
-      setStateMore(false);
-      setStateItemOther(false);
-    }
+  const handleOther = (disciplineID: string) => {
+    const newDisciplineList = [...disciplineList];
+    newDisciplineList.splice(
+      disciplines.length - 2,
+      !dropdownList.some((discipline) => discipline.id === disciplineID) ? 1 : 0,
+      dropdownList.find((discipline) => discipline.id === disciplineID)!
+    );
+    const newDropdownList = [...dropdownList];
+    newDropdownList.splice(
+      dropdownList.findIndex((discipline) => discipline.id === disciplineID),
+      1,
+      disciplineList[disciplines.length - 2]
+    );
+    setDisciplineList(newDisciplineList);
+    setDropdownList(newDropdownList);
+    setStateOption(disciplineID);
+    setStateItemOther(false);
+    setStateMore(false);
   };
-
-  useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [stateMore]);
 
   return (
     <div className={styles.container}>
@@ -76,11 +65,11 @@ export const QuickSelection = () => {
               styles.container__header_list_item,
               stateOption === 'all' && styles.container__header_item_active
             )}
-            onClick={() => handleOptionChange(false, false, 'all')}
+            onClick={() => handleOptionChange('all')}
           >
             <span className={styles.container__header_list_item_text}>Все</span>
           </li>
-          {disciplines
+          {disciplineList
             .map((discipline) => {
               return (
                 <li
@@ -90,9 +79,7 @@ export const QuickSelection = () => {
                       styles.container__header_item_active
                   )}
                   key={discipline.id}
-                  onClick={() =>
-                    handleOptionChange(discipline.other, false, discipline.id)
-                  }
+                  onClick={() => handleOptionChange(discipline.id)}
                 >
                   <span className={styles.container__header_list_item_text}>
                     {discipline.discipline}
@@ -105,9 +92,7 @@ export const QuickSelection = () => {
             className={classNames(
               styles.container__header_list_more,
               styles.container__header_list_item,
-              stateItemOther === true
-                ? styles.container__header_item_active
-                : ''
+              stateItemOther ? styles.container__header_item_active : ''
             )}
             onClick={(e) => {
               e.stopPropagation();
@@ -129,10 +114,8 @@ export const QuickSelection = () => {
             ref={dropdownRef}
           >
             <Dropdown
-              list={dropdown}
-              setStateMore={setStateMore}
-              setStateItemOther={setStateItemOther}
-              setStateOption={setStateOption}
+              list={dropdownList}
+              setStateOption={handleOther}
               stateMore={stateMore}
             />
           </div>
