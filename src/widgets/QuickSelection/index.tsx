@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import classNames from 'classnames';
 import { useNavigate } from 'react-router';
@@ -20,6 +20,7 @@ export const QuickSelection = () => {
   const [stateItemOther, setStateItemOther] = useState(false);
   const [dropdownList, setDropdownList] = useState(dropdown);
   const [disciplineList, setDisciplineList] = useState(disciplines);
+  const [tutors, setTutors] = useState(mockTutors);
   const lastDiscipline = disciplines[disciplines.length - 1];
   const handleOptionChange = (option: string) => {
     setStateOption(option);
@@ -30,13 +31,30 @@ export const QuickSelection = () => {
     setStateItemOther(false);
   });
 
+  const filter = (disciplineID: string) => {
+    const newTutors = [...mockTutors];
+    const discipline = disciplineList.find(
+      (discipline) => discipline.id === disciplineID
+    )?.discipline;
+    if (stateOption === 'all' || !discipline) {
+      setTutors(mockTutors);
+      return;
+    }
+    const filteredTutors = newTutors.filter((tutor) => {
+      return tutor.subjects.includes(discipline!);
+    });
+    setTutors(filteredTutors);
+  };
+
+  useEffect(() => {
+    filter(stateOption);
+  }, [stateOption, disciplineList]);
+
   const handleOther = (disciplineID: string) => {
     const newDisciplineList = [...disciplineList];
     newDisciplineList.splice(
       disciplines.length - 2,
-      !dropdownList.some((discipline) => discipline.id === disciplineID)
-        ? 1
-        : 0,
+      disciplineList.length === disciplines.length ? 0 : 1,
       dropdownList.find((discipline) => discipline.id === disciplineID)!
     );
     const newDropdownList = [...dropdownList];
@@ -123,7 +141,7 @@ export const QuickSelection = () => {
           </div>
         </ul>
       </div>
-      <Carousel tutorsCard={mockTutors} />
+      <Carousel tutorsCard={tutors} />
       <Button
         text={'Посмотреть всех'}
         variant={'purple'}
