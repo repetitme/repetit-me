@@ -18,10 +18,10 @@ import StatisticCards from '../../features/TutorCabinet/ui/StatisticCards';
 import styles from './index.module.scss';
 
 const TutorCabinetPage = () => {
-  const [isProfileVisible, setIsProfileVisible] = useState(false);
+  const [isApplicationVisible, setIsApplicationVisible] = useState(false);
 
-  const handleProfileVisible = (value: boolean) => {
-    setIsProfileVisible(value);
+  const handleApplicationVisible = () => {
+    setIsApplicationVisible((prev) => !prev);
     // Здесь добавить вызов API для сохранения состояния на сервере
   };
 
@@ -39,8 +39,8 @@ const TutorCabinetPage = () => {
           link={profileCardData.link}
         />
         <ApplicationProgress
-          isProfileHidden={isProfileVisible}
-          onToggleVisibility={handleProfileVisible}
+          isApplicationHidden={isApplicationVisible}
+          onToggleVisibility={handleApplicationVisible}
           progress={90}
         />
       </div>

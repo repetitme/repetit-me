@@ -6,7 +6,6 @@
   block-size: 24px;
   border-radius: 33px;
   background-color: var(--clr-primary-default);
-  cursor: pointer;
 
   &__button {
     margin-inline: 2px;
@@ -20,6 +19,7 @@
 
     &--inactive {
       transform: translateX(-20px);
+      background-color: var(--clr-1);
     }
   }
 }
