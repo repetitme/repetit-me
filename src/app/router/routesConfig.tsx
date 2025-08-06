@@ -30,11 +30,6 @@ export const routesConfig: IRoute[] = [
     auth: false
   },
   {
-    path: '/test',
-    element: <TutorApplication />,
-    auth: false
-  },
-  {
     path: '/tutor-catalog/:id',
     element: <TutorPage />,
     auth: false
