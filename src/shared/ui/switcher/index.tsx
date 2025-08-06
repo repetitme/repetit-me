@@ -8,17 +8,17 @@ const Switcher = ({ isActive, onChange }: SwitcherProps) => {
   const handleSwitch = () => onChange(!isActive);
 
   return (
-    <div className={styles.switcher}>
-      <button
-        type="button"
-        className={cn(styles.switcher__button, {
-          [styles['switcher__button--inactive']]: !isActive
-        })}
-        onClick={handleSwitch}
-        aria-label="Видимость профиля"
-        aria-pressed={isActive}
-      />
-    </div>
+    <button
+      type="button"
+      className={cn(styles.switcher, {
+        [styles.active]: isActive
+      })}
+      onClick={handleSwitch}
+      aria-pressed={isActive}
+      aria-label={isActive ? 'Профиль виден' : 'Профиль скрыт'}
+    >
+      <span className={styles.thumb} />
+    </button>
   );
 };
 
