@@ -1,3 +1,4 @@
+import TutorApplication from '../../features/tutorApplication';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import Requests from '../../pages/Requests';
@@ -28,7 +29,11 @@ export const routesConfig: IRoute[] = [
     element: <TutorApplicationPage />,
     auth: false
   },
-
+  {
+    path: '/test',
+    element: <TutorApplication />,
+    auth: false
+  },
   {
     path: '/tutor-catalog/:id',
     element: <TutorPage />,

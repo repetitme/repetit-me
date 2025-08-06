@@ -21,10 +21,6 @@ const TutorApplicationPage = () => {
   const [tutorData, setTutorData] =
     useState<TutorApplicationData>(initialTutorData);
 
-  const [diplomasFiles, setDiplomasFiles] = useState<File[]>(
-    initialTutorData.diplomas?.map((d) => d.file) || []
-  );
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleNext = () => {
@@ -69,12 +65,6 @@ const TutorApplicationPage = () => {
         return Boolean(
           data.subjects.every((subject) => isSubjectValid(subject))
         );
-      }
-      case 3: {
-        return Boolean(diplomasFiles.length > 0);
-      }
-      case 4: {
-        return Boolean(data.video?.url);
       }
       case 5: {
         if (!data.schedule || Object.keys(data.schedule).length === 0)
@@ -162,7 +152,6 @@ const TutorApplicationPage = () => {
           onDiplomasChange={(diplomas) => {
             handleFieldChange('diplomas', diplomas);
           }}
-          setDiplomasFiles={setDiplomasFiles}
         />
       )}
       {currentStep === 4 && (

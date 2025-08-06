@@ -15,8 +15,7 @@ import { DiplomasUploadProps } from './type';
 
 const DiplomasUpload = ({
   onDiplomasChange,
-  initialData,
-  setDiplomasFiles
+  initialData
 }: DiplomasUploadProps) => {
   const [files, setFiles] = useState<File[]>(initialData.map((d) => d.file));
   const MAX_DOCUMENTS = 10;
@@ -39,8 +38,6 @@ const DiplomasUpload = ({
   );
 
   useEffect(() => {
-    setDiplomasFiles(files);
-
     return () => {
       onDiplomasChange!(
         files.map((file) => ({ file, url: URL.createObjectURL(file) }))

@@ -11,7 +11,7 @@
   transition: margin-bottom var(--slow-transition);
 
   &--gap {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 
   .label {
@@ -77,17 +77,17 @@
       opacity: 0;
       block-size: 0;
       transform: translate(-20px);
-      transition: all 0.3s ease;
+      transition: all var(--slow-transition);
     }
 
     &__active {
       position: absolute;
       top: 110%;
-      opacity: 1;
       block-size: 20px;
       max-inline-size: 400px;
       inline-size: max-content;
       transform: translate(0);
+      opacity: 1;
     }
   }
 
