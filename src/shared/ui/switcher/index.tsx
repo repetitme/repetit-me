@@ -4,17 +4,20 @@ import styles from './index.module.scss';
 
 import { SwitcherProps } from './type';
 
-const Switcher: React.FC<SwitcherProps> = ({ isActive, onChange }) => {
+const Switcher = ({ isActive, onChange }: SwitcherProps) => {
   const handleSwitch = () => {
     onChange(!isActive);
   };
 
   return (
-    <div className={styles.switcher} onClick={handleSwitch}>
+    <div className={styles.switcher}>
       <button
+        type="button"
         className={cn(styles.switcher__button, {
           [styles['switcher__button--inactive']]: !isActive
         })}
+        onClick={handleSwitch}
+        aria-label={isActive ? 'Выключить' : 'Включить'}
       />
     </div>
   );
