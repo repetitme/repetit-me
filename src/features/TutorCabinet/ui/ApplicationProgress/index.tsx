@@ -6,11 +6,7 @@ import { GradientDefs } from './gradientDefs';
 
 import styles from './index.module.scss';
 
-type ApplicationProgressProps = {
-  progress?: number;
-  isApplicationHidden: boolean;
-  onToggleVisibility: () => void;
-};
+import { ApplicationProgressProps } from './type';
 
 const ApplicationProgress = ({
   progress = 90,
