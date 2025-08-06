@@ -1,4 +1,3 @@
-import TutorApplication from '../../features/tutorApplication';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import Requests from '../../pages/Requests';
