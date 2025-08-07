@@ -6,18 +6,18 @@
 
   max-width: 100%;
   margin-block-end: var(--margin-blocks);
-  font-family: var(--ffm-title, 'DrukTextWideCur', courier, monospace);
+  font-family: var(--ffm-title);
 
   &__list {
     @include flex-center;
 
     align-items: start;
-    width: 100%;
+    inline-size: 100%;
     gap: 19px;
   }
 
   &__title {
-    max-width: 550px;
+    max-inline-size: 550px;
     text-align: center;
     padding-block: 0 42px;
     font-size: 40px;

@@ -1,7 +1,7 @@
 .accordion {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  inline-size: 100%;
   padding: 30px 30px 30px 23px;
   background-color: var(--clr-main);
   border-radius: 20px;
@@ -37,7 +37,7 @@
 
   &__collapse {
     overflow: hidden;
-    max-height: 0;
+    max-block-size: 0;
     opacity: 0;
     transform: translateY(-25px);
     transition:
@@ -47,15 +47,17 @@
   }
 
   &__content {
-    width: 100%;
-    font-family: var(--ffm-default, 'Montserrat', courier, monospace);
+    inline-size: 100%;
+    font-family: var(--ffm-default);
     font-weight: 500;
     padding-block-start: var(--gap-blocks, 20px);
+    font-size: 20px;
+    line-height: 132%;
   }
 }
 
 .open {
   opacity: 1;
-  max-height: 100px;
+  max-block-size: 100px;
   transform: translateY(0);
 }
