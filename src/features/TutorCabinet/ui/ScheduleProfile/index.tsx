@@ -8,10 +8,10 @@ import styles from './index.module.scss';
 
 import { IScheduleProfile } from './type';
 
-export const ScheduleProfile: React.FC<IScheduleProfile> = ({
+const ScheduleProfile = ({
   firstLessons,
   scheduleLessons
-}) => {
+}: IScheduleProfile) => {
   const nameList: string[] = [];
 
   const colorClasses = ['purple', 'pink', 'yellow', 'blue', 'green'];
@@ -58,3 +58,5 @@ export const ScheduleProfile: React.FC<IScheduleProfile> = ({
     </div>
   );
 };
+
+export default ScheduleProfile;

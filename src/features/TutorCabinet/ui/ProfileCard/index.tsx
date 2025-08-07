@@ -1,5 +1,8 @@
+import { useState } from 'react';
+
 import { TutorCabinetCardProps } from '../../../../shared/types/userData';
 import TutorRating from '../../../../shared/ui/tutorRating';
+import FeedbacksModal from '../../../../widgets/FeedbacksModal';
 
 import styles from './index.module.scss';
 
@@ -11,6 +14,12 @@ const ProfileCard = ({
   rating,
   image
 }: TutorCabinetCardProps) => {
+  const [isFeedbacksModalOpen, setIsFeedbacksModalOpen] = useState(false);
+
+  const handleClose = () => {
+    setIsFeedbacksModalOpen(false);
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.avatar}>
@@ -26,7 +35,11 @@ const ProfileCard = ({
         ) : (
           <div className={styles.img__noPhoto}>Нет фото</div>
         )}
-        <TutorRating variant="onProfile" rating={rating} />
+        <TutorRating
+          variant="onProfile"
+          rating={rating}
+          setOpenModalState={setIsFeedbacksModalOpen}
+        />
       </div>
 
       <div className={styles.info}>
@@ -48,6 +61,13 @@ const ProfileCard = ({
           </a>
         </div>
       </div>
+      {isFeedbacksModalOpen && (
+        <FeedbacksModal
+          isOpen={isFeedbacksModalOpen}
+          onClose={handleClose}
+          rating={rating}
+        />
+      )}
     </div>
   );
 };

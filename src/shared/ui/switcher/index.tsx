@@ -4,19 +4,21 @@ import styles from './index.module.scss';
 
 import { SwitcherProps } from './type';
 
-const Switcher: React.FC<SwitcherProps> = ({ isActive, onChange }) => {
-  const handleSwitch = () => {
-    onChange(!isActive);
-  };
+const Switcher = ({ isActive, onChange }: SwitcherProps) => {
+  const handleSwitch = () => onChange(!isActive);
 
   return (
-    <div className={styles.switcher} onClick={handleSwitch}>
-      <button
-        className={cn(styles.switcher__button, {
-          [styles['switcher__button--inactive']]: !isActive
-        })}
-      />
-    </div>
+    <button
+      type="button"
+      className={cn(styles.switcher, {
+        [styles.active]: isActive
+      })}
+      onClick={handleSwitch}
+      aria-pressed={isActive}
+      aria-label={isActive ? 'Профиль виден' : 'Профиль скрыт'}
+    >
+      <span className={styles.thumb} />
+    </button>
   );
 };
 

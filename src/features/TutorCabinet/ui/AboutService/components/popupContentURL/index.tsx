@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-import unionIcon from '../../../../assets/icons/Union.svg';
+import unionIcon from '../../../../../../assets/icons/Union.svg';
 
 import styles from './index.module.scss';
 
