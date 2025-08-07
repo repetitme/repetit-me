@@ -9,7 +9,6 @@ import icon from '../../assets/images/telegram_icon.svg';
 import useClickOutside from '../../shared/hooks/useClickOutside';
 import Button from '../../shared/ui/button';
 import getHeaderConfig from './getHeaderConfig';
-
 import styles from './index.module.scss';
 
 import { HeaderProps, TUserRole } from './types';
@@ -88,7 +87,10 @@ const Header = ({ auth }: HeaderProps) => {
               <Link
                 key={item.text}
                 to={item.path}
-                className={styles.header__nav__link}
+                className={cn(styles.header__nav__link, {
+                  [styles['header__nav__link--active']]:
+                    location.pathname === item.path
+                })}
               >
                 {item.text}
               </Link>
