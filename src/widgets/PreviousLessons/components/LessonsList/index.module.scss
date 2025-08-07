@@ -1,0 +1,12 @@
+.lessonsList {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  block-size: 100%;
+  inline-size: 100%;
+  overflow-y: auto;
+
+  &__empty {
+    margin: auto;
+  }
+}

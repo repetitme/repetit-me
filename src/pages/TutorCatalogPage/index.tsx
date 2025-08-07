@@ -7,7 +7,7 @@ import useScrollLock from '../../shared/hooks/useScrollLock';
 import { ITutorData } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
 import ModalPortal from '../../shared/ui/modal';
-import { TelegramBlock } from '../../shared/ui/telegramBlock';
+import TelegramBlock from '../../shared/ui/telegramBlock';
 import UserCard from '../../widgets/UserCard';
 import useUsersData from '../../widgets/UserCard/fakeApi/useUserData';
 import ModalContent from './components/ModalContent';
@@ -22,8 +22,6 @@ const TutorCatalogPage = () => {
     loading: loadingTutors,
     error: errorTutors
   } = useUsersData<ITutorData>('tutors');
-
-  const [activeCards, setActiveCards] = useState<{ [id: string]: boolean }>({});
 
   const [visibleCount, setVisibleCount] = useState(5);
   const [tooltipFilter, setTooltipFilter] = useState(false);
@@ -43,16 +41,6 @@ const TutorCatalogPage = () => {
 
   const handleCloseModal = () => {
     setModalOpen(null);
-  };
-
-  const handleButtonClick = (tutorId: string) => {
-    setActiveCards((prev) => {
-      const isActive = !!prev[tutorId];
-      if (!isActive) {
-        handleOpenModal('submit');
-      }
-      return { ...prev, [tutorId]: !isActive };
-    });
   };
 
   return (
@@ -78,16 +66,7 @@ const TutorCatalogPage = () => {
                 </h3>
               )}
               {tutors.slice(0, visibleCount).map((tutor) => (
-                <UserCard
-                  key={tutor.id}
-                  role={role}
-                  tutorData={tutor}
-                  onSubmit={!!activeCards[tutor.id]}
-                  handleSubmit={(e) => {
-                    e.stopPropagation();
-                    handleButtonClick(tutor.id);
-                  }}
-                />
+                <UserCard key={tutor.id} role={role} tutorData={tutor} />
               ))}
 
               {tutors.length > visibleCount && (

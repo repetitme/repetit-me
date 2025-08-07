@@ -2,7 +2,7 @@ import disciplineIcon from '../../../assets/images/UserCardIcons/disciplines_ico
 import studentCategory from '../../../assets/images/UserCardIcons/student_category_icon.svg';
 import tutorTask from '../../../assets/images/UserCardIcons/tutors_task_icon.svg';
 import useWindowSize from '../../hooks/useWindowSize';
-import ParametrItem from '../parameterItem';
+import ParameterItem from '../parameterItem';
 
 import styles from './index.module.scss';
 
@@ -30,9 +30,9 @@ const UserInfo: React.FC<IUserInfo> = ({ data, children, isCard }) => {
         {firstName} {lastName}
       </h3>
       <>{children}</>
-      <ParametrItem src={disciplineIcon} items={data.subjects} />
-      <ParametrItem src={studentCategory} items={data.studentAudience} />
-      <ParametrItem src={tutorTask} items={data.purpose} />
+      <ParameterItem src={disciplineIcon} items={data.subjects} />
+      <ParameterItem src={studentCategory} items={data.studentAudience} />
+      <ParameterItem src={tutorTask} items={data.purpose} />
     </div>
   );
 };

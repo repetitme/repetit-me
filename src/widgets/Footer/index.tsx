@@ -1,5 +1,3 @@
-import React from 'react';
-
 import classNames from 'classnames';
 
 import phone from '../../assets/images/phone_with_qr-code.svg';
@@ -12,7 +10,15 @@ import styles from './index.module.scss';
 
 import { TfakeUser } from './type';
 
-const Footer: React.FC<TfakeUser> = ({ role, goTelegram }) => {
+const Footer = ({ role, goTelegram }: TfakeUser) => {
+  const handleTelegramClick = () => {
+    window.open('tg://resolve?domain=RepetitMe_bot', '_blank');
+
+    setTimeout(() => {
+      window.open('https://t.me/RepetitMe_bot', '_blank');
+    }, 200);
+  };
+
   return (
     <footer className={styles.footer}>
       {!goTelegram && (
@@ -30,6 +36,7 @@ const Footer: React.FC<TfakeUser> = ({ role, goTelegram }) => {
             size="large"
             className={styles.footer__button}
             icon={telegram}
+            onClick={handleTelegramClick}
           />
           <img src={phone} alt="Phone" className={styles.phone__image} />
         </div>
@@ -60,7 +67,9 @@ const Footer: React.FC<TfakeUser> = ({ role, goTelegram }) => {
             )}
           >
             Связаться с нами: <br />
-            <a className={styles.underline}>Менеджер в Telegram</a>
+            <a className={styles.underline} onClick={handleTelegramClick}>
+              Менеджер в Telegram
+            </a>
           </div>
         </div>
         <div className={styles['footer__bottom--links']}>

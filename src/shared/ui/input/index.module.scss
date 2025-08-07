@@ -95,11 +95,19 @@
       font-size: 16px;
       font-weight: 600;
       line-height: 22px;
+      text-align: left;
+      white-space: pre-line;
     }
 
     .input {
       padding: 24px 16px;
       font-size: 20px;
+    }
+
+    .error {
+      &__text {
+        font-size: 16px;
+      }
     }
   }
 

@@ -1,0 +1,18 @@
+.cabinet {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-inline-size: 1440px;
+  padding: 40px 0 97px 120px;
+
+  &__title {
+    font-family: var(--ffm-title, 'Druktextwidecur', courier, monospace);
+    font-weight: 500;
+    font-size: 32px;
+  }
+
+  &__infoBlock {
+    display: flex;
+    gap: 20px;
+  }
+}

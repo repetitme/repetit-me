@@ -15,12 +15,12 @@ const getHeaderConfig = ({
     unauth: [{ text: 'Репетиторы', path: '/tutor-catalog' }],
     student: [
       { text: 'Репетиторы', path: '/tutor-catalog' },
-      { text: 'Мои заявки', path: '/student-requests' }
+      { text: 'Мои заявки', path: '/requests' }
     ],
     tutor: [
       { text: 'Анкета', path: '/tutor-application' },
-      { text: 'Мои заявки', path: '/tutor-requests' },
-      { text: 'Личный кабинет', path: '/tutor-profile' }
+      { text: 'Мои заявки', path: '/requests' },
+      { text: 'Личный кабинет', path: '/tutor-cabinet' }
     ]
   };
 

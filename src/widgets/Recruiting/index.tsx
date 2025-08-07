@@ -1,16 +1,14 @@
-import { FC } from 'react';
-
 import womenAndComputer from '../../assets/images/women_and_computer.svg';
 import { features } from './data';
 
 import styles from './index.module.scss';
 
-const Recruiting: FC = () => (
+const Recruiting = () => (
   <div className={styles.container}>
     <h2 className={styles.container__title}>
-      Мы <span className={styles.container__title_purple}>найдем</span>
+      Мы <span className={styles.container__title_accent}>найдем</span>
       <br />
-      учеников <span className={styles.container__title_blue}>за вас</span>
+      учеников <span className={styles.container__title_accent}>за вас</span>
     </h2>
     <p className={styles.container__subtitle}>
       И также дадим возможность найти их самостоятельно
