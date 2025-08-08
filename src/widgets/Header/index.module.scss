@@ -35,12 +35,16 @@
       font-family: var(--ffm-default, 'Montserrat', courier, monospace);
       font-weight: 400;
       font-size: 16px;
-      transition: all 0.1s ease;
+      transition: all 0.2s ease;
 
-      &:hover {
-        font-weight: 500;
+      &--active {
         color: var(--clr-primary-default);
         border-bottom: 2px solid currentcolor;
+        pointer-events: none;
+      }
+
+      &:hover {
+        transform: scale(1.1);
       }
     }
   }

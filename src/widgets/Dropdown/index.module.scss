@@ -9,9 +9,18 @@
   background-color: var(--clr-main);
   border-radius: 8px;
   z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: all var(--fast-transition);
+  transform: translateY(-10px);
+  box-shadow:
+    0 4px 6px rgb(0 0 0 / 10%),
+    0 1px 3px rgb(0 0 0 / 8%);
 
-  &__disabled {
-    display: none;
+  &__active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
 
   &__item {
@@ -20,7 +29,15 @@
     align-items: center;
     min-height: 40px;
     color: var(--clr-black);
+    margin-inline: 5px;
+    border-radius: 20px;
     cursor: pointer;
+    transition: all var(--fast-transition);
+
+    &:hover {
+      background-color: var(--clr-primary-default);
+      color: var(--clr-main);
+    }
 
     &_text {
       font-family: var(--ffm-default);

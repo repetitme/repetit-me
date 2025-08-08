@@ -3,6 +3,10 @@
   align-items: center;
   flex-direction: column;
 
+  img {
+    transition: all var(--slow-transition);
+  }
+
   &__header {
     position: relative;
     margin: 0 120px;
@@ -60,6 +64,8 @@
         background-color: var(--clr-main);
         box-sizing: border-box;
         cursor: pointer;
+        transition: all var(--slow-transition);
+        user-select: none;
 
         &_text {
           font-family: var(--ffm-default);
@@ -80,4 +86,10 @@
 .container__header_item_active {
   background-color: var(--clr-primary-default);
   color: var(--clr-main);
+  pointer-events: none;
+
+  img {
+    filter: invert(1);
+    transform: rotate(180deg);
+  }
 }
