@@ -84,7 +84,13 @@ const Footer = ({ role, goTelegram }: TfakeUser) => {
         </div>
         <div className={styles['footer__bottom--links']}>
           <p>2023-2024© Все права защищены</p>
-          <a href="/privacy-policy">Политика конфиденциальности</a>
+          <a
+            href="https://teletype.in/@repetitme/politica_obrabotki_personalnih_dannysh"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Политика конфиденциальности
+          </a>
           <ScrollUp />
         </div>
       </div>
