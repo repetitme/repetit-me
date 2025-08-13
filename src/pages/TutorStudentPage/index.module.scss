@@ -1,0 +1,16 @@
+.container {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 1fr 1fr;
+}
+
+.missingComponent {
+    // block-size: 378px;
+    // inline-size: 883px;
+    background-color: var(--clr-main);
+    border-radius: var(--border-radius-blocks);
+}
+
+.profile__image {
+
+}
