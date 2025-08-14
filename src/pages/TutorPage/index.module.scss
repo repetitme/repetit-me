@@ -102,6 +102,15 @@
           gap: 10px;
         }
       }
+
+      &_freeTime {
+        cursor: pointer;
+      }
     }
   }
+}
+
+.back {
+  margin: 34px auto 0;
+  max-inline-size: 1200px;
 }

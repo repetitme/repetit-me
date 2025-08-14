@@ -10,10 +10,12 @@ import { ITutorData } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
 import ButtonBack from '../../shared/ui/buttonBack';
 import ParameterItem from '../../shared/ui/parameterItem';
+import Spinner from '../../shared/ui/spinner';
 import TutorRating from '../../shared/ui/tutorRating';
 import AboutMe from '../../widgets/AboutMe';
 import FeedbacksModal from '../../widgets/FeedbacksModal';
 import FreeTimeTable from '../../widgets/FreeTimeTable';
+import FreeTimeTableModal from '../../widgets/FreeTimeTableModal';
 import TutorDiploma from '../../widgets/TutorDocuments';
 import TutorVideoStart from '../../widgets/TutorVideoStart';
 import * as API from '../../widgets/UserCard/fakeApi/userApi';
@@ -27,12 +29,15 @@ type RouteParams = {
 const TutorPage = () => {
   const navigate = useNavigate();
 
-  const [isOpenModalState, setOpenModalState] = useState(false);
+  const [isOpenModalStateFeedback, setOpenModalStateFeedback] = useState(false);
+  const [isOpenModalStateFreeTime, setOpenModalStateFreeTime] = useState(false);
+
   const [dataState, setDataState] = useState<ITutorData>();
   const params = useParams<RouteParams>();
 
   const onToggleModalState = () => {
-    setOpenModalState(!isOpenModalState);
+    setOpenModalStateFeedback(false);
+    setOpenModalStateFreeTime(false);
   };
 
   const { role } = useAppContext();
@@ -54,16 +59,36 @@ const TutorPage = () => {
     fetchData();
   }, [params.id, location.key]);
 
-  if (!dataState) return null;
+  if (!dataState)
+    return (
+      <>
+        <div className={styles.back}>
+          <ButtonBack
+            text={'Вернуться назад'}
+            onClick={() => navigate(`/tutor-catalog`)}
+          />
+        </div>
+        <Spinner />;
+      </>
+    );
+
   return (
     <>
-      {isOpenModalState && (
+      {isOpenModalStateFeedback && (
         <FeedbacksModal
           onClose={onToggleModalState}
-          rating={dataState?.rating ?? 0}
-          isOpen={isOpenModalState}
+          rating={dataState.rating}
+          isOpen={isOpenModalStateFeedback}
         />
       )}
+      {isOpenModalStateFreeTime && (
+        <FreeTimeTableModal
+          freeTime={dataState.freeTime}
+          onClose={onToggleModalState}
+          isOpen={isOpenModalStateFreeTime}
+        />
+      )}
+
       <div className={styles.container}>
         <ButtonBack
           text={'Вернуться назад'}
@@ -116,7 +141,7 @@ const TutorPage = () => {
                 <TutorRating
                   variant="large"
                   rating={dataState?.rating ?? 0}
-                  setOpenModalState={setOpenModalState}
+                  setOpenModalState={setOpenModalStateFeedback}
                   disabled={false}
                 />
               </div>
@@ -151,7 +176,14 @@ const TutorPage = () => {
             {dataState.videoStart && (
               <TutorVideoStart video={dataState.videoStart} />
             )}
-            <FreeTimeTable freeTime={dataState.freeTime} />
+            <div
+              className={styles.container__profile_info_freeTime}
+              onClick={() => {
+                setOpenModalStateFreeTime(!isOpenModalStateFreeTime);
+              }}
+            >
+              <FreeTimeTable freeTime={dataState.freeTime} />
+            </div>
           </div>
         </main>
       </div>
