@@ -4,6 +4,12 @@
   justify-content: space-around;
   align-items: center;
   gap: 32px;
+  transition: all var(--fast-transition);
+
+  &__change {
+    opacity: 0;
+    transform: translate(0, 40px);
+  }
 
   &__button {
     border: none;

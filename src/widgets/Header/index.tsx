@@ -6,9 +6,9 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import avatar from '../../assets/images/avatarHeader.png';
 import logo from '../../assets/images/logo.svg';
 import icon from '../../assets/images/telegram_icon.svg';
+import useClickOutside from '../../shared/hooks/useClickOutside';
 import Button from '../../shared/ui/button';
 import getHeaderConfig from './getHeaderConfig';
-
 import styles from './index.module.scss';
 
 import { HeaderProps, TUserRole } from './types';
@@ -23,6 +23,10 @@ const Header = ({ auth }: HeaderProps) => {
     setAuthHeader('unauth');
     navigate('/');
   };
+
+  const dropdownRef = useClickOutside(() => {
+    setIsMenuOpen(false);
+  });
 
   const { navItems, dropDownItems } = getHeaderConfig({
     role: authHeader,
@@ -83,7 +87,10 @@ const Header = ({ auth }: HeaderProps) => {
               <Link
                 key={item.text}
                 to={item.path}
-                className={styles.header__nav__link}
+                className={cn(styles.header__nav__link, {
+                  [styles['header__nav__link--active']]:
+                    location.pathname === item.path
+                })}
               >
                 {item.text}
               </Link>
@@ -93,6 +100,7 @@ const Header = ({ auth }: HeaderProps) => {
           <div
             className={styles.header__avatar}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            ref={dropdownRef}
           >
             <img
               src={avatar}

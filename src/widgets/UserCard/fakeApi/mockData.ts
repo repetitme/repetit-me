@@ -56,7 +56,7 @@ export const mockTutors: ITutorData[] = [
         price: 1500
       }
     ],
-    subjects: ['Математика', 'Физика'],
+    subjects: ['Математика', 'Физика', 'История'],
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 5.0,
