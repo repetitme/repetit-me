@@ -1,105 +1,104 @@
 .profile {
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 24px;
+    padding: var(--padding-blocks);
+    background-color: var(--clr-main);
+    border-radius: var(--border-radius-blocks);
+  }
 
-    &__container {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        grid-template-rows: auto auto;
-        gap: 24px;
-        padding: var(--padding-blocks);
-        background-color: var(--clr-main);
-        border-radius: var(--border-radius-blocks);
+  &__textContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &_accent {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  &__tagContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    grid-column: 1 / 3;
+  }
+
+  &__listContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  &__tagList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__lessonTag {
+    block-size: min-content;
+    padding: 8px 16px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 14px;
+
+    &_active {
+      background-color: #e7f6f1;
+      color: #008052;
     }
 
-    &__textContainer {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-
-        &_accent {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+    &_inactive {
+      background-color: var(--clr-2);
+      color: var(--clr-black);
     }
+  }
 
-    &__tagContainer {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        grid-column: 1 / 3;
+  &__tag {
+    padding: 5.5px 12px;
+    background-color: var(--clr-2);
+    border-radius: 12px;
+    font-family: var(--ffm-tag);
+    font-weight: 400;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  &__studentName {
+    font-family: var(--ffm-title);
+    font-weight: 500;
+    font-size: 24px;
+  }
+
+  &__lessonsAmount {
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--clr-4);
+  }
+
+  &__debt {
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--clr-secondary-default);
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  &__addInfo {
+    font-weight: 600;
+    font-size: 16px;
+
+    &_secondary {
+      font-weight: 400;
     }
-
-    &__listContainer {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    &__tagList {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    &__lessonTag {
-        block-size: min-content;
-        padding: 8px 16px;
-        border-radius: 40px;
-        font-weight: 600;
-        font-size: 14px;
-        
-        &_active {
-            background-color: #E7F6F1;
-            color: #008052;
-        }
-
-        &_inactive {
-            background-color: var(--clr-2);
-            color: var(--clr-black);
-        }
-    }
-
-    &__tag {
-        padding: 5.5px 12px;
-        background-color: var(--clr-2);
-        border-radius: 12px;
-        font-family: var(--ffm-tag);
-        font-weight: 400;
-        font-size: 12px;
-        white-space: nowrap;
-    }
-
-    &__studentName {
-        font-family: var(--ffm-title);
-        font-weight: 500;
-        font-size: 24px;
-    }
-
-    &__lessonsAmount {
-        font-weight: 500;
-        font-size: 16px;
-        color: var(--clr-4);
-    }
-
-    &__debt {
-        font-weight: 600;
-        font-size: 18px;
-        color: var(--clr-secondary-default);
-    }
-
-    &__price {
-        font-weight: 700;
-        font-size: 20px;
-    }
-
-    &__addInfo {
-        font-weight: 600;
-        font-size: 16px;
-
-        &_secondary {
-            font-weight: 400;
-        }
-    }
+  }
 }

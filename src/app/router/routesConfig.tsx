@@ -1,3 +1,5 @@
+import AboutProfile from '../../features/TutorCabinet/ui/AboutProfile';
+import { studentInfoData } from '../../features/TutorCabinet/ui/AboutProfile/data';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import Requests from '../../pages/Requests';
@@ -5,9 +7,6 @@ import TutorApplication from '../../pages/TutorApplication';
 import TutorCabinetPage from '../../pages/TutorCabinetPage';
 import TutorCatalogPage from '../../pages/TutorCatalogPage';
 import TutorPage from '../../pages/TutorPage';
-
-import AboutProfile from '../../features/TutorCabinet/ui/AboutProfile';
-import { studentInfoData } from '../../features/TutorCabinet/ui/AboutProfile/data';
 
 import { IRoute } from './type';
 
@@ -50,8 +49,8 @@ export const routesConfig: IRoute[] = [
   {
     path: '/AboutProfile',
     element: (
-      <div style={{margin: '20px auto', inlineSize: '883px'}}>
-        <AboutProfile studentInfo={ studentInfoData }></AboutProfile>
+      <div style={{ margin: '20px auto', inlineSize: '883px' }}>
+        <AboutProfile studentInfo={studentInfoData}></AboutProfile>
       </div>
     ),
     auth: false
