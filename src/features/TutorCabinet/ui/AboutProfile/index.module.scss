@@ -37,8 +37,7 @@
 
   &__tagList {
     display: flex;
-    flex-direction: row;
-    flex-flow: wrap;
+    flex-flow: row wrap;
     gap: 8px;
   }
 
