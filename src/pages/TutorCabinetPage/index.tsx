@@ -36,7 +36,7 @@ const TutorCabinetPage = () => {
           tg={profileCardData.tg}
           rating={profileCardData.rating}
           image={profileCardData.image}
-          link={profileCardData.link}
+          linkRef={profileCardData.linkRef}
         />
         <ApplicationProgress
           isApplicationHidden={isApplicationVisible}

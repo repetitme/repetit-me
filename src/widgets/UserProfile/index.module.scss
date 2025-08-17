@@ -21,6 +21,7 @@
       block-size: 44px;
       background: url('../../assets/images/UserCardIcons/tutor_video_icon.svg')
         no-repeat center / contain;
+      cursor: pointer;
 
       &_tablet {
         position: absolute;
@@ -109,6 +110,12 @@
     position: absolute;
     right: 20px;
     top: 20px;
+  }
+
+  &__videoStart {
+    max-width: 80vw;
+    max-height: 80vh;
+    padding: 10px;
   }
 }
 

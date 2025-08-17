@@ -18,8 +18,8 @@
   }
 
   &__full {
-    max-width: 80vw;
-    max-height: 80vh;
+    max-inline-size: 80vw;
+    max-block-size: 80vh;
   }
 
   &__document:hover::after {
