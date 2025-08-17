@@ -1,4 +1,5 @@
 .container {
+  display: block;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -8,43 +9,50 @@
   background-color: rgb(246 246 246 / 100%);
   padding: 0 32px 32px;
   border-radius: 20px;
+  max-block-size: 90vh;
+  overflow-y: auto;
 
-  &__header {
-    display: flex;
-    justify-content: space-between;
-    margin: 35px 0 0;
+  &__content {
+    height: inherit;
 
-    &_title {
-      font-family: var(--ffm-title);
-      font-weight: 500;
-      font-size: 24px;
-      line-height: 100%;
-      letter-spacing: 0%;
-    }
-
-    &_button {
+    &_header {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-inline-start: auto;
-      margin-block-end: 15px;
-      border: none;
-      padding: 0;
-      background-color: transparent;
-      cursor: pointer;
+      justify-content: space-between;
+      margin: 35px 0 0;
+      background-color: rgb(246 246 246 / 100%);
 
-      &_img {
-        inline-size: 32px;
-        block-size: 32px;
+      &_title {
+        font-family: var(--ffm-title);
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 100%;
+        letter-spacing: 0%;
+      }
+
+      &_button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-inline-start: auto;
+        margin-block-end: 15px;
+        border: none;
+        padding: 0;
+        background-color: transparent;
+        cursor: pointer;
+
+        &_img {
+          inline-size: 32px;
+          block-size: 32px;
+        }
       }
     }
-  }
 
-  &__table {
-    margin: 40px 0 0;
-  }
+    &_table {
+      margin: 40px 0 0;
+    }
 
-  &__addInfo {
-    margin: 24px 0 0;
+    &_addInfo {
+      margin: 24px 0 0;
+    }
   }
 }

@@ -1,7 +1,9 @@
 import { FC } from 'react';
 
-import Button from '../../shared/ui/button';
-import TextareaForAddInfo from '../../shared/ui/textareaForAddInfo';
+import { useNavigate } from 'react-router-dom';
+
+import Button from '../../../shared/ui/button';
+import TextareaForAddInfo from '../../../shared/ui/textareaForAddInfo';
 import { MAX_LENGTH, MIN_LENGTH, useAddInfo } from './useAddInfo';
 
 import styles from './index.module.scss';
@@ -9,6 +11,7 @@ import styles from './index.module.scss';
 const AddInfo: FC = () => {
   const { content, error, handleContentChange, isButtonDisabled } =
     useAddInfo();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -34,6 +37,7 @@ const AddInfo: FC = () => {
           variant="purple"
           disabled={isButtonDisabled}
           className={styles.button}
+          onClick={() => navigate(`/tutor-catalog/`)}
         />
       </div>
     </>

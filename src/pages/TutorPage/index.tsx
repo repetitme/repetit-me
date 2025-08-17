@@ -9,8 +9,8 @@ import tutorTask from '../../assets/images/UserCardIcons/tutors_task_icon.svg';
 import { ITutorData } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
 import ButtonBack from '../../shared/ui/buttonBack';
+import Loader from '../../shared/ui/loader';
 import ParameterItem from '../../shared/ui/parameterItem';
-import Spinner from '../../shared/ui/spinner';
 import TutorRating from '../../shared/ui/tutorRating';
 import AboutMe from '../../widgets/AboutMe';
 import FeedbacksModal from '../../widgets/FeedbacksModal';
@@ -65,7 +65,7 @@ const TutorPage = () => {
             onClick={() => navigate(`/tutor-catalog`)}
           />
         </div>
-        <Spinner />;
+        <Loader />;
       </>
     );
   return (
