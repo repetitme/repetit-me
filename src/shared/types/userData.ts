@@ -21,7 +21,7 @@ export interface ITutorData extends IUserBaseData {
   description: string;
   autobiography: string;
   rating: number; // Рейтинг
-  link?: string; // Ссылка на приветственное видео от репетитора, если оно у него есть
+  linkRef?: string; // Ссылка на реферальную ссылку, если она есть
   isCard?: boolean;
   servicesList: ServicesListItem[];
   documents: string[];
@@ -95,6 +95,6 @@ export interface IUserData {
 }
 
 export interface TutorCabinetCardProps
-  extends Pick<ITutorData, 'name' | 'status' | 'rating' | 'link' | 'image'> {
+  extends Pick<ITutorData, 'name' | 'status' | 'rating' | 'linkRef' | 'image'> {
   tg: string;
 }

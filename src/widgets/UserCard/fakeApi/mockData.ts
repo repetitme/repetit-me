@@ -60,7 +60,6 @@ export const mockTutors: ITutorData[] = [
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 5.0,
-    link: '#!',
     documents: [diploma, certificate, certificate],
     videoStart: videoMock,
     freeTime: [
@@ -207,7 +206,6 @@ export const mockTutors: ITutorData[] = [
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 2.9,
-    link: '#!',
     documents: [diploma, certificate],
     videoStart: videoMock,
     freeTime: [
@@ -281,7 +279,6 @@ export const mockTutors: ITutorData[] = [
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 3.9,
-    link: '#!',
     documents: [diploma, certificate],
     videoStart: videoMock,
     freeTime: [
@@ -428,7 +425,6 @@ export const mockTutors: ITutorData[] = [
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 4,
-    link: '#!',
     documents: [diploma, certificate],
     videoStart: videoMock,
     freeTime: [
@@ -575,7 +571,6 @@ export const mockTutors: ITutorData[] = [
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 2.9,
-    link: '#!',
     documents: [diploma, certificate],
     videoStart: videoMock,
     freeTime: [
@@ -722,7 +717,6 @@ export const mockTutors: ITutorData[] = [
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 2.9,
-    link: '#!',
     documents: [diploma, certificate],
     videoStart: videoMock,
     freeTime: [
@@ -869,7 +863,6 @@ export const mockTutors: ITutorData[] = [
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 2.9,
-    link: '#!',
     documents: [diploma, certificate],
     videoStart: videoMock,
     freeTime: [
@@ -942,7 +935,6 @@ export const mockTutors: ITutorData[] = [
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 2.9,
-    link: '#!',
     documents: [diploma, certificate],
     videoStart: videoMock,
     freeTime: [
@@ -1015,7 +1007,6 @@ export const mockTutors: ITutorData[] = [
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 5.0,
-    link: '#!',
     documents: [diploma, certificate],
     videoStart: videoMock,
     freeTime: [
@@ -1083,7 +1074,6 @@ export const mockTutors: ITutorData[] = [
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 4.9,
-    link: '#!',
     documents: [diploma, certificate],
     videoStart: videoMock,
     freeTime: [
@@ -1155,7 +1145,6 @@ export const mockTutors: ITutorData[] = [
     studentAudience: ['5-8 класс', '9-11 класс'],
     purpose: ['Подготовка к ВПР', 'Подготовка к ЕГЭ'],
     rating: 5.0,
-    link: '#!',
     documents: [diploma, certificate],
     videoStart: videoMock,
     freeTime: [
