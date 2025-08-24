@@ -48,7 +48,7 @@ const StudentProfile: React.FC<IStudentDataProps> = ({
               {`Задолженность по комиссии: ${importantInfo} ₽`}
             </p>
           )}
-          <p className={styles.profile__parameters_price}>{price}</p>
+          <p className={styles.profile__parameters_price}>от {price} руб./час</p>
           <p className={styles.profile__parameters_description}>
             <span className={styles['profile__parameters_description--accent']}>
               Доп. информация:{' '}
