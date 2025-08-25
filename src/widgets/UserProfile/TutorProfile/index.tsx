@@ -84,7 +84,9 @@ const TutorProfile: React.FC<ITutorPops> = ({
             </span>
             {description}
           </p>
-          <p className={styles.profile__parameters_price}>от {price} руб./час</p>
+          <p className={styles.profile__parameters_price}>
+            от {price} руб./час
+          </p>
         </div>
       </UserInfo>
     </>
