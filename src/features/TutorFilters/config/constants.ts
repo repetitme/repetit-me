@@ -13,7 +13,7 @@ export const titles: TTitles = {
   subjects: 'Школьные предметы',
   foreignLanguage: 'Иностранные языки',
   speechTherapy: 'Логопедия',
-  others: 'Другие репетиторы',
+  others: 'Разное',
   goals: 'Цели',
   ageBrackets: 'Возрастная категория',
   price: 'Цена',
