@@ -1,7 +1,5 @@
 import { FC } from 'react';
 
-import { useNavigate } from 'react-router-dom';
-
 import Button from '../../../shared/ui/button';
 import TextareaForAddInfo from '../../../shared/ui/textareaForAddInfo';
 import { MAX_LENGTH, MIN_LENGTH, useAddInfo } from './useAddInfo';
@@ -13,7 +11,6 @@ import { AddInfoProps } from './type';
 const AddInfo: FC<AddInfoProps> = ({ onClose }) => {
   const { content, error, handleContentChange, isButtonDisabled } =
     useAddInfo();
-  const navigate = useNavigate();
 
   return (
     <>
