@@ -49,6 +49,16 @@ const Input: React.FC<IInput> = ({
     if (pattern && !new RegExp(pattern).test(target.value)) {
       return title || 'Некорректный формат';
     }
+    if (target.type === 'email' && target.value) {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(target.value)) {
+        return 'Введите корректный email. Например: example@mail.ru';
+      }
+      if (
+        !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(target.value)
+      ) {
+        return 'Email должен содержать только латинские буквы (например: example@mail.ru)';
+      }
+    }
     return '';
   };
 
