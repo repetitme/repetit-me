@@ -1,25 +1,37 @@
 .switcher {
-  display: flex;
-  align-items: center;
-  justify-content: end;
+  position: relative;
   inline-size: 40px;
   block-size: 24px;
-  border-radius: 33px;
-  background-color: var(--clr-primary-default);
+  border-radius: 16px;
+  background-color: var(--clr-1);
   cursor: pointer;
+  border: none;
+  padding: 0;
+  transition:
+    background-color var(--delay-desktop) var(--timing),
+    transform var(--delay-desktop) var(--timing);
 
-  &__button {
-    margin-inline: 2px;
+  &.active {
+    background-color: var(--clr-primary-default);
+  }
+
+  .thumb {
+    position: absolute;
+    top: 4px;
+    left: 6px;
     inline-size: 16px;
     block-size: 16px;
-    border-radius: 50%;
-    background-color: var(--clr-main);
-    transform: translateX(0);
+    background-color: white;
+    border-radius: 16px;
     transition: transform var(--delay-desktop) var(--timing);
-    border: none;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 20%);
+  }
 
-    &--inactive {
-      transform: translateX(-20px);
-    }
+  &.active .thumb {
+    transform: translateX(16px);
+  }
+
+  &:hover:not(:disabled) {
+    opacity: 0.9;
   }
 }

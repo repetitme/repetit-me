@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import walletIcon from '../../assets/icons/conisWithAWalletIcon.svg';
-import fundsIcon from '../../assets/icons/funds.svg';
-import aboutIcon from '../../assets/icons/iconAboutService.svg';
-import orderIcon from '../../assets/icons/transactionOrder.svg';
+import walletIcon from '../../../../assets/icons/conisWithAWalletIcon.svg';
+import fundsIcon from '../../../../assets/icons/funds.svg';
+import aboutIcon from '../../../../assets/icons/iconAboutService.svg';
+import orderIcon from '../../../../assets/icons/transactionOrder.svg';
 import { PopupContainer } from './components/popupContainer';
 import { PopupContentList } from './components/popupContentList';
 import { PopupContentPoints } from './components/popupContentPoints';
@@ -14,10 +14,7 @@ import styles from './index.module.scss';
 
 import { IAboutService } from './type';
 
-export const AboutService: React.FC<IAboutService> = ({
-  bonusPopup,
-  reviewPopup
-}) => {
+const AboutService = ({ bonusPopup, reviewPopup }: IAboutService) => {
   const [isBonusPopupOpen, setIsBonusPopupOpen] = useState(false);
   const [isReviewPopupOpen, setIsReviewPopupOpen] = useState(false);
   const [listItems, setListItems] = useState<React.ReactNode[]>([]);
@@ -97,3 +94,5 @@ export const AboutService: React.FC<IAboutService> = ({
     </>
   );
 };
+
+export default AboutService;

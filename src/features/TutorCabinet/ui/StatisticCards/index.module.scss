@@ -1,9 +1,7 @@
-@use '../../assets/styles/mixins/numberGradient.scss' as *;
+@use '../../../../assets/styles/mixins/numberGradient.scss' as *;
 
 .cards {
   display: flex;
-  justify-content: space-between;
-  flex-direction: row;
   gap: 20px;
   background-color: var(--clr-1);
 
@@ -14,7 +12,7 @@
     background-color: var(--clr-main);
     border-radius: var(--border-radius-chat);
     padding: 24px;
-    min-inline-size: 285px;
+    inline-size: 285px;
   }
 
   &__withAdditionalInfo {

@@ -10,7 +10,7 @@ import styles from './index.module.scss';
 
 import { ITutorCardProps } from './type';
 
-const Carousel: FC<ITutorCardProps> = ({ tutorsCard }) => {
+const Carousel: FC<ITutorCardProps> = ({ tutorsCard, change }) => {
   const cardCount: number = tutorsCard.length;
   const [firstCard, setFirstCard] = useState(0);
   const CARD_RENDERED_COUNT: number = 3;
@@ -27,7 +27,11 @@ const Carousel: FC<ITutorCardProps> = ({ tutorsCard }) => {
     }
   };
   return (
-    <div className={styles.container}>
+    <div
+      className={classNames(styles.container, {
+        [styles.container__change]: change
+      })}
+    >
       <button
         className={classNames(styles.container__button, {
           [styles.container__button_lock]: isLeftArrowDisabled,

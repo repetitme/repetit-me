@@ -61,8 +61,8 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               label="Имя (Отчество)"
               placeholder="Александр"
               onChange={handleChange}
-              pattern="^[A-Za-zА-Яа-яЁё \-]+$"
-              title="Поле может содержать только буквы, пробелы и дефисы"
+              pattern="^[А-Яа-яЁё]+([\-][А-Яа-яЁё]+)*$"
+              title="Поле может содержать только кириллические буквы, пробелы и дефисы"
               minLength={1}
               maxLength={50}
               required
@@ -74,8 +74,8 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               label="Фамилия"
               placeholder="Иванов"
               onChange={handleChange}
-              pattern="^[A-Za-zА-Яа-яЁё \-]+$"
-              title="Поле может содержать только буквы, пробелы и дефисы"
+              pattern="^[А-Яа-яЁё\s\-]+$"
+              title="Поле может содержать только кириллические буквы, пробелы и дефисы"
               minLength={1}
               maxLength={100}
               required
@@ -86,7 +86,8 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               label="Ник в телеграм"
               placeholder="@alex"
               onChange={handleChange}
-              minLength={2}
+              minLength={5}
+              maxLength={32}
               pattern="^@[A-Za-z0-9_]+$"
               title="Ник должен начинаться с @ и содержать только латинские буквы, цифры или _"
               required
@@ -97,6 +98,7 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               type="email"
               label="Почта"
               placeholder="alex@ya.ru"
+              title="Адрес электронной почты должен содержать символ @"
               onChange={handleChange}
             />
             <Textarea

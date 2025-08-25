@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import iconAdd from '../../../../assets/icons/iconAdd.svg';
+import iconAdd from '../../../../../../assets/icons/iconAdd.svg';
 import { PopupContentURL } from '../popupContentURL';
 
 import styles from './index.module.scss';

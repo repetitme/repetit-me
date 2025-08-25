@@ -6,15 +6,11 @@ import { GradientDefs } from './gradientDefs';
 
 import styles from './index.module.scss';
 
-type ApplicationProgressProps = {
-  progress?: number;
-  isProfileHidden: boolean;
-  onToggleVisibility: (value: boolean) => void;
-};
+import { ApplicationProgressProps } from './type';
 
 const ApplicationProgress = ({
   progress = 90,
-  isProfileHidden,
+  isApplicationHidden,
   onToggleVisibility
 }: ApplicationProgressProps) => {
   return (
@@ -46,7 +42,10 @@ const ApplicationProgress = ({
       </div>
       <div className={styles.switcher}>
         <p className={styles.switcher__text}>Скрыть анкету от учеников</p>
-        <Switcher isActive={!isProfileHidden} onChange={onToggleVisibility} />
+        <Switcher
+          isActive={!isApplicationHidden}
+          onChange={onToggleVisibility}
+        />
       </div>
     </div>
   );
