@@ -48,7 +48,7 @@ const FreeTimeTableModal: FC<IFreeTimeTable> = ({
             <FreeTimeTable freeTime={freeTime} />
           </div>
           <div className={styles.container__content_addInfo}>
-            <AddInfo onClose={onClose}  />
+            <AddInfo onClose={onClose} />
           </div>
         </div>
       </div>

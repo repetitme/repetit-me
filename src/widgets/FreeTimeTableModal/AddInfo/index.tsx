@@ -7,10 +7,10 @@ import TextareaForAddInfo from '../../../shared/ui/textareaForAddInfo';
 import { MAX_LENGTH, MIN_LENGTH, useAddInfo } from './useAddInfo';
 
 import styles from './index.module.scss';
+
 import { AddInfoProps } from './type';
 
-
-const AddInfo: FC<AddInfoProps> = ({onClose}) => {
+const AddInfo: FC<AddInfoProps> = ({ onClose }) => {
   const { content, error, handleContentChange, isButtonDisabled } =
     useAddInfo();
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const AddInfo: FC<AddInfoProps> = ({onClose}) => {
           />
         </div>
       </div>
-      <div className={styles.button} >
+      <div className={styles.button}>
         <Button
           text="Связаться"
           variant="purple"
