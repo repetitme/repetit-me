@@ -37,7 +37,7 @@ export const mockTutors: ITutorData[] = [
     image: Vyacheslav,
     status: 'Частный преподаватель',
     experienceYears: 5,
-    price: '2100 ₽/50мин',
+    price: '2100',
     servicesList: [
       {
         service: 'Школьники с 1 по 4 класс',
@@ -110,7 +110,7 @@ export const mockTutors: ITutorData[] = [
     image: Aleksandr1,
     status: 'Частный преподаватель',
     experienceYears: 5,
-    price: '2100 ₽/50мин',
+    price: '2100',
     servicesList: [
       {
         service: 'Школьники с 1 по 4 класс',
@@ -183,7 +183,7 @@ export const mockTutors: ITutorData[] = [
     image: Aleksandra1,
     status: 'Частный преподаватель',
     experienceYears: 5,
-    price: '2100 ₽/50мин',
+    price: '2100',
     servicesList: [
       {
         service: 'Школьники с 1 по 4 класс',
@@ -256,7 +256,7 @@ export const mockTutors: ITutorData[] = [
     image: Aleksandr2,
     status: 'Частный преподаватель',
     experienceYears: 10,
-    price: '2100 ₽/50мин',
+    price: '2100',
     servicesList: [
       {
         service: 'Школьники с 1 по 4 класс',
@@ -329,7 +329,7 @@ export const mockTutors: ITutorData[] = [
     image: Aleksandr1,
     status: 'Частный преподаватель',
     experienceYears: 5,
-    price: '2100 ₽/50мин',
+    price: '2100',
     servicesList: [
       {
         service: 'Школьники с 1 по 4 класс',
@@ -402,7 +402,7 @@ export const mockTutors: ITutorData[] = [
     image: Aleksandra1,
     status: 'Частный преподаватель',
     experienceYears: 5,
-    price: '2100 ₽/50мин',
+    price: '2100',
     servicesList: [
       {
         service: 'Школьники с 1 по 4 класс',
@@ -475,7 +475,7 @@ export const mockTutors: ITutorData[] = [
     image: Aleksandr1,
     status: 'Частный преподаватель',
     experienceYears: 5,
-    price: '2100 ₽/50мин',
+    price: '2100',
     servicesList: [
       {
         service: 'Школьники с 1 по 4 класс',
@@ -548,7 +548,7 @@ export const mockTutors: ITutorData[] = [
     image: Aleksandra1,
     status: 'Частный преподаватель',
     experienceYears: 5,
-    price: '2100 ₽/50мин',
+    price: '2100',
     servicesList: [
       {
         service: 'Школьники с 1 по 4 класс',
@@ -621,7 +621,7 @@ export const mockTutors: ITutorData[] = [
     image: Aleksandr1,
     status: 'Частный преподаватель',
     experienceYears: 5,
-    price: '2100 ₽/50мин',
+    price: '2100',
     servicesList: [
       {
         service: 'Школьники с 1 по 4 класс',
@@ -694,7 +694,7 @@ export const mockTutors: ITutorData[] = [
     image: Aleksandra1,
     status: 'Частный преподаватель',
     experienceYears: 5,
-    price: '2100 ₽/50мин',
+    price: '2100',
     servicesList: [
       {
         service: 'Школьники с 1 по 4 класс',
@@ -767,7 +767,7 @@ export const mockTutors: ITutorData[] = [
     image: Aleksandr1,
     status: 'Частный преподаватель',
     experienceYears: 5,
-    price: '2100 ₽/50мин',
+    price: '2100',
     servicesList: [
       {
         service: 'Школьники с 1 по 4 класс',
@@ -840,7 +840,7 @@ export const mockTutors: ITutorData[] = [
     image: Aleksandra1,
     status: 'Частный преподаватель',
     experienceYears: 5,
-    price: '2100 ₽/50мин',
+    price: '2100',
     servicesList: [
       {
         service: 'Школьники с 1 по 4 класс',
@@ -912,7 +912,7 @@ export const mockTutors: ITutorData[] = [
     image: Aleksandra1,
     status: 'Частный преподаватель',
     experienceYears: 5,
-    price: '2100 ₽/50мин',
+    price: '2100',
     servicesList: [
       {
         service: 'Школьники с 1 по 4 класс',
@@ -984,7 +984,7 @@ export const mockTutors: ITutorData[] = [
     image: Aleksandr2,
     status: 'Частный преподаватель',
     experienceYears: 10,
-    price: '2100 ₽/50мин',
+    price: '2100',
     servicesList: [
       {
         service: 'Школьники с 1 по 4 класс',
@@ -1055,7 +1055,7 @@ export const mockTutors: ITutorData[] = [
     image: Aleksandra1,
     status: 'Частный преподаватель',
     experienceYears: 5,
-    price: '2100 ₽/50мин',
+    price: '2100',
     servicesList: [
       {
         service: 'Школьники с 1 по 11 класс',
@@ -1122,7 +1122,7 @@ export const mockTutors: ITutorData[] = [
     image: Aleksandr2,
     status: 'Частный преподаватель',
     experienceYears: 10,
-    price: '2100 ₽/50мин',
+    price: '2100',
     servicesList: [
       {
         service: 'Школьники с 1 по 4 класс',
@@ -1189,7 +1189,7 @@ export const mockStudents: IStudentData[] = [
     additionalInfo: 'Могу заниматься в ПН, СР с 18:00',
     activityStatus: 0,
     lessonsCompleted: 2,
-    price: '2000-2500 ₽/час',
+    price: '2000-2500',
     subjects: ['Математика'],
     studentAudience: ['9-11 класс'],
     purpose: ['Подготовка к ЕГЭ'],
@@ -1201,7 +1201,7 @@ export const mockStudents: IStudentData[] = [
     image: Sergey1,
     additionalInfo: 'Занимается только в выходные',
     activityStatus: 10,
-    price: '2000-2500 ₽/час',
+    price: '2000-2500',
     subjects: ['Физика'],
     studentAudience: ['9-11 класс'],
     purpose: ['Повышение успеваемости'],
@@ -1214,7 +1214,7 @@ export const mockStudents: IStudentData[] = [
     additionalInfo: 'Доступна после 19:00',
     activityStatus: 5,
     lessonsCompleted: 2,
-    price: '2000-2500 ₽/час',
+    price: '2000-2500',
     subjects: ['Английский язык'],
     studentAudience: ['9-11 класс'],
     purpose: ['Подготовка к ЕГЭ'],
@@ -1227,7 +1227,7 @@ export const mockStudents: IStudentData[] = [
     additionalInfo: 'Можно по будням до 17:00',
     activityStatus: 1,
     lessonsCompleted: 1,
-    price: '2000-2500 ₽/час',
+    price: '2000-2500',
     subjects: ['Русский язык'],
     studentAudience: ['9-11 класс'],
     purpose: ['Повышение успеваемости'],
@@ -1240,7 +1240,7 @@ export const mockStudents: IStudentData[] = [
     additionalInfo: 'Готов к занятиям утром',
     activityStatus: 3,
     lessonsCompleted: 0,
-    price: '2000-2500 ₽/час',
+    price: '2000-2500',
     subjects: ['Информатика'],
     studentAudience: ['9 класс'],
     purpose: ['Подготовка к ОГЭ'],
@@ -1253,7 +1253,7 @@ export const mockStudents: IStudentData[] = [
     additionalInfo: 'Есть только вечер среды',
     activityStatus: 2,
     lessonsCompleted: 0,
-    price: '2000-2500 ₽/час',
+    price: '2000-2500',
     subjects: ['Обществознание'],
     studentAudience: ['10 класс'],
     purpose: ['Повышение успеваемости'],
@@ -1266,7 +1266,7 @@ export const mockStudents: IStudentData[] = [
     additionalInfo: 'Свободна с 15:00 до 17:00',
     activityStatus: 4,
     lessonsCompleted: 1,
-    price: '2000-2500 ₽/час',
+    price: '2000-2500',
     subjects: ['История'],
     studentAudience: ['11 класс'],
     purpose: ['Подготовка к ЕГЭ'],
@@ -1278,7 +1278,7 @@ export const mockStudents: IStudentData[] = [
     image: Vyacheslav,
     additionalInfo: 'Доступен в любое время',
     activityStatus: 0,
-    price: '2000-2500 ₽/час',
+    price: '2000-2500',
     subjects: ['География'],
     studentAudience: ['8 класс'],
     purpose: ['Повышение успеваемости'],
@@ -1291,7 +1291,7 @@ export const mockStudents: IStudentData[] = [
     additionalInfo: 'После 20:00 только онлайн',
     activityStatus: 6,
     lessonsCompleted: 3,
-    price: '2000-2500 ₽/час',
+    price: '2000-2500',
     subjects: ['Химия'],
     studentAudience: ['9-11 класс'],
     purpose: ['Подготовка к ЕГЭ'],
@@ -1303,7 +1303,7 @@ export const mockStudents: IStudentData[] = [
     image: Sergey1,
     additionalInfo: 'Только офлайн',
     activityStatus: 7,
-    price: '2000-2500 ₽/час',
+    price: '2000-2500',
     subjects: ['Биология'],
     studentAudience: ['8 класс'],
     purpose: ['Повышение успеваемости'],
@@ -1316,7 +1316,7 @@ export const mockStudents: IStudentData[] = [
     additionalInfo: 'Вторник и четверг с 18:00',
     activityStatus: 2,
     lessonsCompleted: 1,
-    price: '2000-2500 ₽/час',
+    price: '2000-2500',
     subjects: ['Литература'],
     studentAudience: ['10 класс'],
     purpose: ['Подготовка к ЕГЭ'],
@@ -1328,7 +1328,7 @@ export const mockStudents: IStudentData[] = [
     image: Sergey2,
     additionalInfo: 'Есть слот в пятницу',
     activityStatus: 1,
-    price: '2000-2500 ₽/час',
+    price: '2000-2500',
     subjects: ['Физика'],
     studentAudience: ['9 класс'],
     purpose: ['Повышение успеваемости'],
@@ -1341,7 +1341,7 @@ export const mockStudents: IStudentData[] = [
     additionalInfo: 'Пн и Ср после 17:00',
     activityStatus: 4,
     lessonsCompleted: 2,
-    price: '2000-2500 ₽/час',
+    price: '2000-2500',
     subjects: ['Английский язык'],
     studentAudience: ['7 класс'],
     purpose: ['Повышение успеваемости'],
@@ -1353,7 +1353,7 @@ export const mockStudents: IStudentData[] = [
     image: Aleksandr2,
     additionalInfo: 'До 16:00 по будням',
     activityStatus: 3,
-    price: '2000-2500 ₽/час',
+    price: '2000-2500',
     subjects: ['Математика'],
     studentAudience: ['5-6 класс'],
     purpose: ['Общее развитие'],
@@ -1365,7 +1365,7 @@ export const mockStudents: IStudentData[] = [
     image: Vyacheslav,
     additionalInfo: 'Любой вечер, кроме пятницы',
     activityStatus: 5,
-    price: '2000-2500 ₽/час',
+    price: '2000-2500',
     subjects: ['История'],
     studentAudience: ['11 класс'],
     purpose: ['Подготовка к ЕГЭ'],
@@ -1382,7 +1382,7 @@ export const mockStudentProfile: IStudentProfile[] = [
     additionalInfo: 'Имеется возможность заниматься только в ПН, СР с 18:00 ',
     activityStatus: 0,
     lessonsCompleted: 2,
-    price: '2000-2500 ₽/час',
+    price: '2000-2500',
     subjects: ['Математика'],
     studentAudience: ['9-11 класс'],
     purpose: ['Подготовка к ЕГЭ', 'Повышение успеваемости'],
@@ -1416,7 +1416,7 @@ export const mockStudentProfile: IStudentProfile[] = [
         [titles.subjects]: ['Математика'],
         [titles.goals]: ['Подготовка к ЕГЭ'],
         [titles.ageBrackets]: ['9-11 класс'],
-        [titles.price]: ['2000-2500 ₽/час'],
+        [titles.price]: ['от 2000-2500 руб./час'],
         [titles.experience]: ['1-5 лет'],
         [titles.gender]: ['Женщина'],
         [titles.rating]: ['Высокий'],
@@ -1433,7 +1433,7 @@ export const mockTutorProfile: ITutorProfile[] = [
     image: Victor,
     experienceYears: 5,
     description: `Имеется возможность заниматься только в ПН, СР с 18:00 `,
-    price: '2000-2500 ₽/час',
+    price: '2000-2500 руб./час',
     subjects: ['Математика'],
     studentAudience: ['9-11 класс'],
     purpose: ['Подготовка к ЕГЭ', 'Повышение успеваемости'],

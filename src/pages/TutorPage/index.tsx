@@ -127,7 +127,7 @@ const TutorPage = () => {
                 />
               </div>
               <p className={styles.container__profile_info_portrait_price}>
-                {dataState.price}
+                от {dataState.price} руб./час
               </p>
               <div
                 className={styles.container__profile_info_portrait_parameters}
