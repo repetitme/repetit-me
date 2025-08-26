@@ -17,6 +17,7 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
   const { values, handleChange, setValues } =
     useForm<ProfileFormData>(initialData);
   const [hasAvatar, setHasAvatar] = useState(!!initialData.avatar);
+
   useEffect(() => {
     onDataChange(values);
     setHasAvatar(!!values.avatar);
