@@ -119,7 +119,7 @@ const TutorApplicationPage = () => {
       )}
       <Button
         text={currentStep === 5 ? 'Сохранить анкету' : 'Сохранить и продолжить'}
-        variant={isStepValid(tutorData, currentStep) ? 'purple' : 'white'}
+        variant='purple'
         disabled={!isStepValid(tutorData, currentStep)}
         onClick={handleNext}
         className={currentStep === 5 ? styles.button : styles.buttonNext}
