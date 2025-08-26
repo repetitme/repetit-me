@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 
+import zoom from '../../assets/icons/zoom_in.svg';
 import Modal from '../Modal';
 import InfoBlock from '../infoBlock';
 
@@ -23,12 +24,20 @@ const TutorDiploma: FC<ITutorDocumentsProps> = ({ documents }) => {
       <InfoBlock title="Дипломы и сертификаты">
         <div className={styles.container}>
           {documents.map((document, index) => (
-            <div className={styles.container__document} key={index}>
+            <div
+              className={styles.container__document}
+              key={index}
+              onClick={() => onToggleModalState(document)}
+            >
               <img
                 className={styles.container__document_img}
                 src={document}
                 alt="Документ репетитора"
-                onClick={() => onToggleModalState(document)}
+              />
+              <img
+                className={styles.container__document_zoom}
+                src={zoom}
+                alt=""
               />
             </div>
           ))}

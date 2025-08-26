@@ -60,7 +60,7 @@ const useStudentRequests = () => {
     setVisible(3);
     setTimeout(() => {
       setLoaded(loadedState);
-    }, 200);
+    }, 100);
   };
 
   useEffect(() => {
@@ -109,7 +109,7 @@ const useStudentRequests = () => {
               setList(filtered);
               setLoaded(loadedState);
             }),
-          1000
+          100
         );
       })
       .catch((error) => {

@@ -33,6 +33,7 @@
     transition: all var(--slow-transition);
 
     &_active {
+      margin-block-start: 10px;
       block-size: 24px;
       opacity: 1;
       transform: translate(0);

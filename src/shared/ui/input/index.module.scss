@@ -7,6 +7,12 @@
   gap: 8px;
   font-weight: 500;
   line-height: 1.36;
+  margin-bottom: 0;
+  transition: margin-bottom var(--slow-transition);
+
+  &--gap {
+    margin-bottom: 25px;
+  }
 
   .label {
     font-size: 20px;
@@ -15,6 +21,7 @@
   }
 
   .input {
+    inline-size: 100%;
     background-color: var(--clr-main, #fff);
     color: var(--crl-black, #000);
     border: none;
@@ -56,34 +63,31 @@
 
   .error {
     color: var(--clr-secondary-default, #fc4a4a);
+    top: 0;
+    transition: top var(--slow-transition);
+
+    &__wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
 
     &__text {
       color: var(--clr-secondary-default, #fc4a4a);
-      top: 100%;
       opacity: 0;
       block-size: 0;
       transform: translate(-20px);
-      transition: all 0.3s ease;
+      transition: all var(--slow-transition);
     }
 
     &__active {
-      opacity: 1;
+      position: absolute;
+      top: 110%;
       block-size: 20px;
+      max-inline-size: 400px;
+      inline-size: max-content;
       transform: translate(0);
-    }
-  }
-
-  &.price {
-    inline-size: 147px;
-
-    .input {
-      block-size: 23px;
-      padding: 20px 9px;
-      outline: 2px solid var(--clr-5, #cfdadc);
-      font-size: 18px;
-      font-weight: 400;
-      line-height: 24px;
-      font-family: var(--ffm-price);
+      opacity: 1;
     }
   }
 
@@ -111,9 +115,8 @@
     }
   }
 
-  &.form {
-    inline-size: 365px;
-
+  &.form,
+  &.price {
     .input {
       padding: 11px 15px;
       font-size: 16px;
@@ -133,6 +136,10 @@
         line-height: 1.4;
       }
     }
+  }
+
+  &.form {
+    inline-size: 365px;
   }
 
   &.auth {
