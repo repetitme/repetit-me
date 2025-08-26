@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
@@ -29,11 +29,6 @@ const UserCard: React.FC<IUserData> = ({
   const toggle = () => {
     setIsOpen(!isOpen);
   };
-
-  useEffect(
-    () => console.log(tutorData, studentData),
-    [tutorData, studentData]
-  );
 
   const navRole = role === 'tutor' ? navOptionsTutor : navOptionsStudent;
   const isMyList = navOption === navRole.myList;
