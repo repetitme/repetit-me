@@ -12,8 +12,8 @@ export const listItems: ListItemProps[] = [
     title: 'Понятный интерфейс',
     text: (
       <p>
-        Любой пользователь приложения может одновременно быть как{' '}
-        <span className={styles.accentText}>учеником</span>, так и{' '}
+        Любой пользователь приложения может одновременно быть как
+        <span className={styles.accentText}>учеником</span>, так и
         <span className={styles.accentText}>преподавателем</span>.
       </p>
     ),

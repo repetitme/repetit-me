@@ -63,7 +63,7 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               label="Имя (Отчество)"
               placeholder="Александр"
               onChange={handleChange}
-              pattern="^[А-Яа-яЁё]+([\-][А-Яа-яЁё]+)*$"
+              pattern="^[А-Яа-яЁё\s\-]+([\s\-][А-Яа-яЁё]+)*$"
               title="Поле может содержать только кириллические буквы, пробелы и дефисы"
               minLength={1}
               maxLength={50}
