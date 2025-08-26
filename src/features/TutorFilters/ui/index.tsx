@@ -12,7 +12,8 @@ const TutorFilters = ({
   onSubmit,
   noResultsFound,
   percentage = 1,
-  onToggleTooltip
+  onToggleTooltip,
+  onReset
 }: TutorFiltersProps) => {
   const {
     values,
@@ -25,7 +26,7 @@ const TutorFilters = ({
     handleSliderChange,
     handleSubmit,
     handleReset
-  } = useTutorFilters({ onSubmit });
+  } = useTutorFilters({ onSubmit, onReset });
   const filterButton = (reset?: TButton): React.JSX.Element => {
     return (
       <Button
