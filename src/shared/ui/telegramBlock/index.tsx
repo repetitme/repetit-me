@@ -10,14 +10,13 @@ interface ITelegramBlockProps {
   className?: string;
 }
 const TelegramBlock = ({ className }: ITelegramBlockProps) => {
-
   const handleTelegramClick = () => {
     window.open('tg://resolve?domain=RepetitMe_bot', '_blank');
 
     setTimeout(() => {
       window.open('https://t.me/RepetitMe_bot', '_blank');
     }, 200);
-  }; 
+  };
 
   return (
     <div className={classNames(styles.container, className)}>

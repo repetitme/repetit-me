@@ -8,6 +8,8 @@ import Select from '../../../../../shared/ui/select';
 import Switcher from '../../../../../shared/ui/switcher';
 import Wrapper from '../../../../../shared/ui/wrapper';
 import * as data from './data';
+import { useExperienceHandler } from './hooks/useExperienceHandler';
+import useFormHandlers from './hooks/useFormHandlers';
 import ProfileCategories from './profileCategories';
 
 import styles from './index.module.scss';
@@ -24,36 +26,19 @@ const SubjectFormItem = ({
   const { values, handleChange, setValues } = useForm(
     initialData ?? initialSubject
   );
+  const [maxInputLength, setMaxInputLength] = useState<number>(6);
 
-  const handleCategoryChange =
-    (categoryIndex: number) =>
-    (updatedCategory: { ageCategory: string; price: string }) => {
-      const updatedCategories = [...values.categories];
-      updatedCategories[categoryIndex] = updatedCategory;
+  const { handleCategoryChange, handleSelectChange, handleAddCategory } =
+    useFormHandlers({
+      values,
+      setValues,
+      onChange
+    });
 
-      const newValues = { ...values, categories: updatedCategories };
-      setValues(newValues);
-      onChange?.(newValues);
-    };
-
-  const handleSelectChange = (fieldName: string) => (selectedOption: any) => {
-    const newValues = { ...values, [fieldName]: selectedOption };
-    setValues(newValues);
-    onChange?.(newValues);
-  };
-
-  const handleAddCategory = () => {
-    const newCategory = {
-      ageCategory: data.ageCategories[0].label,
-      price: '1500'
-    };
-    const newValues = {
-      ...values,
-      categories: [...values.categories, newCategory]
-    };
-    setValues(newValues);
-    onChange?.(newValues);
-  };
+  const handleExperienceChange = useExperienceHandler(
+    handleChange,
+    setMaxInputLength
+  );
 
   return (
     <Wrapper
@@ -61,7 +46,7 @@ const SubjectFormItem = ({
       className={cn(styles.wrapper, !isActive && styles['wrapper--disabled'])}
     >
       <div className={styles.header}>
-        <h3 className={styles.header__title}>{`Предмет №${index + 1}`}</h3>
+        <h3 className={styles.header__title}>{`Предмет № ${index + 1}`}</h3>
         <Switcher isActive={isActive} onChange={setIsActive} />
       </div>
       <div className={styles.options}>
@@ -106,14 +91,16 @@ const SubjectFormItem = ({
         </div>
         <div className={styles.options__experience}>
           <Input
+            variant="form"
             name="experience"
             value={values.experience}
-            onChange={handleChange}
+            onChange={handleExperienceChange}
             label="Стаж"
             placeholder="3 года"
             type="text"
-            style={{ inlineSize: '100%' }}
-            required
+            autoComplete="off"
+            maxLength={maxInputLength}
+            required={true}
           />
         </div>
       </div>
