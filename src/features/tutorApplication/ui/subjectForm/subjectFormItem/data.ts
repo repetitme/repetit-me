@@ -21,7 +21,7 @@ export const status = [
 ];
 
 export const ageCategories = [
-  { value: 'adult', label: 'Взрослый' },
+  { value: 'adult', label: 'Взрослыe' },
   { value: 'preschoolers', label: 'Дошкольники' },
   { value: 'grades_1_4', label: '1-4 класс' },
   { value: 'grades_5_8', label: '5-8 класс' },
