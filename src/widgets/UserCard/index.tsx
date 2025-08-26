@@ -52,6 +52,7 @@ const UserCard: React.FC<IUserData> = ({
     setIsAccepted(isAccepted);
     toggle();
   };
+
   return (
     <div className={cn(styles.card, role === 'card' && styles.card__resize)}>
       {role === 'student' || role === 'unauth' ? (
@@ -70,17 +71,19 @@ const UserCard: React.FC<IUserData> = ({
             />
             {!isMyList && (
               <>
-                <Button
-                  text={
-                    !navOption
-                      ? 'Связаться'
-                      : isRequests
-                        ? 'Принять'
-                        : 'Отменить заявку'
-                  }
-                  variant={!isMyRequests ? 'purple' : 'red'}
-                  onClick={toggle}
-                />
+                {role !== 'unauth' && (
+                  <Button
+                    text={
+                      !navOption
+                        ? 'Связаться'
+                        : isRequests
+                          ? 'Принять'
+                          : 'Отменить заявку'
+                    }
+                    variant={!isMyRequests ? 'purple' : 'red'}
+                    onClick={toggle}
+                  />
+                )}
                 {!navOption
                   ? Popups.responded({
                       isOpen,

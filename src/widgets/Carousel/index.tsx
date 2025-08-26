@@ -1,7 +1,9 @@
 import { FC, useState } from 'react';
 
 import classNames from 'classnames';
+import { useNavigate } from 'react-router-dom';
 
+import { useAppContext } from '../../app/AppContext';
 import arrow_left from '../../assets/images/arrow-left.svg';
 import arrow_right from '../../assets/images/arrow-right.svg';
 import UserCard from '../UserCard';
@@ -11,6 +13,8 @@ import styles from './index.module.scss';
 import { ITutorCardProps } from './type';
 
 const Carousel: FC<ITutorCardProps> = ({ tutorsCard, change }) => {
+  const { role } = useAppContext();
+  const navigate = useNavigate();
   const cardCount: number = tutorsCard.length;
   const [firstCard, setFirstCard] = useState(0);
   const CARD_RENDERED_COUNT: number = 3;
@@ -25,6 +29,11 @@ const Carousel: FC<ITutorCardProps> = ({ tutorsCard, change }) => {
     if (!isLeftArrowDisabled) {
       setFirstCard(firstCard - 1);
     }
+  };
+
+  const limitedLink = (tutor: string) => {
+    (role === 'student' || role === 'unauth') &&
+      navigate(`/tutor-catalog/${tutor}`);
   };
   return (
     <div
@@ -48,7 +57,11 @@ const Carousel: FC<ITutorCardProps> = ({ tutorsCard, change }) => {
       <ul className={styles.container__cards}>
         {tutorsCard
           .map((tutor, index) => (
-            <li className={styles.container__cards_card} key={index}>
+            <li
+              className={styles.container__cards_card}
+              key={index}
+              onClick={() => limitedLink(tutor.id)}
+            >
               <UserCard role="card" tutorData={tutor} />
             </li>
           ))
