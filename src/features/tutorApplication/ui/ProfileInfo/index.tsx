@@ -16,9 +16,10 @@ import { ProfileFormData, ProfileInfoProps } from './type';
 const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
   const { values, handleChange, setValues } =
     useForm<ProfileFormData>(initialData);
-
+  const [hasAvatar, setHasAvatar] = useState(!!initialData.avatar);
   useEffect(() => {
     onDataChange(values);
+    setHasAvatar(!!values.avatar);
   }, [values]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -45,7 +46,7 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
           <div className={styles.form__avatar}>
             <AvatarBlock avatarUrl={values.avatar} />
             <Button
-              text="Загрузить фотографию"
+              text={hasAvatar ? 'Изменить фотографию' : 'Загрузить фотографию'}
               variant="underline"
               onClick={() => {
                 setIsModalOpen(true);
