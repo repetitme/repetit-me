@@ -89,7 +89,7 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               placeholder="@alex"
               onChange={handleChange}
               minLength={5}
-              maxLength={32}
+              maxLength={31}
               pattern="^@[A-Za-z0-9_]+$"
               title="Ник должен начинаться с @ и содержать только латинские буквы, цифры или _"
               required
