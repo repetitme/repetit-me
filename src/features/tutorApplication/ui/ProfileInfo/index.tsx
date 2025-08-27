@@ -100,7 +100,6 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               type="email"
               label="Почта"
               placeholder="alex@ya.ru"
-              title="Адрес электронной почты должен содержать символ @"
               onChange={handleChange}
             />
             <Textarea
