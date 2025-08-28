@@ -66,7 +66,7 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               pattern="^[А-Яа-яЁё\s\-]+([\s\-][А-Яа-яЁё]+)*$"
               title="Поле может содержать только кириллические буквы, пробелы и дефисы"
               minLength={1}
-              maxLength={100}
+              maxLength={50}
               required
             />
             <Input
