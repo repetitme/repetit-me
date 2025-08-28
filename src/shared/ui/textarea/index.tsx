@@ -31,7 +31,7 @@ const Textarea = ({
       );
     }
 
-     if (pattern && e.target.value) {
+    if (pattern && e.target.value) {
       const isValid = new RegExp(pattern).test(e.target.value);
       setShowError(!isValid);
       setErrorMessage(!isValid ? 'Только кириллица, пробелы и цифры' : '');
@@ -50,7 +50,9 @@ const Textarea = ({
         className={cn(styles.textarea__area, { [styles.error]: showError })}
         {...props}
       />
-      {showError && <span className={styles.textarea__error}>{errorMessage || error}</span>}
+      {showError && (
+        <span className={styles.textarea__error}>{errorMessage || error}</span>
+      )}
     </div>
   );
 };

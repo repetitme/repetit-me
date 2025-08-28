@@ -42,7 +42,7 @@ const Input: React.FC<IInput> = ({
   const validate = (target: HTMLInputElement): string => {
     if (target.validity.valueMissing && required) {
       return requiredError;
-    }s
+    }
 
     if (target.validity.typeMismatch) {
       return title || target.validationMessage;
