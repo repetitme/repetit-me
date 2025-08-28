@@ -12,12 +12,14 @@ const Textarea = ({
   htmlFor,
   className,
   minLength,
+  pattern,
   value = '',
   onChange,
 
   ...props
 }: TextareaProps) => {
   const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (onChange) {
       onChange(e);
@@ -27,6 +29,12 @@ const Textarea = ({
       setShowError(
         e.target.value.length > 0 && e.target.value.length < minLength
       );
+    }
+
+     if (pattern && e.target.value) {
+      const isValid = new RegExp(pattern).test(e.target.value);
+      setShowError(!isValid);
+      setErrorMessage(!isValid ? 'Только кириллица, пробелы и цифры' : '');
     }
   };
   return (
@@ -42,7 +50,7 @@ const Textarea = ({
         className={cn(styles.textarea__area, { [styles.error]: showError })}
         {...props}
       />
-      {showError && <span className={styles.textarea__error}>{error}</span>}
+      {showError && <span className={styles.textarea__error}>{errorMessage || error}</span>}
     </div>
   );
 };
