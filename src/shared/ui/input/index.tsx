@@ -45,13 +45,13 @@ const Input: React.FC<IInput> = ({
     }
 
     if (target.name === 'telegram') {
-    if (minLength && target.value.length < minLength) {
-      return `Минимум ${minLength} символов`;
+      if (minLength && target.value.length < minLength) {
+        return `Минимум ${minLength} символов`;
+      }
+      if (target.validity.tooLong) {
+        return `Максимум ${maxLength} символов`;
+      }
     }
-    if (target.validity.tooLong) {
-  return `Максимум ${maxLength} символов`;
-}
-  }
 
     if (target.validity.typeMismatch) {
       return title || target.validationMessage;
@@ -73,7 +73,6 @@ const Input: React.FC<IInput> = ({
       }
     }
 
-   
     return '';
   };
 
