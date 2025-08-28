@@ -3,6 +3,7 @@ type TextareaProps = {
   error?: string;
   htmlFor?: string;
   className?: string;
+  pattern?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   minLength?: number;
