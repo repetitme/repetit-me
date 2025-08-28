@@ -43,6 +43,7 @@ const Input: React.FC<IInput> = ({
     if (target.validity.valueMissing && required) {
       return requiredError;
     }
+
     if (target.validity.typeMismatch) {
       return title || target.validationMessage;
     }
@@ -62,6 +63,7 @@ const Input: React.FC<IInput> = ({
         return 'Email должен содержать только латинские буквы (например: example@mail.ru)';
       }
     }
+
     return '';
   };
 

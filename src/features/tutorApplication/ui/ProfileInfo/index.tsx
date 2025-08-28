@@ -63,7 +63,7 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               label="Имя (Отчество)"
               placeholder="Александр"
               onChange={handleChange}
-              pattern="^[А-Яа-яЁё]+([\-][А-Яа-яЁё]+)*$"
+              pattern="^[А-Яа-яЁё\s\-]+([\s\-][А-Яа-яЁё]+)*$"
               title="Поле может содержать только кириллические буквы, пробелы и дефисы"
               minLength={1}
               maxLength={50}
@@ -89,7 +89,7 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               placeholder="@alex"
               onChange={handleChange}
               minLength={5}
-              maxLength={32}
+              maxLength={31}
               pattern="^@[A-Za-z0-9_]+$"
               title="Ник должен начинаться с @ и содержать только латинские буквы, цифры или _"
               required
@@ -100,7 +100,6 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               type="email"
               label="Почта"
               placeholder="alex@ya.ru"
-              title="Адрес электронной почты должен содержать символ @"
               onChange={handleChange}
             />
             <Textarea
@@ -110,6 +109,7 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               placeholder="Добавьте информацию о себе. 
 О вашей квалификации, сертификатах, об опыте преподавания. Объясните, какими будут ваши уроки, какие методы обучения используете в работе, как это помогает ученикам."
               onChange={handleChange}
+              pattern="^[А-Яа-яЁё0-9\s\-\(\)\/\,\.\!\:\;\'\?]+$"
               minLength={100}
               maxLength={2000}
               error="Минимум 100 символов"

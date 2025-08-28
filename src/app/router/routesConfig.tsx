@@ -1,5 +1,3 @@
-import AboutProfile from '../../features/TutorCabinet/ui/AboutProfile';
-import { studentInfoData } from '../../features/TutorCabinet/ui/AboutProfile/data';
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import Requests from '../../pages/Requests';
@@ -44,15 +42,6 @@ export const routesConfig: IRoute[] = [
   {
     path: '*',
     element: <NotFoundPage />,
-    auth: false
-  },
-  {
-    path: '/AboutProfile',
-    element: (
-      <div style={{ margin: '20px auto', inlineSize: '883px' }}>
-        <AboutProfile studentInfo={studentInfoData}></AboutProfile>
-      </div>
-    ),
     auth: false
   }
 ];
