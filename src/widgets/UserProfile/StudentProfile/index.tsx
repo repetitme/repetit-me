@@ -1,6 +1,6 @@
 import { IStudentData } from '../../../shared/types/userData';
 import UserInfo from '../../../shared/ui/userInfo';
-import { getTimeAgoText } from '../../../shared/utils/TimeAgo';
+import { getTimeAgoText } from '../../../shared/utils/CorrectDeclination';
 
 import styles from '../index.module.scss';
 
@@ -48,7 +48,9 @@ const StudentProfile: React.FC<IStudentDataProps> = ({
               {`Задолженность по комиссии: ${importantInfo} ₽`}
             </p>
           )}
-          <p className={styles.profile__parameters_price}>{price}</p>
+          <p className={styles.profile__parameters_price}>
+            от {price} руб./час
+          </p>
           <p className={styles.profile__parameters_description}>
             <span className={styles['profile__parameters_description--accent']}>
               Доп. информация:{' '}

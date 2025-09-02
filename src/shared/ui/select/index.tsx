@@ -68,7 +68,7 @@ const Select = ({
               linear-gradient(var(--clr-main), var(--clr-main)) padding-box,
               linear-gradient(180deg, var(--clr-primary-input) 0%, var(--clr-primary-default) 100%) border-box
             `,
-            padding: '12px 16px',
+            padding: '10.5px 16px',
             boxShadow: 'none',
             minHeight: 'auto',
             '&:hover': {

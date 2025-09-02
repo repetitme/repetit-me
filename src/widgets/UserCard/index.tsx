@@ -21,7 +21,6 @@ const UserCard: React.FC<IUserData> = ({
   role,
   tutorData,
   studentData,
-  handleSubmit,
   navOption,
   changeTab
 }) => {
@@ -114,10 +113,7 @@ const UserCard: React.FC<IUserData> = ({
         // Карточка ученика для репетитора
         <>
           {studentData ? (
-            <StudentProfile
-              handleSubmit={handleSubmit ?? false}
-              {...studentData}
-            />
+            <StudentProfile handleSubmit={false} {...studentData} />
           ) : (
             <p>Ученик не найден</p>
           )}

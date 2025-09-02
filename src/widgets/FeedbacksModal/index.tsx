@@ -1,6 +1,6 @@
 import { FC, useCallback, useState } from 'react';
 
-import CloseIcon from '../../assets/icons/closeIcon.svg';
+import CloseIconGray from '../../assets/icons/CloseIconGray.svg';
 import useClickOutside from '../../shared/hooks/useClickOutside';
 import useScrollLock from '../../shared/hooks/useScrollLock';
 import ModalOverlay from '../../shared/ui/overlay';
@@ -61,7 +61,7 @@ const FeedbacksModal: FC<IFeedbacksModalProps> = ({
           </div>
           <button className={styles.modal__buttonClose} onClick={onClose}>
             <img
-              src={CloseIcon}
+              src={CloseIconGray}
               className={styles.modal__icon}
               alt="иконка для закрытия модального окна"
             />

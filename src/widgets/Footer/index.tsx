@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { Link, useLocation } from 'react-router';
 
 import phone from '../../assets/images/phone_with_qr-code.svg';
 import logo from '../../assets/images/repetit-me_logo.svg';
@@ -11,6 +12,8 @@ import styles from './index.module.scss';
 import { TfakeUser } from './type';
 
 const Footer = ({ role, goTelegram }: TfakeUser) => {
+  const location = useLocation();
+
   const handleTelegramClick = () => {
     window.open('tg://resolve?domain=RepetitMe_bot', '_blank');
 
@@ -55,9 +58,16 @@ const Footer = ({ role, goTelegram }: TfakeUser) => {
         >
           {role === 'unauth' && (
             <div className={styles.links}>
-              <a className={styles.links_item} href="#student">
+              <Link className={styles.links_item} to="/tutor-catalog">
                 Ученику
-              </a>
+              </Link>
+              <Link
+                className={styles.links_item}
+                to="/register"
+                state={{ backgroundLocation: location }}
+              >
+                Репетитору
+              </Link>
             </div>
           )}
           <div
@@ -74,7 +84,13 @@ const Footer = ({ role, goTelegram }: TfakeUser) => {
         </div>
         <div className={styles['footer__bottom--links']}>
           <p>2023-2024© Все права защищены</p>
-          <a href="/privacy-policy">Политика конфиденциальности</a>
+          <a
+            href="https://teletype.in/@repetitme/politica_obrabotki_personalnih_dannysh"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Политика конфиденциальности
+          </a>
           <ScrollUp />
         </div>
       </div>

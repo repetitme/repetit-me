@@ -18,7 +18,6 @@
     left: calc((100% / 2) - 20px);
     inline-size: 40px;
     block-size: 40px;
-    visibility: hidden;
     pointer-events: none;
   }
 
@@ -26,8 +25,4 @@
     max-width: 80vw;
     max-height: 80vh;
   }
-}
-
-.container:hover .container__icon {
-  visibility: visible;
 }

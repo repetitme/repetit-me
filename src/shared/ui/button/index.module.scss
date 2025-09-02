@@ -50,8 +50,8 @@
     }
 
     &:disabled {
-      border: 1px solid var(--clr-primary-disabled);
-      color: var(--clr-3);
+      border: 1px solid #d1d5db;
+      color: #d1d5db;
     }
   }
 
@@ -68,8 +68,8 @@
     }
 
     &:disabled {
-      background-color: var(--clr-primary-disabled);
-      color: var(--clr-4);
+      background-color: var(--clr-2);
+      color: #c2c7db;
     }
   }
 

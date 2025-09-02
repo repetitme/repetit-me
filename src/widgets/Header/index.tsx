@@ -9,6 +9,7 @@ import icon from '../../assets/images/telegram_icon.svg';
 import useClickOutside from '../../shared/hooks/useClickOutside';
 import Button from '../../shared/ui/button';
 import getHeaderConfig from './getHeaderConfig';
+
 import styles from './index.module.scss';
 
 import { HeaderProps, TUserRole } from './types';

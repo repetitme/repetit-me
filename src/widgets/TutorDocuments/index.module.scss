@@ -11,6 +11,14 @@
     position: relative;
     cursor: pointer;
 
+    &_zoom {
+      position: absolute;
+      top: calc((100% / 2) - 18px);
+      left: calc((100% / 2) - 18px);
+      inline-size: 36px;
+      block-size: 36px;
+    }
+
     &_img {
       object-fit: contain;
       max-width: 100%;
@@ -18,17 +26,7 @@
   }
 
   &__full {
-    max-width: 80vw;
-    max-height: 80vh;
-  }
-
-  &__document:hover::after {
-    content: '';
-    position: absolute;
-    background-image: url('../../assets/icons/zoom_in.svg');
-    top: calc((100% / 2) - 18px);
-    left: calc((100% / 2) - 18px);
-    inline-size: 36px;
-    block-size: 36px;
+    max-inline-size: 80vw;
+    max-block-size: 80vh;
   }
 }

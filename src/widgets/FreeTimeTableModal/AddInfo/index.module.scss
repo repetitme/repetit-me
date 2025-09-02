@@ -1,0 +1,24 @@
+.container {
+  margin: 22px 0 0;
+  padding: 32px;
+  max-inline-size: 895px;
+  background-color: var(--clr-main);
+  border-radius: 20px;
+
+  &__title {
+    font-family: var(--ffm-default);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  &__textarea {
+    margin: 22px 0 0;
+  }
+}
+
+.button {
+  inline-size: 400px;
+  block-size: 56px;
+  margin: 22px auto 0;
+}
