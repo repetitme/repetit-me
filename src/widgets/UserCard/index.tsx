@@ -130,7 +130,7 @@ const UserCard: React.FC<IUserData> = ({
                     text="Подробнее"
                     variant="white"
                     onClick={() => {
-                      console.log('Подробнее');
+                      navigate(`/tutor-student/${studentData?.id}`);
                     }}
                   />
                 )}

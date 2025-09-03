@@ -41,7 +41,7 @@ export const routesConfig: IRoute[] = [
     auth: false
   },
   {
-    path: '/tutor-student',
+    path: '/tutor-student/:id',
     element: <TutorStudentPage />,
     auth: false
   },

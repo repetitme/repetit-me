@@ -15,12 +15,4 @@ export const lessonsListPaidData: lessonsListPaidType[] = [
   }
 ];
 
-export const lessonsListUnpaidData: lessonsListUnpaidType[] = [
-  {
-    lessonNumber: 3,
-    lessonPrice: 2000,
-    lessonData: '20.03.2023',
-    lessonTime: '10:13',
-    lessonDebt: 430
-  }
-];
+export const lessonsListUnpaidData: lessonsListUnpaidType[] = [];
