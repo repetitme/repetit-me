@@ -135,7 +135,11 @@ const TutorPage = () => {
                 >
                   {dataState.status}&nbsp;
                 </span>
-                <span className={styles.container__info_portrait_status_years}>
+                <span
+                  className={
+                    styles.container__profile_info_portrait_status_years
+                  }
+                >
                   {formatExperience(dataState.experienceYears)}
                 </span>
               </p>

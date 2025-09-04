@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import classNames from 'classnames';
 
+import { useAppContext } from '../../app/AppContext';
 import AuthForm from '../../features/auth';
 import { TUserRole } from '../../shared/types/userData';
 import Advantages from '../../widgets/Advantages';
@@ -17,6 +18,8 @@ import WhyWe from '../../widgets/WhyWe';
 import styles from './index.module.scss';
 
 const MainPage = () => {
+  const { role } = useAppContext();
+
   const [userRole, setUserRole] = useState<TUserRole>(() => {
     const saved = localStorage.getItem('userType') as TUserRole | null;
     return saved || 'student';
@@ -49,7 +52,7 @@ const MainPage = () => {
               <Advantages />
             </div>
             <div className={styles.container__quickselection}>
-              <QuickSelection />
+              <QuickSelection role={role} />
             </div>
             <div
               className={classNames(
