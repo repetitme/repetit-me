@@ -113,6 +113,7 @@ const TutorApplicationPage = () => {
         <Button
           text="Назад"
           variant="white"
+          size="large"
           onClick={handleBack}
           className={styles.button}
         />
