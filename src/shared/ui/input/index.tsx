@@ -35,6 +35,7 @@ const Input: React.FC<IInput> = ({
 }) => {
   const [error, setError] = useState<string>('');
   const [isFocused, setIsFocused] = useState(false);
+  const [isTouched, setIsTouched] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const cursorPositionRef = useRef<number | null>(null);
   const isPrice: boolean = variant === 'price';
@@ -106,7 +107,22 @@ const Input: React.FC<IInput> = ({
     } else {
       formatInput(e);
     }
-    setTimeout(() => setError(validate(e.target)), 0);
+    if (isTouched) {
+      setTimeout(() => setError(validate(e.target)), 0);
+    }
+  };
+
+  // Добавить новую функцию handleBlur
+  const handleBlur = (): void => {
+    setIsFocused(false);
+    setIsTouched(true); 
+    if (inputRef.current) {
+      setError(validate(inputRef.current)); 
+    }
+  };
+
+  const handleFocus = (): void => {
+    setIsFocused(true);
   };
 
   const wrapperClasses = cn(
@@ -141,8 +157,8 @@ const Input: React.FC<IInput> = ({
           onKeyDown={handleBackspace}
           value={value}
           onChange={handleChange}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
         {error && (
           <span
