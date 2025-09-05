@@ -38,7 +38,7 @@ const ProfileCategories = ({
         <Select
           label="Возрастные категории"
           options={data}
-          placeholder="Взрослый"
+          placeholder="Взрослые"
           defaultValue={data.find(
             (option) => option.label === category.ageCategory
           )}
