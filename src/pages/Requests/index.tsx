@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC, useState } from 'react';
 
 import cn from 'classnames';
 
@@ -10,6 +10,7 @@ import {
 } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
 import Loader from '../../shared/ui/loader';
+import Popups from '../../shared/ui/popup';
 import TelegramBlock from '../../shared/ui/telegramBlock';
 import Wrapper from '../../shared/ui/wrapper';
 import UserCard from '../../widgets/UserCard';
@@ -17,8 +18,12 @@ import useStudentRequests from './useStudentRequests';
 
 import styles from './index.module.scss';
 
-const Requests: React.FC = () => {
+const Requests: FC = () => {
   const { role } = useAppContext();
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
   const {
     listHeight,
     active,
@@ -129,27 +134,43 @@ const Requests: React.FC = () => {
               navOptions[role as keyof typeof navOptions].requests === active &&
               role === 'student' &&
               createdRequest && (
-                <Wrapper>
-                  <article className={styles.request}>
-                    <h3 className={styles.request__title}>
-                      Ищем репетитора в нашей дополнительной базе. В течение 3-5
-                      дней пришлём ответ в Telegram
-                    </h3>
-                    <div className={styles.request__list}>
-                      {Object.values(createdRequest).map((item, index) => {
-                        return (
-                          <div className={styles.request__item} key={index}>
-                            <span className={styles.request__subtitle}>
-                              {Object.keys(createdRequest)[index]}:
-                            </span>
-                            <span className={styles.request__text}>{item}</span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                    <Button text="Отменить заявку" variant="reset" />
-                  </article>
-                </Wrapper>
+                <>
+                  <Wrapper className={styles.request__wrapper}>
+                    <article className={styles.request}>
+                      <h3 className={styles.request__title}>
+                        Ищем репетитора в нашей дополнительной базе. В течение
+                        3-5 дней пришлём ответ в Telegram
+                      </h3>
+                      <div className={styles.request__list}>
+                        {Object.values(createdRequest).map((item, index) => {
+                          return (
+                            <div className={styles.request__item} key={index}>
+                              <span className={styles.request__subtitle}>
+                                {Object.keys(createdRequest)[index]}:
+                              </span>
+                              <span className={styles.request__text}>
+                                {item}
+                              </span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                      <Button
+                        text="Отменить заявку"
+                        variant="reset"
+                        onClick={toggle}
+                      />
+                    </article>
+                  </Wrapper>
+                  {Popups.cancelRequest({
+                    isOpen,
+                    close: toggle,
+                    buttonOnClick: toggle,
+                    secondaryButtonOnClick: () => {
+                      toggle();
+                    }
+                  })}
+                </>
               )}
             {visible <
               Number(

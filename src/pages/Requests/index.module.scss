@@ -4,6 +4,11 @@
   max-inline-size: 1440px;
 }
 
+.request__wrapper {
+  background-color: var(--clr-main);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
 .title {
   font-weight: 500;
   font-size: 32px;
