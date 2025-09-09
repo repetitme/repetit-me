@@ -1,15 +1,11 @@
 export interface IAboutProfile {
-  studentInfo: studentInfoType;
-}
-
-export type studentInfoType = {
   name: string;
-  lessonsAmount: number;
-  debt?: number;
+  lessonsCompleted?: number;
+  importantInfo?: number;
   price: string;
-  addInfo?: string;
-  isLessonStarted: boolean;
-  subjectTag: string[];
-  gradeTag: string[];
-  preparationsTag: string[];
-};
+  additionalInfo: string;
+  workingStatus?: string;
+  subjects: string[];
+  studentAudience: string[];
+  purpose: string[];
+}

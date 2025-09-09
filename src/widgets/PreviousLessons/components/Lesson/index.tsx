@@ -24,7 +24,7 @@ export const Lesson: React.FC<ILesson> = ({
       <p className={styles.lesson__title}>{lessonNumber}-е занятие</p>
       <p className={styles.lesson__mainText}>
         Стоимость занятия (за час):{' '}
-        <span className={styles.lesson__secondaryText}>{lessonPrice}</span>
+        <span className={styles.lesson__secondaryText}>{lessonPrice} руб.</span>
       </p>
       <p className={styles.lesson__mainText}>
         Дата: <span className={styles.lesson__secondaryText}>{lessonData}</span>
