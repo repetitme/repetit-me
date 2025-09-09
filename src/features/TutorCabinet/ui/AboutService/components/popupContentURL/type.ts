@@ -3,4 +3,5 @@ export interface IPopupContentURL {
   url: string;
   readOnly: boolean;
   key?: number;
+  onErrorChange?: (error: string) => void;
 }
