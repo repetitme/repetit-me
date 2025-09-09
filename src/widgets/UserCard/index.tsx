@@ -31,6 +31,13 @@ const UserCard: React.FC<IUserData> = ({
     setIsOpen(!isOpen);
   };
 
+  const cancel = () => {
+    if (cancelRequest && tutorData) {
+      cancelRequest(tutorData.id);
+    }
+    toggle();
+  };
+
   const navRole = role === 'tutor' ? navOptionsTutor : navOptionsStudent;
   const isMyList = navOption === navRole.myList;
   const isMyRequests = navOption === navRole.myRequests;
@@ -102,12 +109,7 @@ const UserCard: React.FC<IUserData> = ({
                         isOpen,
                         close: toggle,
                         buttonOnClick: toggle,
-                        secondaryButtonOnClick: () => {
-                          if (cancelRequest && tutorData) {
-                            cancelRequest(tutorData.id);
-                          }
-                          toggle();
-                        }
+                        secondaryButtonOnClick: cancel
                       })}
               </>
             )}
@@ -164,7 +166,7 @@ const UserCard: React.FC<IUserData> = ({
                       isOpen,
                       close: toggle,
                       buttonOnClick: toggle,
-                      secondaryButtonOnClick: toggle
+                      secondaryButtonOnClick: cancel
                     })}
               </>
             )}
