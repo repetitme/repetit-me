@@ -31,6 +31,8 @@ const Requests: FC = () => {
     list,
     count,
     createdRequest,
+    cancelRequest,
+    setCreatedRequests,
     visible,
     onClick,
     setVisible
@@ -127,12 +129,14 @@ const Requests: FC = () => {
                       changeTab={onClick(
                         navOptions[role as keyof typeof navOptions].myList
                       )}
+                      cancelRequest={cancelRequest}
                     />
                   </article>
                 ))}
             {loaded.content &&
               navOptions[role as keyof typeof navOptions].requests === active &&
               role === 'student' &&
+              Object.values(createdRequest).length !== 0 &&
               createdRequest && (
                 <>
                   <Wrapper className={styles.request__wrapper}>
@@ -167,6 +171,7 @@ const Requests: FC = () => {
                     close: toggle,
                     buttonOnClick: toggle,
                     secondaryButtonOnClick: () => {
+                      setCreatedRequests({});
                       toggle();
                     }
                   })}

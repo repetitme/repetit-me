@@ -21,6 +21,7 @@ const UserCard: React.FC<IUserData> = ({
   role,
   tutorData,
   studentData,
+  cancelRequest,
   navOption,
   changeTab
 }) => {
@@ -102,6 +103,9 @@ const UserCard: React.FC<IUserData> = ({
                         close: toggle,
                         buttonOnClick: toggle,
                         secondaryButtonOnClick: () => {
+                          if (cancelRequest && tutorData) {
+                            cancelRequest(tutorData.id);
+                          }
                           toggle();
                         }
                       })}
