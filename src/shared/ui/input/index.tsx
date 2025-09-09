@@ -128,7 +128,7 @@ const Input: React.FC<IInput> = ({
   const wrapperClasses = cn(
     styles['input-wrapper'],
     styles[variant],
-    error && name !== 'price' && styles['input-wrapper--gap'],
+    error && styles['input-wrapper--gap'],
     extraClass
   );
 
