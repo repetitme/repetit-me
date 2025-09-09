@@ -81,6 +81,7 @@
     }
 
     &__active {
+      position: absolute;
       top: 110%;
       block-size: 20px;
       max-inline-size: 400px;
