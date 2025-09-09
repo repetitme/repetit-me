@@ -29,7 +29,7 @@ export const AuthButtons: FC<IAuthButtonsProps> = ({
       <Button size="large" variant="purple" disabled={!isValid} text={text} />
       <div className={styles.auth__text}>
         <p>
-          Нажимая «Получить код» вы соглашаетесь с{' '}
+          Нажимая «Получить код», вы соглашаетесь с{' '}
           <a
             href="https://teletype.in/@repetitme/politica_obrabotki_personalnih_dannysh"
             target="_blank"

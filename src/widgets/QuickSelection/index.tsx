@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { FC } from 'react';
 
 import classNames from 'classnames';
 import { useNavigate } from 'react-router';
@@ -13,7 +14,9 @@ import { disciplines, dropdown } from './data';
 
 import styles from './index.module.scss';
 
-export const QuickSelection = () => {
+import { IQuickSelectionProps } from './type';
+
+export const QuickSelection: FC<IQuickSelectionProps> = ({ role }) => {
   const navigate = useNavigate();
   const [stateOption, setStateOption] = useState<'all' | string>('all');
   const [stateMore, setStateMore] = useState(false);
@@ -147,13 +150,13 @@ export const QuickSelection = () => {
         </ul>
       </div>
       <Carousel tutorsCard={tutors} change={change} />
+
       <Button
         text={'Посмотреть всех'}
-        variant={'purple'}
+        variant={role === 'student' || role === 'unauth' ? 'purple' : 'white'}
         className={styles.container__button}
-        onClick={() => {
-          navigate('/tutor-catalog');
-        }}
+        onClick={() => navigate(`/tutor-catalog`)}
+        disabled={role === 'student' || role === 'unauth' ? false : true}
       />
     </div>
   );

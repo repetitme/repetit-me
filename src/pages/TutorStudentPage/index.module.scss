@@ -1,0 +1,43 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-blocks);
+  margin: 40px auto 120px;
+  max-inline-size: 1200px;
+
+  &__returnButton {
+    inline-size: fit-content;
+    padding: 0;
+    font-size: 14px;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 11fr 34fr;
+    gap: var(--padding-blocks);
+
+    &_profile {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-blocks);
+
+      &_image {
+        max-block-size: 356px;
+        object-fit: cover;
+        border-radius: var(--border-radius-btn);
+      }
+    }
+
+    &_info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-blocks);
+      min-inline-size: 0;
+    }
+  }
+}
+
+.back {
+  margin: 34px auto 0;
+  max-inline-size: 1200px;
+}

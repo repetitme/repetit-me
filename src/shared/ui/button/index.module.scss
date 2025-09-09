@@ -29,7 +29,7 @@
   }
 
   &.white {
-    background-color: var(--clr-main);
+    background-color: var(--clr-transparent30);
     border: 1px solid var(--clr-primary-default);
     color: var(--clr-primary-default);
     column-gap: 8px;
@@ -69,7 +69,7 @@
 
     &:disabled {
       background-color: var(--clr-2);
-      color: #c2c7db;
+      color: #d1d5db
     }
   }
 
