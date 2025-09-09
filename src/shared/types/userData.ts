@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ServicesListItem } from '../../widgets/AboutMe/type';
 
 export interface IFreeTime {

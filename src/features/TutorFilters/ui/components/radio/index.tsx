@@ -1,7 +1,8 @@
+import cn from 'classnames';
+
 import styles from './index.module.scss';
 
 import { TRadio } from './types';
-import cn from 'classnames';
 
 export const Radio = ({
   title,
@@ -14,7 +15,12 @@ export const Radio = ({
       <h3 className={styles.radio__title}>{title}</h3>
       <ul className={styles.radio__list}>
         {items.map((item) => (
-          <li key={item} className={cn(styles.radio__checkbox, {[styles.short]: items.length < 4})}>
+          <li
+            key={item}
+            className={cn(styles.radio__checkbox, {
+              [styles.short]: items.length < 4
+            })}
+          >
             <input
               type="radio"
               name={title}
