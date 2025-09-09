@@ -234,6 +234,12 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
           ] || ''
         }
         variant="report"
+        {...(!textarea && {
+          onlyNumber:
+            name === 'price' ||
+            name === 'duration' ||
+            name === 'planedNumberOfLessons'
+        })}
         label={variantData[variant].secondaryTitles[index]}
         required={textarea ? false : true}
         maxLength={textarea ? 500 : 50}

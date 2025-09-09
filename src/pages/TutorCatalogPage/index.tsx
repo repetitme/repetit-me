@@ -24,7 +24,7 @@ const TutorCatalogPage = () => {
   } = useUsersData<ITutorData>('tutors');
 
   const [visibleCount, setVisibleCount] = useState(5);
-  const [tooltipFilter, setTooltipFilter] = useState(false);
+  const [tooltipFilter, setTooltipFilter] = useState(true);
   const [tooltipNotFound, setTooltipNotFound] = useState(false);
   const [modalOpen, setModalOpen] = useState<'submit' | 'filter' | null>(null);
 

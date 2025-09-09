@@ -50,8 +50,6 @@ const TutorStudentPage = () => {
       </>
     );
 
-  console.log(dataState);
-
   return (
     <main className={styles.page}>
       <ButtonBack

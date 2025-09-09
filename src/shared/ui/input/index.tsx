@@ -115,9 +115,9 @@ const Input: React.FC<IInput> = ({
   // Добавить новую функцию handleBlur
   const handleBlur = (): void => {
     setIsFocused(false);
-    setIsTouched(true); 
+    setIsTouched(true);
     if (inputRef.current) {
-      setError(validate(inputRef.current)); 
+      setError(validate(inputRef.current));
     }
   };
 
@@ -128,7 +128,7 @@ const Input: React.FC<IInput> = ({
   const wrapperClasses = cn(
     styles['input-wrapper'],
     styles[variant],
-    error && name !== 'price' && styles['input-wrapper--gap'],
+    error && styles['input-wrapper--gap'],
     extraClass
   );
 

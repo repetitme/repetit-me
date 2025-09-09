@@ -63,6 +63,20 @@ const useStudentRequests = () => {
     }, 100);
   };
 
+  const cancelRequest = (id: string) => {
+    setCount((prev) => {
+      return prev.map((c, index) =>
+        index === requests.indexOf(active) ? (parseInt(c) - 1).toString() : c
+      );
+    });
+    setList((prev) => {
+      return prev.map((list) => list.filter((item) => item.id !== id)) as (
+        | ITutorData[]
+        | IStudentData[]
+      )[];
+    });
+  };
+
   useEffect(() => {
     // Mock API call to get the student or tutor profile
     getProfile(
@@ -139,6 +153,9 @@ const useStudentRequests = () => {
     count,
     visible,
     createdRequest,
+    cancelRequest,
+    setList,
+    setCreatedRequests,
     onClick,
     setVisible
   };
