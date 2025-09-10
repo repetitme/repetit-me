@@ -51,7 +51,7 @@ const UserCard: React.FC<IUserData> = ({
         : TutorDialogsVariant.hadFirstClass;
   const handleChangeTab = () => {
     if (changeTab) {
-      changeTab(navRole.myList);
+      changeTab();
       close();
     }
   };
