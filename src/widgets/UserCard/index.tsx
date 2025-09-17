@@ -22,6 +22,7 @@ const UserCard: React.FC<IUserData> = ({
   tutorData,
   studentData,
   cancelRequest,
+  acceptRequest,
   navOption,
   changeTab
 }) => {
@@ -32,8 +33,23 @@ const UserCard: React.FC<IUserData> = ({
   };
 
   const cancel = () => {
-    if (cancelRequest && tutorData) {
-      cancelRequest(tutorData.id);
+    if (cancelRequest) {
+      if (tutorData) {
+        cancelRequest(tutorData.id);
+      } else if (studentData) {
+        cancelRequest(studentData.id);
+      }
+    }
+    toggle();
+  };
+
+  const accept = () => {
+    if (acceptRequest) {
+      if (tutorData) {
+        acceptRequest(tutorData.id);
+      } else if (studentData) {
+        acceptRequest(studentData.id);
+      }
     }
     toggle();
   };
@@ -51,6 +67,7 @@ const UserCard: React.FC<IUserData> = ({
         : TutorDialogsVariant.hadFirstClass;
   const handleChangeTab = () => {
     if (changeTab) {
+      accept();
       changeTab();
       close();
     }
@@ -98,6 +115,7 @@ const UserCard: React.FC<IUserData> = ({
                       close: toggle,
                       buttonOnClick: () => {
                         navigate('/requests');
+                        accept();
                       },
                       buttonText: 'Мои заявки'
                     })
@@ -163,7 +181,7 @@ const UserCard: React.FC<IUserData> = ({
                       buttonText: 'Отмена',
                       buttonOnClick: toggle,
                       secondaryButtonText: 'Далее',
-                      secondaryButtonOnClick: toggle
+                      secondaryButtonOnClick: accept
                     })
                   : Popups.rejectTutor({
                       isOpen,

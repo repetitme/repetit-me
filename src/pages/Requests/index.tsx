@@ -32,6 +32,7 @@ const Requests: FC = () => {
     count,
     createdRequest,
     cancelRequest,
+    acceptRequest,
     setCreatedRequests,
     visible,
     onClick,
@@ -130,6 +131,7 @@ const Requests: FC = () => {
                         navOptions[role as keyof typeof navOptions].myList
                       )}
                       cancelRequest={cancelRequest}
+                      acceptRequest={acceptRequest}
                     />
                   </article>
                 ))}
