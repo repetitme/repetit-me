@@ -147,11 +147,6 @@ const UserCard: React.FC<IUserData> = ({
           <div className={styles.card__buttons}>
             {isMyList ? (
               <>
-                <Button
-                  text="Создать отчет"
-                  onClick={toggle}
-                  variant="purple"
-                />
                 {(studentData?.lessonsCompleted ?? 0) > 1 && (
                   <Button
                     text="Подробнее"
@@ -161,6 +156,11 @@ const UserCard: React.FC<IUserData> = ({
                     }}
                   />
                 )}
+                <Button
+                  text="Создать отчет"
+                  onClick={toggle}
+                  variant="purple"
+                />
               </>
             ) : (
               <>

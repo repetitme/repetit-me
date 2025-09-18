@@ -99,7 +99,7 @@ const Requests: FC = () => {
                   [styles.content__subtitle_active]: loaded.content
                 })}
               >
-                Ученики, которые возможно вам подойдут
+                Ученики, которые, возможно, вам подойдут
               </div>
             )}
           <section
