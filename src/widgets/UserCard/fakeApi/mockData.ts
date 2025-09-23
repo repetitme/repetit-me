@@ -1416,7 +1416,7 @@ export const mockStudentProfile: IStudentProfile[] = [
         [titles.subjects]: ['Математика'],
         [titles.goals]: ['Подготовка к ЕГЭ'],
         [titles.ageBrackets]: ['9-11 класс'],
-        [titles.price]: ['от 2000-2500 руб./час'],
+        [titles.price]: [' 2000-2500 руб./час'],
         [titles.experience]: ['1-5 лет'],
         [titles.gender]: ['Женщина'],
         [titles.rating]: ['Высокий'],
