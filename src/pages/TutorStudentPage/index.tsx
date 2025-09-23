@@ -43,7 +43,7 @@ const TutorStudentPage = () => {
         <div className={styles.back}>
           <ButtonBack
             text={'Вернуться назад'}
-            onClick={() => navigate(`/requests`)}
+            onClick={() => navigate(-1)}
           />
         </div>
         <Loader />;
@@ -55,7 +55,7 @@ const TutorStudentPage = () => {
       <ButtonBack
         className={styles.page__returnButton}
         text="Вернуться назад"
-        onClick={() => navigate(`/requests`)}
+        onClick={() => navigate(-1)}
       />
       <div className={styles.page__content}>
         <div className={styles.page__content_profile}>

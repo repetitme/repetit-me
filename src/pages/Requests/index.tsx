@@ -6,7 +6,9 @@ import { useAppContext } from '../../app/AppContext';
 import {
   IStudentData,
   ITutorData,
-  navOptions
+  navOptions,
+  navOptionsStudent,
+  navOptionsTutor
 } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
 import Loader from '../../shared/ui/loader';
@@ -124,7 +126,12 @@ const Requests: FC = () => {
                   <article key={person.id} className={styles.content__item}>
                     <UserCard
                       role={role}
-                      navOption={active}
+                      navOption={
+                        active as
+                          | navOptionsTutor
+                          | navOptionsStudent
+                          | undefined
+                      }
                       tutorData={person as ITutorData}
                       studentData={person as IStudentData}
                       changeTab={onClick(

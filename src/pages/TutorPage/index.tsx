@@ -114,7 +114,7 @@ const TutorPage = () => {
         <div className={styles.back}>
           <ButtonBack
             text={'Вернуться назад'}
-            onClick={() => navigate(`/tutor-catalog`)}
+            onClick={() => navigate(-1)}
           />
         </div>
         <Loader />;
@@ -139,7 +139,7 @@ const TutorPage = () => {
       <div className={styles.container}>
         <ButtonBack
           text={'Вернуться назад'}
-          onClick={() => navigate(`/tutor-catalog`)}
+          onClick={() => navigate(-1)}
         />
 
         <main className={styles.container__profile}>

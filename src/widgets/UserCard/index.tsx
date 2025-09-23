@@ -152,7 +152,9 @@ const UserCard: React.FC<IUserData> = ({
                     text="Подробнее"
                     variant="white"
                     onClick={() => {
-                      navigate(`/tutor-student/${studentData?.id}`);
+                      navigate(`/tutor-student/${studentData?.id}`, {
+                        state: { background: true }
+                      });
                     }}
                   />
                 )}
