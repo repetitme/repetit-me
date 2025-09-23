@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 import { useAppContext } from '../../app/AppContext';
 import TutorFilters from '../../features/TutorFilters/ui';
-import useClickOutside from '../../shared/hooks/useClickOutside';
 import useScrollLock from '../../shared/hooks/useScrollLock';
 import { ITutorData } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
