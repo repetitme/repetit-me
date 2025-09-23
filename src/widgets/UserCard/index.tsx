@@ -46,6 +46,7 @@ const UserCard: React.FC<IUserData> = ({
   const accept = () => {
     if (acceptRequest) {
       if (tutorData) {
+        changeTab?.();
         acceptRequest(tutorData.id);
       } else if (studentData) {
         acceptRequest(studentData.id);
