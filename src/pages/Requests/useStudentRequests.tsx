@@ -103,7 +103,6 @@ const useStudentRequests = () => {
   };
 
   useEffect(() => {
-    // Mock API call to get the student or tutor profile
     getProfile(
       role === 'student' ? mockStudentProfile[0].id : mockTutorProfile[0].id,
       role as 'student' | 'tutor'
