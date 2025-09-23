@@ -28,8 +28,6 @@ const TutorCatalogPage = () => {
   const [tooltipNotFound, setTooltipNotFound] = useState(false);
   const [modalOpen, setModalOpen] = useState<'submit' | 'filter' | null>(null);
 
-  const tooltipRef = useClickOutside(() => setTooltipFilter(false));
-
   useScrollLock(modalOpen !== null);
 
   const handleOpenModal = (option: 'submit' | 'filter') => {
@@ -81,7 +79,7 @@ const TutorCatalogPage = () => {
             </>
           )}
         </div>
-        <div className={styles.catalog__filters} ref={tooltipRef}>
+        <div className={styles.catalog__filters}>
           <TutorFilters
             onSubmit={() => handleOpenModal('filter')}
             onReset={() => setTooltipNotFound(false)}

@@ -34,7 +34,7 @@ const useStudentRequests = () => {
     role === 'student' ? navOptionsStudent : navOptionsTutor
   );
   const [active, setActive] = useState(
-    navOptions[role as keyof typeof navOptions].myList
+    role === 'unauth' ? '' : navOptions[role as keyof typeof navOptions].myList
   );
   const [loaded, setLoaded] = useState(
     Object.fromEntries(

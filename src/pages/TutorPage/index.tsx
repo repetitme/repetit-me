@@ -6,11 +6,13 @@ import { useAppContext } from '../../app/AppContext';
 import disciplineIcon from '../../assets/images/UserCardIcons/disciplines_icon.svg';
 import studentCategory from '../../assets/images/UserCardIcons/student_category_icon.svg';
 import tutorTask from '../../assets/images/UserCardIcons/tutors_task_icon.svg';
-import { ITutorData } from '../../shared/types/userData';
+import { IStudentProfile, ITutorData } from '../../shared/types/userData';
+import { navOptionsStudent } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
 import ButtonBack from '../../shared/ui/buttonBack';
 import Loader from '../../shared/ui/loader';
 import ParameterItem from '../../shared/ui/parameterItem';
+import Popups from '../../shared/ui/popup';
 import TutorRating from '../../shared/ui/tutorRating';
 import AboutMe from '../../widgets/AboutMe';
 import FeedbacksModal from '../../widgets/FeedbacksModal';
@@ -18,7 +20,9 @@ import FreeTimeTable from '../../widgets/FreeTimeTable';
 import FreeTimeTableModal from '../../widgets/FreeTimeTableModal';
 import TutorDiploma from '../../widgets/TutorDocuments';
 import TutorVideoStart from '../../widgets/TutorVideoStart';
+import { mockStudentProfile } from '../../widgets/UserCard/fakeApi/mockData';
 import * as API from '../../widgets/UserCard/fakeApi/userApi';
+import useStudentRequests from '../Requests/useStudentRequests';
 
 import styles from './index.module.scss';
 
@@ -31,6 +35,23 @@ const TutorPage = () => {
 
   const [isOpenModalStateFeedback, setOpenModalStateFeedback] = useState(false);
   const [isOpenModalStateFreeTime, setOpenModalStateFreeTime] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [cancelModal, setCancelModal] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
+  const { acceptRequest, cancelRequest } = useStudentRequests();
+  const [status, setStatus] = useState<
+    'myTutors' | 'iRequested' | 'tutorRequested' | 'unauth'
+  >('unauth');
+
+  const cancel = () => {
+    cancelRequest(params.id!);
+    setStatus('unauth');
+  };
+
+  const accept = () => {
+    acceptRequest(params.id!);
+    toggle();
+  };
 
   const [dataState, setDataState] = useState<ITutorData>();
   const params = useParams<RouteParams>();
@@ -51,8 +72,39 @@ const TutorPage = () => {
     window.scrollTo(0, 0);
     const fetchData = async () => {
       if (!params.id) return;
-      const tutorInfo = await API.getTutor(params.id);
-      setDataState(tutorInfo);
+      API.getTutor(params.id)
+        .then((res) => setDataState(res))
+        .then(() => API.getProfile(mockStudentProfile[0].id, 'student'))
+        .then((profile) => {
+          if (!profile) return;
+          if (role === 'unauth') setStatus('unauth');
+          else {
+            if (
+              (
+                (profile.requests as IStudentProfile['requests'])?.[
+                  navOptionsStudent.myList
+                ]?.ids ?? []
+              ).includes(params.id!)
+            )
+              setStatus('myTutors');
+            if (
+              (
+                (profile.requests as IStudentProfile['requests'])?.[
+                  navOptionsStudent.myRequests
+                ]?.ids ?? []
+              ).includes(params.id!)
+            )
+              setStatus('iRequested');
+            if (
+              (
+                (profile.requests as IStudentProfile['requests'])?.[
+                  navOptionsStudent.requests
+                ]?.ids ?? []
+              ).includes(params.id!)
+            )
+              setStatus('tutorRequested');
+          }
+        });
     };
     fetchData();
   }, [params.id, location.key]);
@@ -84,7 +136,6 @@ const TutorPage = () => {
           isOpen={isOpenModalStateFreeTime}
         />
       )}
-
       <div className={styles.container}>
         <ButtonBack
           text={'Вернуться назад'}
@@ -100,7 +151,57 @@ const TutorPage = () => {
             />
             <div className={styles.container__profile_contact_connection}>
               {role === 'student' || role === 'tutor' ? (
-                <Button text="Связаться" variant="purple" />
+                <div
+                  className={
+                    styles.container__profile_contact_connection_buttons
+                  }
+                >
+                  {(status === 'tutorRequested' || status === 'unauth') && (
+                    <Button
+                      text={status === 'unauth' ? 'Связаться' : 'Принять'}
+                      variant={
+                        status === 'unauth' || status === 'tutorRequested'
+                          ? 'purple'
+                          : 'red'
+                      }
+                      onClick={toggle}
+                    />
+                  )}
+                  {(status === 'tutorRequested' || status === 'iRequested') && (
+                    <Button
+                      text="Отменить заявку"
+                      variant="red"
+                      onClick={() => setCancelModal(true)}
+                    />
+                  )}
+                  {cancelModal &&
+                    Popups.cancelRequest({
+                      isOpen: cancelModal,
+                      close: () => setCancelModal(false),
+                      buttonOnClick: () => setCancelModal(false),
+                      secondaryButtonOnClick: () => {
+                        setCancelModal(false);
+                        cancel();
+                      }
+                    })}
+                  {status === 'iRequested' &&
+                    Popups.responded({
+                      isOpen,
+                      close: toggle,
+                      buttonOnClick: () => {
+                        navigate('/requests');
+                        accept();
+                      },
+                      buttonText: 'Мои заявки'
+                    })}
+                  {status !== 'iRequested' &&
+                    Popups.receivedRequest({
+                      isOpen,
+                      close: toggle,
+                      buttonOnClick: accept,
+                      buttonText: navOptionsStudent.myList
+                    })}
+                </div>
               ) : (
                 role === 'unauth' && (
                   <>
