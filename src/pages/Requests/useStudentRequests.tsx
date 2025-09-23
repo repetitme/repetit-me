@@ -34,7 +34,7 @@ const useStudentRequests = () => {
     role === 'student' ? navOptionsStudent : navOptionsTutor
   );
   const [active, setActive] = useState(
-    navOptions[role as keyof typeof navOptions].myList
+    role === 'unauth' ? '' : navOptions[role as keyof typeof navOptions].myList
   );
   const [loaded, setLoaded] = useState(
     Object.fromEntries(
@@ -75,6 +75,31 @@ const useStudentRequests = () => {
         | IStudentData[]
       )[];
     });
+  };
+
+  const acceptRequest = (id: string) => {
+    const requestsIndex = requests.indexOf(active);
+    setCount((prev) => {
+      return prev.map((c, index) =>
+        index === 0
+          ? (parseInt(c) + 1).toString()
+          : index === requestsIndex
+            ? (parseInt(c) - 1).toString()
+            : c
+      );
+    });
+    setList(
+      (prev) =>
+        [
+          [prev[requestsIndex].find((item) => item.id === id), ...prev[0]],
+          requestsIndex === 1
+            ? prev[1].filter((item) => item.id !== id)
+            : prev[1],
+          requestsIndex === 2
+            ? prev[2].filter((item) => item.id !== id)
+            : prev[2]
+        ] as (ITutorData[] | IStudentData[])[]
+    );
   };
 
   useEffect(() => {
@@ -154,6 +179,7 @@ const useStudentRequests = () => {
     visible,
     createdRequest,
     cancelRequest,
+    acceptRequest,
     setList,
     setCreatedRequests,
     onClick,

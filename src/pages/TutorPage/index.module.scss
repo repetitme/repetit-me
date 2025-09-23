@@ -39,6 +39,12 @@
         padding-top: 18px;
         inline-size: 1;
 
+        &_buttons {
+          display: flex;
+          gap: 19px;
+          flex-direction: column;
+        }
+
         &_text {
           padding: 10px 0 0 10px;
           font-family: var(--ffm-default);

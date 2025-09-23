@@ -91,8 +91,9 @@ export interface IUserData {
   studentData?: IStudentData;
   onSubmit?: boolean;
   navOption?: navOptionsStudent | navOptionsTutor; // Опция навигации, которая активна в данный момент
-  changeTab?: (tab: navOptionsStudent | navOptionsTutor) => void;
+  changeTab?: () => void;
   cancelRequest?: (id: string) => void;
+  acceptRequest?: (id: string) => void;
 }
 
 export interface TutorCabinetCardProps

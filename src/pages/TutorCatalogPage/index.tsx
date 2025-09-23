@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 import { useAppContext } from '../../app/AppContext';
 import TutorFilters from '../../features/TutorFilters/ui';
-import useClickOutside from '../../shared/hooks/useClickOutside';
 import useScrollLock from '../../shared/hooks/useScrollLock';
 import { ITutorData } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
@@ -27,8 +26,6 @@ const TutorCatalogPage = () => {
   const [tooltipFilter, setTooltipFilter] = useState(true);
   const [tooltipNotFound, setTooltipNotFound] = useState(false);
   const [modalOpen, setModalOpen] = useState<'submit' | 'filter' | null>(null);
-
-  const tooltipRef = useClickOutside(() => setTooltipFilter(false));
 
   useScrollLock(modalOpen !== null);
 
@@ -81,7 +78,7 @@ const TutorCatalogPage = () => {
             </>
           )}
         </div>
-        <div className={styles.catalog__filters} ref={tooltipRef}>
+        <div className={styles.catalog__filters}>
           <TutorFilters
             onSubmit={() => handleOpenModal('filter')}
             onReset={() => setTooltipNotFound(false)}

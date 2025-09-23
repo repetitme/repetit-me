@@ -6,7 +6,9 @@ import { useAppContext } from '../../app/AppContext';
 import {
   IStudentData,
   ITutorData,
-  navOptions
+  navOptions,
+  navOptionsStudent,
+  navOptionsTutor
 } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
 import Loader from '../../shared/ui/loader';
@@ -32,6 +34,7 @@ const Requests: FC = () => {
     count,
     createdRequest,
     cancelRequest,
+    acceptRequest,
     setCreatedRequests,
     visible,
     onClick,
@@ -98,7 +101,7 @@ const Requests: FC = () => {
                   [styles.content__subtitle_active]: loaded.content
                 })}
               >
-                Ученики, которые возможно вам подойдут
+                Ученики, которые, возможно, вам подойдут
               </div>
             )}
           <section
@@ -123,13 +126,19 @@ const Requests: FC = () => {
                   <article key={person.id} className={styles.content__item}>
                     <UserCard
                       role={role}
-                      navOption={active}
+                      navOption={
+                        active as
+                          | navOptionsTutor
+                          | navOptionsStudent
+                          | undefined
+                      }
                       tutorData={person as ITutorData}
                       studentData={person as IStudentData}
                       changeTab={onClick(
                         navOptions[role as keyof typeof navOptions].myList
                       )}
                       cancelRequest={cancelRequest}
+                      acceptRequest={acceptRequest}
                     />
                   </article>
                 ))}
