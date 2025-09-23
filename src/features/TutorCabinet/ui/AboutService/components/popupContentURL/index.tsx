@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 import unionIcon from '../../../../../../assets/icons/Union.svg';
 
@@ -9,11 +9,24 @@ import { IPopupContentURL } from './type';
 export const PopupContentURL: React.FC<IPopupContentURL> = ({
   inputName,
   url,
-  readOnly = true
+  readOnly = true,
+  onErrorChange
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState(url);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (onErrorChange) {
+      onErrorChange(error || '');
+    }
+  }, [error, onErrorChange]);
+
+  useEffect(() => {
+    if (!readOnly && url) {
+      validateInput(url);
+    }
+  }, []);
 
   const handleCopyClick = () => {
     if (inputRef.current) {
@@ -32,11 +45,31 @@ export const PopupContentURL: React.FC<IPopupContentURL> = ({
   };
 
   const validateInput = (value: string) => {
-    if (value.startsWith('https://')) {
-      setError(null);
+    if (!value.trim()) {
+      setError('Поле не может быть пустым');
       return;
     }
-    setError('Пожалуйста, введите корректную ссылку');
+    
+    const invalidChars = /[ <>{}|\\^~\[\]`]/;
+    if (invalidChars.test(value)) {
+      setError('Ссылка содержит недопустимые символы');
+      return;
+    }
+
+    if (value.startsWith('http://') || value.startsWith('https://')) {
+      const protocol = value.startsWith('https://') ? 'https://' : 'http://';
+      const afterProtocol = value.slice(protocol.length);
+      
+      if (!afterProtocol.trim()) {
+        setError('Ссылка должна содержать домен');
+        return;
+      }
+    } else {
+      setError('Ссылка должна начинаться с http:// или https://');
+      return;
+    }
+
+    setError(null);
   };
 
   return (
@@ -48,7 +81,7 @@ export const PopupContentURL: React.FC<IPopupContentURL> = ({
           readOnly={readOnly}
           value={inputValue}
           onChange={handleInputChange}
-          className={styles.popup__content_URL_input}
+          className={`${styles.popup__content_URL_input} ${error ? styles.error : ''}`}
         />
         <button
           onClick={handleCopyClick}
