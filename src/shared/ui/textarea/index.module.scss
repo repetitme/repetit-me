@@ -41,6 +41,28 @@
     &::placeholder {
       color: var(--clr-4, #858585);
     }
+
+    &::-webkit-scrollbar {
+      width: 16px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+      border-radius: 6px;
+      margin: 12px 4px 0px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+      border: 5px solid transparent;
+      background-clip: content-box;
+
+      &:hover {
+        cursor: default;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+    }
   }
 
   &__error {
