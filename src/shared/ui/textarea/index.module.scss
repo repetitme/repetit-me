@@ -49,18 +49,18 @@
     &::-webkit-scrollbar-track {
       background: transparent;
       border-radius: 6px;
-      margin: 12px 4px 0px;
+      margin: 12px 4px 0;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: rgba(0, 0, 0, 0.4);
+      background: rgb(0 0 0 / 40%);
       border-radius: 12px;
       border: 5px solid transparent;
       background-clip: content-box;
 
       &:hover {
         cursor: default;
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: rgb(0 0 0 / 60%);
       }
     }
   }
