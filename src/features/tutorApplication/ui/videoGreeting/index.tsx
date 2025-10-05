@@ -15,7 +15,18 @@ import { VideoGreetingProps } from './type';
 
 const VideoGreeting = ({ onVideoChange, initialVideo }: VideoGreetingProps) => {
   const maxSizeBytes = 20 * 1024 * 1024;
-  const acceptTypesVideo = ['video/mp4', 'video/quicktime', 'video/3gpp'];
+
+  const acceptTypesVideo = [
+    'video/mp4',
+    'video/quicktime',
+    'video/3gpp',
+    'video/mp4v-es',
+    'video/x-m4v',
+    'video/mpeg4-generic',
+    'video/mpeg4',
+    'video/x-mpeg4'
+  ];
+
   const [files, setFiles] = useState<File[]>([]);
   const { removeFile } = useFileRemove(files, setFiles);
 
@@ -47,7 +58,10 @@ const VideoGreeting = ({ onVideoChange, initialVideo }: VideoGreetingProps) => {
       typeConstraints: {
         'video/mp4': { maxSizeBytes },
         'video/quicktime': { maxSizeBytes },
-        'video/3gpp': { maxSizeBytes }
+        'video/3gpp': { maxSizeBytes },
+        'video/mpeg4': { maxSizeBytes },
+        'video/x-mpeg4': { maxSizeBytes },
+        'video/mp4v-es': { maxSizeBytes }
       }
     });
 

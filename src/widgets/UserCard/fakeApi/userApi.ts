@@ -19,7 +19,7 @@ export const getTutors = (): Promise<ITutorData[]> => {
       } else {
         reject(new Error('Не удалось загрузить данные репетиторов'));
       }
-    }, 500);
+    }, 10);
   });
 };
 
@@ -31,7 +31,7 @@ export const getTutor = (id: string) => {
       } else {
         reject(new Error('Не удалось загрузить данные репетитора'));
       }
-    }, 250);
+    }, 10);
   });
 };
 
@@ -43,7 +43,7 @@ export const getStudents = (): Promise<IStudentData[]> => {
       } else {
         reject(new Error('Не удалось загрузить данные учеников'));
       }
-    }, 250);
+    }, 10);
   });
 };
 
@@ -55,7 +55,7 @@ export const getStudent = (id: string) => {
       } else {
         reject(new Error('Не удалось загрузить данные ученика'));
       }
-    }, 250);
+    }, 10);
   });
 };
 
@@ -72,7 +72,7 @@ export const getProfile = (id: string, role: 'student' | 'tutor') => {
         } else {
           reject(new Error('Не удалось загрузить данные ученика'));
         }
-      }, 250);
+      }, 10);
     }
   );
 };

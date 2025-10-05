@@ -10,7 +10,7 @@ const ProfileCard = ({
   name,
   status,
   tg,
-  link,
+  linkRef,
   rating,
   image
 }: TutorCabinetCardProps) => {
@@ -52,12 +52,12 @@ const ProfileCard = ({
         <div className={styles.refBlock}>
           <p className={styles.refBlock__title}>Реферальная ссылка:</p>
           <a
-            href={link}
+            href={linkRef}
             className={styles.refBlock__link}
             target="_blank"
             rel="noopener noreferrer"
           >
-            {link}
+            {linkRef}
           </a>
         </div>
       </div>

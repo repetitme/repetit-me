@@ -67,7 +67,47 @@
   max-inline-size: 1032px;
   min-block-size: 169px;
   inline-size: 100%;
-  border: 2px dashed #818181;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      #818181,
+      #818181 10px,
+      transparent 10px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      #818181,
+      #818181 10px,
+      transparent 10px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      #818181,
+      #818181 10px,
+      transparent 10px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      270deg,
+      #818181,
+      #818181 10px,
+      transparent 10px,
+      transparent 20px
+    );
+  background-size:
+    2px 100%,
+    100% 2px,
+    2px 100%,
+    100% 2px;
+  background-position:
+    0 0,
+    0 0,
+    100% 0,
+    0 100%;
+  background-repeat: no-repeat;
+  background-color: var(--clr-main);
   border-radius: 10px;
   margin-inline: auto;
   margin-block: 43px;

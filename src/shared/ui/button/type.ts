@@ -14,5 +14,5 @@ export interface ButtonProps {
   disabled?: boolean;
   className?: string;
   href?: string;
-  onClick?: () => void;
+  onClick?: (e: React.SyntheticEvent) => void;
 }

@@ -1,0 +1,54 @@
+@use '../../../../assets/styles/mixins/flexCenter.scss' as *;
+
+.modal {
+  @include flex-center;
+
+  gap: 28px;
+  max-inline-size: 598px;
+  max-block-size: 357px;
+  inline-size: 100%;
+  block-size: 100%;
+
+  &__context {
+    @include flex-center;
+
+    gap: 16px;
+    max-inline-size: 536px;
+
+    &--title {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 100%;
+      font-family: var(--ffm-title);
+    }
+
+    &--text {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 136%;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    inline-size: 100%;
+    block-size: 56px;
+
+    &--item {
+      padding: 0;
+      max-inline-size: 149px;
+      inline-size: 100%;
+      block-size: 100%;
+
+      &-second {
+        max-inline-size: 312px;
+      }
+    }
+  }
+}

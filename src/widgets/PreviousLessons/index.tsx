@@ -38,3 +38,5 @@ export const PreviousLessons: React.FC<IPreviousLessons> = ({
     </div>
   );
 };
+
+export default PreviousLessons;

@@ -24,7 +24,9 @@ const SubjectForm = ({ onChange, initialData }: SubjectFormProps) => {
 
   const handleAddBlock = () => {
     if (subjects.length < MAX_BLOCKS) {
-      setSubjects((prev) => [...prev, initialSubject]);
+      const newSubjects = [...subjects, initialSubject];
+      setSubjects(newSubjects);
+      onChange(newSubjects);
     }
   };
 

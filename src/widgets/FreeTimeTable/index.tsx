@@ -3,6 +3,7 @@ import { FC } from 'react';
 import clock from '../../assets/icons/clock.svg';
 import { IFreeTime } from '../../shared/types/userData';
 import Time from '../Time';
+import InfoBlock from '../infoBlock';
 
 import styles from './index.module.scss';
 
@@ -12,8 +13,7 @@ interface IFreeTimeTable {
 
 const FreeTimeTable: FC<IFreeTimeTable> = ({ freeTime }) => {
   return (
-    <div className={styles.container}>
-      <h2 className={styles.container__title}>Свободное время</h2>
+    <InfoBlock title="Свободное время">
       <div className={styles.container__local}>
         <img
           className={styles.container__local_clock}
@@ -58,7 +58,7 @@ const FreeTimeTable: FC<IFreeTimeTable> = ({ freeTime }) => {
           })}
         </tbody>
       </table>
-    </div>
+    </InfoBlock>
   );
 };
 export default FreeTimeTable;

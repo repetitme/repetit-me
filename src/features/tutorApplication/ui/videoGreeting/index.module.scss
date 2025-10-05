@@ -11,6 +11,7 @@
     grid-column: 1 / 3;
     grid-row: 1 / 2;
     font-size: 20px;
+    font-weight: 500;
     font-family: var(--ffm-title);
   }
 
@@ -30,7 +31,47 @@
     flex-direction: column;
     gap: 12px;
     min-block-size: 169px;
-    border: 2px dashed #818181;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        #818181,
+        #818181 10px,
+        transparent 10px,
+        transparent 20px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        #818181,
+        #818181 10px,
+        transparent 10px,
+        transparent 20px
+      ),
+      repeating-linear-gradient(
+        180deg,
+        #818181,
+        #818181 10px,
+        transparent 10px,
+        transparent 20px
+      ),
+      repeating-linear-gradient(
+        270deg,
+        #818181,
+        #818181 10px,
+        transparent 10px,
+        transparent 20px
+      );
+    background-size:
+      2px 100%,
+      100% 2px,
+      2px 100%,
+      100% 2px;
+    background-position:
+      0 0,
+      0 0,
+      100% 0,
+      0 100%;
+    background-repeat: no-repeat;
+    background-color: var(--clr-main);
     border-radius: 10px;
     color: #545252;
     line-height: 136%;
@@ -108,7 +149,7 @@
 
     &__list {
       font-size: 14px;
-      line-height: 18px;
+      line-height: 20px;
       margin-left: 23px;
 
       li {

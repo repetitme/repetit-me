@@ -1,10 +1,11 @@
 import MainPage from '../../pages/MainPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import Requests from '../../pages/Requests';
-import TutorApplication from '../../pages/TutorApplication';
+import TutorApplicationPage from '../../pages/TutorApplicationPage';
 import TutorCabinetPage from '../../pages/TutorCabinetPage';
 import TutorCatalogPage from '../../pages/TutorCatalogPage';
 import TutorPage from '../../pages/TutorPage';
+import TutorStudentPage from '../../pages/TutorStudentPage';
 
 import { IRoute } from './type';
 
@@ -26,7 +27,7 @@ export const routesConfig: IRoute[] = [
   },
   {
     path: '/tutor-application',
-    element: <TutorApplication />,
+    element: <TutorApplicationPage />,
     auth: false
   },
   {
@@ -37,6 +38,11 @@ export const routesConfig: IRoute[] = [
   {
     path: '/tutor-cabinet',
     element: <TutorCabinetPage />,
+    auth: false
+  },
+  {
+    path: '/tutor-student/:id',
+    element: <TutorStudentPage />,
     auth: false
   },
   {

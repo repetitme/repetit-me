@@ -18,10 +18,11 @@ const AboutService = ({ bonusPopup, reviewPopup }: IAboutService) => {
   const [isBonusPopupOpen, setIsBonusPopupOpen] = useState(false);
   const [isReviewPopupOpen, setIsReviewPopupOpen] = useState(false);
   const [listItems, setListItems] = useState<React.ReactNode[]>([]);
+  const [hasInputError, setHasInputError] = useState(false);
 
   const points = bonusPopup.points;
   const isBonusPopupDisabled = points < 500;
-  const isReviewPopupDisabled = listItems.length === 0;
+  const isReviewPopupDisabled = listItems.length === 0 || hasInputError;
 
   useEffect(() => {
     if (isBonusPopupOpen || isReviewPopupOpen) {
@@ -89,7 +90,10 @@ const AboutService = ({ bonusPopup, reviewPopup }: IAboutService) => {
         URL="#0"
       >
         <PopupContentText text={reviewPopup.text}></PopupContentText>
-        <PopupContentList onListChange={setListItems}></PopupContentList>
+        <PopupContentList 
+          onListChange={setListItems}
+          onErrorChange={setHasInputError}
+        ></PopupContentList>
       </PopupContainer>
     </>
   );

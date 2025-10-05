@@ -12,9 +12,10 @@ import { initialTutorData } from './data';
 
 import styles from './index.module.scss';
 
+import { Subject } from '../../features/tutorApplication/ui/subjectForm/type';
 import TutorApplicationData, { TutorField } from './type';
 
-const TutorApplication = () => {
+const TutorApplicationPage = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
 
   const [tutorData, setTutorData] =
@@ -41,15 +42,38 @@ const TutorApplication = () => {
     setIsModalOpen(false);
   };
 
-  const isStepValid = () => {
+  const isSubjectValid = (subject: Subject): boolean => {
+    const { experience, categories } = subject;
+
+    if (!experience || categories.some((cat) => !cat.price)) {
+      return false;
+    }
+
+    return true;
+  };
+
+  const isStepValid = (
+    data: TutorApplicationData,
+    currentStep: number
+  ): boolean => {
     switch (currentStep) {
-      case 1:
-        const { firstName, lastName, telegram, avatar } = tutorData.profileInfo;
+      case 1: {
+        const { firstName, lastName, telegram, avatar } = data.profileInfo;
         return Boolean(firstName && lastName && telegram && avatar);
-      case 2:
-        return tutorData.subjects.length > 0;
-      case 3:
-        return tutorData.schedule && Object.keys(tutorData.schedule).length > 0;
+      }
+      case 2: {
+        return Boolean(
+          data.subjects.every((subject) => isSubjectValid(subject))
+        );
+      }
+      case 5: {
+        if (!data.schedule || Object.keys(data.schedule).length === 0)
+          return false;
+
+        return Object.values(data.schedule).every(
+          (daySchedule) => Array.isArray(daySchedule) && daySchedule.length > 0
+        );
+      }
       default:
         return true;
     }
@@ -89,14 +113,16 @@ const TutorApplication = () => {
         <Button
           text="Назад"
           variant="white"
+          size="large"
           onClick={handleBack}
           className={styles.button}
         />
       )}
       <Button
         text={currentStep === 5 ? 'Сохранить анкету' : 'Сохранить и продолжить'}
-        variant={isStepValid() ? 'purple' : 'white'}
-        disabled={!isStepValid()}
+        variant="purple"
+        size="large"
+        disabled={!isStepValid(tutorData, currentStep)}
         onClick={handleNext}
         className={currentStep === 5 ? styles.button : styles.buttonNext}
       />
@@ -125,9 +151,9 @@ const TutorApplication = () => {
       {currentStep === 3 && (
         <DiplomasUpload
           initialData={tutorData.diplomas}
-          onDiplomasChange={(diplomas) =>
-            handleFieldChange('diplomas', diplomas)
-          }
+          onDiplomasChange={(diplomas) => {
+            handleFieldChange('diplomas', diplomas);
+          }}
         />
       )}
       {currentStep === 4 && (
@@ -150,4 +176,4 @@ const TutorApplication = () => {
     </main>
   );
 };
-export default TutorApplication;
+export default TutorApplicationPage;

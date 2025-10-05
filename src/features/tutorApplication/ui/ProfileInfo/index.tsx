@@ -16,9 +16,11 @@ import { ProfileFormData, ProfileInfoProps } from './type';
 const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
   const { values, handleChange, setValues } =
     useForm<ProfileFormData>(initialData);
+  const [hasAvatar, setHasAvatar] = useState(!!initialData.avatar);
 
   useEffect(() => {
     onDataChange(values);
+    setHasAvatar(!!values.avatar);
   }, [values]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -45,7 +47,7 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
           <div className={styles.form__avatar}>
             <AvatarBlock avatarUrl={values.avatar} />
             <Button
-              text="Загрузить фотографию"
+              text={hasAvatar ? 'Изменить фотографию' : 'Загрузить фотографию'}
               variant="underline"
               onClick={() => {
                 setIsModalOpen(true);
@@ -61,8 +63,8 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               label="Имя (Отчество)"
               placeholder="Александр"
               onChange={handleChange}
-              pattern="^[A-Za-zА-Яа-яЁё \-]+$"
-              title="Поле может содержать только буквы, пробелы и дефисы"
+              pattern="^[А-Яа-яЁё\s\-]+([\s\-][А-Яа-яЁё]+)*$"
+              title="Поле может содержать только кириллические буквы, пробелы и дефисы"
               minLength={1}
               maxLength={50}
               required
@@ -74,8 +76,8 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               label="Фамилия"
               placeholder="Иванов"
               onChange={handleChange}
-              pattern="^[A-Za-zА-Яа-яЁё \-]+$"
-              title="Поле может содержать только буквы, пробелы и дефисы"
+              pattern="^[А-Яа-яЁё\s\-]+$"
+              title="Поле может содержать только кириллические буквы, пробелы и дефисы"
               minLength={1}
               maxLength={100}
               required
@@ -86,7 +88,8 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               label="Ник в телеграм"
               placeholder="@alex"
               onChange={handleChange}
-              minLength={2}
+              minLength={5}
+              maxLength={31}
               pattern="^@[A-Za-z0-9_]+$"
               title="Ник должен начинаться с @ и содержать только латинские буквы, цифры или _"
               required
@@ -106,6 +109,7 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               placeholder="Добавьте информацию о себе. 
 О вашей квалификации, сертификатах, об опыте преподавания. Объясните, какими будут ваши уроки, какие методы обучения используете в работе, как это помогает ученикам."
               onChange={handleChange}
+              pattern="^[А-Яа-яЁё0-9\s\-\(\)\/\,\.\!\:\;\'\?]+$"
               minLength={100}
               maxLength={2000}
               error="Минимум 100 символов"

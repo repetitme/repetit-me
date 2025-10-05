@@ -38,7 +38,7 @@ const ProfileCategories = ({
         <Select
           label="Возрастные категории"
           options={data}
-          placeholder="Взрослый"
+          placeholder="Взрослые"
           defaultValue={data.find(
             (option) => option.label === category.ageCategory
           )}
@@ -47,13 +47,17 @@ const ProfileCategories = ({
       </div>
       <div className={styles['container__options--price']}>
         <Input
+          variant="form"
           name="price"
           value={values.price}
           onChange={handlePriceChange}
           label="Цена"
-          placeholder="2500"
-          type="number"
-          style={{ inlineSize: '97px' }}
+          placeholder="1 500"
+          type="text"
+          extraClass={styles['container__options--price-input']}
+          maxLength={6}
+          autoComplete="off"
+          onlyNumber={true}
           required
         />
         <p className={styles['container__options--price-currency']}>руб/час</p>

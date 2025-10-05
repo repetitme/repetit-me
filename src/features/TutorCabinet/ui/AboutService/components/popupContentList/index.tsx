@@ -8,9 +8,11 @@ import styles from './index.module.scss';
 import { IPopupContentList } from './type';
 
 export const PopupContentList: React.FC<IPopupContentList> = ({
-  onListChange
+  onListChange,
+  onErrorChange
 }) => {
   const [items, setItems] = useState<React.ReactNode[]>([]);
+  const [urlErrors, setUrlErrors] = useState<{[key: number]: string}>({});
 
   useEffect(() => {
     if (onListChange) {
@@ -18,8 +20,23 @@ export const PopupContentList: React.FC<IPopupContentList> = ({
     }
   }, [items, onListChange]);
 
+  useEffect(() => {
+    const hasErrors = Object.values(urlErrors).some(error => error !== '');
+    if (onErrorChange) {
+      onErrorChange(hasErrors);
+    }
+  }, [urlErrors, onErrorChange]);
+
+  const handleUrlErrorChange = (index: number, error: string) => {
+    setUrlErrors(prev => ({
+      ...prev,
+      [index]: error
+    }));
+  };
+
   const handleAddClick = () => {
     if (items.length < 10) {
+      const newIndex = items.length;
       setItems([
         ...items,
         <PopupContentURL
@@ -27,6 +44,7 @@ export const PopupContentList: React.FC<IPopupContentList> = ({
           url=""
           readOnly={false}
           key={items.length}
+          onErrorChange={(error) => handleUrlErrorChange(newIndex, error)}
         />
       ]);
     }
@@ -38,6 +56,7 @@ export const PopupContentList: React.FC<IPopupContentList> = ({
       <button
         onClick={handleAddClick}
         className={styles.popup__content_list_button}
+        disabled={items.length >= 10}
       >
         <img
           src={iconAdd}

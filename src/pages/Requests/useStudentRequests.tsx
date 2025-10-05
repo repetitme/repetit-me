@@ -34,7 +34,7 @@ const useStudentRequests = () => {
     role === 'student' ? navOptionsStudent : navOptionsTutor
   );
   const [active, setActive] = useState(
-    navOptions[role as keyof typeof navOptions].myList
+    role === 'unauth' ? '' : navOptions[role as keyof typeof navOptions].myList
   );
   const [loaded, setLoaded] = useState(
     Object.fromEntries(
@@ -60,11 +60,49 @@ const useStudentRequests = () => {
     setVisible(3);
     setTimeout(() => {
       setLoaded(loadedState);
-    }, 200);
+    }, 100);
+  };
+
+  const cancelRequest = (id: string) => {
+    setCount((prev) => {
+      return prev.map((c, index) =>
+        index === requests.indexOf(active) ? (parseInt(c) - 1).toString() : c
+      );
+    });
+    setList((prev) => {
+      return prev.map((list) => list.filter((item) => item.id !== id)) as (
+        | ITutorData[]
+        | IStudentData[]
+      )[];
+    });
+  };
+
+  const acceptRequest = (id: string) => {
+    const requestsIndex = requests.indexOf(active);
+    setCount((prev) => {
+      return prev.map((c, index) =>
+        index === 0
+          ? (parseInt(c) + 1).toString()
+          : index === requestsIndex
+            ? (parseInt(c) - 1).toString()
+            : c
+      );
+    });
+    setList(
+      (prev) =>
+        [
+          [prev[requestsIndex].find((item) => item.id === id), ...prev[0]],
+          requestsIndex === 1
+            ? prev[1].filter((item) => item.id !== id)
+            : prev[1],
+          requestsIndex === 2
+            ? prev[2].filter((item) => item.id !== id)
+            : prev[2]
+        ] as (ITutorData[] | IStudentData[])[]
+    );
   };
 
   useEffect(() => {
-    // Mock API call to get the student or tutor profile
     getProfile(
       role === 'student' ? mockStudentProfile[0].id : mockTutorProfile[0].id,
       role as 'student' | 'tutor'
@@ -109,7 +147,7 @@ const useStudentRequests = () => {
               setList(filtered);
               setLoaded(loadedState);
             }),
-          1000
+          100
         );
       })
       .catch((error) => {
@@ -139,6 +177,10 @@ const useStudentRequests = () => {
     count,
     visible,
     createdRequest,
+    cancelRequest,
+    acceptRequest,
+    setList,
+    setCreatedRequests,
     onClick,
     setVisible
   };
