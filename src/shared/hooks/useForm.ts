@@ -8,10 +8,18 @@ export default function useForm<T>(inputValues: T) {
     path?: keyof T
   ) => {
     const { value, name } = event.target;
+    let processedValue = value;
+    if (name === 'email') {
+      processedValue = value.replace(/\s/g, '');
+    }
+
     if (path) {
-      setValues({ ...values, [path]: { ...values[path], [name]: value } });
+      setValues({
+        ...values,
+        [path]: { ...values[path], [name]: processedValue }
+      });
     } else {
-      setValues({ ...values, [name]: value });
+      setValues({ ...values, [name]: processedValue });
     }
   };
   return { values, handleChange, setValues };
