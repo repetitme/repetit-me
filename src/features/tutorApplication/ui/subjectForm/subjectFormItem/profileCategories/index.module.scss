@@ -4,11 +4,13 @@
     flex-direction: row;
     align-items: end;
     gap: 48px;
+    min-height: 80px;
   }
 
   &__options {
     &--age {
       inline-size: 363px;
+      align-self: flex-start;
     }
 
     &--price {
@@ -16,6 +18,7 @@
       flex-direction: row;
       align-items: end;
       gap: 12px;
+      position: relative;
 
       & .container__options--price-input {
         inline-size: 97px;
@@ -29,7 +32,7 @@
       &-currency {
         line-height: 100%;
         font-weight: 500;
-        inline-size: 100%;
+
         margin-block-end: 12px;
         block-size: 20px;
       }
