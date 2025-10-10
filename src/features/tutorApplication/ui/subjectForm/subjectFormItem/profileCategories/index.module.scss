@@ -4,7 +4,6 @@
     flex-direction: row;
     align-items: end;
     gap: 48px;
-    min-height: 80px;
   }
 
   &__options {
@@ -32,7 +31,6 @@
       &-currency {
         line-height: 100%;
         font-weight: 500;
-
         margin-block-end: 12px;
         block-size: 20px;
       }

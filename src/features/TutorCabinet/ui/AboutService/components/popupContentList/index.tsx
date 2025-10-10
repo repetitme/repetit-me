@@ -12,7 +12,7 @@ export const PopupContentList: React.FC<IPopupContentList> = ({
   onErrorChange
 }) => {
   const [items, setItems] = useState<React.ReactNode[]>([]);
-  const [urlErrors, setUrlErrors] = useState<{[key: number]: string}>({});
+  const [urlErrors, setUrlErrors] = useState<{ [key: number]: string }>({});
 
   useEffect(() => {
     if (onListChange) {
@@ -21,14 +21,14 @@ export const PopupContentList: React.FC<IPopupContentList> = ({
   }, [items, onListChange]);
 
   useEffect(() => {
-    const hasErrors = Object.values(urlErrors).some(error => error !== '');
+    const hasErrors = Object.values(urlErrors).some((error) => error !== '');
     if (onErrorChange) {
       onErrorChange(hasErrors);
     }
   }, [urlErrors, onErrorChange]);
 
   const handleUrlErrorChange = (index: number, error: string) => {
-    setUrlErrors(prev => ({
+    setUrlErrors((prev) => ({
       ...prev,
       [index]: error
     }));

@@ -1,7 +1,7 @@
-
 import cn from 'classnames';
 
 import styles from './index.module.scss';
+
 import TextareaProps from './type';
 
 const Textarea = ({
@@ -26,9 +26,7 @@ const Textarea = ({
         className={cn(styles.textarea__area, { [styles.error]: error })}
         {...props}
       />
-      {error && (
-        <span className={styles.textarea__error}>{error}</span>
-      )}
+      {error && <span className={styles.textarea__error}>{error}</span>}
     </div>
   );
 };
