@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import unionIcon from '../../../../../../assets/icons/Union.svg';
 
@@ -49,7 +49,7 @@ export const PopupContentURL: React.FC<IPopupContentURL> = ({
       setError('Поле не может быть пустым');
       return;
     }
-    
+
     const invalidChars = /[ <>{}|\\^~\[\]`]/;
     if (invalidChars.test(value)) {
       setError('Ссылка содержит недопустимые символы');
@@ -59,7 +59,7 @@ export const PopupContentURL: React.FC<IPopupContentURL> = ({
     if (value.startsWith('http://') || value.startsWith('https://')) {
       const protocol = value.startsWith('https://') ? 'https://' : 'http://';
       const afterProtocol = value.slice(protocol.length);
-      
+
       if (!afterProtocol.trim()) {
         setError('Ссылка должна содержать домен');
         return;
