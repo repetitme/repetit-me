@@ -40,7 +40,7 @@ const NewFeedbackForm: React.FC<NewFeedbackFormProps> = ({ toggleVisible }) => {
       />
       <Button
         text="Отправить отзыв"
-        variant="purple"
+        variant="purpleAndGrey"
         disabled={isButtonDisabled}
         className={styles.form__button}
       />

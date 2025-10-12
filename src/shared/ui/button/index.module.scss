@@ -55,6 +55,11 @@
     }
   }
 
+  &.purpleAndGrey {
+    background-color: var(--clr-primary-default);
+    color: #d1d5db;
+  }
+
   &.purple {
     background-color: var(--clr-primary-default);
     color: var(--clr-main);

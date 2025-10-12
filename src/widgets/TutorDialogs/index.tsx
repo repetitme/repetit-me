@@ -8,7 +8,6 @@ import Popup from '../../shared/ui/popup/popup';
 import Textarea from '../../shared/ui/textarea';
 import {
   TutorDialogsVariant,
-  blocksizes,
   initialState,
   initialValues,
   inlineSizes
@@ -37,8 +36,6 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     (variant === 'arrangement' && state.arrangement.step === 2)
       ? inlineSizes[1]
       : inlineSizes[0];
-  const defaultHeight = variant !== 'report' ? blocksizes[0] : blocksizes[4];
-  const [blockSize, setBlockSize] = useState(defaultHeight);
   const [inlineSize, setInlineSize] = useState(defaultWidth);
 
   const onChange = (
@@ -47,7 +44,6 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     const { name, value } = e.target;
     if ((name === 'arranged' || name === 'hadClass') && value === 'Нет') {
       handleInputChange();
-      setBlockSize(blocksizes[1]);
       setState((prevState) => ({
         ...prevState,
         [variant]: { ...prevState[variant], button: button[2] }
@@ -59,14 +55,12 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
       state.hadFirstClass.step === 1
     ) {
       handleInputChange(true);
-      setBlockSize(blocksizes[0]);
       setState((prevState) => ({
         ...prevState,
         [variant]: { ...prevState[variant], button: button[0] }
       }));
     }
     if (value === 'Да' && name === 'hadClass') {
-      setBlockSize(blocksizes[0]);
       setState((prevState) => ({
         ...prevState,
         [variant]: { ...prevState[variant], step: 1 }
@@ -89,7 +83,6 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
   useEffect(() => {
     variant === TutorDialogsVariant.report && setInputChange(false);
     variant === TutorDialogsVariant.arrangement && setInputChange(true);
-    setBlockSize(defaultHeight);
     setInlineSize(defaultWidth);
     setTimeout(() => {
       setValues(initialValues);
@@ -133,7 +126,6 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
           if (values.arrangement.arranged === 'Нет') {
             close();
           } else {
-            setBlockSize(blocksizes[2]);
             setInlineSize(inlineSizes[1]);
             onStateChange(
               {
@@ -153,10 +145,8 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
             state.hadFirstClass.step === 1 &&
             values.hadFirstClass.hadClass === 'Нет'
           ) {
-            setBlockSize(blocksizes[1]);
             close();
           } else {
-            setBlockSize(blocksizes[3]);
             onStateChange(
               {
                 button: button[2],
@@ -329,7 +319,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
       isValid={isValid}
     >
       <form
-        style={{ blockSize: `${blockSize}px`, inlineSize: `${inlineSize}px` }}
+        style={{ inlineSize: `${inlineSize}px` }}
         onSubmit={onSubmit}
         onChange={handleValidity}
         ref={formRef}
