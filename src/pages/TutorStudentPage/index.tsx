@@ -60,7 +60,19 @@ const TutorStudentPage = () => {
             className={styles.page__content_profile_image}
             src={dataState.image}
           ></img>
-          <Button text="Оплатить комиссию" variant="purple"></Button>
+          {dataState.importantInfo ? (
+            <Button
+              disabled={false}
+              text="Оплатить комиссию"
+              variant="purple"
+            ></Button>
+          ) : (
+            <Button
+              disabled={true}
+              text="Оплатить комиссию"
+              variant="purple"
+            ></Button>
+          )}
         </div>
         <div className={styles.page__content_info}>
           <AboutProfile

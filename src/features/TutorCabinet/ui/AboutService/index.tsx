@@ -90,7 +90,7 @@ const AboutService = ({ bonusPopup, reviewPopup }: IAboutService) => {
         URL="#0"
       >
         <PopupContentText text={reviewPopup.text}></PopupContentText>
-        <PopupContentList 
+        <PopupContentList
           onListChange={setListItems}
           onErrorChange={setHasInputError}
         ></PopupContentList>

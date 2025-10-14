@@ -35,3 +35,9 @@
     }
   }
 }
+
+.inputWrapper {
+  &.firstInput {
+    margin-bottom: 20px;
+  }
+}
