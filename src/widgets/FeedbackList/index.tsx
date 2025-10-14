@@ -36,7 +36,7 @@ const FeedbackList: React.FC<IFeedbackListProps> = ({ updateModalData }) => {
     <section className={styles.section}>
       <div className={styles.container}>
         <button className={styles.sort} onClick={toggleSort}>
-          {isAscending ? 'Сначала новые' : 'Сначала старые'}
+          {isAscending ? 'Сначала старые' : 'Сначала новые'}
           <img
             src={sortIcon}
             alt="Иконка сортировки"

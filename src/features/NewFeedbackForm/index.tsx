@@ -32,7 +32,6 @@ const NewFeedbackForm: React.FC<NewFeedbackFormProps> = ({ toggleVisible }) => {
         onChange={handleContentChange}
         label="Ваш отзыв"
         placeholder="Общее впечатление; что понравилось в уроках; какие результаты"
-        pattern="^[А-Яа-яЁё0-9\s\-\(\)\/\,\.\!\:\;\'\?]+$"
         minLength={MIN_LENGTH}
         maxLength={MAX_LENGTH}
         required
