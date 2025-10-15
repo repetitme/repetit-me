@@ -40,8 +40,8 @@ const TutorPage = () => {
   const toggle = () => setIsOpen(!isOpen);
   const { acceptRequest, cancelRequest } = useStudentRequests();
   const [status, setStatus] = useState<
-    'myTutors' | 'iRequested' | 'tutorRequested' | 'unauth'
-  >('unauth');
+    'myTutors' | 'iRequested' | 'tutorRequested' | 'unauth' | 'new'
+  >('new');
 
   const cancel = () => {
     cancelRequest(params.id!);
@@ -150,11 +150,11 @@ const TutorPage = () => {
                     styles.container__profile_contact_connection_buttons
                   }
                 >
-                  {(status === 'tutorRequested' || status === 'unauth') && (
+                  {(status === 'tutorRequested' || status === 'unauth' || status === 'new') && (
                     <Button
-                      text={status === 'unauth' ? 'Связаться' : 'Принять'}
+                      text={status === 'new' ? 'Связаться' : 'Принять'}
                       variant={
-                        status === 'unauth' || status === 'tutorRequested'
+                        status === 'new' || status === 'tutorRequested'
                           ? 'purple'
                           : 'red'
                       }
@@ -163,7 +163,7 @@ const TutorPage = () => {
                   )}
                   {(status === 'tutorRequested' || status === 'iRequested') && (
                     <Button
-                      text="Отменить заявку"
+                      text={status === 'iRequested' ? "Отменить заявку" : 'Отклонить'}
                       variant="red"
                       onClick={() => setCancelModal(true)}
                     />
@@ -188,12 +188,22 @@ const TutorPage = () => {
                       },
                       buttonText: 'Мои заявки'
                     })}
-                  {status !== 'iRequested' &&
+                  {status !== 'new' &&
                     Popups.receivedRequest({
                       isOpen,
                       close: toggle,
                       buttonOnClick: accept,
                       buttonText: navOptionsStudent.myList
+                    })}
+                  {status === 'new' &&
+                    Popups.responded({
+                      isOpen,
+                      close: toggle,
+                      buttonOnClick: () => {
+                        navigate('/requests');
+                        accept();
+                      },
+                      buttonText: 'Мои заявки'
                     })}
                 </div>
               ) : (
