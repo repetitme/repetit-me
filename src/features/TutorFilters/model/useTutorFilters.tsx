@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { formatNumber } from '../../../shared/ui/input';
 import {
@@ -44,12 +44,12 @@ const useTutorFilters = ({ onSubmit, onReset }: TUseTutorFilters) => {
     const saved = loadFilters();
     return saved ? { ...defaultState, ...saved } : defaultState;
   });
-  
+
   const [errorMessage, setErrorMessage] = useState('');
   const [isOpen, setIsOpen] = useState<boolean[]>(
     accordionGroups.map(() => false)
   );
-  
+
   const resetIsActive = JSON.stringify(values) !== JSON.stringify(defaultState);
 
   useEffect(() => {
