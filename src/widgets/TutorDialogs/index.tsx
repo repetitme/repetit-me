@@ -1,6 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react';
 
 import cn from 'classnames';
+import { useNavigate } from 'react-router-dom';
 
 import useForm from '../../shared/hooks/useForm';
 import Input from '../../shared/ui/input';
@@ -25,7 +26,12 @@ import {
   radioFactoryProps
 } from './types';
 
-const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
+const TutorDialogs: FC<TutorDialogsProps> = ({
+  variant,
+  isOpen,
+  close,
+  id
+}) => {
   const [state, setState] = useState(initialState);
   const { values, setValues, handleChange } = useForm<formData>(initialValues);
   const [isValid, setIsValid] = useState(false);
@@ -40,6 +46,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
   const defaultHeight = variant !== 'report' ? blocksizes[0] : blocksizes[4];
   const [blockSize, setBlockSize] = useState(defaultHeight);
   const [inlineSize, setInlineSize] = useState(defaultWidth);
+  const navigate = useNavigate();
 
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -170,6 +177,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
           }
           break;
         default:
+          navigate('/tutor-student/' + id);
           close();
       }
     }, 300);

@@ -196,7 +196,12 @@ const UserCard: React.FC<IUserData> = ({
             )}
           </div>
           {isMyList && (
-            <TutorDialogs isOpen={isOpen} close={toggle} variant={report} />
+            <TutorDialogs
+              isOpen={isOpen}
+              close={toggle}
+              variant={report}
+              id={studentData?.id}
+            />
           )}
         </>
       ) : (
