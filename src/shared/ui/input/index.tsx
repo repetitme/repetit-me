@@ -44,15 +44,21 @@ const Input: React.FC<IInput> = ({
     if (target.validity.valueMissing && required) {
       return requiredError;
     }
-
     if (target.validity.typeMismatch) {
       return title || target.validationMessage;
     }
     if (target.validity.patternMismatch) {
       return title || target.validationMessage;
     }
-    if (pattern && !new RegExp(pattern).test(target.value)) {
+    if (
+      pattern &&
+      !new RegExp(pattern).test(target.value) &&
+      target.name !== 'link'
+    ) {
       return title || 'Некорректный формат';
+    }
+    if (target.value.length < (minLength || 0) && target.name === 'tg') {
+      return 'Минимальная длина никнейма - 3 символа';
     }
     if (target.type === 'email' && target.value) {
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(target.value)) {
@@ -111,8 +117,6 @@ const Input: React.FC<IInput> = ({
       setTimeout(() => setError(validate(e.target)), 0);
     }
   };
-
-  // Добавить новую функцию handleBlur
   const handleBlur = (): void => {
     setIsFocused(false);
     setIsTouched(true);
@@ -163,7 +167,8 @@ const Input: React.FC<IInput> = ({
         {error && (
           <span
             className={cn(styles.error__text, {
-              [styles.error__active]: error
+              [styles.error__active]: error,
+              [styles.error__active__long]: error.length > 35
             })}
           >
             {error}
