@@ -193,7 +193,10 @@ const TutorDialogs: FC<TutorDialogsProps> = ({
     const isYes = index === 0 ? 'Да' : 'Нет';
 
     return (
-      <label className={styles.radio__checkbox} htmlFor={'radio' + index}>
+      <label
+        className={styles.radio__checkbox}
+        htmlFor={'radio' + index + (futureLesson ? 'future' : '')}
+      >
         <input
           id={'radio' + index}
           type="radio"
