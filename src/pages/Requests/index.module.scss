@@ -149,6 +149,10 @@
   background-color: var(--clr-main);
   gap: 24px;
 
+  button {
+    font-weight: 700;
+  }
+
   &__title {
     font-weight: 400;
     font-size: 20px;
