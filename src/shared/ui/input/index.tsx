@@ -81,6 +81,21 @@ const Input: React.FC<IInput> = ({
     }
     if (/^[0-9\s₽]+$/.test(value) && type !== 'number') {
       value = formatNumber(value, isPrice);
+      requestAnimationFrame(() => {
+        inputRef.current!.setSelectionRange(
+          cursorPositionRef.current || value.length,
+          cursorPositionRef.current || value.length
+        );
+      });
+      if (parseInt(value.replace(/\D/g, '')) > 9999 && isPrice) {
+        value = '10 000 ₽';
+      }
+    }
+    if (name === 'tg' && value && !value.startsWith('@')) {
+      value = '@' + value;
+      requestAnimationFrame(() => {
+        inputRef.current!.setSelectionRange(value.length, value.length);
+      });
     }
     if (inputRef.current) {
       cursorPositionRef.current = inputRef.current.selectionStart;
@@ -108,11 +123,7 @@ const Input: React.FC<IInput> = ({
     }
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (variant === 'auth') {
-      onChange(e);
-    } else {
-      formatInput(e);
-    }
+    formatInput(e);
     if (isTouched) {
       setTimeout(() => setError(validate(e.target)), 0);
     }

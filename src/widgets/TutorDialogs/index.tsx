@@ -252,7 +252,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({
             name === 'planedNumberOfLessons'
         })}
         label={variantData[variant].secondaryTitles[index]}
-        required={textarea ? false : true}
+        required={variant === TutorDialogsVariant.report ? false : true}
         maxLength={textarea ? 500 : 50}
         title={textarea ? '' : validate()}
         pattern={textarea ? '' : validate(true)}

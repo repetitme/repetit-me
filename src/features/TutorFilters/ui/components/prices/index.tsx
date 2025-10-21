@@ -27,12 +27,14 @@ export const Prices = ({
           value={formatValue(0)}
           onChange={(e) => handleInputChange(e, 0)}
           variant="price"
+          name="price"
         />
         <Input
           required
           value={formatValue(1)}
           onChange={(e) => handleInputChange(e, 1)}
           variant="price"
+          name="price"
         />
       </div>
       <span

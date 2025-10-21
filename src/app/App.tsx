@@ -17,7 +17,13 @@ function App() {
   const showTelegramBlock = !knownPaths.includes(location.pathname); // Булевое значения для выбранных путей
 
   // TEST
-  const [role, setRole] = useState<'student' | 'tutor' | 'unauth'>('tutor');
+  const [role, setRole] = useState<'student' | 'tutor' | 'unauth'>(
+    (localStorage.getItem('role') as 'student' | 'tutor' | 'unauth') || 'unauth'
+  );
+  const handleRoleChange = (newRole: 'student' | 'tutor' | 'unauth') => {
+    localStorage.setItem('role', newRole);
+    setRole(newRole);
+  };
   const roleOptions = [
     { value: 'student', label: 'Ученик' },
     { value: 'tutor', label: 'Репетитор' },
@@ -39,8 +45,8 @@ function App() {
           <Select
             options={roleOptions}
             value={roleOptions.find((option) => option.value === role)}
-            onChange={(e) =>
-              setRole(e?.value as 'student' | 'tutor' | 'unauth')
+            onChange={(option) =>
+              handleRoleChange(option!.value as 'student' | 'tutor' | 'unauth')
             }
           />
         </div>
