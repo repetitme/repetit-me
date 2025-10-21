@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { formatNumber } from '../../../shared/ui/input';
 import {
@@ -11,13 +11,51 @@ import * as data from '../config/data';
 
 import { TUseTutorFilters } from '../types/types';
 
+const STORAGE_KEY = 'tutorFilters';
+
+const saveFilters = (filters: typeof defaultState) => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(filters));
+  } catch (error) {
+    console.error('Failed to save filters:', error);
+  }
+};
+
+const loadFilters = (): typeof defaultState | null => {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return saved ? JSON.parse(saved) : null;
+  } catch (error) {
+    console.error('Failed to load filters:', error);
+    return null;
+  }
+};
+
+const clearFilters = () => {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (error) {
+    console.error('Failed to clear filters:', error);
+  }
+};
+
 const useTutorFilters = ({ onSubmit, onReset }: TUseTutorFilters) => {
-  const [values, setState] = useState(defaultState);
+  const [values, setState] = useState(() => {
+    const saved = loadFilters();
+    return saved ? { ...defaultState, ...saved } : defaultState;
+  });
+
   const [errorMessage, setErrorMessage] = useState('');
   const [isOpen, setIsOpen] = useState<boolean[]>(
     accordionGroups.map(() => false)
   );
+
   const resetIsActive = JSON.stringify(values) !== JSON.stringify(defaultState);
+
+  useEffect(() => {
+    saveFilters(values);
+  }, [values]);
+
   const toggleAccordion = (index: number): void => {
     setIsOpen((prevState) =>
       prevState.map((item, i) => (i === index ? !item : item))
@@ -130,6 +168,7 @@ const useTutorFilters = ({ onSubmit, onReset }: TUseTutorFilters) => {
   const handleReset = (): void => {
     scrollToTop();
     setState({ ...defaultState });
+    clearFilters();
     onReset({ ...defaultState });
   };
 

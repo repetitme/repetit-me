@@ -50,8 +50,11 @@ export const AuthForm: React.FC<TLogin> = ({
         onSubmit={handleSubmit}
       >
         {/* Имя */}
-        {!authType &&
-          AuthInputs.name(inputProps, currentTab === FormTabs.TUTOR)}
+        {!authType && (
+          <div className={cn(styles.inputWrapper, styles.firstInput)}>
+            {AuthInputs.name(inputProps, currentTab === FormTabs.TUTOR)}
+          </div>
+        )}
         {/* Telegram */}
         {AuthInputs.tg(inputProps)}
         {/* Ссылка */}

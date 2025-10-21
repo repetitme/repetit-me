@@ -100,6 +100,7 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               type="email"
               label="Почта"
               placeholder="alex@ya.ru"
+              pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
               onChange={handleChange}
             />
             <Textarea
