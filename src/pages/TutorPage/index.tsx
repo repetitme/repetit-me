@@ -150,7 +150,9 @@ const TutorPage = () => {
                     styles.container__profile_contact_connection_buttons
                   }
                 >
-                  {(status === 'tutorRequested' || status === 'unauth' || status === 'new') && (
+                  {(status === 'tutorRequested' ||
+                    status === 'unauth' ||
+                    status === 'new') && (
                     <Button
                       text={status === 'new' ? 'Связаться' : 'Принять'}
                       variant={
@@ -163,7 +165,11 @@ const TutorPage = () => {
                   )}
                   {(status === 'tutorRequested' || status === 'iRequested') && (
                     <Button
-                      text={status === 'iRequested' ? "Отменить заявку" : 'Отклонить'}
+                      text={
+                        status === 'iRequested'
+                          ? 'Отменить заявку'
+                          : 'Отклонить'
+                      }
                       variant="red"
                       onClick={() => setCancelModal(true)}
                     />

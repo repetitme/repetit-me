@@ -254,7 +254,8 @@ const TutorDialogs: FC<TutorDialogsProps> = ({
         label={variantData[variant].secondaryTitles[index]}
         required={
           variant === TutorDialogsVariant.report ||
-          variant === TutorDialogsVariant.arrangement && values.arrangement.arranged === 'Да'
+          (variant === TutorDialogsVariant.arrangement &&
+            values.arrangement.arranged === 'Да')
             ? false
             : true
         }
