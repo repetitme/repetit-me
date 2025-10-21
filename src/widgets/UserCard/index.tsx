@@ -69,7 +69,6 @@ const UserCard: React.FC<IUserData> = ({
   const handleChangeTab = () => {
     if (changeTab) {
       accept();
-      changeTab();
       close();
     }
   };
