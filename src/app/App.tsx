@@ -15,6 +15,7 @@ import styles from './index.module.scss';
 function App() {
   const location = useLocation();
   const showTelegramBlock = !knownPaths.includes(location.pathname); // Булевое значения для выбранных путей
+  const [refresh, setRefresh] = useState(0);
 
   // TEST
   const [role, setRole] = useState<'student' | 'tutor' | 'unauth'>(
@@ -23,6 +24,7 @@ function App() {
   const handleRoleChange = (newRole: 'student' | 'tutor' | 'unauth') => {
     localStorage.setItem('role', newRole);
     setRole(newRole);
+    setRefresh((prev) => prev + 1);
   };
   const roleOptions = [
     { value: 'student', label: 'Ученик' },
@@ -53,7 +55,7 @@ function App() {
         {/* TEST */}
 
         <Header auth={role} />
-        <AppRouter />
+        <AppRouter key={refresh} />
         <Footer role={role} goTelegram={showTelegramBlock} />
       </div>
     </AppProvider>
