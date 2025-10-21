@@ -69,7 +69,6 @@ const UserCard: React.FC<IUserData> = ({
   const handleChangeTab = () => {
     if (changeTab) {
       accept();
-      changeTab();
       close();
     }
   };
@@ -196,7 +195,12 @@ const UserCard: React.FC<IUserData> = ({
             )}
           </div>
           {isMyList && (
-            <TutorDialogs isOpen={isOpen} close={toggle} variant={report} />
+            <TutorDialogs
+              isOpen={isOpen}
+              close={toggle}
+              variant={report}
+              id={studentData?.id}
+            />
           )}
         </>
       ) : (

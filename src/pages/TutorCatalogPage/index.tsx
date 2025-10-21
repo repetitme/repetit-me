@@ -68,7 +68,7 @@ const TutorCatalogPage = () => {
 
               {tutors.length > visibleCount && (
                 <Button
-                  text="Показать еще"
+                  text="Показать ещё"
                   variant="transparent"
                   size="large"
                   className={styles.catalog__button}

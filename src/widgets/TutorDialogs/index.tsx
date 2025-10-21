@@ -1,6 +1,7 @@
 import { FC, useEffect, useRef, useState } from 'react';
 
 import cn from 'classnames';
+import { useNavigate } from 'react-router-dom';
 
 import useForm from '../../shared/hooks/useForm';
 import Input from '../../shared/ui/input';
@@ -8,6 +9,7 @@ import Popup from '../../shared/ui/popup/popup';
 import Textarea from '../../shared/ui/textarea';
 import {
   TutorDialogsVariant,
+  blocksizes,
   initialState,
   initialValues,
   inlineSizes
@@ -24,7 +26,12 @@ import {
   radioFactoryProps
 } from './types';
 
-const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
+const TutorDialogs: FC<TutorDialogsProps> = ({
+  variant,
+  isOpen,
+  close,
+  id
+}) => {
   const [state, setState] = useState(initialState);
   const { values, setValues, handleChange } = useForm<formData>(initialValues);
   const [isValid, setIsValid] = useState(false);
@@ -36,7 +43,10 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     (variant === 'arrangement' && state.arrangement.step === 2)
       ? inlineSizes[1]
       : inlineSizes[0];
+  const defaultHeight = variant !== 'report' ? blocksizes[0] : blocksizes[4];
+  const [blockSize, setBlockSize] = useState(defaultHeight);
   const [inlineSize, setInlineSize] = useState(defaultWidth);
+  const navigate = useNavigate();
 
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -44,6 +54,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     const { name, value } = e.target;
     if ((name === 'arranged' || name === 'hadClass') && value === 'Нет') {
       handleInputChange();
+      setBlockSize(blocksizes[1]);
       setState((prevState) => ({
         ...prevState,
         [variant]: { ...prevState[variant], button: button[2] }
@@ -55,12 +66,14 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
       state.hadFirstClass.step === 1
     ) {
       handleInputChange(true);
+      setBlockSize(blocksizes[0]);
       setState((prevState) => ({
         ...prevState,
         [variant]: { ...prevState[variant], button: button[0] }
       }));
     }
     if (value === 'Да' && name === 'hadClass') {
+      setBlockSize(blocksizes[0]);
       setState((prevState) => ({
         ...prevState,
         [variant]: { ...prevState[variant], step: 1 }
@@ -83,6 +96,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
   useEffect(() => {
     variant === TutorDialogsVariant.report && setInputChange(false);
     variant === TutorDialogsVariant.arrangement && setInputChange(true);
+    setBlockSize(defaultHeight);
     setInlineSize(defaultWidth);
     setTimeout(() => {
       setValues(initialValues);
@@ -126,6 +140,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
           if (values.arrangement.arranged === 'Нет') {
             close();
           } else {
+            setBlockSize(blocksizes[2]);
             setInlineSize(inlineSizes[1]);
             onStateChange(
               {
@@ -145,8 +160,10 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
             state.hadFirstClass.step === 1 &&
             values.hadFirstClass.hadClass === 'Нет'
           ) {
+            setBlockSize(blocksizes[1]);
             close();
           } else {
+            setBlockSize(blocksizes[3]);
             onStateChange(
               {
                 button: button[2],
@@ -160,6 +177,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
           }
           break;
         default:
+          navigate('/tutor-student/' + id);
           close();
       }
     }, 300);
@@ -175,9 +193,12 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
     const isYes = index === 0 ? 'Да' : 'Нет';
 
     return (
-      <label className={styles.radio__checkbox} htmlFor={'radio' + index}>
+      <label
+        className={styles.radio__checkbox}
+        htmlFor={'radio' + index + (futureLesson ? 'future' : '')}
+      >
         <input
-          id={'radio' + index}
+          id={'radio' + index + (futureLesson ? 'future' : '')}
           type="radio"
           name={futureLesson ? 'futurePlan' : fieldName}
           value={futureLesson ? hadFirstClass.options[index] : isYes}
@@ -231,7 +252,13 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
             name === 'planedNumberOfLessons'
         })}
         label={variantData[variant].secondaryTitles[index]}
-        required={textarea ? false : true}
+        required={
+          variant === TutorDialogsVariant.report ||
+          (variant === TutorDialogsVariant.arrangement &&
+            values.arrangement.arranged === 'Да')
+            ? false
+            : true
+        }
         maxLength={textarea ? 500 : 50}
         title={textarea ? '' : validate()}
         pattern={textarea ? '' : validate(true)}
@@ -319,7 +346,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({ variant, isOpen, close }) => {
       isValid={isValid}
     >
       <form
-        style={{ inlineSize: `${inlineSize}px` }}
+        style={{ blockSize: `${blockSize}px`, inlineSize: `${inlineSize}px` }}
         onSubmit={onSubmit}
         onChange={handleValidity}
         ref={formRef}

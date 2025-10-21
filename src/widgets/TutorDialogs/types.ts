@@ -4,6 +4,7 @@ export interface TutorDialogsProps {
   variant: TutorDialogsVariant;
   isOpen: boolean;
   close: () => void;
+  id?: string;
 }
 
 export type TState = {

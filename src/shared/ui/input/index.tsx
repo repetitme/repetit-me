@@ -44,15 +44,21 @@ const Input: React.FC<IInput> = ({
     if (target.validity.valueMissing && required) {
       return requiredError;
     }
-
     if (target.validity.typeMismatch) {
       return title || target.validationMessage;
     }
     if (target.validity.patternMismatch) {
       return title || target.validationMessage;
     }
-    if (pattern && !new RegExp(pattern).test(target.value)) {
+    if (
+      pattern &&
+      !new RegExp(pattern).test(target.value) &&
+      target.name !== 'link'
+    ) {
       return title || 'Некорректный формат';
+    }
+    if (target.value.length < (minLength || 0) && target.name === 'tg') {
+      return 'Минимальная длина никнейма - 3 символа';
     }
     if (target.type === 'email' && target.value) {
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(target.value)) {
@@ -78,6 +84,43 @@ const Input: React.FC<IInput> = ({
     }
     if (/^[0-9\s₽]+$/.test(value) && type !== 'number') {
       value = formatNumber(value, isPrice);
+      requestAnimationFrame(() => {
+        inputRef.current!.setSelectionRange(
+          cursorPositionRef.current || value.length,
+          cursorPositionRef.current || value.length
+        );
+      });
+      if (parseInt(value.replace(/\D/g, '')) > 9999 && isPrice) {
+        value = '10 000 ₽';
+      }
+    }
+    if (name === 'tg' && value && !value.startsWith('@')) {
+      value = '@' + value;
+      requestAnimationFrame(() => {
+        inputRef.current!.setSelectionRange(value.length, value.length);
+      });
+    }
+    if (name === 'date') {
+      if ((value.length === 2 || value.length === 5) && !value.endsWith('.')) {
+        value += '.';
+        requestAnimationFrame(() => {
+          inputRef.current!.setSelectionRange(value.length, value.length);
+        });
+      }
+      if (value.length > 10) {
+        value = value.slice(0, 10);
+      }
+    }
+    if (name === 'time') {
+      if (value.length === 2 && !value.endsWith(':')) {
+        value += ':';
+        requestAnimationFrame(() => {
+          inputRef.current!.setSelectionRange(value.length, value.length);
+        });
+      }
+      if (value.length > 5) {
+        value = value.slice(0, 5);
+      }
     }
     if (inputRef.current) {
       cursorPositionRef.current = inputRef.current.selectionStart;
@@ -105,17 +148,11 @@ const Input: React.FC<IInput> = ({
     }
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    if (variant === 'auth') {
-      onChange(e);
-    } else {
-      formatInput(e);
-    }
+    formatInput(e);
     if (isTouched) {
       setTimeout(() => setError(validate(e.target)), 0);
     }
   };
-
-  // Добавить новую функцию handleBlur
   const handleBlur = (): void => {
     setIsFocused(false);
     setIsTouched(true);
