@@ -14,7 +14,7 @@ const createInput: TInputFactory =
       value={values[name]}
       onChange={handleChange}
       autoComplete={name === 'code' ? 'off' : 'on'}
-      minLength={3}
+      minLength={4}
       maxLength={100}
       label={label}
       placeholder={placeholder}
