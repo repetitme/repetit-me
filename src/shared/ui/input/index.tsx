@@ -181,8 +181,7 @@ const Input: React.FC<IInput> = ({
         {error && (
           <span
             className={cn(styles.error__text, {
-              [styles.error__active]: error,
-              [styles.error__active__long]: error.length > 35
+              [styles.error__active]: error
             })}
           >
             {error}
