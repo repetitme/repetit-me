@@ -198,7 +198,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({
         htmlFor={'radio' + index + (futureLesson ? 'future' : '')}
       >
         <input
-          id={'radio' + index}
+          id={'radio' + index + (futureLesson ? 'future' : '')}
           type="radio"
           name={futureLesson ? 'futurePlan' : fieldName}
           value={futureLesson ? hadFirstClass.options[index] : isYes}

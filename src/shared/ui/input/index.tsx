@@ -100,6 +100,28 @@ const Input: React.FC<IInput> = ({
         inputRef.current!.setSelectionRange(value.length, value.length);
       });
     }
+    if (name === 'date') {
+      if ((value.length === 2 || value.length === 5) && !value.endsWith('.')) {
+        value += '.';
+        requestAnimationFrame(() => {
+          inputRef.current!.setSelectionRange(value.length, value.length);
+        });
+      }
+      if (value.length > 10) {
+        value = value.slice(0, 10);
+      }
+    }
+    if (name === 'time') {
+      if (value.length === 2 && !value.endsWith(':')) {
+        value += ':';
+        requestAnimationFrame(() => {
+          inputRef.current!.setSelectionRange(value.length, value.length);
+        });
+      }
+      if (value.length > 5) {
+        value = value.slice(0, 5);
+      }
+    }
     if (inputRef.current) {
       cursorPositionRef.current = inputRef.current.selectionStart;
     }
