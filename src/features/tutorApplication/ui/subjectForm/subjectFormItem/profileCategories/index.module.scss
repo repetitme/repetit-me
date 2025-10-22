@@ -18,9 +18,15 @@
       align-items: end;
       gap: 12px;
       position: relative;
+      
 
       & .container__options--price-input {
         inline-size: 97px;
+        :global(.error-message) {
+          position: absolute;
+          top: 100%;
+          left: 0;
+        }
       }
 
       & .container__options--price-input input {
