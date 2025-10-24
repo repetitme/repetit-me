@@ -60,6 +60,9 @@ const Input: React.FC<IInput> = ({
     if (target.value.length < (minLength || 0) && target.name === 'tg') {
       return 'Минимальная длина никнейма - 3 символа';
     }
+    if (target.value.length < (minLength || 0) && target.name === 'name') {
+      return 'Минимальная длина имени - 3 символа';
+    }
     if (target.type === 'email' && target.value) {
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(target.value)) {
         return 'Введите корректный email. Например: example@mail.ru';
