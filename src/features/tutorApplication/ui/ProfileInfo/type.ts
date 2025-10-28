@@ -1,7 +1,7 @@
 export type ProfileFormData = {
   firstName: string;
   lastName: string;
-  tg: string;
+  telegram: string;
   email?: string;
   about?: string;
   avatar: string;
