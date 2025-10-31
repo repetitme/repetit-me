@@ -52,7 +52,8 @@ export const AuthForm: React.FC<TLogin> = ({
         {/* Имя */}
         {!authType && (
           <div className={cn(styles.inputWrapper, styles.firstInput)}>
-            {AuthInputs.name(inputProps, currentTab === FormTabs.TUTOR)}
+            {currentTab === FormTabs.TUTOR &&
+              AuthInputs.name(inputProps)}
           </div>
         )}
         {/* Telegram */}
