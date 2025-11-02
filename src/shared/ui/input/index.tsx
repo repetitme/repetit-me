@@ -31,7 +31,8 @@ const Input: React.FC<IInput> = ({
   title,
   requiredError = 'Поле обязательно для заполнения',
   onChange,
-  onlyNumber = false
+  onlyNumber = false,
+  onError
 }) => {
   const [error, setError] = useState<string>('');
   const [isFocused, setIsFocused] = useState(false);
@@ -129,7 +130,7 @@ const Input: React.FC<IInput> = ({
       cursorPositionRef.current = inputRef.current.selectionStart;
     }
     onChange({
-      target: { value: value, name }
+      target: { value: value, name, validity: e.target.validity }
     } as React.ChangeEvent<HTMLInputElement>);
   };
 
@@ -152,6 +153,7 @@ const Input: React.FC<IInput> = ({
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     formatInput(e);
+    onError && onError(error, name || '');
     if (isTouched) {
       setTimeout(() => setError(validate(e.target)), 0);
     }
@@ -165,6 +167,7 @@ const Input: React.FC<IInput> = ({
   };
 
   const handleFocus = (): void => {
+    onError && onError(error, name || '');
     setIsFocused(true);
   };
 

@@ -117,3 +117,14 @@
   visibility: visible;
   transform: translate(-50%, -50%) scale(1);
 }
+
+@media (max-height: 900px) {
+  .popup {
+    max-height: 85vh;
+    &__content {
+      max-height: 60vh;
+      overflow-y: scroll;
+      padding: 0 10px;
+    }
+  }
+}
