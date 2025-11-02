@@ -3,6 +3,7 @@ export interface TutorFiltersProps {
   noResultsFound?: boolean;
   percentage?: number;
   onToggleTooltip?: () => void;
+  onHideTooltip?: () => void;
   onReset: (values: TState) => void;
 }
 
