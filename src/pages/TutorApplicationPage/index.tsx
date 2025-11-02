@@ -58,8 +58,8 @@ const TutorApplicationPage = () => {
   ): boolean => {
     switch (currentStep) {
       case 1: {
-        const { firstName, lastName, telegram, avatar } = data.profileInfo;
-        return Boolean(firstName && lastName && telegram && avatar);
+        const { firstName, lastName, tg, avatar } = data.profileInfo;
+        return Boolean(firstName && lastName && tg && avatar);
       }
       case 2: {
         return Boolean(

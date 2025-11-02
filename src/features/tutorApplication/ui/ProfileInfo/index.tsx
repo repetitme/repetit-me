@@ -83,8 +83,8 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               required
             />
             <Input
-              name="telegram"
-              value={values.telegram}
+              name="tg"
+              value={values.tg}
               label="Ник в телеграм"
               placeholder="@alex"
               onChange={handleChange}
