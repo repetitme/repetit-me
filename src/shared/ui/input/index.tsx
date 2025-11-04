@@ -153,7 +153,6 @@ const Input: React.FC<IInput> = ({
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     formatInput(e);
-    onError && onError(error, name || '');
     if (isTouched) {
       setTimeout(() => setError(validate(e.target)), 0);
     }
@@ -166,9 +165,13 @@ const Input: React.FC<IInput> = ({
     }
   };
 
-  const handleFocus = (): void => {
+  useEffect(() => {
     onError && onError(error, name || '');
+  }, [error, isFocused, name]);
+
+  const handleFocus = (): void => {
     setIsFocused(true);
+    onError && onError(error, name || '');
   };
 
   const wrapperClasses = cn(

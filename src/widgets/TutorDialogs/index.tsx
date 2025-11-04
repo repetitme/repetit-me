@@ -289,6 +289,7 @@ const TutorDialogs: FC<TutorDialogsProps> = ({
   const addErrorSpace = (error: string, name: string) => {
     setErrors((prevErrors) => {
       const errors = { ...prevErrors };
+      if (!error) delete errors[name as keyof typeof errors];
       if (errors[name as keyof typeof errors]) return errors;
       errors[name as keyof typeof errors] = error;
       errors.acc = Object.entries(errors).filter(
