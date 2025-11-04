@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import cn from 'classnames';
 
 import styles from './index.module.scss';
@@ -13,6 +15,18 @@ const Textarea = ({
   onChange,
   ...props
 }: TextareaProps) => {
+  const [isTouched, setIsTouched] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setIsTouched(true);
+    onChange?.(e);
+  };
+
+  const handleBlur = () => {
+    setIsTouched(true);
+  };
+
+  const shouldShowError = isTouched && error;
   return (
     <div className={styles.textarea + ' ' + className}>
       {label && (
@@ -21,12 +35,17 @@ const Textarea = ({
         </label>
       )}
       <textarea
-        onChange={onChange}
+        onChange={handleChange}
+        onBlur={handleBlur}
         value={value}
-        className={cn(styles.textarea__area, { [styles.error]: error })}
+        className={cn(styles.textarea__area, {
+          [styles.error]: shouldShowError
+        })}
         {...props}
       />
-      {error && <span className={styles.textarea__error}>{error}</span>}
+      {shouldShowError && (
+        <span className={styles.textarea__error}>{error}</span>
+      )}
     </div>
   );
 };

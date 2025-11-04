@@ -47,7 +47,7 @@ export const Prices = ({
       <Slider
         min={300}
         max={4000}
-        step={50}
+        step={100}
         range
         className={styles.prices__slider}
         value={sliderValues}

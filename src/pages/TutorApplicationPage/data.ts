@@ -5,7 +5,7 @@ export const initialTutorData: TutorApplicationData = {
   profileInfo: {
     firstName: '',
     lastName: '',
-    telegram: '',
+    tg: '',
     avatar: ''
   },
   subjects: [initialSubject],

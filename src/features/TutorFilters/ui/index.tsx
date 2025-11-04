@@ -13,6 +13,7 @@ const TutorFilters = ({
   noResultsFound,
   percentage = 1,
   onToggleTooltip,
+  onHideTooltip,
   onReset
 }: TutorFiltersProps) => {
   const {
@@ -27,6 +28,15 @@ const TutorFilters = ({
     handleSubmit,
     handleReset
   } = useTutorFilters({ onSubmit, onReset });
+
+  const handleApplyWithTooltip = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (onHideTooltip) {
+      onHideTooltip();
+    }
+    handleSubmit(e);
+  };
+
   const filterButton = (reset?: TButton): React.JSX.Element => {
     return (
       <Button
@@ -43,7 +53,7 @@ const TutorFilters = ({
         <h2 onClick={onToggleTooltip}>Запросы на репетитора</h2>
         <span className={styles.filters__title__sub}>{`${percentage}%`}</span>
       </div>
-      <form onSubmit={handleSubmit} className={styles.filters__form}>
+      <form onSubmit={handleApplyWithTooltip} className={styles.filters__form}>
         {Accordions({
           data: accordionGroups,
           isOpen,

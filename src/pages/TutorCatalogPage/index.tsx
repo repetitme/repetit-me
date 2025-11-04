@@ -40,6 +40,14 @@ const TutorCatalogPage = () => {
     setModalOpen(null);
   };
 
+  const toggleTooltip = () => {
+    setTooltipFilter((prev) => !prev);
+  };
+
+  const hideTooltip = () => {
+    setTooltipFilter(false);
+  };
+
   return (
     <>
       <main className={styles.catalog} id="catalog">
@@ -83,7 +91,8 @@ const TutorCatalogPage = () => {
             onSubmit={() => handleOpenModal('filter')}
             onReset={() => setTooltipNotFound(false)}
             percentage={1}
-            onToggleTooltip={() => setTooltipFilter((prev) => !prev)}
+            onToggleTooltip={toggleTooltip}
+            onHideTooltip={hideTooltip}
           />
         </div>
         <div className={styles.catalog__link}>
