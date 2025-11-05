@@ -104,15 +104,7 @@ const useStudentRequests = () => {
   };
 
   const request = (id: string) => {
-    console.log(mockTutorProfile.find((tutor) => tutor.id === id));
-    setList(
-      (prev) =>
-        [
-          prev[0],
-          [mockTutors.find((tutor) => tutor.id === id), ...prev[1]],
-          prev[2]
-        ] as (ITutorData[] | IStudentData[])[]
-    );
+    console.log(mockTutors.find((tutor) => tutor.id === id));
     // Placeholder for API call to request a tutor
   };
 
