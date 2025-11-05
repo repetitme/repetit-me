@@ -12,7 +12,8 @@ import {
 } from '../../shared/types/userData';
 import {
   mockStudentProfile,
-  mockTutorProfile
+  mockTutorProfile,
+  mockTutors
 } from '../../widgets/UserCard/fakeApi/mockData';
 import {
   getProfile,
@@ -102,6 +103,11 @@ const useStudentRequests = () => {
     );
   };
 
+  const request = (id: string) => {
+    console.log(mockTutors.find((tutor) => tutor.id === id));
+    // Placeholder for API call to request a tutor
+  };
+
   useEffect(() => {
     getProfile(
       role === 'student' ? mockStudentProfile[0].id : mockTutorProfile[0].id,
@@ -179,6 +185,7 @@ const useStudentRequests = () => {
     createdRequest,
     cancelRequest,
     acceptRequest,
+    request,
     setList,
     setCreatedRequests,
     onClick,

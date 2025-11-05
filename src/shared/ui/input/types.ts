@@ -16,5 +16,6 @@ export default interface IInput {
   style?: React.CSSProperties;
   extraClass?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onError?: (error: string, name: string) => void;
   onlyNumber?: boolean;
 }

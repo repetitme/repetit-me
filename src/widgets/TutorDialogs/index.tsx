@@ -38,6 +38,9 @@ const TutorDialogs: FC<TutorDialogsProps> = ({
   const formRef = useRef<HTMLFormElement | null>(null);
   const [formChange, setFormChange] = useState(false);
   const [inputChange, setInputChange] = useState(true);
+  const [errors, setErrors] = useState<{ [key: string]: string | number }>({
+    acc: 0
+  });
   const defaultWidth =
     variant === 'report' ||
     (variant === 'arrangement' && state.arrangement.step === 2)
@@ -79,7 +82,6 @@ const TutorDialogs: FC<TutorDialogsProps> = ({
         [variant]: { ...prevState[variant], step: 1 }
       }));
     }
-
     handleChange(e, variant);
   };
 
@@ -263,6 +265,9 @@ const TutorDialogs: FC<TutorDialogsProps> = ({
         title={textarea ? '' : validate()}
         pattern={textarea ? '' : validate(true)}
         autoComplete="off"
+        {...((!textarea && {
+          onError: (error: string, name: string) => addErrorSpace(error, name)
+        }) as any)}
       />
     );
   };
@@ -280,6 +285,18 @@ const TutorDialogs: FC<TutorDialogsProps> = ({
         {futureLesson && radioFactory({ futureLesson, index: 2 })}
       </div>
     );
+  };
+  const addErrorSpace = (error: string, name: string) => {
+    setErrors((prevErrors) => {
+      const errors = { ...prevErrors };
+      if (!error) delete errors[name as keyof typeof errors];
+      if (errors[name as keyof typeof errors]) return errors;
+      errors[name as keyof typeof errors] = error;
+      errors.acc = Object.entries(errors).filter(
+        ([k, v]) => k !== 'acc' && v
+      ).length;
+      return errors;
+    });
   };
 
   const dialogs = () => {
@@ -346,7 +363,10 @@ const TutorDialogs: FC<TutorDialogsProps> = ({
       isValid={isValid}
     >
       <form
-        style={{ blockSize: `${blockSize}px`, inlineSize: `${inlineSize}px` }}
+        style={{
+          blockSize: `${blockSize + 30 * (errors.acc as number)}px`,
+          inlineSize: `${inlineSize}px`
+        }}
         onSubmit={onSubmit}
         onChange={handleValidity}
         ref={formRef}

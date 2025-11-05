@@ -32,13 +32,17 @@ type RouteParams = {
 
 const TutorPage = () => {
   const navigate = useNavigate();
+  const params = useParams<RouteParams>();
+  const { role } = useAppContext();
+  const location = useLocation();
 
+  const [dataState, setDataState] = useState<ITutorData>();
   const [isOpenModalStateFeedback, setOpenModalStateFeedback] = useState(false);
   const [isOpenModalStateFreeTime, setOpenModalStateFreeTime] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [cancelModal, setCancelModal] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  const { acceptRequest, cancelRequest } = useStudentRequests();
+  const { acceptRequest, cancelRequest, request } = useStudentRequests();
   const [status, setStatus] = useState<
     'myTutors' | 'iRequested' | 'tutorRequested' | 'unauth' | 'new'
   >('new');
@@ -53,8 +57,10 @@ const TutorPage = () => {
     toggle();
   };
 
-  const [dataState, setDataState] = useState<ITutorData>();
-  const params = useParams<RouteParams>();
+  const requestTutor = () => {
+    request(params.id!);
+    setStatus('tutorRequested');
+  };
 
   const formatExperience = (year: number) => {
     return `Стаж ${year} ${year === 1 ? 'год' : year > 1 && year < 5 ? 'года' : 'лет'}`;
@@ -65,46 +71,41 @@ const TutorPage = () => {
     setOpenModalStateFreeTime(false);
   };
 
-  const { role } = useAppContext();
-  const location = useLocation();
-
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetchData = async () => {
       if (!params.id) return;
-      API.getTutor(params.id)
-        .then((res) => setDataState(res))
-        .then(() => API.getProfile(mockStudentProfile[0].id, 'student'))
-        .then((profile) => {
-          if (!profile) return;
-          if (role === 'unauth') setStatus('unauth');
-          else {
-            if (
-              (
-                (profile.requests as IStudentProfile['requests'])?.[
-                  navOptionsStudent.myList
-                ]?.ids ?? []
-              ).includes(params.id!)
-            )
-              setStatus('myTutors');
-            if (
-              (
-                (profile.requests as IStudentProfile['requests'])?.[
-                  navOptionsStudent.myRequests
-                ]?.ids ?? []
-              ).includes(params.id!)
-            )
-              setStatus('iRequested');
-            if (
-              (
-                (profile.requests as IStudentProfile['requests'])?.[
-                  navOptionsStudent.requests
-                ]?.ids ?? []
-              ).includes(params.id!)
-            )
-              setStatus('tutorRequested');
-          }
-        });
+      API.getTutor(params.id).then((res) => setDataState(res));
+      API.getProfile(mockStudentProfile[0].id, 'student').then((profile) => {
+        if (!profile) return;
+        if (role === 'unauth') setStatus('unauth');
+        else {
+          if (
+            (
+              (profile.requests as IStudentProfile['requests'])?.[
+                navOptionsStudent.myList
+              ]?.ids ?? []
+            ).includes(params.id!)
+          )
+            setStatus('myTutors');
+          if (
+            (
+              (profile.requests as IStudentProfile['requests'])?.[
+                navOptionsStudent.myRequests
+              ]?.ids ?? []
+            ).includes(params.id!)
+          )
+            setStatus('iRequested');
+          if (
+            (
+              (profile.requests as IStudentProfile['requests'])?.[
+                navOptionsStudent.requests
+              ]?.ids ?? []
+            ).includes(params.id!)
+          )
+            setStatus('tutorRequested');
+        }
+      });
     };
     fetchData();
   }, [params.id, location.key]);
@@ -207,7 +208,7 @@ const TutorPage = () => {
                       close: toggle,
                       buttonOnClick: () => {
                         navigate('/requests');
-                        accept();
+                        requestTutor();
                       },
                       buttonText: 'Мои заявки'
                     })}

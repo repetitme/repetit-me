@@ -2,7 +2,7 @@
   &__auxiliary {
     display: flex;
     flex-direction: row;
-    align-items: end;
+    align-items: start;
     gap: 48px;
   }
 
@@ -15,7 +15,7 @@
     &--price {
       display: flex;
       flex-direction: row;
-      align-items: end;
+      align-items: start;
       gap: 12px;
       position: relative;
 
@@ -31,7 +31,7 @@
       &-currency {
         line-height: 100%;
         font-weight: 500;
-        margin-block-end: 12px;
+        margin-block-start: 47px;
         block-size: 20px;
       }
     }
@@ -47,7 +47,7 @@
       font-size: 16px;
       font-weight: 600;
       background-color: transparent;
-      margin-block-end: 12px;
+      margin-block-start: 47px;
       max-inline-size: 250px;
       padding: 0;
     }

@@ -31,7 +31,8 @@ const Input: React.FC<IInput> = ({
   title,
   requiredError = 'Поле обязательно для заполнения',
   onChange,
-  onlyNumber = false
+  onlyNumber = false,
+  onError
 }) => {
   const [error, setError] = useState<string>('');
   const [isFocused, setIsFocused] = useState(false);
@@ -59,6 +60,9 @@ const Input: React.FC<IInput> = ({
     }
     if (target.value.length < (minLength || 0) && target.name === 'tg') {
       return 'Минимальная длина никнейма - 3 символа';
+    }
+    if (target.value.length < (minLength || 0) && target.name === 'name') {
+      return 'Минимальная длина имени - 3 символа';
     }
     if (target.type === 'email' && target.value) {
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(target.value)) {
@@ -126,7 +130,7 @@ const Input: React.FC<IInput> = ({
       cursorPositionRef.current = inputRef.current.selectionStart;
     }
     onChange({
-      target: { value: value, name }
+      target: { value: value, name, validity: e.target.validity }
     } as React.ChangeEvent<HTMLInputElement>);
   };
 
@@ -161,8 +165,13 @@ const Input: React.FC<IInput> = ({
     }
   };
 
+  useEffect(() => {
+    onError && onError(error, name || '');
+  }, [error, isFocused, name]);
+
   const handleFocus = (): void => {
     setIsFocused(true);
+    onError && onError(error, name || '');
   };
 
   const wrapperClasses = cn(
@@ -200,15 +209,13 @@ const Input: React.FC<IInput> = ({
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-        {error && (
-          <span
-            className={cn(styles.error__text, {
-              [styles.error__active]: error
-            })}
-          >
-            {error}
-          </span>
-        )}
+        <span
+          className={cn(styles.error__text, {
+            [styles.error__active]: error
+          })}
+        >
+          {error}
+        </span>
       </div>
     </div>
   );
