@@ -42,7 +42,7 @@ const TutorPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [cancelModal, setCancelModal] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  const { acceptRequest, cancelRequest } = useStudentRequests();
+  const { acceptRequest, cancelRequest, request } = useStudentRequests();
   const [status, setStatus] = useState<
     'myTutors' | 'iRequested' | 'tutorRequested' | 'unauth' | 'new'
   >('new');
@@ -55,6 +55,11 @@ const TutorPage = () => {
   const accept = () => {
     acceptRequest(params.id!);
     toggle();
+  };
+
+  const requestTutor = () => {
+    request(params.id!);
+    setStatus('tutorRequested');
   };
 
   const formatExperience = (year: number) => {
@@ -70,9 +75,7 @@ const TutorPage = () => {
     window.scrollTo(0, 0);
     const fetchData = async () => {
       if (!params.id) return;
-      API.getTutor(params.id)
-        .then((res) => setDataState(res))
-        .then((res) => console.log(res));
+      API.getTutor(params.id).then((res) => setDataState(res));
       API.getProfile(mockStudentProfile[0].id, 'student').then((profile) => {
         if (!profile) return;
         if (role === 'unauth') setStatus('unauth');
@@ -205,7 +208,7 @@ const TutorPage = () => {
                       close: toggle,
                       buttonOnClick: () => {
                         navigate('/requests');
-                        accept();
+                        requestTutor();
                       },
                       buttonText: 'Мои заявки'
                     })}

@@ -1379,8 +1379,6 @@ export const mockStudentProfile: IStudentProfile[] = [
     requests: {
       ['Мои репетиторы']: {
         ids: [
-          mockTutors[0].id,
-          mockTutors[1].id,
           mockTutors[2].id,
           mockTutors[3].id,
           mockTutors[4].id,
