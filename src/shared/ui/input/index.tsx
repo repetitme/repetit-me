@@ -86,7 +86,7 @@ const Input: React.FC<IInput> = ({
     if (isPrice || onlyNumber) {
       value = value.replace(/\D/g, '');
     }
-    if (/^[0-9\s₽]+$/.test(value) && type !== 'number') {
+    if (/^[0-9\s₽]+$/.test(value) && type !== 'number' && variant !== 'auth') {
       value = formatNumber(value, isPrice);
       requestAnimationFrame(() => {
         inputRef.current!.setSelectionRange(
