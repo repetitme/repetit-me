@@ -35,7 +35,6 @@ const UserCard: React.FC<IUserData> = ({
   const toggle = () => {
     setIsOpen(!isOpen);
   };
-
   const cancel = () => {
     if (cancelRequest) {
       if (tutorData) {
@@ -46,7 +45,6 @@ const UserCard: React.FC<IUserData> = ({
     }
     toggle();
   };
-
   const accept = () => {
     if (acceptRequest) {
       if (tutorData) {
@@ -58,7 +56,6 @@ const UserCard: React.FC<IUserData> = ({
     }
     toggle();
   };
-
   const navRole = role === 'tutor' ? navOptionsTutor : navOptionsStudent;
   const isMyList = navOption === navRole.myList;
   const isMyRequests = navOption === navRole.myRequests;
@@ -76,12 +73,10 @@ const UserCard: React.FC<IUserData> = ({
       close();
     }
   };
-
   const handleAccept = (isAccepted: boolean) => {
     setIsAccepted(isAccepted);
     toggle();
   };
-
   const requestTutor = () => {
     request(tutorData!.id);
     setConfirmationModal(true);
