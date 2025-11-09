@@ -60,7 +60,7 @@ const TutorPage = () => {
 
   const requestTutor = () => {
     request(params.id!);
-    setStatus('tutorRequested');
+    setStatus('myTutors');
     setConfirmationModal(true);
   };
 

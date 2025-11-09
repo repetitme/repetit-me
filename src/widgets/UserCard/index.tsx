@@ -3,6 +3,7 @@ import { useState } from 'react';
 import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
 
+import useStudentRequests from '../../pages/Requests/useStudentRequests';
 import {
   IUserData,
   navOptionsStudent,
@@ -10,6 +11,7 @@ import {
 } from '../../shared/types/userData';
 import Button from '../../shared/ui/button';
 import Popups from '../../shared/ui/popup';
+import FreeTimeTableModal from '../FreeTimeTableModal';
 import TutorDialogs from '../TutorDialogs';
 import { TutorDialogsVariant } from '../TutorDialogs/constants';
 import StudentProfile from '../UserProfile/StudentProfile';
@@ -28,6 +30,8 @@ const UserCard: React.FC<IUserData> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isAccepted, setIsAccepted] = useState(false);
+  const [confirmationModal, setConfirmationModal] = useState(false);
+  const { request } = useStudentRequests();
   const toggle = () => {
     setIsOpen(!isOpen);
   };
@@ -78,6 +82,11 @@ const UserCard: React.FC<IUserData> = ({
     toggle();
   };
 
+  const requestTutor = () => {
+    request(tutorData!.id);
+    setConfirmationModal(true);
+  };
+
   return (
     <div className={cn(styles.card, role === 'card' && styles.card__resize)}>
       {role === 'student' || role === 'unauth' ? (
@@ -109,29 +118,37 @@ const UserCard: React.FC<IUserData> = ({
                     onClick={toggle}
                   />
                 )}
-                {!navOption
-                  ? Popups.responded({
-                      isOpen,
-                      close: toggle,
-                      buttonOnClick: () => {
-                        navigate('/requests');
-                        accept();
-                      },
-                      buttonText: 'Мои заявки'
-                    })
-                  : isRequests
-                    ? Popups.receivedRequest({
-                        isOpen,
-                        close: toggle,
-                        buttonOnClick: handleChangeTab,
-                        buttonText: navOptionsStudent.myList
-                      })
-                    : Popups.cancelRequest({
-                        isOpen,
-                        close: toggle,
-                        buttonOnClick: toggle,
-                        secondaryButtonOnClick: cancel
-                      })}
+                {!navOption ? (
+                  <FreeTimeTableModal
+                    isOpen={isOpen}
+                    onClose={toggle}
+                    requestTutor={requestTutor}
+                    freeTime={tutorData!.freeTime}
+                  />
+                ) : isRequests ? (
+                  Popups.receivedRequest({
+                    isOpen,
+                    close: toggle,
+                    buttonOnClick: handleChangeTab,
+                    buttonText: navOptionsStudent.myList
+                  })
+                ) : (
+                  Popups.cancelRequest({
+                    isOpen,
+                    close: toggle,
+                    buttonOnClick: toggle,
+                    secondaryButtonOnClick: cancel
+                  })
+                )}
+                {confirmationModal &&
+                  Popups.responded({
+                    isOpen: confirmationModal,
+                    close: () => setConfirmationModal(false),
+                    buttonOnClick: () => {
+                      navigate('/requests');
+                    },
+                    buttonText: 'Мои заявки'
+                  })}
               </>
             )}
           </div>
