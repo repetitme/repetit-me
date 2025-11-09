@@ -59,7 +59,7 @@ const Input: React.FC<IInput> = ({
       return title || 'Некорректный формат';
     }
     if (target.value.length < (minLength || 0) && target.name === 'tg') {
-      return 'Минимальная длина никнейма - 3 символа';
+      return 'Минимальная длина никнейма - 5 символа';
     }
     if (target.value.length < (minLength || 0) && target.name === 'name') {
       return 'Минимальная длина имени - 3 символа';
@@ -86,7 +86,7 @@ const Input: React.FC<IInput> = ({
     if (isPrice || onlyNumber) {
       value = value.replace(/\D/g, '');
     }
-    if (/^[0-9\s₽]+$/.test(value) && type !== 'number') {
+    if (/^[0-9\s₽]+$/.test(value) && type !== 'number' && variant !== 'auth') {
       value = formatNumber(value, isPrice);
       requestAnimationFrame(() => {
         inputRef.current!.setSelectionRange(
@@ -105,8 +105,11 @@ const Input: React.FC<IInput> = ({
       });
     }
     if (name === 'date') {
-      if ((value.length === 2 || value.length === 5) && !value.endsWith('.')) {
-        value += '.';
+      if (
+        (value.length === 3 || value.length === 6) &&
+        value[value.length - 1] !== '.'
+      ) {
+        value = value.slice(0, -1) + '.' + value[value.length - 1];
         requestAnimationFrame(() => {
           inputRef.current!.setSelectionRange(value.length, value.length);
         });
@@ -114,10 +117,28 @@ const Input: React.FC<IInput> = ({
       if (value.length > 10) {
         value = value.slice(0, 10);
       }
+      if (value.length === 4) {
+        const day = parseInt(value.slice(0, 2));
+        if (day > 31) {
+          value = '31.';
+        }
+      }
+      if (value.length === 7) {
+        const month = parseInt(value.slice(3, 5));
+        if (month > 12) {
+          value = value.slice(0, 3) + '12.';
+        }
+      }
+      if (value.length === 10) {
+        const year = parseInt(value.slice(6, 10));
+        if (year > new Date().getFullYear() + 1) {
+          value = value.slice(0, 6) + new Date().getFullYear().toString();
+        }
+      }
     }
     if (name === 'time') {
-      if (value.length === 2 && !value.endsWith(':')) {
-        value += ':';
+      if (value.length === 3 && value[2] !== ':') {
+        value = value.slice(0, 2) + ':' + value.slice(2);
         requestAnimationFrame(() => {
           inputRef.current!.setSelectionRange(value.length, value.length);
         });
@@ -125,6 +146,24 @@ const Input: React.FC<IInput> = ({
       if (value.length > 5) {
         value = value.slice(0, 5);
       }
+      if (value.length > 3) {
+        const minutes = parseInt(value.slice(3, 5));
+        if (minutes > 59) {
+          value = value.slice(0, 3) + '59';
+        }
+      }
+      if (value.length > 2) {
+        const hours = parseInt(value.slice(0, 2));
+        if (hours > 23) {
+          value = '23' + value.slice(2);
+        }
+      }
+    }
+    if (name === 'link' && value && !value.startsWith('https://')) {
+      value = 'https://' + value;
+      requestAnimationFrame(() => {
+        inputRef.current!.setSelectionRange(value.length, value.length);
+      });
     }
     if (inputRef.current) {
       cursorPositionRef.current = inputRef.current.selectionStart;

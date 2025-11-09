@@ -34,8 +34,7 @@ export const useAddInfo = (initialContent = '') => {
     []
   );
 
-  const isButtonDisabled =
-    content.trim().length < MIN_LENGTH || content.trim().length > MAX_LENGTH;
+  const isButtonDisabled = content.trim().length > MAX_LENGTH;
 
   return {
     content,

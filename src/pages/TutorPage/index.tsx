@@ -41,6 +41,7 @@ const TutorPage = () => {
   const [isOpenModalStateFreeTime, setOpenModalStateFreeTime] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [cancelModal, setCancelModal] = useState(false);
+  const [confirmationModal, setConfirmationModal] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const { acceptRequest, cancelRequest, request } = useStudentRequests();
   const [status, setStatus] = useState<
@@ -60,6 +61,7 @@ const TutorPage = () => {
   const requestTutor = () => {
     request(params.id!);
     setStatus('tutorRequested');
+    setConfirmationModal(true);
   };
 
   const formatExperience = (year: number) => {
@@ -130,6 +132,7 @@ const TutorPage = () => {
       {isOpenModalStateFreeTime && (
         <FreeTimeTableModal
           freeTime={dataState.freeTime}
+          requestTutor={requestTutor}
           onClose={onToggleModalState}
           isOpen={isOpenModalStateFreeTime}
         />
@@ -161,7 +164,11 @@ const TutorPage = () => {
                           ? 'purple'
                           : 'red'
                       }
-                      onClick={toggle}
+                      onClick={
+                        status === 'new'
+                          ? () => setOpenModalStateFreeTime(true)
+                          : toggle
+                      }
                     />
                   )}
                   {(status === 'tutorRequested' || status === 'iRequested') && (
@@ -202,13 +209,12 @@ const TutorPage = () => {
                       buttonOnClick: accept,
                       buttonText: navOptionsStudent.myList
                     })}
-                  {status === 'new' &&
+                  {confirmationModal &&
                     Popups.responded({
-                      isOpen,
+                      isOpen: confirmationModal,
                       close: toggle,
                       buttonOnClick: () => {
                         navigate('/requests');
-                        requestTutor();
                       },
                       buttonText: 'Мои заявки'
                     })}
