@@ -261,7 +261,17 @@ const TutorDialogs: FC<TutorDialogsProps> = ({
             ? false
             : true
         }
-        maxLength={textarea ? 500 : 50}
+        maxLength={
+          textarea
+            ? 500
+            : name === 'price'
+              ? 6
+              : name === 'duration'
+                ? 3
+                : name === 'planedNumberOfLessons'
+                  ? 2
+                  : 50
+        }
         title={textarea ? '' : validate()}
         pattern={textarea ? '' : validate(true)}
         autoComplete="off"

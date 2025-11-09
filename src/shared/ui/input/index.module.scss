@@ -78,6 +78,7 @@
       block-size: 0;
       transform: translate(-20px);
       transition: all var(--slow-transition);
+      white-space: nowrap;
     }
 
     &__active {

@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import Button from '../../../shared/ui/button';
 import TextareaForAddInfo from '../../../shared/ui/textareaForAddInfo';
-import { MAX_LENGTH, MIN_LENGTH, useAddInfo } from './useAddInfo';
+import { MAX_LENGTH, useAddInfo } from './useAddInfo';
 
 import styles from './index.module.scss';
 
@@ -23,9 +23,7 @@ const AddInfo: FC<AddInfoProps> = ({ onClose }) => {
             value={content}
             onChange={handleContentChange}
             placeholder="Например, желаемое время занятий, если его нет в расписании, ваш уровень, конкретную цель занятий или другую важную информацию для репетитора."
-            minLength={MIN_LENGTH}
             maxLength={MAX_LENGTH}
-            required
             error={error}
           />
         </div>
