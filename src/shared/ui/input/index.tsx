@@ -39,7 +39,68 @@ const Input: React.FC<IInput> = ({
   const [isTouched, setIsTouched] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const cursorPositionRef = useRef<number | null>(null);
+  const previousValueRef = useRef<string>('');
   const isPrice: boolean = variant === 'price';
+
+  const parseDate = (dateString: string): Date | null => {
+    if (!dateString || dateString.length !== 10) return null;
+    
+    const parts = dateString.split('.');
+    if (parts.length !== 3) return null;
+    
+    const day = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1;
+    const year = parseInt(parts[2], 10);
+    
+    if (isNaN(day) || isNaN(month) || isNaN(year)) return null;
+    
+    const date = new Date(year, month, day);
+
+    if (
+      date.getDate() !== day ||
+      date.getMonth() !== month ||
+      date.getFullYear() !== year
+    ) {
+      return null;
+    }
+    
+    return date;
+  };
+
+  const formatDate = (d: Date): string => {
+    const day = String(d.getDate()).padStart(2, '0');
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const year = d.getFullYear();
+    return `${day}.${month}.${year}`;
+  };
+
+  const validateDateRange = (dateString: string): string => {
+    if (!dateString || dateString.length !== 10) return '';
+    
+    const date = parseDate(dateString);
+    if (!date) {
+      return '';
+    }
+    
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    const maxDate = new Date(today);
+    maxDate.setFullYear(today.getFullYear() + 1);
+    
+    const inputDate = new Date(date);
+    inputDate.setHours(0, 0, 0, 0);
+    
+    if (inputDate < today) {
+      return `Дата не может быть раньше ${formatDate(today)}`;
+    }
+    
+    if (inputDate > maxDate) {
+      return `Дата не может быть позже ${formatDate(maxDate)}`;
+    }
+    
+    return '';
+  };
 
   const validate = (target: HTMLInputElement): string => {
     if (target.validity.valueMissing && required) {
@@ -48,16 +109,33 @@ const Input: React.FC<IInput> = ({
     if (target.validity.typeMismatch) {
       return title || target.validationMessage;
     }
-    if (target.validity.patternMismatch) {
-      return title || target.validationMessage;
+    
+    if (target.name === 'date' && target.value) {
+      if (target.validity.patternMismatch) {
+        return title || 'Введите дату в формате ДД.ММ.ГГГГ';
+      }
+      if (pattern && !new RegExp(pattern).test(target.value)) {
+        return title || 'Введите дату в формате ДД.ММ.ГГГГ';
+      }
+      if (target.value.length === 10) {
+        const dateRangeError = validateDateRange(target.value);
+        if (dateRangeError) {
+          return dateRangeError;
+        }
+      }
+    } else {
+      if (target.validity.patternMismatch) {
+        return title || target.validationMessage;
+      }
+      if (
+        pattern &&
+        !new RegExp(pattern).test(target.value) &&
+        target.name !== 'link'
+      ) {
+        return title || 'Некорректный формат';
+      }
     }
-    if (
-      pattern &&
-      !new RegExp(pattern).test(target.value) &&
-      target.name !== 'link'
-    ) {
-      return title || 'Некорректный формат';
-    }
+    
     if (target.value.length < (minLength || 0) && target.name === 'tg') {
       return 'Минимальная длина никнейма - 3 символа';
     }
@@ -83,6 +161,9 @@ const Input: React.FC<IInput> = ({
 
   const formatInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     let { value, name } = e.target;
+    const previousValue = previousValueRef.current;
+    const isDeleting = previousValue !== undefined && previousValue !== null && value.length < previousValue.length;
+    
     if (isPrice || onlyNumber) {
       value = value.replace(/\D/g, '');
     }
@@ -105,7 +186,7 @@ const Input: React.FC<IInput> = ({
       });
     }
     if (name === 'date') {
-      if ((value.length === 2 || value.length === 5) && !value.endsWith('.')) {
+      if (!isDeleting && (value.length === 2 || value.length === 5) && !value.endsWith('.')) {
         value += '.';
         requestAnimationFrame(() => {
           inputRef.current!.setSelectionRange(value.length, value.length);
@@ -116,12 +197,13 @@ const Input: React.FC<IInput> = ({
       }
     }
     if (name === 'time') {
-      if (value.length === 2 && !value.endsWith(':')) {
+      if (!isDeleting && value.length === 2 && !value.endsWith(':')) {
         value += ':';
         requestAnimationFrame(() => {
           inputRef.current!.setSelectionRange(value.length, value.length);
         });
       }
+      
       if (value.length > 5) {
         value = value.slice(0, 5);
       }
@@ -129,6 +211,7 @@ const Input: React.FC<IInput> = ({
     if (inputRef.current) {
       cursorPositionRef.current = inputRef.current.selectionStart;
     }
+    previousValueRef.current = value;
     onChange({
       target: { value: value, name, validity: e.target.validity }
     } as React.ChangeEvent<HTMLInputElement>);
@@ -139,6 +222,12 @@ const Input: React.FC<IInput> = ({
       const position = cursorPositionRef.current;
       inputRef.current.setSelectionRange(position, position);
       cursorPositionRef.current = null;
+    }
+  }, [value]);
+
+  useEffect(() => {
+    if (value === '') {
+      previousValueRef.current = '';
     }
   }, [value]);
 
