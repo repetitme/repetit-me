@@ -8,7 +8,7 @@ import styles from './index.module.scss';
 
 import { AddInfoProps } from './type';
 
-const AddInfo: FC<AddInfoProps> = ({ onClose }) => {
+const AddInfo: FC<AddInfoProps> = ({ selectedTime, onClose }) => {
   const { content, error, handleContentChange, isButtonDisabled } =
     useAddInfo();
 
@@ -32,7 +32,7 @@ const AddInfo: FC<AddInfoProps> = ({ onClose }) => {
         <Button
           text="Связаться"
           variant="purple"
-          disabled={isButtonDisabled}
+          disabled={selectedTime.time === '' || isButtonDisabled}
           className={styles.button}
           onClick={onClose}
         />

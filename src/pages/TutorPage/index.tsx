@@ -58,10 +58,12 @@ const TutorPage = () => {
     toggle();
   };
 
-  const requestTutor = () => {
-    request(params.id!);
+  const requestTutor = (day: string, time: string) => {
+    request(params.id!, day, time);
     setStatus('myTutors');
     setConfirmationModal(true);
+    console.log(day, time);
+    console.log(dataState);
   };
 
   const formatExperience = (year: number) => {

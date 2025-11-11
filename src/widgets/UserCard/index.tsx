@@ -77,8 +77,8 @@ const UserCard: React.FC<IUserData> = ({
     setIsAccepted(isAccepted);
     toggle();
   };
-  const requestTutor = () => {
-    request(tutorData!.id);
+  const requestTutor = (day: string, time: string) => {
+    request(tutorData!.id, day, time);
     setConfirmationModal(true);
   };
 

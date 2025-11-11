@@ -59,7 +59,7 @@ const Input: React.FC<IInput> = ({
       return title || 'Некорректный формат';
     }
     if (target.value.length < (minLength || 0) && target.name === 'tg') {
-      return 'Минимальная длина никнейма - 5 символа';
+      return 'Минимальная длина никнейма - 5 символов';
     }
     if (target.value.length < (minLength || 0) && target.name === 'name') {
       return 'Минимальная длина имени - 3 символа';

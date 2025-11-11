@@ -60,10 +60,18 @@
 
         &_time {
           border-radius: 12px;
+          cursor: pointer;
           background-color: rgb(230 227 255 / 100%);
           inline-size: 72px;
           block-size: 43px;
           padding: 9px 9px 9px 8px;
+          transition: all var(--slow-transition);
+
+          &_selected {
+            transform: scale(1.1);
+            background-color: var(--clr-primary-default);
+            color: #fff;
+          }
         }
       }
     }
