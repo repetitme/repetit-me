@@ -114,7 +114,12 @@
       }
 
       &_freeTime {
-        cursor: pointer;
+        pointer-events: none;
+
+        &_active {
+          pointer-events: auto;
+          cursor: pointer;
+        }
       }
     }
   }

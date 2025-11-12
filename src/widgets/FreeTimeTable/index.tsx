@@ -62,7 +62,6 @@ const FreeTimeTable: FC<IFreeTimeTable> = ({
                       key={index}
                       onClick={(e) => {
                         e.stopPropagation();
-                        console.log(selectedTime?.day, selectedTime?.time);
                         setTime && setTime({ day: times.day, time: time });
                       }}
                       data-selected={
