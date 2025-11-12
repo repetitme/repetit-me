@@ -12,11 +12,22 @@ import { initialTutorData } from './data';
 
 import styles from './index.module.scss';
 
+import { ProfileFormData } from '../../features/tutorApplication/ui/ProfileInfo/type';
 import { Subject } from '../../features/tutorApplication/ui/subjectForm/type';
 import TutorApplicationData, { TutorField } from './type';
 
 const TutorApplicationPage = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
+  const [isValid, setIsValid] = useState<
+    Record<keyof ProfileFormData, boolean>
+  >({
+    firstName: false,
+    lastName: false,
+    tg: false,
+    email: false,
+    about: true,
+    avatar: true
+  });
 
   const [tutorData, setTutorData] =
     useState<TutorApplicationData>(initialTutorData);
@@ -59,7 +70,10 @@ const TutorApplicationPage = () => {
     switch (currentStep) {
       case 1: {
         const { firstName, lastName, tg, avatar } = data.profileInfo;
-        return Boolean(firstName && lastName && tg && avatar);
+        return (
+          Boolean(firstName && lastName && tg && avatar) &&
+          Object.values(isValid).every((valid) => valid)
+        );
       }
       case 2: {
         return Boolean(
@@ -136,6 +150,7 @@ const TutorApplicationPage = () => {
 
       {currentStep === 1 && (
         <ProfileInfo
+          setIsValid={setIsValid}
           initialData={tutorData.profileInfo}
           onDataChange={(data) =>
             setTutorData((prev) => ({ ...prev, profileInfo: data }))

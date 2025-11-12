@@ -13,10 +13,18 @@ import styles from './index.module.scss';
 
 import { ProfileFormData, ProfileInfoProps } from './type';
 
-const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
+const ProfileInfo = ({
+  setIsValid,
+  onDataChange,
+  initialData
+}: ProfileInfoProps) => {
   const { values, handleChange, setValues } =
     useForm<ProfileFormData>(initialData);
   const [hasAvatar, setHasAvatar] = useState(!!initialData.avatar);
+
+  const handleChangeValid = (error: string, name: string) => {
+    setIsValid((prev) => ({ ...prev, [name]: !error }));
+  };
 
   useEffect(() => {
     onDataChange(values);
@@ -68,6 +76,7 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               minLength={1}
               maxLength={50}
               required
+              onError={handleChangeValid}
             />
             <Input
               name="lastName"
@@ -81,6 +90,7 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               minLength={1}
               maxLength={100}
               required
+              onError={handleChangeValid}
             />
             <Input
               name="tg"
@@ -93,6 +103,7 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               pattern="^@[A-Za-z0-9_]+$"
               title="Ник должен начинаться с @ и содержать только латинские буквы, цифры или _"
               required
+              onError={handleChangeValid}
             />
             <Input
               name="email"
@@ -102,6 +113,7 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               placeholder="alex@ya.ru"
               pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
               onChange={handleChange}
+              onError={handleChangeValid}
             />
             <Textarea
               name="about"
@@ -113,7 +125,8 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               pattern="^[А-Яа-яЁё0-9\s\-\(\)\/\,\.\!\:\;\'\?]+$"
               minLength={100}
               maxLength={2000}
-              error="Минимум 100 символов"
+              title="Минимум 100 символов"
+              onError={handleChangeValid}
             />
           </div>
         </div>
