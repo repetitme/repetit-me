@@ -11,6 +11,6 @@ type TextareaProps = {
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   minLength?: number;
   maxLength?: number;
-}
+};
 
 export default TextareaProps;
