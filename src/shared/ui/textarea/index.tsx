@@ -14,6 +14,7 @@ const Textarea = ({
   onChange,
   onError,
   placeholder,
+  required,
   title,
   minLength,
   maxLength,
@@ -66,6 +67,7 @@ const Textarea = ({
         onChange={handleChange}
         onBlur={handleBlur}
         value={value}
+        required={required}
         placeholder={shouldShowError ? '' : placeholder}
         title={title}
         minLength={minLength}

@@ -4,6 +4,7 @@ type TextareaProps = {
   className?: string;
   title?: string;
   name?: string;
+  required?: boolean;
   placeholder?: string;
   pattern?: string;
   value?: string;
