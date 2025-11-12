@@ -52,6 +52,10 @@
     &:disabled {
       border: 1px solid #d1d5db;
       color: #d1d5db;
+
+      .icon {
+        filter: grayscale(100%) brightness(180%);
+      }
     }
   }
 

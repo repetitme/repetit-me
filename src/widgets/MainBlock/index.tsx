@@ -45,11 +45,12 @@ const MainBlock: React.FC<MainBlockProps> = ({ isActive, setIsActive }) => {
           </p>
           <button
             className={styles.main__button}
-            onClick={
+            onClick={() => {
+              window.scrollTo(0, 0);
               isActive
-                ? () => navigate('/tutor-application')
-                : () => navigate('/tutor-catalog')
-            }
+                ? navigate('/tutor-application')
+                : navigate('/tutor-catalog');
+            }}
           >
             {isActive ? 'Заполнить анкету' : 'Подобрать репетитора'}
           </button>

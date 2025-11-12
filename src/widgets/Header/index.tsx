@@ -60,14 +60,20 @@ const Header = ({ auth }: HeaderProps) => {
             <Link
               key={item.text}
               to={item.path}
-              className={styles.header__nav__link}
+              className={cn(styles.header__nav__link, {
+                [styles['header__nav__link--active']]:
+                  location.pathname === item.path
+              })}
             >
               {item.text}
             </Link>
           ))}
           <Link
             to="/register"
-            className={styles.header__nav__link}
+            className={cn(styles.header__nav__link, {
+              [styles['header__nav__link--active']]:
+                location.pathname === '/register'
+            })}
             state={{ backgroundLocation: location }}
           >
             Войти
