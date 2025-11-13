@@ -17,5 +17,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 29px 47px;
+
+    .input {
+      span {
+        white-space: wrap;
+      }
+    }
   }
 }

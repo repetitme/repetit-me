@@ -13,10 +13,18 @@ import styles from './index.module.scss';
 
 import { ProfileFormData, ProfileInfoProps } from './type';
 
-const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
+const ProfileInfo = ({
+  setIsValid,
+  onDataChange,
+  initialData
+}: ProfileInfoProps) => {
   const { values, handleChange, setValues } =
     useForm<ProfileFormData>(initialData);
   const [hasAvatar, setHasAvatar] = useState(!!initialData.avatar);
+
+  const handleChangeValid = (error: string, name: string) => {
+    setIsValid((prev) => ({ ...prev, [name]: !error }));
+  };
 
   useEffect(() => {
     onDataChange(values);
@@ -45,7 +53,10 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
       <Wrapper large className={styles.wrapper}>
         <div className={styles.form}>
           <div className={styles.form__avatar}>
-            <AvatarBlock avatarUrl={values.avatar} />
+            <AvatarBlock
+              avatarUrl={values.avatar}
+              onClick={() => setIsModalOpen(true)}
+            />
             <Button
               text={hasAvatar ? 'Изменить фотографию' : 'Загрузить фотографию'}
               variant="underline"
@@ -67,13 +78,16 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               title="Поле может содержать только кириллические буквы, пробелы и дефисы"
               minLength={1}
               maxLength={50}
+              extraClass={styles.input}
               required
+              onError={handleChangeValid}
             />
             <Input
               name="lastName"
               value={values.lastName}
               type="text"
               label="Фамилия"
+              extraClass={styles.input}
               placeholder="Иванов"
               onChange={handleChange}
               pattern="^[А-Яа-яЁё\s\-]+$"
@@ -81,27 +95,30 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               minLength={1}
               maxLength={100}
               required
+              onError={handleChangeValid}
             />
             <Input
               name="tg"
               value={values.tg}
               label="Ник в телеграм"
               placeholder="@alex"
+              extraClass={styles.input}
               onChange={handleChange}
               minLength={6}
               maxLength={31}
               pattern="^@[A-Za-z0-9_]+$"
               title="Ник должен начинаться с @ и содержать только латинские буквы, цифры или _"
               required
+              onError={handleChangeValid}
             />
             <Input
               name="email"
               value={values.email || ''}
-              type="email"
               label="Почта"
               placeholder="alex@ya.ru"
-              pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+              extraClass={styles.input}
               onChange={handleChange}
+              onError={handleChangeValid}
             />
             <Textarea
               name="about"
@@ -113,7 +130,8 @@ const ProfileInfo = ({ onDataChange, initialData }: ProfileInfoProps) => {
               pattern="^[А-Яа-яЁё0-9\s\-\(\)\/\,\.\!\:\;\'\?]+$"
               minLength={100}
               maxLength={2000}
-              error="Минимум 100 символов"
+              title="Минимум 100 символов"
+              onError={handleChangeValid}
             />
           </div>
         </div>

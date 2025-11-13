@@ -35,7 +35,7 @@ const NewFeedbackForm: React.FC<NewFeedbackFormProps> = ({ toggleVisible }) => {
         minLength={MIN_LENGTH}
         maxLength={MAX_LENGTH}
         required
-        error={error}
+        title={error}
       />
       <Button
         text="Отправить отзыв"

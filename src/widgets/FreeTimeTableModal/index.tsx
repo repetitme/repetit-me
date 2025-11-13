@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import CloseIcon from '../../assets/icons/closeIcon.svg';
 import { IFreeTime } from '../../shared/types/userData';
@@ -9,7 +9,7 @@ import AddInfo from './AddInfo';
 import styles from './index.module.scss';
 
 interface IFreeTimeTable {
-  requestTutor: () => void;
+  requestTutor: (day: string, time: string) => void;
   freeTime: IFreeTime[];
   onClose: () => void;
   isOpen: boolean;
@@ -21,6 +21,10 @@ const FreeTimeTableModal: FC<IFreeTimeTable> = ({
   onClose,
   isOpen
 }) => {
+  const [selectedTime, setTime] = useState({
+    day: '',
+    time: ''
+  });
   return (
     <Popup
       isOpen={isOpen}
@@ -43,13 +47,21 @@ const FreeTimeTableModal: FC<IFreeTimeTable> = ({
                 />
               </button>
             </div>
-            <div className={styles.container__content_table}>
-              <FreeTimeTable freeTime={freeTime} />
+            <div
+              className={styles.container__content_table}
+              onClick={() => setTime({ day: '', time: '' })}
+            >
+              <FreeTimeTable
+                freeTime={freeTime}
+                selectedTime={selectedTime}
+                setTime={setTime}
+              />
             </div>
             <div className={styles.container__content_addInfo}>
               <AddInfo
+                selectedTime={selectedTime}
                 onClose={() => {
-                  requestTutor();
+                  requestTutor(selectedTime.day, selectedTime.time);
                   onClose();
                 }}
               />

@@ -23,6 +23,7 @@
     inline-size: 100%;
     min-block-size: 80px;
     font-family: var(--ffm-price);
+    transition: all var(--slow-transition);
     font-size: 18px;
     line-height: 24px;
     resize: vertical;
@@ -34,6 +35,7 @@
     }
 
     &.error {
+      color: var(--clr-secondary-default);
       border: 2px solid var(--clr-secondary-default);
     }
 
@@ -43,12 +45,22 @@
   }
 
   &__error {
+    position: absolute;
     font-family: var(--ffm-default);
     font-weight: 500;
+    transition: all var(--slow-transition);
     font-size: 14px;
     line-height: 1.4;
     color: var(--clr-secondary-default);
     min-height: 18px;
     margin: 0;
+    opacity: 0;
+    block-size: 0;
+    transform: translate(-20px);
+
+    &.active {
+      transform: translate(0);
+      opacity: 1;
+    }
   }
 }

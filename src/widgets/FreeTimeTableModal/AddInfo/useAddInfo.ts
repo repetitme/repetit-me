@@ -18,6 +18,10 @@ const validateAddInfo = (content: string) => {
     return `Дополнительная информация не должна превышать ${MAX_LENGTH} символов`;
   }
 
+  if (/[^a-zA-Z0-9а-яА-ЯёЁ\s.,!?()-]/.test(content)) {
+    return 'Дополнительная информация содержит недопустимые символы';
+  }
+
   return '';
 };
 
@@ -34,12 +38,9 @@ export const useAddInfo = (initialContent = '') => {
     []
   );
 
-  const isButtonDisabled = content.trim().length > MAX_LENGTH;
-
   return {
     content,
     error,
-    handleContentChange,
-    isButtonDisabled
+    handleContentChange
   };
 };

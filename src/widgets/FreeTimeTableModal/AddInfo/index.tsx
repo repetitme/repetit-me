@@ -8,12 +8,11 @@ import styles from './index.module.scss';
 
 import { AddInfoProps } from './type';
 
-const AddInfo: FC<AddInfoProps> = ({ onClose }) => {
-  const { content, error, handleContentChange, isButtonDisabled } =
-    useAddInfo();
+const AddInfo: FC<AddInfoProps> = ({ selectedTime, onClose }) => {
+  const { content, error, handleContentChange } = useAddInfo();
 
   return (
-    <>
+    <div onClick={(e) => e.stopPropagation()}>
       <div className={styles.container}>
         <h3 className={styles.container__title}>
           Укажите дополнительную информацию
@@ -24,7 +23,7 @@ const AddInfo: FC<AddInfoProps> = ({ onClose }) => {
             onChange={handleContentChange}
             placeholder="Например, желаемое время занятий, если его нет в расписании, ваш уровень, конкретную цель занятий или другую важную информацию для репетитора."
             maxLength={MAX_LENGTH}
-            error={error}
+            title={error}
           />
         </div>
       </div>
@@ -32,12 +31,12 @@ const AddInfo: FC<AddInfoProps> = ({ onClose }) => {
         <Button
           text="Связаться"
           variant="purple"
-          disabled={isButtonDisabled}
+          disabled={selectedTime.time === '' || error !== ''}
           className={styles.button}
           onClick={onClose}
         />
       </div>
-    </>
+    </div>
   );
 };
 export default AddInfo;

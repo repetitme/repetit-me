@@ -75,6 +75,7 @@ const AvatarUploadModal = ({
         <div className={styles.modal__content}>
           <div className={styles.modal__avatar}>
             <AvatarBlock
+              onClick={triggerFileSelect}
               size={220}
               iconHeight={134}
               iconWidth={132}

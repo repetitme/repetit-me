@@ -59,10 +59,30 @@ const Input: React.FC<IInput> = ({
       return title || 'Некорректный формат';
     }
     if (target.value.length < (minLength || 0) && target.name === 'tg') {
-      return 'Минимальная длина никнейма - 5 символа';
+      return 'Минимальная длина никнейма - 5 символов';
     }
     if (target.value.length < (minLength || 0) && target.name === 'name') {
       return 'Минимальная длина имени - 3 символа';
+    }
+    if (target.value.includes(' ') && target.name === 'link') {
+      return 'Ссылка не должна содержать пробелов';
+    }
+    if (target.value.length === 0 && !required) {
+      return '';
+    }
+    if (
+      !new RegExp(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/).test(target.value) &&
+      target.name === 'email'
+    ) {
+      return 'Введите корректный email. Например: example@mail.ru';
+    }
+    if (
+      !new RegExp(
+        /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/
+      ).test(target.value) &&
+      target.name === 'link'
+    ) {
+      return 'Введите корректную ссылку';
     }
     if (target.type === 'email' && target.value) {
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(target.value)) {
@@ -159,7 +179,13 @@ const Input: React.FC<IInput> = ({
         }
       }
     }
-    if (name === 'link' && value && !value.startsWith('https://')) {
+    if (
+      name === 'link' &&
+      value &&
+      !value.startsWith('https://') &&
+      !value.startsWith('http://')
+    ) {
+      if (value.startsWith('http')) return;
       value = 'https://' + value;
       requestAnimationFrame(() => {
         inputRef.current!.setSelectionRange(value.length, value.length);

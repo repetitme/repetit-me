@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { useAppContext } from '../../app/AppContext';
 import sortIcon from '../../assets/icons/iconSorting.svg';
 import pencilIcon from '../../assets/icons/pencilIcon.svg';
 import NewFeedbackForm from '../../features/NewFeedbackForm';
@@ -14,6 +15,7 @@ import styles from './index.module.scss';
 import { IFeedbackListProps } from './type';
 
 const FeedbackList: React.FC<IFeedbackListProps> = ({ updateModalData }) => {
+  const { role } = useAppContext();
   const [isFormVisible, setIsFormVisible] = useState(false);
 
   const { sortedFeedbacks, isAscending, toggleSort } = useFeedbackList({
@@ -49,6 +51,7 @@ const FeedbackList: React.FC<IFeedbackListProps> = ({ updateModalData }) => {
           icon={pencilIcon}
           className={styles.button}
           onClick={toggleVisible}
+          disabled={role !== 'student'}
         />
       </div>
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import cn from 'classnames';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import { useAppContext } from '../../app/AppContext';
@@ -58,8 +59,8 @@ const TutorPage = () => {
     toggle();
   };
 
-  const requestTutor = () => {
-    request(params.id!);
+  const requestTutor = (day: string, time: string) => {
+    request(params.id!, day, time);
     setStatus('myTutors');
     setConfirmationModal(true);
   };
@@ -301,7 +302,10 @@ const TutorPage = () => {
               <TutorVideoStart video={dataState.videoStart} />
             )}
             <div
-              className={styles.container__profile_info_freeTime}
+              className={cn(styles.container__profile_info_freeTime, {
+                [styles.container__profile_info_freeTime_active]:
+                  role === 'student'
+              })}
               onClick={() => {
                 setOpenModalStateFreeTime(!isOpenModalStateFreeTime);
               }}

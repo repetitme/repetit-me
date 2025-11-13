@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type ProfileFormData = {
   firstName: string;
   lastName: string;
@@ -8,6 +10,9 @@ export type ProfileFormData = {
 };
 
 export interface ProfileInfoProps {
+  setIsValid: React.Dispatch<
+    React.SetStateAction<Record<keyof ProfileFormData, boolean>>
+  >;
   onDataChange: (data: ProfileFormData) => void;
   initialData: ProfileFormData;
 }

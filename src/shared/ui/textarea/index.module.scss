@@ -27,6 +27,7 @@
     line-height: 1.6;
     resize: vertical;
     border-radius: var(--border-radius-btn-social);
+    transition: all var(--slow-transition);
 
     @include inputs-gradient;
 
@@ -35,6 +36,7 @@
     }
 
     &.error {
+      color: var(--clr-secondary-default);
       border: 2px solid var(--clr-secondary-default);
     }
 
@@ -76,5 +78,14 @@
     color: var(--clr-secondary-default);
     min-height: 18px;
     margin: 0;
+    transition: all var(--slow-transition);
+    opacity: 0;
+    block-size: 0;
+    transform: translate(-20px);
   }
+}
+
+.active {
+  transform: translate(0);
+  opacity: 1;
 }

@@ -30,7 +30,7 @@ export const defaultState: TState = {
   [titles.others]: [],
   [titles.goals]: [],
   [titles.ageBrackets]: [ageBrackets[0]],
-  [titles.price]: ['1 500 ₽', '2 000 ₽'],
+  [titles.price]: ['1 500 ₽', '5 000 ₽'],
   [titles.experience]: [],
   [titles.gender]: [gender[0]],
   [titles.rating]: [],
