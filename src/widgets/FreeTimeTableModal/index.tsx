@@ -30,10 +30,7 @@ const FreeTimeTableModal: FC<IFreeTimeTable> = ({
       isOpen={isOpen}
       close={onClose}
       children={
-        <div
-          className={styles.container}
-          onClick={() => setTime({ day: '', time: '' })}
-        >
+        <div className={styles.container}>
           <div className={styles.container__content}>
             <div className={styles.container__content_header}>
               <h2 className={styles.container__content_header_title}>
@@ -50,7 +47,10 @@ const FreeTimeTableModal: FC<IFreeTimeTable> = ({
                 />
               </button>
             </div>
-            <div className={styles.container__content_table}>
+            <div
+              className={styles.container__content_table}
+              onClick={() => setTime({ day: '', time: '' })}
+            >
               <FreeTimeTable
                 freeTime={freeTime}
                 selectedTime={selectedTime}

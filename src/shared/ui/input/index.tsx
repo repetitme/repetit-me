@@ -64,6 +64,17 @@ const Input: React.FC<IInput> = ({
     if (target.value.length < (minLength || 0) && target.name === 'name') {
       return 'Минимальная длина имени - 3 символа';
     }
+    if (target.value.includes(' ') && target.name === 'link') {
+      return 'Ссылка не должна содержать пробелов';
+    }
+    if (
+      !new RegExp(
+        /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/
+      ).test(target.value) &&
+      target.name === 'link'
+    ) {
+      return 'Введите корректную ссылку';
+    }
     if (target.type === 'email' && target.value) {
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(target.value)) {
         return 'Введите корректный email. Например: example@mail.ru';
@@ -159,7 +170,13 @@ const Input: React.FC<IInput> = ({
         }
       }
     }
-    if (name === 'link' && value && !value.startsWith('https://')) {
+    if (
+      name === 'link' &&
+      value &&
+      !value.startsWith('https://') &&
+      !value.startsWith('http://')
+    ) {
+      if (value.startsWith('http')) return;
       value = 'https://' + value;
       requestAnimationFrame(() => {
         inputRef.current!.setSelectionRange(value.length, value.length);

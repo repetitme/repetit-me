@@ -21,7 +21,7 @@ export const authInputsData: TInputData = {
     'https://...',
     'Реферальная ссылка (при наличии)',
     'Некорректный формат ссылки',
-    '^https://.+'
+    '^https?://.+'
   ],
   code: [
     'code',
