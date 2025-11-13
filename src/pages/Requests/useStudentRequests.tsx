@@ -104,6 +104,7 @@ const useStudentRequests = () => {
   };
 
   const request = (id: string, day: string, time: string) => {
+    // Test
     console.log(
       `Репетитор: ${mockTutors.find((tutor) => tutor.id === id)?.name}, день: ${day}, время: ${time}`
     );
