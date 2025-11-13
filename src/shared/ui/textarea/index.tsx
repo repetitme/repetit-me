@@ -32,7 +32,11 @@ const Textarea = ({
   };
 
   const validate = (target: HTMLTextAreaElement): string => {
-    if (pattern && !new RegExp(pattern).test(target.value) && target.value !== '') {
+    if (
+      pattern &&
+      !new RegExp(pattern).test(target.value) &&
+      target.value !== ''
+    ) {
       return 'Только кириллические буквы, цифры и знаки препинания';
     }
     if (target.value.length < (minLength || 1) && target.value !== '') {
