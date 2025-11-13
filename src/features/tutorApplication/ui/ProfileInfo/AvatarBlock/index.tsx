@@ -5,6 +5,7 @@ import styles from './index.module.scss';
 import AvatarWrapperProps from './type';
 
 const AvatarBlock = ({
+  onClick,
   avatarUrl,
   size = 258,
   iconWidth = 157,
@@ -14,6 +15,7 @@ const AvatarBlock = ({
     <div
       className={styles.wrapper}
       style={{ width: `${size}px`, height: `${size}px` }}
+      onClick={onClick}
     >
       <img
         src={tutorIcon}

@@ -53,7 +53,10 @@ const ProfileInfo = ({
       <Wrapper large className={styles.wrapper}>
         <div className={styles.form}>
           <div className={styles.form__avatar}>
-            <AvatarBlock avatarUrl={values.avatar} />
+            <AvatarBlock
+              avatarUrl={values.avatar}
+              onClick={() => setIsModalOpen(true)}
+            />
             <Button
               text={hasAvatar ? 'Изменить фотографию' : 'Загрузить фотографию'}
               variant="underline"
@@ -75,6 +78,7 @@ const ProfileInfo = ({
               title="Поле может содержать только кириллические буквы, пробелы и дефисы"
               minLength={1}
               maxLength={50}
+              extraClass={styles.input}
               required
               onError={handleChangeValid}
             />
@@ -83,6 +87,7 @@ const ProfileInfo = ({
               value={values.lastName}
               type="text"
               label="Фамилия"
+              extraClass={styles.input}
               placeholder="Иванов"
               onChange={handleChange}
               pattern="^[А-Яа-яЁё\s\-]+$"
@@ -97,6 +102,7 @@ const ProfileInfo = ({
               value={values.tg}
               label="Ник в телеграм"
               placeholder="@alex"
+              extraClass={styles.input}
               onChange={handleChange}
               minLength={6}
               maxLength={31}
@@ -108,10 +114,9 @@ const ProfileInfo = ({
             <Input
               name="email"
               value={values.email || ''}
-              type="email"
               label="Почта"
               placeholder="alex@ya.ru"
-              pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+              extraClass={styles.input}
               onChange={handleChange}
               onError={handleChangeValid}
             />

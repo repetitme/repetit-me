@@ -67,6 +67,15 @@ const Input: React.FC<IInput> = ({
     if (target.value.includes(' ') && target.name === 'link') {
       return 'Ссылка не должна содержать пробелов';
     }
+    if (target.value.length === 0 && !required) {
+      return '';
+    }
+    if (
+      !new RegExp(/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/).test(target.value) &&
+      target.name === 'email'
+    ) {
+      return 'Введите корректный email. Например: example@mail.ru';
+    }
     if (
       !new RegExp(
         /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/

@@ -32,14 +32,17 @@ const Textarea = ({
   };
 
   const validate = (target: HTMLTextAreaElement): string => {
-    if (pattern && !new RegExp(pattern).test(target.value)) {
+    if (pattern && !new RegExp(pattern).test(target.value) && target.value !== '') {
       return 'Только кириллические буквы, цифры и знаки препинания';
     }
-    if (target.value.length < (minLength || 0)) {
+    if (target.value.length < (minLength || 1) && target.value !== '') {
       return 'Минимум 100 символов';
     }
     if (target.value.length > (maxLength || 0)) {
       return 'Максимум 2000 символов';
+    }
+    if (target.validity.valueMissing) {
+      return '';
     }
     return '';
   };
@@ -70,7 +73,6 @@ const Textarea = ({
         required={required}
         placeholder={shouldShowError ? '' : placeholder}
         title={title}
-        minLength={minLength}
         maxLength={maxLength}
         className={cn(styles.textarea__area, {
           [styles.error]: shouldShowError
