@@ -109,7 +109,6 @@ const useStudentRequests = () => {
     );
 
     // Placeholder for API call to request a tutor
-    
   };
 
   useEffect(() => {
