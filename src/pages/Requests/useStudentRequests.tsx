@@ -107,6 +107,7 @@ const useStudentRequests = () => {
     console.log(
       `Репетитор: ${mockTutors.find((tutor) => tutor.id === id)?.name}, день: ${day}, время: ${time}`
     );
+    
     // Placeholder for API call to request a tutor
   };
 
