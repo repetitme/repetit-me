@@ -62,6 +62,7 @@ const Input: React.FC<IInput> = ({
       return 'Минимальная длина никнейма - 5 символов';
     }
     if (target.value.length < (minLength || 0) && target.name === 'name') {
+      if (!required && target.value.length === 0) return '';
       return 'Минимальная длина имени - 3 символа';
     }
     if (target.value.includes(' ') && target.name === 'link') {
