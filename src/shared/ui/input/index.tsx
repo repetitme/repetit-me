@@ -180,13 +180,11 @@ const Input: React.FC<IInput> = ({
         }
       }
     }
-    if (
-      name === 'link' &&
-      value &&
-      !value.startsWith('https://') &&
-      !value.startsWith('http://')
-    ) {
-      if (value.startsWith('http')) return;
+    if (name === 'link' && value && !value.startsWith('http')) {
+      if (value === 'htt') {
+        value = '';
+        return;
+      }
       value = 'https://' + value;
       requestAnimationFrame(() => {
         inputRef.current!.setSelectionRange(value.length, value.length);

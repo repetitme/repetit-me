@@ -12,14 +12,6 @@
     border-radius: 28px;
     background-size: cover;
     transition: background 1s ease;
-
-    &--student {
-      background-image: url('../../assets/images/StudentIcons/backgroundStudent.svg');
-    }
-
-    &--teacher {
-      background-image: url('../../assets/images/TeacherIcons/backgroundTeacher.svg');
-    }
   }
 
   &__info {

@@ -155,7 +155,10 @@ export const QuickSelection: FC<IQuickSelectionProps> = ({ role }) => {
         text={'Посмотреть всех'}
         variant={role === 'student' || role === 'unauth' ? 'purple' : 'white'}
         className={styles.container__button}
-        onClick={() => navigate(`/tutor-catalog`)}
+        onClick={() => {
+          window.scrollTo(0, 0);
+          navigate(`/tutor-catalog`);
+        }}
         disabled={role === 'student' || role === 'unauth' ? false : true}
       />
     </div>

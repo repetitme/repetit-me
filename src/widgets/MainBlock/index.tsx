@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 
-import classNames from 'classnames';
 import { useNavigate } from 'react-router';
 
 import backgroundStudent from '../../assets/images/StudentIcons/backgroundStudent.svg';
@@ -27,10 +26,10 @@ const MainBlock: React.FC<MainBlockProps> = ({ isActive, setIsActive }) => {
   return (
     <section className={styles.main__block}>
       <div
-        className={classNames(styles.main__background, {
-          [styles['main__background--teacher']]: isActive,
-          [styles['main__background--student']]: !isActive
-        })}
+        className={styles.main__background}
+        style={{
+          backgroundImage: `url(${isActive ? backgroundTeacher : backgroundStudent})`
+        }}
       >
         <div className={styles.main__info}>
           <div className={styles.main__switch}>

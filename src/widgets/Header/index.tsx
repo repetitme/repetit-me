@@ -96,7 +96,7 @@ const Header = ({ auth }: HeaderProps) => {
                 to={item.path}
                 className={cn(styles.header__nav__link, {
                   [styles['header__nav__link--active']]:
-                    location.pathname === item.path
+                    location.pathname.startsWith(item.path)
                 })}
               >
                 {item.text}
