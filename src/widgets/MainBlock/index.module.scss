@@ -9,6 +9,8 @@
     max-inline-size: 1200px;
     min-block-size: 628px;
     width: 100%;
+    height: auto;
+    transform: translateZ(0);
     border-radius: 28px;
     background-size: cover;
     transition: background 1s ease;

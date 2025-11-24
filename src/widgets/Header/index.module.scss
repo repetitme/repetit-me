@@ -13,6 +13,13 @@
 
   &__logo {
     cursor: pointer;
+
+    img {
+     display: block;
+     transform: translateZ(0);
+     width: 165px;
+     height: 33px;
+    }
   }
 
   &__menu {

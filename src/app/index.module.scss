@@ -9,6 +9,8 @@
   margin: 10px 0 0;
 }
 
-.test {
-  content: 'test';
+img,
+svg {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
